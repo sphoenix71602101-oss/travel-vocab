@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2563eb">
+  <title>旅行单词 · 日语 / 英语</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <h1>旅行单词</h1>
+        <p class="subtitle">中文 → 日语 · 英文</p>
+      </div>
+      <button id="resetBtn" class="icon-btn" title="重置学习数据" aria-label="重置学习数据">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M20 4v4h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <main id="view" class="view">
+      <!-- 首页由 app.js 渲染 -->
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
