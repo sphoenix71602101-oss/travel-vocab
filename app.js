@@ -14,9 +14,17 @@
   const state = {
     quiz: null,
     answered: false,
+    advanceTimer: null,
   };
 
   let toastTimer = null;
+
+  function clearAdvanceTimer() {
+    if (state.advanceTimer) {
+      clearTimeout(state.advanceTimer);
+      state.advanceTimer = null;
+    }
+  }
 
   /* ---------- 工具函数 ---------- */
   function escapeHtml(value) {
@@ -193,6 +201,7 @@
   function renderHome() {
     state.quiz = null;
     state.answered = false;
+    clearAdvanceTimer();
 
     const stats = loadStats();
     const wrongIds = loadWrongIds();
@@ -282,6 +291,7 @@
       correctId: null,
     };
     state.answered = false;
+    clearAdvanceTimer();
     renderQuestion();
   }
 
@@ -419,10 +429,13 @@
 
     const nextBtn = view.querySelector("#nextBtn");
     nextBtn.hidden = false;
-    nextBtn.textContent = quiz.index === quiz.questions.length - 1 ? "查看结果" : "下一题";
+    nextBtn.textContent = quiz.index === quiz.questions.length - 1 ? "查看结果" : "跳过";
+    clearAdvanceTimer();
+    state.advanceTimer = setTimeout(nextQuestion, 1200);
   }
 
   function nextQuestion() {
+    clearAdvanceTimer();
     const quiz = state.quiz;
     if (!quiz) return;
     if (quiz.index >= quiz.questions.length - 1) {
