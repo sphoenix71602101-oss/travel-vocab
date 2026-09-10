@@ -3,6 +3,7 @@
 
   const STATS_KEY = "travelVocab.stats.v1";
   const WRONG_KEY = "travelVocab.wrongIds.v1";
+  const LANG_KEY = "travelVocab.lang.v1";
   const QUESTION_COUNT = 10;
   const SPEAKER_SVG =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
@@ -14,17 +15,11 @@
   const state = {
     quiz: null,
     answered: false,
-    advanceTimer: null,
+    selectedId: null,
+    speechToken: 0,
   };
 
   let toastTimer = null;
-
-  function clearAdvanceTimer() {
-    if (state.advanceTimer) {
-      clearTimeout(state.advanceTimer);
-      state.advanceTimer = null;
-    }
-  }
 
   /* ---------- 工具函数 ---------- */
   function escapeHtml(value) {
@@ -62,8 +57,91 @@
     return category ? category.icon : "📚";
   }
 
+  /* ---------- 语言模式 ---------- */
+  const LANG_OPTIONS = [
+    { value: "ja", label: "日语" },
+    { value: "en", label: "英语" },
+    { value: "bilingual", label: "双语" }
+  ];
+
+  function loadLang() {
+    try {
+      const value = localStorage.getItem(LANG_KEY);
+      if (["ja", "en", "bilingual"].includes(value)) return value;
+    } catch (error) {
+      /* ignore */
+    }
+    return "bilingual";
+  }
+
+  function saveLang(lang) {
+    try {
+      localStorage.setItem(LANG_KEY, lang);
+    } catch (error) {
+      console.warn("无法保存语言设置", error);
+    }
+  }
+
+  function currentLang() {
+    return loadLang();
+  }
+
+  function promptHint(entry, lang) {
+    if (lang === "en") {
+      return entry.type === "phrase" ? "请选择对应的英文短句" : "请选择对应的英文";
+    }
+    if (lang === "ja") {
+      return entry.type === "phrase" ? "请选择对应的日文短句" : "请选择对应的日文";
+    }
+    return entry.type === "phrase" ? "请选择对应的日文短句（含英文）" : "请选择对应的日文（含英文）";
+  }
+
+  function contentHtml(entry, lang) {
+    const parts = [];
+    if (lang !== "en") {
+      parts.push(`<div class="ja">${escapeHtml(entry.ja)}</div>`);
+      parts.push(`<div class="reading">${escapeHtml(entry.reading)}</div>`);
+    }
+    if (lang !== "ja") {
+      parts.push(`<div class="en">${escapeHtml(entry.en)}</div>`);
+    }
+    return parts.join("");
+  }
+
+  function audioButtonsHtml(entry, lang) {
+    const jaButton = `<button class="speak-btn" type="button" title="日文发音" data-speak="ja" data-ja="${escapeHtml(entry.ja)}">${SPEAKER_SVG}<span>日</span></button>`;
+    const enButton = `<button class="speak-btn" type="button" title="英文发音" data-speak="en" data-en="${escapeHtml(entry.en)}">${SPEAKER_SVG}<span>EN</span></button>`;
+    if (lang === "ja") return jaButton;
+    if (lang === "en") return enButton;
+    return jaButton + enButton;
+  }
+
+  /* ---------- 语音 ---------- */
   function speechSupported() {
     return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  }
+
+  function makeUtterance(text, lang) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang;
+    utterance.rate = 0.88;
+    const voices = window.speechSynthesis.getVoices();
+    const match =
+      voices.find((v) => v.lang && v.lang.toLowerCase() === lang.toLowerCase()) ||
+      voices.find((v) => v.lang && v.lang.toLowerCase().startsWith(lang.split("-")[0].toLowerCase()));
+    if (match) utterance.voice = match;
+    return utterance;
+  }
+
+  function stopSpeech() {
+    state.speechToken += 1;
+    if (speechSupported()) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (error) {
+        /* ignore */
+      }
+    }
   }
 
   function speak(text, lang) {
@@ -71,20 +149,56 @@
       showToast("当前浏览器不支持语音播放");
       return;
     }
+    stopSpeech();
     try {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = lang;
-      utterance.rate = 0.88;
-      const voices = window.speechSynthesis.getVoices();
-      const match =
-        voices.find((v) => v.lang && v.lang.toLowerCase() === lang.toLowerCase()) ||
-        voices.find((v) => v.lang && v.lang.toLowerCase().startsWith(lang.split("-")[0].toLowerCase()));
-      if (match) utterance.voice = match;
-      window.speechSynthesis.speak(utterance);
+      window.speechSynthesis.speak(makeUtterance(text, lang));
     } catch (error) {
       showToast("语音播放失败，请检查系统语音设置");
     }
+  }
+
+  function speakSequence(items, onDone) {
+    const token = ++state.speechToken;
+    if (!speechSupported() || !items.length) {
+      setTimeout(() => {
+        if (token === state.speechToken) onDone();
+      }, 600);
+      return;
+    }
+
+    try {
+      window.speechSynthesis.cancel();
+    } catch (error) {
+      /* ignore */
+    }
+
+    let index = 0;
+    const playNext = () => {
+      if (token !== state.speechToken) return;
+      if (index >= items.length) {
+        onDone();
+        return;
+      }
+
+      const item = items[index++];
+      const utterance = makeUtterance(item.text, item.lang);
+      let finished = false;
+      const finish = () => {
+        if (finished || token !== state.speechToken) return;
+        finished = true;
+        clearTimeout(fallback);
+        playNext();
+      };
+      const fallback = setTimeout(finish, 2600);
+      utterance.onend = finish;
+      utterance.onerror = finish;
+      try {
+        window.speechSynthesis.speak(utterance);
+      } catch (error) {
+        finish();
+      }
+    };
+    playNext();
   }
 
   /* ---------- 本地存储 ---------- */
@@ -173,15 +287,12 @@
     const problems = [];
 
     window.WORD_BANK.forEach((entry, index) => {
-      const required = ["id", "category", "zh", "ja", "reading", "en", "type"];
-      required.forEach((field) => {
+      ["id", "category", "zh", "ja", "reading", "en", "type"].forEach((field) => {
         if (entry[field] == null || String(entry[field]).trim() === "") {
           problems.push(`第 ${index + 1} 条缺少字段 ${field}`);
         }
       });
-      if (entry.id && ids.has(entry.id)) {
-        problems.push(`id 重复：${entry.id}`);
-      }
+      if (entry.id && ids.has(entry.id)) problems.push(`id 重复：${entry.id}`);
       if (entry.id) ids.add(entry.id);
       if (entry.category && !categoryIds.has(entry.category)) {
         problems.push(`未知分类：${entry.category}（${entry.zh || entry.ja}）`);
@@ -198,10 +309,20 @@
   }
 
   /* ---------- 首页 ---------- */
+  function renderLangSwitch() {
+    const current = currentLang();
+    const buttons = LANG_OPTIONS.map((option) => {
+      const active = option.value === current ? " active" : "";
+      return `<button class="lang-btn${active}" data-lang="${option.value}">${option.label}</button>`;
+    }).join("");
+    return `<div class="lang-switch" role="group" aria-label="语言模式">${buttons}</div>`;
+  }
+
   function renderHome() {
     state.quiz = null;
     state.answered = false;
-    clearAdvanceTimer();
+    state.selectedId = null;
+    stopSpeech();
 
     const stats = loadStats();
     const wrongIds = loadWrongIds();
@@ -231,6 +352,8 @@
 
     view.innerHTML = `
       <div class="home">
+        ${renderLangSwitch()}
+
         <section class="stats-strip">
           <div class="stat"><span class="num">${escapeHtml(totalAttempts)}</span><span class="label">已练习</span></div>
           <div class="stat"><span class="num">${escapeHtml(accuracy)}%</span><span class="label">总正确率</span></div>
@@ -254,6 +377,12 @@
         <div class="category-grid">${categoriesHtml}</div>
       </div>`;
 
+    view.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        saveLang(btn.dataset.lang);
+        renderHome();
+      });
+    });
     view.querySelectorAll(".category-card").forEach((card) => {
       card.addEventListener("click", () => {
         startQuiz({ kind: "category", categoryId: card.dataset.category });
@@ -281,6 +410,7 @@
       return;
     }
 
+    stopSpeech();
     const questions = shuffle(pool).slice(0, Math.min(QUESTION_COUNT, pool.length));
     state.quiz = {
       mode,
@@ -291,7 +421,7 @@
       correctId: null,
     };
     state.answered = false;
-    clearAdvanceTimer();
+    state.selectedId = null;
     renderQuestion();
   }
 
@@ -316,8 +446,10 @@
     const quiz = state.quiz;
     const entry = quiz.questions[quiz.index];
     const options = buildOptions(entry);
+    const lang = currentLang();
     quiz.correctId = entry.id;
     state.answered = false;
+    state.selectedId = null;
 
     const total = quiz.questions.length;
     const current = quiz.index + 1;
@@ -332,15 +464,10 @@
 
     const optionsHtml = options.map((option, index) => {
       return `
-        <div class="option" role="button" tabindex="0" data-id="${escapeHtml(option.id)}" data-ja="${escapeHtml(option.ja)}" data-en="${escapeHtml(option.en)}">
+        <div class="option" role="button" tabindex="0" data-id="${escapeHtml(option.id)}">
           <span class="letter">${String.fromCharCode(65 + index)}</span>
-          <div class="text">
-            <div class="ja">${escapeHtml(option.ja)}</div>
-            <div class="reading">${escapeHtml(option.reading)}</div>
-            <div class="en">${escapeHtml(option.en)}</div>
-          </div>
-          <button class="speak-btn" type="button" title="日文发音" data-speak="ja">${SPEAKER_SVG}<span>日</span></button>
-          <button class="speak-btn" type="button" title="英文发音" data-speak="en">${SPEAKER_SVG}<span>EN</span></button>
+          <div class="text">${contentHtml(option, lang)}</div>
+          ${audioButtonsHtml(option, lang)}
         </div>`;
     }).join("");
 
@@ -356,25 +483,30 @@
         <div class="prompt-card">
           <span class="hint">${escapeHtml(categoryIcon(entry.category))} ${escapeHtml(categoryName(entry.category))}</span>
           <div class="zh">${escapeHtml(entry.zh)}</div>
-          ${entry.type === "phrase" ? '<div class="en-hint">请选择对应的日文短句</div>' : '<div class="en-hint">请选择对应的日文</div>'}
+          <div class="en-hint">${escapeHtml(promptHint(entry, lang))}</div>
         </div>
 
         <div class="options">${optionsHtml}</div>
         <div id="feedback" class="feedback" hidden></div>
-        <button id="nextBtn" class="next-btn" hidden>${quiz.index === total - 1 ? "查看结果" : "下一题"}</button>
+      </div>
+
+      <div class="quiz-actions">
+        <button id="confirmBtn" class="next-btn" disabled>确认</button>
       </div>`;
+
+    const confirmBtn = view.querySelector("#confirmBtn");
 
     view.querySelectorAll(".option").forEach((optionEl) => {
       optionEl.addEventListener("click", (event) => {
         if (event.target.closest(".speak-btn")) return;
         if (state.answered) return;
-        handleAnswer(optionEl, entry);
+        selectOption(optionEl, confirmBtn);
       });
       optionEl.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
           if (state.answered) return;
-          handleAnswer(optionEl, entry);
+          selectOption(optionEl, confirmBtn);
         }
       });
     });
@@ -382,39 +514,50 @@
     view.querySelectorAll(".speak-btn").forEach((btn) => {
       btn.addEventListener("click", (event) => {
         event.stopPropagation();
-        const option = btn.closest(".option");
-        if (!option) return;
         if (btn.dataset.speak === "ja") {
-          speak(option.dataset.ja, "ja-JP");
+          speak(btn.dataset.ja, "ja-JP");
         } else {
-          speak(option.dataset.en, "en-US");
+          speak(btn.dataset.en, "en-US");
         }
       });
     });
 
     view.querySelector("#quitBtn").addEventListener("click", renderHome);
-    view.querySelector("#nextBtn").addEventListener("click", nextQuestion);
+    confirmBtn.addEventListener("click", () => confirmAnswer(entry));
   }
 
-  function handleAnswer(selectedEl, entry) {
-    const quiz = state.quiz;
-    if (state.answered || !quiz) return;
-    state.answered = true;
+  function selectOption(optionEl, confirmBtn) {
+    if (state.answered) return;
+    view.querySelectorAll(".option").forEach((el) => el.classList.remove("selected"));
+    optionEl.classList.add("selected");
+    state.selectedId = optionEl.dataset.id;
+    confirmBtn.disabled = false;
+    confirmBtn.textContent = "确认";
+  }
 
-    const isCorrect = selectedEl.dataset.id === quiz.correctId;
+  function confirmAnswer(entry) {
+    const quiz = state.quiz;
+    if (!quiz || state.answered || !state.selectedId) return;
+
+    state.answered = true;
+    const selectedId = state.selectedId;
+    const isCorrect = selectedId === quiz.correctId;
+
     if (isCorrect) quiz.score += 1;
     else if (!quiz.wrong.some((w) => w.id === entry.id)) {
       quiz.wrong.push(entry);
     }
     recordAnswer(entry, isCorrect);
 
+    const optionsContainer = view.querySelector(".options");
+    optionsContainer.classList.add("locked");
     view.querySelectorAll(".option").forEach((optionEl) => {
-      optionEl.setAttribute("aria-disabled", "true");
+      optionEl.classList.remove("selected");
       if (optionEl.dataset.id === quiz.correctId) {
         optionEl.classList.add("correct");
         optionEl.insertAdjacentHTML("beforeend", '<span class="mark">✓</span>');
       }
-      if (!isCorrect && optionEl.dataset.id === selectedEl.dataset.id) {
+      if (!isCorrect && optionEl.dataset.id === selectedId) {
         optionEl.classList.add("wrong");
         optionEl.insertAdjacentHTML("beforeend", '<span class="mark">✗</span>');
       }
@@ -427,15 +570,19 @@
       ? "回答正确！"
       : `回答错误，正确答案是「${entry.ja}」`;
 
-    const nextBtn = view.querySelector("#nextBtn");
-    nextBtn.hidden = false;
-    nextBtn.textContent = quiz.index === quiz.questions.length - 1 ? "查看结果" : "跳过";
-    clearAdvanceTimer();
-    state.advanceTimer = setTimeout(nextQuestion, 1200);
+    const confirmBtn = view.querySelector("#confirmBtn");
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = "播放中…";
+
+    const lang = currentLang();
+    const audioItems = [];
+    if (lang !== "en") audioItems.push({ text: entry.ja, lang: "ja-JP" });
+    if (lang !== "ja") audioItems.push({ text: entry.en, lang: "en-US" });
+    speakSequence(audioItems, nextQuestion);
   }
 
   function nextQuestion() {
-    clearAdvanceTimer();
+    stopSpeech();
     const quiz = state.quiz;
     if (!quiz) return;
     if (quiz.index >= quiz.questions.length - 1) {
@@ -453,18 +600,17 @@
     const score = quiz.score;
     const accuracy = total ? Math.round((score / total) * 100) : 0;
     const wrongIds = loadWrongIds();
+    const lang = currentLang();
 
     const wrongHtml = quiz.wrong.length
       ? quiz.wrong.map((entry) => `
           <div class="wrong-item">
             <div class="text">
               <div class="zh">${escapeHtml(entry.zh)}</div>
-              <div class="ja">${escapeHtml(entry.ja)} <span class="reading">${escapeHtml(entry.reading)}</span></div>
-              <div class="en">${escapeHtml(entry.en)}</div>
+              ${contentHtml(entry, lang)}
               <span class="chip">${escapeHtml(categoryIcon(entry.category))} ${escapeHtml(categoryName(entry.category))}</span>
             </div>
-            <button class="speak-btn" type="button" title="日文发音" data-speak="ja" data-ja="${escapeHtml(entry.ja)}">${SPEAKER_SVG}<span>日</span></button>
-            <button class="speak-btn" type="button" title="英文发音" data-speak="en" data-en="${escapeHtml(entry.en)}">${SPEAKER_SVG}<span>EN</span></button>
+            ${audioButtonsHtml(entry, lang)}
           </div>`).join("")
       : `<div class="empty"><span class="emoji">🎉</span>本轮全部答对，太棒了！</div>`;
 
