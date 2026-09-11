@@ -3,27 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="适合旅行途中使用的日语与英语词汇练习，支持分类学习、混合练习、错题复习和发音。">
+  <meta name="application-name" content="旅行单词">
+  <meta name="theme-color" content="#edf0f1">
+  <meta property="og:title" content="旅行单词 · 日语 / 英语">
+  <meta property="og:description" content="用旅行场景轻松练习日语与英语词汇。">
+  <meta property="og:type" content="website">
   <title>旅行单词 · 日语 / 英语</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="app">
     <header class="app-header">
-      <div>
-        <h1>旅行单词</h1>
-        <p class="subtitle">中文 → 日语 · 英文</p>
+      <div class="brand-lockup">
+        <div>
+          <h1>旅行单词</h1>
+          <p id="appSubtitle" class="subtitle">中文出发，向世界问好</p>
+        </div>
       </div>
-      <button id="resetBtn" class="icon-btn" title="重置学习数据" aria-label="重置学习数据">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M20 4v4h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+      <button id="resetBtn" class="header-action" type="button">重置记录</button>
     </header>
 
     <main id="view" class="view">
-      <!-- 首页由 app.js 渲染 -->
+      <noscript>请启用 JavaScript 后使用旅行单词。</noscript>
     </main>
   </div>
 
