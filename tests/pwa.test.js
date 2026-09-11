@@ -53,6 +53,17 @@ test("页面使用相对路径接入 Manifest、图标和 Service Worker", () =>
   assert.match(app, /serviceWorker\.register\("\.\/sw\.js", \{ scope: "\.\/" \}\)/);
 });
 
+test("安装提示按平台能力显示并在已安装后隐藏", () => {
+  assert.match(app, /addEventListener\("beforeinstallprompt"/);
+  assert.match(app, /event\.preventDefault\(\)/);
+  assert.match(app, /promptEvent\.prompt\(\)/);
+  assert.match(app, /addEventListener\("appinstalled"/);
+  assert.match(app, /\(display-mode: standalone\)/);
+  assert.match(app, /window\.navigator\.standalone === true/);
+  assert.match(app, /添加到主屏幕/);
+  assert.match(app, /travelVocab\.installHintDismissed\.v1/);
+});
+
 test("Service Worker 仅预缓存核心应用壳", () => {
   const shellMatch = serviceWorker.match(/const APP_SHELL = \[([\s\S]*?)\];/);
   assert.ok(shellMatch, "找不到 APP_SHELL 清单");

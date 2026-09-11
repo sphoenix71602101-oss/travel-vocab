@@ -4,6 +4,7 @@
   const STATS_KEY = "travelVocab.stats.v1";
   const WRONG_KEY = "travelVocab.wrongIds.v1";
   const LANG_KEY = "travelVocab.lang.v1";
+  const INSTALL_HINT_KEY = "travelVocab.installHintDismissed.v1";
   const QUESTION_COUNT = 10;
   const LANGS = new Set(["ja", "en", "bilingual"]);
   const LANG_OPTIONS = [
@@ -24,6 +25,7 @@
     numbers: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
     emergency: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg>',
     expressions: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 9h8M8 12h5"/></svg>',
+    install: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 16v4h14v-4"/></svg>',
     check: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>',
     warning: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2.8 20h18.4L12 3z"/><path d="M12 9v5M12 17.2v.1"/></svg>'
   };
@@ -46,6 +48,7 @@
   let voicesPromise = null;
   let activeAudio = null;
   let cancelActiveAudio = null;
+  let deferredInstallPrompt = null;
   const missingVoiceWarnings = new Set();
 
   function escapeHtml(value) {
@@ -610,6 +613,98 @@
     </section>`;
   }
 
+  function isStandalone() {
+    return window.matchMedia?.("(display-mode: standalone)").matches === true ||
+      window.navigator.standalone === true;
+  }
+
+  function isAppleMobile() {
+    const agent = String(window.navigator.userAgent || "");
+    return /iPhone|iPad|iPod/i.test(agent) ||
+      (window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1);
+  }
+
+  function installHintDismissed() {
+    try {
+      return localStorage.getItem(INSTALL_HINT_KEY) === "1";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function saveInstallHintDismissed() {
+    try {
+      localStorage.setItem(INSTALL_HINT_KEY, "1");
+    } catch (error) {
+      console.warn("无法保存安装提示设置", error);
+    }
+  }
+
+  function installPromptHtml() {
+    if (isStandalone() || installHintDismissed()) return "";
+    const appleMobile = isAppleMobile();
+    if (!appleMobile && !deferredInstallPrompt) return "";
+
+    const instructions = appleMobile
+      ? `<span class="install-steps"><span><b>1</b>点击浏览器的分享按钮</span><span><b>2</b>选择“添加到主屏幕”</span></span>`
+      : `<button class="install-primary" type="button" data-install-app>立即安装</button>`;
+
+    return `<section class="install-card" aria-labelledby="installPromptTitle">
+      <span class="install-icon" aria-hidden="true">${iconSvg("install")}</span>
+      <div class="install-copy">
+        <strong id="installPromptTitle">${appleMobile ? "把旅行单词放到主屏幕" : "安装旅行单词"}</strong>
+        <small>${appleMobile ? "下次可以像 App 一样直接打开。" : "安装后可从桌面直接打开，并离线使用词库。"}</small>
+        ${instructions}
+      </div>
+      <button class="install-dismiss" type="button" data-dismiss-install aria-label="关闭安装提示">×</button>
+    </section>`;
+  }
+
+  function bindInstallPrompt() {
+    const slot = view.querySelector("#installPromptSlot");
+    if (!slot) return;
+    slot.querySelector("[data-dismiss-install]")?.addEventListener("click", () => {
+      saveInstallHintDismissed();
+      deferredInstallPrompt = null;
+      slot.replaceChildren();
+    });
+    slot.querySelector("[data-install-app]")?.addEventListener("click", async (event) => {
+      const promptEvent = deferredInstallPrompt;
+      if (!promptEvent) return;
+      const button = event.currentTarget;
+      button.disabled = true;
+      button.textContent = "正在打开…";
+      deferredInstallPrompt = null;
+      try {
+        await promptEvent.prompt();
+        await promptEvent.userChoice;
+      } catch (error) {
+        console.warn("无法打开安装提示", error);
+      }
+      refreshInstallPrompt();
+    });
+  }
+
+  function refreshInstallPrompt() {
+    const slot = view.querySelector("#installPromptSlot");
+    if (!slot) return;
+    slot.innerHTML = installPromptHtml();
+    bindInstallPrompt();
+  }
+
+  function setupInstallPrompt() {
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      refreshInstallPrompt();
+    });
+    window.addEventListener("appinstalled", () => {
+      deferredInstallPrompt = null;
+      saveInstallHintDismissed();
+      refreshInstallPrompt();
+    });
+  }
+
   function renderHome() {
     stopSpeech();
     state.questionToken += 1;
@@ -648,6 +743,7 @@
     view.innerHTML = `
       <div class="home page-enter">
         ${renderLangSwitch()}
+        <div id="installPromptSlot" aria-live="polite">${installPromptHtml()}</div>
         <section class="learning-summary" aria-label="学习概览">
           <div class="screen-topline"><span>学习状态</span><span>${langLabel(state.lang)} · MEMORY</span></div>
           <div class="summary-grid">
@@ -679,6 +775,7 @@
       </div>`;
     scrollToTop();
 
+    bindInstallPrompt();
     view.querySelectorAll(".passport-tab").forEach((button) => {
       button.addEventListener("click", () => {
         saveLang(button.dataset.lang);
@@ -943,6 +1040,7 @@
     });
   }
 
+  setupInstallPrompt();
   registerServiceWorker();
   init();
 })();

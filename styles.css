@@ -74,6 +74,27 @@ button:focus-visible,[tabindex="-1"]:focus-visible { outline: 3px solid rgba(35,
 .summary-grid strong small { color: #476269; font-size: .6875rem; font-weight: 500; }
 .summary-grid span { margin-top: 5px; color: #3e5b62; font-size: .75rem; }
 
+.install-card {
+  display: grid; grid-template-columns: 44px minmax(0,1fr) 44px; align-items: start; gap: 12px; margin-bottom: 18px; padding: 14px;
+  border: 1px solid rgba(40,73,80,.25); border-radius: var(--radius-panel); color: #1f3a40;
+  background: repeating-linear-gradient(0deg,rgba(31,70,77,.022) 0 1px,transparent 1px 4px),var(--screen); box-shadow: var(--shadow-inset);
+}
+.install-icon { display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(40,73,80,.2); border-radius: 50%; color: var(--signal); background: rgba(255,255,255,.55); }
+.install-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.install-copy { min-width: 0; }
+.install-copy strong,.install-copy small { display: block; }
+.install-copy strong { margin-top: 1px; font-size: .9375rem; }
+.install-copy small { margin-top: 2px; color: var(--muted); font-size: .8125rem; line-height: 1.45; }
+.install-primary { min-height: 44px; margin-top: 10px; padding: 7px 16px; border: 1px solid #a94419; border-bottom-width: 3px; border-radius: 9px; color: #fff; background: var(--accent); box-shadow: var(--shadow-key-small); font-weight: 700; cursor: pointer; transition: background 150ms ease,transform 100ms ease,box-shadow 150ms ease; }
+.install-primary:hover { background: #b74718; }
+.install-primary:active { transform: translateY(1px); box-shadow: 0 1px 3px rgba(63,70,68,.12); }
+.install-primary:disabled { color: #5d6665; border-color: #d2d5d0; background: #e7e9e5; box-shadow: var(--shadow-inset); cursor: wait; }
+.install-dismiss { width: 44px; height: 44px; padding: 0; border: 0; border-radius: 9px; color: var(--muted); background: transparent; font-size: 1.35rem; line-height: 1; cursor: pointer; transition: color 150ms ease,background 150ms ease; }
+.install-dismiss:hover { color: var(--ink); background: rgba(255,255,255,.55); }
+.install-steps { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 10px; color: #365861; font-size: .75rem; font-weight: 650; }
+.install-steps > span { display: inline-flex; align-items: center; gap: 5px; }
+.install-steps b { display: inline-grid; width: 20px; height: 20px; place-items: center; border-radius: 50%; color: #fff; background: var(--signal); font-family: "SFMono-Regular",Consolas,monospace; font-size: .625rem; }
+
 .quick-actions { display: grid; gap: 12px; margin-bottom: 32px; }
 .quick-card { width: 100%; cursor: pointer; }
 .quick-card strong,.quick-card small { display: block; }
@@ -240,6 +261,9 @@ button:focus-visible,[tabindex="-1"]:focus-visible { outline: 3px solid rgba(35,
   .summary-grid { grid-template-columns: repeat(2,minmax(0,1fr)); row-gap: 14px; }
   .summary-grid > div:nth-child(2) { border-right: 0; }
   .summary-grid > div:nth-child(n+3) { padding-top: 12px; border-top: 1px solid rgba(31,70,77,.16); }
+  .install-card { grid-template-columns: 40px minmax(0,1fr) 44px; gap: 10px; padding: 12px 10px 12px 12px; }
+  .install-icon { width: 40px; height: 40px; }
+  .install-steps { display: grid; }
   .quick-primary { grid-template-columns: 48px minmax(0,1fr); padding-right: 14px; padding-left: 14px; }
   .key-mark { display: none; }
   .quiz-top { grid-template-columns: 56px minmax(0,1fr) 56px; }
