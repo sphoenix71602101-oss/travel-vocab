@@ -1,0 +1,33 @@
+{
+  "id": "./",
+  "name": "旅行单词 · 日语 / 英语",
+  "short_name": "旅行单词",
+  "description": "适合旅行途中使用的日语与英语词汇练习，支持分类学习、混合练习、错题复习和发音。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#f8f9f8",
+  "background_color": "#f8f9f8",
+  "categories": ["education", "travel"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

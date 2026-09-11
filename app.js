@@ -934,5 +934,15 @@
     renderHome();
   }
 
+  function registerServiceWorker() {
+    if (!("serviceWorker" in navigator) || window.location.protocol === "file:") return;
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch((error) => {
+        console.warn("Service Worker 注册失败，应用将继续以普通网页模式运行", error);
+      });
+    });
+  }
+
+  registerServiceWorker();
   init();
 })();
