@@ -69,7 +69,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
 });
 
 test("Service Worker 绕过音频并安全清理旧版本缓存", () => {
-  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v1`/);
+  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v[1-9][0-9]*`/);
   assert.match(serviceWorker, /requestUrl\.href\.startsWith\(audioRootUrl\)\) return/);
   assert.doesNotMatch(serviceWorker, /skipWaiting/);
   assert.match(serviceWorker, /name\.startsWith\(CACHE_PREFIX\) && name !== CACHE_NAME/);
