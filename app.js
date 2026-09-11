@@ -13,6 +13,20 @@
   ];
   const SPEAKER_SVG =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  const DEVICE_ICONS = {
+    dice: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="8" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg>',
+    review: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m8.5 14 2.2 2.2 4.8-5"/></svg>',
+    airport: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 9.5 9 3 12v2l7-1.5V18l-2 2v2l4-1 4 1v-2l-2-2v-5.5l7 1.5v-2L14.5 9 12 2Z"/></svg>',
+    hotel: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V5h10v15M14 10h6v10M8 9h2M8 13h2M8 17h2M17 14h1M17 17h1M2 20h20"/></svg>',
+    food: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v7M4 3v5a3 3 0 0 0 6 0V3M7 10v11M16 3v18M16 3c3 2 4 5 4 8h-4"/></svg>',
+    shopping: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8zM9 9V6a3 3 0 0 1 6 0v3"/></svg>',
+    directions: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2z"/></svg>',
+    numbers: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    emergency: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg>',
+    expressions: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 9h8M8 12h5"/></svg>',
+    check: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>',
+    warning: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2.8 20h18.4L12 3z"/><path d="M12 9v5M12 17.2v.1"/></svg>'
+  };
 
   const view = document.getElementById("view");
   const resetBtn = document.getElementById("resetBtn");
@@ -30,6 +44,8 @@
 
   let toastTimer = null;
   let voicesPromise = null;
+  let activeAudio = null;
+  let cancelActiveAudio = null;
   const missingVoiceWarnings = new Set();
 
   function escapeHtml(value) {
@@ -71,8 +87,8 @@
     return categoryById(id)?.name || id;
   }
 
-  function categoryIcon(id) {
-    return categoryById(id)?.icon || "📚";
+  function iconSvg(name) {
+    return DEVICE_ICONS[name] || DEVICE_ICONS.expressions;
   }
 
   function loadLang() {
@@ -139,8 +155,8 @@
   function audioButtonsHtml(entry, lang) {
     const jaLabel = `播放日文：${entry.ja}`;
     const enLabel = `播放英文：${entry.en}`;
-    const jaButton = `<button class="speak-btn" type="button" aria-label="${escapeHtml(jaLabel)}" data-speak="ja" data-text="${escapeHtml(entry.ja)}">${SPEAKER_SVG}<span>日</span></button>`;
-    const enButton = `<button class="speak-btn" type="button" aria-label="${escapeHtml(enLabel)}" data-speak="en" data-text="${escapeHtml(entry.en)}">${SPEAKER_SVG}<span>EN</span></button>`;
+    const jaButton = `<button class="speak-btn" type="button" aria-label="${escapeHtml(jaLabel)}" data-entry-id="${escapeHtml(entry.id)}" data-speak="ja" data-text="${escapeHtml(entry.ja)}">${SPEAKER_SVG}<span>日</span></button>`;
+    const enButton = `<button class="speak-btn" type="button" aria-label="${escapeHtml(enLabel)}" data-entry-id="${escapeHtml(entry.id)}" data-speak="en" data-text="${escapeHtml(entry.en)}">${SPEAKER_SVG}<span>EN</span></button>`;
     if (lang === "ja") return jaButton;
     if (lang === "en") return enButton;
     return jaButton + enButton;
@@ -152,6 +168,7 @@
 
   function stopSpeech() {
     state.speechToken += 1;
+    if (cancelActiveAudio) cancelActiveAudio();
     if (!speechSupported()) return;
     try {
       window.speechSynthesis.cancel();
@@ -211,6 +228,51 @@
     return Math.min(8000, Math.max(3000, 1800 + Array.from(String(text)).length * 140));
   }
 
+  function bundledAudioPath(item) {
+    const language = item.lang.startsWith("ja") ? "ja" : "en";
+    return `audio/${language}/${item.entryId}.mp3`;
+  }
+
+  function playBundledAudio(item, token) {
+    return new Promise((resolve) => {
+      if (token !== state.speechToken || !item.entryId) {
+        resolve(token !== state.speechToken ? "canceled" : "error");
+        return;
+      }
+
+      const audio = new Audio(bundledAudioPath(item));
+      let settled = false;
+      const finish = (status) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        audio.onended = null;
+        audio.onerror = null;
+        audio.pause();
+        audio.removeAttribute("src");
+        audio.load();
+        if (activeAudio === audio) activeAudio = null;
+        if (cancelActiveAudio === cancel) cancelActiveAudio = null;
+        resolve(status);
+      };
+      const cancel = () => finish("canceled");
+      const timer = setTimeout(() => finish("timeout"), speechTimeout(item.text) + 2000);
+
+      activeAudio = audio;
+      cancelActiveAudio = cancel;
+      audio.preload = "auto";
+      audio.onended = () => finish("played");
+      audio.onerror = () => finish("error");
+
+      try {
+        const playPromise = audio.play();
+        if (playPromise?.catch) playPromise.catch(() => finish("error"));
+      } catch (error) {
+        finish("error");
+      }
+    });
+  }
+
   function playUtterance(item, voice, token, quiet) {
     return new Promise((resolve) => {
       if (token !== state.speechToken) {
@@ -258,36 +320,41 @@
   }
 
   async function queueSpeech(items, quiet) {
-    if (!speechSupported()) {
-      if (!quiet) showToast("当前浏览器不支持语音播放");
-      return { status: "unsupported", playedCount: 0 };
-    }
-
     stopSpeech();
     const token = state.speechToken;
     try {
-      const voices = await loadVoices();
-      if (token !== state.speechToken) return { status: "canceled", playedCount: 0 };
-      const playable = [];
-      const missing = [];
-      items.forEach((item) => {
-        const voice = findVoice(voices, item.lang);
-        if (voice) {
-          playable.push({ ...item, voice });
-          return;
-        }
-        missing.push(voiceName(item.lang));
-      });
-      const newWarnings = missing.filter((name) => !missingVoiceWarnings.has(name));
-      if (missing.length && (!quiet || newWarnings.length)) {
-        showToast(`未找到${Array.from(new Set(missing)).join("、")}语音，请先在系统中安装`);
-        missing.forEach((name) => missingVoiceWarnings.add(name));
-      }
       let playedCount = 0;
-      let status = playable.length ? "played" : "missing";
-      for (const item of playable) {
+      let status = items.length ? "played" : "missing";
+      let voices = null;
+      for (const item of items) {
         if (token !== state.speechToken) return { status: "canceled", playedCount };
-        const itemStatus = await playUtterance(item, item.voice, token, quiet);
+        const bundledStatus = await playBundledAudio(item, token);
+        if (bundledStatus === "played") {
+          playedCount += 1;
+          continue;
+        }
+        if (bundledStatus === "canceled") return { status: "canceled", playedCount };
+
+        if (!speechSupported()) {
+          if (!quiet) showToast("音频文件无法播放，当前浏览器也不支持系统语音");
+          status = "unsupported";
+          continue;
+        }
+
+        if (!voices) voices = await loadVoices();
+        if (token !== state.speechToken) return { status: "canceled", playedCount };
+        const voice = findVoice(voices, item.lang);
+        if (!voice) {
+          const name = voiceName(item.lang);
+          if (!quiet || !missingVoiceWarnings.has(name)) {
+            showToast(`音频文件无法播放，且未找到${name}系统语音`);
+          }
+          missingVoiceWarnings.add(name);
+          status = "missing";
+          continue;
+        }
+
+        const itemStatus = await playUtterance(item, voice, token, quiet);
         if (itemStatus === "played") playedCount += 1;
         else status = itemStatus;
         if (itemStatus === "canceled") break;
@@ -299,21 +366,21 @@
     }
   }
 
-  function speak(text, lang, quiet) {
-    queueSpeech([{ text, lang }], quiet);
+  function speak(entryId, text, lang, quiet) {
+    queueSpeech([{ entryId, text, lang }], quiet);
   }
 
   function speakAnswer(entry) {
     const items = [];
-    if (state.lang !== "en") items.push({ text: entry.ja, lang: "ja-JP" });
-    if (state.lang !== "ja") items.push({ text: entry.en, lang: "en-US" });
+    if (state.lang !== "en") items.push({ entryId: entry.id, text: entry.ja, lang: "ja-JP" });
+    if (state.lang !== "ja") items.push({ entryId: entry.id, text: entry.en, lang: "en-US" });
     return queueSpeech(items, true);
   }
 
   function bindSpeechButtons(root) {
     root.querySelectorAll(".speak-btn").forEach((button) => {
       button.addEventListener("click", () => {
-        speak(button.dataset.text, button.dataset.speak === "ja" ? "ja-JP" : "en-US");
+        speak(button.dataset.entryId, button.dataset.text, button.dataset.speak === "ja" ? "ja-JP" : "en-US");
       });
     });
   }
@@ -481,7 +548,7 @@
     updateSubtitle("home");
     view.innerHTML = `
       <section class="error-state" role="alert">
-        <span class="error-icon" aria-hidden="true">🧳</span>
+        <span class="error-icon" aria-hidden="true">${iconSvg("warning")}</span>
         <h2>词库暂时无法启程</h2>
         <p>请检查 <code>data.js</code> 后刷新页面。</p>
         <ul>${problems.slice(0, 8).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
@@ -535,9 +602,12 @@
   }
 
   function renderLangSwitch() {
-    return `<div class="passport-tabs" role="group" aria-label="选择练习语言">
+    return `<section class="channel-panel" aria-labelledby="channelLabel">
+      <div class="control-label"><span id="channelLabel">语言频道</span><span class="signal-label"><i></i> READY</span></div>
+      <div class="passport-tabs" role="group" aria-label="选择练习语言">
       ${LANG_OPTIONS.map((option) => `<button class="passport-tab" type="button" data-lang="${option.value}" aria-pressed="${option.value === state.lang}">${option.label}</button>`).join("")}
-    </div>`;
+      </div>
+    </section>`;
   }
 
   function renderHome() {
@@ -557,7 +627,7 @@
     }), { attempts: 0, correct: 0 });
     const accuracy = totals.attempts ? Math.round((totals.correct / totals.attempts) * 100) : 0;
 
-    const categoriesHtml = window.CATEGORIES.map((category) => {
+    const categoriesHtml = window.CATEGORIES.map((category, index) => {
       const words = window.WORD_BANK.filter((entry) => entry.category === category.id);
       const categoryLearned = words.filter((entry) => stats.byId[entry.id]?.attempts).length;
       const categoryStats = stats.byCategory[category.id];
@@ -565,8 +635,9 @@
       const progress = words.length ? Math.round((categoryLearned / words.length) * 100) : 0;
       return `
         <button class="category-card" type="button" data-category="${escapeHtml(category.id)}">
-          <span class="category-icon" aria-hidden="true">${escapeHtml(category.icon)}</span>
+          <span class="category-icon" aria-hidden="true">${iconSvg(category.id)}</span>
           <span class="category-body">
+            <span class="category-code">CH ${String(index + 1).padStart(2, "0")}</span>
             <span class="category-name">${escapeHtml(category.name)}</span>
             <span class="category-meta">已学习 ${categoryLearned}/${words.length}${categoryAccuracy == null ? "" : ` · 正确率 ${categoryAccuracy}%`}</span>
             <span class="mini-progress" aria-hidden="true"><span style="width:${progress}%"></span></span>
@@ -578,6 +649,7 @@
       <div class="home page-enter">
         ${renderLangSwitch()}
         <section class="learning-summary" aria-label="学习概览">
+          <div class="screen-topline"><span>学习状态</span><span>${langLabel(state.lang)} · MEMORY</span></div>
           <div class="summary-grid">
             <div><strong>${learned}<small> / ${window.WORD_BANK.length}</small></strong><span>已学习词数</span></div>
             <div><strong>${totals.attempts}</strong><span>答题次数</span></div>
@@ -588,17 +660,20 @@
 
         <section class="quick-actions" aria-label="快捷练习">
           <button class="quick-card quick-primary" type="button" data-start="mixed">
-            <span class="quick-icon" aria-hidden="true">🎲</span>
+            <span class="quick-icon" aria-hidden="true">${iconSvg("dice")}</span>
             <span><strong>开始随机练习</strong><small>从未学习和薄弱词汇开始</small></span>
+            <span class="key-mark" aria-hidden="true">START</span>
           </button>
           <button class="quick-card quick-secondary" type="button" data-start="wrong">
+            <span class="secondary-icon" aria-hidden="true">${iconSvg("review")}</span>
             <span><strong>错题复习</strong><small>${wrongIds.size ? `${wrongIds.size} 个词等待复习` : "目前没有错题"}</small></span>
+            <span class="key-count">${wrongIds.size}</span>
           </button>
         </section>
 
         <div class="section-heading">
-          <div><h2>按旅行场景学习</h2></div>
-          <span>${window.CATEGORIES.length} 个场景</span>
+          <div><span class="control-label-text">CHANNEL SELECT</span><h2>旅行场景</h2></div>
+          <span>${window.CATEGORIES.length} CH</span>
         </div>
         <div class="category-grid">${categoriesHtml}</div>
       </div>`;
@@ -692,11 +767,13 @@
         </div>
 
         <section class="prompt-ticket" id="questionPrompt" tabindex="-1" aria-labelledby="questionText">
-          <span class="prompt-route">${escapeHtml(categoryIcon(entry.category))} ${escapeHtml(categoryName(entry.category))} · ${entry.type === "phrase" ? "短句" : "单词"}</span>
+          <div class="screen-topline"><span>VOICE DISPLAY</span><span>${state.lang === "ja" ? "JP" : state.lang === "en" ? "EN" : "JP + EN"}</span></div>
+          <span class="prompt-route"><span aria-hidden="true">${iconSvg(entry.category)}</span>${escapeHtml(categoryName(entry.category))} · ${entry.type === "phrase" ? "短句" : "单词"}</span>
           <h2 id="questionText">${escapeHtml(entry.zh)}</h2>
           <p>${escapeHtml(promptHint(entry))}</p>
         </section>
 
+        <div class="control-label answer-bank-label"><span>答案键</span><span>SELECT A–D</span></div>
         <div class="options" role="group" aria-label="答案选项">${optionsHtml}</div>
         <div id="feedback" class="feedback" tabindex="-1" aria-live="polite" hidden></div>
       </div>
@@ -797,13 +874,14 @@
     const wrongIds = loadWrongIds();
     const wrongHtml = quiz.wrong.length ? quiz.wrong.map((entry) => `
       <div class="wrong-item">
-        <div class="wrong-copy"><strong>${escapeHtml(entry.zh)}</strong>${contentHtml(entry, state.lang)}<span>${escapeHtml(categoryIcon(entry.category))} ${escapeHtml(categoryName(entry.category))}</span></div>
+        <div class="wrong-copy"><strong>${escapeHtml(entry.zh)}</strong>${contentHtml(entry, state.lang)}<span>${escapeHtml(categoryName(entry.category))}</span></div>
         <div class="option-audio">${audioButtonsHtml(entry, state.lang)}</div>
-      </div>`).join("") : `<div class="empty-state"><span aria-hidden="true">🎉</span><strong>本轮全部答对</strong><p>这段旅程走得很稳！</p></div>`;
+      </div>`).join("") : `<div class="empty-state"><span aria-hidden="true">${iconSvg("check")}</span><strong>本轮全部答对</strong><p>这段旅程走得很稳！</p></div>`;
 
     view.innerHTML = `
       <div class="results page-enter">
          <section class="passport-result">
+           <div class="screen-topline"><span>SESSION REPORT</span><span>COMPLETE</span></div>
            <div class="result-stamp" style="--score:${accuracy}"><div><strong>${accuracy}%</strong><span>${score} / ${total} 正确</span></div></div>
            <p>${accuracy === 100 ? "完美抵达，继续探索下一站吧。" : accuracy >= 70 ? "状态不错，再走一遍会更熟练。" : "每次练习都算里程，错题已经收好。"}</p>
            <div class="result-metrics" aria-label="本轮学习数据">
