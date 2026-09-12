@@ -23,8 +23,8 @@ test("Manifest 包含可安装 PWA 所需配置", () => {
   assert.equal(manifest.start_url, "./");
   assert.equal(manifest.scope, "./");
   assert.equal(manifest.display, "standalone");
-  assert.equal(manifest.theme_color, "#f8f9f8");
-  assert.equal(manifest.background_color, "#f8f9f8");
+  assert.equal(manifest.theme_color, "#f5f9ff");
+  assert.equal(manifest.background_color, "#f5f9ff");
 });
 
 test("Manifest 图标路径稳定且尺寸正确", () => {
@@ -53,7 +53,7 @@ test("页面使用相对路径接入 Manifest、图标和 Service Worker", () =>
 test("安装提示按平台能力显示并在已安装后隐藏", () => {
   assert.match(app, /addEventListener\("beforeinstallprompt"/);
   assert.match(app, /event\.preventDefault\(\)/);
-  assert.match(app, /promptEvent\.prompt\(\)/);
+  assert.match(app, /deferredInstallPrompt\.prompt\(\)/);
   assert.match(app, /addEventListener\("appinstalled"/);
   assert.match(app, /\(display-mode: standalone\)/);
   assert.match(app, /window\.navigator\.standalone === true/);
