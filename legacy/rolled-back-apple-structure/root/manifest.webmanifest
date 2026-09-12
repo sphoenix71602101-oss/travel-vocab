@@ -2,13 +2,13 @@
   "id": "./",
   "name": "旅行单词 · 日语 / 英语",
   "short_name": "旅行单词",
-  "description": "适合旅行途中使用的日语与英语词汇练习，支持分类学习、混合练习、错题复习和发音。",
+  "description": "按真实旅行场景学习实用日语和英语词汇与短语。",
   "lang": "zh-CN",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "theme_color": "#f8f9f8",
-  "background_color": "#f8f9f8",
+  "theme_color": "#f2f2f7",
+  "background_color": "#f2f2f7",
   "categories": ["education", "travel"],
   "icons": [
     {

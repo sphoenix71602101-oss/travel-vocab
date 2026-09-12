@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="适合旅行途中使用的日语与英语词汇练习，支持分类学习、混合练习、错题复习和发音。">
+  <meta name="description" content="按真实旅行场景学习实用日语和英语词汇与短语。">
   <meta name="application-name" content="旅行单词">
-  <meta name="theme-color" content="#f8f9f8">
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="旅行单词">
   <meta property="og:title" content="旅行单词 · 日语 / 英语">
-  <meta property="og:description" content="用旅行场景轻松练习日语与英语词汇。">
+  <meta property="og:description" content="按真实旅行场景学习实用日语和英语表达。">
   <meta property="og:type" content="website">
   <title>旅行单词 · 日语 / 英语</title>
   <link rel="manifest" href="manifest.webmanifest">
@@ -19,26 +20,23 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app">
-    <header class="app-header">
-      <div class="brand-lockup">
-        <div>
-          <span class="model-label">TV–555 · POCKET LANGUAGE UNIT</span>
-          <h1>旅行单词</h1>
-          <p id="appSubtitle" class="subtitle">中文出发，向世界问好</p>
-        </div>
-      </div>
-      <button id="resetBtn" class="header-action" type="button">重置记录</button>
-    </header>
-
-    <main id="view" class="view">
+  <div id="app" class="app-shell">
+    <main id="view" class="view" tabindex="-1">
       <noscript>请启用 JavaScript 后使用旅行单词。</noscript>
     </main>
+    <nav id="primaryNav" class="primary-nav" aria-label="主要导航" hidden></nav>
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js" defer></script>
+  <script src="js/catalog.js" defer></script>
+  <script src="js/storage.js" defer></script>
+  <script src="js/audio.js" defer></script>
+  <script src="js/icons.js" defer></script>
+  <script src="js/router.js" defer></script>
+  <script src="js/pwa.js" defer></script>
+  <script src="js/views.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
