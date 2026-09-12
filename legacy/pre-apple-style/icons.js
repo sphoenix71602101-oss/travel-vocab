@@ -15,7 +15,6 @@
     message: '<path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 9h8m-8 3h5"/>',
     medical: '<path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3Z"/>',
     speaker: '<path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16 8a5 5 0 0 1 0 8"/>',
-    check: '<path d="m6.5 12.5 3.4 3.4 7.6-8"/>',
     chevron: '<path d="m9 5 7 7-7 7"/>',
     arrow: '<path d="m15 18-6-6 6-6"/>',
     foundation: '<path d="M4 20h16M6 20V9h12v11M4 9l8-6 8 6M9 13h6m-6 4h6"/>'

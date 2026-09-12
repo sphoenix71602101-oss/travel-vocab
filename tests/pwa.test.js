@@ -23,8 +23,8 @@ test("Manifest 包含可安装 PWA 所需配置", () => {
   assert.equal(manifest.start_url, "./");
   assert.equal(manifest.scope, "./");
   assert.equal(manifest.display, "standalone");
-  assert.equal(manifest.theme_color, "#f8f9f8");
-  assert.equal(manifest.background_color, "#f8f9f8");
+  assert.equal(manifest.theme_color, "#f2f2f7");
+  assert.equal(manifest.background_color, "#f2f2f7");
 });
 
 test("Manifest 图标路径稳定且尺寸正确", () => {
