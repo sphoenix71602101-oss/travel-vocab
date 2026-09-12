@@ -50,18 +50,22 @@ test("页面使用相对路径接入 Manifest、图标和 Service Worker", () =>
   assert.match(html, /rel="manifest" href="manifest\.webmanifest"/);
   assert.match(html, /rel="apple-touch-icon" href="icons\/apple-touch-icon\.png"/);
   assert.doesNotMatch(html, /(?:src|href)="\//);
-  assert.match(app, /serviceWorker\.register\("\.\/sw\.js", \{ scope: "\.\/" \}\)/);
+  const pwa = read("js/pwa.js");
+  assert.match(pwa, /serviceWorker\.register\("\.\/sw\.js", \{ scope: "\.\/" \}\)/);
 });
 
 test("安装提示按平台能力显示并在已安装后隐藏", () => {
-  assert.match(app, /addEventListener\("beforeinstallprompt"/);
-  assert.match(app, /event\.preventDefault\(\)/);
-  assert.match(app, /promptEvent\.prompt\(\)/);
-  assert.match(app, /addEventListener\("appinstalled"/);
-  assert.match(app, /\(display-mode: standalone\)/);
-  assert.match(app, /window\.navigator\.standalone === true/);
-  assert.match(app, /添加到主屏幕/);
-  assert.match(app, /travelVocab\.installHintDismissed\.v1/);
+  const pwa = read("js/pwa.js");
+  const views = read("js/views.js");
+  const storage = read("js/storage.js");
+  assert.match(pwa, /addEventListener\("beforeinstallprompt"/);
+  assert.match(pwa, /event\.preventDefault\(\)/);
+  assert.match(pwa, /promptEvent\.prompt\(\)/);
+  assert.match(pwa, /addEventListener\("appinstalled"/);
+  assert.match(pwa, /\(display-mode: standalone\)/);
+  assert.match(pwa, /window\.navigator\.standalone === true/);
+  assert.match(views, /添加到主屏幕/);
+  assert.match(storage, /travelVocab\.installHintDismissed\.v1/);
 });
 
 test("Service Worker 仅预缓存核心应用壳", () => {
@@ -70,6 +74,8 @@ test("Service Worker 仅预缓存核心应用壳", () => {
   const shell = shellMatch[1];
   for (const asset of [
     "index.html", "styles.css", "data.js", "app.js", "manifest.webmanifest",
+    "js/catalog.js", "js/storage.js", "js/audio.js", "js/icons.js",
+    "js/router.js", "js/pwa.js", "js/views.js",
     "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png",
     "icons/apple-touch-icon.png"
   ]) {

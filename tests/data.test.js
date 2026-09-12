@@ -85,6 +85,7 @@ test("页面资源使用 GitHub Pages 兼容的相对路径", () => {
   const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
   assert.match(html, /href="styles\.css"/);
   assert.match(html, /src="data\.js"/);
+  assert.match(html, /src="js\/catalog\.js"/);
   assert.match(html, /src="app\.js"/);
   assert.doesNotMatch(html, /(?:src|href)="\//);
 });

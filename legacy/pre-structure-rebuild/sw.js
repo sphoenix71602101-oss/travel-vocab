@@ -2,19 +2,12 @@
 
 // Increment this version whenever a precached application-shell file changes.
 const CACHE_PREFIX = "travel-vocab-shell-";
-const CACHE_NAME = `${CACHE_PREFIX}v4`;
+const CACHE_NAME = `${CACHE_PREFIX}v3`;
 const APP_SHELL = [
   "./",
   "index.html",
   "styles.css",
   "data.js",
-  "js/catalog.js",
-  "js/storage.js",
-  "js/audio.js",
-  "js/icons.js",
-  "js/router.js",
-  "js/pwa.js",
-  "js/views.js",
   "app.js",
   "manifest.webmanifest",
   "icons/icon-192.png",
