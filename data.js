@@ -1,41 +1,41 @@
 window.SCENE_PACKS = [
-  { id: "airport", name: "机场", description: "从值机、安检到入境，顺利完成每一段飞行。", situations: [
+  { id: "airport", name: "机场", description: "从值机、安检到入境，顺利完成每一段飞行。", homeTopics: ["值机", "行李", "安检", "登机"], situations: [
     { id: "documents-flights", name: "证件与航班" }, { id: "check-in", name: "办理值机" },
     { id: "baggage", name: "行李托运" }, { id: "security-waiting", name: "安检与候机" },
     { id: "boarding-onboard", name: "登机与机上" }, { id: "arrival-immigration", name: "到达与入境" }
   ] },
-  { id: "transport", name: "交通", description: "买票、换乘、打车和租车，找到适合自己的路线。", situations: [
+  { id: "transport", name: "交通", description: "买票、换乘、打车和租车，找到适合自己的路线。", homeTopics: ["车票", "地铁", "火车", "出租车"], situations: [
     { id: "tickets-stations", name: "车票与车站" }, { id: "bus-metro", name: "公交与地铁" },
     { id: "rail", name: "火车出行" }, { id: "taxi", name: "出租车" },
     { id: "transfer", name: "换乘" }, { id: "rental-driving", name: "租车与驾驶" }
   ] },
-  { id: "hotel", name: "酒店", description: "完成预订、入住、提出需求和退房。", situations: [
+  { id: "hotel", name: "酒店", description: "完成预订、入住、提出需求和退房。", homeTopics: ["预订", "入住", "房间", "退房"], situations: [
     { id: "reservation", name: "预订" }, { id: "hotel-check-in", name: "办理入住" },
     { id: "room-facilities", name: "房间设施" }, { id: "hotel-requests", name: "提出需求" },
     { id: "hotel-problems", name: "问题处理" }, { id: "checkout-storage", name: "退房与寄存" }
   ] },
-  { id: "food", name: "餐厅", description: "从进店、点餐到结账，表达清楚自己的需要。", situations: [
+  { id: "food", name: "餐厅", description: "从进店、点餐到结账，表达清楚自己的需要。", homeTopics: ["等位", "菜单", "点餐", "结账"], situations: [
     { id: "enter-wait", name: "进入与等位" }, { id: "menu", name: "查看菜单" },
     { id: "ordering", name: "点餐" }, { id: "taste-diet", name: "口味与忌口" },
     { id: "dining-requests", name: "用餐需求" }, { id: "food-confirm", name: "询问与确认" },
     { id: "food-checkout", name: "结账" }
   ] },
-  { id: "shopping", name: "购物", description: "找商品、问价格、试用并完成支付或退税。", situations: [
+  { id: "shopping", name: "购物", description: "找商品、问价格、试用并完成支付或退税。", homeTopics: ["找商品", "尺码", "试用", "支付"], situations: [
     { id: "find-products", name: "寻找商品" }, { id: "size-color", name: "颜色与尺码" },
     { id: "try-products", name: "试穿试用" }, { id: "price-discount", name: "价格与优惠" },
     { id: "payment", name: "支付" }, { id: "return-tax", name: "退换与退税" }
   ] },
-  { id: "directions", name: "问路", description: "确认位置、看懂方向，并在听不清时继续沟通。", situations: [
+  { id: "directions", name: "问路", description: "确认位置、看懂方向，并在听不清时继续沟通。", homeTopics: ["位置", "路线", "距离", "地标"], situations: [
     { id: "location-direction", name: "位置与方向" }, { id: "ask-route", name: "询问路线" },
     { id: "distance-time", name: "距离与时间" }, { id: "map-landmarks", name: "地图与地标" },
     { id: "understand-route", name: "听懂与确认" }
   ] },
-  { id: "emergency", name: "紧急求助", description: "身体不适、物品遗失或遇到危险时及时求助。", situations: [
+  { id: "emergency", name: "紧急求助", description: "身体不适、物品遗失或遇到危险时及时求助。", homeTopics: ["身体不适", "药店", "报警", "失物"], situations: [
     { id: "feeling-unwell", name: "身体不适" }, { id: "doctor-pharmacy", name: "看病与药店" },
     { id: "police-help", name: "报警求助" }, { id: "lost-stolen", name: "丢失与被盗" },
     { id: "danger-accident", name: "危险与事故" }, { id: "emergency-contact", name: "紧急联络" }
   ] },
-  { id: "basics", name: "基础交流", description: "先掌握问候、数字、时间和最常用的沟通方式。", situations: [
+  { id: "basics", name: "基础交流", description: "先掌握问候、数字、时间和最常用的沟通方式。", homeTopics: ["问候", "礼貌", "数字", "时间"], situations: [
     { id: "greetings", name: "问候与告别" }, { id: "courtesy", name: "礼貌表达" },
     { id: "introductions", name: "自我介绍" }, { id: "language-help", name: "听不懂与语言求助" },
     { id: "numbers-quantity", name: "数字与数量" }, { id: "time-date", name: "时间与日期" },

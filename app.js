@@ -3,15 +3,19 @@
 
   const LEARNING_KEY = "yujianWorld.learning.v1";
   const LANG_KEY = "yujianWorld.lang.v1";
+  const DESTINATION_KEY = "yujianWorld.destination.v1";
   const MIGRATION_KEY = "yujianWorld.migrated.v1";
   const INSTALL_HINT_KEY = "yujianWorld.installHintDismissed.v1";
   const LEARNING_BATCH_SIZE = 5;
   const REVIEW_BATCH_SIZE = 10;
   const LANGS = new Set(["ja", "en"]);
   const MAIN_TABS = new Set(["home", "review", "tools", "me"]);
-  const LANG_OPTIONS = [
-    { value: "ja", label: "日语", helper: "日本語" },
-    { value: "en", label: "英语", helper: "English" }
+  const DESTINATION_OPTIONS = [
+    { id: "jp", country: "日本", language: "日语", nativeLabel: "日本語", lang: "ja", status: "available", countryCode: "JP", flagSrc: "icons/flags/jp.png" },
+    { id: "us", country: "美国", language: "英语", nativeLabel: "English", lang: "en", status: "available", countryCode: "US", flagSrc: "icons/flags/us.png" },
+    { id: "kr", country: "韩国", language: "韩语", nativeLabel: "한국어", lang: "ko", status: "coming-soon", countryCode: "KR", flagSrc: "icons/flags/kr.png" },
+    { id: "ru", country: "俄罗斯", language: "俄语", nativeLabel: "Русский", lang: "ru", status: "coming-soon", countryCode: "RU", flagSrc: "icons/flags/ru.png" },
+    { id: "es", country: "西班牙", language: "西班牙语", nativeLabel: "Español", lang: "es", status: "coming-soon", countryCode: "ES", flagSrc: "icons/flags/es.png" }
   ];
   const SPEAKER_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   const ICONS = {
@@ -39,6 +43,8 @@
   const toastEl = document.getElementById("toast");
   const state = {
     lang: null,
+    destinationId: null,
+    destinationOpen: false,
     tab: "home",
     learning: null,
     quiz: null,
@@ -52,6 +58,7 @@
   let activeAudio = null;
   let cancelActiveAudio = null;
   let deferredInstallPrompt = null;
+  let pendingDestinationFocus = false;
 
   function escapeHtml(value) {
     return String(value == null ? "" : value)
@@ -79,7 +86,10 @@
     toastTimer = setTimeout(() => toastEl.classList.remove("show"), 3000);
   }
   function scrollToTop() { window.scrollTo({ top: 0, left: 0, behavior: "auto" }); }
-  function langLabel(lang) { return lang === "ja" ? "日语" : "英语"; }
+  function langLabel(lang) { return lang === "ja" ? "日语" : lang === "en" ? "英语" : ""; }
+  function destinationById(id) { return DESTINATION_OPTIONS.find((item) => item.id === id); }
+  function destinationForLang(lang) { return DESTINATION_OPTIONS.find((item) => item.status === "available" && item.lang === lang); }
+  function selectedDestination() { return destinationById(state.destinationId); }
   function sceneById(id) { return window.SCENE_PACKS.find((scene) => scene.id === id); }
   function situationById(scene, id) { return scene?.situations.find((situation) => situation.id === id); }
   function sceneWords(sceneId) { return window.WORD_BANK.filter((entry) => entry.scene === sceneId); }
@@ -191,6 +201,39 @@
       return null;
     }
   }
+  function saveDestination(destinationId) {
+    const destination = destinationById(destinationId);
+    if (!destination || destination.status !== "available" || !LANGS.has(destination.lang)) return false;
+    state.destinationId = destination.id;
+    state.destinationOpen = false;
+    saveLang(destination.lang);
+    try { localStorage.setItem(DESTINATION_KEY, destination.id); }
+    catch (error) { console.warn("无法保存目的地设置", error); }
+    return true;
+  }
+  function loadDestinationId() {
+    try {
+      const value = localStorage.getItem(DESTINATION_KEY);
+      const destination = destinationById(value);
+      return destination?.status === "available" ? destination.id : null;
+    } catch (error) {
+      return null;
+    }
+  }
+  function initializeDestination() {
+    const storedDestination = destinationById(loadDestinationId());
+    if (storedDestination) {
+      state.destinationId = storedDestination.id;
+      saveLang(storedDestination.lang);
+      return;
+    }
+    state.lang = loadLang();
+    const legacyDestination = destinationForLang(state.lang);
+    state.destinationId = legacyDestination?.id || null;
+    if (!legacyDestination) return;
+    try { localStorage.setItem(DESTINATION_KEY, legacyDestination.id); }
+    catch (error) { console.warn("无法迁移目的地设置", error); }
+  }
   function migrateLegacyData() {
     try {
       if (localStorage.getItem(MIGRATION_KEY) === "1") return;
@@ -273,6 +316,16 @@
   function validateData() {
     const problems = [];
     if (!Array.isArray(window.SCENE_PACKS) || !Array.isArray(window.WORD_BANK)) return ["找不到旅行场景或词库数据。"];
+    const destinationIds = new Set();
+    DESTINATION_OPTIONS.forEach((destination) => {
+      ["id", "country", "language", "nativeLabel", "lang", "status", "countryCode", "flagSrc"].forEach((field) => {
+        if (typeof destination[field] !== "string" || !destination[field].trim()) problems.push(`目的地 ${destination.id || "未知"} 的 ${field} 字段无效。`);
+      });
+      if (destinationIds.has(destination.id)) problems.push(`目的地 ID 重复：${destination.id}`);
+      destinationIds.add(destination.id);
+      if (!['available', 'coming-soon'].includes(destination.status)) problems.push(`目的地状态无效：${destination.id}`);
+      if (destination.status === "available" && !LANGS.has(destination.lang)) problems.push(`已开放目的地缺少可用语言：${destination.id}`);
+    });
     const scenes = new Map(window.SCENE_PACKS.map((scene) => [scene.id, new Set(scene.situations.map((item) => item.id))]));
     const ids = new Set();
     window.WORD_BANK.forEach((entry, index) => {
@@ -285,6 +338,9 @@
       else if (!scenes.get(entry.scene).has(entry.situation)) problems.push(`未知小情境：${entry.scene}/${entry.situation}`);
     });
     window.SCENE_PACKS.forEach((scene) => {
+      if (!Array.isArray(scene.homeTopics) || scene.homeTopics.length !== 4 || scene.homeTopics.some((topic) => typeof topic !== "string" || !topic.trim())) {
+        problems.push(`旅行场景首页摘要无效：${scene.id}`);
+      }
       scene.situations.forEach((situation) => {
         if (!window.WORD_BANK.some((entry) => entry.scene === scene.id && entry.situation === situation.id)) {
           problems.push(`小情境没有内容：${scene.id}/${situation.id}`);
@@ -335,15 +391,30 @@
       else item.removeAttribute("aria-current");
     });
   }
-  function renderRoute() {
-    if (!state.lang) {
-      renderLanguageWelcome();
-      return;
+  function focusDestinationPicker() {
+    const picker = view.querySelector("#destinationPicker");
+    if (!picker) return;
+    picker.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    picker.focus({ preventScroll: true });
+  }
+  function requireDestination() {
+    state.destinationOpen = true;
+    pendingDestinationFocus = true;
+    showToast("请先选择目的地和语言");
+    if (parseRoute().name === "home") {
+      renderHome();
+    } else {
+      navigatePath("home", true);
     }
-    document.body.classList.remove("is-onboarding");
+  }
+  function renderRoute() {
     const route = parseRoute();
     if (route.name === "legacy-test") {
       navigatePath("review", true);
+      return;
+    }
+    if (!state.destinationId && ["review", "scene", "learn", "emergency-card-form", "emergency-card-preview"].includes(route.name)) {
+      requireDestination();
       return;
     }
     state.tab = routeTab(route);
@@ -358,25 +429,6 @@
     else if (route.name === "scene") renderScene(route.sceneId);
     else if (route.name === "learn") beginLearningRoute(route.sceneId, route.situationId);
     else renderHome();
-  }
-
-  function renderLanguageWelcome() {
-    stopSpeech();
-    document.body.classList.add("is-onboarding");
-    bottomNav.hidden = true;
-    view.innerHTML = `<section class="welcome page-enter" aria-labelledby="welcomeTitle">
-      <img src="icons/icon-192.png" width="96" height="96" alt="" class="welcome-icon">
-      <span class="eyebrow">欢迎来到语见世界</span>
-      <h1 id="welcomeTitle">这趟旅行，想先学哪种语言？</h1>
-      <p>不必学完整一门语言。先选择日语或英语，再自由进入真正用得上的旅行场景。</p>
-      <div class="welcome-options">${LANG_OPTIONS.map((item) => `<button class="language-choice" type="button" data-lang="${item.value}"><span>${item.label}</span><small>${item.helper}</small></button>`).join("")}</div>
-    </section>`;
-    view.querySelectorAll("[data-lang]").forEach((button) => button.addEventListener("click", () => {
-      saveLang(button.dataset.lang);
-      document.body.classList.remove("is-onboarding");
-      navigatePath("home", true);
-    }));
-    scrollToTop();
   }
 
   function sceneProgress(sceneId, learning = loadLearning()) {
@@ -399,7 +451,9 @@
 
   function renderHome() {
     stopSpeech();
-    const learning = loadLearning();
+    const destination = selectedDestination();
+    const learning = destination ? loadLearning() : emptyLanguageState();
+    const hasLearning = Object.keys(learning.byId).length > 0;
     const last = learning.lastLocation;
     let lastScene = sceneById(last?.sceneId);
     let lastSituation = situationById(lastScene, last?.situationId);
@@ -408,35 +462,71 @@
       if (progress.mastered === progress.total) lastSituation = firstIncompleteSituation(lastScene, learning);
       if (!lastSituation) lastScene = null;
     }
+    const resumeProgress = lastScene && lastSituation
+      ? situationProgress(lastScene.id, lastSituation.id, learning)
+      : null;
+    const resumePercentage = resumeProgress?.total
+      ? Math.round(resumeProgress.mastered / resumeProgress.total * 100)
+      : 0;
     const cards = window.SCENE_PACKS.map((scene) => {
       const progress = sceneProgress(scene.id, learning);
       const percentage = progress.total ? Math.round(progress.mastered / progress.total * 100) : 0;
       return `<button class="category-card scene-card" type="button" data-scene="${escapeHtml(scene.id)}">
         <span class="category-icon" aria-hidden="true">${iconSvg(scene.id)}</span>
-        <span class="category-copy"><strong>${escapeHtml(scene.name)}</strong><small>${escapeHtml(scene.description)}</small>
-          <span class="scene-progress-copy">已掌握 ${progress.mastered} / ${progress.total}</span>
-          <span class="mini-progress" aria-hidden="true"><i style="width:${percentage}%"></i></span>
+        <span class="category-copy"><strong>${escapeHtml(scene.name)}</strong><small>${escapeHtml(scene.homeTopics.join("、"))}</small>
+          <span class="scene-progress-copy">${destination ? `已掌握 ${percentage}%` : "选择目的地后记录进度"}</span>
+          <span class="mini-progress" role="progressbar" aria-label="${escapeHtml(scene.name)}掌握进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${destination ? percentage : 0}"><i style="width:${destination ? percentage : 0}%"></i></span>
         </span><span class="chevron" aria-hidden="true">›</span>
       </button>`;
     }).join("");
+    const destinationCards = DESTINATION_OPTIONS.map((item) => {
+      const available = item.status === "available";
+      const selected = item.id === state.destinationId;
+      return `<button class="destination-card${selected ? " selected" : ""}" type="button" data-destination="${item.id}" aria-label="${escapeHtml(`${item.country}，${item.language}${available ? selected ? "，当前目的地" : "，可学习" : "，即将开放"}`)}" ${available ? `aria-pressed="${selected}"` : "disabled"}>
+        <span class="destination-code destination-flag" aria-hidden="true"><img src="${item.flagSrc}" width="384" height="256" alt=""></span>
+        <span class="destination-card-copy"><strong>${escapeHtml(item.country)}</strong><small>${escapeHtml(item.language)} · ${escapeHtml(item.nativeLabel)}</small><em>${available ? selected ? "当前目的地" : "可学习" : "即将开放"}</em></span>
+        ${selected ? '<span class="destination-check" aria-hidden="true">✓</span>' : ""}
+      </button>`;
+    }).join("");
+    const destinationTrigger = destination
+      ? `<span class="destination-code destination-flag" aria-hidden="true"><img src="${destination.flagSrc}" width="384" height="256" alt=""></span><span class="destination-trigger-copy"><strong>${escapeHtml(destination.country)}</strong><small>${escapeHtml(destination.language)} · ${escapeHtml(destination.nativeLabel)}</small></span>`
+      : `<span class="destination-code empty" aria-hidden="true">--</span><span class="destination-trigger-copy"><strong>选择目的地和语言</strong><small>日本、美国及更多目的地</small></span>`;
+    const continueContent = lastScene && lastSituation
+      ? `<span class="eyebrow">继续学习</span>
+        <div class="continue-heading"><span class="continue-icon" aria-hidden="true">${iconSvg(lastScene.id)}</span><div><h2>${escapeHtml(lastScene.name)}</h2><p>${escapeHtml(lastSituation.name)}</p></div></div>
+        <div class="continue-progress"><strong>已掌握 ${resumePercentage}%</strong><span class="progress-track" role="progressbar" aria-label="${escapeHtml(lastSituation.name)}掌握进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${resumePercentage}"><i style="width:${resumePercentage}%"></i></span></div>
+        <button class="primary-btn" type="button" data-continue>继续学习</button>`
+      : hasLearning
+        ? `<span class="eyebrow">继续探索</span><h2>再选一个旅行场景</h2><p>按这趟旅程的需要，自由挑选接下来想学的内容。</p><button class="primary-btn" type="button" data-continue>选择场景</button>`
+        : `<span class="eyebrow">从这里开始</span><h2>选择一个旅行场景，<br>学习真正用得上的表达</h2><button class="primary-btn" type="button" data-continue>选择场景</button>`;
     view.innerHTML = `<div class="home page-enter">
-      <section class="journey-hero compact-hero">
-        <div><span class="status-pill"><i></i>${langLabel(state.lang)}学习中</span>
-          <h2>只学这趟旅行用得上的</h2>
-          <p>自由选择场景，不设关卡，也不必按顺序学习。</p>
+      <section class="destination-picker${state.destinationOpen ? " open" : ""}" id="destinationPicker" tabindex="-1" aria-labelledby="destinationPickerTitle">
+        <div class="destination-picker-copy"><h1 id="destinationPickerTitle">打算去哪？</h1><p>选择目的地，学习当地旅行中真正用得上的表达。</p></div>
+        <button class="destination-trigger" type="button" data-toggle-destinations aria-expanded="${state.destinationOpen}" aria-controls="destinationOptions">${destinationTrigger}<span class="destination-chevron" aria-hidden="true">⌄</span></button>
+        <div class="destination-options" id="destinationOptions" aria-label="选择目的地和语言" ${state.destinationOpen ? "" : "hidden"}>
+          <div class="destination-strip">${destinationCards}</div>
+          <p>左右滑动查看更多目的地</p>
         </div>
       </section>
-      <button class="primary-card continue-card" type="button" data-continue>
-        <span class="primary-icon" aria-hidden="true">${iconSvg("review")}</span>
-        <span><strong>${lastSituation ? "继续学习" : "开始学习"}</strong>
-          <small>${lastSituation ? `${lastScene.name} · ${lastSituation.name}` : "从下面选择这趟旅行需要的场景"}</small>
-        </span><span aria-hidden="true">›</span>
-      </button>
-      <div class="section-heading" id="sceneHeading" tabindex="-1"><div><span class="eyebrow">自由选择</span><h2>旅行场景</h2></div><span>${window.SCENE_PACKS.length} 个学习包</span></div>
+      <section class="continue-panel" aria-label="学习入口">${continueContent}</section>
+      <div class="section-heading" id="sceneHeading" tabindex="-1"><h2>旅行场景</h2><span>${window.SCENE_PACKS.length} 个场景</span></div>
       <div class="category-grid" id="sceneList">${cards}</div>
     </div>`;
+    view.querySelector("[data-toggle-destinations]").addEventListener("click", (event) => {
+      state.destinationOpen = !state.destinationOpen;
+      event.currentTarget.setAttribute("aria-expanded", String(state.destinationOpen));
+      view.querySelector("#destinationOptions").hidden = !state.destinationOpen;
+      view.querySelector("#destinationPicker").classList.toggle("open", state.destinationOpen);
+    });
+    view.querySelectorAll("[data-destination]:not(:disabled)").forEach((button) => button.addEventListener("click", () => {
+      if (!saveDestination(button.dataset.destination)) return;
+      const nextDestination = selectedDestination();
+      renderHome();
+      showToast(`已切换到${nextDestination.country} · ${nextDestination.language}`);
+    }));
     view.querySelector("[data-continue]").addEventListener("click", () => {
-      if (lastScene && lastSituation) navigatePath(`learn/${lastScene.id}/${lastSituation.id}`);
+      if (!destination) requireDestination();
+      else if (lastScene && lastSituation) navigatePath(`learn/${lastScene.id}/${lastSituation.id}`);
       else {
         const heading = view.querySelector("#sceneHeading");
         heading.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
@@ -444,9 +534,15 @@
       }
     });
     view.querySelectorAll("[data-scene]").forEach((button) => button.addEventListener("click", () => {
-      navigatePath(`scene/${button.dataset.scene}`);
+      if (!destination) requireDestination();
+      else navigatePath(`scene/${button.dataset.scene}`);
     }));
-    scrollToTop();
+    if (pendingDestinationFocus) {
+      pendingDestinationFocus = false;
+      requestAnimationFrame(focusDestinationPicker);
+    } else {
+      scrollToTop();
+    }
   }
 
   function firstIncompleteSituation(scene, learning) {
@@ -923,6 +1019,10 @@
     stopSpeech();
     view.innerHTML = `<div class="page-enter"><section class="page-lead"><span class="eyebrow">旅途工具箱</span><h2>需要时，马上派上用场</h2><p>无需账号或复杂设置，重要信息只在当前设备中处理。</p></section><div class="preview-grid"><button class="preview-card tool-action-card" type="button" data-emergency-card><span class="feature-icon coral" aria-hidden="true">${iconSvg("card")}</span><span class="coming-badge ready-badge">可使用</span><h3>紧急联系卡</h3><p>制作一张可离线保存、方便随身携带的双语急救信息卡。</p><strong>立即制作 <span aria-hidden="true">›</span></strong></button><article class="preview-card"><span class="feature-icon mint" aria-hidden="true">${iconSvg("translate")}</span><span class="coming-badge">计划中</span><h3>快捷翻译</h3><p>在旅行场景中快速输入并获取常用表达。</p></article></div></div>`;
     view.querySelector("[data-emergency-card]").addEventListener("click", () => {
+      if (!state.destinationId) {
+        requireDestination();
+        return;
+      }
       if (!state.emergencyCard || state.emergencyCard.language !== state.lang) state.emergencyCard = window.EMERGENCY_CARD.createModel(state.lang);
       navigatePath("tools/emergency-card");
     });
@@ -1065,29 +1165,27 @@
   }
   function renderMe() {
     stopSpeech();
-    const learning = loadLearning();
+    const destination = selectedDestination();
+    const learning = destination ? loadLearning() : emptyLanguageState();
     const introduced = Object.values(learning.byId).filter((record) => record.status === "introduced").length;
     const mastered = Object.values(learning.byId).filter((record) => record.status === "mastered").length;
     const weak = learning.weakIds.length;
+    const learningDataHtml = destination
+      ? `<section class="learning-data-card" aria-label="${langLabel(state.lang)}学习数据"><div><strong>${introduced}</strong><span>已认识</span></div><div><strong>${mastered}</strong><span>已掌握</span></div><div><strong>${weak}</strong><span>需加强</span></div></section>`
+      : `<section class="language-required-card"><span class="setting-icon blue" aria-hidden="true">${iconSvg("language")}</span><div><h3>尚未选择目的地</h3><p>请先回到首页选择目的地和语言，再查看对应的学习数据。</p></div><button class="secondary-btn compact" type="button" data-choose-destination>去首页选择</button></section>`;
     view.innerHTML = `<div class="page-enter settings-page">
-      <section class="profile-card"><img src="icons/icon-192.png" width="72" height="72" alt=""><div><span class="eyebrow">语见世界</span><h2>${langLabel(state.lang)}旅行语言</h2><p>不学完整一门语言，只学这趟旅行用得上的。</p></div></section>
-      <section class="learning-data-card" aria-label="当前语言学习数据"><div><strong>${introduced}</strong><span>已认识</span></div><div><strong>${mastered}</strong><span>已掌握</span></div><div><strong>${weak}</strong><span>需加强</span></div></section>
-      <section class="settings-group" aria-labelledby="languageSetting"><div class="setting-heading"><span class="setting-icon" aria-hidden="true">${iconSvg("language")}</span><div><h3 id="languageSetting">学习语言</h3><p>日语和英语分别记录学习进度</p></div></div><div class="language-tabs" role="group" aria-label="选择学习语言">${LANG_OPTIONS.map((item) => `<button type="button" data-lang="${item.value}" aria-pressed="${state.lang === item.value}"><strong>${item.label}</strong><small>${item.helper}</small></button>`).join("")}</div></section>
+      <section class="profile-card"><img src="icons/icon-192.png" width="72" height="72" alt=""><div><span class="eyebrow">语见世界</span><h2>${destination ? `${destination.country} · ${destination.language}` : "旅行语言学习"}</h2><p>${destination ? `为${destination.country}之旅学习真正用得上的表达。` : "从首页选择这趟旅行的目的地。"}</p></div></section>
+      ${learningDataHtml}
       <section class="settings-group"><div class="setting-heading"><span class="setting-icon blue" aria-hidden="true">${iconSvg("install")}</span><div><h3>安装 App</h3><p>从主屏幕更快打开并离线使用</p></div></div><div class="setting-action">${installPromptHtml()}</div></section>
       <section class="settings-group danger-zone"><div class="setting-heading"><span class="setting-icon red" aria-hidden="true">${iconSvg("trash")}</span><div><h3>学习数据</h3><p>清除日语和英语的认识、掌握与弱项</p></div></div><button class="danger-btn" type="button" data-reset>清除全部学习数据</button></section>
     </div>`;
-    view.querySelectorAll("[data-lang]").forEach((button) => button.addEventListener("click", () => {
-      if (button.dataset.lang === state.lang) return;
-      saveLang(button.dataset.lang);
-      renderMe();
-      showToast(`已切换到${langLabel(state.lang)}`);
-    }));
+    view.querySelector("[data-choose-destination]")?.addEventListener("click", requireDestination);
     view.querySelector("[data-reset]").addEventListener("click", resetData);
     bindInstallPrompt();
     scrollToTop();
   }
   function resetData() {
-    if (!window.confirm("确定清除日语和英语的全部学习数据吗？语言选择会保留。")) return;
+    if (!window.confirm("确定清除日语和英语的全部学习数据吗？目的地选择会保留。")) return;
     stopSpeech();
     try { localStorage.removeItem(LEARNING_KEY); }
     catch (error) { console.warn("无法清除学习数据", error); }
@@ -1126,7 +1224,7 @@
       return;
     }
     migrateLegacyData();
-    state.lang = loadLang();
+    initializeDestination();
     if (!window.location.hash) history.replaceState(null, "", "#/home");
     window.addEventListener("hashchange", renderRoute);
     setupInstallPrompt();

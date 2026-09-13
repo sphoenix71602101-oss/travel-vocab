@@ -1,0 +1,36 @@
+{
+  "name": "travel-flat-flags",
+  "label": "旅行目的地扁平国旗",
+  "preamble": "Flat matte destination flag badges with crisp color fields, a consistent rounded 3:2 silhouette, and a clean white outer rim.",
+  "palette": [
+    "#FFFFFF",
+    "#F8FBFF",
+    "#DCE7F2",
+    "#BC002D",
+    "#B22234",
+    "#3C3B6E",
+    "#CD2E3A",
+    "#0047A0",
+    "#14233A",
+    "#0039A6",
+    "#D52B1E",
+    "#AA151B",
+    "#F1BF00",
+    "#C98B2E"
+  ],
+  "cutout": "floodfill",
+  "thresh": 30,
+  "construction": {
+    "grid": "384x256 canvas; consistent 3:2 live area",
+    "stroke": "no illustrative stroke; one subtle neutral outer keyline",
+    "corner_radius": "44 outer, 32 inner",
+    "angles": "horizontal and vertical flag geometry",
+    "detail_budget": "only the identifying flag features",
+    "fill_rule": "flat solid fills only",
+    "color_rule": "locked national colors; no gradients or highlights",
+    "shared_parts": "same white rim, outer keyline, silhouette and padding",
+    "perspective": "flat front-facing",
+    "shadow": "none",
+    "motif": "rounded travel-card silhouette"
+  }
+}

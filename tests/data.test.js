@@ -25,6 +25,20 @@ test("八个旅行学习包和555条内容保持完整", () => {
   );
 });
 
+test("每个旅行场景提供四项首页内容摘要", () => {
+  const expected = {
+    airport: ["值机", "行李", "安检", "登机"],
+    transport: ["车票", "地铁", "火车", "出租车"],
+    hotel: ["预订", "入住", "房间", "退房"],
+    food: ["等位", "菜单", "点餐", "结账"],
+    shopping: ["找商品", "尺码", "试用", "支付"],
+    directions: ["位置", "路线", "距离", "地标"],
+    emergency: ["身体不适", "药店", "报警", "失物"],
+    basics: ["问候", "礼貌", "数字", "时间"]
+  };
+  for (const scene of scenes) assert.deepEqual(Array.from(scene.homeTopics), expected[scene.id]);
+});
+
 test("每条内容都有唯一稳定的原始ID", () => {
   const ids = new Set();
   for (const entry of words) {

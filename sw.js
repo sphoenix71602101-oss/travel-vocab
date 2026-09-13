@@ -3,7 +3,7 @@
 // Increment this version whenever a precached application-shell file changes.
 const CACHE_PREFIX = "yujian-world-shell-";
 const LEGACY_CACHE_PREFIX = "travel-vocab-shell-";
-const CACHE_NAME = `${CACHE_PREFIX}v4`;
+const CACHE_NAME = `${CACHE_PREFIX}v7`;
 const APP_SHELL = [
   "./",
   "index.html",
@@ -15,7 +15,12 @@ const APP_SHELL = [
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/icon-maskable-512.png",
-  "icons/apple-touch-icon.png"
+  "icons/apple-touch-icon.png",
+  "icons/flags/jp.png",
+  "icons/flags/us.png",
+  "icons/flags/kr.png",
+  "icons/flags/ru.png",
+  "icons/flags/es.png"
 ];
 
 const scopeUrl = (path) => new URL(path, self.registration.scope).href;
