@@ -1,12 +1,46 @@
-window.CATEGORIES = [
-  { id: "airport", name: "机场与交通", icon: "✈️" },
-  { id: "hotel", name: "住宿", icon: "🏨" },
-  { id: "food", name: "餐饮", icon: "🍜" },
-  { id: "shopping", name: "购物", icon: "🛍️" },
-  { id: "directions", name: "问路与方向", icon: "🧭" },
-  { id: "numbers", name: "数字、时间与日期", icon: "🕐" },
-  { id: "emergency", name: "紧急与健康", icon: "🆘" },
-  { id: "expressions", name: "常用表达与礼貌用语", icon: "💬" }
+window.SCENE_PACKS = [
+  { id: "airport", name: "机场", description: "从值机、安检到入境，顺利完成每一段飞行。", situations: [
+    { id: "documents-flights", name: "证件与航班" }, { id: "check-in", name: "办理值机" },
+    { id: "baggage", name: "行李托运" }, { id: "security-waiting", name: "安检与候机" },
+    { id: "boarding-onboard", name: "登机与机上" }, { id: "arrival-immigration", name: "到达与入境" }
+  ] },
+  { id: "transport", name: "交通", description: "买票、换乘、打车和租车，找到适合自己的路线。", situations: [
+    { id: "tickets-stations", name: "车票与车站" }, { id: "bus-metro", name: "公交与地铁" },
+    { id: "rail", name: "火车出行" }, { id: "taxi", name: "出租车" },
+    { id: "transfer", name: "换乘" }, { id: "rental-driving", name: "租车与驾驶" }
+  ] },
+  { id: "hotel", name: "酒店", description: "完成预订、入住、提出需求和退房。", situations: [
+    { id: "reservation", name: "预订" }, { id: "hotel-check-in", name: "办理入住" },
+    { id: "room-facilities", name: "房间设施" }, { id: "hotel-requests", name: "提出需求" },
+    { id: "hotel-problems", name: "问题处理" }, { id: "checkout-storage", name: "退房与寄存" }
+  ] },
+  { id: "food", name: "餐厅", description: "从进店、点餐到结账，表达清楚自己的需要。", situations: [
+    { id: "enter-wait", name: "进入与等位" }, { id: "menu", name: "查看菜单" },
+    { id: "ordering", name: "点餐" }, { id: "taste-diet", name: "口味与忌口" },
+    { id: "dining-requests", name: "用餐需求" }, { id: "food-confirm", name: "询问与确认" },
+    { id: "food-checkout", name: "结账" }
+  ] },
+  { id: "shopping", name: "购物", description: "找商品、问价格、试用并完成支付或退税。", situations: [
+    { id: "find-products", name: "寻找商品" }, { id: "size-color", name: "颜色与尺码" },
+    { id: "try-products", name: "试穿试用" }, { id: "price-discount", name: "价格与优惠" },
+    { id: "payment", name: "支付" }, { id: "return-tax", name: "退换与退税" }
+  ] },
+  { id: "directions", name: "问路", description: "确认位置、看懂方向，并在听不清时继续沟通。", situations: [
+    { id: "location-direction", name: "位置与方向" }, { id: "ask-route", name: "询问路线" },
+    { id: "distance-time", name: "距离与时间" }, { id: "map-landmarks", name: "地图与地标" },
+    { id: "understand-route", name: "听懂与确认" }
+  ] },
+  { id: "emergency", name: "紧急求助", description: "身体不适、物品遗失或遇到危险时及时求助。", situations: [
+    { id: "feeling-unwell", name: "身体不适" }, { id: "doctor-pharmacy", name: "看病与药店" },
+    { id: "police-help", name: "报警求助" }, { id: "lost-stolen", name: "丢失与被盗" },
+    { id: "danger-accident", name: "危险与事故" }, { id: "emergency-contact", name: "紧急联络" }
+  ] },
+  { id: "basics", name: "基础交流", description: "先掌握问候、数字、时间和最常用的沟通方式。", situations: [
+    { id: "greetings", name: "问候与告别" }, { id: "courtesy", name: "礼貌表达" },
+    { id: "introductions", name: "自我介绍" }, { id: "language-help", name: "听不懂与语言求助" },
+    { id: "numbers-quantity", name: "数字与数量" }, { id: "time-date", name: "时间与日期" },
+    { id: "basic-confirm", name: "询问与确认" }
+  ] }
 ];
 
 window.WORD_BANK = (function () {
@@ -591,13 +625,86 @@ window.WORD_BANK = (function () {
     ]
   };
 
+  const includesAny = (text, terms) => terms.some((term) => text.includes(term));
+  const numberOf = (id) => Number(id.split("_")[1]);
+  const classify = (source, id, zh) => {
+    const n = numberOf(id);
+    if (source === "airport") {
+      if ((n >= 32 && n <= 60) || n === 87) {
+        if (n === 33) return ["transport", "taxi"];
+        if ([34, 37].includes(n)) return ["transport", "bus-metro"];
+        if ([35, 36].includes(n)) return ["transport", "rail"];
+        if (n === 87) return ["transport", "transfer"];
+        if (n >= 52 && n <= 60) return ["transport", "rental-driving"];
+        return ["transport", "tickets-stations"];
+      }
+      if (includesAny(zh, ["行李", "托运"])) return ["airport", "baggage"];
+      if (includesAny(zh, ["安检", "候机", "免税店"])) return ["airport", "security-waiting"];
+      if (includesAny(zh, ["值机", "登机牌", "座位", "靠窗", "靠过道"])) return ["airport", "check-in"];
+      if (includesAny(zh, ["登机", "起飞", "空乘", "机长", "安全带", "救生衣", "跑道"])) return ["airport", "boarding-onboard"];
+      if (includesAny(zh, ["海关", "入境", "到达", "降落", "领取", "申报"])) return ["airport", "arrival-immigration"];
+      return ["airport", "documents-flights"];
+    }
+    if (source === "hotel") {
+      if ([7, 51, 56, 57, 80, 81].includes(n)) return ["hotel", "checkout-storage"];
+      if ([54, 59, 60, 74, 75, 79, 82].includes(n)) return ["hotel", "hotel-problems"];
+      if ([17, 18, 47, 48, 49, 61, 62, 78].includes(n)) return ["hotel", "hotel-requests"];
+      if ((n >= 19 && n <= 46) || (n >= 58 && n <= 73) || n === 76) return ["hotel", "room-facilities"];
+      if ([6, 13, 14, 15, 16, 52, 55, 77].includes(n)) return ["hotel", "hotel-check-in"];
+      return ["hotel", "reservation"];
+    }
+    if (source === "food") {
+      if ([66, 67, 92].includes(n)) return ["food", "food-checkout"];
+      if ([89, 90, 93, 96].includes(n)) return ["food", "food-confirm"];
+      if ((n >= 51 && n <= 57) || (n >= 74 && n <= 88) || [91, 94].includes(n)) return ["food", "taste-diet"];
+      if ((n >= 58 && n <= 65) || [95].includes(n)) return ["food", "dining-requests"];
+      if (n === 4 || (n >= 14 && n <= 50)) return ["food", "menu"];
+      if (n === 5 || (n >= 6 && n <= 13)) return ["food", "ordering"];
+      return ["food", "enter-wait"];
+    }
+    if (source === "shopping") {
+      if ([12, 67].includes(n)) return ["shopping", "return-tax"];
+      if ((n >= 13 && n <= 19) || n === 71) return ["shopping", "payment"];
+      if ((n >= 6 && n <= 11) || n === 68) return ["shopping", "price-discount"];
+      if ([20, 21, 73].includes(n)) return ["shopping", "try-products"];
+      if ((n >= 22 && n <= 25) || n === 72) return ["shopping", "size-color"];
+      return ["shopping", "find-products"];
+    }
+    if (source === "directions") {
+      if (n === 40) return ["directions", "understand-route"];
+      if ([11, 12, 35, 36].includes(n)) return ["directions", "distance-time"];
+      if ((n >= 15 && n <= 30) || [38, 39, 42].includes(n)) return ["directions", "map-landmarks"];
+      if (n >= 31) return ["directions", "ask-route"];
+      return ["directions", "location-direction"];
+    }
+    if (source === "numbers") return ["basics", n <= 17 ? "numbers-quantity" : "time-date"];
+    if (source === "emergency") {
+      if ([34, 35].includes(n)) return ["emergency", "lost-stolen"];
+      if ([3, 37].includes(n)) return ["emergency", "police-help"];
+      if ([1, 2, 4, 19, 20, 21, 22, 38, 44].includes(n)) return ["emergency", "danger-accident"];
+      if ([32, 33, 36].includes(n)) return ["emergency", "emergency-contact"];
+      if ((n >= 5 && n <= 8) || (n >= 24 && n <= 31) || [42, 43].includes(n)) return ["emergency", "doctor-pharmacy"];
+      return ["emergency", "feeling-unwell"];
+    }
+    if (source === "expressions") {
+      if (n >= 7 && n <= 13) return ["basics", "greetings"];
+      if (n <= 6 || (n >= 19 && n <= 21)) return ["basics", "courtesy"];
+      if (n >= 30 && n <= 32) return ["basics", "introductions"];
+      if ([14, 15, 33, 34, 35, 36, 37, 38, 47].includes(n)) return ["basics", "language-help"];
+      return ["basics", "basic-confirm"];
+    }
+    return ["basics", "basic-confirm"];
+  };
+
   const entries = [];
   Object.keys(groups).forEach((category) => {
     groups[category].forEach((item) => {
       const [id, zh, ja, reading, en, type] = item;
+      const [scene, situation] = classify(category, id, zh);
       entries.push({
         id,
-        category,
+        scene,
+        situation,
         zh,
         ja,
         reading,

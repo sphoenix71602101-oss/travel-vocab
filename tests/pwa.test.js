@@ -17,8 +17,8 @@ function pngDimensions(relativePath) {
 }
 
 test("Manifest 包含可安装 PWA 所需配置", () => {
-  assert.equal(manifest.name, "旅行单词 · 日语 / 英语");
-  assert.equal(manifest.short_name, "旅行单词");
+  assert.equal(manifest.name, "语见世界 · 旅行语言学习");
+  assert.equal(manifest.short_name, "语见世界");
   assert.equal(manifest.id, "./");
   assert.equal(manifest.start_url, "./");
   assert.equal(manifest.scope, "./");
@@ -58,7 +58,7 @@ test("安装提示按平台能力显示并在已安装后隐藏", () => {
   assert.match(app, /\(display-mode: standalone\)/);
   assert.match(app, /window\.navigator\.standalone === true/);
   assert.match(app, /添加到主屏幕/);
-  assert.match(app, /travelVocab\.installHintDismissed\.v1/);
+  assert.match(app, /yujianWorld\.installHintDismissed\.v1/);
 });
 
 test("Service Worker 仅预缓存核心应用壳", () => {
@@ -66,7 +66,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
   assert.ok(shellMatch, "找不到 APP_SHELL 清单");
   const shell = shellMatch[1];
   for (const asset of [
-    "index.html", "styles.css", "data.js", "app.js", "manifest.webmanifest",
+    "index.html", "styles.css", "data.js", "emergency-card.js", "app.js", "manifest.webmanifest",
     "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png",
     "icons/apple-touch-icon.png"
   ]) {
@@ -78,8 +78,11 @@ test("Service Worker 仅预缓存核心应用壳", () => {
 
 test("Service Worker 绕过音频并安全清理旧版本缓存", () => {
   assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v[1-9][0-9]*`/);
+  assert.match(serviceWorker, /const CACHE_PREFIX = "yujian-world-shell-"/);
+  assert.match(serviceWorker, /const LEGACY_CACHE_PREFIX = "travel-vocab-shell-"/);
   assert.match(serviceWorker, /requestUrl\.href\.startsWith\(audioRootUrl\)\) return/);
   assert.doesNotMatch(serviceWorker, /skipWaiting/);
   assert.match(serviceWorker, /name\.startsWith\(CACHE_PREFIX\) && name !== CACHE_NAME/);
+  assert.match(serviceWorker, /name\.startsWith\(LEGACY_CACHE_PREFIX\)/);
   assert.match(serviceWorker, /self\.clients\.claim\(\)/);
 });

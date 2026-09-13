@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""为旅行单词词库批量生成日语和英语 MP3。
+"""为语见世界词库批量生成日语和英语 MP3。
 
 本脚本只读取项目根目录中的 data.js，不会修改网站文件。首次使用请先运行
 ``python scripts/generate_audio.py --test``，试听 5 条日语和 5 条英语音频。

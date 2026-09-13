@@ -1,13 +1,15 @@
 "use strict";
 
 // Increment this version whenever a precached application-shell file changes.
-const CACHE_PREFIX = "travel-vocab-shell-";
-const CACHE_NAME = `${CACHE_PREFIX}v10`;
+const CACHE_PREFIX = "yujian-world-shell-";
+const LEGACY_CACHE_PREFIX = "travel-vocab-shell-";
+const CACHE_NAME = `${CACHE_PREFIX}v4`;
 const APP_SHELL = [
   "./",
   "index.html",
   "styles.css",
   "data.js",
+  "emergency-card.js",
   "app.js",
   "manifest.webmanifest",
   "icons/icon-192.png",
@@ -33,7 +35,7 @@ self.addEventListener("activate", (event) => {
     caches.keys()
       .then((names) => Promise.all(
         names
-          .filter((name) => name.startsWith(CACHE_PREFIX) && name !== CACHE_NAME)
+          .filter((name) => (name.startsWith(CACHE_PREFIX) && name !== CACHE_NAME) || name.startsWith(LEGACY_CACHE_PREFIX))
           .map((name) => caches.delete(name))
       ))
       .then(() => self.clients.claim())
