@@ -3,7 +3,7 @@
 // Increment this version whenever a precached application-shell file changes.
 const CACHE_PREFIX = "yujian-world-shell-";
 const LEGACY_CACHE_PREFIX = "travel-vocab-shell-";
-const CACHE_NAME = `${CACHE_PREFIX}v21`;
+const CACHE_NAME = `${CACHE_PREFIX}v23`;
 const APP_SHELL = [
   "./",
   "index.html",
@@ -16,6 +16,8 @@ const APP_SHELL = [
   "images/heroes/default-wide.webp",
   "images/heroes/jp-mobile.webp",
   "images/heroes/jp-wide.webp",
+  "images/heroes/us-mobile.webp",
+  "images/heroes/us-wide.webp",
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/icon-maskable-512.png",

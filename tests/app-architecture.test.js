@@ -42,6 +42,8 @@ test("首页提供可扩展目的地入口、状态化学习卡和旅行场景",
   assert.match(app, /function heroImageForDestination\(destinationId\)/);
   assert.match(app, /images\/heroes\/default-mobile\.webp/);
   assert.match(app, /images\/heroes\/jp-mobile\.webp/);
+  assert.match(app, /us: Object\.freeze\(\{\s*mobile: "images\/heroes\/us-mobile\.webp",\s*wide: "images\/heroes\/us-wide\.webp"/);
+  assert.match(app, /destination\?\.id === "us" \? " hero-image-us" : ""/);
   assert.match(app, /<picture>/);
   assert.match(app, /fetchpriority="high"/);
   assert.doesNotMatch(app, /brandTitle|用语言看见更大的世界|brand-landscape/);
@@ -51,6 +53,7 @@ test("首页提供可扩展目的地入口、状态化学习卡和旅行场景",
   assert.match(css, /\.brand-hero\{[^}]*background:transparent/);
   assert.match(css, /\.brand-hero-image\{[^}]*-webkit-mask-image:linear-gradient\(to bottom,#000 calc\(100% - 60px\),transparent 100%\)/);
   assert.match(css, /\.brand-hero-image\{[^}]*mask-image:linear-gradient\(to bottom,#000 calc\(100% - 60px\),transparent 100%\)/);
+  assert.match(css, /@media \(min-width:560px\)\{\.brand-hero-image\.hero-image-us\{object-position:80% center\}\}/);
   assert.match(css, /\.destination-picker\{[^}]*margin:-32px 0 12px/);
   assert.match(css, /@media \(min-width:560px\)[^\n]*\.destination-picker\{margin-top:-40px/);
   assert.match(app, /id="destinationPicker"/);

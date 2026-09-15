@@ -116,7 +116,9 @@ test("首页目的地顶图提供响应式 WebP 并进入离线缓存", () => {
     "images/heroes/default-mobile.webp",
     "images/heroes/default-wide.webp",
     "images/heroes/jp-mobile.webp",
-    "images/heroes/jp-wide.webp"
+    "images/heroes/jp-wide.webp",
+    "images/heroes/us-mobile.webp",
+    "images/heroes/us-wide.webp"
   ]) {
     assertWebp(asset);
     assert.match(app, new RegExp(asset.replace(/[.]/g, "\\.")));
@@ -144,7 +146,8 @@ test("Service Worker 仅预缓存核心应用壳", () => {
     "index.html", "styles.css", "data.js", "emergency-card.js", "app.js", "manifest.webmanifest",
     "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png",
     "icons/apple-touch-icon.png", "images/heroes/default-mobile.webp", "images/heroes/default-wide.webp",
-    "images/heroes/jp-mobile.webp", "images/heroes/jp-wide.webp"
+    "images/heroes/jp-mobile.webp", "images/heroes/jp-wide.webp",
+    "images/heroes/us-mobile.webp", "images/heroes/us-wide.webp"
   ]) {
     assert.match(shell, new RegExp(asset.replace(/[.]/g, "\\.")), `缺少 ${asset}`);
   }
@@ -153,7 +156,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
 });
 
 test("界面资源更新后使用新的应用壳缓存版本", () => {
-  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v21`/);
+  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v23`/);
 });
 
 test("Service Worker 绕过音频并安全清理旧版本缓存", () => {

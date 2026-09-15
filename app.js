@@ -25,6 +25,10 @@
     jp: Object.freeze({
       mobile: "images/heroes/jp-mobile.webp",
       wide: "images/heroes/jp-wide.webp"
+    }),
+    us: Object.freeze({
+      mobile: "images/heroes/us-mobile.webp",
+      wide: "images/heroes/us-wide.webp"
     })
   });
   const SCENE_ICON_PATHS = Object.freeze({
@@ -524,7 +528,7 @@
       <div class="brand-hero" aria-hidden="true">
         <picture>
           <source media="(min-width:560px)" srcset="${heroImage.wide}">
-          <img class="brand-hero-image" src="${heroImage.mobile}" alt="" width="900" height="480" loading="eager" decoding="async" fetchpriority="high">
+          <img class="brand-hero-image${destination?.id === "us" ? " hero-image-us" : ""}" src="${heroImage.mobile}" alt="" width="900" height="480" loading="eager" decoding="async" fetchpriority="high">
         </picture>
       </div>
       <section class="destination-picker${state.destinationOpen ? " open" : ""}" id="destinationPicker" tabindex="-1" aria-labelledby="destinationPickerTitle">
