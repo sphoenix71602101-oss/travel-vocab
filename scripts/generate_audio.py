@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""为语见世界词库批量生成日语和英语 MP3。
+"""为语见世界词库和日语旅行识读课程批量生成 MP3。
 
-本脚本只读取项目根目录中的 data.js，不会修改网站文件。首次使用请先运行
-``python scripts/generate_audio.py --test``，试听 5 条日语和 5 条英语音频。
+词库模式读取 data.js；日语识读模式读取 beginner-audio.json。生成时只写入
+audio/ 目录，不修改网站代码。首次使用请先运行 --test 或 --beginner-test 试听。
 """
 
 from __future__ import annotations
@@ -37,6 +37,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 DATA_FILE = PROJECT_ROOT / "data.js"
 AUDIO_ROOT = PROJECT_ROOT / "audio"
+BEGINNER_AUDIO_FILE = PROJECT_ROOT / "beginner-audio.json"
 ID_PATTERN = re.compile(r"^[a-z][a-z0-9]*_[0-9]{3}$")
 
 
@@ -165,6 +166,49 @@ def build_jobs(entries: list[VocabularyEntry], test_mode: bool) -> list[AudioJob
     return jobs
 
 
+def parse_beginner_data() -> list[dict]:
+    """读取独立的教学音频清单；用户无需安装 Node.js。"""
+    if not BEGINNER_AUDIO_FILE.is_file():
+        raise FileNotFoundError(f"找不到教学音频清单：{BEGINNER_AUDIO_FILE}")
+    with BEGINNER_AUDIO_FILE.open("r", encoding="utf-8-sig") as source:
+        return json.load(source)
+
+
+def build_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
+    if not isinstance(data, list) or len(data) != 57:
+        raise ValueError("教学音频清单应包含 57 段声音")
+    jobs: list[AudioJob] = []
+    seen: set[str] = set()
+    for item in data:
+        entry_id, display_text = item.get("id"), item.get("text")
+        sound = item.get("synthesisText", display_text)
+        if not isinstance(entry_id, str) or not re.fullmatch(r"(?:kana-[0-9a-f]{4}|example-[a-z-]+|rule-[a-z-]+-[0-9])", entry_id):
+            raise ValueError(f"教学音 ID 无效：{entry_id}")
+        if not isinstance(display_text, str) or not display_text.strip() or not isinstance(sound, str) or not sound.strip() or entry_id in seen:
+            raise ValueError(f"教学音文字为空或 ID 重复：{entry_id}")
+        seen.add(entry_id)
+        jobs.append(AudioJob("ja", entry_id, sound, JAPANESE_VOICE,
+                             AUDIO_ROOT / "ja" / "beginner" / f"{entry_id}.mp3"))
+    return jobs[:5] if test_mode else jobs
+
+
+def build_repair_jobs() -> list[AudioJob]:
+    """为反馈有瑕疵的假名生成候选试听，不覆盖正式教学音。"""
+    targets = {
+        "kana-3044": ("い", "イ"),
+        "kana-3075": ("ふ", "フ"),
+        "kana-3089": ("ら", "ラ"),
+        "kana-3093": ("ん", "ン"),
+    }
+    jobs: list[AudioJob] = []
+    for entry_id, (hiragana, katakana) in targets.items():
+        for variant, sound in (("retry", hiragana), ("katakana", katakana), ("sentence", f"{hiragana}。")):
+            candidate_id = f"{entry_id}-{variant}"
+            jobs.append(AudioJob("ja", candidate_id, sound, JAPANESE_VOICE,
+                                 AUDIO_ROOT / "ja" / "beginner" / "candidates" / f"{candidate_id}.mp3"))
+    return jobs
+
+
 async def generate_one(job: AudioJob, edge_tts_module: object) -> FailedItem | None:
     if job.output_path.is_file() and job.output_path.stat().st_size > 0:
         print(f"[跳过] {job.language}/{job.output_path.name}")
@@ -237,7 +281,7 @@ async def generate_all(jobs: list[AudioJob], edge_tts_module: object) -> list[Fa
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="从 data.js 生成日语和英语词汇 MP3（已有文件会自动跳过）。"
+        description="生成词库或旅行识读教学 MP3（已有文件会自动跳过）。"
     )
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument(
@@ -255,21 +299,39 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="只验证 data.js，不安装 edge-tts 也可运行",
     )
+    mode.add_argument("--beginner-test", action="store_true", help="生成前 5 个日语教学音试听")
+    mode.add_argument("--beginner-full", action="store_true", help="生成全部 57 段日语教学音")
+    mode.add_argument("--beginner-validate-only", action="store_true", help="只验证日语教学音清单")
+    mode.add_argument("--beginner-repair", action="store_true", help="为 い、ふ、ら、ん 生成 12 段候选音，不覆盖正式音频")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
 
-    try:
-        entries = parse_word_bank(DATA_FILE)
-    except (OSError, ValueError) as exc:
-        print(f"词库检查失败：{exc}", file=sys.stderr)
-        return 2
-
-    print(f"已验证词库：{len(entries)} 条，ID 均唯一，日语和英语字段完整。")
-    if args.validate_only:
-        return 0
+    beginner_mode = args.beginner_test or args.beginner_full or args.beginner_validate_only
+    if args.beginner_repair:
+        jobs = build_repair_jobs()
+        print(f"准备生成 {len(jobs)} 段修复候选音；正式教学音不会被覆盖。")
+    elif beginner_mode:
+        try:
+            jobs = build_beginner_jobs(parse_beginner_data(), test_mode=args.beginner_test)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"教学音清单检查失败：{exc}", file=sys.stderr)
+            return 2
+        print(f"已验证日语教学音清单：{len(jobs)} 个目标。")
+        if args.beginner_validate_only:
+            return 0
+    else:
+        try:
+            entries = parse_word_bank(DATA_FILE)
+        except (OSError, ValueError) as exc:
+            print(f"词库检查失败：{exc}", file=sys.stderr)
+            return 2
+        print(f"已验证词库：{len(entries)} 条，ID 均唯一，日语和英语字段完整。")
+        if args.validate_only:
+            return 0
+        jobs = build_jobs(entries, test_mode=args.test)
 
     try:
         import edge_tts
@@ -280,11 +342,10 @@ def main() -> int:
         )
         return 2
 
-    jobs = build_jobs(entries, test_mode=args.test)
     existing = sum(
         job.output_path.is_file() and job.output_path.stat().st_size > 0 for job in jobs
     )
-    mode_name = "试听模式" if args.test else "完整模式"
+    mode_name = "试听模式" if args.test or args.beginner_test or args.beginner_repair else "完整模式"
     print(
         f"{mode_name}：共 {len(jobs)} 个目标，已有 {existing} 个；"
         f"日语声音 {JAPANESE_VOICE}，英语声音 {ENGLISH_VOICE}，并发 {CONCURRENCY}。"

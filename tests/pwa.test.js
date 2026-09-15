@@ -156,7 +156,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
 });
 
 test("界面资源更新后使用新的应用壳缓存版本", () => {
-  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v25`/);
+  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v28`/);
 });
 
 test("Service Worker 绕过音频并安全清理旧版本缓存", () => {

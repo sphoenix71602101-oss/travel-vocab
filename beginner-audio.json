@@ -1,0 +1,234 @@
+[
+  {
+    "id": "kana-3042",
+    "text": "あ"
+  },
+  {
+    "id": "kana-3044",
+    "text": "い",
+    "synthesisText": "い。"
+  },
+  {
+    "id": "kana-3046",
+    "text": "う"
+  },
+  {
+    "id": "kana-3048",
+    "text": "え"
+  },
+  {
+    "id": "kana-304a",
+    "text": "お"
+  },
+  {
+    "id": "kana-304b",
+    "text": "か"
+  },
+  {
+    "id": "kana-304d",
+    "text": "き"
+  },
+  {
+    "id": "kana-304f",
+    "text": "く"
+  },
+  {
+    "id": "kana-3051",
+    "text": "け"
+  },
+  {
+    "id": "kana-3053",
+    "text": "こ"
+  },
+  {
+    "id": "kana-3055",
+    "text": "さ"
+  },
+  {
+    "id": "kana-3057",
+    "text": "し"
+  },
+  {
+    "id": "kana-3059",
+    "text": "す"
+  },
+  {
+    "id": "kana-305b",
+    "text": "せ"
+  },
+  {
+    "id": "kana-305d",
+    "text": "そ"
+  },
+  {
+    "id": "kana-305f",
+    "text": "た"
+  },
+  {
+    "id": "kana-3061",
+    "text": "ち"
+  },
+  {
+    "id": "kana-3064",
+    "text": "つ"
+  },
+  {
+    "id": "kana-3066",
+    "text": "て"
+  },
+  {
+    "id": "kana-3068",
+    "text": "と"
+  },
+  {
+    "id": "kana-306a",
+    "text": "な"
+  },
+  {
+    "id": "kana-306b",
+    "text": "に"
+  },
+  {
+    "id": "kana-306c",
+    "text": "ぬ"
+  },
+  {
+    "id": "kana-306d",
+    "text": "ね"
+  },
+  {
+    "id": "kana-306e",
+    "text": "の"
+  },
+  {
+    "id": "kana-306f",
+    "text": "は"
+  },
+  {
+    "id": "kana-3072",
+    "text": "ひ"
+  },
+  {
+    "id": "kana-3075",
+    "text": "ふ",
+    "synthesisText": "フ"
+  },
+  {
+    "id": "kana-3078",
+    "text": "へ"
+  },
+  {
+    "id": "kana-307b",
+    "text": "ほ"
+  },
+  {
+    "id": "kana-307e",
+    "text": "ま"
+  },
+  {
+    "id": "kana-307f",
+    "text": "み"
+  },
+  {
+    "id": "kana-3080",
+    "text": "む"
+  },
+  {
+    "id": "kana-3081",
+    "text": "め"
+  },
+  {
+    "id": "kana-3082",
+    "text": "も"
+  },
+  {
+    "id": "kana-3084",
+    "text": "や"
+  },
+  {
+    "id": "kana-3086",
+    "text": "ゆ"
+  },
+  {
+    "id": "kana-3088",
+    "text": "よ"
+  },
+  {
+    "id": "kana-3089",
+    "text": "ら",
+    "synthesisText": "ら。"
+  },
+  {
+    "id": "kana-308a",
+    "text": "り"
+  },
+  {
+    "id": "kana-308b",
+    "text": "る"
+  },
+  {
+    "id": "kana-308c",
+    "text": "れ"
+  },
+  {
+    "id": "kana-308d",
+    "text": "ろ"
+  },
+  {
+    "id": "kana-308f",
+    "text": "わ"
+  },
+  {
+    "id": "kana-3092",
+    "text": "を"
+  },
+  {
+    "id": "kana-3093",
+    "text": "ん",
+    "synthesisText": "ん。"
+  },
+  {
+    "id": "example-contracted",
+    "text": "きゃく"
+  },
+  {
+    "id": "rule-voiced-ks-0",
+    "text": "が"
+  },
+  {
+    "id": "rule-voiced-ks-1",
+    "text": "ざ"
+  },
+  {
+    "id": "rule-voiced-th-0",
+    "text": "だ"
+  },
+  {
+    "id": "rule-voiced-th-1",
+    "text": "ば"
+  },
+  {
+    "id": "rule-semi-voiced-0",
+    "text": "ぱ"
+  },
+  {
+    "id": "rule-semi-voiced-1",
+    "text": "ぴ"
+  },
+  {
+    "id": "rule-semi-voiced-2",
+    "text": "ぷ"
+  },
+  {
+    "id": "rule-contracted-0",
+    "text": "きゃ"
+  },
+  {
+    "id": "rule-contracted-1",
+    "text": "しゅ"
+  },
+  {
+    "id": "rule-contracted-2",
+    "text": "ちょ"
+  }
+]

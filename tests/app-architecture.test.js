@@ -171,7 +171,7 @@ test("未选择目的地时展开首页选择器而不进入语言相关流程",
   assert.match(app, /function requireDestination\(\)/);
   assert.match(app, /请先选择目的地和语言/);
   assert.match(app, /pendingDestinationFocus/);
-  assert.match(app, /\["review", "scene", "learn", "emergency-card-form", "emergency-card-preview"\]/);
+  assert.match(app, /\["review", "scene", "learn", "beginner", "emergency-card-form", "emergency-card-preview"\]/);
   assert.match(app, /requestAnimationFrame\(focusDestinationPicker\)/);
 });
 
