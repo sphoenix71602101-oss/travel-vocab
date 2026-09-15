@@ -1,0 +1,46 @@
+{
+  "name": "travel-scene-soft-filled",
+  "label": "旅行场景柔和面性图标",
+  "preamble": "Simple rounded filled travel icons. Each icon shows one immediately recognizable object. Use one solid semantic main color and add a light secondary color only when it is needed to explain the object's structure.",
+  "palette": {
+    "airport": ["#4A9FF5", "#EAF4FE"],
+    "transport": ["#32B8C6", "#E6F8FA"],
+    "hotel": ["#8D78D8", "#F0EDFA"],
+    "food": ["#F47A55", "#FEF0EB"],
+    "shopping": ["#DF6FAF", "#FCECF5"],
+    "directions": ["#E9A23B", "#FEF4E5"],
+    "basics": ["#58B98C", "#EAF7F1"],
+    "emergency": ["#E45D64", "#FDEEEF"]
+  },
+  "cutout": "floodfill",
+  "threshold": 30,
+  "ui_container_colors": {
+    "hotel": "#D8D0F0",
+    "food": "#F9D2C6",
+    "shopping": "#F5CEE4",
+    "note": "These three container colors are intentionally darker than the icon's light structural color so detached light parts remain visible."
+  },
+  "construction": {
+    "grid": "24-unit keyline; live area about 80%; optical sizing",
+    "stroke": null,
+    "corner_radius": "one consistent soft rounded geometry",
+    "angles": "flat front-facing geometry with restrained 45-degree angles",
+    "detail_budget": "one object per icon; at most three simple color blocks",
+    "fill_rule": "single-color or two-color filled silhouettes; second color only for essential internal structure",
+    "color_rule": "one semantic scene color per icon plus its locked light tint when needed",
+    "shared_parts": "reuse circular dots, rounded rectangles, and matching terminal shapes",
+    "perspective": "flat front-facing or clearest planar view",
+    "shadow": "none cast onto the background",
+    "motif": "soft rounded silhouettes with generous internal spacing"
+  },
+  "icon_order": [
+    "airport — single airplane",
+    "transport — front-facing metro train",
+    "hotel — bed with pillow",
+    "food — fork and knife",
+    "shopping — shopping bag",
+    "directions — location marker",
+    "basics — speech bubble with three dots",
+    "emergency — SOS emblem"
+  ]
+}

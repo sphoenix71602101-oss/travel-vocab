@@ -3,7 +3,7 @@
 // Increment this version whenever a precached application-shell file changes.
 const CACHE_PREFIX = "yujian-world-shell-";
 const LEGACY_CACHE_PREFIX = "travel-vocab-shell-";
-const CACHE_NAME = `${CACHE_PREFIX}v7`;
+const CACHE_NAME = `${CACHE_PREFIX}v21`;
 const APP_SHELL = [
   "./",
   "index.html",
@@ -12,6 +12,10 @@ const APP_SHELL = [
   "emergency-card.js",
   "app.js",
   "manifest.webmanifest",
+  "images/heroes/default-mobile.webp",
+  "images/heroes/default-wide.webp",
+  "images/heroes/jp-mobile.webp",
+  "images/heroes/jp-wide.webp",
   "icons/icon-192.png",
   "icons/icon-512.png",
   "icons/icon-maskable-512.png",
@@ -20,7 +24,36 @@ const APP_SHELL = [
   "icons/flags/us.png",
   "icons/flags/kr.png",
   "icons/flags/ru.png",
-  "icons/flags/es.png"
+  "icons/flags/es.png",
+  "icons/scenes/airport.png",
+  "icons/scenes/transport.png",
+  "icons/scenes/hotel.png",
+  "icons/scenes/food.png",
+  "icons/scenes/shopping.png",
+  "icons/scenes/directions.png",
+  "icons/scenes/basics.png",
+  "icons/scenes/emergency.png",
+  "icons/navigation/home.png",
+  "icons/navigation/review.png",
+  "icons/navigation/tools.png",
+  "icons/navigation/me.png",
+  "icons/navigation/home-active.png",
+  "icons/navigation/review-active.png",
+  "icons/navigation/tools-active.png",
+  "icons/navigation/me-active.png",
+  "icons/ui/review.png",
+  "icons/ui/complete.png",
+  "icons/ui/exchange.png",
+  "icons/ui/checklist.png",
+  "icons/ui/trip-map.png",
+  "icons/ui/favorite.png",
+  "icons/ui/random-review.png",
+  "icons/ui/emergency-card.png",
+  "icons/ui/translate.png",
+  "icons/ui/privacy.png",
+  "icons/ui/install.png",
+  "icons/ui/delete-data.png",
+  "icons/ui/warning.png"
 ];
 
 const scopeUrl = (path) => new URL(path, self.registration.scope).href;

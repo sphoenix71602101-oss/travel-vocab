@@ -1,0 +1,31 @@
+{
+  "name": "travel-navigation-minimal-line",
+  "label": "底部导航简约线性图标",
+  "scope": ["home", "review", "tools", "me"],
+  "construction": {
+    "grid": "24-unit keyline; 21px rendered size; optical centering",
+    "stroke": "2-unit inactive and 2.5-unit active; round caps and round joins",
+    "fill": "none",
+    "color": "#2B2B2B line only; inactive presentation uses 62% opacity",
+    "angles": "horizontal, vertical, and restrained 45-degree diagonals",
+    "detail_budget": "one primary metaphor and at most one supporting detail",
+    "perspective": "flat front-facing",
+    "shadow": "none"
+  },
+  "states": {
+    "inactive": "2-unit monochrome line at 62% opacity",
+    "active": "same geometry with a 2.5-unit monochrome line at full opacity on #F0F0F0"
+  },
+  "icon_order": [
+    "home — rounded house with doorway",
+    "review — open book with a single center-spine line",
+    "tools — compact toolbox",
+    "me — head and shoulders"
+  ],
+  "assets": {
+    "normal": ["home.png", "review.png", "tools.png", "me.png"],
+    "active": ["home-active.png", "review-active.png", "tools-active.png", "me-active.png"],
+    "master": "raw/navigation-line-sheet.png",
+    "qa": ["raw/navigation-qa-magenta.png", "raw/navigation-21px-preview.png"]
+  }
+}

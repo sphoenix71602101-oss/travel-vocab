@@ -1,0 +1,54 @@
+{
+  "name": "travel-ui-soft-filled",
+  "label": "页面功能柔和面性图标",
+  "reference_style": "travel-scene-soft-filled",
+  "preamble": "Friendly front-facing travel utility icons with rounded filled silhouettes, one clear subject, generous spacing, and no outlines, text, shadows, or decorative detail.",
+  "palette": {
+    "review": ["#735ED1", "#E1DAF7"],
+    "complete": ["#58B98C", "#EAF7F1"],
+    "exchange": ["#E9A23B", "#FFFFFF"],
+    "checklist": ["#4A9FF5", "#FFFFFF", "#91C4F8"],
+    "trip-map": ["#32B8C6", "#E6F8FA"],
+    "favorite": ["#F2B544", "#FFF6D8"],
+    "random-review": ["#58B98C", "#EAF7F1"],
+    "emergency-card": ["#E45D64", "#FDEEEF"],
+    "translate": ["#32B8C6", "#4A9FF5", "#E6F8FA"],
+    "privacy": ["#58B98C", "#EAF7F1"],
+    "install": ["#4A9FF5", "#EAF4FE"],
+    "delete-data": ["#E45D64", "#FDEEEF"],
+    "warning": ["#E45D64", "#FDEEEF"]
+  },
+  "cutout": "floodfill",
+  "threshold": 30,
+  "source_grid": {
+    "size": "4x4",
+    "background": "#808080",
+    "occupied_cells": 6,
+    "empty_cells": 10,
+    "order": ["review", "complete", "exchange", "checklist", "trip-map", "favorite"]
+  },
+  "revision_2": {
+    "source": "raw/ui-soft-filled-revision-2-normalized.png",
+    "updated": ["review", "exchange", "checklist"],
+    "notes": "Review keeps its accepted geometry with a richer violet palette; exchange is an orange circle with a white dollar sign; checklist uses a visible medium-blue folded corner."
+  },
+  "revision_3": {
+    "source": "raw/ui-semantic-v3-sheet.png",
+    "updated": ["random-review", "emergency-card", "translate", "privacy", "install", "delete-data", "warning"],
+    "removed": ["language"],
+    "notes": "Seven remaining semantic spot icons. The language globe was intentionally removed from both former placements after visual approval."
+  },
+  "construction": {
+    "grid": "24-unit keyline; live area about 80%; optical sizing",
+    "stroke": null,
+    "corner_radius": "one consistent soft rounded geometry",
+    "detail_budget": "one subject per icon; at most three simple color regions",
+    "fill_rule": "flat filled silhouettes; light color only for essential structure",
+    "perspective": "front-facing or clearest planar view",
+    "shadow": "none"
+  },
+  "outputs": {
+    "master": "512px RGBA PNG",
+    "project": "256px RGBA PNG"
+  }
+}
