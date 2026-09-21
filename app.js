@@ -58,6 +58,7 @@
     warning: "icons/ui/warning.png"
   });
   const SPEAKER_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  const ACTION_ARROW_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   const view = document.getElementById("view");
   const bottomNav = document.getElementById("bottomNav");
@@ -412,7 +413,6 @@
   function parseRoute() {
     const parts = window.location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
     if (!parts.length) return { name: "home" };
-    if (parts[0] === "test") return { name: "legacy-test" };
     if (parts[0] === "beginner") return { name: "beginner", page: parts[1] || "overview", lessonId: parts[2] || null };
     if (parts[0] === "tools" && parts[1] === "emergency-card") {
       return { name: parts[2] === "preview" ? "emergency-card-preview" : "emergency-card-form" };
@@ -517,10 +517,6 @@
   }
   function renderRoute() {
     const route = parseRoute();
-    if (route.name === "legacy-test") {
-      navigatePath("review", true);
-      return;
-    }
     if (!state.destinationId && ["review", "scene", "learn", "beginner", "emergency-card-form", "emergency-card-preview"].includes(route.name)) {
       requireDestination();
       return;
@@ -600,9 +596,21 @@
     const destinationTrigger = destination
       ? `<span class="destination-code destination-flag" aria-hidden="true"><img src="${destination.flagSrc}" width="384" height="256" alt=""></span><span class="destination-trigger-copy"><strong>${escapeHtml(destination.country)}</strong><small>${escapeHtml(destination.language)} · ${escapeHtml(destination.nativeLabel)}</small></span>`
       : `<span class="destination-code empty" aria-hidden="true">--</span><span class="destination-trigger-copy"><strong>选择目的地和语言</strong><small>日本、美国及更多目的地</small></span>`;
-    const continueContent = lastScene && lastSituation
-      ? `<button class="quick-entry continue-entry" type="button" data-continue><span class="quick-entry-icon scene-${escapeHtml(lastScene.id)}" aria-hidden="true">${sceneIcon(lastScene.id)}</span><span><small>继续学习</small><strong>${escapeHtml(lastScene.name)} · ${escapeHtml(lastSituation.name)}</strong><em>已掌握 ${resumePercentage}%</em></span></button>`
-      : `<button class="quick-entry start-entry" type="button" data-continue><span class="quick-entry-icon scene-airport" aria-hidden="true">${sceneIcon("airport")}</span><span><small>开始学习</small><strong>${destination ? "请选择旅行场景" : "请先选择目的地"}</strong><em>${destination ? "从下方选择这趟旅程需要的内容" : "选好旅程后再开始学习"}</em></span></button>`;
+    const hasResume = Boolean(lastScene && lastSituation);
+    const learningTitle = hasResume ? "继续学习" : "开始学习";
+    const learningSubtitle = hasResume
+      ? `${lastScene.name} · ${lastSituation.name} · 已掌握 ${resumePercentage}%`
+      : "从实用场景出发，轻松掌握旅行外语";
+    const learningLabel = !destination
+      ? "开始学习，请先选择目的地和语言"
+      : hasResume
+        ? `继续学习，${learningSubtitle}`
+        : "开始学习，从旅行场景中选择学习内容";
+    const continueContent = `<button class="quick-entry ${hasResume ? "continue-entry" : "start-entry"}" type="button" data-continue aria-label="${escapeHtml(learningLabel)}">
+      <img class="quick-entry-art" src="images/home-actions/learning-card.svg" alt="" aria-hidden="true">
+      <span class="quick-entry-copy"><strong>${learningTitle}</strong><span class="quick-entry-subtitle">${escapeHtml(learningSubtitle)}</span><small>LEARN FOR A BRIGHTER JOURNEY</small></span>
+      <span class="quick-entry-arrow" aria-hidden="true">${ACTION_ARROW_SVG}</span>
+    </button>`;
     const beginner = loadBeginnerState();
     const beginnerSubtitle = destination?.id === "jp"
       ? beginner.ja.placementPassed ? "已通过识读测试" : beginner.ja.challengeDone ? "识读挑战已完成" : "从假名开始，读出旅行日语"
@@ -622,7 +630,7 @@
           <p>左右滑动查看更多目的地</p>
         </div>
       </section>
-      <section class="home-quick-actions" aria-label="学习入口">${continueContent}<button class="quick-entry beginner-entry" type="button" data-beginner><span class="quick-entry-icon beginner-symbol" aria-hidden="true">あ</span><span><small>读音入门</small><strong>旅行识读</strong><em>${beginnerSubtitle}</em></span></button></section>
+      <section class="home-quick-actions" aria-label="学习入口">${continueContent}<button class="quick-entry beginner-entry" type="button" data-beginner aria-label="旅行识读，${escapeHtml(beginnerSubtitle)}"><img class="quick-entry-art" src="images/home-actions/reading-card.svg" alt="" aria-hidden="true"><span class="quick-entry-copy"><strong>旅行识读</strong><span class="quick-entry-subtitle">看见当地文字，也能听懂、读懂、用上</span><small>READ THE WORLD AROUND YOU</small></span><span class="quick-entry-arrow" aria-hidden="true">${ACTION_ARROW_SVG}</span></button></section>
       <div class="section-heading" id="sceneHeading" tabindex="-1"><div><h2>旅行场景</h2></div><span>${window.SCENE_PACKS.length} 个场景</span></div>
       <div class="category-grid" id="sceneList">${cards}</div>
     </div>`;

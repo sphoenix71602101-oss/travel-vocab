@@ -1,0 +1,18 @@
+{
+  "name": "travel-vocab-soft-filled-cyan",
+  "label": "旅行词汇浅青填充图标",
+  "preamble": "Soft filled flat mobile-app icons with gently rounded geometric shapes, crisp edges, subtle two-tone color blocking, no outline, no shadow, and a calm friendly finish.",
+  "palette": ["#24AAB8", "#61CDD5", "#E6F8FA"],
+  "cutout": "floodfill",
+  "threshold": 30,
+  "construction": {
+    "grid": "24-unit keyline; live area about 75%; optical centering",
+    "corner_radius": "consistent soft radius",
+    "detail_budget": "one core idea; no more than 3-4 main shapes",
+    "fill_rule": "front-facing rounded filled shapes with a small lighter accent",
+    "color_rule": "use only the locked cyan palette; keep accents lighter and smaller than the main form",
+    "perspective": "flat front-facing",
+    "shadow": "none",
+    "motif": "a compact light accent that communicates sound or language"
+  }
+}

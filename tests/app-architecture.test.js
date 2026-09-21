@@ -25,8 +25,7 @@ test("四个主标签和场景页使用Hash路由", () => {
     assert.match(html, new RegExp(`href="#/${tab}" data-tab="${tab}"`));
   }
   assert.doesNotMatch(html, /data-tab="test"/);
-  assert.match(app, /parts\[0\] === "test"/);
-  assert.match(app, /navigatePath\("review", true\)/);
+  assert.doesNotMatch(app, /parts\[0\] === "test"|legacy-test/);
   assert.match(app, /parts\[0\] === "scene"/);
   assert.match(app, /parts\[0\] === "learn"/);
   assert.match(app, /parts\[1\] === "emergency-card"/);
@@ -74,11 +73,21 @@ test("首页提供可扩展目的地入口、状态化学习卡和旅行场景",
   assert.doesNotMatch(app, /renderLanguageWelcome/);
   assert.doesNotMatch(app, /class="language-tabs"/);
   assert.match(app, /scrollIntoView/);
-  assert.match(app, /请选择旅行场景/);
+  assert.match(app, /从旅行场景中选择学习内容/);
   assert.doesNotMatch(app, /data-browse-scenes|按需选择<\/span><h2>旅行场景/);
   assert.match(app, /class="home-quick-actions"/);
-  assert.match(app, /class="quick-entry continue-entry"/);
-  assert.equal((app.match(/class="quick-entry continue-entry"/g) || []).length, 1);
+  assert.match(app, /class="quick-entry \$\{hasResume \? "continue-entry" : "start-entry"\}"/);
+  assert.match(app, /const learningTitle = hasResume \? "继续学习" : "开始学习"/);
+  assert.match(app, /从实用场景出发，轻松掌握旅行外语/);
+  assert.match(app, /`\$\{lastScene\.name\} · \$\{lastSituation\.name\} · 已掌握 \$\{resumePercentage\}%`/);
+  assert.match(app, /LEARN FOR A BRIGHTER JOURNEY/);
+  assert.match(app, /READ THE WORLD AROUND YOU/);
+  assert.match(app, /const ACTION_ARROW_SVG = '<svg/);
+  assert.equal((app.match(/\$\{ACTION_ARROW_SVG\}/g) || []).length, 2);
+  assert.match(app, /看见当地文字，也能听懂、读懂、用上/);
+  assert.match(app, /images\/home-actions\/learning-card\.svg/);
+  assert.match(app, /images\/home-actions\/reading-card\.svg/);
+  assert.match(css, /\.home-quick-actions\{[^}]*display:grid[^}]*grid-template-columns:repeat\(2,minmax\(0,1fr\)\)[^}]*gap:10px/s);
   assert.match(css, /\.category-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,minmax\(0,1fr\)\)/s);
   assert.match(css, /@media \(min-width:560px\)[\s\S]*\.category-grid\{grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
   for (const scene of ["airport", "transport", "hotel", "food", "shopping", "directions", "emergency", "basics"]) {
@@ -91,7 +100,7 @@ test("旅行场景入口统一使用项目 PNG 图标映射", () => {
   assert.match(app, /function sceneIcon\(sceneId\)/);
   assert.match(app, /class="scene-icon"/);
   assert.match(app, /category-card scene-card scene-\$\{escapeHtml\(scene\.id\)\}[\s\S]*sceneIcon\(scene\.id\)/);
-  assert.match(app, /quick-entry continue-entry[\s\S]*quick-entry-icon scene-\$\{escapeHtml\(lastScene\.id\)\}[\s\S]*sceneIcon\(lastScene\.id\)/);
+  assert.match(app, /const learningLabel = !destination[\s\S]*继续学习，\$\{learningSubtitle\}/);
   assert.match(app, /scene-detail page-enter scene-\$\{escapeHtml\(scene\.id\)\}[\s\S]*sceneIcon\(scene\.id\)/);
   assert.match(app, /review-scene-row scene-\$\{escapeHtml\(scene\.id\)\}[\s\S]*sceneIcon\(scene\.id\)/);
   assert.match(css, /\.scene-icon(?:,\.ui-spot-icon)?\{[^}]*object-fit:contain/);

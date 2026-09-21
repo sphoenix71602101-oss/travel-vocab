@@ -1,0 +1,33 @@
+{
+  "name": "travel-home-action-soft-glass",
+  "label": "首页学习入口柔光旅行插画",
+  "reference": "用户提供的方案 A 扁长卡片模板",
+  "preamble": "Soft luminous travel-learning spot illustrations with rounded filled geometry, translucent glass highlights, gentle blue or mint gradients, crisp edges, no outline, no cast shadow, and no text.",
+  "palette": ["#4F8EF7", "#B9D7FF", "#1F3D7A", "#EAF3FF", "#42B883", "#BFEBD3", "#1E5A43", "#EAF8F1", "#FFFFFF"],
+  "cutout": "rembg",
+  "threshold": 30,
+  "source_grid": {
+    "size": "4x4",
+    "background": "#808080",
+    "occupied_cells": 6,
+    "empty_cells": 10,
+    "order": ["map-route", "travel-chat", "airplane", "reading-card", "speaker-waves", "city-palm"]
+  },
+  "construction": {
+    "grid": "24-unit keyline; live area about 76%; optical centering",
+    "stroke": null,
+    "corner_radius": "one consistent generous soft radius",
+    "angles": "front-facing shapes with restrained 30- and 45-degree folds",
+    "detail_budget": "one core metaphor; no more than five main shapes",
+    "fill_rule": "rounded filled silhouettes with a restrained translucent highlight",
+    "color_rule": "blue family for learning subjects, mint family for reading subjects, white only for small highlights",
+    "shared_parts": "reuse circular dots, pill terminals, and softly folded panels",
+    "perspective": "flat front-facing with very shallow dimensional overlap",
+    "shadow": "no shadow cast onto the background",
+    "motif": "one small translucent circular or pill-shaped highlight"
+  },
+  "outputs": {
+    "master": "transparent RGBA PNG",
+    "project": "transparent RGBA PNG composed into the two home action cards"
+  }
+}

@@ -42,8 +42,7 @@ test("Manifest 包含可安装 PWA 所需配置", () => {
 test("Manifest 图标路径稳定且尺寸正确", () => {
   const expected = new Map([
     ["icons/icon-192.png", 192],
-    ["icons/icon-512.png", 512],
-    ["icons/icon-maskable-512.png", 512]
+    ["icons/icon-512.png", 512]
   ]);
   assert.deepEqual(new Set(manifest.icons.map((icon) => icon.src)), new Set(expected.keys()));
   for (const icon of manifest.icons) {
@@ -52,7 +51,7 @@ test("Manifest 图标路径稳定且尺寸正确", () => {
     assert.deepEqual(pngDimensions(icon.src), { width: size, height: size });
   }
   assert.deepEqual(pngDimensions("icons/apple-touch-icon.png"), { width: 180, height: 180 });
-  assert.equal(manifest.icons.find((icon) => icon.src === "icons/icon-maskable-512.png").purpose, "maskable");
+  assert.equal(manifest.icons.find((icon) => icon.src === "icons/icon-512.png").purpose, "any maskable");
 });
 
 test("页面使用相对路径接入 Manifest、图标和 Service Worker", () => {
@@ -127,6 +126,17 @@ test("首页目的地顶图提供响应式 WebP 并进入离线缓存", () => {
   assert.match(app, /HERO_IMAGE_PATHS\[destinationId\] \|\| DEFAULT_HERO_IMAGE/);
 });
 
+test("首页学习入口插画进入离线缓存", () => {
+  for (const asset of [
+    "images/home-actions/learning-card.svg",
+    "images/home-actions/reading-card.svg"
+  ]) {
+    assert.equal(fs.existsSync(path.join(root, asset)), true, `缺少 ${asset}`);
+    assert.match(app, new RegExp(asset.replace(/[.]/g, "\\.")));
+    assert.match(serviceWorker, new RegExp(`"${asset.replace(/[.]/g, "\\.")}"`));
+  }
+});
+
 test("安装提示按平台能力显示并在已安装后隐藏", () => {
   assert.match(app, /addEventListener\("beforeinstallprompt"/);
   assert.match(app, /event\.preventDefault\(\)/);
@@ -144,7 +154,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
   const shell = shellMatch[1];
   for (const asset of [
     "index.html", "styles.css", "data.js", "emergency-card.js", "app.js", "manifest.webmanifest",
-    "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png",
+    "icons/icon-192.png", "icons/icon-512.png",
     "icons/apple-touch-icon.png", "images/heroes/default-mobile.webp", "images/heroes/default-wide.webp",
     "images/heroes/jp-mobile.webp", "images/heroes/jp-wide.webp",
     "images/heroes/us-mobile.webp", "images/heroes/us-wide.webp"
@@ -156,7 +166,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
 });
 
 test("界面资源更新后使用新的应用壳缓存版本", () => {
-  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v28`/);
+  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v37`/);
 });
 
 test("Service Worker 绕过音频并安全清理旧版本缓存", () => {
