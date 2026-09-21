@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""为语见世界词库和日语旅行识读课程批量生成 MP3。
+"""为语见世界词库和日英旅行认读课程批量生成 MP3。
 
-词库模式读取 data.js；日语识读模式读取 beginner-audio.json。生成时只写入
-audio/ 目录，不修改网站代码。首次使用请先运行 --test 或 --beginner-test 试听。
+词库模式读取 data.js；日语认读模式读取 beginner-audio.json；英语认读模式读取
+english-beginner-audio.js。生成时只写入 audio/ 目录，不修改网站代码。
+首次使用请先运行对应的试听模式。
 """
 
 from __future__ import annotations
@@ -30,14 +31,20 @@ MAX_RETRIES = 2
 TEST_ITEMS_PER_LANGUAGE = 5
 
 # 用于避免 data.js 格式意外变化时静默漏读。词库增删后请同步更新此数字。
-EXPECTED_ENTRY_COUNT = 555
+EXPECTED_ENTRY_COUNT = 795
+EXPECTED_EXAMPLE_COUNT = 160
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 DATA_FILE = PROJECT_ROOT / "data.js"
+CONTENT_PACK_FILES = [
+    PROJECT_ROOT / "content-packs" / "jp-ja.js",
+    PROJECT_ROOT / "content-packs" / "us-en.js",
+]
 AUDIO_ROOT = PROJECT_ROOT / "audio"
 BEGINNER_AUDIO_FILE = PROJECT_ROOT / "beginner-audio.json"
+ENGLISH_BEGINNER_AUDIO_FILE = PROJECT_ROOT / "english-beginner-audio.js"
 ID_PATTERN = re.compile(r"^[a-z][a-z0-9]*_[0-9]{3}$")
 
 
@@ -58,6 +65,7 @@ class AudioJob:
     text: str
     voice: str
     output_path: Path
+    rate: str = RATE
 
 
 @dataclass(frozen=True)
@@ -139,30 +147,46 @@ def parse_word_bank(data_file: Path) -> list[VocabularyEntry]:
     return entries
 
 
-def build_jobs(entries: list[VocabularyEntry], test_mode: bool) -> list[AudioJob]:
-    selected = entries[:TEST_ITEMS_PER_LANGUAGE] if test_mode else entries
+def parse_content_pack(pack_file: Path) -> dict:
+    source = pack_file.read_text(encoding="utf-8-sig")
+    match = re.search(r"window\.registerContentPack\((\{[\s\S]*\})\);\s*\}\)\(\);\s*$", source)
+    if not match:
+        raise ValueError(f"语言包格式无效：{pack_file.name}")
+    pack = json.loads(match.group(1))
+    entries = pack.get("entries")
+    if not isinstance(entries, list) or len(entries) != EXPECTED_ENTRY_COUNT:
+        raise ValueError(f"{pack_file.name} 应包含 {EXPECTED_ENTRY_COUNT} 条正式内容")
+    ids = [item.get("id") for item in entries]
+    if len(ids) != len(set(ids)) or any(not isinstance(item, str) or not item for item in ids):
+        raise ValueError(f"{pack_file.name} 的词条 ID 为空或重复")
+    examples = [item["example"] for item in entries if item.get("example")]
+    if len(examples) != EXPECTED_EXAMPLE_COUNT or len({item.get("id") for item in examples}) != len(examples):
+        raise ValueError(f"{pack_file.name} 应包含 {EXPECTED_EXAMPLE_COUNT} 条唯一例句")
+    for item in entries:
+        if not isinstance(item.get("text"), str) or not item["text"].strip():
+            raise ValueError(f"{pack_file.name}/{item.get('id')} 缺少朗读文字")
+        if pack.get("pronunciationLabel") and not item.get("pronunciation"):
+            raise ValueError(f"{pack_file.name}/{item.get('id')} 缺少读音")
+    return pack
+
+
+def build_pack_jobs(packs: list[dict], test_mode: bool) -> list[AudioJob]:
     jobs: list[AudioJob] = []
-
-    for entry in selected:
-        jobs.append(
-            AudioJob(
-                "ja",
-                entry.entry_id,
-                entry.ja,
-                JAPANESE_VOICE,
-                AUDIO_ROOT / "ja" / f"{entry.entry_id}.mp3",
-            )
-        )
-        jobs.append(
-            AudioJob(
-                "en",
-                entry.entry_id,
-                entry.en,
-                ENGLISH_VOICE,
-                AUDIO_ROOT / "en" / f"{entry.entry_id}.mp3",
-            )
-        )
-
+    voices = {"ja-JP": JAPANESE_VOICE, "en-US": ENGLISH_VOICE}
+    for pack in packs:
+        voice = voices.get(pack.get("speechLocale"))
+        if not voice:
+            raise ValueError(f"尚未配置 {pack.get('speechLocale')} 的生成声音")
+        entries = pack["entries"][:TEST_ITEMS_PER_LANGUAGE] if test_mode else pack["entries"]
+        for entry in entries:
+            jobs.append(AudioJob(pack["id"], entry["id"], entry["text"], voice,
+                                 AUDIO_ROOT / "packs" / pack["id"] / "entries" / f"{entry['id']}.mp3"))
+        examples = [item["example"] for item in pack["entries"] if item.get("example")]
+        if test_mode:
+            examples = examples[:2]
+        for example in examples:
+            jobs.append(AudioJob(pack["id"], example["id"], example["text"], voice,
+                                 AUDIO_ROOT / "packs" / pack["id"] / "examples" / f"{example['id']}.mp3"))
     return jobs
 
 
@@ -190,6 +214,49 @@ def build_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
         jobs.append(AudioJob("ja", entry_id, sound, JAPANESE_VOICE,
                              AUDIO_ROOT / "ja" / "beginner" / f"{entry_id}.mp3"))
     return jobs[:5] if test_mode else jobs
+
+
+def parse_english_beginner_data() -> list[dict]:
+    """读取网页与脚本共用的美国英语教学音清单。"""
+    if not ENGLISH_BEGINNER_AUDIO_FILE.is_file():
+        raise FileNotFoundError(f"找不到英语教学音清单：{ENGLISH_BEGINNER_AUDIO_FILE}")
+    source = ENGLISH_BEGINNER_AUDIO_FILE.read_text(encoding="utf-8-sig")
+    match = re.search(
+        r"window\.EN_BEGINNER_AUDIO\s*=\s*Object\.freeze\((\[[\s\S]*\])\);\s*$",
+        source,
+    )
+    if not match:
+        raise ValueError("英语教学音清单格式无效")
+    return json.loads(match.group(1))
+
+
+def build_english_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
+    if not isinstance(data, list) or len(data) != 53:
+        raise ValueError("英语教学音清单应包含 53 段声音")
+    rate_values = {"clear": "-8%", "slow": "-28%", "natural": "+0%"}
+    jobs: list[AudioJob] = []
+    seen_ids: set[str] = set()
+    seen_content: set[tuple[str, str]] = set()
+    for item in data:
+        entry_id, text, rate_name = item.get("id"), item.get("text"), item.get("rate")
+        if not isinstance(entry_id, str) or not re.fullmatch(r"en-[0-9]{3}", entry_id):
+            raise ValueError(f"英语教学音 ID 无效：{entry_id}")
+        if not isinstance(text, str) or not text.strip() or rate_name not in rate_values:
+            raise ValueError(f"英语教学音文字或语速无效：{entry_id}")
+        content_key = (text, rate_name)
+        if entry_id in seen_ids or content_key in seen_content:
+            raise ValueError(f"英语教学音 ID 或文字语速重复：{entry_id}")
+        seen_ids.add(entry_id)
+        seen_content.add(content_key)
+        jobs.append(AudioJob(
+            "en", entry_id, text, ENGLISH_VOICE,
+            AUDIO_ROOT / "en" / "beginner" / f"{entry_id}.mp3",
+            rate_values[rate_name],
+        ))
+    if not test_mode:
+        return jobs
+    sample_ids = {"en-001", "en-004", "en-039", "en-040", "en-049", "en-050"}
+    return [job for job in jobs if job.entry_id in sample_ids]
 
 
 def build_repair_jobs() -> list[AudioJob]:
@@ -223,7 +290,7 @@ async def generate_one(job: AudioJob, edge_tts_module: object) -> FailedItem | N
             communicate = edge_tts_module.Communicate(
                 text=job.text,
                 voice=job.voice,
-                rate=RATE,
+                rate=job.rate,
                 volume=VOLUME,
                 pitch=PITCH,
                 connect_timeout=15,
@@ -281,28 +348,31 @@ async def generate_all(jobs: list[AudioJob], edge_tts_module: object) -> list[Fa
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="生成词库或旅行识读教学 MP3（已有文件会自动跳过）。"
+        description="生成词库或旅行认读教学 MP3（已有文件会自动跳过）。"
     )
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument(
         "--test",
         action="store_true",
-        help="仅处理前 5 条词汇：生成 5 个日语和 5 个英语文件",
+        help="每个语言包处理前 5 条正式内容和 2 条例句",
     )
     mode.add_argument(
         "--full",
         action="store_true",
-        help="处理完整词库：生成 555 个日语和 555 个英语文件",
+        help="处理两个完整语言包的正式内容和例句",
     )
     mode.add_argument(
         "--validate-only",
         action="store_true",
-        help="只验证 data.js，不安装 edge-tts 也可运行",
+        help="只验证两个独立目的地语言包，不安装 edge-tts 也可运行",
     )
     mode.add_argument("--beginner-test", action="store_true", help="生成前 5 个日语教学音试听")
     mode.add_argument("--beginner-full", action="store_true", help="生成全部 57 段日语教学音")
     mode.add_argument("--beginner-validate-only", action="store_true", help="只验证日语教学音清单")
     mode.add_argument("--beginner-repair", action="store_true", help="为 い、ふ、ら、ん 生成 12 段候选音，不覆盖正式音频")
+    mode.add_argument("--english-beginner-test", action="store_true", help="生成 6 段美国英语教学音试听（含 cat、map 和双语速短句）")
+    mode.add_argument("--english-beginner-full", action="store_true", help="生成全部 53 段美国英语教学音")
+    mode.add_argument("--english-beginner-validate-only", action="store_true", help="只验证美国英语教学音清单")
     return parser.parse_args()
 
 
@@ -310,9 +380,21 @@ def main() -> int:
     args = parse_args()
 
     beginner_mode = args.beginner_test or args.beginner_full or args.beginner_validate_only
+    english_beginner_mode = args.english_beginner_test or args.english_beginner_full or args.english_beginner_validate_only
     if args.beginner_repair:
         jobs = build_repair_jobs()
         print(f"准备生成 {len(jobs)} 段修复候选音；正式教学音不会被覆盖。")
+    elif english_beginner_mode:
+        try:
+            jobs = build_english_beginner_jobs(
+                parse_english_beginner_data(), test_mode=args.english_beginner_test
+            )
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"英语教学音清单检查失败：{exc}", file=sys.stderr)
+            return 2
+        print(f"已验证美国英语教学音清单：{len(jobs)} 个目标。")
+        if args.english_beginner_validate_only:
+            return 0
     elif beginner_mode:
         try:
             jobs = build_beginner_jobs(parse_beginner_data(), test_mode=args.beginner_test)
@@ -324,14 +406,17 @@ def main() -> int:
             return 0
     else:
         try:
-            entries = parse_word_bank(DATA_FILE)
-        except (OSError, ValueError) as exc:
-            print(f"词库检查失败：{exc}", file=sys.stderr)
+            packs = [parse_content_pack(pack_file) for pack_file in CONTENT_PACK_FILES]
+            jobs = build_pack_jobs(packs, test_mode=args.test)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"语言包检查失败：{exc}", file=sys.stderr)
             return 2
-        print(f"已验证词库：{len(entries)} 条，ID 均唯一，日语和英语字段完整。")
+        print("已验证语言包：" + "；".join(
+            f"{pack['id']} {len(pack['entries'])} 条正式内容、{sum(bool(item.get('example')) for item in pack['entries'])} 条例句"
+            for pack in packs
+        ))
         if args.validate_only:
             return 0
-        jobs = build_jobs(entries, test_mode=args.test)
 
     try:
         import edge_tts
@@ -345,10 +430,11 @@ def main() -> int:
     existing = sum(
         job.output_path.is_file() and job.output_path.stat().st_size > 0 for job in jobs
     )
-    mode_name = "试听模式" if args.test or args.beginner_test or args.beginner_repair else "完整模式"
+    mode_name = "试听模式" if args.test or args.beginner_test or args.beginner_repair or args.english_beginner_test else "完整模式"
+    voice_summary = ENGLISH_VOICE if english_beginner_mode else JAPANESE_VOICE if beginner_mode or args.beginner_repair else f"{JAPANESE_VOICE} / {ENGLISH_VOICE}"
     print(
         f"{mode_name}：共 {len(jobs)} 个目标，已有 {existing} 个；"
-        f"日语声音 {JAPANESE_VOICE}，英语声音 {ENGLISH_VOICE}，并发 {CONCURRENCY}。"
+        f"声音 {voice_summary}，并发 {CONCURRENCY}。"
     )
 
     failures = asyncio.run(generate_all(jobs, edge_tts))

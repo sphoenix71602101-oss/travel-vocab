@@ -153,7 +153,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
   assert.ok(shellMatch, "找不到 APP_SHELL 清单");
   const shell = shellMatch[1];
   for (const asset of [
-    "index.html", "styles.css", "data.js", "emergency-card.js", "app.js", "manifest.webmanifest",
+    "index.html", "styles.css", "data.js", "beginner-data.js", "english-beginner-data.js", "english-beginner-audio.js", "emergency-card.js", "app.js", "manifest.webmanifest",
     "icons/icon-192.png", "icons/icon-512.png",
     "icons/apple-touch-icon.png", "images/heroes/default-mobile.webp", "images/heroes/default-wide.webp",
     "images/heroes/jp-mobile.webp", "images/heroes/jp-wide.webp",
@@ -166,7 +166,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
 });
 
 test("界面资源更新后使用新的应用壳缓存版本", () => {
-  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v37`/);
+  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v41`/);
 });
 
 test("Service Worker 绕过音频并安全清理旧版本缓存", () => {

@@ -3,13 +3,17 @@
 // Increment this version whenever a precached application-shell file changes.
 const CACHE_PREFIX = "yujian-world-shell-";
 const LEGACY_CACHE_PREFIX = "travel-vocab-shell-";
-const CACHE_NAME = `${CACHE_PREFIX}v37`;
+const CACHE_NAME = `${CACHE_PREFIX}v41`;
 const APP_SHELL = [
   "./",
   "index.html",
   "styles.css",
-  "data.js",
+  "content-registry.js",
+  "content-packs/jp-ja.js",
+  "content-packs/us-en.js",
   "beginner-data.js",
+  "english-beginner-data.js",
+  "english-beginner-audio.js",
   "emergency-card.js",
   "app.js",
   "manifest.webmanifest",

@@ -7,97 +7,95 @@ const vm = require("node:vm");
 const root = path.resolve(__dirname, "..");
 const sandbox = { window: {} };
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync(path.join(root, "data.js"), "utf8"), sandbox);
+vm.runInContext(fs.readFileSync(path.join(root, "content-registry.js"), "utf8"), sandbox);
+for (const file of ["jp-ja.js", "us-en.js"]) vm.runInContext(fs.readFileSync(path.join(root, "content-packs", file), "utf8"), sandbox);
+const packs = sandbox.window.TRAVEL_CONTENT.all();
 
-const scenes = sandbox.window.SCENE_PACKS;
-const words = sandbox.window.WORD_BANK;
-
-function signature(entry, lang) {
-  return (lang === "ja" ? entry.ja : entry.en).trim().toLowerCase();
-}
-
-test("八个旅行学习包和555条内容保持完整", () => {
-  assert.equal(scenes.length, 8);
-  assert.equal(words.length, 555);
-  assert.deepEqual(
-    Array.from(scenes, (scene) => scene.id),
-    ["airport", "transport", "hotel", "food", "shopping", "directions", "emergency", "basics"]
-  );
-});
-
-test("每个旅行场景提供四项首页内容摘要", () => {
-  const expected = {
-    airport: ["值机", "行李", "安检", "登机"],
-    transport: ["车票", "地铁", "火车", "出租车"],
-    hotel: ["预订", "入住", "房间", "退房"],
-    food: ["等位", "菜单", "点餐", "结账"],
-    shopping: ["找商品", "尺码", "试用", "支付"],
-    directions: ["位置", "路线", "距离", "地标"],
-    emergency: ["身体不适", "药店", "报警", "失物"],
-    basics: ["问候", "礼貌", "数字", "时间"]
-  };
-  for (const scene of scenes) assert.deepEqual(Array.from(scene.homeTopics), expected[scene.id]);
-});
-
-test("每条内容都有唯一稳定的原始ID", () => {
-  const ids = new Set();
-  for (const entry of words) {
-    assert.match(entry.id, /^(airport|hotel|food|shopping|directions|numbers|emergency|expressions)_[0-9]{3}$/);
-    assert.equal(ids.has(entry.id), false, `重复 ID：${entry.id}`);
-    ids.add(entry.id);
+test("日本日语和美国英语是两个独立完整语言包", () => {
+  assert.deepEqual(Array.from(packs, (pack) => pack.id), ["jp-ja", "us-en"]);
+  assert.notEqual(packs[0].entries, packs[1].entries);
+  for (const pack of packs) {
+    assert.equal(pack.scenes.length, 8);
+    assert.equal(pack.entries.length, 795);
+    assert.equal(pack.entries.filter((entry) => entry.kind === "phrase").length, 320);
+    assert.equal(pack.entries.filter((entry) => entry.example).length, 160);
   }
 });
 
-test("全部内容仅归入一个有效场景和小情境", () => {
-  const situationSets = new Map(scenes.map((scene) => [
-    scene.id,
-    new Set(Array.from(scene.situations, (situation) => situation.id))
-  ]));
-  for (const entry of words) {
-    for (const field of ["id", "scene", "situation", "zh", "ja", "reading", "en", "type"]) {
-      assert.equal(typeof entry[field], "string", `${entry.id} 的 ${field} 类型错误`);
-      assert.notEqual(entry[field].trim(), "", `${entry.id} 的 ${field} 为空`);
+test("人工例句按场景均匀配置且不含旧模板话术", () => {
+  const bannedChinese = /相关信息|我需要了解[“\"]/;
+  const bannedJapanese = /について(?:確認したい|教えてください|質問があります)/;
+  const bannedEnglish = /^(?:I need (?:some )?information about|Could you tell me about|I have a question about)/i;
+  for (const pack of packs) {
+    for (const scene of pack.scenes) {
+      const examples = pack.entries.filter((entry) => entry.sceneId === scene.id && entry.example);
+      assert.equal(examples.length, 20, `${pack.id}/${scene.id}`);
     }
-    assert.equal(situationSets.has(entry.scene), true, `${entry.id} 场景不存在`);
-    assert.equal(situationSets.get(entry.scene).has(entry.situation), true, `${entry.id} 小情境不存在`);
-    assert.equal(["word", "phrase"].includes(entry.type), true, `${entry.id} 类型错误`);
-  }
-  for (const scene of scenes) {
-    assert.ok(words.some((entry) => entry.scene === scene.id), `${scene.id} 没有内容`);
-    for (const situation of scene.situations) {
-      assert.ok(
-        words.some((entry) => entry.scene === scene.id && entry.situation === situation.id),
-        `${scene.id}/${situation.id} 没有内容`
-      );
+    for (const entry of pack.entries.filter((item) => item.example)) {
+      assert.doesNotMatch(entry.example.zh, bannedChinese, `${pack.id}/${entry.id}`);
+      if (pack.id === "jp-ja") assert.doesNotMatch(entry.example.text, bannedJapanese, `${pack.id}/${entry.id}`);
+      if (pack.id === "us-en") assert.doesNotMatch(entry.example.text, bannedEnglish, `${pack.id}/${entry.id}`);
     }
   }
 });
 
-test("各语言都能为每条内容组成四个唯一选项", () => {
-  for (const lang of ["ja", "en"]) {
-    for (const correct of words) {
-      const signatures = new Set([signature(correct, lang)]);
-      const tiers = [
-        words.filter((item) => item.scene === correct.scene && item.situation === correct.situation),
-        words.filter((item) => item.scene === correct.scene),
-        words.filter((item) => item.type === correct.type),
-        words
-      ];
-      for (const tier of tiers) {
-        for (const item of tier) {
-          if (signatures.size >= 4 || item.id === correct.id) continue;
-          signatures.add(signature(item, lang));
-        }
+test("每个语言包新增八个场景各30条短句", () => {
+  for (const pack of packs) for (const scene of pack.scenes) {
+    const added = pack.entries.filter((entry) => entry.sceneId === scene.id && /_phrase_/.test(entry.id));
+    assert.equal(added.length, 30, `${pack.id}/${scene.id}`);
+    assert.equal(added.filter((entry) => entry.direction === "traveler-says").length, 22);
+    assert.equal(added.filter((entry) => entry.direction === "traveler-hears").length, 8);
+  }
+});
+
+test("词条、例句和小情境引用完整且包内ID唯一", () => {
+  for (const pack of packs) {
+    const scenes = new Map(pack.scenes.map((scene) => [scene.id, new Set(scene.situations.map((item) => item.id))]));
+    const ids = new Set();
+    const exampleIds = new Set();
+    for (const entry of pack.entries) {
+      for (const field of ["id", "sceneId", "situationId", "kind", "zh", "text", "direction", "intent"]) {
+        assert.equal(typeof entry[field], "string", `${pack.id}/${entry.id}/${field}`);
+        assert.notEqual(entry[field].trim(), "", `${pack.id}/${entry.id}/${field}`);
       }
-      assert.equal(signatures.size, 4, `${correct.id}/${lang} 候选不足`);
+      assert.equal(ids.has(entry.id), false, `${pack.id}/${entry.id}`);
+      ids.add(entry.id);
+      assert.ok(scenes.get(entry.sceneId)?.has(entry.situationId), `${pack.id}/${entry.id} 小情境无效`);
+      assert.ok(["word", "phrase"].includes(entry.kind));
+      if (pack.pronunciationLabel) assert.ok(entry.pronunciation?.trim(), `${pack.id}/${entry.id} 缺少读音`);
+      if (entry.example) {
+        assert.ok(entry.example.id && entry.example.zh && entry.example.text);
+        if (pack.pronunciationLabel) assert.ok(entry.example.pronunciation);
+        assert.doesNotMatch(entry.example.zh, /[ぁ-んァ-ン]/, `${pack.id}/${entry.example.id} 的中文翻译混入日文假名`);
+        assert.notEqual(entry.example.zh, entry.example.pronunciation, `${pack.id}/${entry.example.id} 的中文翻译与读音重复`);
+        assert.equal(exampleIds.has(entry.example.id), false);
+        exampleIds.add(entry.example.id);
+      }
     }
   }
 });
 
-test("页面资源使用静态托管兼容的相对路径", () => {
+test("每个语言包都能为每条正式内容组成四个唯一选项", () => {
+  for (const pack of packs) for (const correct of pack.entries) {
+    const signatures = new Set([correct.text.trim().toLocaleLowerCase(pack.locale)]);
+    const tiers = [
+      pack.entries.filter((item) => item.sceneId === correct.sceneId && item.situationId === correct.situationId),
+      pack.entries.filter((item) => item.sceneId === correct.sceneId),
+      pack.entries.filter((item) => item.kind === correct.kind),
+      pack.entries
+    ];
+    for (const tier of tiers) for (const item of tier) {
+      if (signatures.size < 4) signatures.add(item.text.trim().toLocaleLowerCase(pack.locale));
+    }
+    assert.equal(signatures.size, 4, `${pack.id}/${correct.id}`);
+  }
+});
+
+test("页面以静态相对路径加载内容注册表和两个语言包", () => {
   const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
-  assert.match(html, /href="styles\.css"/);
-  assert.match(html, /src="data\.js"/);
-  assert.match(html, /src="app\.js"/);
+  assert.match(html, /src="content-registry\.js"/);
+  assert.match(html, /src="content-packs\/jp-ja\.js"/);
+  assert.match(html, /src="content-packs\/us-en\.js"/);
+  assert.doesNotMatch(html, /src="data\.js"/);
   assert.doesNotMatch(html, /(?:src|href)="\//);
 });

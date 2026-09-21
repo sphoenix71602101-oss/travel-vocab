@@ -220,13 +220,16 @@ test("复习只使用已掌握内容且答错不撤销掌握", () => {
   assert.doesNotMatch(app, /recordReview[\s\S]{0,500}status: "introduced"/);
 });
 
-test("新存储按语言隔离并清理旧进度但保留语言", () => {
-  assert.match(app, /yujianWorld\.learning\.v1/);
+test("新存储按目的地语言包隔离并迁移旧进度", () => {
+  assert.match(app, /yujianWorld\.learning\.v2/);
+  assert.match(app, /LEGACY_LEARNING_KEY = "yujianWorld\.learning\.v1"/);
   assert.match(app, /yujianWorld\.lang\.v1/);
   assert.match(app, /yujianWorld\.destination\.v1/);
   assert.match(app, /function initializeDestination\(\)/);
   assert.match(app, /destinationForLang\(state\.lang\)/);
-  assert.match(app, /return \{ ja: normalizeLanguageState\(raw\?\.ja\), en: normalizeLanguageState\(raw\?\.en\) \}/);
+  assert.match(app, /envelope\.packs\[packId\] = normalizeLanguageState/);
+  assert.match(app, /\["ja", "jp-ja"\]/);
+  assert.match(app, /\["en", "us-en"\]/);
   assert.match(app, /const oldLang = localStorage\.getItem\("travelVocab\.lang\.v1"\)/);
   assert.match(app, /travelVocab\.stats\.v2/);
   assert.match(app, /travelVocab\.wrongIds\.v2/);
@@ -241,4 +244,22 @@ test("沉浸式流程、触控尺寸和安全区完整", () => {
   assert.match(css, /\.speak-btn[^}]*width:\s*44px[^}]*height:\s*44px/s);
   assert.match(app, /updateShell\("home", true\)/);
   assert.match(app, /updateShell\(quiz\.mode\.kind === "review" \? "review" : "home", true\)/);
+});
+
+test("美国旅行认读复用现有入口并提供独立完整流程", () => {
+  assert.match(html, /<script src="english-beginner-data\.js"><\/script>/);
+  assert.match(html, /<script src="english-beginner-audio\.js"><\/script>/);
+  assert.match(app, /const beginnerModule = currentPack\(\)\?\.features\?\.beginnerModule/);
+  assert.match(app, /module === "english"\) \{ renderEnglishBeginnerRoute\(route\); return; \}/);
+  assert.match(app, /function renderEnglishBeginnerOverview\(\)/);
+  assert.match(app, /function renderEnglishPlacementIntro\(\)/);
+  assert.match(app, /function renderEnglishLessonStep\(\)/);
+  assert.match(app, /function renderEnglishChallengeResult\(\)/);
+  assert.match(app, /utterance\.lang = "en-US"/);
+  assert.match(app, /currentPack\(\)\.features\.beginnerAudioBase/);
+  assert.match(app, /rate === "slow" \? \.68 : rate === "natural" \? 1 : \.84/);
+  assert.match(app, /"us-en": \{ completedLessons: \[\], challengeDone: false, placementPassed: false, retryWords: \[\] \}/);
+  assert.match(css, /\.en-step-actions/);
+  assert.match(css, /\.en-chunks/);
+  assert.match(css, /\.en-stress-word mark/);
 });
