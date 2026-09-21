@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""为语见世界词库和日英旅行认读课程批量生成 MP3。
+"""为语见世界三语词库和日英韩旅行认读课程批量生成 MP3。
 
-词库模式读取 data.js；日语认读模式读取 beginner-audio.json；英语认读模式读取
-english-beginner-audio.js。生成时只写入 audio/ 目录，不修改网站代码。
+词库模式读取 scripts/source-data/legacy-bilingual-data.js；各语言认读模式读取
+languages/<packId>/beginner/ 下的音频清单。生成时只写入 audio/ 目录，不修改网站代码。
 首次使用请先运行对应的试听模式。
 """
 
@@ -20,6 +20,7 @@ from pathlib import Path
 # ── 常用设置：更换声音或语速时只需修改这里 ──────────────────────────────
 JAPANESE_VOICE = "ja-JP-NanamiNeural"
 ENGLISH_VOICE = "en-US-JennyNeural"
+KOREAN_VOICE = "ko-KR-SunHiNeural"
 
 RATE = "+0%"
 VOLUME = "+0%"
@@ -30,21 +31,23 @@ REQUEST_DELAY_SECONDS = 0.25
 MAX_RETRIES = 2
 TEST_ITEMS_PER_LANGUAGE = 5
 
-# 用于避免 data.js 格式意外变化时静默漏读。词库增删后请同步更新此数字。
+# 用于避免旧双语源数据格式意外变化时静默漏读。词库增删后请同步更新此数字。
 EXPECTED_ENTRY_COUNT = 795
 EXPECTED_EXAMPLE_COUNT = 160
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
-DATA_FILE = PROJECT_ROOT / "data.js"
+DATA_FILE = PROJECT_ROOT / "scripts" / "source-data" / "legacy-bilingual-data.js"
 CONTENT_PACK_FILES = [
-    PROJECT_ROOT / "content-packs" / "jp-ja.js",
-    PROJECT_ROOT / "content-packs" / "us-en.js",
+    PROJECT_ROOT / "languages" / "jp-ja" / "pack.js",
+    PROJECT_ROOT / "languages" / "us-en" / "pack.js",
+    PROJECT_ROOT / "languages" / "kr-ko" / "pack.js",
 ]
 AUDIO_ROOT = PROJECT_ROOT / "audio"
-BEGINNER_AUDIO_FILE = PROJECT_ROOT / "beginner-audio.json"
-ENGLISH_BEGINNER_AUDIO_FILE = PROJECT_ROOT / "english-beginner-audio.js"
+BEGINNER_AUDIO_FILE = PROJECT_ROOT / "languages" / "jp-ja" / "beginner" / "audio.json"
+ENGLISH_BEGINNER_AUDIO_FILE = PROJECT_ROOT / "languages" / "us-en" / "beginner" / "audio.js"
+KOREAN_BEGINNER_AUDIO_FILE = PROJECT_ROOT / "languages" / "kr-ko" / "beginner" / "audio.js"
 ID_PATTERN = re.compile(r"^[a-z][a-z0-9]*_[0-9]{3}$")
 
 
@@ -77,9 +80,9 @@ class FailedItem:
 
 
 def parse_word_bank(data_file: Path) -> list[VocabularyEntry]:
-    """解析 data.js 中的六字段词条数组，但不执行其中的 JavaScript。
+    """解析旧双语源文件中的六字段词条数组，但不执行其中的 JavaScript。
 
-    当前 data.js 的原始词条格式为：
+    当前旧双语源文件的原始词条格式为：
     [id, zh, ja, reading, en, type]
 
     每条记录本身是合法 JSON 数组。逐行使用 json.loads 可以正确处理 Unicode、
@@ -103,28 +106,28 @@ def parse_word_bank(data_file: Path) -> list[VocabularyEntry]:
                 fields = json.loads(json_text)
             except json.JSONDecodeError as exc:
                 raise ValueError(
-                    f"data.js 第 {line_number} 行不是有效的词条数组：{exc.msg}"
+                    f"旧双语源文件第 {line_number} 行不是有效的词条数组：{exc.msg}"
                 ) from exc
 
             if not isinstance(fields, list) or len(fields) != 6:
                 raise ValueError(
-                    f"data.js 第 {line_number} 行应包含 6 个字段，实际为 {len(fields) if isinstance(fields, list) else '非数组'}"
+                    f"旧双语源文件第 {line_number} 行应包含 6 个字段，实际为 {len(fields) if isinstance(fields, list) else '非数组'}"
                 )
             if not all(isinstance(value, str) for value in fields):
-                raise ValueError(f"data.js 第 {line_number} 行包含非字符串字段")
+                raise ValueError(f"旧双语源文件第 {line_number} 行包含非字符串字段")
 
             entry_id, zh, ja, reading, en, entry_type = fields
             if not ID_PATTERN.fullmatch(entry_id):
                 raise ValueError(
-                    f"data.js 第 {line_number} 行的 ID 不适合作为文件名：{entry_id!r}"
+                    f"旧双语源文件第 {line_number} 行的 ID 不适合作为文件名：{entry_id!r}"
                 )
             if not ja.strip() or not en.strip():
                 raise ValueError(
-                    f"data.js 第 {line_number} 行缺少日语或英语文本：{entry_id}"
+                    f"旧双语源文件第 {line_number} 行缺少日语或英语文本：{entry_id}"
                 )
             if entry_type not in {"word", "phrase"}:
                 raise ValueError(
-                    f"data.js 第 {line_number} 行包含未知类型：{entry_type!r}"
+                    f"旧双语源文件第 {line_number} 行包含未知类型：{entry_type!r}"
                 )
 
             entries.append(
@@ -136,7 +139,7 @@ def parse_word_bank(data_file: Path) -> list[VocabularyEntry]:
     if len(entries) != EXPECTED_ENTRY_COUNT:
         raise ValueError(
             f"预期 {EXPECTED_ENTRY_COUNT} 条词汇，实际解析到 {len(entries)} 条。"
-            "如词库刚刚增删过，请核对 data.js 后更新 EXPECTED_ENTRY_COUNT。"
+            "如词库刚刚增删过，请核对旧双语源文件后更新 EXPECTED_ENTRY_COUNT。"
         )
 
     ids = [entry.entry_id for entry in entries]
@@ -172,15 +175,17 @@ def parse_content_pack(pack_file: Path) -> dict:
 
 def build_pack_jobs(packs: list[dict], test_mode: bool) -> list[AudioJob]:
     jobs: list[AudioJob] = []
-    voices = {"ja-JP": JAPANESE_VOICE, "en-US": ENGLISH_VOICE}
+    voices = {"ja-JP": JAPANESE_VOICE, "en-US": ENGLISH_VOICE, "ko-KR": KOREAN_VOICE}
     for pack in packs:
         voice = voices.get(pack.get("speechLocale"))
         if not voice:
             raise ValueError(f"尚未配置 {pack.get('speechLocale')} 的生成声音")
         entries = pack["entries"][:TEST_ITEMS_PER_LANGUAGE] if test_mode else pack["entries"]
         for entry in entries:
-            jobs.append(AudioJob(pack["id"], entry["id"], entry["text"], voice,
-                                 AUDIO_ROOT / "packs" / pack["id"] / "entries" / f"{entry['id']}.mp3"))
+            output_path = PROJECT_ROOT / entry.get(
+                "audioPath", f"audio/packs/{pack['id']}/entries/{entry['id']}.mp3"
+            )
+            jobs.append(AudioJob(pack["id"], entry["id"], entry["text"], voice, output_path))
         examples = [item["example"] for item in pack["entries"] if item.get("example")]
         if test_mode:
             examples = examples[:2]
@@ -259,6 +264,32 @@ def build_english_beginner_jobs(data: list[dict], test_mode: bool) -> list[Audio
     return [job for job in jobs if job.entry_id in sample_ids]
 
 
+def parse_korean_beginner_data() -> list[dict]:
+    """读取韩语教学音清单中的二维数组。"""
+    if not KOREAN_BEGINNER_AUDIO_FILE.is_file():
+        raise FileNotFoundError(f"找不到韩语教学音清单：{KOREAN_BEGINNER_AUDIO_FILE}")
+    source = KOREAN_BEGINNER_AUDIO_FILE.read_text(encoding="utf-8-sig")
+    pairs = re.findall(r'\["(ko-[0-9]{3})","([^"]+)"\]', source)
+    return [{"id": entry_id, "text": text} for entry_id, text in pairs]
+
+
+def build_korean_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
+    if not isinstance(data, list) or len(data) != 36:
+        raise ValueError("韩语教学音清单应包含 36 段声音")
+    jobs: list[AudioJob] = []
+    seen: set[str] = set()
+    for item in data:
+        entry_id, text = item.get("id"), item.get("text")
+        if not isinstance(entry_id, str) or not re.fullmatch(r"ko-[0-9]{3}", entry_id):
+            raise ValueError(f"韩语教学音 ID 无效：{entry_id}")
+        if not isinstance(text, str) or not text.strip() or entry_id in seen:
+            raise ValueError(f"韩语教学音文字为空或 ID 重复：{entry_id}")
+        seen.add(entry_id)
+        jobs.append(AudioJob("ko", entry_id, text, KOREAN_VOICE,
+                             AUDIO_ROOT / "ko" / "beginner" / f"{entry_id}.mp3", "-10%"))
+    return jobs[:6] if test_mode else jobs
+
+
 def build_repair_jobs() -> list[AudioJob]:
     """为反馈有瑕疵的假名生成候选试听，不覆盖正式教学音。"""
     targets = {
@@ -278,7 +309,6 @@ def build_repair_jobs() -> list[AudioJob]:
 
 async def generate_one(job: AudioJob, edge_tts_module: object) -> FailedItem | None:
     if job.output_path.is_file() and job.output_path.stat().st_size > 0:
-        print(f"[跳过] {job.language}/{job.output_path.name}")
         return None
 
     job.output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -373,6 +403,9 @@ def parse_args() -> argparse.Namespace:
     mode.add_argument("--english-beginner-test", action="store_true", help="生成 6 段美国英语教学音试听（含 cat、map 和双语速短句）")
     mode.add_argument("--english-beginner-full", action="store_true", help="生成全部 53 段美国英语教学音")
     mode.add_argument("--english-beginner-validate-only", action="store_true", help="只验证美国英语教学音清单")
+    mode.add_argument("--korean-beginner-test", action="store_true", help="生成前 6 个韩语教学音试听")
+    mode.add_argument("--korean-beginner-full", action="store_true", help="生成全部 36 段韩语教学音")
+    mode.add_argument("--korean-beginner-validate-only", action="store_true", help="只验证韩语教学音清单")
     return parser.parse_args()
 
 
@@ -381,9 +414,21 @@ def main() -> int:
 
     beginner_mode = args.beginner_test or args.beginner_full or args.beginner_validate_only
     english_beginner_mode = args.english_beginner_test or args.english_beginner_full or args.english_beginner_validate_only
+    korean_beginner_mode = args.korean_beginner_test or args.korean_beginner_full or args.korean_beginner_validate_only
     if args.beginner_repair:
         jobs = build_repair_jobs()
         print(f"准备生成 {len(jobs)} 段修复候选音；正式教学音不会被覆盖。")
+    elif korean_beginner_mode:
+        try:
+            jobs = build_korean_beginner_jobs(
+                parse_korean_beginner_data(), test_mode=args.korean_beginner_test
+            )
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"韩语教学音清单检查失败：{exc}", file=sys.stderr)
+            return 2
+        print(f"已验证韩国韩语教学音清单：{len(jobs)} 个目标。")
+        if args.korean_beginner_validate_only:
+            return 0
     elif english_beginner_mode:
         try:
             jobs = build_english_beginner_jobs(
@@ -430,8 +475,8 @@ def main() -> int:
     existing = sum(
         job.output_path.is_file() and job.output_path.stat().st_size > 0 for job in jobs
     )
-    mode_name = "试听模式" if args.test or args.beginner_test or args.beginner_repair or args.english_beginner_test else "完整模式"
-    voice_summary = ENGLISH_VOICE if english_beginner_mode else JAPANESE_VOICE if beginner_mode or args.beginner_repair else f"{JAPANESE_VOICE} / {ENGLISH_VOICE}"
+    mode_name = "试听模式" if args.test or args.beginner_test or args.beginner_repair or args.english_beginner_test or args.korean_beginner_test else "完整模式"
+    voice_summary = KOREAN_VOICE if korean_beginner_mode else ENGLISH_VOICE if english_beginner_mode else JAPANESE_VOICE if beginner_mode or args.beginner_repair else f"{JAPANESE_VOICE} / {ENGLISH_VOICE} / {KOREAN_VOICE}"
     print(
         f"{mode_name}：共 {len(jobs)} 个目标，已有 {existing} 个；"
         f"声音 {voice_summary}，并发 {CONCURRENCY}。"

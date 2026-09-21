@@ -7,14 +7,16 @@
   const DESTINATION_KEY = "yujianWorld.destination.v1";
   const MIGRATION_KEY = "yujianWorld.migrated.v2";
   const INSTALL_HINT_KEY = "yujianWorld.installHintDismissed.v1";
+  const FAVORITE_GUIDE_KEY = "yujianWorld.favoriteGuideSeen.v1";
   const BEGINNER_KEY = "yujianWorld.beginner.v1";
   const LEARNING_BATCH_SIZE = 5;
   const REVIEW_BATCH_SIZE = 10;
+  const FAVORITE_SEARCH_LIMIT = 50;
   const MAIN_TABS = new Set(["home", "review", "tools", "me"]);
   const DESTINATION_OPTIONS = [
     { id: "jp", contentPackId: "jp-ja", country: "日本", language: "日语", nativeLabel: "日本語", lang: "ja", status: "available", countryCode: "JP", flagSrc: "icons/flags/jp.png" },
     { id: "us", contentPackId: "us-en", country: "美国", language: "英语", nativeLabel: "English", lang: "en", status: "available", countryCode: "US", flagSrc: "icons/flags/us.png" },
-    { id: "kr", contentPackId: "kr-ko", country: "韩国", language: "韩语", nativeLabel: "한국어", lang: "ko", status: "coming-soon", countryCode: "KR", flagSrc: "icons/flags/kr.png" },
+    { id: "kr", contentPackId: "kr-ko", country: "韩国", language: "韩语", nativeLabel: "한국어", lang: "ko", status: "available", countryCode: "KR", flagSrc: "icons/flags/kr.png" },
     { id: "ru", contentPackId: "ru-ru", country: "俄罗斯", language: "俄语", nativeLabel: "Русский", lang: "ru", status: "coming-soon", countryCode: "RU", flagSrc: "icons/flags/ru.png" },
     { id: "es", contentPackId: "es-es", country: "西班牙", language: "西班牙语", nativeLabel: "Español", lang: "es", status: "coming-soon", countryCode: "ES", flagSrc: "icons/flags/es.png" }
   ];
@@ -30,6 +32,10 @@
     us: Object.freeze({
       mobile: "images/heroes/us-mobile.webp",
       wide: "images/heroes/us-wide.webp"
+    }),
+    kr: Object.freeze({
+      mobile: "images/heroes/kr-mobile.png",
+      wide: "images/heroes/kr-wide.png"
     })
   });
   const SCENE_ICON_PATHS = Object.freeze({
@@ -49,7 +55,6 @@
     checklist: "icons/ui/checklist.png",
     trip: "icons/ui/trip-map.png",
     favorite: "icons/ui/favorite.png",
-    randomReview: "icons/ui/random-review.png",
     emergencyCard: "icons/ui/emergency-card.png",
     translate: "icons/ui/translate.png",
     privacy: "icons/ui/privacy.png",
@@ -58,6 +63,7 @@
     warning: "icons/ui/warning.png"
   });
   const SPEAKER_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  const FAVORITE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.78 5.63 6.22.9-4.5 4.39 1.06 6.2L12 17.2l-5.56 2.92 1.06-6.2L3 9.53l6.22-.9L12 3Z"/></svg>';
   const ACTION_ARROW_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   const view = document.getElementById("view");
@@ -75,11 +81,13 @@
     questionToken: 0,
     speechToken: 0,
     emergencyCard: null,
-    beginnerSession: null
+    beginnerSession: null,
+    favoriteQuery: ""
   };
   let toastTimer = null;
   let activeAudio = null;
   let cancelActiveAudio = null;
+  let dismissFavoriteGuide = null;
   let deferredInstallPrompt = null;
   let pendingDestinationFocus = false;
   let levelSurveyOpen = false;
@@ -155,6 +163,76 @@
       container.outerHTML = exampleHtml(entry, true);
       bindSpeechButtons(root.querySelector(".entry-example.expanded"));
     });
+  }
+
+  function favoriteIds() {
+    const pack = currentPack();
+    return pack ? window.TRAVEL_FAVORITES.getIds(pack.id, pack.entries) : [];
+  }
+  function favoriteButtonHtml(entry, extraClass = "") {
+    const active = favoriteIds().includes(entry.id);
+    const action = active ? "取消收藏" : "收藏";
+    return `<div class="favorite-control"><button class="favorite-toggle${extraClass ? ` ${extraClass}` : ""}${active ? " is-favorite" : ""}" type="button" data-favorite-id="${escapeHtml(entry.id)}" aria-pressed="${active}" aria-label="${action}：${escapeHtml(foreignText(entry))}" title="${action}">${FAVORITE_SVG}</button></div>`;
+  }
+  function syncFavoriteButtons(entry, active, root = document) {
+    root.querySelectorAll("[data-favorite-id]").forEach((button) => {
+      if (button.dataset.favoriteId !== entry.id) return;
+      button.classList.toggle("is-favorite", active);
+      button.setAttribute("aria-pressed", String(active));
+      button.setAttribute("aria-label", `${active ? "取消收藏" : "收藏"}：${foreignText(entry)}`);
+      button.title = active ? "取消收藏" : "收藏";
+    });
+  }
+  function hasSeenFavoriteGuide() {
+    try { return localStorage.getItem(FAVORITE_GUIDE_KEY) === "1"; }
+    catch (error) { return false; }
+  }
+  function rememberFavoriteGuide() {
+    try { localStorage.setItem(FAVORITE_GUIDE_KEY, "1"); }
+    catch (error) { /* no-op */ }
+  }
+  function maybeShowFavoriteGuide(root) {
+    if (dismissFavoriteGuide || hasSeenFavoriteGuide()) return;
+    const control = Array.from(root.querySelectorAll(".favorite-control")).find((item) => item.offsetParent !== null);
+    if (!control) return;
+    const guide = document.createElement("aside");
+    guide.className = "favorite-guide";
+    guide.setAttribute("role", "dialog");
+    guide.setAttribute("aria-label", "收藏功能提示");
+    guide.innerHTML = `<strong>遇到常用表达，点星标收藏</strong><p>之后可在「复习 → 收藏夹」快速找到</p><button type="button" data-dismiss-favorite-guide>知道了</button>`;
+    control.append(guide);
+    let outsideTimer = null;
+    const onOutside = (event) => { if (!control.contains(event.target)) dismiss(); };
+    const onKeydown = (event) => { if (event.key === "Escape") dismiss(); };
+    const dismiss = () => {
+      rememberFavoriteGuide();
+      clearTimeout(outsideTimer);
+      document.removeEventListener("pointerdown", onOutside);
+      document.removeEventListener("keydown", onKeydown);
+      guide.remove();
+      dismissFavoriteGuide = null;
+    };
+    dismissFavoriteGuide = dismiss;
+    guide.querySelector("[data-dismiss-favorite-guide]").addEventListener("click", (event) => {
+      event.stopPropagation();
+      dismiss();
+    });
+    document.addEventListener("keydown", onKeydown);
+    outsideTimer = setTimeout(() => document.addEventListener("pointerdown", onOutside), 0);
+  }
+  function bindFavoriteButtons(root = view, onChange) {
+    root.querySelectorAll("[data-favorite-id]").forEach((button) => button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      dismissFavoriteGuide?.();
+      const entry = wordBank().find((item) => item.id === button.dataset.favoriteId);
+      const pack = currentPack();
+      if (!entry || !pack) return;
+      const result = window.TRAVEL_FAVORITES.toggle(pack.id, entry.id, pack.entries);
+      syncFavoriteButtons(entry, result.favorite);
+      showToast(result.favorite ? "已加入收藏夹" : "已取消收藏");
+      onChange?.(entry, result.favorite);
+    }));
+    maybeShowFavoriteGuide(root);
   }
 
   function emptyLanguageState() { return { byId: {}, weakIds: [], lastLocation: null }; }
@@ -270,50 +348,25 @@
     return true;
   }
   function defaultBeginnerState() {
-    const state = {
-      levels: {},
-      packs: {
-        "jp-ja": { completedLessons: [], challengeDone: false, placementPassed: false, retryWords: [] },
-        "us-en": { completedLessons: [], challengeDone: false, placementPassed: false, retryWords: [] }
-      }
-    };
-    return beginnerStateAliases(state);
-  }
-  function beginnerStateAliases(beginner) {
-    Object.defineProperties(beginner, {
-      ja: { get: () => beginner.packs["jp-ja"] },
-      en: { get: () => beginner.packs["us-en"] }
+    const packs = {};
+    (window.TRAVEL_CONTENT?.all() || []).forEach((pack) => {
+      const module = window.TRAVEL_BEGINNER?.get(pack.features?.beginnerModule);
+      if (module) packs[pack.id] = module.createProgress();
     });
-    return beginner;
+    return { levels: {}, packs };
   }
   function loadBeginnerState() {
     try {
       const raw = JSON.parse(localStorage.getItem(BEGINNER_KEY));
-      const lessons = [...window.BEGINNER_DATA.rows, ...window.BEGINNER_DATA.rules];
-      const validIds = new Set(lessons.map((lesson) => lesson.id));
-      const validWords = new Set(window.BEGINNER_DATA.challenge.map((word) => word.text));
-      const englishLessons = (window.EN_BEGINNER_DATA?.stages || []).flatMap((stage) => stage.lessons);
-      const validEnglishIds = new Set(englishLessons.map((lesson) => lesson.id));
-      const validEnglishWords = new Set((window.EN_BEGINNER_DATA?.challenge || []).map((word) => word.text));
-      const state = {
-        levels: Object.fromEntries(Object.entries(raw?.levels || {}).filter(([id, level]) =>
-          DESTINATION_OPTIONS.some((item) => item.id === id && item.status === "available") && ["zero", "some", "later"].includes(level))),
-        packs: {
-          "jp-ja": {
-            completedLessons: Array.from(new Set((raw?.packs?.["jp-ja"]?.completedLessons || raw?.ja?.completedLessons || []).filter((id) => validIds.has(id)))),
-            challengeDone: (raw?.packs?.["jp-ja"]?.challengeDone ?? raw?.ja?.challengeDone) === true,
-            placementPassed: (raw?.packs?.["jp-ja"]?.placementPassed ?? raw?.ja?.placementPassed) === true,
-            retryWords: Array.from(new Set((raw?.packs?.["jp-ja"]?.retryWords || raw?.ja?.retryWords || []).filter((word) => validWords.has(word))))
-          },
-          "us-en": {
-            completedLessons: Array.from(new Set((raw?.packs?.["us-en"]?.completedLessons || raw?.en?.completedLessons || []).filter((id) => validEnglishIds.has(id)))),
-            challengeDone: (raw?.packs?.["us-en"]?.challengeDone ?? raw?.en?.challengeDone) === true,
-            placementPassed: (raw?.packs?.["us-en"]?.placementPassed ?? raw?.en?.placementPassed) === true,
-            retryWords: Array.from(new Set((raw?.packs?.["us-en"]?.retryWords || raw?.en?.retryWords || []).filter((word) => validEnglishWords.has(word))))
-          }
-        }
-      };
-      return beginnerStateAliases(state);
+      const state = defaultBeginnerState();
+      state.levels = Object.fromEntries(Object.entries(raw?.levels || {}).filter(([id, level]) =>
+        DESTINATION_OPTIONS.some((item) => item.id === id && item.status === "available") && ["zero", "some", "later"].includes(level)));
+      (window.TRAVEL_CONTENT?.all() || []).forEach((pack) => {
+        const module = window.TRAVEL_BEGINNER?.get(pack.features?.beginnerModule);
+        if (!module) return;
+        state.packs[pack.id] = module.normalizeProgress(raw?.packs?.[pack.id] || raw?.[module.legacyKey]);
+      });
+      return state;
     } catch (error) { return defaultBeginnerState(); }
   }
   function saveBeginnerState(beginner) {
@@ -371,8 +424,10 @@
   }
 
   function stopSpeech() {
+    dismissFavoriteGuide?.();
     state.speechToken += 1;
     if (cancelActiveAudio) cancelActiveAudio();
+    window.TRAVEL_BEGINNER?.all().forEach((module) => module.stop?.());
     try { window.speechSynthesis?.cancel(); }
     catch (error) { console.warn("无法停止语音", error); }
   }
@@ -439,9 +494,10 @@
     const problems = [];
     const packs = window.TRAVEL_CONTENT?.all() || [];
     if (!packs.length) return ["找不到目的地语言包。"];
-    if (!window.BEGINNER_DATA || window.BEGINNER_DATA.rows?.length !== 11 || window.BEGINNER_DATA.rules?.length !== 7 || window.BEGINNER_DATA.placement?.length !== 12) problems.push("日语认读课程数据不完整。 ");
-    const englishStages = window.EN_BEGINNER_DATA?.stages;
-    if (!Array.isArray(englishStages) || englishStages.length !== 5 || englishStages.flatMap((stage) => stage.lessons || []).length !== 12 || window.EN_BEGINNER_DATA?.placement?.length !== 12 || window.EN_BEGINNER_DATA?.challenge?.length !== 6) problems.push("英语认读课程数据不完整。 ");
+    window.TRAVEL_BEGINNER?.all().forEach((module) => {
+      const problem = module.validateData?.();
+      if (problem) problems.push(problem);
+    });
     const destinationIds = new Set();
     DESTINATION_OPTIONS.forEach((destination) => {
       ["id", "contentPackId", "country", "language", "nativeLabel", "lang", "status", "countryCode", "flagSrc"].forEach((field) => {
@@ -487,6 +543,7 @@
     const parts = window.location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
     if (!parts.length) return { name: "home" };
     if (parts[0] === "beginner") return { name: "beginner", page: parts[1] || "overview", lessonId: parts[2] || null };
+    if (parts[0] === "review" && parts[1] === "favorites") return { name: "favorites" };
     if (parts[0] === "tools" && parts[1] === "emergency-card") {
       return { name: parts[2] === "preview" ? "emergency-card-preview" : "emergency-card-form" };
     }
@@ -500,6 +557,7 @@
   function routeTab(route) {
     if (route.name === "beginner") return "home";
     if (route.name === "scene" || route.name === "learn") return "home";
+    if (route.name === "favorites") return "review";
     if (route.name.startsWith("emergency-card")) return "tools";
     return MAIN_TABS.has(route.name) ? route.name : "home";
   }
@@ -573,7 +631,7 @@
       shell.inert = false;
       previousFocus?.focus?.();
       if (level === "later") { if (fromEntry) navigatePath("beginner"); return; }
-      if (["jp", "us"].includes(destination.id)) navigatePath(level === "some" ? "beginner/placement" : "beginner");
+      if (window.TRAVEL_BEGINNER?.has(currentPack()?.features?.beginnerModule)) navigatePath(level === "some" ? "beginner/placement" : "beginner");
       else if (fromEntry) navigatePath("beginner");
       else if (state.tab === "home") renderHome();
     };
@@ -590,7 +648,7 @@
   }
   function renderRoute() {
     const route = parseRoute();
-    if (!state.destinationId && ["review", "scene", "learn", "beginner", "emergency-card-form", "emergency-card-preview"].includes(route.name)) {
+    if (!state.destinationId && ["review", "favorites", "scene", "learn", "beginner", "emergency-card-form", "emergency-card-preview"].includes(route.name)) {
       requireDestination();
       return;
     }
@@ -600,6 +658,7 @@
     updateShell(state.tab, route.name === "learn" || route.name === "beginner" || route.name.startsWith("emergency-card"));
     if (route.name === "beginner") renderBeginnerRoute(route);
     else if (route.name === "review") renderReview();
+    else if (route.name === "favorites") renderFavorites();
     else if (route.name === "tools") renderTools();
     else if (route.name === "me") renderMe();
     else if (route.name === "emergency-card-form") renderEmergencyCardForm();
@@ -685,12 +744,10 @@
       <span class="quick-entry-arrow" aria-hidden="true">${ACTION_ARROW_SVG}</span>
     </button>`;
     const beginner = loadBeginnerState();
-    const beginnerModule = currentPack()?.features?.beginnerModule;
-    const beginnerSubtitle = beginnerModule === "japanese"
-      ? beginner.ja.placementPassed ? "已通过认读测试" : beginner.ja.challengeDone ? "认读挑战已完成" : "从假名开始，读出旅行日语"
-      : beginnerModule === "english"
-        ? beginner.en.placementPassed ? "已通过认读测试" : beginner.en.challengeDone ? "认读挑战已完成" : beginner.en.completedLessons.length ? `已完成 ${beginner.en.completedLessons.length} / 12 节短课` : "从声音开始，尝试读出旅行英语"
-        : destination ? "课程筹备中" : "选择目的地后开始";
+    const beginnerModule = window.TRAVEL_BEGINNER?.get(currentPack()?.features?.beginnerModule);
+    const beginnerSubtitle = beginnerModule
+      ? beginnerModule.getHomeSummary(beginner.packs[currentPack().id])
+      : destination ? "课程筹备中" : "选择目的地后开始";
     view.innerHTML = `<div class="home page-enter">
       <div class="brand-hero" aria-hidden="true">
         <picture>
@@ -750,489 +807,27 @@
     if (destination && !beginner.levels[destination.id]) requestAnimationFrame(maybeAskLevel);
   }
 
-  function beginnerLessons() { return [...window.BEGINNER_DATA.rows, ...window.BEGINNER_DATA.rules]; }
-  function beginnerLesson(id) { return beginnerLessons().find((lesson) => lesson.id === id); }
-  function beginnerAudioEntry(text, audioId) {
-    const id = audioId || `beginner/kana-${text.codePointAt(0).toString(16).padStart(4, "0")}`;
-    return { id, text, audioPath: `${currentPack().features.beginnerAudioBase}/${id}.mp3` };
-  }
-  function beginnerSpeaker(text, audioId, label = "播放发音") {
-    return `<button class="speak-btn beginner-speak" type="button" data-audio-text="${escapeHtml(text)}" data-audio-id="${escapeHtml(audioId || "")}" aria-label="${escapeHtml(label)}">${SPEAKER_SVG}</button>`;
-  }
-  function englishBeginnerSpeaker(text, rate = "clear", label = "播放美式英语发音") {
-    return `<button class="speak-btn en-beginner-speak" type="button" data-speech-text="${escapeHtml(text)}" data-speech-rate="${escapeHtml(rate)}" aria-label="${escapeHtml(label)}">${SPEAKER_SVG}</button>`;
-  }
-  function synthesizeEnglishBeginnerSpeech(text, rate, token) {
-    return new Promise((resolve) => {
-      if (!("speechSynthesis" in window)) { showToast("当前浏览器不支持系统语音"); resolve({ status: "error" }); return; }
-      try {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = "en-US";
-        utterance.rate = rate === "slow" ? .68 : rate === "natural" ? 1 : .84;
-        utterance.onend = () => resolve({ status: token === state.speechToken ? "played" : "canceled" });
-        utterance.onerror = () => { showToast("系统语音播放失败，请检查浏览器语音设置"); resolve({ status: "error" }); };
-        window.speechSynthesis.speak(utterance);
-      } catch (error) {
-        showToast("系统语音播放失败，请检查浏览器语音设置");
-        resolve({ status: "error" });
-      }
-    });
-  }
-  function playEnglishBeginnerSpeech(text, rate = "clear") {
-    stopSpeech();
-    const token = state.speechToken;
-    const entry = (window.EN_BEGINNER_AUDIO || []).find((item) => item.text === text && item.rate === rate);
-    if (!entry) return synthesizeEnglishBeginnerSpeech(text, rate, token);
-    return new Promise((resolve) => {
-      const audio = new Audio(`${currentPack().features.beginnerAudioBase}/${entry.id}.mp3`);
-      let settled = false;
-      const finish = (status) => {
-        if (settled) return;
-        settled = true;
-        clearTimeout(timer);
-        audio.onended = null;
-        audio.onerror = null;
-        audio.pause();
-        if (activeAudio === audio) activeAudio = null;
-        if (cancelActiveAudio === cancel) cancelActiveAudio = null;
-        if (status === "error" && token === state.speechToken) {
-          void synthesizeEnglishBeginnerSpeech(text, rate, token).then(resolve);
-          return;
-        }
-        resolve({ status });
-      };
-      const cancel = () => finish("canceled");
-      const timer = setTimeout(() => finish("error"), speechTimeout(text) + 2000);
-      activeAudio = audio;
-      cancelActiveAudio = cancel;
-      audio.preload = "auto";
-      audio.onended = () => finish("played");
-      audio.onerror = () => finish("error");
-      try {
-        const promise = audio.play();
-        if (promise?.catch) promise.catch(() => finish("error"));
-      } catch (error) { finish("error"); }
-    });
-  }
-  function shuffleQuestionOptions(questions) {
-    const offset = Math.floor(Math.random() * 3);
-    const positions = shuffle(questions.map((_, index) => (index + offset) % 3));
-    return questions.map((question, index) => {
-      const options = shuffle(question.options.filter((option) => option !== question.answer));
-      options.splice(Math.min(positions[index], options.length), 0, question.answer);
-      return { ...question, options };
-    });
-  }
-  function bindBeginnerSpeakers(root = view) {
-    root.querySelectorAll(".beginner-speak").forEach((button) => button.addEventListener("click", () => {
-      void playSpeech(beginnerAudioEntry(button.dataset.audioText, button.dataset.audioId));
-    }));
-  }
-  function bindEnglishBeginnerSpeakers(root = view) {
-    root.querySelectorAll(".en-beginner-speak").forEach((button) => button.addEventListener("click", () => {
-      void playEnglishBeginnerSpeech(button.dataset.speechText, button.dataset.speechRate);
-    }));
+  function beginnerContext() {
+    const packId = currentPack()?.id;
+    return {
+      view, state, escapeHtml, speakerSvg: SPEAKER_SVG, currentPack, selectedDestination,
+      navigatePath, scrollToTop, stopSpeech, playSpeech, shuffle, showToast, speechTimeout,
+      getProgress: () => loadBeginnerState().packs[packId],
+      saveProgress(progress) { const beginner = loadBeginnerState(); beginner.packs[packId] = progress; saveBeginnerState(beginner); }
+    };
   }
   function renderBeginnerRoute(route) {
-    const module = currentPack()?.features?.beginnerModule;
-    if (module === "english") { renderEnglishBeginnerRoute(route); return; }
-    if (module !== "japanese") { renderBeginnerPlaceholder(); return; }
-    if (route.page === "placement") renderPlacementIntro();
-    else if (route.page === "lesson") renderBeginnerLesson(route.lessonId);
-    else if (route.page === "challenge") renderChallengeIntro();
-    else renderBeginnerOverview();
+    const module = window.TRAVEL_BEGINNER?.get(currentPack()?.features?.beginnerModule);
+    if (module) module.renderRoute(route, beginnerContext());
+    else renderBeginnerPlaceholder();
   }
-  function beginnerHeader(title, subtitle) {
-    const destination = selectedDestination();
-    return `<header class="screen-heading beginner-heading"><button class="back-link" type="button" data-beginner-back>← 首页</button><span class="eyebrow">${escapeHtml(destination?.language || "语言")} · 旅行认读</span><h1>${escapeHtml(title)}</h1><p>${escapeHtml(subtitle)}</p></header>`;
-  }
-  function bindBeginnerBack() { view.querySelector("[data-beginner-back]")?.addEventListener("click", () => navigatePath("home")); }
   function renderBeginnerPlaceholder() {
     stopSpeech();
     const destination = selectedDestination();
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader("课程筹备中", `${destination.country} · ${destination.language}的旅行认读内容正在准备。`)}
+    view.innerHTML = `<div class="page-enter beginner-page"><header class="screen-heading beginner-heading"><button class="back-link" type="button" data-beginner-back>← 首页</button><span class="eyebrow">${escapeHtml(destination?.language || "语言")} · 旅行认读</span><h1>课程筹备中</h1><p>${escapeHtml(`${destination.country} · ${destination.language}的旅行认读内容正在准备。`)}</p></header>
       <section class="beginner-intro-card"><strong>先从旅行场景开始</strong><p>你可以照常学习当前目的地的八大场景。认读课程上线后，这里会成为入口。</p><button class="primary-btn" type="button" data-go-scenes>返回首页选场景</button></section></div>`;
-    bindBeginnerBack();
+    view.querySelector("[data-beginner-back]").addEventListener("click", () => navigatePath("home"));
     view.querySelector("[data-go-scenes]").addEventListener("click", () => navigatePath("home"));
-    scrollToTop();
-  }
-  function renderBeginnerOverview() {
-    stopSpeech();
-    const beginner = loadBeginnerState().ja;
-    const lessons = beginnerLessons();
-    const next = lessons.find((lesson) => !beginner.completedLessons.includes(lesson.id));
-    const count = beginner.completedLessons.length;
-    const sections = [window.BEGINNER_DATA.rows, window.BEGINNER_DATA.rules].map((group, index) => `<section class="beginner-stage"><div class="section-heading"><div><span class="eyebrow">阶段 ${index + 1}</span><h2>${index ? "拼读规则" : "认识基础假名"}</h2></div><span>${group.length} 节短课</span></div>
-      <div class="beginner-lesson-list">${group.map((lesson) => `<button class="beginner-lesson-row" type="button" data-lesson="${lesson.id}"><span class="lesson-mark">${beginner.completedLessons.includes(lesson.id) ? "✓" : "○"}</span><span><strong>${escapeHtml(lesson.title)}</strong><small>${index ? escapeHtml(lesson.note) : `${lesson.pairs.length} 个声音 · 平假名与片假名同步认识`}</small></span><span aria-hidden="true">›</span></button>`).join("")}</div></section>`).join("");
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader("旅行认读", "从假名与声音开始，练到能自己尝试读旅行日语。")} 
-      <section class="beginner-intro-card"><span class="eyebrow">你的进度</span><h2>${beginner.placementPassed ? "已通过认读测试" : beginner.challengeDone ? "旅行认读挑战已完成" : `已完成 ${count} / ${lessons.length} 节短课`}</h2><p>课程围绕读音，不需要写字或使用麦克风。八大旅行场景随时可以进入。</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-start-beginner>${next ? "继续短课" : "查看认读挑战"}</button><button class="secondary-btn compact" type="button" data-test-beginner>认读测试</button></div></section>
-      ${sections}<section class="beginner-stage"><div class="section-heading"><div><h2>旅行认读挑战</h2></div></div><p class="beginner-stage-copy">先自己读，再听标准音频核对。</p><button class="secondary-btn" type="button" data-challenge ${next ? "disabled" : ""}>${next ? "完成短课后开始" : "进入挑战"}</button></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-start-beginner]").addEventListener("click", () => navigatePath(next ? `beginner/lesson/${next.id}` : "beginner/challenge"));
-    view.querySelector("[data-test-beginner]").addEventListener("click", () => navigatePath("beginner/placement"));
-    view.querySelector("[data-challenge]")?.addEventListener("click", () => navigatePath("beginner/challenge"));
-    view.querySelectorAll("[data-lesson]").forEach((button) => button.addEventListener("click", () => navigatePath(`beginner/lesson/${button.dataset.lesson}`)));
-    scrollToTop();
-  }
-  function renderPlacementIntro() {
-    stopSpeech();
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader("旅行认读测试", "已有基础？用 12 道题检查清音、片假名和拼读规则。")} 
-      <section class="beginner-intro-card"><h2>先听、再看、再判断</h2><p>至少答对 10 题，且三个类别各有正确答案，就能跳过短课。没有达到标准也不影响进入旅行场景。</p><button class="primary-btn" type="button" data-start-placement>开始测试</button></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-start-placement]").addEventListener("click", () => {
-      state.beginnerSession = { kind: "placement", index: 0, answers: [],
-        questions: shuffleQuestionOptions(window.BEGINNER_DATA.placement) };
-      renderBeginnerQuestion();
-    });
-    scrollToTop();
-  }
-  function renderBeginnerQuestion() {
-    stopSpeech();
-    const session = state.beginnerSession;
-    const question = session.questions[session.index];
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader("旅行认读测试", `第 ${session.index + 1} / 12 题 · ${question.category}`)}
-      <section class="beginner-question-card"><span class="eyebrow">${question.category}</span><h2>${escapeHtml(question.prompt)}</h2>${question.audioKana ? `<div class="beginner-question-audio">${beginnerSpeaker(question.audioKana, null, "播放题目发音")}<span>点击听音，可重复播放</span></div>` : ""}<div class="beginner-options">${question.options.map((option) => `<button class="beginner-option" type="button" data-option="${escapeHtml(option)}">${escapeHtml(option)}</button>`).join("")}</div></section></div>`;
-    bindBeginnerBack(); bindBeginnerSpeakers();
-    view.querySelectorAll("[data-option]").forEach((button) => button.addEventListener("click", () => {
-      session.answers.push({ category: question.category, correct: button.dataset.option === question.answer });
-      if (session.index === window.BEGINNER_DATA.placement.length - 1) renderPlacementResult();
-      else { session.index += 1; renderBeginnerQuestion(); }
-    }));
-    scrollToTop();
-  }
-  function renderPlacementResult() {
-    stopSpeech();
-    const answers = state.beginnerSession.answers;
-    const score = answers.filter((answer) => answer.correct).length;
-    const categories = ["清音", "片假名", "规则"];
-    const passed = score >= 10 && categories.every((category) => answers.some((answer) => answer.category === category && answer.correct));
-    if (passed) { const beginner = loadBeginnerState(); beginner.ja.placementPassed = true; saveBeginnerState(beginner); }
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader("测试结果", "这次测试仅用来选择学习路线。")}
-      <section class="beginner-intro-card"><span class="beginner-score">${score} / 12</span><h2>${passed ? "你已经具备旅行认读基础" : "建议从短课练起"}</h2><p>${passed ? "可以跳过认读短课，直接使用八大旅行场景。" : "清音、片假名或拼读规则还有不熟悉的地方；场景仍可自由进入。"}</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-result-home>进入旅行场景</button><button class="secondary-btn compact" type="button" data-result-lessons>${passed ? "仍想练习" : "开始短课"}</button></div></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-result-home]").addEventListener("click", () => navigatePath("home"));
-    view.querySelector("[data-result-lessons]").addEventListener("click", () => navigatePath("beginner"));
-    scrollToTop();
-  }
-  function toKatakana(text) {
-    return Array.from(text, (character) => {
-      const code = character.codePointAt(0);
-      return code >= 0x3041 && code <= 0x3096 ? String.fromCodePoint(code + 0x60) : character;
-    }).join("");
-  }
-  function lessonQuestions(lesson) {
-    if (lesson.question) {
-      const questions = [{ kind: "choice", prompt: lesson.question.prompt, options: lesson.question.options, answer: lesson.question.answer }];
-      if (lesson.example) {
-        const other = window.BEGINNER_DATA.rules.filter((rule) => rule.example && rule.example.text !== lesson.example.text).slice(0, 2);
-        questions.push({ kind: "choice", prompt: "听音后，选出刚才听到的词", audioText: lesson.example.audioText || lesson.example.text,
-          audioId: lesson.example.audioId || `beginner/example-${lesson.id}`, options: [lesson.example.text, ...other.map((rule) => rule.example.text)], answer: lesson.example.text });
-      }
-      return shuffleQuestionOptions(questions);
-    }
-    const allPairs = window.BEGINNER_DATA.rows.flatMap((row) => row.pairs);
-    const target = lesson.pairs[Math.min(1, lesson.pairs.length - 1)];
-    const last = lesson.pairs.at(-1);
-    const distractors = allPairs.filter((pair) => pair[0] !== target[0] && !lesson.pairs.some((item) => item[0] === pair[0])).slice(0, 2);
-    const audioPairs = [target, ...distractors];
-    const questions = [
-      { kind: "choice", prompt: "听音后选出对应的平假名", audioText: target[0], options: audioPairs.map((pair) => pair[0]), answer: target[0] },
-      { kind: "choice", prompt: `「${last[0]}」对应的片假名是什么？`, options: [last[1], ...distractors.map((pair) => pair[1])], answer: last[1] },
-      { kind: "audio-choice", prompt: `看「${target[0]}」，听三个声音后选出正确的一个`, options: audioPairs.map((pair) => pair[0]), answer: target[0] }
-    ];
-    if (lesson.example && Array.from(lesson.example.text).length <= 3 && new Set(Array.from(lesson.example.text)).size > 1) {
-      const reversed = Array.from(lesson.example.text).reverse().join("");
-      questions.push({ kind: "choice", prompt: `按拼读顺序，哪个写法是「${lesson.example.zh}」？`, options: [lesson.example.text, reversed, `${lesson.example.text[0]}${last[0]}`], answer: lesson.example.text });
-    }
-    return shuffleQuestionOptions(questions);
-  }
-  function renderBeginnerLesson(lessonId) {
-    stopSpeech();
-    const lesson = beginnerLesson(lessonId);
-    if (!lesson) { navigatePath("beginner", true); return; }
-    const isRule = Boolean(lesson.question);
-    const count = beginnerLessons().findIndex((item) => item.id === lesson.id) + 1;
-    const cards = isRule
-      ? lesson.pairs.map(([source, changed], index) => `<div class="beginner-kana-card"><small>${lesson.id === "n-context" ? "相同的鼻音" : `${escapeHtml(source)} →`}</small><strong>${escapeHtml(changed)}${toKatakana(changed) !== changed ? ` <span>/ ${escapeHtml(toKatakana(changed))}</span>` : ""}</strong>${["voiced-ks", "voiced-th", "semi-voiced", "contracted"].includes(lesson.id) ? beginnerSpeaker(changed, `beginner/rule-${lesson.id}-${index}`, `播放${changed}的读音`) : lesson.id === "n-context" ? beginnerSpeaker("ん", null, "播放ん和ン的共同读音") : ""}</div>`).join("")
-      : lesson.pairs.map(([hira, kata]) => `<div class="beginner-kana-card"><strong>${escapeHtml(hira)} <span>/ ${escapeHtml(kata)}</span></strong>${beginnerSpeaker(hira, null, `播放${hira}和${kata}的共同读音`)}</div>`).join("");
-    const example = lesson.example ? `<div class="beginner-example"><span class="eyebrow">试着自己拼读</span><strong>${escapeHtml(lesson.example.text)}</strong><p>${escapeHtml(lesson.example.zh)}</p>${beginnerSpeaker(lesson.example.audioText || lesson.example.text, lesson.example.audioId || `beginner/example-${lesson.id}`, `播放${lesson.example.text}的读音`)}</div>` : "";
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader(lesson.title, `短课 ${count} / ${beginnerLessons().length} · ${isRule ? "拼读规则" : "清音"}`)}
-      <section class="beginner-intro-card"><h2>${isRule ? "这个规则怎样改变读音？" : "一个声音，两种字形"}</h2><p>${escapeHtml(isRule ? lesson.note : "先看平假名，再看对应的片假名。点击播放，听它们共同的读音。")}</p><div class="beginner-kana-grid">${cards}</div>${example}<button class="primary-btn" type="button" data-lesson-practice>开始练习</button></section></div>`;
-    bindBeginnerBack(); bindBeginnerSpeakers();
-    view.querySelector("[data-lesson-practice]").addEventListener("click", () => {
-      state.beginnerSession = { kind: "lesson", lessonId: lesson.id, index: 0, questions: lessonQuestions(lesson), wrong: 0 };
-      renderLessonQuestion();
-    });
-    scrollToTop();
-  }
-  function renderLessonQuestion(feedback = "") {
-    stopSpeech();
-    const session = state.beginnerSession;
-    const question = session.questions[session.index];
-    const audio = question.audioText ? `<div class="beginner-question-audio">${beginnerSpeaker(question.audioText, question.audioId, "播放题目发音")}<span>点击听音，可重复播放</span></div>` : "";
-    const options = question.kind === "audio-choice"
-      ? question.options.map((option, index) => `<div class="beginner-audio-option">${beginnerSpeaker(option, null, `播放声音${index + 1}`)}<button class="beginner-option" type="button" data-option="${escapeHtml(option)}">选择声音 ${index + 1}</button></div>`).join("")
-      : question.options.map((option) => `<button class="beginner-option" type="button" data-option="${escapeHtml(option)}">${escapeHtml(option)}</button>`).join("");
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader(beginnerLesson(session.lessonId).title, `练习 ${session.index + 1} / ${session.questions.length}`)}
-      <section class="beginner-question-card"><span class="eyebrow">认读练习</span><h2>${escapeHtml(question.prompt)}</h2>${audio}<div class="beginner-options">${options}</div>${feedback ? `<p class="beginner-feedback" role="status">${escapeHtml(feedback)}</p>` : ""}</section></div>`;
-    bindBeginnerBack(); bindBeginnerSpeakers();
-    view.querySelectorAll("[data-option]").forEach((button) => button.addEventListener("click", () => {
-      if (button.dataset.option !== question.answer) { session.wrong += 1; renderLessonQuestion("再听或再看一次，然后重试这题。 "); return; }
-      if (session.index === session.questions.length - 1) renderLessonSelfCheck();
-      else { session.index += 1; renderLessonQuestion(); }
-    }));
-    scrollToTop();
-  }
-  function finishBeginnerLesson() {
-    const beginner = loadBeginnerState();
-    if (!beginner.ja.completedLessons.includes(state.beginnerSession.lessonId)) beginner.ja.completedLessons.push(state.beginnerSession.lessonId);
-    saveBeginnerState(beginner);
-    const next = beginnerLessons().find((lesson) => !beginner.ja.completedLessons.includes(lesson.id));
-    navigatePath(next ? `beginner/lesson/${next.id}` : "beginner/challenge");
-  }
-  function renderLessonSelfCheck() {
-    stopSpeech();
-    const lesson = beginnerLesson(state.beginnerSession.lessonId);
-    if (!lesson.example) { finishBeginnerLesson(); return; }
-    const example = lesson.example;
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader("自己先读", "先看文字试读，再播放正确发音核对。")}
-      <section class="beginner-question-card beginner-self-check"><span class="eyebrow">${escapeHtml(lesson.title)}</span><h2>${escapeHtml(example.text)}</h2><p>${escapeHtml(example.zh)}</p><div class="beginner-question-audio">${beginnerSpeaker(example.audioText || example.text, example.audioId || `beginner/example-${lesson.id}`, "播放正确发音")}</div><p>核对后选择自己的感觉；两种选择都可以继续。</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-self-right>我读对了</button><button class="secondary-btn compact" type="button" data-self-again>再练一次</button></div></section></div>`;
-    bindBeginnerBack(); bindBeginnerSpeakers();
-    view.querySelector("[data-self-right]").addEventListener("click", finishBeginnerLesson);
-    view.querySelector("[data-self-again]").addEventListener("click", () => { showToast("可以再读一遍，再播放音频核对"); });
-    scrollToTop();
-  }
-  function renderChallengeIntro() {
-    stopSpeech();
-    const beginner = loadBeginnerState().ja;
-    const unfinished = beginnerLessons().find((lesson) => !beginner.completedLessons.includes(lesson.id));
-    if (unfinished) { navigatePath("beginner", true); return; }
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader("旅行认读挑战", "依次读出六个旅行词，再听标准音频核对。")} 
-      <section class="beginner-intro-card"><h2>${beginner.challengeDone ? "再挑战一次" : "已经可以自己尝试读了"}</h2><p>没有麦克风评分，也不需要每个词都读对。遇到不熟的词可以标记为“再练一次”。</p><button class="primary-btn" type="button" data-start-challenge>开始挑战</button></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-start-challenge]").addEventListener("click", () => {
-      state.beginnerSession = { kind: "challenge", index: 0, retries: [] };
-      renderChallengeWord();
-    });
-    scrollToTop();
-  }
-  function renderChallengeWord(ready = false, played = false) {
-    stopSpeech();
-    const session = state.beginnerSession;
-    const word = window.BEGINNER_DATA.challenge[session.index];
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader("旅行认读挑战", `第 ${session.index + 1} / ${window.BEGINNER_DATA.challenge.length} 个词`)}
-      <section class="beginner-question-card beginner-self-check"><span class="eyebrow">先读文字</span><h2>${escapeHtml(word.text)}</h2><p>${escapeHtml(word.zh)}</p>
-      ${ready ? `<div class="beginner-question-audio"><button class="speak-btn" type="button" data-play-challenge aria-label="播放${escapeHtml(word.text)}的正确发音">${SPEAKER_SVG}</button><span>听正确发音核对</span></div>` : `<button class="primary-btn" type="button" data-read-first>我先自己读了</button>`}
-      ${played ? `<p>和你刚才读的一样吗？</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-challenge-result="right">我读对了</button><button class="secondary-btn compact" type="button" data-challenge-result="retry">再练一次</button></div>` : ""}</section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-read-first]")?.addEventListener("click", () => renderChallengeWord(true));
-    view.querySelector("[data-play-challenge]")?.addEventListener("click", async (event) => {
-      const button = event.currentTarget;
-      button.disabled = true;
-      const result = await playSpeech(beginnerAudioEntry(word.text, word.audioId));
-      if (result.status === "played") renderChallengeWord(true, true);
-      else { button.disabled = false; showToast("发音未能播放，请重试后再核对"); }
-    });
-    view.querySelectorAll("[data-challenge-result]").forEach((button) => button.addEventListener("click", () => {
-      if (button.dataset.challengeResult === "retry") session.retries.push(word.text);
-      if (session.index === window.BEGINNER_DATA.challenge.length - 1) renderChallengeResult();
-      else { session.index += 1; renderChallengeWord(); }
-    }));
-    scrollToTop();
-  }
-  function renderChallengeResult() {
-    stopSpeech();
-    const session = state.beginnerSession;
-    const beginner = loadBeginnerState();
-    beginner.ja.challengeDone = true;
-    beginner.ja.retryWords = Array.from(new Set(session.retries));
-    saveBeginnerState(beginner);
-    view.innerHTML = `<div class="page-enter beginner-page">${beginnerHeader("挑战完成", "你已经尝试不靠罗马音读出旅行日语。")}
-      <section class="beginner-intro-card"><span class="beginner-score">✓</span><h2>现在可以带着认读能力去旅行场景</h2><p>${session.retries.length ? `有 ${session.retries.length} 个词想再练一次，随时可以重做挑战。` : "六个词都已核对，可以继续学习场景词汇和短句。"}</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-finish-home>进入旅行场景</button><button class="secondary-btn compact" type="button" data-finish-overview>查看短课</button></div></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-finish-home]").addEventListener("click", () => navigatePath("home"));
-    view.querySelector("[data-finish-overview]").addEventListener("click", () => navigatePath("beginner"));
-    scrollToTop();
-  }
-
-  function englishBeginnerLessons() {
-    return window.EN_BEGINNER_DATA.stages.flatMap((stage) => stage.lessons);
-  }
-  function englishBeginnerLesson(id) {
-    return englishBeginnerLessons().find((lesson) => lesson.id === id);
-  }
-  function renderEnglishBeginnerRoute(route) {
-    if (route.page === "placement") renderEnglishPlacementIntro();
-    else if (route.page === "lesson") renderEnglishBeginnerLesson(route.lessonId);
-    else if (route.page === "challenge") renderEnglishChallengeIntro();
-    else renderEnglishBeginnerOverview();
-  }
-  function renderEnglishBeginnerOverview() {
-    stopSpeech();
-    const progress = loadBeginnerState().en;
-    const lessons = englishBeginnerLessons();
-    const next = lessons.find((lesson) => !progress.completedLessons.includes(lesson.id));
-    const stages = window.EN_BEGINNER_DATA.stages.map((stage, stageIndex) => `<section class="beginner-stage en-stage">
-      <div class="section-heading"><div><span class="eyebrow">阶段 ${stageIndex + 1}</span><h2>${escapeHtml(stage.title)}</h2><p>${escapeHtml(stage.subtitle)}</p></div><span>${stage.lessons.length} 节短课</span></div>
-      <div class="beginner-lesson-list">${stage.lessons.map((lesson) => `<button class="beginner-lesson-row" type="button" data-en-lesson="${escapeHtml(lesson.id)}"><span class="lesson-mark">${progress.completedLessons.includes(lesson.id) ? "✓" : String(lessons.indexOf(lesson) + 1).padStart(2, "0")}</span><span><strong>${escapeHtml(lesson.title)}</strong><small>${escapeHtml(lesson.subtitle)}</small></span><span aria-hidden="true">›</span></button>`).join("")}</div>
-    </section>`).join("");
-    view.innerHTML = `<div class="page-enter beginner-page en-beginner-page">${beginnerHeader("旅行认读", "从英语声音开始，练到敢看词、敢尝试、也更能听懂真人表达。")}
-      <section class="beginner-intro-card en-beginner-hero"><span class="eyebrow">你的进度</span><h2>${progress.placementPassed ? "已通过认读测试" : progress.challengeDone ? "英语认读挑战已完成" : `已完成 ${progress.completedLessons.length} / ${lessons.length} 节短课`}</h2><div class="progress-track" role="progressbar" aria-label="英语认读课程完成进度" aria-valuemin="0" aria-valuemax="12" aria-valuenow="${progress.completedLessons.length}"><span style="width:${Math.round(progress.completedLessons.length / lessons.length * 100)}%"></span></div><p>课程只练读音与听感，不要求写字、录音或接受发音评分。旅行场景随时可以进入。</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-en-continue>${next ? "继续短课" : "查看认读挑战"}</button><button class="secondary-btn compact" type="button" data-en-placement>认读测试</button></div></section>
-      ${stages}<section class="beginner-stage en-challenge-stage"><div class="section-heading"><div><span class="eyebrow">结课</span><h2>英语旅行认读挑战</h2></div></div><p class="beginner-stage-copy">用六个词和短句，把学到的声音线索串起来。</p><button class="secondary-btn" type="button" data-en-challenge ${next ? "disabled" : ""}>${next ? "完成 12 节短课后开始" : progress.challengeDone ? "再挑战一次" : "进入挑战"}</button></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-en-continue]").addEventListener("click", () => navigatePath(next ? `beginner/lesson/${next.id}` : "beginner/challenge"));
-    view.querySelector("[data-en-placement]").addEventListener("click", () => navigatePath("beginner/placement"));
-    view.querySelector("[data-en-challenge]")?.addEventListener("click", () => navigatePath("beginner/challenge"));
-    view.querySelectorAll("[data-en-lesson]").forEach((button) => button.addEventListener("click", () => navigatePath(`beginner/lesson/${button.dataset.enLesson}`)));
-    scrollToTop();
-  }
-  function renderEnglishPlacementIntro() {
-    stopSpeech();
-    view.innerHTML = `<div class="page-enter beginner-page en-beginner-page">${beginnerHeader("英语认读测试", "已有基础？用 12 道题检查声音、拼读、重音和真实听感。")}
-      <section class="beginner-intro-card"><span class="eyebrow">只用来推荐路线</span><h2>先听、再看、再判断</h2><p>答对至少 10 题，且四类题目都有正确答案，即可跳过短课。结果不会限制旅行场景，也不会替你完成课程。</p><button class="primary-btn" type="button" data-start-en-placement>开始测试</button></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-start-en-placement]").addEventListener("click", () => {
-      state.beginnerSession = { kind: "en-placement", index: 0, answers: [], questions: shuffleQuestionOptions(window.EN_BEGINNER_DATA.placement) };
-      renderEnglishPlacementQuestion();
-    });
-    scrollToTop();
-  }
-  function renderEnglishPlacementQuestion() {
-    stopSpeech();
-    const session = state.beginnerSession;
-    if (!session || session.kind !== "en-placement") { navigatePath("beginner/placement", true); return; }
-    const question = session.questions[session.index];
-    const audio = question.audio ? `<div class="beginner-question-audio">${englishBeginnerSpeaker(question.audio.text, question.audio.rate || "clear", "播放题目美式英语发音")}<span>点击听音，可重复播放</span></div>` : "";
-    view.innerHTML = `<div class="page-enter beginner-page en-beginner-page">${beginnerHeader("英语认读测试", `第 ${session.index + 1} / ${session.questions.length} 题 · ${question.category}`)}
-      <div class="progress-track"><span style="width:${Math.round((session.index + 1) / session.questions.length * 100)}%"></span></div>
-      <section class="beginner-question-card"><span class="eyebrow">${escapeHtml(question.category)}</span><h2>${escapeHtml(question.prompt)}</h2>${audio}<div class="beginner-options">${question.options.map((option) => `<button class="beginner-option" type="button" data-en-placement-option="${escapeHtml(option)}">${escapeHtml(option)}</button>`).join("")}</div></section></div>`;
-    bindBeginnerBack(); bindEnglishBeginnerSpeakers();
-    view.querySelectorAll("[data-en-placement-option]").forEach((button) => button.addEventListener("click", () => {
-      session.answers.push({ category: question.category, correct: button.dataset.enPlacementOption === question.answer });
-      if (session.index === session.questions.length - 1) renderEnglishPlacementResult();
-      else { session.index += 1; renderEnglishPlacementQuestion(); }
-    }));
-    scrollToTop();
-  }
-  function renderEnglishPlacementResult() {
-    stopSpeech();
-    const session = state.beginnerSession;
-    const score = session.answers.filter((answer) => answer.correct).length;
-    const categories = ["声音辨识", "拼读规律", "音节与重音", "真实听感"];
-    const passed = score >= 10 && categories.every((category) => session.answers.some((answer) => answer.category === category && answer.correct));
-    if (passed) { const beginner = loadBeginnerState(); beginner.en.placementPassed = true; saveBeginnerState(beginner); }
-    view.innerHTML = `<div class="page-enter beginner-page en-beginner-page">${beginnerHeader("测试结果", "这次测试只帮助你选择更合适的学习路线。")}
-      <section class="beginner-intro-card"><span class="beginner-score">${score} / 12</span><h2>${passed ? "你已经具备英语旅行认读基础" : "建议从短课练起"}</h2><p>${passed ? "可以直接进入旅行场景；12 节短课仍然可以随时学习。" : "还有一些声音线索不够熟悉。可以从短课开始，也可以直接使用旅行场景。"}</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-en-result-home>进入旅行场景</button><button class="secondary-btn compact" type="button" data-en-result-lessons>${passed ? "仍想练习" : "开始短课"}</button></div></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-en-result-home]").addEventListener("click", () => navigatePath("home"));
-    view.querySelector("[data-en-result-lessons]").addEventListener("click", () => navigatePath("beginner"));
-    scrollToTop();
-  }
-  function renderEnglishWordRows(items) {
-    return `<div class="en-word-list">${items.map((item) => `<div class="en-word-row"><span class="en-word-copy">${item.label ? `<small>${escapeHtml(item.label)}</small>` : ""}<strong>${escapeHtml(item.text)}</strong><i>${escapeHtml(item.ipa)}</i><em>${escapeHtml(item.meaning)}</em></span>${englishBeginnerSpeaker(item.speech || item.text, "clear", `播放${item.text}的美式英语发音`)}</div>`).join("")}</div>`;
-  }
-  function renderEnglishLessonCard(card, revealed) {
-    if (card.type === "concept") return `<section class="en-lesson-card en-concept-card"><span class="en-card-index" aria-hidden="true">Aa</span><span class="eyebrow">先理解</span><h2>${escapeHtml(card.title)}</h2><p>${escapeHtml(card.body)}</p></section>`;
-    if (card.type === "words") return `<section class="en-lesson-card"><span class="eyebrow">看词听音</span><h2>${escapeHtml(card.title)}</h2>${renderEnglishWordRows(card.items)}</section>`;
-    if (card.type === "syllables") return `<section class="en-lesson-card"><span class="eyebrow">音节轨道</span><h2>${escapeHtml(card.title)}</h2><p class="en-card-note">圆点只用于辅助读音，正式书写仍使用完整单词。</p><div class="en-pattern-list">${card.items.map((item) => `<div class="en-pattern-row"><div><strong>${escapeHtml(item.text)}</strong><span class="en-chunks">${item.chunks.map((chunk) => `<b>${escapeHtml(chunk)}</b>`).join('<i aria-hidden="true">·</i>')}</span><small>${escapeHtml(item.ipa)} · ${escapeHtml(item.meaning)}</small></div>${englishBeginnerSpeaker(item.text, "clear", `播放${item.text}的美式英语发音`)}</div>`).join("")}</div></section>`;
-    if (card.type === "stress") return `<section class="en-lesson-card"><span class="eyebrow">重音轨道</span><h2>${escapeHtml(card.title)}</h2><div class="en-pattern-list">${card.items.map((item) => `<div class="en-pattern-row"><div><strong class="en-stress-word">${item.segments.map((segment) => segment.stress ? `<mark>${escapeHtml(segment.text)}</mark>` : escapeHtml(segment.text)).join("")}</strong><small>${escapeHtml(item.ipa)} · ${escapeHtml(item.meaning)}</small></div>${englishBeginnerSpeaker(item.text, "clear", `播放${item.text}的美式英语发音`)}</div>`).join("")}</div></section>`;
-    if (card.type === "phrases") return `<section class="en-lesson-card"><span class="eyebrow">真实听感</span><h2>${escapeHtml(card.title)}</h2><div class="en-phrase-list">${card.items.map((item) => `<article><strong>${escapeHtml(item.text)}</strong><span>${escapeHtml(item.meaning)}</span><div><span>${englishBeginnerSpeaker(item.text, "slow", `慢速播放${item.text}`)}<small>慢速</small></span><span>${englishBeginnerSpeaker(item.text, "natural", `自然语速播放${item.text}`)}<small>自然</small></span></div></article>`).join("")}</div></section>`;
-    if (card.type === "try-first") return `<section class="en-lesson-card en-try-card"><span class="eyebrow">Try First · 自己先读</span><h2>${escapeHtml(card.text)}</h2><p>${escapeHtml(card.meaning)}</p><span class="en-try-note">${escapeHtml(card.note)}</span>${revealed ? `<div class="en-reveal"><strong>${escapeHtml(card.ipa)}</strong><div>${card.dualSpeed ? `<span>${englishBeginnerSpeaker(card.text, "slow", `慢速播放${card.text}`)}<small>慢速</small></span><span>${englishBeginnerSpeaker(card.text, "natural", `自然语速播放${card.text}`)}<small>自然</small></span>` : englishBeginnerSpeaker(card.text, "clear", `播放${card.text}的正确发音`)}</div></div>` : `<button class="primary-btn" type="button" data-en-reveal>我先试读了</button>`}</section>`;
-    return "";
-  }
-  function renderEnglishBeginnerLesson(lessonId) {
-    const lesson = englishBeginnerLesson(lessonId);
-    if (!lesson) { navigatePath("beginner", true); return; }
-    if (state.beginnerSession?.kind !== "en-lesson" || state.beginnerSession.lessonId !== lessonId) {
-      state.beginnerSession = { kind: "en-lesson", lessonId, stepIndex: 0, revealedSteps: [], answer: null };
-    }
-    renderEnglishLessonStep();
-  }
-  function renderEnglishLessonStep() {
-    stopSpeech();
-    const session = state.beginnerSession;
-    const lesson = englishBeginnerLesson(session?.lessonId);
-    if (!lesson) { navigatePath("beginner", true); return; }
-    const lessonIndex = englishBeginnerLessons().findIndex((item) => item.id === lesson.id) + 1;
-    const steps = [...lesson.cards.map((card) => ({ kind: "card", value: card })), ...lesson.practice.map((question) => ({ kind: "practice", value: question }))];
-    const step = steps[session.stepIndex];
-    const progress = Math.round((session.stepIndex + 1) / steps.length * 100);
-    const isPractice = step.kind === "practice";
-    let content = "";
-    if (!isPractice) {
-      content = renderEnglishLessonCard(step.value, session.revealedSteps.includes(session.stepIndex));
-    } else {
-      const question = step.value;
-      const audio = question.audio ? `<div class="beginner-question-audio">${englishBeginnerSpeaker(question.audio.text, question.audio.rate || "clear", "播放练习题美式英语发音")}<span>点击听音，可重复播放</span></div>` : "";
-      content = `<section class="beginner-question-card en-practice-card"><span class="eyebrow">轻量练习 ${session.stepIndex - lesson.cards.length + 1} / ${lesson.practice.length}</span><h2>${escapeHtml(question.prompt)}</h2>${audio}<div class="beginner-options">${question.options.map((option) => `<button class="beginner-option${session.answer ? option === question.answer ? " correct" : option === session.answer ? " wrong" : "" : ""}" type="button" data-en-answer="${escapeHtml(option)}" ${session.answer ? "disabled" : ""}>${escapeHtml(option)}</button>`).join("")}</div>${session.answer ? `<div class="en-answer-feedback ${session.answer === question.answer ? "good" : "retry"}" role="status"><strong>${session.answer === question.answer ? "答对了" : `正确答案：${escapeHtml(question.answer)}`}</strong><p>${escapeHtml(question.explanation)}</p></div>` : ""}</section>`;
-    }
-    const canAdvance = isPractice
-      ? Boolean(session.answer)
-      : step.value.type !== "try-first" || session.revealedSteps.includes(session.stepIndex);
-    view.innerHTML = `<div class="page-enter beginner-page en-beginner-page en-lesson-flow">${beginnerHeader(lesson.title, `短课 ${lessonIndex} / 12 · ${lesson.subtitle}`)}<div class="en-step-meta"><span>第 ${session.stepIndex + 1} / ${steps.length} 项</span><div class="progress-track"><span style="width:${progress}%"></span></div></div>${content}<div class="en-step-actions"><button class="secondary-btn compact" type="button" data-en-step-prev ${session.stepIndex === 0 ? "disabled" : ""}>上一项</button>${canAdvance ? `<button class="primary-btn" type="button" data-en-step-next>${session.stepIndex === steps.length - 1 ? "完成本课" : "下一项"}</button>` : '<span aria-hidden="true"></span>'}</div></div>`;
-    bindBeginnerBack(); bindEnglishBeginnerSpeakers();
-    view.querySelector("[data-en-reveal]")?.addEventListener("click", () => { session.revealedSteps.push(session.stepIndex); renderEnglishLessonStep(); });
-    view.querySelector("[data-en-step-prev]")?.addEventListener("click", () => { session.stepIndex -= 1; session.answer = null; renderEnglishLessonStep(); });
-    view.querySelectorAll("[data-en-answer]").forEach((button) => button.addEventListener("click", () => { session.answer = button.dataset.enAnswer; renderEnglishLessonStep(); }));
-    view.querySelector("[data-en-step-next]")?.addEventListener("click", () => {
-      if (session.stepIndex === steps.length - 1) finishEnglishBeginnerLesson();
-      else { session.stepIndex += 1; session.answer = null; renderEnglishLessonStep(); }
-    });
-    scrollToTop();
-  }
-  function finishEnglishBeginnerLesson() {
-    const lessonId = state.beginnerSession.lessonId;
-    const beginner = loadBeginnerState();
-    if (!beginner.en.completedLessons.includes(lessonId)) beginner.en.completedLessons.push(lessonId);
-    saveBeginnerState(beginner);
-    const next = englishBeginnerLessons().find((lesson) => !beginner.en.completedLessons.includes(lesson.id));
-    navigatePath(next ? `beginner/lesson/${next.id}` : "beginner/challenge");
-  }
-  function renderEnglishChallengeIntro() {
-    stopSpeech();
-    const beginner = loadBeginnerState().en;
-    const unfinished = englishBeginnerLessons().find((lesson) => !beginner.completedLessons.includes(lesson.id));
-    if (unfinished) { navigatePath("beginner", true); return; }
-    view.innerHTML = `<div class="page-enter beginner-page en-beginner-page">${beginnerHeader("英语旅行认读挑战", "六个词和短句：先自己读，再听美式英语核对。")}
-      <section class="beginner-intro-card"><span class="eyebrow">结课挑战</span><h2>${beginner.challengeDone ? "再挑战一次" : "你已经走完 12 节短课"}</h2><p>没有麦克风评分，也没有及格线。遇到不熟悉的内容，可以标记为“再练一次”。</p><button class="primary-btn" type="button" data-start-en-challenge>开始挑战</button></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-start-en-challenge]").addEventListener("click", () => { state.beginnerSession = { kind: "en-challenge", index: 0, retries: [] }; renderEnglishChallengeItem(); });
-    scrollToTop();
-  }
-  function renderEnglishChallengeItem(ready = false, played = false) {
-    stopSpeech();
-    const session = state.beginnerSession;
-    const item = window.EN_BEGINNER_DATA.challenge[session.index];
-    view.innerHTML = `<div class="page-enter beginner-page en-beginner-page">${beginnerHeader("英语旅行认读挑战", `第 ${session.index + 1} / ${window.EN_BEGINNER_DATA.challenge.length} 项`)}
-      <section class="beginner-question-card beginner-self-check en-challenge-card"><span class="eyebrow">先看文字试读</span><h2>${escapeHtml(item.text)}</h2><p>${escapeHtml(item.meaning)}</p>${ready ? `<strong class="en-challenge-ipa">${escapeHtml(item.ipa)}</strong><div class="beginner-question-audio">${englishBeginnerSpeaker(item.text, "clear", `播放${item.text}的正确发音`)}<span>听正确发音核对</span></div>` : `<button class="primary-btn" type="button" data-en-read-first>我先自己读了</button>`}${played ? `<p>和你刚才读的一样吗？</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-en-challenge-result="right">我读对了</button><button class="secondary-btn compact" type="button" data-en-challenge-result="retry">再练一次</button></div>` : ""}</section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-en-read-first]")?.addEventListener("click", () => renderEnglishChallengeItem(true));
-    view.querySelector(".en-beginner-speak")?.addEventListener("click", async (event) => {
-      const button = event.currentTarget;
-      button.disabled = true;
-      const result = await playEnglishBeginnerSpeech(button.dataset.speechText, button.dataset.speechRate);
-      if (result.status === "played") renderEnglishChallengeItem(true, true);
-      else button.disabled = false;
-    });
-    view.querySelectorAll("[data-en-challenge-result]").forEach((button) => button.addEventListener("click", () => {
-      if (button.dataset.enChallengeResult === "retry") session.retries.push(item.text);
-      if (session.index === window.EN_BEGINNER_DATA.challenge.length - 1) renderEnglishChallengeResult();
-      else { session.index += 1; renderEnglishChallengeItem(); }
-    }));
-    scrollToTop();
-  }
-  function renderEnglishChallengeResult() {
-    stopSpeech();
-    const session = state.beginnerSession;
-    const beginner = loadBeginnerState();
-    beginner.en.challengeDone = true;
-    beginner.en.retryWords = Array.from(new Set(session.retries));
-    saveBeginnerState(beginner);
-    view.innerHTML = `<div class="page-enter beginner-page en-beginner-page">${beginnerHeader("英语基础入门完成", "你已经知道怎样看词、找线索，并尝试读出旅行英语。")}
-      <section class="beginner-intro-card"><span class="beginner-score">✓</span><h2>接下来，去学习真正会用到的旅行英语</h2><p>${session.retries.length ? `有 ${session.retries.length} 项想再练一次，随时可以重做挑战。` : "六项内容都已核对，可以继续学习场景词汇和短句。"}</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-en-finish-home>开始学习旅行英语</button><button class="secondary-btn compact" type="button" data-en-finish-overview>查看短课</button></div></section></div>`;
-    bindBeginnerBack();
-    view.querySelector("[data-en-finish-home]").addEventListener("click", () => navigatePath("home"));
-    view.querySelector("[data-en-finish-overview]").addEventListener("click", () => navigatePath("beginner"));
     scrollToTop();
   }
 
@@ -1335,7 +930,7 @@
       <div class="quiz-top"><button class="text-btn" type="button" data-quit>退出</button><strong>${escapeHtml(situation.name)}</strong><span>${current} / ${total}</span></div>
       <div class="progress-track" role="progressbar" aria-label="认识进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><span style="width:${progress}%"></span></div>
       <section class="recognition-card" tabindex="-1" aria-labelledby="recognitionWord">
-        <span class="question-meta">认识这句话</span>
+        <div class="recognition-meta"><span class="question-meta">认识这句话</span>${favoriteButtonHtml(entry)}</div>
         <div class="recognition-foreign"><h2 id="recognitionWord">${escapeHtml(foreignText(entry))}</h2>${audioButtonHtml(entry)}</div>
         ${entry.pronunciation ? `<p class="recognition-reading">${escapeHtml(entry.pronunciation)}</p>` : ""}
         <div class="recognition-divider"></div>
@@ -1360,6 +955,7 @@
       }
     });
     bindSpeechButtons();
+    bindFavoriteButtons();
     bindExampleDisclosure(entry);
     scrollToTop();
     requestAnimationFrame(() => view.querySelector(".recognition-card")?.focus({ preventScroll: true }));
@@ -1533,7 +1129,7 @@
     feedback.className = `feedback ${correct ? "good" : "bad"}`;
     feedback.innerHTML = `<span class="feedback-icon" aria-hidden="true">${correct ? "✓" : "!"}</span><div>
       <strong>${correct ? "回答正确" : "再看一次正确答案"}</strong>
-      <div class="feedback-answer"><span class="answer-zh">${escapeHtml(entry.zh)}</span>${foreignContentHtml(entry, true)}</div>
+      <div class="feedback-entry"><div class="feedback-answer"><span class="answer-zh">${escapeHtml(entry.zh)}</span>${foreignContentHtml(entry, true)}</div>${favoriteButtonHtml(entry, "feedback-favorite")}</div>
       ${exampleHtml(entry, true)}
     </div>`;
     const confirm = view.querySelector("#confirmBtn");
@@ -1541,6 +1137,7 @@
     confirm.textContent = state.quiz.index >= state.quiz.questions.length - 1 ? "查看结果" : "下一题";
     feedback.focus({ preventScroll: true });
     bindSpeechButtons(feedback);
+    bindFavoriteButtons(feedback);
     void playSpeech(entry, true);
   }
   function advanceQuestion() {
@@ -1580,7 +1177,7 @@
     view.innerHTML = `<div class="lesson page-enter">
       <div class="quiz-top"><button class="text-btn" type="button" data-later>稍后继续</button><strong>再认识一次</strong><span>${current} / ${total}</span></div>
       <section class="recognition-card retry-card" tabindex="-1">
-        <span class="question-meta">刚才这条还不熟</span>
+        <div class="recognition-meta"><span class="question-meta">刚才这条还不熟</span>${favoriteButtonHtml(entry)}</div>
         <div class="recognition-foreign"><h2>${escapeHtml(foreignText(entry))}</h2>${audioButtonHtml(entry)}</div>
         ${entry.pronunciation ? `<p class="recognition-reading">${escapeHtml(entry.pronunciation)}</p>` : ""}
         <div class="recognition-divider"></div><strong class="recognition-zh">${escapeHtml(entry.zh)}</strong>
@@ -1598,6 +1195,7 @@
       }
     });
     bindSpeechButtons();
+    bindFavoriteButtons();
     bindExampleDisclosure(entry);
     scrollToTop();
   }
@@ -1644,6 +1242,7 @@
     const learning = loadLearning();
     const mastered = Object.values(learning.byId).filter((record) => record.status === "mastered").length;
     const weakCount = learning.weakIds.length;
+    const favoriteCount = favoriteIds().length;
     const sceneRows = scenePacks().map((scene) => {
       const count = masteredWords({ sceneId: scene.id }).length;
       return `<button class="review-scene-row scene-${escapeHtml(scene.id)}" type="button" data-review-scene="${scene.id}" ${count ? "" : "disabled"}>
@@ -1659,21 +1258,97 @@
         <div class="review-overview-stats" aria-label="复习数据"><div><strong>${mastered}</strong><span>已掌握</span></div><div><strong>${weakCount}</strong><span>需要加强</span></div></div>
         ${mastered ? `<button class="primary-btn" type="button" data-review-primary>${weakCount ? "开始加强" : "开始复习"}</button>` : ""}
       </section>
-      ${mastered ? `<div class="feature-stack">
+      <div class="feature-stack">
         <section class="feature-card featured"><span class="feature-icon violet" aria-hidden="true">${uiIcon("review")}</span><div><h3>薄弱加强</h3><p>${weakCount ? `集中复习 ${weakCount} 条答错过的内容。` : "目前没有需要加强的内容。"}</p></div><button class="secondary-btn compact" type="button" data-review-weak ${weakCount ? "" : "disabled"}>${weakCount ? "去加强" : "状态良好"}</button></section>
-        <section class="feature-card"><span class="feature-icon mint" aria-hidden="true">${uiIcon("randomReview")}</span><div><h3>随机复习</h3><p>从全部已掌握内容中抽取最多 ${REVIEW_BATCH_SIZE} 题。</p></div><button class="secondary-btn compact" type="button" data-review-random>开始</button></section>
+        <section class="feature-card"><span class="feature-icon favorite" aria-hidden="true">${uiIcon("favorite")}</span><div><h3>收藏夹</h3><p>${favoriteCount ? `已收藏 ${favoriteCount} 条常用表达。` : "把旅途中常用的表达收在这里。"}</p></div><button class="secondary-btn compact" type="button" data-open-favorites>${favoriteCount ? "查看收藏" : "去收藏"}</button></section>
       </div>
-      <div class="section-heading review-heading"><div><span class="eyebrow">按需选择</span><h2>按场景复习</h2></div></div>
+      ${mastered ? `<div class="section-heading review-heading"><div><span class="eyebrow">按需选择</span><h2>按场景复习</h2></div></div>
       <div class="review-scene-list">${sceneRows}</div>`
       : `<div class="empty-state review-empty"><span aria-hidden="true">${uiIcon("review")}</span><strong>还没有可复习的内容</strong><p>先到首页选择一个旅行场景，完成认识和小测。</p><button class="primary-btn" type="button" data-go-home>去首页学习</button></div>`}
     </div>`;
     view.querySelector("[data-review-primary]")?.addEventListener("click", () => startReview(weakCount ? { weak: true } : undefined));
     view.querySelector("[data-review-weak]")?.addEventListener("click", () => startReview({ weak: true }));
-    view.querySelector("[data-review-random]")?.addEventListener("click", () => startReview());
+    view.querySelector("[data-open-favorites]")?.addEventListener("click", () => navigatePath("review/favorites"));
     view.querySelectorAll("[data-review-scene]").forEach((button) => button.addEventListener("click", () => startReview({ sceneId: button.dataset.reviewScene })));
     view.querySelector("[data-go-home]")?.addEventListener("click", () => navigatePath("home"));
     scrollToTop();
   }
+
+  function favoriteEntryCardHtml(entry) {
+    const scene = sceneById(entry.sceneId);
+    const situation = situationById(scene, entry.situationId);
+    return `<article class="favorite-entry-card" data-favorite-card="${escapeHtml(entry.id)}">
+      <div class="favorite-entry-meta"><span>${escapeHtml(scene?.name || "旅行场景")} · ${escapeHtml(situation?.name || "常用表达")} · ${entry.kind === "phrase" ? "短句" : "词汇"}</span>${favoriteButtonHtml(entry)}</div>
+      <div class="favorite-entry-main"><div><strong>${escapeHtml(foreignText(entry))}</strong>${entry.pronunciation ? `<p>${escapeHtml(entry.pronunciation)}</p>` : ""}<span>${escapeHtml(entry.zh)}</span></div>${audioButtonHtml(entry)}</div>
+      ${exampleHtml(entry)}
+    </article>`;
+  }
+  function favoriteSectionHtml(title, entries, description = "") {
+    if (!entries.length) return "";
+    return `<section class="favorite-results-section"><div class="section-heading"><div><h2>${escapeHtml(title)}</h2>${description ? `<p>${escapeHtml(description)}</p>` : ""}</div><span>${entries.length} 条</span></div><div class="favorite-entry-list">${entries.map(favoriteEntryCardHtml).join("")}</div></section>`;
+  }
+  function favoriteResultsHtml(query) {
+    const ids = favoriteIds();
+    const favoriteSet = new Set(ids);
+    const byId = new Map(wordBank().map((entry) => [entry.id, entry]));
+    if (!query.trim()) {
+      const entries = ids.map((id) => byId.get(id)).filter(Boolean);
+      if (entries.length) return favoriteSectionHtml("我的收藏", entries, "最近收藏的内容排在前面");
+      return `<div class="empty-state favorite-empty"><span aria-hidden="true">${uiIcon("favorite")}</span><strong>还没有收藏内容</strong><p>搜索常用表达，或在学习和复习时点击星标。</p></div>`;
+    }
+    const matches = window.TRAVEL_FAVORITES.searchEntries(wordBank(), query, currentPack()?.locale);
+    if (!matches.length) return `<div class="empty-state favorite-empty"><span aria-hidden="true">${uiIcon("favorite")}</span><strong>没有找到相关表达</strong><p>试试更短的中文、${langLabel()}或读音关键词。</p></div>`;
+    const saved = matches.filter((entry) => favoriteSet.has(entry.id));
+    const available = matches.filter((entry) => !favoriteSet.has(entry.id));
+    const visibleAvailable = available.slice(0, FAVORITE_SEARCH_LIMIT);
+    return `${favoriteSectionHtml("收藏中", saved)}${favoriteSectionHtml("全部表达", visibleAvailable)}${available.length > FAVORITE_SEARCH_LIMIT ? `<p class="search-limit-note">还有 ${available.length - FAVORITE_SEARCH_LIMIT} 条结果，请继续输入以缩小范围。</p>` : ""}`;
+  }
+  function bindFavoriteEntryCards(root, refresh) {
+    bindSpeechButtons(root);
+    bindFavoriteButtons(root, refresh);
+    root.querySelectorAll("[data-favorite-card]").forEach((card) => {
+      const entry = wordBank().find((item) => item.id === card.dataset.favoriteCard);
+      if (entry) bindExampleDisclosure(entry, card);
+    });
+  }
+  function renderFavorites() {
+    stopSpeech();
+    updateShell("review");
+    view.innerHTML = `<div class="page-enter favorites-page">
+      <button class="back-link" type="button" data-favorites-back>‹ 返回复习</button>
+      <header class="screen-heading"><span class="eyebrow">随时快速找到</span><h1>收藏夹</h1><p>保存这趟旅程中常用的词汇和短句，也可以搜索当前${escapeHtml(langLabel())}内容。</p></header>
+      <form class="favorite-search" role="search">
+        <label for="favoriteSearch">搜索收藏和全部表达</label>
+        <div><input id="favoriteSearch" name="query" type="search" inputmode="search" autocomplete="off" placeholder="输入中文、${escapeHtml(langLabel())}或读音" value="${escapeHtml(state.favoriteQuery)}"><button class="text-btn" type="button" data-clear-favorite-search${state.favoriteQuery ? "" : " hidden"}>清除</button></div>
+        <small>完全一致的结果优先，同时支持部分关键词。</small>
+      </form>
+      <div id="favoriteResults" aria-live="polite">${favoriteResultsHtml(state.favoriteQuery)}</div>
+    </div>`;
+    const input = view.querySelector("#favoriteSearch");
+    const results = view.querySelector("#favoriteResults");
+    const clear = view.querySelector("[data-clear-favorite-search]");
+    const refresh = () => {
+      results.innerHTML = favoriteResultsHtml(state.favoriteQuery);
+      bindFavoriteEntryCards(results, refresh);
+    };
+    input.addEventListener("input", () => {
+      state.favoriteQuery = input.value;
+      clear.hidden = !state.favoriteQuery;
+      refresh();
+    });
+    view.querySelector(".favorite-search").addEventListener("submit", (event) => event.preventDefault());
+    clear.addEventListener("click", () => {
+      state.favoriteQuery = "";
+      input.value = "";
+      clear.hidden = true;
+      refresh();
+      input.focus();
+    });
+    view.querySelector("[data-favorites-back]").addEventListener("click", () => navigatePath("review"));
+    bindFavoriteEntryCards(results, refresh);
+    scrollToTop();
+  }
+
   function renderReviewResults() {
     stopSpeech();
     updateShell("review");
@@ -1685,7 +1360,7 @@
       ? quiz.wrong.map((entry) => {
         const scene = sceneById(entry.sceneId);
         const situation = situationById(scene, entry.situationId);
-        return `<div class="wrong-item"><div><strong>${escapeHtml(entry.zh)}</strong>${foreignContentHtml(entry, true)}<small>${escapeHtml(scene.name)} · ${escapeHtml(situation.name)}</small></div>${audioButtonHtml(entry)}</div>`;
+        return `<div class="wrong-item"><div><strong>${escapeHtml(entry.zh)}</strong>${foreignContentHtml(entry, true)}<small>${escapeHtml(scene.name)} · ${escapeHtml(situation.name)}</small></div><div class="wrong-item-actions">${favoriteButtonHtml(entry)}${audioButtonHtml(entry)}</div></div>`;
       }).join("")
       : `<div class="empty-state"><span aria-hidden="true">${uiIcon("complete")}</span><strong>本轮全部答对</strong><p>这些旅行表达已经越来越熟了。</p></div>`;
     view.innerHTML = `<div class="results page-enter">
@@ -1698,6 +1373,7 @@
       <div class="result-actions"><button class="primary-btn" type="button" data-again${canRepeat ? "" : " disabled"}>${canRepeat ? "再来一轮" : "薄弱内容已清空"}</button><button class="secondary-btn" type="button" data-return>返回复习</button></div>
     </div>`;
     bindSpeechButtons();
+    bindFavoriteButtons();
     view.querySelector("[data-again]")?.addEventListener("click", () => {
       if (!canRepeat) return;
       const filter = quiz.mode.filter;
@@ -1716,9 +1392,10 @@
 
   function renderTools() {
     stopSpeech();
+    const emergencyAvailable = Boolean(currentPack()?.features?.emergencyCard);
     view.innerHTML = `<div class="page-enter tools-page">
       <header class="screen-heading"><span class="eyebrow">旅途工具箱</span><h1>工具</h1><p>需要时马上找到，重要信息只在当前设备中处理。</p></header>
-      <button class="tool-spotlight" type="button" data-emergency-card><span class="feature-icon coral" aria-hidden="true">${uiIcon("emergencyCard")}</span><span class="tool-spotlight-copy"><small>已可使用</small><strong>紧急联系卡</strong><span>制作一张可离线保存、方便随身携带的双语急救信息卡。</span></span><b>立即制作 <i aria-hidden="true">›</i></b></button>
+      <button class="tool-spotlight" type="button" data-emergency-card${state.destinationId && !emergencyAvailable ? " disabled" : ""}><span class="feature-icon coral" aria-hidden="true">${uiIcon("emergencyCard")}</span><span class="tool-spotlight-copy"><small>${emergencyAvailable ? "已可使用" : "当前语言暂不可用"}</small><strong>紧急联系卡</strong><span>制作一张可离线保存、方便随身携带的双语急救信息卡。</span></span><b>${emergencyAvailable ? "立即制作" : "暂未开放"} <i aria-hidden="true">›</i></b></button>
       <div class="section-heading tool-section-heading"><div><span class="eyebrow">正在准备</span><h2>更多旅行工具</h2></div><span>计划中</span></div>
       <div class="tool-placeholder-grid" aria-label="计划中的工具">
         <article class="tool-placeholder"><span class="feature-icon teal" aria-hidden="true">${uiIcon("translate")}</span><span class="coming-badge">计划中</span><h3>快捷翻译</h3><p>快速输入并获取旅行场景中的常用表达。</p></article>
@@ -1731,18 +1408,20 @@
         requireDestination();
         return;
       }
-      if (!state.emergencyCard || state.emergencyCard.language !== state.lang) state.emergencyCard = window.EMERGENCY_CARD.createModel(state.lang);
+      const pack = currentPack();
+      if (!pack?.features?.emergencyCard) { showToast("当前语言暂不支持紧急联系卡"); return; }
+      if (!state.emergencyCard || state.emergencyCard.packId !== pack.id) state.emergencyCard = window.EMERGENCY_CARD.createModel(pack);
       navigatePath("tools/emergency-card");
     });
     scrollToTop();
   }
 
   function dictionaryOptions(items, selected) {
-    return items.map((item) => `<option value="${escapeHtml(item.code)}"${item.code === selected ? " selected" : ""}>${escapeHtml(item.zh)} · ${escapeHtml(item[state.lang])}</option>`).join("");
+    return items.map((item) => `<option value="${escapeHtml(item.code)}"${item.code === selected ? " selected" : ""}>${escapeHtml(item.zh)} · ${escapeHtml(item.target)}</option>`).join("");
   }
   function healthChoices(name, items, selected) {
     const active = new Set(selected || []);
-    return items.map((item) => `<label class="choice-chip"><input type="checkbox" name="${name}" value="${escapeHtml(item.code)}"${active.has(item.code) ? " checked" : ""}><span>${escapeHtml(item.zh)}<small>${escapeHtml(item[state.lang])}</small></span></label>`).join("");
+    return items.map((item) => `<label class="choice-chip"><input type="checkbox" name="${name}" value="${escapeHtml(item.code)}"${active.has(item.code) ? " checked" : ""}><span>${escapeHtml(item.zh)}<small>${escapeHtml(item.target)}</small></span></label>`).join("");
   }
   function formValue(form, name) { return form.querySelector(`[name="${name}"]`)?.value.trim() || ""; }
   function syncEmergencyCardForm(form) {
@@ -1785,10 +1464,12 @@
   }
   function renderEmergencyCardForm() {
     stopSpeech();
-    if (!state.emergencyCard || state.emergencyCard.language !== state.lang) state.emergencyCard = window.EMERGENCY_CARD.createModel(state.lang);
+    const pack = currentPack();
+    if (!pack?.features?.emergencyCard) { navigatePath("tools", true); showToast("当前语言暂不支持紧急联系卡"); return; }
+    if (!state.emergencyCard || state.emergencyCard.packId !== pack.id) state.emergencyCard = window.EMERGENCY_CARD.createModel(pack);
     const card = state.emergencyCard;
-    const languageName = state.lang === "ja" ? "日语" : "英语";
-    const foreignNameLabel = state.lang === "ja" ? "护照拼音或日文姓名" : "护照拼音或英文姓名";
+    const languageName = pack.languageLabel;
+    const config = pack.features.emergencyCard;
     view.innerHTML = `<div class="card-maker page-enter">
       <div class="flow-header"><button class="text-btn" type="button" data-card-exit>‹ 返回工具</button><span>填写资料</span><small>1 / 2</small></div>
       <section class="privacy-banner"><span aria-hidden="true">${uiIcon("privacy")}</span><div><strong>资料只在当前页面处理</strong><p>不会上传或保存在浏览器中，刷新或关闭页面后即清除。</p></div></section>
@@ -1796,15 +1477,15 @@
       <form class="emergency-form" id="emergencyCardForm" novalidate>
         <fieldset><legend>本人信息</legend><div class="form-grid">
           <label class="form-field" data-field="name"><span>姓名 <b>*</b></span><input name="name" autocomplete="name" maxlength="32" value="${escapeHtml(card.name)}"><small class="field-error" data-error="name"></small></label>
-          <label class="form-field"><span>${foreignNameLabel}</span><input name="foreignName" maxlength="40" value="${escapeHtml(card.foreignName)}"><small>请按护照或证件上的写法填写</small></label>
-          <label class="form-field"><span>国籍</span><select name="nationality"><option value="">不显示</option>${dictionaryOptions(window.EMERGENCY_CARD.NATIONALITIES, card.nationality.code)}</select></label>
+          <label class="form-field"><span>${escapeHtml(config.foreignNameLabel)}</span><input name="foreignName" maxlength="40" value="${escapeHtml(card.foreignName)}"><small>请按护照或证件上的写法填写</small></label>
+          <label class="form-field"><span>国籍</span><select name="nationality"><option value="">不显示</option>${dictionaryOptions(config.dictionaries.nationalities, card.nationality.code)}</select></label>
           <label class="form-field" data-field="birthDate"><span>出生日期</span><input name="birthDate" type="date" max="${new Date().toISOString().slice(0, 10)}" value="${escapeHtml(card.birthDate)}"><small class="field-error" data-error="birthDate"></small></label>
           <label class="form-field"><span>血型</span><select name="bloodType"><option value="">不显示</option>${window.EMERGENCY_CARD.BLOOD_TYPES.map((type) => `<option value="${type}"${type === card.bloodType ? " selected" : ""}>${type === "unknown" ? "未知" : type}</option>`).join("")}</select></label>
           <label class="form-field sensitive-field" data-field="documentNumber"><span>身份证或护照号码</span><input name="documentNumber" maxlength="24" autocomplete="off" value="${escapeHtml(card.documentNumber)}"><small>敏感信息，仅在确有需要时填写</small><small class="field-error" data-error="documentNumber"></small></label>
         </div><div class="custom-pair" data-nationality-custom hidden><label class="form-field" data-field="nationalityCustomZh"><span>国籍中文名称</span><input name="nationalityCustomZh" maxlength="30" value="${escapeHtml(card.nationality.customZh)}"><small class="field-error" data-error="nationalityCustomZh"></small></label><label class="form-field" data-field="nationalityCustomForeign"><span>国籍${languageName}名称</span><input name="nationalityCustomForeign" maxlength="40" value="${escapeHtml(card.nationality.customForeign)}"><small class="field-error" data-error="nationalityCustomForeign"></small></label></div></fieldset>
         <fieldset><legend>紧急联系人</legend><div class="form-grid"><label class="form-field" data-field="emergencyContact"><span>联系人姓名 <b>*</b></span><input name="emergencyContact" maxlength="32" autocomplete="off" value="${escapeHtml(card.emergencyContact)}"><small class="field-error" data-error="emergencyContact"></small></label><label class="form-field" data-field="emergencyPhone"><span>联系电话 <b>*</b></span><input name="emergencyPhone" type="tel" inputmode="tel" maxlength="24" autocomplete="tel" placeholder="+86 138 0000 0000" value="${escapeHtml(card.emergencyPhone)}"><small class="field-error" data-error="emergencyPhone"></small></label></div></fieldset>
-        <fieldset><legend>过敏信息</legend><p class="fieldset-hint">可多选；“无”与其他选项互斥。</p><div class="choice-chip-grid">${healthChoices("allergies", window.EMERGENCY_CARD.ALLERGIES, card.allergies.codes)}</div><div class="custom-pair" data-field="allergiesCustom"><label class="form-field"><span>其他过敏信息（中文）</span><input name="allergiesCustomZh" maxlength="40" value="${escapeHtml(card.allergies.customZh)}"></label><label class="form-field"><span>其他过敏信息（${languageName}）</span><input name="allergiesCustomForeign" maxlength="60" value="${escapeHtml(card.allergies.customForeign)}"></label><small class="field-error pair-error" data-error="allergiesCustom"></small></div></fieldset>
-        <fieldset><legend>既往疾病</legend><p class="fieldset-hint">可多选；“无”与其他选项互斥。</p><div class="choice-chip-grid">${healthChoices("conditions", window.EMERGENCY_CARD.CONDITIONS, card.conditions.codes)}</div><div class="custom-pair" data-field="conditionsCustom"><label class="form-field"><span>其他疾病信息（中文）</span><input name="conditionsCustomZh" maxlength="40" value="${escapeHtml(card.conditions.customZh)}"></label><label class="form-field"><span>其他疾病信息（${languageName}）</span><input name="conditionsCustomForeign" maxlength="60" value="${escapeHtml(card.conditions.customForeign)}"></label><small class="field-error pair-error" data-error="conditionsCustom"></small></div></fieldset>
+        <fieldset><legend>过敏信息</legend><p class="fieldset-hint">可多选；“无”与其他选项互斥。</p><div class="choice-chip-grid">${healthChoices("allergies", config.dictionaries.allergies, card.allergies.codes)}</div><div class="custom-pair" data-field="allergiesCustom"><label class="form-field"><span>其他过敏信息（中文）</span><input name="allergiesCustomZh" maxlength="40" value="${escapeHtml(card.allergies.customZh)}"></label><label class="form-field"><span>其他过敏信息（${languageName}）</span><input name="allergiesCustomForeign" maxlength="60" value="${escapeHtml(card.allergies.customForeign)}"></label><small class="field-error pair-error" data-error="allergiesCustom"></small></div></fieldset>
+        <fieldset><legend>既往疾病</legend><p class="fieldset-hint">可多选；“无”与其他选项互斥。</p><div class="choice-chip-grid">${healthChoices("conditions", config.dictionaries.conditions, card.conditions.codes)}</div><div class="custom-pair" data-field="conditionsCustom"><label class="form-field"><span>其他疾病信息（中文）</span><input name="conditionsCustomZh" maxlength="40" value="${escapeHtml(card.conditions.customZh)}"></label><label class="form-field"><span>其他疾病信息（${languageName}）</span><input name="conditionsCustomForeign" maxlength="60" value="${escapeHtml(card.conditions.customForeign)}"></label><small class="field-error pair-error" data-error="conditionsCustom"></small></div></fieldset>
         <button class="primary-btn card-submit" type="submit">生成卡片预览</button>
       </form></div>`;
     const form = view.querySelector("#emergencyCardForm");
@@ -1824,7 +1505,7 @@
   async function renderEmergencyCardPreview() {
     stopSpeech();
     if (!state.emergencyCard || Object.keys(window.EMERGENCY_CARD.validate(state.emergencyCard)).length) {
-      if (!state.emergencyCard) state.emergencyCard = window.EMERGENCY_CARD.createModel(state.lang);
+      if (!state.emergencyCard && currentPack()?.features?.emergencyCard) state.emergencyCard = window.EMERGENCY_CARD.createModel(currentPack());
       navigatePath("tools/emergency-card", true); showToast("请先填写卡片资料"); return;
     }
     const rows = window.EMERGENCY_CARD.getRows(state.emergencyCard);
@@ -1888,7 +1569,6 @@
       <div class="section-heading settings-heading"><div><span class="eyebrow">应用管理</span><h2>设置</h2></div></div>
       <section class="settings-list">
         <div class="settings-row planned-row" aria-disabled="true"><div class="setting-heading"><span class="setting-icon teal" aria-hidden="true">${uiIcon("trip")}</span><div><h3>我的行程</h3><p>整理不同旅程的学习内容</p></div></div><span class="planned-badge">计划中</span></div>
-        <div class="settings-row planned-row" aria-disabled="true"><div class="setting-heading"><span class="setting-icon gold" aria-hidden="true">${uiIcon("favorite")}</span><div><h3>收藏夹</h3><p>收藏旅途中常用的表达</p></div></div><span class="planned-badge">计划中</span></div>
         <div class="settings-row"><div class="setting-heading"><span class="setting-icon blue" aria-hidden="true">${uiIcon("install")}</span><div><h3>安装 App</h3><p>从主屏幕更快打开并离线使用</p></div></div><div class="setting-action">${installPromptHtml()}</div></div>
         <div class="settings-row danger-zone"><div class="setting-heading"><span class="setting-icon red" aria-hidden="true">${uiIcon("deleteData")}</span><div><h3>学习数据</h3><p>清除场景学习数据、认读进度和水平选择</p></div></div><button class="danger-btn" type="button" data-reset>清除全部学习数据</button></div>
       </section>

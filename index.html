@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="语见世界帮助语言基础有限的人，只学这趟旅行真正用得上的日语或英语。">
+  <meta name="description" content="语见世界帮助语言基础有限的人，只学这趟旅行真正用得上的日语、英语或韩语。">
   <meta name="application-name" content="语见世界">
   <meta name="theme-color" content="#f5f9ff">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,13 +47,21 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="content-registry.js"></script>
-  <script src="content-packs/jp-ja.js"></script>
-  <script src="content-packs/us-en.js"></script>
-  <script src="beginner-data.js"></script>
-  <script src="english-beginner-data.js"></script>
-  <script src="english-beginner-audio.js"></script>
-  <script src="emergency-card.js"></script>
+  <script src="core/content-registry.js"></script>
+  <script src="languages/jp-ja/pack.js"></script>
+  <script src="languages/us-en/pack.js"></script>
+  <script src="languages/kr-ko/pack.js"></script>
+  <script src="languages/jp-ja/beginner/data.js"></script>
+  <script src="languages/us-en/beginner/data.js"></script>
+  <script src="languages/us-en/beginner/audio.js"></script>
+  <script src="languages/kr-ko/beginner/data.js"></script>
+  <script src="languages/kr-ko/beginner/audio.js"></script>
+  <script src="core/beginner-module-registry.js"></script>
+  <script src="languages/jp-ja/beginner/module.js"></script>
+  <script src="languages/us-en/beginner/module.js"></script>
+  <script src="languages/kr-ko/beginner/module.js"></script>
+  <script src="core/emergency-card.js"></script>
+  <script src="core/favorites.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

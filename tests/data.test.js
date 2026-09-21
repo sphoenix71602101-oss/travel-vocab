@@ -7,14 +7,19 @@ const vm = require("node:vm");
 const root = path.resolve(__dirname, "..");
 const sandbox = { window: {} };
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync(path.join(root, "content-registry.js"), "utf8"), sandbox);
-for (const file of ["jp-ja.js", "us-en.js"]) vm.runInContext(fs.readFileSync(path.join(root, "content-packs", file), "utf8"), sandbox);
+vm.runInContext(fs.readFileSync(path.join(root, "core/content-registry.js"), "utf8"), sandbox);
+for (const id of ["jp-ja", "us-en", "kr-ko"]) vm.runInContext(fs.readFileSync(path.join(root, "languages", id, "pack.js"), "utf8"), sandbox);
 const packs = sandbox.window.TRAVEL_CONTENT.all();
 
-test("日本日语和美国英语是两个独立完整语言包", () => {
-  assert.deepEqual(Array.from(packs, (pack) => pack.id), ["jp-ja", "us-en"]);
+test("日英韩是三个独立完整语言包", () => {
+  assert.deepEqual(Array.from(packs, (pack) => pack.id), ["jp-ja", "us-en", "kr-ko"]);
   assert.notEqual(packs[0].entries, packs[1].entries);
   for (const pack of packs) {
+    for (const field of ["languageCode", "languageLabel", "nativeLabel", "locale", "speechLocale"]) assert.ok(pack[field], `${pack.id}/${field}`);
+    assert.match(pack.features.beginnerModule, /-beginner$/);
+    const emergency = pack.features.emergencyCard;
+    for (const field of ["title", "notice", "foreignNameLabel", "unknownBloodType"]) assert.ok(emergency[field], `${pack.id}/emergencyCard/${field}`);
+    for (const key of ["name", "nationality", "birthDate", "bloodType", "documentNumber", "emergencyContact", "emergencyPhone", "allergies", "conditions"]) assert.ok(emergency.labels[key], `${pack.id}/emergencyCard/labels/${key}`);
     assert.equal(pack.scenes.length, 8);
     assert.equal(pack.entries.length, 795);
     assert.equal(pack.entries.filter((entry) => entry.kind === "phrase").length, 320);
@@ -91,11 +96,26 @@ test("每个语言包都能为每条正式内容组成四个唯一选项", () =>
   }
 });
 
-test("页面以静态相对路径加载内容注册表和两个语言包", () => {
+test("韩语包提供韩文、修订罗马字和韩国本地高频表达", () => {
+  const korean = packs.find((pack) => pack.id === "kr-ko");
+  assert.equal(korean.pronunciationLabel, "罗马字");
+  for (const entry of korean.entries) {
+    assert.match(entry.text, /[가-힣]|^(?:Wi-Fi|KTX)$/, `${entry.id} 缺少韩文`);
+    assert.match(entry.pronunciation, /[a-z]/i, `${entry.id} 缺少罗马字`);
+    assert.doesNotMatch(entry.text, /신칸센|TSA|일본식 여관/, `${entry.id} 残留其他国家表达`);
+  }
+  const text = korean.entries.map((entry) => `${entry.zh}\n${entry.text}`).join("\n");
+  for (const marker of ["티머니", "KTX", "한옥", "반찬", "112", "119", "1330", "택스 리펀드"]) {
+    assert.match(text, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `缺少韩国本地表达 ${marker}`);
+  }
+});
+
+test("页面以静态相对路径加载内容注册表和三个语言包", () => {
   const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
-  assert.match(html, /src="content-registry\.js"/);
-  assert.match(html, /src="content-packs\/jp-ja\.js"/);
-  assert.match(html, /src="content-packs\/us-en\.js"/);
+  assert.match(html, /src="core\/content-registry\.js"/);
+  assert.match(html, /src="languages\/jp-ja\/pack\.js"/);
+  assert.match(html, /src="languages\/us-en\/pack\.js"/);
+  assert.match(html, /src="languages\/kr-ko\/pack\.js"/);
   assert.doesNotMatch(html, /src="data\.js"/);
   assert.doesNotMatch(html, /(?:src|href)="\//);
 });

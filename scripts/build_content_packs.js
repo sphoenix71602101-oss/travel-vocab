@@ -8,7 +8,7 @@ const vm = require("node:vm");
 const root = path.resolve(__dirname, "..");
 const sandbox = { window: {} };
 vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync(path.join(root, "data.js"), "utf8"), sandbox);
+vm.runInContext(fs.readFileSync(path.join(root, "scripts", "source-data", "legacy-bilingual-data.js"), "utf8"), sandbox);
 
 const scenes = JSON.parse(JSON.stringify(sandbox.window.SCENE_PACKS));
 const legacy = JSON.parse(JSON.stringify(sandbox.window.WORD_BANK));
@@ -83,9 +83,50 @@ const localPhrases = {
   }
 };
 
+const emergencyDictionaries = {
+  nationalities: [
+    ["cn", "中国", "China", "中国"], ["jp", "日本", "Japan", "日本"], ["kr", "韩国", "South Korea", "韓国"],
+    ["sg", "新加坡", "Singapore", "シンガポール"], ["my", "马来西亚", "Malaysia", "マレーシア"],
+    ["us", "美国", "United States", "アメリカ合衆国"], ["gb", "英国", "United Kingdom", "イギリス"],
+    ["ca", "加拿大", "Canada", "カナダ"], ["au", "澳大利亚", "Australia", "オーストラリア"],
+    ["fr", "法国", "France", "フランス"], ["de", "德国", "Germany", "ドイツ"],
+    ["es", "西班牙", "Spain", "スペイン"], ["it", "意大利", "Italy", "イタリア"], ["other", "其他", "Other", "その他"]
+  ],
+  allergies: [
+    ["none", "无", "None", "なし"], ["penicillin", "青霉素", "Penicillin", "ペニシリン"],
+    ["cephalosporin", "头孢菌素", "Cephalosporins", "セファロスポリン"], ["sulfonamides", "磺胺类", "Sulfonamides", "サルファ剤"],
+    ["nsaids", "阿司匹林/NSAIDs", "Aspirin / NSAIDs", "アスピリン / NSAIDs"], ["peanuts", "花生", "Peanuts", "ピーナッツ"],
+    ["nuts", "坚果", "Tree nuts", "ナッツ"], ["shellfish", "海鲜/甲壳类", "Seafood / Shellfish", "魚介類 / 甲殻類"],
+    ["milk", "牛奶", "Milk", "牛乳"], ["eggs", "鸡蛋", "Eggs", "卵"], ["gluten", "小麦/麸质", "Wheat / Gluten", "小麦 / グルテン"],
+    ["soy", "大豆", "Soy", "大豆"], ["latex", "乳胶", "Latex", "ラテックス"], ["insect", "昆虫蜇伤", "Insect stings", "虫刺され"]
+  ],
+  conditions: [
+    ["none", "无", "None", "なし"], ["diabetes", "糖尿病", "Diabetes", "糖尿病"], ["hypertension", "高血压", "Hypertension", "高血圧"],
+    ["heart", "心脏病", "Heart disease", "心臓病"], ["asthma", "哮喘", "Asthma", "喘息"], ["epilepsy", "癫痫", "Epilepsy", "てんかん"],
+    ["kidney", "肾脏疾病", "Kidney disease", "腎臓病"], ["anticoagulants", "正在服用抗凝药", "Taking anticoagulants", "抗凝固薬を服用中"],
+    ["pregnancy", "怀孕", "Pregnant", "妊娠中"]
+  ]
+};
+
+function emergencyCardConfig(languageCode) {
+  const japanese = languageCode === "ja";
+  const targetIndex = japanese ? 3 : 2;
+  const labels = japanese
+    ? ["名前", "国籍", "生年月日", "血液型", "旅券・身分証番号", "緊急連絡先", "電話番号", "アレルギー", "持病・既往症"]
+    : ["Name", "Nationality", "Date of Birth", "Blood Type", "Passport / ID No.", "Emergency Contact", "Contact Number", "Allergies", "Medical Conditions"];
+  return {
+    title: japanese ? "緊急連絡カード" : "Emergency Contact Card",
+    notice: japanese ? "※ 緊急時の意思疎通にのみ使用してください。" : "For emergency communication only.",
+    foreignNameLabel: japanese ? "护照拼音或日文姓名" : "护照拼音或英文姓名",
+    unknownBloodType: japanese ? "不明" : "Unknown",
+    labels: Object.fromEntries(["name", "nationality", "birthDate", "bloodType", "documentNumber", "emergencyContact", "emergencyPhone", "allergies", "conditions"].map((key, index) => [key, labels[index]])),
+    dictionaries: Object.fromEntries(Object.entries(emergencyDictionaries).map(([key, rows]) => [key, rows.map(([code, zh, en, ja]) => ({ code, zh, target: [en, ja][targetIndex - 2] }))]))
+  };
+}
+
 const packConfigs = [
-  { id: "jp-ja", destinationId: "jp", locale: "ja-JP", speechLocale: "ja-JP", languageCode: "ja", languageLabel: "日语", nativeLabel: "日本語", pronunciationLabel: "假名", beginnerModule: "japanese", beginnerAudioBase: "audio/ja", sourceField: "ja", pronunciationField: "reading" },
-  { id: "us-en", destinationId: "us", locale: "en-US", speechLocale: "en-US", languageCode: "en", languageLabel: "英语", nativeLabel: "English", pronunciationLabel: null, beginnerModule: "english", beginnerAudioBase: "audio/en/beginner", sourceField: "en", pronunciationField: null }
+  { id: "jp-ja", destinationId: "jp", locale: "ja-JP", speechLocale: "ja-JP", languageCode: "ja", languageLabel: "日语", nativeLabel: "日本語", pronunciationLabel: "假名", beginnerModule: "jp-ja-beginner", beginnerAudioBase: "audio/ja", sourceField: "ja", pronunciationField: "reading" },
+  { id: "us-en", destinationId: "us", locale: "en-US", speechLocale: "en-US", languageCode: "en", languageLabel: "英语", nativeLabel: "English", pronunciationLabel: null, beginnerModule: "us-en-beginner", beginnerAudioBase: "audio/en/beginner", sourceField: "en", pronunciationField: null }
 ];
 
 function interpolate(template, values) {
@@ -101,6 +142,7 @@ function legacyEntries(config) {
     zh: entry.zh,
     text: entry[config.sourceField],
     ...(config.pronunciationField ? { pronunciation: entry[config.pronunciationField] } : {}),
+    audioPath: `audio/${config.languageCode}/${entry.id}.mp3`,
     direction: "traveler-says",
     intent: entry.type === "phrase" ? "communicate" : "recognize"
   }));
@@ -187,13 +229,13 @@ for (const config of packConfigs) {
     languageLabel: config.languageLabel,
     nativeLabel: config.nativeLabel,
     pronunciationLabel: config.pronunciationLabel,
-    features: { beginnerModule: config.beginnerModule, beginnerAudioBase: config.beginnerAudioBase, emergencyCard: true },
+    features: { beginnerModule: config.beginnerModule, beginnerAudioBase: config.beginnerAudioBase, emergencyCard: emergencyCardConfig(config.languageCode) },
     scenes,
     entries
   };
   const output = `(function () {\n  "use strict";\n  window.registerContentPack(${JSON.stringify(pack, null, 2)});\n})();\n`;
-  const directory = path.join(root, "content-packs");
+  const directory = path.join(root, "languages", config.id);
   fs.mkdirSync(directory, { recursive: true });
-  fs.writeFileSync(path.join(directory, `${config.id}.js`), output, "utf8");
+  fs.writeFileSync(path.join(directory, "pack.js"), output, "utf8");
   console.log(`${config.id}: ${entries.length} entries, ${entries.filter((item) => item.example).length} examples`);
 }

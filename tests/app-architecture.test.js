@@ -8,6 +8,9 @@ const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const app = read("app.js");
 const html = read("index.html");
 const css = read("styles.css");
+const beginnerRegistry = read("core/beginner-module-registry.js");
+const japaneseBeginner = read("languages/jp-ja/beginner/module.js");
+const englishBeginner = read("languages/us-en/beginner/module.js");
 
 test("非历史界面品牌统一为语见世界", () => {
   const manifest = read("manifest.webmanifest");
@@ -119,7 +122,7 @@ test("旅行场景入口统一使用项目 PNG 图标映射", () => {
   }
 });
 
-test("页面语义图标统一使用彩色 PNG 且只保留播放控件 SVG", () => {
+test("页面语义插图使用彩色 PNG，小型播放和收藏控件使用 SVG", () => {
   assert.match(app, /const UI_ICON_PATHS = Object\.freeze\(\{/);
   assert.match(app, /function uiIcon\(name\)/);
   assert.match(app, /class="ui-spot-icon"/);
@@ -130,7 +133,6 @@ test("页面语义图标统一使用彩色 PNG 且只保留播放控件 SVG", ()
     'uiIcon("checklist")',
     'uiIcon("trip")',
     'uiIcon("favorite")',
-    'uiIcon("randomReview")',
     'uiIcon("emergencyCard")',
     'uiIcon("translate")',
     'uiIcon("privacy")',
@@ -142,18 +144,32 @@ test("页面语义图标统一使用彩色 PNG 且只保留播放控件 SVG", ()
   assert.doesNotMatch(app, /const ICONS\s*=/);
   assert.doesNotMatch(app, /function iconSvg|iconSvg\(/);
   assert.match(app, /const SPEAKER_SVG = '<svg/);
+  assert.match(app, /const FAVORITE_SVG = '<svg/);
   assert.match(app, /language-required-card without-icon/);
   assert.match(app, /journey-quote without-icon/);
   assert.doesNotMatch(app, /icons\/ui\/language\.png/);
 });
 
-test("复习概览只重组现有随机、薄弱和场景复习", () => {
+test("复习概览提供薄弱加强、收藏夹和场景复习", () => {
   assert.match(app, /class="review-overview"/);
   assert.match(app, /data-review-primary/);
   assert.match(app, /data-review-weak/);
-  assert.match(app, /data-review-random/);
+  assert.match(app, /data-open-favorites/);
+  assert.match(app, /navigatePath\("review\/favorites"\)/);
+  assert.doesNotMatch(app, /data-review-random|随机复习/);
   assert.match(app, /data-review-scene/);
   assert.doesNotMatch(app, /今日计划|最近学习|生词本|错题本/);
+});
+
+test("首次看到星标时提供一次性收藏位置引导", () => {
+  assert.match(app, /yujianWorld\.favoriteGuideSeen\.v1/);
+  assert.match(app, /遇到常用表达，点星标收藏/);
+  assert.match(app, /之后可在「复习 → 收藏夹」快速找到/);
+  assert.match(app, /data-dismiss-favorite-guide>知道了/);
+  assert.match(app, /document\.addEventListener\("pointerdown", onOutside\)/);
+  assert.match(app, /event\.key === "Escape"/);
+  assert.match(css, /\.favorite-guide\{[^}]*position:absolute[^}]*z-index:50/s);
+  assert.match(css, /\.favorite-guide button\{[^}]*min-height:44px/s);
 });
 
 test("工具页仅为确认的三项未来能力提供非交互占位", () => {
@@ -165,12 +181,13 @@ test("工具页仅为确认的三项未来能力提供非交互占位", () => {
 });
 
 test("我的页面不伪造账号并以设置列表承载现有能力", () => {
+  const meView = app.slice(app.indexOf("function renderMe()"), app.indexOf("function resetData()"));
   assert.match(app, /class="settings-list"/);
   assert.match(app, /语见世界应用图标/);
   assert.match(app, /安装 App/);
   assert.match(app, /清除全部学习数据/);
   assert.match(app, /我的行程/);
-  assert.match(app, /收藏夹/);
+  assert.doesNotMatch(meView, /收藏夹/);
   assert.match(app, /class="settings-row planned-row" aria-disabled="true"/);
   assert.match(app, /class="journey-quote without-icon"/);
   assert.doesNotMatch(app, /生词本|意见反馈|关于我们/);
@@ -180,7 +197,7 @@ test("未选择目的地时展开首页选择器而不进入语言相关流程",
   assert.match(app, /function requireDestination\(\)/);
   assert.match(app, /请先选择目的地和语言/);
   assert.match(app, /pendingDestinationFocus/);
-  assert.match(app, /\["review", "scene", "learn", "beginner", "emergency-card-form", "emergency-card-preview"\]/);
+  assert.match(app, /\["review", "favorites", "scene", "learn", "beginner", "emergency-card-form", "emergency-card-preview"\]/);
   assert.match(app, /requestAnimationFrame\(focusDestinationPicker\)/);
 });
 
@@ -191,10 +208,11 @@ test("我的页面不再选择目的地且空状态不伪造学习数据", () =>
   assert.match(app, /destination \? loadLearning\(\) : emptyLanguageState\(\)/);
 });
 
-test("目的地配置开放日美并预留三个未开放国家", () => {
+test("目的地配置开放日美韩并预留俄西两个国家", () => {
   assert.match(app, /const DESTINATION_OPTIONS = \[/);
   for (const id of ["jp", "us", "kr", "ru", "es"]) assert.match(app, new RegExp(`id: "${id}"`));
   assert.match(app, /country: "美国", language: "英语"/);
+  assert.match(app, /country: "韩国", language: "韩语", nativeLabel: "한국어", lang: "ko", status: "available"/);
   assert.match(app, /status: "coming-soon"/);
   assert.match(css, /\.destination-strip[^}]*overflow-x:\s*auto/s);
   assert.match(css, /\.destination-card:disabled/);
@@ -246,19 +264,28 @@ test("沉浸式流程、触控尺寸和安全区完整", () => {
   assert.match(app, /updateShell\(quiz\.mode\.kind === "review" \? "review" : "home", true\)/);
 });
 
-test("美国旅行认读复用现有入口并提供独立完整流程", () => {
-  assert.match(html, /<script src="english-beginner-data\.js"><\/script>/);
-  assert.match(html, /<script src="english-beginner-audio\.js"><\/script>/);
-  assert.match(app, /const beginnerModule = currentPack\(\)\?\.features\?\.beginnerModule/);
-  assert.match(app, /module === "english"\) \{ renderEnglishBeginnerRoute\(route\); return; \}/);
-  assert.match(app, /function renderEnglishBeginnerOverview\(\)/);
-  assert.match(app, /function renderEnglishPlacementIntro\(\)/);
-  assert.match(app, /function renderEnglishLessonStep\(\)/);
-  assert.match(app, /function renderEnglishChallengeResult\(\)/);
-  assert.match(app, /utterance\.lang = "en-US"/);
-  assert.match(app, /currentPack\(\)\.features\.beginnerAudioBase/);
-  assert.match(app, /rate === "slow" \? \.68 : rate === "natural" \? 1 : \.84/);
-  assert.match(app, /"us-en": \{ completedLessons: \[\], challengeDone: false, placementPassed: false, retryWords: \[\] \}/);
+test("日英韩旅行认读通过独立注册模块复用现有入口", () => {
+  assert.match(html, /<script src="languages\/us-en\/beginner\/data\.js"><\/script>/);
+  assert.match(html, /<script src="languages\/us-en\/beginner\/audio\.js"><\/script>/);
+  assert.match(html, /<script src="core\/beginner-module-registry\.js"><\/script>/);
+  assert.match(html, /<script src="languages\/jp-ja\/beginner\/module\.js"><\/script>/);
+  assert.match(html, /<script src="languages\/us-en\/beginner\/module\.js"><\/script>/);
+  assert.match(html, /<script src="languages\/kr-ko\/beginner\/data\.js"><\/script>/);
+  assert.match(html, /<script src="languages\/kr-ko\/beginner\/audio\.js"><\/script>/);
+  assert.match(html, /<script src="languages\/kr-ko\/beginner\/module\.js"><\/script>/);
+  assert.match(beginnerRegistry, /window\.registerBeginnerModule/);
+  assert.match(beginnerRegistry, /requiredMethods = \["createProgress", "normalizeProgress", "getHomeSummary", "renderRoute"\]/);
+  assert.match(japaneseBeginner, /id: ID, legacyKey/);
+  assert.match(englishBeginner, /id: ID, legacyKey/);
+  assert.match(englishBeginner, /function renderEnglishBeginnerOverview\(\)/);
+  assert.match(englishBeginner, /function renderEnglishPlacementIntro\(\)/);
+  assert.match(englishBeginner, /function renderEnglishLessonStep\(\)/);
+  assert.match(englishBeginner, /function renderEnglishChallengeResult\(\)/);
+  assert.match(englishBeginner, /utterance\.lang = "en-US"/);
+  assert.match(englishBeginner, /currentPack\(\)\.features\.beginnerAudioBase/);
+  assert.match(app, /window\.TRAVEL_BEGINNER\?\.get\(currentPack\(\)\?\.features\?\.beginnerModule\)/);
+  assert.match(app, /window\.TRAVEL_BEGINNER\?\.has\(currentPack\(\)\?\.features\?\.beginnerModule\)/);
+  assert.doesNotMatch(app, /BEGINNER_DATA|EN_BEGINNER_DATA|beginner\.ja|beginner\.en/);
   assert.match(css, /\.en-step-actions/);
   assert.match(css, /\.en-chunks/);
   assert.match(css, /\.en-stress-word mark/);

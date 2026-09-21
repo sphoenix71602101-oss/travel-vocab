@@ -7,14 +7,14 @@ const vm = require("node:vm");
 const root = path.resolve(__dirname, "..");
 const context = { window: {} };
 vm.createContext(context);
-for (const file of ["data.js", "beginner-data.js", "english-beginner-data.js", "english-beginner-audio.js"]) {
+for (const file of ["scripts/source-data/legacy-bilingual-data.js", "languages/jp-ja/beginner/data.js", "languages/us-en/beginner/data.js", "languages/us-en/beginner/audio.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), context);
 }
 const data = context.window.BEGINNER_DATA;
 const english = context.window.EN_BEGINNER_DATA;
 const englishAudio = context.window.EN_BEGINNER_AUDIO;
 const words = context.window.WORD_BANK;
-const audio = JSON.parse(fs.readFileSync(path.join(root, "beginner-audio.json"), "utf8"));
+const audio = JSON.parse(fs.readFileSync(path.join(root, "languages/jp-ja/beginner/audio.json"), "utf8"));
 
 test("认读课程覆盖 46 个不同基础音及两套字形", () => {
   assert.equal(data.rows.length, 11);

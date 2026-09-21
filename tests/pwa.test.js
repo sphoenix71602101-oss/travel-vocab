@@ -59,6 +59,8 @@ test("页面使用相对路径接入 Manifest、图标和 Service Worker", () =>
   assert.match(html, /rel="apple-touch-icon" href="icons\/apple-touch-icon\.png"/);
   assert.doesNotMatch(html, /(?:src|href)="\//);
   assert.match(app, /serviceWorker\.register\("\.\/sw\.js", \{ scope: "\.\/" \}\)/);
+  assert.match(html, /src="core\/favorites\.js"/);
+  assert.match(serviceWorker, /"core\/favorites\.js"/);
 });
 
 test("八个旅行场景图标存在且为 256px RGBA PNG", () => {
@@ -93,7 +95,6 @@ test("页面功能图标为 256px RGBA PNG 并进入离线缓存", () => {
     checklist: "checklist",
     trip: "trip-map",
     favorite: "favorite",
-    randomReview: "random-review",
     emergencyCard: "emergency-card",
     translate: "translate",
     privacy: "privacy",
@@ -124,6 +125,12 @@ test("首页目的地顶图提供响应式 WebP 并进入离线缓存", () => {
     assert.match(serviceWorker, new RegExp(`"${asset.replace(/[.]/g, "\\.")}"`));
   }
   assert.match(app, /HERO_IMAGE_PATHS\[destinationId\] \|\| DEFAULT_HERO_IMAGE/);
+  assert.deepEqual(pngDimensions("images/heroes/kr-mobile.png"), { width: 900, height: 480 });
+  assert.deepEqual(pngDimensions("images/heroes/kr-wide.png"), { width: 1600, height: 456 });
+  for (const asset of ["images/heroes/kr-mobile.png", "images/heroes/kr-wide.png"]) {
+    assert.match(app, new RegExp(asset.replace(/[.]/g, "\\.")));
+    assert.match(serviceWorker, new RegExp(`"${asset.replace(/[.]/g, "\\.")}"`));
+  }
 });
 
 test("首页学习入口插画进入离线缓存", () => {
@@ -153,7 +160,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
   assert.ok(shellMatch, "找不到 APP_SHELL 清单");
   const shell = shellMatch[1];
   for (const asset of [
-    "index.html", "styles.css", "data.js", "beginner-data.js", "english-beginner-data.js", "english-beginner-audio.js", "emergency-card.js", "app.js", "manifest.webmanifest",
+    "index.html", "styles.css", "core/content-registry.js", "core/beginner-module-registry.js", "core/emergency-card.js", "core/favorites.js", "languages/jp-ja/pack.js", "languages/us-en/pack.js", "languages/kr-ko/pack.js", "languages/jp-ja/beginner/data.js", "languages/us-en/beginner/data.js", "languages/us-en/beginner/audio.js", "languages/kr-ko/beginner/data.js", "languages/kr-ko/beginner/audio.js", "languages/kr-ko/beginner/module.js", "app.js", "manifest.webmanifest",
     "icons/icon-192.png", "icons/icon-512.png",
     "icons/apple-touch-icon.png", "images/heroes/default-mobile.webp", "images/heroes/default-wide.webp",
     "images/heroes/jp-mobile.webp", "images/heroes/jp-wide.webp",
@@ -166,7 +173,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
 });
 
 test("界面资源更新后使用新的应用壳缓存版本", () => {
-  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v41`/);
+  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v47`/);
 });
 
 test("Service Worker 绕过音频并安全清理旧版本缓存", () => {
