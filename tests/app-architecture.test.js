@@ -83,6 +83,8 @@ test("首页提供可扩展目的地入口、状态化学习卡和旅行场景",
   assert.match(app, /const learningTitle = hasResume \? "继续学习" : "开始学习"/);
   assert.match(app, /从实用场景出发，轻松掌握旅行外语/);
   assert.match(app, /`\$\{lastScene\.name\} · \$\{lastSituation\.name\} · 已掌握 \$\{resumePercentage\}%`/);
+  assert.match(app, /class="quick-entry-progress">已掌握 \$\{resumePercentage\}%<\/span>/);
+  assert.match(css, /\.quick-entry-progress\{display:block;white-space:nowrap\}/);
   assert.doesNotMatch(app, /LEARN FOR A BRIGHTER JOURNEY|READ THE WORLD AROUND YOU/);
   assert.match(app, /const ACTION_ARROW_SVG = '<svg/);
   assert.equal((app.match(/\$\{ACTION_ARROW_SVG\}/g) || []).length, 2);
@@ -170,12 +172,30 @@ test("首次看到星标时提供一次性收藏位置引导", () => {
   assert.match(css, /\.favorite-guide button\{[^}]*min-height:44px/s);
 });
 
-test("工具页仅为确认的三项未来能力提供非交互占位", () => {
-  assert.match(app, /class="tool-spotlight"[^>]*data-emergency-card/);
-  for (const label of ["快捷翻译", "汇率换算", "旅行清单"]) assert.match(app, new RegExp(`<h3>${label}<\\/h3>`));
-  assert.equal((app.match(/<article class="tool-placeholder">/g) || []).length, 3);
+test("工具页使用紧凑翻译器，联系卡与计划工具同网格展示", () => {
+  const toolsView = app.slice(app.indexOf("function renderTools()"), app.indexOf("function dictionaryOptions("));
+  assert.match(toolsView, /const destination = selectedDestination\(\)/);
+  assert.match(toolsView, /destination\?\.language \|\| "选择目的地"/);
+  assert.ok(toolsView.indexOf('class="translator-card"') < toolsView.indexOf('data-emergency-card'));
+  assert.match(toolsView, /class="translator-status">待开放<\/span>/);
+  assert.match(toolsView, /<label for="translateInput">输入中文<\/label>/);
+  assert.match(toolsView, /<textarea id="translateInput"[^>]*>\$\{escapeHtml\(state\.translateDraft\)\}<\/textarea>/);
+  assert.match(toolsView, /data-clear-translate/);
+  assert.match(toolsView, /data-translate-destination/);
+  assert.match(toolsView, /<button class="translator-submit" type="button" disabled>翻译<\/button>/);
+  assert.match(toolsView, /译文会显示在这里/);
+  assert.match(toolsView, /state\.translateDraft = translateInput\.value/);
+  assert.match(app, /state\.translateDraft = "";/);
+  assert.match(app, /<button class="tool-placeholder tool-card"[^>]*data-emergency-card/);
+  assert.match(toolsView, /aria-label="更多旅行工具"/);
+  assert.ok(toolsView.indexOf('data-emergency-card') < toolsView.indexOf('<h3>汇率换算</h3>'));
+  assert.match(toolsView, /<span class="coming-badge tool-available-badge">/);
+  assert.match(toolsView, /<textarea id="translateInput" class="translator-input" rows="2"/);
+  assert.match(css, /\.translator-result\{min-height:60px/);
+  for (const label of ["汇率换算", "旅行清单"]) assert.match(app, new RegExp(`<h3>${label}<\\/h3>`));
+  assert.equal((app.match(/<article class="tool-placeholder">/g) || []).length, 2);
   assert.doesNotMatch(app, /单位换算|地图导航|常用句速查/);
-  assert.doesNotMatch(app, /data-(?:translate|currency|trip-list)/);
+  assert.doesNotMatch(app, /data-(?:currency|trip-list)/);
 });
 
 test("我的页面不伪造账号并以设置列表承载现有能力", () => {

@@ -81,6 +81,7 @@
     questionToken: 0,
     speechToken: 0,
     emergencyCard: null,
+    translateDraft: "",
     beginnerSession: null,
     favoriteQuery: ""
   };
@@ -342,6 +343,7 @@
     state.learning = null;
     state.quiz = null;
     state.emergencyCard = null;
+    state.translateDraft = "";
     saveLang(destination.lang);
     try { localStorage.setItem(DESTINATION_KEY, destination.id); }
     catch (error) { console.warn("无法保存目的地设置", error); }
@@ -733,13 +735,16 @@
     const learningSubtitle = hasResume
       ? `${lastScene.name} · ${lastSituation.name} · 已掌握 ${resumePercentage}%`
       : "从实用场景出发，轻松掌握旅行外语";
+    const learningSubtitleMarkup = hasResume
+      ? `${escapeHtml(lastScene.name)} · ${escapeHtml(lastSituation.name)}<span class="quick-entry-progress">已掌握 ${resumePercentage}%</span>`
+      : escapeHtml(learningSubtitle);
     const learningLabel = !destination
       ? "开始学习，请先选择目的地和语言"
       : hasResume
         ? `继续学习，${learningSubtitle}`
         : "开始学习，从旅行场景中选择学习内容";
     const continueContent = `<button class="quick-entry ${hasResume ? "continue-entry" : "start-entry"}" type="button" data-continue aria-label="${escapeHtml(learningLabel)}">
-      <span class="quick-entry-copy"><strong>${learningTitle}</strong><span class="quick-entry-subtitle">${escapeHtml(learningSubtitle)}</span></span>
+      <span class="quick-entry-copy"><strong>${learningTitle}</strong><span class="quick-entry-subtitle">${learningSubtitleMarkup}</span></span>
       <span class="quick-entry-arrow" aria-hidden="true">${ACTION_ARROW_SVG}</span>
     </button>`;
     const beginner = loadBeginnerState();
@@ -1391,17 +1396,39 @@
 
   function renderTools() {
     stopSpeech();
+    const destination = selectedDestination();
     const emergencyAvailable = Boolean(currentPack()?.features?.emergencyCard);
     view.innerHTML = `<div class="page-enter tools-page">
-      <header class="screen-heading"><span class="eyebrow">旅途工具箱</span><h1>工具</h1><p>需要时马上找到，重要信息只在当前设备中处理。</p></header>
-      <button class="tool-spotlight" type="button" data-emergency-card${state.destinationId && !emergencyAvailable ? " disabled" : ""}><span class="feature-icon coral" aria-hidden="true">${uiIcon("emergencyCard")}</span><span class="tool-spotlight-copy"><small>${emergencyAvailable ? "已可使用" : "当前语言暂不可用"}</small><strong>紧急联系卡</strong><span>制作一张可离线保存、方便随身携带的双语急救信息卡。</span></span><b>${emergencyAvailable ? "立即制作" : "暂未开放"} <i aria-hidden="true">›</i></b></button>
-      <div class="section-heading tool-section-heading"><div><span class="eyebrow">正在准备</span><h2>更多旅行工具</h2></div><span>计划中</span></div>
-      <div class="tool-placeholder-grid" aria-label="计划中的工具">
-        <article class="tool-placeholder"><span class="feature-icon teal" aria-hidden="true">${uiIcon("translate")}</span><span class="coming-badge">计划中</span><h3>快捷翻译</h3><p>快速输入并获取旅行场景中的常用表达。</p></article>
+      <header class="screen-heading"><span class="eyebrow">旅途工具箱</span><h1>工具</h1><p>随时找到旅途中用得上的实用工具。</p></header>
+      <section class="translator-card" aria-labelledby="translatorTitle">
+        <div class="translator-heading"><span class="feature-icon teal" aria-hidden="true">${uiIcon("translate")}</span><div><span class="eyebrow">随身表达</span><h2 id="translatorTitle">快捷翻译</h2></div><span class="translator-status">待开放</span></div>
+        <div class="translator-direction" aria-label="翻译方向"><span>中文</span><span class="translator-direction-arrow" aria-hidden="true">→</span><span>${escapeHtml(destination?.language || "选择目的地")}</span></div>
+        <div class="translator-field-heading"><label for="translateInput">输入中文</label><button class="translator-clear" type="button" data-clear-translate hidden>清除</button></div>
+        <textarea id="translateInput" class="translator-input" rows="2" placeholder="输入想在旅途中表达的内容"${destination ? "" : " disabled"}>${escapeHtml(state.translateDraft)}</textarea>
+        <div class="translator-actions">${destination ? "" : '<button class="translator-destination" type="button" data-translate-destination>选择目的地</button>'}<button class="translator-submit" type="button" disabled>翻译</button></div>
+        <div class="translator-result" role="region" aria-label="译文"><span>译文 · ${escapeHtml(destination?.language || "目的地语言")}</span><p>译文会显示在这里</p></div>
+      </section>
+      <div class="section-heading tool-section-heading"><div><span class="eyebrow">随身备用</span><h2>更多旅行工具</h2></div></div>
+      <div class="tool-placeholder-grid" aria-label="更多旅行工具">
+        <button class="tool-placeholder tool-card" type="button" data-emergency-card${state.destinationId && !emergencyAvailable ? " disabled" : ""}><span class="feature-icon coral" aria-hidden="true">${uiIcon("emergencyCard")}</span><span class="coming-badge tool-available-badge">${emergencyAvailable ? "已可使用" : state.destinationId ? "暂不可用" : "选择后使用"}</span><h3>紧急联系卡</h3><p>制作并保存双语急救信息卡。</p></button>
         <article class="tool-placeholder"><span class="feature-icon amber" aria-hidden="true">${uiIcon("exchange")}</span><span class="coming-badge">计划中</span><h3>汇率换算</h3><p>旅途中快速估算常用货币金额。</p></article>
         <article class="tool-placeholder"><span class="feature-icon blue" aria-hidden="true">${uiIcon("checklist")}</span><span class="coming-badge">计划中</span><h3>旅行清单</h3><p>整理出发前和旅途中需要确认的事项。</p></article>
       </div>
     </div>`;
+    const translateInput = view.querySelector("#translateInput");
+    const clearTranslate = view.querySelector("[data-clear-translate]");
+    const syncTranslateDraft = () => {
+      state.translateDraft = translateInput.value;
+      clearTranslate.hidden = !state.translateDraft;
+    };
+    translateInput.addEventListener("input", syncTranslateDraft);
+    clearTranslate.addEventListener("click", () => {
+      translateInput.value = "";
+      syncTranslateDraft();
+      translateInput.focus();
+    });
+    syncTranslateDraft();
+    view.querySelector("[data-translate-destination]")?.addEventListener("click", requireDestination);
     view.querySelector("[data-emergency-card]").addEventListener("click", () => {
       if (!state.destinationId) {
         requireDestination();
