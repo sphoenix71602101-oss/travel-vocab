@@ -133,15 +133,9 @@ test("首页目的地顶图提供响应式 WebP 并进入离线缓存", () => {
   }
 });
 
-test("首页学习入口插画进入离线缓存", () => {
-  for (const asset of [
-    "images/home-actions/learning-card.svg",
-    "images/home-actions/reading-card.svg"
-  ]) {
-    assert.equal(fs.existsSync(path.join(root, asset)), true, `缺少 ${asset}`);
-    assert.match(app, new RegExp(asset.replace(/[.]/g, "\\.")));
-    assert.match(serviceWorker, new RegExp(`"${asset.replace(/[.]/g, "\\.")}"`));
-  }
+test("暂不加载学习入口插画", () => {
+  assert.doesNotMatch(app, /images\/home-actions\/(learning|reading)-card\.svg/);
+  assert.doesNotMatch(serviceWorker, /images\/home-actions\/(learning|reading)-card\.svg/);
 });
 
 test("安装提示按平台能力显示并在已安装后隐藏", () => {
@@ -173,7 +167,7 @@ test("Service Worker 仅预缓存核心应用壳", () => {
 });
 
 test("界面资源更新后使用新的应用壳缓存版本", () => {
-  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v52`/);
+  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v54`/);
 });
 
 test("Service Worker 绕过音频并安全清理旧版本缓存", () => {

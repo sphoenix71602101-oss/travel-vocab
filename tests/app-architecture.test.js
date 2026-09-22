@@ -86,10 +86,8 @@ test("首页提供可扩展目的地入口、状态化学习卡和旅行场景",
   assert.doesNotMatch(app, /LEARN FOR A BRIGHTER JOURNEY|READ THE WORLD AROUND YOU/);
   assert.match(app, /const ACTION_ARROW_SVG = '<svg/);
   assert.equal((app.match(/\$\{ACTION_ARROW_SVG\}/g) || []).length, 2);
-  assert.match(app, /const learningDisplaySubtitle = hasResume \? "继续上次内容" : "学会旅行表达"/);
-  assert.match(app, /听懂、读懂/);
-  assert.match(app, /images\/home-actions\/learning-card\.svg/);
-  assert.match(app, /images\/home-actions\/reading-card\.svg/);
+  assert.match(app, /看见当地文字，也能听懂、读懂、用上/);
+  assert.doesNotMatch(app, /images\/home-actions\/(learning|reading)-card\.svg/);
   assert.match(css, /\.home-quick-actions\{[^}]*display:grid[^}]*grid-template-columns:repeat\(2,minmax\(0,1fr\)\)[^}]*gap:10px/s);
   assert.match(css, /\.category-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,minmax\(0,1fr\)\)/s);
   assert.match(css, /@media \(min-width:560px\)[\s\S]*\.category-grid\{grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
