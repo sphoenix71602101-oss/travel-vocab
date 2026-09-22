@@ -733,14 +733,15 @@
     const learningSubtitle = hasResume
       ? `${lastScene.name} · ${lastSituation.name} · 已掌握 ${resumePercentage}%`
       : "从实用场景出发，轻松掌握旅行外语";
+    const learningDisplaySubtitle = hasResume ? "继续上次内容" : "学会旅行表达";
     const learningLabel = !destination
       ? "开始学习，请先选择目的地和语言"
       : hasResume
         ? `继续学习，${learningSubtitle}`
         : "开始学习，从旅行场景中选择学习内容";
     const continueContent = `<button class="quick-entry ${hasResume ? "continue-entry" : "start-entry"}" type="button" data-continue aria-label="${escapeHtml(learningLabel)}">
-      <img class="quick-entry-art" src="images/home-actions/learning-card.svg" alt="" aria-hidden="true">
-      <span class="quick-entry-copy"><strong>${learningTitle}</strong><span class="quick-entry-subtitle">${escapeHtml(learningSubtitle)}</span><small>LEARN FOR A BRIGHTER JOURNEY</small></span>
+      <img class="quick-entry-art" src="images/home-actions/learning-card.svg" width="120" height="170" alt="" aria-hidden="true">
+      <span class="quick-entry-copy"><strong>${learningTitle}</strong><span class="quick-entry-subtitle">${learningDisplaySubtitle}</span></span>
       <span class="quick-entry-arrow" aria-hidden="true">${ACTION_ARROW_SVG}</span>
     </button>`;
     const beginner = loadBeginnerState();
@@ -763,7 +764,7 @@
           <p>左右滑动查看更多目的地</p>
         </div>
       </section>
-      <section class="home-quick-actions" aria-label="学习入口">${continueContent}<button class="quick-entry beginner-entry" type="button" data-beginner aria-label="旅行认读，${escapeHtml(beginnerSubtitle)}"><img class="quick-entry-art" src="images/home-actions/reading-card.svg" alt="" aria-hidden="true"><span class="quick-entry-copy"><strong>旅行认读</strong><span class="quick-entry-subtitle">看见当地文字，也能听懂、读懂、用上</span><small>READ THE WORLD AROUND YOU</small></span><span class="quick-entry-arrow" aria-hidden="true">${ACTION_ARROW_SVG}</span></button></section>
+      <section class="home-quick-actions" aria-label="学习入口">${continueContent}<button class="quick-entry beginner-entry" type="button" data-beginner aria-label="旅行认读，${escapeHtml(beginnerSubtitle)}"><img class="quick-entry-art" src="images/home-actions/reading-card.svg" width="120" height="170" alt="" aria-hidden="true"><span class="quick-entry-copy"><strong>旅行认读</strong><span class="quick-entry-subtitle">听懂、读懂</span></span><span class="quick-entry-arrow" aria-hidden="true">${ACTION_ARROW_SVG}</span></button></section>
       <div class="section-heading" id="sceneHeading" tabindex="-1"><div><h2>旅行场景</h2></div><span>${scenePacks().length} 个场景</span></div>
       <div class="category-grid" id="sceneList">${cards}</div>
     </div>`;

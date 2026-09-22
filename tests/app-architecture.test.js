@@ -83,11 +83,11 @@ test("首页提供可扩展目的地入口、状态化学习卡和旅行场景",
   assert.match(app, /const learningTitle = hasResume \? "继续学习" : "开始学习"/);
   assert.match(app, /从实用场景出发，轻松掌握旅行外语/);
   assert.match(app, /`\$\{lastScene\.name\} · \$\{lastSituation\.name\} · 已掌握 \$\{resumePercentage\}%`/);
-  assert.match(app, /LEARN FOR A BRIGHTER JOURNEY/);
-  assert.match(app, /READ THE WORLD AROUND YOU/);
+  assert.doesNotMatch(app, /LEARN FOR A BRIGHTER JOURNEY|READ THE WORLD AROUND YOU/);
   assert.match(app, /const ACTION_ARROW_SVG = '<svg/);
   assert.equal((app.match(/\$\{ACTION_ARROW_SVG\}/g) || []).length, 2);
-  assert.match(app, /看见当地文字，也能听懂、读懂、用上/);
+  assert.match(app, /const learningDisplaySubtitle = hasResume \? "继续上次内容" : "学会旅行表达"/);
+  assert.match(app, /听懂、读懂/);
   assert.match(app, /images\/home-actions\/learning-card\.svg/);
   assert.match(app, /images\/home-actions\/reading-card\.svg/);
   assert.match(css, /\.home-quick-actions\{[^}]*display:grid[^}]*grid-template-columns:repeat\(2,minmax\(0,1fr\)\)[^}]*gap:10px/s);

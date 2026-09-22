@@ -1,19 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" preserveAspectRatio="xMinYMid meet" role="img" aria-label="">
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="170" viewBox="0 0 120 170" role="img" aria-label="">
   <defs>
-    <linearGradient id="mapA" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8cc0ff"/><stop offset="1" stop-color="#4f8ef7"/></linearGradient>
-    <linearGradient id="mapB" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#68a7fb"/><stop offset="1" stop-color="#2f73df"/></linearGradient>
-    <linearGradient id="mapC" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#91c2ff"/><stop offset="1" stop-color="#3b82eb"/></linearGradient>
-    <filter id="shadow" x="-25%" y="-25%" width="150%" height="165%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#4f8ef7" flood-opacity=".18"/></filter>
-    <filter id="glass" x="-25%" y="-25%" width="150%" height="165%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#557cae" flood-opacity=".17"/></filter>
+    <linearGradient id="mapLeft" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8cc0ff"/><stop offset="1" stop-color="#4f8ef7"/></linearGradient>
+    <linearGradient id="mapMiddle" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#68a7fb"/><stop offset="1" stop-color="#2f73df"/></linearGradient>
+    <linearGradient id="mapRight" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#91c2ff"/><stop offset="1" stop-color="#3b82eb"/></linearGradient>
+    <filter id="softShadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#4f8ef7" flood-opacity=".19"/></filter>
   </defs>
-  <g fill="#fff" opacity=".55"><path d="M31 68c7-18 31-21 43-6 16-8 35 2 37 20H17c0-8 6-14 14-14z"/><path d="M278 42c5-13 24-15 31-3 12-6 26 2 27 15h-70c0-7 5-12 12-12z"/></g>
-  <g transform="translate(31 70)" filter="url(#shadow)">
-    <path d="M0 28c0-9 5-16 13-19L68 0v142l-55 21c-7 3-13-2-13-10z" fill="url(#mapA)"/><path d="M68 0l54 23v142l-54-23z" fill="url(#mapB)"/><path d="M122 23l52-20c8-3 15 3 15 11v124c0 8-5 14-12 17l-55 10z" fill="url(#mapC)"/>
-    <path d="M15 121c24-8 26-34 47-36 24-2 26 29 50 27 22-1 19-39 43-42 10-1 18 6 23 16" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-dasharray="11 14"/>
-    <g transform="translate(72 26)"><path d="M23 0C9 0 0 10 0 23c0 18 23 43 23 43s23-25 23-43C46 10 37 0 23 0z" fill="#2f6ed3"/><circle cx="23" cy="22" r="9" fill="#9bc8ff"/></g>
+  <path d="M91 9c-2 0-3 3-3 5v12l-15 9c-2 1-2 3-1 4l3 2 13-5v9l-5 5v3l8-3 8 3v-3l-5-5v-9l13 5 3-2c1-1 1-3-1-4l-15-9V14c0-2-1-5-3-5z" fill="#a8cfff"/>
+  <g filter="url(#softShadow)">
+    <path d="M11 61c0-4 2-7 6-8l27-9v69l-27 9c-4 1-6-1-6-5z" fill="url(#mapLeft)"/>
+    <path d="m44 44 28 10v69l-28-10z" fill="url(#mapMiddle)"/>
+    <path d="m72 54 27-9c4-1 7 1 7 5v60c0 4-2 7-6 8l-28 5z" fill="url(#mapRight)"/>
+    <path d="M20 100c10-3 12-18 23-19 12-1 14 17 26 16 10 0 11-18 25-20" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 7"/>
+    <path d="M76 65c-8 0-14 6-14 14 0 11 14 26 14 26s14-15 14-26c0-8-6-14-14-14z" fill="#2f6ed3"/>
+    <circle cx="76" cy="79" r="5" fill="#b6dbff"/>
   </g>
-  <g transform="translate(238 19) rotate(48 48 43)" fill="#9fc9ff" opacity=".78">
-    <path d="M48 2c-4 0-6 5-6 10v17L8 49c-4 2-5 6-2 9l6 6 30-12v15L30 78v6l18-6 18 6v-6L54 67V52l30 12 6-6c3-3 2-7-2-9L54 29V12c0-5-2-10-6-10z"/>
+  <g filter="url(#softShadow)">
+    <path d="M66 112h34c8 0 13 5 13 13v16c0 8-5 13-13 13H82l-12 9v-9h-4c-8 0-13-5-13-13v-16c0-8 5-13 13-13z" fill="#fff"/>
+    <circle cx="70" cy="133" r="3.3" fill="#4f8ef7"/>
+    <circle cx="83" cy="133" r="3.3" fill="#4f8ef7"/>
+    <circle cx="96" cy="133" r="3.3" fill="#4f8ef7"/>
   </g>
-  <g transform="translate(214 133)" filter="url(#glass)"><path d="M20 0h74c16 0 29 13 29 29v31c0 16-13 29-29 29H58l-25 21V89H20C9 89 0 80 0 69V20C0 9 9 0 20 0z" fill="#fff" opacity=".96"/><circle cx="38" cy="44" r="8" fill="#4f8ef7"/><circle cx="62" cy="44" r="8" fill="#4f8ef7"/><circle cx="86" cy="44" r="8" fill="#4f8ef7"/></g>
 </svg>

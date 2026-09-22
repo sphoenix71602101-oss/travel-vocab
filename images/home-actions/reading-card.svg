@@ -1,16 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" preserveAspectRatio="xMinYMid meet" role="img" aria-label="">
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="170" viewBox="0 0 120 170" role="img" aria-label="">
   <defs>
     <linearGradient id="speaker" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#55ca95"/><stop offset="1" stop-color="#22a66b"/></linearGradient>
-    <filter id="shadow" x="-25%" y="-25%" width="150%" height="165%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#42b883" flood-opacity=".17"/></filter>
-    <filter id="glass" x="-25%" y="-25%" width="150%" height="165%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#548b73" flood-opacity=".15"/></filter>
+    <filter id="softShadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#42b883" flood-opacity=".19"/></filter>
   </defs>
-  <g fill="#fff" opacity=".5"><path d="M21 72c7-17 30-20 41-6 15-7 33 2 35 19H8c0-7 6-13 13-13z"/><path d="M276 46c5-12 22-14 29-3 11-5 23 2 25 14h-65c0-6 5-11 11-11z"/></g>
-  <g fill="#76d3a5" opacity=".45"><path d="M7 156h27v70H7zm34-27h29v97H41zm36 19h24v78H77zm31-34h34v112h-34zm42 27h27v85h-27z"/><path d="M51 129v-24h8v24zm-7-24l11-18 12 18z"/></g>
-  <g transform="translate(318 69)" fill="#61c998" opacity=".72"><path d="M18 151V61h10v90z"/><path d="M23 63C8 49 3 34 5 20c14 4 23 13 24 28 6-17 17-27 32-30 0 16-8 28-23 37 15-6 28-5 41 4-10 12-24 17-41 12 8 13 9 27 3 41-14-8-21-19-19-34-8 13-20 22-35 23 1-16 10-28 25-35-14 2-27-2-36-12 12-11 27-13 44-5z"/></g>
-  <g transform="translate(53 91)" filter="url(#glass)"><rect width="169" height="113" rx="29" fill="#fff" opacity=".96"/><text x="27" y="47" fill="#2fbd7d" font-family="Arial, sans-serif" font-size="28" font-weight="700">Hola!</text><rect x="27" y="68" width="108" height="12" rx="6" fill="#b9e7d2"/><rect x="27" y="91" width="79" height="12" rx="6" fill="#a9dfc6"/></g>
-  <g transform="translate(220 164)" filter="url(#shadow)">
-    <circle cx="36" cy="38" r="36" fill="url(#speaker)"/>
-    <path d="M14 32v12h10l12 10V22L24 32z" fill="#fff"/>
-    <path d="M45 31c5 4 5 10 0 14" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M17 24c8-9 21-10 30-2M87 19c8 2 14 8 16 16" fill="none" stroke="#c1eed9" stroke-width="5" stroke-linecap="round"/>
+  <g filter="url(#softShadow)">
+    <rect x="10" y="35" width="94" height="103" rx="17" fill="#fff"/>
+    <rect x="10" y="35" width="94" height="103" rx="17" fill="none" stroke="#ddf3e8" stroke-width="2"/>
+    <text x="23" y="68" fill="#2fbd7d" font-family="Arial, sans-serif" font-size="21" font-weight="700">Hola!</text>
+    <rect x="23" y="80" width="60" height="6" rx="3" fill="#b9e7d2"/>
+    <rect x="23" y="93" width="48" height="6" rx="3" fill="#a9dfc6"/>
+    <rect x="23" y="106" width="53" height="6" rx="3" fill="#d1f0df"/>
+  </g>
+  <g filter="url(#softShadow)">
+    <circle cx="83" cy="132" r="28" fill="url(#speaker)"/>
+    <path d="M67 126v12h8l10 8v-28l-10 8z" fill="#fff"/>
+    <path d="M92 125c5 4 5 11 0 15" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+    <path d="M98 119c8 8 8 19 0 27" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".72"/>
   </g>
 </svg>
