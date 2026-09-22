@@ -33,7 +33,8 @@ TEST_ITEMS_PER_LANGUAGE = 5
 
 # 用于避免旧双语源数据格式意外变化时静默漏读。词库增删后请同步更新此数字。
 EXPECTED_ENTRY_COUNT = 795
-EXPECTED_EXAMPLE_COUNT = 160
+TARGETED_EXAMPLES_FILE = Path(__file__).resolve().parent / "targeted_examples.json"
+EXPECTED_EXAMPLE_COUNT = 160 + len(json.loads(TARGETED_EXAMPLES_FILE.read_text(encoding="utf-8-sig")))
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -173,20 +174,23 @@ def parse_content_pack(pack_file: Path) -> dict:
     return pack
 
 
-def build_pack_jobs(packs: list[dict], test_mode: bool) -> list[AudioJob]:
+def build_pack_jobs(packs: list[dict], test_mode: bool, targeted_only: bool = False) -> list[AudioJob]:
     jobs: list[AudioJob] = []
     voices = {"ja-JP": JAPANESE_VOICE, "en-US": ENGLISH_VOICE, "ko-KR": KOREAN_VOICE}
     for pack in packs:
         voice = voices.get(pack.get("speechLocale"))
         if not voice:
             raise ValueError(f"尚未配置 {pack.get('speechLocale')} 的生成声音")
-        entries = pack["entries"][:TEST_ITEMS_PER_LANGUAGE] if test_mode else pack["entries"]
+        entries = [] if targeted_only else pack["entries"][:TEST_ITEMS_PER_LANGUAGE] if test_mode else pack["entries"]
         for entry in entries:
             output_path = PROJECT_ROOT / entry.get(
                 "audioPath", f"audio/packs/{pack['id']}/entries/{entry['id']}.mp3"
             )
             jobs.append(AudioJob(pack["id"], entry["id"], entry["text"], voice, output_path))
         examples = [item["example"] for item in pack["entries"] if item.get("example")]
+        if targeted_only:
+            targeted_ids = set(json.loads(TARGETED_EXAMPLES_FILE.read_text(encoding="utf-8-sig")))
+            examples = [item["example"] for item in pack["entries"] if item["id"] in targeted_ids]
         if test_mode:
             examples = examples[:2]
         for example in examples:
@@ -389,13 +393,14 @@ def parse_args() -> argparse.Namespace:
     mode.add_argument(
         "--full",
         action="store_true",
-        help="处理两个完整语言包的正式内容和例句",
+        help="处理三个完整语言包的正式内容和例句",
     )
     mode.add_argument(
         "--validate-only",
         action="store_true",
-        help="只验证两个独立目的地语言包，不安装 edge-tts 也可运行",
+        help="只验证三个独立目的地语言包，不安装 edge-tts 也可运行",
     )
+    mode.add_argument("--targeted-examples-only", action="store_true", help="仅生成本次补充的三语例句音频")
     mode.add_argument("--beginner-test", action="store_true", help="生成前 5 个日语教学音试听")
     mode.add_argument("--beginner-full", action="store_true", help="生成全部 57 段日语教学音")
     mode.add_argument("--beginner-validate-only", action="store_true", help="只验证日语教学音清单")
@@ -452,7 +457,7 @@ def main() -> int:
     else:
         try:
             packs = [parse_content_pack(pack_file) for pack_file in CONTENT_PACK_FILES]
-            jobs = build_pack_jobs(packs, test_mode=args.test)
+            jobs = build_pack_jobs(packs, test_mode=args.test, targeted_only=args.targeted_examples_only)
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             print(f"语言包检查失败：{exc}", file=sys.stderr)
             return 2

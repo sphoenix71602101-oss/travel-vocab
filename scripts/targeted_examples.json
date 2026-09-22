@@ -1,0 +1,562 @@
+{
+  "airport_062": [
+    "must",
+    "转机期间，可以把行李寄存在机场吗？",
+    "乗り継ぎの間、空港で荷物を預けられますか？",
+    "のりつぎのあいだ、くうこうでにもつをあずけられますか？",
+    "Can I store my luggage at the airport during my layover?",
+    "환승하는 동안 공항에 짐을 맡길 수 있나요?"
+  ],
+  "airport_063": [
+    "must",
+    "我的行李没有到达，我想申报行李丢失。",
+    "荷物が届いていません。紛失届を出したいです。",
+    "にもつがとどいていません。ふんしつとどけをだしたいです。",
+    "My luggage didn't arrive. I need to report it missing.",
+    "제 짐이 도착하지 않았어요. 분실 신고를 하고 싶어요."
+  ],
+  "airport_068": [
+    "must",
+    "这瓶水可以随身携带上飞机吗？",
+    "この水は機内に持ち込めますか？",
+    "このみずはきないにもちこめますか？",
+    "Can I bring this bottle of water on board?",
+    "이 물병을 기내에 가지고 들어갈 수 있나요?"
+  ],
+  "airport_069": [
+    "must",
+    "我想托运这个行李箱。",
+    "このスーツケースを預けたいです。",
+    "このすーつけーすをあずけたいです。",
+    "I'd like to check this suitcase.",
+    "이 여행 가방을 위탁 수하물로 부치고 싶어요."
+  ],
+  "airport_072": [
+    "must",
+    "海关申报单在哪里填写？",
+    "税関申告書はどこで記入しますか？",
+    "ぜいかんしんこくしょはどこできにゅうしますか？",
+    "Where do I fill out the customs declaration form?",
+    "세관 신고서는 어디에서 작성하나요?"
+  ],
+  "airport_079": [
+    "must",
+    "我的签证快到期了，在哪里申请延期？",
+    "ビザの期限が近いのですが、どこで延長を申請できますか？",
+    "びざのきげんがちかいのですが、どこでえんちょうをしんせいできますか？",
+    "My visa is about to expire. Where can I apply for an extension?",
+    "비자 만료일이 다가오는데 어디에서 연장 신청을 하나요?"
+  ],
+  "airport_081": [
+    "must",
+    "行李超重了，要付多少费用？",
+    "荷物が重量オーバーです。追加料金はいくらですか？",
+    "にもつがじゅうりょうおーばーです。ついかりょうきんはいくらですか？",
+    "My bag is overweight. How much is the extra fee?",
+    "짐이 무게 제한을 초과했어요. 추가 요금이 얼마인가요?"
+  ],
+  "hotel_055": [
+    "must",
+    "退房后押金什么时候退还？",
+    "チェックアウト後、デポジットはいつ返金されますか？",
+    "ちぇっくあうとご、でぽじっとはいつへんきんされますか？",
+    "When will the deposit be refunded after checkout?",
+    "체크아웃 후 보증금은 언제 환불되나요?"
+  ],
+  "hotel_078": [
+    "must",
+    "我想续住一晚，还有空房吗？",
+    "もう一泊延泊したいのですが、空室はありますか？",
+    "もういっぱくえんぱくしたいのですが、くうしつはありますか？",
+    "I'd like to extend my stay by one night. Is a room available?",
+    "하루 더 연박하고 싶은데 빈 방이 있나요?"
+  ],
+  "food_066": [
+    "must",
+    "我们可以分开结账吗？",
+    "別々にお会計できますか？",
+    "べつべつにおかいけいできますか？",
+    "Can we pay separately?",
+    "따로 계산할 수 있나요?"
+  ],
+  "food_072": [
+    "must",
+    "剩下的菜可以打包外带吗？",
+    "残った料理を持ち帰れますか？",
+    "のこったりょうりをもちかえれますか？",
+    "Could I take the leftovers to go?",
+    "남은 음식을 포장해서 가져갈 수 있나요?"
+  ],
+  "food_087": [
+    "must",
+    "我对花生过敏，这道菜含花生吗？",
+    "ピーナッツアレルギーがあります。この料理にピーナッツは入っていますか？",
+    "ぴーなっつあれるぎーがあります。このりょうりにぴーなっつははいっていますか？",
+    "I'm allergic to peanuts. Does this dish contain any?",
+    "저는 땅콩 알레르기가 있어요. 이 음식에 땅콩이 들어 있나요?"
+  ],
+  "food_088": [
+    "must",
+    "我是素食者，这道菜里有肉或鱼吗？",
+    "ベジタリアンです。この料理に肉や魚は入っていますか？",
+    "べじたりあんです。このりょうりににくやさかなははいっていますか？",
+    "I’m vegetarian. Does this dish contain any meat or fish?",
+    "저는 채식주의자예요. 이 음식에 고기나 생선이 들어 있나요?"
+  ],
+  "shopping_021": [
+    "must",
+    "我想先试穿这件外套，再决定买不买。",
+    "このコートを試着してから、買うか決めたいです。",
+    "このこーとをしちゃくしてから、かうかきめたいです。",
+    "I'd like to try on this coat before deciding whether to buy it.",
+    "이 코트를 입어 보고 살지 결정하고 싶어요."
+  ],
+  "emergency_021": [
+    "must",
+    "我摔倒后脚踝可能骨折了。",
+    "転んで足首を骨折したかもしれません。",
+    "ころんであしくびをこっせつしたかもしれません。",
+    "I fell and may have fractured my ankle.",
+    "넘어져서 발목이 골절됐을지도 몰라요."
+  ],
+  "emergency_022": [
+    "must",
+    "我的手被热水烫伤了。",
+    "熱いお湯で手をやけどしました。",
+    "あついおゆでてをやけどしました。",
+    "I burned my hand with hot water.",
+    "뜨거운 물에 손을 데었어요."
+  ],
+  "emergency_023": [
+    "must",
+    "我有哮喘，现在呼吸有点困难。",
+    "喘息があって、今少し息苦しいです。",
+    "ぜんそくがあって、いますこしいきぐるしいです。",
+    "I have asthma, and I'm having trouble breathing right now.",
+    "저는 천식이 있어서 지금 숨쉬기가 조금 힘들어요."
+  ],
+  "emergency_032": [
+    "must",
+    "这家医院接受旅行保险吗？",
+    "この病院では旅行保険が使えますか？",
+    "このびょういんではりょこうほけんがつかえますか？",
+    "Does this hospital accept travel insurance?",
+    "이 병원에서 여행자 보험을 사용할 수 있나요?"
+  ],
+  "expressions_004": [
+    "must",
+    "请在这里写下您的名字。",
+    "ここにお名前を書いてください。",
+    "ここにおなまえをかいてください。",
+    "Please write your name here.",
+    "여기에 이름을 적어 주세요."
+  ],
+  "expressions_005": [
+    "must",
+    "不好意思，请问出口在哪里？",
+    "すみません、出口はどこですか？",
+    "すみません、でぐちはどこですか？",
+    "Excuse me, where is the exit?",
+    "죄송합니다. 출구가 어디인가요?"
+  ],
+  "expressions_006": [
+    "must",
+    "抱歉，我不小心碰倒了杯子。",
+    "ごめんなさい、うっかりコップを倒してしまいました。",
+    "ごめんなさい、うっかりこっぷをたおしてしまいました。",
+    "I'm sorry, I accidentally knocked over the glass.",
+    "미안합니다. 제가 실수로 컵을 넘어뜨렸어요."
+  ],
+  "expressions_018": [
+    "must",
+    "我现在可以进房间了吗？",
+    "もう部屋に入っても大丈夫ですか？",
+    "もうへやにはいってもだいじょうぶですか？",
+    "Is it okay for me to go into the room now?",
+    "이제 방에 들어가도 괜찮아요?"
+  ],
+  "expressions_024": [
+    "must",
+    "我想要一间安静的房间。",
+    "静かな部屋がほしいです。",
+    "しずかなへやがほしいです。",
+    "I'd like a quiet room.",
+    "조용한 방을 원해요."
+  ],
+  "expressions_025": [
+    "must",
+    "办理入住需要护照吗？",
+    "チェックインにはパスポートが必要ですか？",
+    "ちぇっくいんにはぱすぽーとがひつようですか？",
+    "Do I need my passport to check in?",
+    "체크인할 때 여권이 필요해요?"
+  ],
+  "expressions_026": [
+    "must",
+    "今晚还有空房吗？",
+    "今夜、空室はありますか？",
+    "こんや、くうしつはありますか？",
+    "Do you have any rooms available tonight?",
+    "오늘 밤 빈 방이 있어요?"
+  ],
+  "expressions_027": [
+    "must",
+    "现在没有空房。",
+    "今、空室はありません。",
+    "いま、くうしつはありません。",
+    "There are no rooms available right now.",
+    "지금은 빈 방이 없어요."
+  ],
+  "expressions_028": [
+    "must",
+    "是的，这张票是去机场的。",
+    "はい、これは空港行きの切符です。",
+    "はい、これはくうこうゆきのきっぷです。",
+    "Yes, this is the ticket for the airport.",
+    "네, 맞아요. 이 표는 공항행이에요."
+  ],
+  "airport_021": [
+    "recommended",
+    "这个航班几点开始值机？",
+    "この便のチェックインは何時からですか？",
+    "このびんのちぇっくいんはなんじからですか？",
+    "What time does check-in open for this flight?",
+    "이 항공편 체크인은 몇 시부터 가능한가요?"
+  ],
+  "airport_022": [
+    "recommended",
+    "我们这趟航班已经开始登机了吗？",
+    "私たちの便はもう搭乗が始まりましたか？",
+    "わたしたちのびんはもうとうじょうがはじまりましたか？",
+    "Has boarding started for our flight yet?",
+    "저희 항공편은 벌써 탑승이 시작됐나요?"
+  ],
+  "airport_023": [
+    "recommended",
+    "这架飞机预计几点起飞？",
+    "この飛行機は何時に離陸する予定ですか？",
+    "このひこうきはなんじにりりくするよていですか？",
+    "What time is this plane expected to take off?",
+    "이 비행기는 몇 시에 이륙할 예정인가요?"
+  ],
+  "airport_024": [
+    "recommended",
+    "由于天气原因，飞机会晚些降落。",
+    "天候のため、飛行機の着陸が遅れます。",
+    "てんこうのため、ひこうきのちゃくりくがおくれます。",
+    "The plane will land later because of the weather.",
+    "날씨 때문에 비행기가 늦게 착륙할 예정입니다."
+  ],
+  "airport_061": [
+    "recommended",
+    "这个航班是直飞，还是需要转机？",
+    "この便は直行便ですか、それとも乗り継ぎが必要ですか？",
+    "このびんはちょっこうびんですか、それとものりつぎがひつようですか？",
+    "Is this a direct flight, or do I need to make a connection?",
+    "이 항공편은 직항인가요, 아니면 환승해야 하나요?"
+  ],
+  "airport_053": [
+    "recommended",
+    "租车时需要出示什么证件？",
+    "レンタカーを借りるとき、どんな書類が必要ですか？",
+    "れんたかーをかりるとき、どんなしょるいがひつようですか？",
+    "What documents do I need to rent a car?",
+    "렌터카를 빌릴 때 어떤 서류가 필요한가요?"
+  ],
+  "airport_060": [
+    "recommended",
+    "从车站步行到酒店要多久？",
+    "駅からホテルまで徒歩で何分ですか？",
+    "えきからほてるまでとほでなんぷんですか？",
+    "How long does it take to walk from the station to the hotel?",
+    "역에서 호텔까지 걸어서 얼마나 걸리나요?"
+  ],
+  "hotel_047": [
+    "recommended",
+    "明早六点可以安排叫醒服务吗？",
+    "明日の朝六時にモーニングコールをお願いできますか？",
+    "あしたのあさろくじにもーにんぐこーるをおねがいできますか？",
+    "Could I request a wake-up call for six tomorrow morning?",
+    "내일 아침 여섯 시에 모닝콜을 부탁드려도 될까요?"
+  ],
+  "hotel_048": [
+    "recommended",
+    "洗衣服务今天送去，明天能取吗？",
+    "今日ランドリーサービスに出したら、明日受け取れますか？",
+    "きょうらんどりーさーびすにだしたら、あしたうけとれますか？",
+    "If I send this to the laundry service today, can I get it back tomorrow?",
+    "오늘 세탁 서비스를 맡기면 내일 받을 수 있나요?"
+  ],
+  "hotel_053": [
+    "recommended",
+    "今晚还有禁烟的空房吗？",
+    "今夜、禁煙の空室はありますか？",
+    "こんや、きんえんのくうしつはありますか？",
+    "Do you have a non-smoking room available tonight?",
+    "오늘 밤 금연 빈 방이 있나요?"
+  ],
+  "hotel_054": [
+    "recommended",
+    "如果今晚满房，明晚还有房间吗？",
+    "今夜は満室なら、明日の夜は空室がありますか？",
+    "こんやはまんしつなら、あしたのよるはくうしつがありますか？",
+    "If you're fully booked tonight, is a room available tomorrow night?",
+    "오늘 객실이 없으면 내일 밤에는 방이 있나요?"
+  ],
+  "hotel_057": [
+    "recommended",
+    "账单上这笔额外费用是什么？",
+    "請求書のこの追加料金は何ですか？",
+    "せいきゅうしょのこのついかりょうきんはなんですか？",
+    "What is this extra charge on my bill?",
+    "계산서에 있는 이 추가 요금은 무엇인가요?"
+  ],
+  "hotel_074": [
+    "recommended",
+    "我想要一间比较安静的房间。",
+    "もう少し静かな部屋をお願いします。",
+    "もうすこししずかなへやをおねがいします。",
+    "Could I have a quieter room?",
+    "좀 더 조용한 방을 부탁드려요."
+  ],
+  "hotel_075": [
+    "recommended",
+    "隔壁房间太吵了，可以换房吗？",
+    "隣の部屋がうるさいので、部屋を替えられますか？",
+    "となりのへやがうるさいので、へやをかえられますか？",
+    "The room next door is too noisy. Could I change rooms?",
+    "옆방이 너무 시끄러운데 방을 바꿀 수 있나요?"
+  ],
+  "hotel_076": [
+    "recommended",
+    "这张床睡着不太舒适。",
+    "このベッドはあまり快適ではありません。",
+    "このべっどはあまりかいてきではありません。",
+    "This bed isn't very comfortable to sleep on.",
+    "이 침대는 자기에 별로 편안하지 않아요."
+  ],
+  "food_074": [
+    "recommended",
+    "这道菜很好吃，叫什么名字？",
+    "この料理はおいしいですね。何という名前ですか？",
+    "このりょうりはおいしいですね。なんというなまえですか？",
+    "This dish is delicious. What is it called?",
+    "이 음식 정말 맛있네요. 이름이 뭐예요?"
+  ],
+  "food_075": [
+    "recommended",
+    "这道菜不太好吃，可以换一道吗？",
+    "この料理はあまりおいしくありません。別の料理に替えられますか？",
+    "このりょうりはあまりおいしくありません。べつのりょうりにかえられますか？",
+    "I don't like the taste of this dish. Could I exchange it?",
+    "이 음식은 별로 맛이 없는데 다른 메뉴로 바꿀 수 있나요?"
+  ],
+  "food_076": [
+    "recommended",
+    "有不太甜的甜点吗？",
+    "あまり甘くないデザートはありますか？",
+    "あまりあまくないでざーとはありますか？",
+    "Do you have a dessert that isn’t too sweet?",
+    "덜 단 디저트가 있나요?"
+  ],
+  "food_077": [
+    "recommended",
+    "这道菜对我来说有点咸。",
+    "この料理は私には少ししょっぱいです。",
+    "このりょうりはわたしにはすこししょっぱいです。",
+    "This dish is a little too salty for me.",
+    "이 음식은 제 입맛에는 조금 짜요."
+  ],
+  "food_078": [
+    "recommended",
+    "这道菜很辣吗？我不太能吃辣。",
+    "この料理は辛いですか？辛いものは苦手です。",
+    "このりょうりはからいですか？からいものはにがてです。",
+    "Is this dish spicy? I can't handle much spice.",
+    "이 음식은 매운가요? 저는 매운 음식을 잘 못 먹어요."
+  ],
+  "food_079": [
+    "recommended",
+    "这杯咖啡太苦了，可以加点牛奶吗？",
+    "このコーヒーは苦いので、牛乳を少し入れられますか？",
+    "このこーひーはにがいので、ぎゅうにゅうをすこしいれられますか？",
+    "This coffee is too bitter. Could I add some milk?",
+    "이 커피는 너무 써요. 우유를 조금 넣어도 될까요?"
+  ],
+  "food_080": [
+    "recommended",
+    "这个酱汁偏酸吗？",
+    "このソースは酸っぱいですか？",
+    "このそーすはすっぱいですか？",
+    "Is this sauce sour?",
+    "이 소스는 신맛이 나나요?"
+  ],
+  "food_081": [
+    "recommended",
+    "汤很烫，请小心。",
+    "スープが熱いので、気をつけてください。",
+    "すーぷがあついので、きをつけてください。",
+    "The soup is hot, so please be careful.",
+    "국이 뜨거우니 조심하세요."
+  ],
+  "food_082": [
+    "recommended",
+    "这道菜是冷着吃的吗？",
+    "この料理は冷たいまま食べますか？",
+    "このりょうりはつめたいままたべますか？",
+    "Is this dish meant to be eaten cold?",
+    "이 음식은 차갑게 먹는 건가요?"
+  ],
+  "food_083": [
+    "recommended",
+    "今天有新鲜的鱼吗？",
+    "今日は新鮮な魚がありますか？",
+    "きょうはしんせんなさかながありますか？",
+    "Do you have fresh fish today?",
+    "오늘 신선한 생선이 있나요?"
+  ],
+  "shopping_057": [
+    "recommended",
+    "这个特产需要冷藏吗？",
+    "この名物は冷蔵する必要がありますか？",
+    "このめいぶつはれいぞうするひつようがありますか？",
+    "Does this local specialty need to be refrigerated?",
+    "이 지역 특산품은 냉장 보관해야 하나요?"
+  ],
+  "numbers_032": [
+    "recommended",
+    "早餐从几点开始？",
+    "朝食は何時からですか？",
+    "ちょうしょくはなんじからですか？",
+    "What time does breakfast start?",
+    "아침 식사는 몇 시부터인가요?"
+  ],
+  "numbers_077": [
+    "recommended",
+    "这家药店星期日也开门吗？",
+    "この薬局は日曜日も開いていますか？",
+    "このやっきょくはにちようびもあいていますか？",
+    "Is this pharmacy open on Sundays too?",
+    "이 약국은 일요일에도 문을 여나요?"
+  ],
+  "numbers_078": [
+    "recommended",
+    "博物馆几点关门？",
+    "博物館は何時に閉まりますか？",
+    "はくぶつかんはなんじにしまりますか？",
+    "What time does the museum close?",
+    "박물관은 몇 시에 문을 닫나요?"
+  ],
+  "numbers_082": [
+    "recommended",
+    "巴士马上到吗？",
+    "バスはもうすぐ来ますか？",
+    "ばすはもうすぐきますか？",
+    "Is the bus coming soon?",
+    "버스가 곧 오나요?"
+  ],
+  "expressions_001": [
+    "must",
+    "谢谢你帮我指路。",
+    "道を教えてくれてありがとう。",
+    "みちをおしえてくれてありがとう。",
+    "Thank you for showing me the way.",
+    "길을 알려 주셔서 감사합니다."
+  ],
+  "expressions_002": [
+    "must",
+    "非常感谢您帮我找回护照。",
+    "パスポートを見つけてくださって、ありがとうございます。",
+    "ぱすぽーとをみつけてくださって、ありがとうございます。",
+    "Thank you very much for helping me find my passport.",
+    "여권을 찾는 데 도와주셔서 정말 고마워요."
+  ],
+  "expressions_003": [
+    "must",
+    "不客气，祝你旅途愉快。",
+    "どういたしまして。よい旅を。",
+    "どういたしまして。よいたびを。",
+    "You're welcome. Have a great trip.",
+    "천만에요. 좋은 여행 되세요."
+  ],
+  "expressions_007": [
+    "must",
+    "你好，我预订了一个房间。",
+    "こんにちは、部屋を予約しています。",
+    "こんにちは、へやをよやくしています。",
+    "Hello, I have a room reservation.",
+    "안녕하세요. 방을 예약했어요."
+  ],
+  "expressions_008": [
+    "must",
+    "早上好，早餐几点开始？",
+    "おはようございます。朝食は何時からですか？",
+    "おはようございます。ちょうしょくはなんじからですか？",
+    "Good morning. What time does breakfast start?",
+    "안녕하세요. 아침 식사는 몇 시부터인가요?"
+  ],
+  "expressions_009": [
+    "must",
+    "晚上好，我现在可以办理入住吗？",
+    "こんばんは。今からチェックインできますか？",
+    "こんばんは。いまからちぇっくいんできますか？",
+    "Good evening. Can I check in now?",
+    "안녕하세요. 지금 체크인할 수 있나요?"
+  ],
+  "expressions_010": [
+    "must",
+    "再见，祝您旅途愉快。",
+    "さようなら。よい旅を。",
+    "さようなら。よいたびを。",
+    "Goodbye. Have a pleasant trip.",
+    "안녕히 가세요. 즐거운 여행 되세요."
+  ],
+  "expressions_011": [
+    "must",
+    "回头见，我们晚饭时在大堂集合。",
+    "またね。夕食のときにロビーで会おう。",
+    "またね。ゆうしょくのときにろびーであおう。",
+    "See you later. Let’s meet in the lobby at dinner time.",
+    "나중에 봐요. 저녁때 로비에서 만나요."
+  ],
+  "expressions_012": [
+    "must",
+    "晚安，明天见。",
+    "おやすみなさい。また明日。",
+    "おやすみなさい。またあした。",
+    "Good night. See you tomorrow.",
+    "안녕히 주무세요. 내일 뵐게요."
+  ],
+  "expressions_013": [
+    "must",
+    "欢迎光临，请问您预订了吗？",
+    "いらっしゃいませ。ご予約はありますか？",
+    "いらっしゃいませ。ごよやくはありますか？",
+    "Welcome. Do you have a reservation?",
+    "환영합니다. 예약하셨나요?"
+  ],
+  "expressions_016": [
+    "must",
+    "是的，我订了两晚。",
+    "はい、二泊予約しています。",
+    "はい、にはくよやくしています。",
+    "Yes, I booked two nights.",
+    "네, 이틀 밤 예약했어요."
+  ],
+  "expressions_017": [
+    "must",
+    "不是，这不是我的行李。",
+    "いいえ、これは私の荷物ではありません。",
+    "いいえ、これはわたしのにもつではありません。",
+    "No, this is not my luggage.",
+    "아니요, 이건 제 짐이 아니에요."
+  ],
+  "expressions_021": [
+    "must",
+    "好的，我会在八点到大堂。",
+    "オーケーです。八時にロビーへ行きます。",
+    "おーけーです。はちじにろびーへいきます。",
+    "OK, I’ll be in the lobby at eight.",
+    "알겠습니다. 여덟 시에 로비로 갈게요."
+  ]
+}

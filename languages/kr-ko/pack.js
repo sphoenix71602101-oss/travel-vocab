@@ -875,6 +875,12 @@
       "text": "체크인",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_021_example",
+        "zh": "这个航班几点开始值机？",
+        "text": "이 항공편 체크인은 몇 시부터 가능한가요?",
+        "pronunciation": "i hanggongpyeon chekeuineun myeot sibuteo ganeunghangayo?"
+      },
       "pronunciation": "chekeuin"
     },
     {
@@ -886,6 +892,12 @@
       "text": "탑승",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_022_example",
+        "zh": "我们这趟航班已经开始登机了吗？",
+        "text": "저희 항공편은 벌써 탑승이 시작됐나요?",
+        "pronunciation": "jeohui hanggongpyeoneun beolsseo tapseungi sijakdwaennayo?"
+      },
       "pronunciation": "tapseung"
     },
     {
@@ -897,6 +909,12 @@
       "text": "이륙",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_023_example",
+        "zh": "这架飞机预计几点起飞？",
+        "text": "이 비행기는 몇 시에 이륙할 예정인가요?",
+        "pronunciation": "i bihaenggineun myeot sie iryukal yejeongingayo?"
+      },
       "pronunciation": "iryuk"
     },
     {
@@ -908,6 +926,12 @@
       "text": "착륙",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_024_example",
+        "zh": "由于天气原因，飞机会晚些降落。",
+        "text": "날씨 때문에 비행기가 늦게 착륙할 예정입니다.",
+        "pronunciation": "nalssi ttaemune bihaenggiga neutge changnyukal yejeongimnida."
+      },
       "pronunciation": "changnyuk"
     },
     {
@@ -1347,6 +1371,12 @@
       "text": "렌터카",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_053_example",
+        "zh": "租车时需要出示什么证件？",
+        "text": "렌터카를 빌릴 때 어떤 서류가 필요한가요?",
+        "pronunciation": "renteokareul billil ttae eotteon seoryuga pillyohangayo?"
+      },
       "pronunciation": "renteoka"
     },
     {
@@ -1424,6 +1454,12 @@
       "text": "도보로",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_060_example",
+        "zh": "从车站步行到酒店要多久？",
+        "text": "역에서 호텔까지 걸어서 얼마나 걸리나요?",
+        "pronunciation": "yeogeseo hotelkkaji georeoseo eolmana geollinayo?"
+      },
       "pronunciation": "doboro"
     },
     {
@@ -1435,6 +1471,12 @@
       "text": "직항편",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_061_example",
+        "zh": "这个航班是直飞，还是需要转机？",
+        "text": "이 항공편은 직항인가요, 아니면 환승해야 하나요?",
+        "pronunciation": "i hanggongpyeoneun jikangingayo, animyeon hwanseunghaeya hanayo?"
+      },
       "pronunciation": "jikangpyeon"
     },
     {
@@ -1446,6 +1488,12 @@
       "text": "수하물 보관소",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_062_example",
+        "zh": "转机期间，可以把行李寄存在机场吗？",
+        "text": "환승하는 동안 공항에 짐을 맡길 수 있나요?",
+        "pronunciation": "hwanseunghaneun dongan gonghange jimeul matgil su innayo?"
+      },
       "pronunciation": "suhamul bogwanso"
     },
     {
@@ -1457,6 +1505,12 @@
       "text": "잃어버린 수하물",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_063_example",
+        "zh": "我的行李没有到达，我想申报行李丢失。",
+        "text": "제 짐이 도착하지 않았어요. 분실 신고를 하고 싶어요.",
+        "pronunciation": "je jimi dochakaji anasseoyo. bunsil singoreul hago sipeoyo."
+      },
       "pronunciation": "ireobeorin suhamul"
     },
     {
@@ -1512,6 +1566,12 @@
       "text": "휴대",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_068_example",
+        "zh": "这瓶水可以随身携带上飞机吗？",
+        "text": "이 물병을 기내에 가지고 들어갈 수 있나요?",
+        "pronunciation": "i mulbyeongeul ginaee gajigo deureogal su innayo?"
+      },
       "pronunciation": "hyudae"
     },
     {
@@ -1523,6 +1583,12 @@
       "text": "위탁 수하물",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_069_example",
+        "zh": "我想托运这个行李箱。",
+        "text": "이 여행 가방을 위탁 수하물로 부치고 싶어요.",
+        "pronunciation": "i yeohaeng gabangeul witak suhamullo buchigo sipeoyo."
+      },
       "pronunciation": "witak suhamul"
     },
     {
@@ -1556,6 +1622,12 @@
       "text": "세관 신고서",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_072_example",
+        "zh": "海关申报单在哪里填写？",
+        "text": "세관 신고서는 어디에서 작성하나요?",
+        "pronunciation": "segwan singoseoneun eodieseo jakseonghanayo?"
+      },
       "pronunciation": "segwan singoseo"
     },
     {
@@ -1633,6 +1705,12 @@
       "text": "비자 연장",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_079_example",
+        "zh": "我的签证快到期了，在哪里申请延期？",
+        "text": "비자 만료일이 다가오는데 어디에서 연장 신청을 하나요?",
+        "pronunciation": "bija mallyoiri dagaoneunde eodieseo yeonjang sincheongeul hanayo?"
+      },
       "pronunciation": "bija yeonjang"
     },
     {
@@ -1655,6 +1733,12 @@
       "text": "초과 수하물",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_airport_081_example",
+        "zh": "行李超重了，要付多少费用？",
+        "text": "짐이 무게 제한을 초과했어요. 추가 요금이 얼마인가요?",
+        "pronunciation": "jimi muge jehaneul chogwahaesseoyo. chuga yogeumi eolmaingayo?"
+      },
       "pronunciation": "chogwa suhamul"
     },
     {
@@ -2358,6 +2442,12 @@
       "text": "모닝콜",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_047_example",
+        "zh": "明早六点可以安排叫醒服务吗？",
+        "text": "내일 아침 여섯 시에 모닝콜을 부탁드려도 될까요?",
+        "pronunciation": "naeil achim yeoseot sie moningkoreul butakdeuryeodo doelkkayo?"
+      },
       "pronunciation": "moningkol"
     },
     {
@@ -2369,6 +2459,12 @@
       "text": "세탁 서비스",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_048_example",
+        "zh": "洗衣服务今天送去，明天能取吗？",
+        "text": "오늘 세탁 서비스를 맡기면 내일 받을 수 있나요?",
+        "pronunciation": "oneul setak seobiseureul matgimyeon naeil badeul su innayo?"
+      },
       "pronunciation": "setak seobiseu"
     },
     {
@@ -2424,6 +2520,12 @@
       "text": "빈 방",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_053_example",
+        "zh": "今晚还有禁烟的空房吗？",
+        "text": "오늘 밤 금연 빈 방이 있나요?",
+        "pronunciation": "oneul bam geumyeon bin bangi innayo?"
+      },
       "pronunciation": "bin bang"
     },
     {
@@ -2435,6 +2537,12 @@
       "text": "객실이 없어요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_054_example",
+        "zh": "如果今晚满房，明晚还有房间吗？",
+        "text": "오늘 객실이 없으면 내일 밤에는 방이 있나요?",
+        "pronunciation": "oneul gaeksiri eopseumyeon naeil bameneun bangi innayo?"
+      },
       "pronunciation": "gaeksiri eopseoyo"
     },
     {
@@ -2446,6 +2554,12 @@
       "text": "보증금",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_055_example",
+        "zh": "退房后押金什么时候退还？",
+        "text": "체크아웃 후 보증금은 언제 환불되나요?",
+        "pronunciation": "chekeuaut hu bojeunggeumeun eonje hwanbuldoenayo?"
+      },
       "pronunciation": "bojeunggeum"
     },
     {
@@ -2468,6 +2582,12 @@
       "text": "계산서",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_057_example",
+        "zh": "账单上这笔额外费用是什么？",
+        "text": "계산서에 있는 이 추가 요금은 무엇인가요?",
+        "pronunciation": "gyesanseoe inneun i chuga yogeumeun mueosingayo?"
+      },
       "pronunciation": "gyesanseo"
     },
     {
@@ -2655,6 +2775,12 @@
       "text": "조용한",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_074_example",
+        "zh": "我想要一间比较安静的房间。",
+        "text": "좀 더 조용한 방을 부탁드려요.",
+        "pronunciation": "jom deo joyonghan bangeul butakdeuryeoyo."
+      },
       "pronunciation": "joyonghan"
     },
     {
@@ -2666,6 +2792,12 @@
       "text": "시끄러운",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_075_example",
+        "zh": "隔壁房间太吵了，可以换房吗？",
+        "text": "옆방이 너무 시끄러운데 방을 바꿀 수 있나요?",
+        "pronunciation": "yeopbangi neomu sikkeureounde bangeul bakkul su innayo?"
+      },
       "pronunciation": "sikkeureoun"
     },
     {
@@ -2677,6 +2809,12 @@
       "text": "편안하다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_076_example",
+        "zh": "这张床睡着不太舒适。",
+        "text": "이 침대는 자기에 별로 편안하지 않아요.",
+        "pronunciation": "i chimdaeneun jagie byeollo pyeonanhaji anayo."
+      },
       "pronunciation": "pyeonanhada"
     },
     {
@@ -2699,6 +2837,12 @@
       "text": "연박",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_hotel_078_example",
+        "zh": "我想续住一晚，还有空房吗？",
+        "text": "하루 더 연박하고 싶은데 빈 방이 있나요?",
+        "pronunciation": "haru deo yeonbakago sipeunde bin bangi innayo?"
+      },
       "pronunciation": "yeonbak"
     },
     {
@@ -3589,6 +3733,12 @@
       "text": "계산",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_066_example",
+        "zh": "我们可以分开结账吗？",
+        "text": "따로 계산할 수 있나요?",
+        "pronunciation": "ttaro gyesanhal su innayo?"
+      },
       "pronunciation": "gyesan"
     },
     {
@@ -3655,6 +3805,12 @@
       "text": "테이크아웃",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_072_example",
+        "zh": "剩下的菜可以打包外带吗？",
+        "text": "남은 음식을 포장해서 가져갈 수 있나요?",
+        "pronunciation": "nameun eumsigeul pojanghaeseo gajyeogal su innayo?"
+      },
       "pronunciation": "teikeuaut"
     },
     {
@@ -3677,6 +3833,12 @@
       "text": "맛있다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_074_example",
+        "zh": "这道菜很好吃，叫什么名字？",
+        "text": "이 음식 정말 맛있네요. 이름이 뭐예요?",
+        "pronunciation": "i eumsik jeongmal masinneyo. ireumi mwoyeyo?"
+      },
       "pronunciation": "masitda"
     },
     {
@@ -3688,6 +3850,12 @@
       "text": "맛없다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_075_example",
+        "zh": "这道菜不太好吃，可以换一道吗？",
+        "text": "이 음식은 별로 맛이 없는데 다른 메뉴로 바꿀 수 있나요?",
+        "pronunciation": "i eumsigeun byeollo masi eomneunde dareun menyuro bakkul su innayo?"
+      },
       "pronunciation": "maseopda"
     },
     {
@@ -3699,6 +3867,12 @@
       "text": "달다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_076_example",
+        "zh": "有不太甜的甜点吗？",
+        "text": "덜 단 디저트가 있나요?",
+        "pronunciation": "deol dan dijeoteuga innayo?"
+      },
       "pronunciation": "dalda"
     },
     {
@@ -3710,6 +3884,12 @@
       "text": "짜다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_077_example",
+        "zh": "这道菜对我来说有点咸。",
+        "text": "이 음식은 제 입맛에는 조금 짜요.",
+        "pronunciation": "i eumsigeun je immaseneun jogeum jjayo."
+      },
       "pronunciation": "jjada"
     },
     {
@@ -3721,6 +3901,12 @@
       "text": "맵다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_078_example",
+        "zh": "这道菜很辣吗？我不太能吃辣。",
+        "text": "이 음식은 매운가요? 저는 매운 음식을 잘 못 먹어요.",
+        "pronunciation": "i eumsigeun maeungayo? jeoneun maeun eumsigeul jal mot meogeoyo."
+      },
       "pronunciation": "maepda"
     },
     {
@@ -3732,6 +3918,12 @@
       "text": "쓰다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_079_example",
+        "zh": "这杯咖啡太苦了，可以加点牛奶吗？",
+        "text": "이 커피는 너무 써요. 우유를 조금 넣어도 될까요?",
+        "pronunciation": "i keopineun neomu sseoyo. uyureul jogeum neoeodo doelkkayo?"
+      },
       "pronunciation": "sseuda"
     },
     {
@@ -3743,6 +3935,12 @@
       "text": "시다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_080_example",
+        "zh": "这个酱汁偏酸吗？",
+        "text": "이 소스는 신맛이 나나요?",
+        "pronunciation": "i soseuneun sinmasi nanayo?"
+      },
       "pronunciation": "sida"
     },
     {
@@ -3754,6 +3952,12 @@
       "text": "뜨겁다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_081_example",
+        "zh": "汤很烫，请小心。",
+        "text": "국이 뜨거우니 조심하세요.",
+        "pronunciation": "gugi tteugeouni josimhaseyo."
+      },
       "pronunciation": "tteugeopda"
     },
     {
@@ -3765,6 +3969,12 @@
       "text": "차갑다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_082_example",
+        "zh": "这道菜是冷着吃的吗？",
+        "text": "이 음식은 차갑게 먹는 건가요?",
+        "pronunciation": "i eumsigeun chagapge meongneun geongayo?"
+      },
       "pronunciation": "chagapda"
     },
     {
@@ -3776,6 +3986,12 @@
       "text": "신선하다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_083_example",
+        "zh": "今天有新鲜的鱼吗？",
+        "text": "오늘 신선한 생선이 있나요?",
+        "pronunciation": "oneul sinseonhan saengseoni innayo?"
+      },
       "pronunciation": "sinseonhada"
     },
     {
@@ -3820,6 +4036,12 @@
       "text": "알레르기",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_087_example",
+        "zh": "我对花生过敏，这道菜含花生吗？",
+        "text": "저는 땅콩 알레르기가 있어요. 이 음식에 땅콩이 들어 있나요?",
+        "pronunciation": "jeoneun ttangkong allereugiga isseoyo. i eumsige ttangkongi deureo innayo?"
+      },
       "pronunciation": "allereugi"
     },
     {
@@ -3831,6 +4053,12 @@
       "text": "채식주의자",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_food_088_example",
+        "zh": "我是素食者，这道菜里有肉或鱼吗？",
+        "text": "저는 채식주의자예요. 이 음식에 고기나 생선이 들어 있나요?",
+        "pronunciation": "jeoneun chaesikjuuijayeyo. i eumsige gogina saengseoni deureo innayo?"
+      },
       "pronunciation": "chaesikjuuija"
     },
     {
@@ -4270,6 +4498,12 @@
       "text": "입어보기",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_shopping_021_example",
+        "zh": "我想先试穿这件外套，再决定买不买。",
+        "text": "이 코트를 입어 보고 살지 결정하고 싶어요.",
+        "pronunciation": "i koteureul ibeo bogo salji gyeoljeonghago sipeoyo."
+      },
       "pronunciation": "ibeobogi"
     },
     {
@@ -4666,6 +4900,12 @@
       "text": "지역 특산품",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_shopping_057_example",
+        "zh": "这个特产需要冷藏吗？",
+        "text": "이 지역 특산품은 냉장 보관해야 하나요?",
+        "pronunciation": "i jiyeok teuksanpumeun naengjang bogwanhaeya hanayo?"
+      },
       "pronunciation": "jiyeok teuksanpum"
     },
     {
@@ -5907,6 +6147,12 @@
       "text": "몇 시",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_numbers_032_example",
+        "zh": "早餐从几点开始？",
+        "text": "아침 식사는 몇 시부터인가요?",
+        "pronunciation": "achim siksaneun myeot sibuteoingayo?"
+      },
       "pronunciation": "myeot si"
     },
     {
@@ -6402,6 +6648,12 @@
       "text": "열다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_numbers_077_example",
+        "zh": "这家药店星期日也开门吗？",
+        "text": "이 약국은 일요일에도 문을 여나요?",
+        "pronunciation": "i yakgugeun illyoiredo muneul yeonayo?"
+      },
       "pronunciation": "yeolda"
     },
     {
@@ -6413,6 +6665,12 @@
       "text": "닫다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_numbers_078_example",
+        "zh": "博物馆几点关门？",
+        "text": "박물관은 몇 시에 문을 닫나요?",
+        "pronunciation": "bangmulgwaneun myeot sie muneul dannayo?"
+      },
       "pronunciation": "datda"
     },
     {
@@ -6457,6 +6715,12 @@
       "text": "곧",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_numbers_082_example",
+        "zh": "巴士马上到吗？",
+        "text": "버스가 곧 오나요?",
+        "pronunciation": "beoseuga got onayo?"
+      },
       "pronunciation": "got"
     },
     {
@@ -6819,6 +7083,12 @@
       "text": "골절",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_emergency_021_example",
+        "zh": "我摔倒后脚踝可能骨折了。",
+        "text": "넘어져서 발목이 골절됐을지도 몰라요.",
+        "pronunciation": "neomeojyeoseo balmogi goljeoldwaesseuljido mollayo."
+      },
       "pronunciation": "goljeol"
     },
     {
@@ -6830,6 +7100,12 @@
       "text": "화상",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_emergency_022_example",
+        "zh": "我的手被热水烫伤了。",
+        "text": "뜨거운 물에 손을 데었어요.",
+        "pronunciation": "tteugeoun mure soneul deeosseoyo."
+      },
       "pronunciation": "hwasang"
     },
     {
@@ -6841,6 +7117,12 @@
       "text": "천식",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_emergency_023_example",
+        "zh": "我有哮喘，现在呼吸有点困难。",
+        "text": "저는 천식이 있어서 지금 숨쉬기가 조금 힘들어요.",
+        "pronunciation": "jeoneun cheonsigi isseoseo jigeum sumswigiga jogeum himdeureoyo."
+      },
       "pronunciation": "cheonsik"
     },
     {
@@ -6940,6 +7222,12 @@
       "text": "보험",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_emergency_032_example",
+        "zh": "这家医院接受旅行保险吗？",
+        "text": "이 병원에서 여행자 보험을 사용할 수 있나요?",
+        "pronunciation": "i byeongwoneseo yeohaengja boheomeul sayonghal su innayo?"
+      },
       "pronunciation": "boheom"
     },
     {
@@ -7083,6 +7371,12 @@
       "text": "감사합니다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_001_example",
+        "zh": "谢谢你帮我指路。",
+        "text": "길을 알려 주셔서 감사합니다.",
+        "pronunciation": "gireul allyeo jusyeoseo gamsahamnida."
+      },
       "pronunciation": "gamsahamnida"
     },
     {
@@ -7094,6 +7388,12 @@
       "text": "정말 고마워요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_002_example",
+        "zh": "非常感谢您帮我找回护照。",
+        "text": "여권을 찾는 데 도와주셔서 정말 고마워요.",
+        "pronunciation": "yeogwoneul channeun de dowajusyeoseo jeongmal gomawoyo."
+      },
       "pronunciation": "jeongmal gomawoyo"
     },
     {
@@ -7105,6 +7405,12 @@
       "text": "천만에요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_003_example",
+        "zh": "不客气，祝你旅途愉快。",
+        "text": "천만에요. 좋은 여행 되세요.",
+        "pronunciation": "cheonmaneyo. joeun yeohaeng doeseyo."
+      },
       "pronunciation": "cheonmaneyo"
     },
     {
@@ -7116,6 +7422,12 @@
       "text": "주세요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_004_example",
+        "zh": "请在这里写下您的名字。",
+        "text": "여기에 이름을 적어 주세요.",
+        "pronunciation": "yeogie ireumeul jeogeo juseyo."
+      },
       "pronunciation": "juseyo"
     },
     {
@@ -7127,6 +7439,12 @@
       "text": "죄송합니다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_005_example",
+        "zh": "不好意思，请问出口在哪里？",
+        "text": "죄송합니다. 출구가 어디인가요?",
+        "pronunciation": "joesonghamnida. chulguga eodiingayo?"
+      },
       "pronunciation": "joesonghamnida"
     },
     {
@@ -7138,6 +7456,12 @@
       "text": "미안합니다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_006_example",
+        "zh": "抱歉，我不小心碰倒了杯子。",
+        "text": "미안합니다. 제가 실수로 컵을 넘어뜨렸어요.",
+        "pronunciation": "mianhamnida. jega silsuro keobeul neomeotteuryeosseoyo."
+      },
       "pronunciation": "mianhamnida"
     },
     {
@@ -7149,6 +7473,12 @@
       "text": "안녕하세요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_007_example",
+        "zh": "你好，我预订了一个房间。",
+        "text": "안녕하세요. 방을 예약했어요.",
+        "pronunciation": "annyeonghaseyo. bangeul yeyakaesseoyo."
+      },
       "pronunciation": "annyeonghaseyo"
     },
     {
@@ -7160,6 +7490,12 @@
       "text": "안녕하세요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_008_example",
+        "zh": "早上好，早餐几点开始？",
+        "text": "안녕하세요. 아침 식사는 몇 시부터인가요?",
+        "pronunciation": "annyeonghaseyo. achim siksaneun myeot sibuteoingayo?"
+      },
       "pronunciation": "annyeonghaseyo"
     },
     {
@@ -7171,6 +7507,12 @@
       "text": "안녕하세요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_009_example",
+        "zh": "晚上好，我现在可以办理入住吗？",
+        "text": "안녕하세요. 지금 체크인할 수 있나요?",
+        "pronunciation": "annyeonghaseyo. jigeum chekeuinhal su innayo?"
+      },
       "pronunciation": "annyeonghaseyo"
     },
     {
@@ -7182,6 +7524,12 @@
       "text": "안녕히 가세요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_010_example",
+        "zh": "再见，祝您旅途愉快。",
+        "text": "안녕히 가세요. 즐거운 여행 되세요.",
+        "pronunciation": "annyeonghi gaseyo. jeulgeoun yeohaeng doeseyo."
+      },
       "pronunciation": "annyeonghi gaseyo"
     },
     {
@@ -7193,6 +7541,12 @@
       "text": "나중에 봐요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_011_example",
+        "zh": "回头见，我们晚饭时在大堂集合。",
+        "text": "나중에 봐요. 저녁때 로비에서 만나요.",
+        "pronunciation": "najunge bwayo. jeonyeokttae robieseo mannayo."
+      },
       "pronunciation": "najunge bwayo"
     },
     {
@@ -7204,6 +7558,12 @@
       "text": "안녕히 주무세요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_012_example",
+        "zh": "晚安，明天见。",
+        "text": "안녕히 주무세요. 내일 뵐게요.",
+        "pronunciation": "annyeonghi jumuseyo. naeil boelgeyo."
+      },
       "pronunciation": "annyeonghi jumuseyo"
     },
     {
@@ -7215,6 +7575,12 @@
       "text": "환영합니다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_013_example",
+        "zh": "欢迎光临，请问您预订了吗？",
+        "text": "환영합니다. 예약하셨나요?",
+        "pronunciation": "hwanyeonghamnida. yeyakasyeonnayo?"
+      },
       "pronunciation": "hwanyeonghamnida"
     },
     {
@@ -7248,6 +7614,12 @@
       "text": "네",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_016_example",
+        "zh": "是的，我订了两晚。",
+        "text": "네, 이틀 밤 예약했어요.",
+        "pronunciation": "ne, iteul bam yeyakaesseoyo."
+      },
       "pronunciation": "ne"
     },
     {
@@ -7259,6 +7631,12 @@
       "text": "아니요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_017_example",
+        "zh": "不是，这不是我的行李。",
+        "text": "아니요, 이건 제 짐이 아니에요.",
+        "pronunciation": "aniyo, igeon je jimi anieyo."
+      },
       "pronunciation": "aniyo"
     },
     {
@@ -7270,6 +7648,12 @@
       "text": "괜찮아요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_018_example",
+        "zh": "我现在可以进房间了吗？",
+        "text": "이제 방에 들어가도 괜찮아요?",
+        "pronunciation": "ije bange deureogado gwaenchanayo?"
+      },
       "pronunciation": "gwaenchanayo"
     },
     {
@@ -7303,6 +7687,12 @@
       "text": "알겠습니다",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_021_example",
+        "zh": "好的，我会在八点到大堂。",
+        "text": "알겠습니다. 여덟 시에 로비로 갈게요.",
+        "pronunciation": "algetseumnida. yeodeol sie robiro galgeyo."
+      },
       "pronunciation": "algetseumnida"
     },
     {
@@ -7336,6 +7726,12 @@
       "text": "원해요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_024_example",
+        "zh": "我想要一间安静的房间。",
+        "text": "조용한 방을 원해요.",
+        "pronunciation": "joyonghan bangeul wonhaeyo."
+      },
       "pronunciation": "wonhaeyo"
     },
     {
@@ -7347,6 +7743,12 @@
       "text": "필요해요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_025_example",
+        "zh": "办理入住需要护照吗？",
+        "text": "체크인할 때 여권이 필요해요?",
+        "pronunciation": "chekeuinhal ttae yeogwoni pillyohaeyo?"
+      },
       "pronunciation": "pillyohaeyo"
     },
     {
@@ -7358,6 +7760,12 @@
       "text": "있어요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_026_example",
+        "zh": "今晚还有空房吗？",
+        "text": "오늘 밤 빈 방이 있어요?",
+        "pronunciation": "oneul bam bin bangi isseoyo?"
+      },
       "pronunciation": "isseoyo"
     },
     {
@@ -7369,6 +7777,12 @@
       "text": "없어요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_027_example",
+        "zh": "现在没有空房。",
+        "text": "지금은 빈 방이 없어요.",
+        "pronunciation": "jigeumeun bin bangi eopseoyo."
+      },
       "pronunciation": "eopseoyo"
     },
     {
@@ -7380,6 +7794,12 @@
       "text": "맞아요",
       "direction": "traveler-says",
       "intent": "recognize",
+      "example": {
+        "id": "kr-ko_expressions_028_example",
+        "zh": "是的，这张票是去机场的。",
+        "text": "네, 맞아요. 이 표는 공항행이에요.",
+        "pronunciation": "ne, majayo. i pyoneun gonghanghaengieyo."
+      },
       "pronunciation": "majayo"
     },
     {

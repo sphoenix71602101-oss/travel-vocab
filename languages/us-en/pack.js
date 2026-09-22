@@ -855,7 +855,12 @@
       "text": "check-in",
       "audioPath": "audio/en/airport_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_021_example",
+        "zh": "这个航班几点开始值机？",
+        "text": "What time does check-in open for this flight?"
+      }
     },
     {
       "id": "airport_022",
@@ -866,7 +871,12 @@
       "text": "boarding",
       "audioPath": "audio/en/airport_022.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_022_example",
+        "zh": "我们这趟航班已经开始登机了吗？",
+        "text": "Has boarding started for our flight yet?"
+      }
     },
     {
       "id": "airport_023",
@@ -877,7 +887,12 @@
       "text": "takeoff",
       "audioPath": "audio/en/airport_023.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_023_example",
+        "zh": "这架飞机预计几点起飞？",
+        "text": "What time is this plane expected to take off?"
+      }
     },
     {
       "id": "airport_024",
@@ -888,7 +903,12 @@
       "text": "landing",
       "audioPath": "audio/en/airport_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_024_example",
+        "zh": "由于天气原因，飞机会晚些降落。",
+        "text": "The plane will land later because of the weather."
+      }
     },
     {
       "id": "airport_025",
@@ -1307,7 +1327,12 @@
       "text": "rental car",
       "audioPath": "audio/en/airport_053.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_053_example",
+        "zh": "租车时需要出示什么证件？",
+        "text": "What documents do I need to rent a car?"
+      }
     },
     {
       "id": "airport_054",
@@ -1384,7 +1409,12 @@
       "text": "on foot",
       "audioPath": "audio/en/airport_060.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_060_example",
+        "zh": "从车站步行到酒店要多久？",
+        "text": "How long does it take to walk from the station to the hotel?"
+      }
     },
     {
       "id": "airport_061",
@@ -1395,7 +1425,12 @@
       "text": "direct flight",
       "audioPath": "audio/en/airport_061.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_061_example",
+        "zh": "这个航班是直飞，还是需要转机？",
+        "text": "Is this a direct flight, or do I need to make a connection?"
+      }
     },
     {
       "id": "airport_062",
@@ -1406,7 +1441,12 @@
       "text": "luggage storage",
       "audioPath": "audio/en/airport_062.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_062_example",
+        "zh": "转机期间，可以把行李寄存在机场吗？",
+        "text": "Can I store my luggage at the airport during my layover?"
+      }
     },
     {
       "id": "airport_063",
@@ -1417,7 +1457,12 @@
       "text": "lost luggage",
       "audioPath": "audio/en/airport_063.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_063_example",
+        "zh": "我的行李没有到达，我想申报行李丢失。",
+        "text": "My luggage didn't arrive. I need to report it missing."
+      }
     },
     {
       "id": "airport_064",
@@ -1472,7 +1517,12 @@
       "text": "to carry on",
       "audioPath": "audio/en/airport_068.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_068_example",
+        "zh": "这瓶水可以随身携带上飞机吗？",
+        "text": "Can I bring this bottle of water on board?"
+      }
     },
     {
       "id": "airport_069",
@@ -1483,7 +1533,12 @@
       "text": "to check in luggage",
       "audioPath": "audio/en/airport_069.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_069_example",
+        "zh": "我想托运这个行李箱。",
+        "text": "I'd like to check this suitcase."
+      }
     },
     {
       "id": "airport_070",
@@ -1516,7 +1571,12 @@
       "text": "customs declaration",
       "audioPath": "audio/en/airport_072.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_072_example",
+        "zh": "海关申报单在哪里填写？",
+        "text": "Where do I fill out the customs declaration form?"
+      }
     },
     {
       "id": "airport_073",
@@ -1593,7 +1653,12 @@
       "text": "visa extension",
       "audioPath": "audio/en/airport_079.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_079_example",
+        "zh": "我的签证快到期了，在哪里申请延期？",
+        "text": "My visa is about to expire. Where can I apply for an extension?"
+      }
     },
     {
       "id": "airport_080",
@@ -1615,7 +1680,12 @@
       "text": "excess baggage",
       "audioPath": "audio/en/airport_081.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_airport_081_example",
+        "zh": "行李超重了，要付多少费用？",
+        "text": "My bag is overweight. How much is the extra fee?"
+      }
     },
     {
       "id": "airport_082",
@@ -2298,7 +2368,12 @@
       "text": "wake-up call",
       "audioPath": "audio/en/hotel_047.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_047_example",
+        "zh": "明早六点可以安排叫醒服务吗？",
+        "text": "Could I request a wake-up call for six tomorrow morning?"
+      }
     },
     {
       "id": "hotel_048",
@@ -2309,7 +2384,12 @@
       "text": "laundry service",
       "audioPath": "audio/en/hotel_048.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_048_example",
+        "zh": "洗衣服务今天送去，明天能取吗？",
+        "text": "If I send this to the laundry service today, can I get it back tomorrow?"
+      }
     },
     {
       "id": "hotel_049",
@@ -2364,7 +2444,12 @@
       "text": "vacant room",
       "audioPath": "audio/en/hotel_053.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_053_example",
+        "zh": "今晚还有禁烟的空房吗？",
+        "text": "Do you have a non-smoking room available tonight?"
+      }
     },
     {
       "id": "hotel_054",
@@ -2375,7 +2460,12 @@
       "text": "fully booked",
       "audioPath": "audio/en/hotel_054.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_054_example",
+        "zh": "如果今晚满房，明晚还有房间吗？",
+        "text": "If you're fully booked tonight, is a room available tomorrow night?"
+      }
     },
     {
       "id": "hotel_055",
@@ -2386,7 +2476,12 @@
       "text": "deposit",
       "audioPath": "audio/en/hotel_055.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_055_example",
+        "zh": "退房后押金什么时候退还？",
+        "text": "When will the deposit be refunded after checkout?"
+      }
     },
     {
       "id": "hotel_056",
@@ -2408,7 +2503,12 @@
       "text": "bill",
       "audioPath": "audio/en/hotel_057.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_057_example",
+        "zh": "账单上这笔额外费用是什么？",
+        "text": "What is this extra charge on my bill?"
+      }
     },
     {
       "id": "hotel_058",
@@ -2595,7 +2695,12 @@
       "text": "quiet",
       "audioPath": "audio/en/hotel_074.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_074_example",
+        "zh": "我想要一间比较安静的房间。",
+        "text": "Could I have a quieter room?"
+      }
     },
     {
       "id": "hotel_075",
@@ -2606,7 +2711,12 @@
       "text": "noisy",
       "audioPath": "audio/en/hotel_075.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_075_example",
+        "zh": "隔壁房间太吵了，可以换房吗？",
+        "text": "The room next door is too noisy. Could I change rooms?"
+      }
     },
     {
       "id": "hotel_076",
@@ -2617,7 +2727,12 @@
       "text": "comfortable",
       "audioPath": "audio/en/hotel_076.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_076_example",
+        "zh": "这张床睡着不太舒适。",
+        "text": "This bed isn't very comfortable to sleep on."
+      }
     },
     {
       "id": "hotel_077",
@@ -2639,7 +2754,12 @@
       "text": "extend stay",
       "audioPath": "audio/en/hotel_078.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_hotel_078_example",
+        "zh": "我想续住一晚，还有空房吗？",
+        "text": "I'd like to extend my stay by one night. Is a room available?"
+      }
     },
     {
       "id": "hotel_079",
@@ -3509,7 +3629,12 @@
       "text": "bill",
       "audioPath": "audio/en/food_066.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_066_example",
+        "zh": "我们可以分开结账吗？",
+        "text": "Can we pay separately?"
+      }
     },
     {
       "id": "food_067",
@@ -3575,7 +3700,12 @@
       "text": "takeout",
       "audioPath": "audio/en/food_072.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_072_example",
+        "zh": "剩下的菜可以打包外带吗？",
+        "text": "Could I take the leftovers to go?"
+      }
     },
     {
       "id": "food_073",
@@ -3597,7 +3727,12 @@
       "text": "delicious",
       "audioPath": "audio/en/food_074.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_074_example",
+        "zh": "这道菜很好吃，叫什么名字？",
+        "text": "This dish is delicious. What is it called?"
+      }
     },
     {
       "id": "food_075",
@@ -3608,7 +3743,12 @@
       "text": "not tasty",
       "audioPath": "audio/en/food_075.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_075_example",
+        "zh": "这道菜不太好吃，可以换一道吗？",
+        "text": "I don't like the taste of this dish. Could I exchange it?"
+      }
     },
     {
       "id": "food_076",
@@ -3619,7 +3759,12 @@
       "text": "sweet",
       "audioPath": "audio/en/food_076.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_076_example",
+        "zh": "有不太甜的甜点吗？",
+        "text": "Do you have a dessert that isn’t too sweet?"
+      }
     },
     {
       "id": "food_077",
@@ -3630,7 +3775,12 @@
       "text": "salty",
       "audioPath": "audio/en/food_077.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_077_example",
+        "zh": "这道菜对我来说有点咸。",
+        "text": "This dish is a little too salty for me."
+      }
     },
     {
       "id": "food_078",
@@ -3641,7 +3791,12 @@
       "text": "spicy",
       "audioPath": "audio/en/food_078.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_078_example",
+        "zh": "这道菜很辣吗？我不太能吃辣。",
+        "text": "Is this dish spicy? I can't handle much spice."
+      }
     },
     {
       "id": "food_079",
@@ -3652,7 +3807,12 @@
       "text": "bitter",
       "audioPath": "audio/en/food_079.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_079_example",
+        "zh": "这杯咖啡太苦了，可以加点牛奶吗？",
+        "text": "This coffee is too bitter. Could I add some milk?"
+      }
     },
     {
       "id": "food_080",
@@ -3663,7 +3823,12 @@
       "text": "sour",
       "audioPath": "audio/en/food_080.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_080_example",
+        "zh": "这个酱汁偏酸吗？",
+        "text": "Is this sauce sour?"
+      }
     },
     {
       "id": "food_081",
@@ -3674,7 +3839,12 @@
       "text": "hot",
       "audioPath": "audio/en/food_081.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_081_example",
+        "zh": "汤很烫，请小心。",
+        "text": "The soup is hot, so please be careful."
+      }
     },
     {
       "id": "food_082",
@@ -3685,7 +3855,12 @@
       "text": "cold",
       "audioPath": "audio/en/food_082.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_082_example",
+        "zh": "这道菜是冷着吃的吗？",
+        "text": "Is this dish meant to be eaten cold?"
+      }
     },
     {
       "id": "food_083",
@@ -3696,7 +3871,12 @@
       "text": "fresh",
       "audioPath": "audio/en/food_083.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_083_example",
+        "zh": "今天有新鲜的鱼吗？",
+        "text": "Do you have fresh fish today?"
+      }
     },
     {
       "id": "food_084",
@@ -3740,7 +3920,12 @@
       "text": "allergy",
       "audioPath": "audio/en/food_087.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_087_example",
+        "zh": "我对花生过敏，这道菜含花生吗？",
+        "text": "I'm allergic to peanuts. Does this dish contain any?"
+      }
     },
     {
       "id": "food_088",
@@ -3751,7 +3936,12 @@
       "text": "vegetarian",
       "audioPath": "audio/en/food_088.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_food_088_example",
+        "zh": "我是素食者，这道菜里有肉或鱼吗？",
+        "text": "I’m vegetarian. Does this dish contain any meat or fish?"
+      }
     },
     {
       "id": "food_089",
@@ -4170,7 +4360,12 @@
       "text": "to try on",
       "audioPath": "audio/en/shopping_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_shopping_021_example",
+        "zh": "我想先试穿这件外套，再决定买不买。",
+        "text": "I'd like to try on this coat before deciding whether to buy it."
+      }
     },
     {
       "id": "shopping_022",
@@ -4566,7 +4761,12 @@
       "text": "local specialty",
       "audioPath": "audio/en/shopping_057.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_shopping_057_example",
+        "zh": "这个特产需要冷藏吗？",
+        "text": "Does this local specialty need to be refrigerated?"
+      }
     },
     {
       "id": "shopping_058",
@@ -5767,7 +5967,12 @@
       "text": "what time",
       "audioPath": "audio/en/numbers_032.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_numbers_032_example",
+        "zh": "早餐从几点开始？",
+        "text": "What time does breakfast start?"
+      }
     },
     {
       "id": "numbers_033",
@@ -6262,7 +6467,12 @@
       "text": "to open",
       "audioPath": "audio/en/numbers_077.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_numbers_077_example",
+        "zh": "这家药店星期日也开门吗？",
+        "text": "Is this pharmacy open on Sundays too?"
+      }
     },
     {
       "id": "numbers_078",
@@ -6273,7 +6483,12 @@
       "text": "to close",
       "audioPath": "audio/en/numbers_078.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_numbers_078_example",
+        "zh": "博物馆几点关门？",
+        "text": "What time does the museum close?"
+      }
     },
     {
       "id": "numbers_079",
@@ -6317,7 +6532,12 @@
       "text": "soon",
       "audioPath": "audio/en/numbers_082.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_numbers_082_example",
+        "zh": "巴士马上到吗？",
+        "text": "Is the bus coming soon?"
+      }
     },
     {
       "id": "numbers_083",
@@ -6659,7 +6879,12 @@
       "text": "fracture",
       "audioPath": "audio/en/emergency_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_emergency_021_example",
+        "zh": "我摔倒后脚踝可能骨折了。",
+        "text": "I fell and may have fractured my ankle."
+      }
     },
     {
       "id": "emergency_022",
@@ -6670,7 +6895,12 @@
       "text": "burn",
       "audioPath": "audio/en/emergency_022.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_emergency_022_example",
+        "zh": "我的手被热水烫伤了。",
+        "text": "I burned my hand with hot water."
+      }
     },
     {
       "id": "emergency_023",
@@ -6681,7 +6911,12 @@
       "text": "asthma",
       "audioPath": "audio/en/emergency_023.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_emergency_023_example",
+        "zh": "我有哮喘，现在呼吸有点困难。",
+        "text": "I have asthma, and I'm having trouble breathing right now."
+      }
     },
     {
       "id": "emergency_024",
@@ -6780,7 +7015,12 @@
       "text": "insurance",
       "audioPath": "audio/en/emergency_032.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_emergency_032_example",
+        "zh": "这家医院接受旅行保险吗？",
+        "text": "Does this hospital accept travel insurance?"
+      }
     },
     {
       "id": "emergency_033",
@@ -6923,7 +7163,12 @@
       "text": "thank you",
       "audioPath": "audio/en/expressions_001.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_001_example",
+        "zh": "谢谢你帮我指路。",
+        "text": "Thank you for showing me the way."
+      }
     },
     {
       "id": "expressions_002",
@@ -6934,7 +7179,12 @@
       "text": "thank you very much",
       "audioPath": "audio/en/expressions_002.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_002_example",
+        "zh": "非常感谢您帮我找回护照。",
+        "text": "Thank you very much for helping me find my passport."
+      }
     },
     {
       "id": "expressions_003",
@@ -6945,7 +7195,12 @@
       "text": "you're welcome",
       "audioPath": "audio/en/expressions_003.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_003_example",
+        "zh": "不客气，祝你旅途愉快。",
+        "text": "You're welcome. Have a great trip."
+      }
     },
     {
       "id": "expressions_004",
@@ -6956,7 +7211,12 @@
       "text": "please",
       "audioPath": "audio/en/expressions_004.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_004_example",
+        "zh": "请在这里写下您的名字。",
+        "text": "Please write your name here."
+      }
     },
     {
       "id": "expressions_005",
@@ -6967,7 +7227,12 @@
       "text": "excuse me / sorry",
       "audioPath": "audio/en/expressions_005.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_005_example",
+        "zh": "不好意思，请问出口在哪里？",
+        "text": "Excuse me, where is the exit?"
+      }
     },
     {
       "id": "expressions_006",
@@ -6978,7 +7243,12 @@
       "text": "I'm sorry",
       "audioPath": "audio/en/expressions_006.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_006_example",
+        "zh": "抱歉，我不小心碰倒了杯子。",
+        "text": "I'm sorry, I accidentally knocked over the glass."
+      }
     },
     {
       "id": "expressions_007",
@@ -6989,7 +7259,12 @@
       "text": "hello",
       "audioPath": "audio/en/expressions_007.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_007_example",
+        "zh": "你好，我预订了一个房间。",
+        "text": "Hello, I have a room reservation."
+      }
     },
     {
       "id": "expressions_008",
@@ -7000,7 +7275,12 @@
       "text": "good morning",
       "audioPath": "audio/en/expressions_008.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_008_example",
+        "zh": "早上好，早餐几点开始？",
+        "text": "Good morning. What time does breakfast start?"
+      }
     },
     {
       "id": "expressions_009",
@@ -7011,7 +7291,12 @@
       "text": "good evening",
       "audioPath": "audio/en/expressions_009.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_009_example",
+        "zh": "晚上好，我现在可以办理入住吗？",
+        "text": "Good evening. Can I check in now?"
+      }
     },
     {
       "id": "expressions_010",
@@ -7022,7 +7307,12 @@
       "text": "goodbye",
       "audioPath": "audio/en/expressions_010.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_010_example",
+        "zh": "再见，祝您旅途愉快。",
+        "text": "Goodbye. Have a pleasant trip."
+      }
     },
     {
       "id": "expressions_011",
@@ -7033,7 +7323,12 @@
       "text": "see you later",
       "audioPath": "audio/en/expressions_011.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_011_example",
+        "zh": "回头见，我们晚饭时在大堂集合。",
+        "text": "See you later. Let’s meet in the lobby at dinner time."
+      }
     },
     {
       "id": "expressions_012",
@@ -7044,7 +7339,12 @@
       "text": "good night",
       "audioPath": "audio/en/expressions_012.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_012_example",
+        "zh": "晚安，明天见。",
+        "text": "Good night. See you tomorrow."
+      }
     },
     {
       "id": "expressions_013",
@@ -7055,7 +7355,12 @@
       "text": "welcome",
       "audioPath": "audio/en/expressions_013.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_013_example",
+        "zh": "欢迎光临，请问您预订了吗？",
+        "text": "Welcome. Do you have a reservation?"
+      }
     },
     {
       "id": "expressions_014",
@@ -7088,7 +7393,12 @@
       "text": "yes",
       "audioPath": "audio/en/expressions_016.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_016_example",
+        "zh": "是的，我订了两晚。",
+        "text": "Yes, I booked two nights."
+      }
     },
     {
       "id": "expressions_017",
@@ -7099,7 +7409,12 @@
       "text": "no",
       "audioPath": "audio/en/expressions_017.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_017_example",
+        "zh": "不是，这不是我的行李。",
+        "text": "No, this is not my luggage."
+      }
     },
     {
       "id": "expressions_018",
@@ -7110,7 +7425,12 @@
       "text": "okay",
       "audioPath": "audio/en/expressions_018.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_018_example",
+        "zh": "我现在可以进房间了吗？",
+        "text": "Is it okay for me to go into the room now?"
+      }
     },
     {
       "id": "expressions_019",
@@ -7143,7 +7463,12 @@
       "text": "OK",
       "audioPath": "audio/en/expressions_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_021_example",
+        "zh": "好的，我会在八点到大堂。",
+        "text": "OK, I’ll be in the lobby at eight."
+      }
     },
     {
       "id": "expressions_022",
@@ -7176,7 +7501,12 @@
       "text": "want",
       "audioPath": "audio/en/expressions_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_024_example",
+        "zh": "我想要一间安静的房间。",
+        "text": "I'd like a quiet room."
+      }
     },
     {
       "id": "expressions_025",
@@ -7187,7 +7517,12 @@
       "text": "need",
       "audioPath": "audio/en/expressions_025.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_025_example",
+        "zh": "办理入住需要护照吗？",
+        "text": "Do I need my passport to check in?"
+      }
     },
     {
       "id": "expressions_026",
@@ -7198,7 +7533,12 @@
       "text": "there is / have",
       "audioPath": "audio/en/expressions_026.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_026_example",
+        "zh": "今晚还有空房吗？",
+        "text": "Do you have any rooms available tonight?"
+      }
     },
     {
       "id": "expressions_027",
@@ -7209,7 +7549,12 @@
       "text": "there isn't / don't have",
       "audioPath": "audio/en/expressions_027.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_027_example",
+        "zh": "现在没有空房。",
+        "text": "There are no rooms available right now."
+      }
     },
     {
       "id": "expressions_028",
@@ -7220,7 +7565,12 @@
       "text": "is",
       "audioPath": "audio/en/expressions_028.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "us-en_expressions_028_example",
+        "zh": "是的，这张票是去机场的。",
+        "text": "Yes, this is the ticket for the airport."
+      }
     },
     {
       "id": "expressions_029",

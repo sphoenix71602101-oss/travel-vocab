@@ -6,6 +6,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const app = read("app.js");
+const destinations = read("core/destinations.js");
 const html = read("index.html");
 const css = read("styles.css");
 const beginnerRegistry = read("core/beginner-module-registry.js");
@@ -40,11 +41,11 @@ test("首页提供可扩展目的地入口、状态化学习卡和旅行场景",
   assert.doesNotMatch(html, /id="appHeader"|class="brand-lockup"/);
   assert.doesNotMatch(app, /appTitle|appSubtitle|PAGE_META/);
   assert.match(app, /class="brand-hero"/);
-  assert.match(app, /const HERO_IMAGE_PATHS = Object\.freeze\(\{/);
+  assert.match(app, /const DESTINATION_OPTIONS = window\.TRAVEL_DESTINATIONS\.all/);
   assert.match(app, /function heroImageForDestination\(destinationId\)/);
-  assert.match(app, /images\/heroes\/default-mobile\.webp/);
-  assert.match(app, /images\/heroes\/jp-mobile\.webp/);
-  assert.match(app, /us: Object\.freeze\(\{\s*mobile: "images\/heroes\/us-mobile\.webp",\s*wide: "images\/heroes\/us-wide\.webp"/);
+  assert.match(destinations, /images\/heroes\/default-mobile\.webp/);
+  assert.match(destinations, /images\/heroes\/jp-mobile\.webp/);
+  assert.match(destinations, /images\/heroes\/us-mobile\.webp/);
   assert.match(app, /destination\?\.id === "us" \? " hero-image-us" : ""/);
   assert.match(app, /<picture>/);
   assert.match(app, /fetchpriority="high"/);
@@ -227,11 +228,11 @@ test("我的页面不再选择目的地且空状态不伪造学习数据", () =>
 });
 
 test("目的地配置开放日美韩并预留俄西两个国家", () => {
-  assert.match(app, /const DESTINATION_OPTIONS = \[/);
-  for (const id of ["jp", "us", "kr", "ru", "es"]) assert.match(app, new RegExp(`id: "${id}"`));
-  assert.match(app, /country: "美国", language: "英语"/);
-  assert.match(app, /country: "韩国", language: "韩语", nativeLabel: "한국어", lang: "ko", status: "available"/);
-  assert.match(app, /status: "coming-soon"/);
+  assert.match(html, /src="core\/destinations\.js"/);
+  for (const id of ["jp", "us", "kr", "ru", "es"]) assert.match(destinations, new RegExp(`id: "${id}"`));
+  assert.match(destinations, /country: "美国", language: "英语"/);
+  assert.match(destinations, /country: "韩国", language: "韩语"/);
+  assert.match(destinations, /status: "coming-soon"/);
   assert.match(css, /\.destination-strip[^}]*overflow-x:\s*auto/s);
   assert.match(css, /\.destination-card:disabled/);
 });
@@ -283,14 +284,9 @@ test("沉浸式流程、触控尺寸和安全区完整", () => {
 });
 
 test("日英韩旅行认读通过独立注册模块复用现有入口", () => {
-  assert.match(html, /<script src="languages\/us-en\/beginner\/data\.js"><\/script>/);
-  assert.match(html, /<script src="languages\/us-en\/beginner\/audio\.js"><\/script>/);
   assert.match(html, /<script src="core\/beginner-module-registry\.js"><\/script>/);
-  assert.match(html, /<script src="languages\/jp-ja\/beginner\/module\.js"><\/script>/);
-  assert.match(html, /<script src="languages\/us-en\/beginner\/module\.js"><\/script>/);
-  assert.match(html, /<script src="languages\/kr-ko\/beginner\/data\.js"><\/script>/);
-  assert.match(html, /<script src="languages\/kr-ko\/beginner\/audio\.js"><\/script>/);
-  assert.match(html, /<script src="languages\/kr-ko\/beginner\/module\.js"><\/script>/);
+  for (const packId of ["jp-ja", "us-en", "kr-ko"]) assert.match(destinations, new RegExp(`languages/${packId}/beginner/module\\.js`));
+  assert.match(app, /function loadLanguage\(packId\)/);
   assert.match(beginnerRegistry, /window\.registerBeginnerModule/);
   assert.match(beginnerRegistry, /requiredMethods = \["createProgress", "normalizeProgress", "getHomeSummary", "renderRoute"\]/);
   assert.match(japaneseBeginner, /id: ID, legacyKey/);

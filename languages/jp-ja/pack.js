@@ -896,7 +896,13 @@
       "pronunciation": "ちぇっくいん",
       "audioPath": "audio/ja/airport_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_021_example",
+        "zh": "这个航班几点开始值机？",
+        "text": "この便のチェックインは何時からですか？",
+        "pronunciation": "このびんのちぇっくいんはなんじからですか？"
+      }
     },
     {
       "id": "airport_022",
@@ -908,7 +914,13 @@
       "pronunciation": "とうじょう",
       "audioPath": "audio/ja/airport_022.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_022_example",
+        "zh": "我们这趟航班已经开始登机了吗？",
+        "text": "私たちの便はもう搭乗が始まりましたか？",
+        "pronunciation": "わたしたちのびんはもうとうじょうがはじまりましたか？"
+      }
     },
     {
       "id": "airport_023",
@@ -920,7 +932,13 @@
       "pronunciation": "りりく",
       "audioPath": "audio/ja/airport_023.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_023_example",
+        "zh": "这架飞机预计几点起飞？",
+        "text": "この飛行機は何時に離陸する予定ですか？",
+        "pronunciation": "このひこうきはなんじにりりくするよていですか？"
+      }
     },
     {
       "id": "airport_024",
@@ -932,7 +950,13 @@
       "pronunciation": "ちゃくりく",
       "audioPath": "audio/ja/airport_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_024_example",
+        "zh": "由于天气原因，飞机会晚些降落。",
+        "text": "天候のため、飛行機の着陸が遅れます。",
+        "pronunciation": "てんこうのため、ひこうきのちゃくりくがおくれます。"
+      }
     },
     {
       "id": "airport_025",
@@ -1400,7 +1424,13 @@
       "pronunciation": "れんたかー",
       "audioPath": "audio/ja/airport_053.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_053_example",
+        "zh": "租车时需要出示什么证件？",
+        "text": "レンタカーを借りるとき、どんな書類が必要ですか？",
+        "pronunciation": "れんたかーをかりるとき、どんなしょるいがひつようですか？"
+      }
     },
     {
       "id": "airport_054",
@@ -1484,7 +1514,13 @@
       "pronunciation": "とほ",
       "audioPath": "audio/ja/airport_060.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_060_example",
+        "zh": "从车站步行到酒店要多久？",
+        "text": "駅からホテルまで徒歩で何分ですか？",
+        "pronunciation": "えきからほてるまでとほでなんぷんですか？"
+      }
     },
     {
       "id": "airport_061",
@@ -1496,7 +1532,13 @@
       "pronunciation": "ちょっこうびん",
       "audioPath": "audio/ja/airport_061.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_061_example",
+        "zh": "这个航班是直飞，还是需要转机？",
+        "text": "この便は直行便ですか、それとも乗り継ぎが必要ですか？",
+        "pronunciation": "このびんはちょっこうびんですか、それとものりつぎがひつようですか？"
+      }
     },
     {
       "id": "airport_062",
@@ -1508,7 +1550,13 @@
       "pronunciation": "にもつあずかり",
       "audioPath": "audio/ja/airport_062.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_062_example",
+        "zh": "转机期间，可以把行李寄存在机场吗？",
+        "text": "乗り継ぎの間、空港で荷物を預けられますか？",
+        "pronunciation": "のりつぎのあいだ、くうこうでにもつをあずけられますか？"
+      }
     },
     {
       "id": "airport_063",
@@ -1520,7 +1568,13 @@
       "pronunciation": "にもつふんしつ",
       "audioPath": "audio/ja/airport_063.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_063_example",
+        "zh": "我的行李没有到达，我想申报行李丢失。",
+        "text": "荷物が届いていません。紛失届を出したいです。",
+        "pronunciation": "にもつがとどいていません。ふんしつとどけをだしたいです。"
+      }
     },
     {
       "id": "airport_064",
@@ -1580,7 +1634,13 @@
       "pronunciation": "もちこむ",
       "audioPath": "audio/ja/airport_068.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_068_example",
+        "zh": "这瓶水可以随身携带上飞机吗？",
+        "text": "この水は機内に持ち込めますか？",
+        "pronunciation": "このみずはきないにもちこめますか？"
+      }
     },
     {
       "id": "airport_069",
@@ -1592,7 +1652,13 @@
       "pronunciation": "あずける",
       "audioPath": "audio/ja/airport_069.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_069_example",
+        "zh": "我想托运这个行李箱。",
+        "text": "このスーツケースを預けたいです。",
+        "pronunciation": "このすーつけーすをあずけたいです。"
+      }
     },
     {
       "id": "airport_070",
@@ -1628,7 +1694,13 @@
       "pronunciation": "ぜいかんしんこく",
       "audioPath": "audio/ja/airport_072.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_072_example",
+        "zh": "海关申报单在哪里填写？",
+        "text": "税関申告書はどこで記入しますか？",
+        "pronunciation": "ぜいかんしんこくしょはどこできにゅうしますか？"
+      }
     },
     {
       "id": "airport_073",
@@ -1712,7 +1784,13 @@
       "pronunciation": "びざえんちょう",
       "audioPath": "audio/ja/airport_079.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_079_example",
+        "zh": "我的签证快到期了，在哪里申请延期？",
+        "text": "ビザの期限が近いのですが、どこで延長を申請できますか？",
+        "pronunciation": "びざのきげんがちかいのですが、どこでえんちょうをしんせいできますか？"
+      }
     },
     {
       "id": "airport_080",
@@ -1736,7 +1814,13 @@
       "pronunciation": "ちょうかてにもつ",
       "audioPath": "audio/ja/airport_081.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_airport_081_example",
+        "zh": "行李超重了，要付多少费用？",
+        "text": "荷物が重量オーバーです。追加料金はいくらですか？",
+        "pronunciation": "にもつがじゅうりょうおーばーです。ついかりょうきんはいくらですか？"
+      }
     },
     {
       "id": "airport_082",
@@ -2492,7 +2576,13 @@
       "pronunciation": "もーにんぐこーる",
       "audioPath": "audio/ja/hotel_047.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_047_example",
+        "zh": "明早六点可以安排叫醒服务吗？",
+        "text": "明日の朝六時にモーニングコールをお願いできますか？",
+        "pronunciation": "あしたのあさろくじにもーにんぐこーるをおねがいできますか？"
+      }
     },
     {
       "id": "hotel_048",
@@ -2504,7 +2594,13 @@
       "pronunciation": "らんどりーさーびす",
       "audioPath": "audio/ja/hotel_048.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_048_example",
+        "zh": "洗衣服务今天送去，明天能取吗？",
+        "text": "今日ランドリーサービスに出したら、明日受け取れますか？",
+        "pronunciation": "きょうらんどりーさーびすにだしたら、あしたうけとれますか？"
+      }
     },
     {
       "id": "hotel_049",
@@ -2564,7 +2660,13 @@
       "pronunciation": "くうしつ",
       "audioPath": "audio/ja/hotel_053.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_053_example",
+        "zh": "今晚还有禁烟的空房吗？",
+        "text": "今夜、禁煙の空室はありますか？",
+        "pronunciation": "こんや、きんえんのくうしつはありますか？"
+      }
     },
     {
       "id": "hotel_054",
@@ -2576,7 +2678,13 @@
       "pronunciation": "まんしつ",
       "audioPath": "audio/ja/hotel_054.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_054_example",
+        "zh": "如果今晚满房，明晚还有房间吗？",
+        "text": "今夜は満室なら、明日の夜は空室がありますか？",
+        "pronunciation": "こんやはまんしつなら、あしたのよるはくうしつがありますか？"
+      }
     },
     {
       "id": "hotel_055",
@@ -2588,7 +2696,13 @@
       "pronunciation": "でぽじっと",
       "audioPath": "audio/ja/hotel_055.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_055_example",
+        "zh": "退房后押金什么时候退还？",
+        "text": "チェックアウト後、デポジットはいつ返金されますか？",
+        "pronunciation": "ちぇっくあうとご、でぽじっとはいつへんきんされますか？"
+      }
     },
     {
       "id": "hotel_056",
@@ -2612,7 +2726,13 @@
       "pronunciation": "せいきゅうしょ",
       "audioPath": "audio/ja/hotel_057.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_057_example",
+        "zh": "账单上这笔额外费用是什么？",
+        "text": "請求書のこの追加料金は何ですか？",
+        "pronunciation": "せいきゅうしょのこのついかりょうきんはなんですか？"
+      }
     },
     {
       "id": "hotel_058",
@@ -2816,7 +2936,13 @@
       "pronunciation": "しずか",
       "audioPath": "audio/ja/hotel_074.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_074_example",
+        "zh": "我想要一间比较安静的房间。",
+        "text": "もう少し静かな部屋をお願いします。",
+        "pronunciation": "もうすこししずかなへやをおねがいします。"
+      }
     },
     {
       "id": "hotel_075",
@@ -2828,7 +2954,13 @@
       "pronunciation": "うるさい",
       "audioPath": "audio/ja/hotel_075.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_075_example",
+        "zh": "隔壁房间太吵了，可以换房吗？",
+        "text": "隣の部屋がうるさいので、部屋を替えられますか？",
+        "pronunciation": "となりのへやがうるさいので、へやをかえられますか？"
+      }
     },
     {
       "id": "hotel_076",
@@ -2840,7 +2972,13 @@
       "pronunciation": "かいてき",
       "audioPath": "audio/ja/hotel_076.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_076_example",
+        "zh": "这张床睡着不太舒适。",
+        "text": "このベッドはあまり快適ではありません。",
+        "pronunciation": "このべっどはあまりかいてきではありません。"
+      }
     },
     {
       "id": "hotel_077",
@@ -2864,7 +3002,13 @@
       "pronunciation": "えんぱく",
       "audioPath": "audio/ja/hotel_078.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_hotel_078_example",
+        "zh": "我想续住一晚，还有空房吗？",
+        "text": "もう一泊延泊したいのですが、空室はありますか？",
+        "pronunciation": "もういっぱくえんぱくしたいのですが、くうしつはありますか？"
+      }
     },
     {
       "id": "hotel_079",
@@ -3824,7 +3968,13 @@
       "pronunciation": "おかいけい",
       "audioPath": "audio/ja/food_066.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_066_example",
+        "zh": "我们可以分开结账吗？",
+        "text": "別々にお会計できますか？",
+        "pronunciation": "べつべつにおかいけいできますか？"
+      }
     },
     {
       "id": "food_067",
@@ -3896,7 +4046,13 @@
       "pronunciation": "もちかえり",
       "audioPath": "audio/ja/food_072.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_072_example",
+        "zh": "剩下的菜可以打包外带吗？",
+        "text": "残った料理を持ち帰れますか？",
+        "pronunciation": "のこったりょうりをもちかえれますか？"
+      }
     },
     {
       "id": "food_073",
@@ -3920,7 +4076,13 @@
       "pronunciation": "おいしい",
       "audioPath": "audio/ja/food_074.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_074_example",
+        "zh": "这道菜很好吃，叫什么名字？",
+        "text": "この料理はおいしいですね。何という名前ですか？",
+        "pronunciation": "このりょうりはおいしいですね。なんというなまえですか？"
+      }
     },
     {
       "id": "food_075",
@@ -3932,7 +4094,13 @@
       "pronunciation": "まずい",
       "audioPath": "audio/ja/food_075.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_075_example",
+        "zh": "这道菜不太好吃，可以换一道吗？",
+        "text": "この料理はあまりおいしくありません。別の料理に替えられますか？",
+        "pronunciation": "このりょうりはあまりおいしくありません。べつのりょうりにかえられますか？"
+      }
     },
     {
       "id": "food_076",
@@ -3944,7 +4112,13 @@
       "pronunciation": "あまい",
       "audioPath": "audio/ja/food_076.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_076_example",
+        "zh": "有不太甜的甜点吗？",
+        "text": "あまり甘くないデザートはありますか？",
+        "pronunciation": "あまりあまくないでざーとはありますか？"
+      }
     },
     {
       "id": "food_077",
@@ -3956,7 +4130,13 @@
       "pronunciation": "しょっぱい",
       "audioPath": "audio/ja/food_077.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_077_example",
+        "zh": "这道菜对我来说有点咸。",
+        "text": "この料理は私には少ししょっぱいです。",
+        "pronunciation": "このりょうりはわたしにはすこししょっぱいです。"
+      }
     },
     {
       "id": "food_078",
@@ -3968,7 +4148,13 @@
       "pronunciation": "からい",
       "audioPath": "audio/ja/food_078.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_078_example",
+        "zh": "这道菜很辣吗？我不太能吃辣。",
+        "text": "この料理は辛いですか？辛いものは苦手です。",
+        "pronunciation": "このりょうりはからいですか？からいものはにがてです。"
+      }
     },
     {
       "id": "food_079",
@@ -3980,7 +4166,13 @@
       "pronunciation": "にがい",
       "audioPath": "audio/ja/food_079.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_079_example",
+        "zh": "这杯咖啡太苦了，可以加点牛奶吗？",
+        "text": "このコーヒーは苦いので、牛乳を少し入れられますか？",
+        "pronunciation": "このこーひーはにがいので、ぎゅうにゅうをすこしいれられますか？"
+      }
     },
     {
       "id": "food_080",
@@ -3992,7 +4184,13 @@
       "pronunciation": "すっぱい",
       "audioPath": "audio/ja/food_080.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_080_example",
+        "zh": "这个酱汁偏酸吗？",
+        "text": "このソースは酸っぱいですか？",
+        "pronunciation": "このそーすはすっぱいですか？"
+      }
     },
     {
       "id": "food_081",
@@ -4004,7 +4202,13 @@
       "pronunciation": "あつい",
       "audioPath": "audio/ja/food_081.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_081_example",
+        "zh": "汤很烫，请小心。",
+        "text": "スープが熱いので、気をつけてください。",
+        "pronunciation": "すーぷがあついので、きをつけてください。"
+      }
     },
     {
       "id": "food_082",
@@ -4016,7 +4220,13 @@
       "pronunciation": "つめたい",
       "audioPath": "audio/ja/food_082.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_082_example",
+        "zh": "这道菜是冷着吃的吗？",
+        "text": "この料理は冷たいまま食べますか？",
+        "pronunciation": "このりょうりはつめたいままたべますか？"
+      }
     },
     {
       "id": "food_083",
@@ -4028,7 +4238,13 @@
       "pronunciation": "しんせん",
       "audioPath": "audio/ja/food_083.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_083_example",
+        "zh": "今天有新鲜的鱼吗？",
+        "text": "今日は新鮮な魚がありますか？",
+        "pronunciation": "きょうはしんせんなさかながありますか？"
+      }
     },
     {
       "id": "food_084",
@@ -4076,7 +4292,13 @@
       "pronunciation": "あれるぎー",
       "audioPath": "audio/ja/food_087.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_087_example",
+        "zh": "我对花生过敏，这道菜含花生吗？",
+        "text": "ピーナッツアレルギーがあります。この料理にピーナッツは入っていますか？",
+        "pronunciation": "ぴーなっつあれるぎーがあります。このりょうりにぴーなっつははいっていますか？"
+      }
     },
     {
       "id": "food_088",
@@ -4088,7 +4310,13 @@
       "pronunciation": "べじたりあん",
       "audioPath": "audio/ja/food_088.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_food_088_example",
+        "zh": "我是素食者，这道菜里有肉或鱼吗？",
+        "text": "ベジタリアンです。この料理に肉や魚は入っていますか？",
+        "pronunciation": "べじたりあんです。このりょうりににくやさかなははいっていますか？"
+      }
     },
     {
       "id": "food_089",
@@ -4556,7 +4784,13 @@
       "pronunciation": "しちゃくする",
       "audioPath": "audio/ja/shopping_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_shopping_021_example",
+        "zh": "我想先试穿这件外套，再决定买不买。",
+        "text": "このコートを試着してから、買うか決めたいです。",
+        "pronunciation": "このこーとをしちゃくしてから、かうかきめたいです。"
+      }
     },
     {
       "id": "shopping_022",
@@ -4988,7 +5222,13 @@
       "pronunciation": "めいぶつ",
       "audioPath": "audio/ja/shopping_057.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_shopping_057_example",
+        "zh": "这个特产需要冷藏吗？",
+        "text": "この名物は冷蔵する必要がありますか？",
+        "pronunciation": "このめいぶつはれいぞうするひつようがありますか？"
+      }
     },
     {
       "id": "shopping_058",
@@ -6320,7 +6560,13 @@
       "pronunciation": "なんじ",
       "audioPath": "audio/ja/numbers_032.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_numbers_032_example",
+        "zh": "早餐从几点开始？",
+        "text": "朝食は何時からですか？",
+        "pronunciation": "ちょうしょくはなんじからですか？"
+      }
     },
     {
       "id": "numbers_033",
@@ -6860,7 +7106,13 @@
       "pronunciation": "ひらく",
       "audioPath": "audio/ja/numbers_077.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_numbers_077_example",
+        "zh": "这家药店星期日也开门吗？",
+        "text": "この薬局は日曜日も開いていますか？",
+        "pronunciation": "このやっきょくはにちようびもあいていますか？"
+      }
     },
     {
       "id": "numbers_078",
@@ -6872,7 +7124,13 @@
       "pronunciation": "しまる",
       "audioPath": "audio/ja/numbers_078.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_numbers_078_example",
+        "zh": "博物馆几点关门？",
+        "text": "博物館は何時に閉まりますか？",
+        "pronunciation": "はくぶつかんはなんじにしまりますか？"
+      }
     },
     {
       "id": "numbers_079",
@@ -6920,7 +7178,13 @@
       "pronunciation": "すぐ",
       "audioPath": "audio/ja/numbers_082.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_numbers_082_example",
+        "zh": "巴士马上到吗？",
+        "text": "バスはもうすぐ来ますか？",
+        "pronunciation": "ばすはもうすぐきますか？"
+      }
     },
     {
       "id": "numbers_083",
@@ -7304,7 +7568,13 @@
       "pronunciation": "こっせつ",
       "audioPath": "audio/ja/emergency_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_emergency_021_example",
+        "zh": "我摔倒后脚踝可能骨折了。",
+        "text": "転んで足首を骨折したかもしれません。",
+        "pronunciation": "ころんであしくびをこっせつしたかもしれません。"
+      }
     },
     {
       "id": "emergency_022",
@@ -7316,7 +7586,13 @@
       "pronunciation": "やけど",
       "audioPath": "audio/ja/emergency_022.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_emergency_022_example",
+        "zh": "我的手被热水烫伤了。",
+        "text": "熱いお湯で手をやけどしました。",
+        "pronunciation": "あついおゆでてをやけどしました。"
+      }
     },
     {
       "id": "emergency_023",
@@ -7328,7 +7604,13 @@
       "pronunciation": "ぜんそく",
       "audioPath": "audio/ja/emergency_023.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_emergency_023_example",
+        "zh": "我有哮喘，现在呼吸有点困难。",
+        "text": "喘息があって、今少し息苦しいです。",
+        "pronunciation": "ぜんそくがあって、いますこしいきぐるしいです。"
+      }
     },
     {
       "id": "emergency_024",
@@ -7436,7 +7718,13 @@
       "pronunciation": "ほけん",
       "audioPath": "audio/ja/emergency_032.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_emergency_032_example",
+        "zh": "这家医院接受旅行保险吗？",
+        "text": "この病院では旅行保険が使えますか？",
+        "pronunciation": "このびょういんではりょこうほけんがつかえますか？"
+      }
     },
     {
       "id": "emergency_033",
@@ -7592,7 +7880,13 @@
       "pronunciation": "ありがとう",
       "audioPath": "audio/ja/expressions_001.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_001_example",
+        "zh": "谢谢你帮我指路。",
+        "text": "道を教えてくれてありがとう。",
+        "pronunciation": "みちをおしえてくれてありがとう。"
+      }
     },
     {
       "id": "expressions_002",
@@ -7604,7 +7898,13 @@
       "pronunciation": "ありがとうございます",
       "audioPath": "audio/ja/expressions_002.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_002_example",
+        "zh": "非常感谢您帮我找回护照。",
+        "text": "パスポートを見つけてくださって、ありがとうございます。",
+        "pronunciation": "ぱすぽーとをみつけてくださって、ありがとうございます。"
+      }
     },
     {
       "id": "expressions_003",
@@ -7616,7 +7916,13 @@
       "pronunciation": "どういたしまして",
       "audioPath": "audio/ja/expressions_003.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_003_example",
+        "zh": "不客气，祝你旅途愉快。",
+        "text": "どういたしまして。よい旅を。",
+        "pronunciation": "どういたしまして。よいたびを。"
+      }
     },
     {
       "id": "expressions_004",
@@ -7628,7 +7934,13 @@
       "pronunciation": "ください",
       "audioPath": "audio/ja/expressions_004.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_004_example",
+        "zh": "请在这里写下您的名字。",
+        "text": "ここにお名前を書いてください。",
+        "pronunciation": "ここにおなまえをかいてください。"
+      }
     },
     {
       "id": "expressions_005",
@@ -7640,7 +7952,13 @@
       "pronunciation": "すみません",
       "audioPath": "audio/ja/expressions_005.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_005_example",
+        "zh": "不好意思，请问出口在哪里？",
+        "text": "すみません、出口はどこですか？",
+        "pronunciation": "すみません、でぐちはどこですか？"
+      }
     },
     {
       "id": "expressions_006",
@@ -7652,7 +7970,13 @@
       "pronunciation": "ごめんなさい",
       "audioPath": "audio/ja/expressions_006.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_006_example",
+        "zh": "抱歉，我不小心碰倒了杯子。",
+        "text": "ごめんなさい、うっかりコップを倒してしまいました。",
+        "pronunciation": "ごめんなさい、うっかりこっぷをたおしてしまいました。"
+      }
     },
     {
       "id": "expressions_007",
@@ -7664,7 +7988,13 @@
       "pronunciation": "こんにちは",
       "audioPath": "audio/ja/expressions_007.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_007_example",
+        "zh": "你好，我预订了一个房间。",
+        "text": "こんにちは、部屋を予約しています。",
+        "pronunciation": "こんにちは、へやをよやくしています。"
+      }
     },
     {
       "id": "expressions_008",
@@ -7676,7 +8006,13 @@
       "pronunciation": "おはようございます",
       "audioPath": "audio/ja/expressions_008.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_008_example",
+        "zh": "早上好，早餐几点开始？",
+        "text": "おはようございます。朝食は何時からですか？",
+        "pronunciation": "おはようございます。ちょうしょくはなんじからですか？"
+      }
     },
     {
       "id": "expressions_009",
@@ -7688,7 +8024,13 @@
       "pronunciation": "こんばんは",
       "audioPath": "audio/ja/expressions_009.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_009_example",
+        "zh": "晚上好，我现在可以办理入住吗？",
+        "text": "こんばんは。今からチェックインできますか？",
+        "pronunciation": "こんばんは。いまからちぇっくいんできますか？"
+      }
     },
     {
       "id": "expressions_010",
@@ -7700,7 +8042,13 @@
       "pronunciation": "さようなら",
       "audioPath": "audio/ja/expressions_010.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_010_example",
+        "zh": "再见，祝您旅途愉快。",
+        "text": "さようなら。よい旅を。",
+        "pronunciation": "さようなら。よいたびを。"
+      }
     },
     {
       "id": "expressions_011",
@@ -7712,7 +8060,13 @@
       "pronunciation": "またね",
       "audioPath": "audio/ja/expressions_011.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_011_example",
+        "zh": "回头见，我们晚饭时在大堂集合。",
+        "text": "またね。夕食のときにロビーで会おう。",
+        "pronunciation": "またね。ゆうしょくのときにろびーであおう。"
+      }
     },
     {
       "id": "expressions_012",
@@ -7724,7 +8078,13 @@
       "pronunciation": "おやすみなさい",
       "audioPath": "audio/ja/expressions_012.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_012_example",
+        "zh": "晚安，明天见。",
+        "text": "おやすみなさい。また明日。",
+        "pronunciation": "おやすみなさい。またあした。"
+      }
     },
     {
       "id": "expressions_013",
@@ -7736,7 +8096,13 @@
       "pronunciation": "いらっしゃいませ",
       "audioPath": "audio/ja/expressions_013.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_013_example",
+        "zh": "欢迎光临，请问您预订了吗？",
+        "text": "いらっしゃいませ。ご予約はありますか？",
+        "pronunciation": "いらっしゃいませ。ごよやくはありますか？"
+      }
     },
     {
       "id": "expressions_014",
@@ -7772,7 +8138,13 @@
       "pronunciation": "はい",
       "audioPath": "audio/ja/expressions_016.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_016_example",
+        "zh": "是的，我订了两晚。",
+        "text": "はい、二泊予約しています。",
+        "pronunciation": "はい、にはくよやくしています。"
+      }
     },
     {
       "id": "expressions_017",
@@ -7784,7 +8156,13 @@
       "pronunciation": "いいえ",
       "audioPath": "audio/ja/expressions_017.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_017_example",
+        "zh": "不是，这不是我的行李。",
+        "text": "いいえ、これは私の荷物ではありません。",
+        "pronunciation": "いいえ、これはわたしのにもつではありません。"
+      }
     },
     {
       "id": "expressions_018",
@@ -7796,7 +8174,13 @@
       "pronunciation": "だいじょうぶ",
       "audioPath": "audio/ja/expressions_018.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_018_example",
+        "zh": "我现在可以进房间了吗？",
+        "text": "もう部屋に入っても大丈夫ですか？",
+        "pronunciation": "もうへやにはいってもだいじょうぶですか？"
+      }
     },
     {
       "id": "expressions_019",
@@ -7832,7 +8216,13 @@
       "pronunciation": "おーけー",
       "audioPath": "audio/ja/expressions_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_021_example",
+        "zh": "好的，我会在八点到大堂。",
+        "text": "オーケーです。八時にロビーへ行きます。",
+        "pronunciation": "おーけーです。はちじにろびーへいきます。"
+      }
     },
     {
       "id": "expressions_022",
@@ -7868,7 +8258,13 @@
       "pronunciation": "ほしい",
       "audioPath": "audio/ja/expressions_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_024_example",
+        "zh": "我想要一间安静的房间。",
+        "text": "静かな部屋がほしいです。",
+        "pronunciation": "しずかなへやがほしいです。"
+      }
     },
     {
       "id": "expressions_025",
@@ -7880,7 +8276,13 @@
       "pronunciation": "ひつよう",
       "audioPath": "audio/ja/expressions_025.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_025_example",
+        "zh": "办理入住需要护照吗？",
+        "text": "チェックインにはパスポートが必要ですか？",
+        "pronunciation": "ちぇっくいんにはぱすぽーとがひつようですか？"
+      }
     },
     {
       "id": "expressions_026",
@@ -7892,7 +8294,13 @@
       "pronunciation": "あります",
       "audioPath": "audio/ja/expressions_026.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_026_example",
+        "zh": "今晚还有空房吗？",
+        "text": "今夜、空室はありますか？",
+        "pronunciation": "こんや、くうしつはありますか？"
+      }
     },
     {
       "id": "expressions_027",
@@ -7904,7 +8312,13 @@
       "pronunciation": "ありません",
       "audioPath": "audio/ja/expressions_027.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_027_example",
+        "zh": "现在没有空房。",
+        "text": "今、空室はありません。",
+        "pronunciation": "いま、くうしつはありません。"
+      }
     },
     {
       "id": "expressions_028",
@@ -7916,7 +8330,13 @@
       "pronunciation": "です",
       "audioPath": "audio/ja/expressions_028.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "example": {
+        "id": "jp-ja_expressions_028_example",
+        "zh": "是的，这张票是去机场的。",
+        "text": "はい、これは空港行きの切符です。",
+        "pronunciation": "はい、これはくうこうゆきのきっぷです。"
+      }
     },
     {
       "id": "expressions_029",

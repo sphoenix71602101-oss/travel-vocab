@@ -13,6 +13,7 @@ vm.runInContext(fs.readFileSync(path.join(root, "scripts", "source-data", "legac
 const scenes = JSON.parse(JSON.stringify(sandbox.window.SCENE_PACKS));
 const legacy = JSON.parse(JSON.stringify(sandbox.window.WORD_BANK));
 const exampleCatalog = require("./content_examples.js");
+const targetedExamples = require("./targeted_examples.json");
 
 const allocations = {
   airport: { "documents-flights": 4, "check-in": 5, baggage: 5, "security-waiting": 4, "boarding-onboard": 5, "arrival-immigration": 7 },
@@ -213,6 +214,19 @@ function attachExamples(config, entries) {
     if (sceneCounts.get(scene.id) !== 20) {
       throw new Error(`${config.id}/${scene.id} must define exactly 20 hand-written examples`);
     }
+  }
+  for (const [entryId, [priority, zh, ja, jaReading, en, ko]] of Object.entries(targetedExamples)) {
+    const entry = entriesById.get(entryId);
+    if (!entry || entry.kind !== "word" || entry.example) throw new Error(`Invalid targeted example: ${entryId}`);
+    if (!["must", "recommended"].includes(priority) || [zh, ja, jaReading, en, ko].some((value) => typeof value !== "string" || !value.trim())) {
+      throw new Error(`Incomplete targeted example: ${entryId}`);
+    }
+    entry.example = {
+      id: `${config.id}_${entryId}_example`,
+      zh,
+      text: config.id === "jp-ja" ? ja : en,
+      ...(config.id === "jp-ja" ? { pronunciation: jaReading } : {})
+    };
   }
 }
 

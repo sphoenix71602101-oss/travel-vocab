@@ -10,6 +10,7 @@ vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(path.join(root, "core/content-registry.js"), "utf8"), sandbox);
 for (const id of ["jp-ja", "us-en", "kr-ko"]) vm.runInContext(fs.readFileSync(path.join(root, "languages", id, "pack.js"), "utf8"), sandbox);
 const packs = sandbox.window.TRAVEL_CONTENT.all();
+const targetedExamples = require("../scripts/targeted_examples.json");
 
 test("日英韩是三个独立完整语言包", () => {
   assert.deepEqual(Array.from(packs, (pack) => pack.id), ["jp-ja", "us-en", "kr-ko"]);
@@ -23,7 +24,7 @@ test("日英韩是三个独立完整语言包", () => {
     assert.equal(pack.scenes.length, 8);
     assert.equal(pack.entries.length, 795);
     assert.equal(pack.entries.filter((entry) => entry.kind === "phrase").length, 320);
-    assert.equal(pack.entries.filter((entry) => entry.example).length, 160);
+    assert.equal(pack.entries.filter((entry) => entry.example).length, 160 + Object.keys(targetedExamples).length);
   }
 });
 
@@ -34,12 +35,28 @@ test("人工例句按场景均匀配置且不含旧模板话术", () => {
   for (const pack of packs) {
     for (const scene of pack.scenes) {
       const examples = pack.entries.filter((entry) => entry.sceneId === scene.id && entry.example);
-      assert.equal(examples.length, 20, `${pack.id}/${scene.id}`);
+      const added = pack.entries.filter((entry) => entry.sceneId === scene.id && entry.id in targetedExamples).length;
+      assert.equal(examples.length, 20 + added, `${pack.id}/${scene.id}`);
     }
     for (const entry of pack.entries.filter((item) => item.example)) {
       assert.doesNotMatch(entry.example.zh, bannedChinese, `${pack.id}/${entry.id}`);
       if (pack.id === "jp-ja") assert.doesNotMatch(entry.example.text, bannedJapanese, `${pack.id}/${entry.id}`);
       if (pack.id === "us-en") assert.doesNotMatch(entry.example.text, bannedEnglish, `${pack.id}/${entry.id}`);
+    }
+  }
+});
+
+test("筛选出的重点单词在三语中都有对应例句，完整短句不重复加例句", () => {
+  const priorities = Object.values(targetedExamples).map((row) => row[0]);
+  assert.equal(priorities.filter((priority) => priority === "must").length, 40);
+  assert.equal(priorities.filter((priority) => priority === "recommended").length, 30);
+  for (const pack of packs) {
+    assert.equal(pack.entries.filter((entry) => entry.kind === "phrase" && entry.example).length, 0);
+    for (const [id, row] of Object.entries(targetedExamples)) {
+      const entry = pack.entries.find((item) => item.id === id);
+      assert.equal(entry?.kind, "word", `${pack.id}/${id}`);
+      assert.equal(entry.example?.zh, row[1], `${pack.id}/${id}`);
+      assert.equal(entry.example?.text, row[pack.id === "jp-ja" ? 2 : pack.id === "us-en" ? 4 : 5], `${pack.id}/${id}`);
     }
   }
 });
@@ -110,12 +127,15 @@ test("韩语包提供韩文、修订罗马字和韩国本地高频表达", () =>
   }
 });
 
-test("页面以静态相对路径加载内容注册表和三个语言包", () => {
+test("页面只加载共享代码，语言包按目的地加载", () => {
   const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
+  const destinations = fs.readFileSync(path.join(root, "core/destinations.js"), "utf8");
   assert.match(html, /src="core\/content-registry\.js"/);
-  assert.match(html, /src="languages\/jp-ja\/pack\.js"/);
-  assert.match(html, /src="languages\/us-en\/pack\.js"/);
-  assert.match(html, /src="languages\/kr-ko\/pack\.js"/);
+  assert.match(html, /src="core\/destinations\.js"/);
+  for (const id of ["jp-ja", "us-en", "kr-ko"]) {
+    assert.doesNotMatch(html, new RegExp(`src="languages/${id}/`));
+    assert.match(destinations, new RegExp(`languages/${id}/pack\\.js`));
+  }
   assert.doesNotMatch(html, /src="data\.js"/);
   assert.doesNotMatch(html, /(?:src|href)="\//);
 });

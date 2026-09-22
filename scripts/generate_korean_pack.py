@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "languages" / "us-en" / "pack.js"
 CACHE = ROOT / "scripts" / "korean_translation_cache.json"
 OUTPUT = ROOT / "languages" / "kr-ko" / "pack.js"
+TARGETED_EXAMPLES = json.loads((ROOT / "scripts" / "targeted_examples.json").read_text(encoding="utf-8-sig"))
 
 
 # Korea-specific replacements are written in English first so they pass through the
@@ -347,7 +348,7 @@ def main() -> None:
             else:
                 item["zh"], item["text"] = override
         all_text.append(item["text"])
-        if item.get("example"):
+        if item.get("example") and item["id"] not in TARGETED_EXAMPLES:
             all_text.append(item["example"]["text"])
         prepared.append(item)
 
@@ -381,8 +382,11 @@ def main() -> None:
         item.pop("audioPath", None)
         if item.get("example"):
             item["example"]["id"] = f"kr-ko_{item['id']}_example"
-            item["example"]["text"] = cache[item["example"]["text"]]
-            if old_id in KO_EXAMPLE_OVERRIDES:
+            if old_id in TARGETED_EXAMPLES:
+                item["example"]["text"] = TARGETED_EXAMPLES[old_id][5]
+            else:
+                item["example"]["text"] = cache[item["example"]["text"]]
+            if old_id in KO_EXAMPLE_OVERRIDES and old_id not in TARGETED_EXAMPLES:
                 item["example"]["zh"], item["example"]["text"] = KO_EXAMPLE_OVERRIDES[old_id]
             item["example"]["pronunciation"] = romanize(item["example"]["text"], casing="lower")
         output_entries.append(item)
@@ -393,11 +397,12 @@ def main() -> None:
         "features": {"beginnerModule": "kr-ko-beginner", "beginnerAudioBase": "audio/ko/beginner", "emergencyCard": EMERGENCY},
         "scenes": source["scenes"], "entries": output_entries,
     }
-    if len(output_entries) != 795 or sum(bool(item.get("example")) for item in output_entries) != 160:
+    expected_examples = 160 + len(TARGETED_EXAMPLES)
+    if len(output_entries) != 795 or sum(bool(item.get("example")) for item in output_entries) != expected_examples:
         raise RuntimeError("Unexpected Korean pack size")
     output = '(function () {\n  "use strict";\n  window.registerContentPack(' + json.dumps(pack, ensure_ascii=False, indent=2) + ');\n})();\n'
     OUTPUT.write_text(output, encoding="utf-8")
-    print(f"Wrote {OUTPUT}: 795 entries, 160 examples")
+    print(f"Wrote {OUTPUT}: 795 entries, {expected_examples} examples")
 
 
 if __name__ == "__main__":
