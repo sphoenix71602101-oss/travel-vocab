@@ -310,7 +310,7 @@ window.WORD_BANK = (function () {
       ["food_087", "过敏", "アレルギー", "あれるぎー", "allergy", "word"],
       ["food_088", "素食者", "ベジタリアン", "べじたりあん", "vegetarian", "word"],
       ["food_089", "请问有中文菜单吗？", "中国語のメニューはありますか？", "ちゅうごくごのめにゅーはありますか？", "Do you have a Chinese menu?", "phrase"],
-      ["food_090", "请给我这个。", "これをください。", "これをください。", "Please give me this one.", "phrase"],
+      ["food_090", "请给我这个。", "こちらを一つください。", "こちらをひとつください。", "Please give me this one.", "phrase"],
       ["food_091", "不要辣。", "辛くしないでください。", "からくしないでください。", "Not spicy, please.", "phrase"],
       ["food_092", "结账。", "お会計をお願いします。", "おかいけいをおねがいします。", "Check, please.", "phrase"],
       ["food_093", "我可以点餐吗？", "注文してもいいですか？", "ちゅうもんしてもいいですか？", "Can I order?", "phrase"],
@@ -435,7 +435,7 @@ window.WORD_BANK = (function () {
       ["directions_037", "我迷路了。", "道に迷いました。", "みちにまよいました。", "I'm lost.", "phrase"],
       ["directions_038", "请问现在在哪里？", "今どこにいますか？", "いまどこにいますか？", "Where am I now?", "phrase"],
       ["directions_039", "请在地图上指给我。", "地図で指してください。", "ちずでさしてください。", "Please point on the map.", "phrase"],
-      ["directions_040", "能再说一遍吗？", "もう一度言ってください。", "もういちどいってください。", "Could you say it again?", "phrase"],
+      ["directions_040", "能再说一遍吗？", "すみません、もう一度お願いします。", "すみません、もういちどおねがいします。", "Could you say it again?", "phrase"],
       ["directions_041", "怎么去车站？", "駅までどうやって行きますか？", "えきまでどうやっていきますか？", "How do I get to the station?", "phrase"],
       ["directions_042", "这是哪条路？", "この道は何という道ですか？", "このみちはなんというみちですか？", "What street is this?", "phrase"],
       ["directions_043", "洗手间在哪里？", "お手洗いはどこですか？", "おてあらいはどこですか？", "Where is the restroom?", "phrase"]
@@ -568,7 +568,7 @@ window.WORD_BANK = (function () {
       ["emergency_038", "请叫救护车。", "救急車を呼んでください。", "きゅうきゅうしゃをよんでください。", "Please call an ambulance.", "phrase"],
       ["emergency_039", "我不舒服。", "気分が悪いです。", "きぶんがわるいです。", "I feel sick.", "phrase"],
       ["emergency_040", "我生病了。", "病気です。", "びょうきです。", "I am ill.", "phrase"],
-      ["emergency_041", "我对……过敏。", "…にアレルギーがあります。", "…にあれるぎーがあります。", "I am allergic to ...", "phrase"],
+      ["emergency_041", "我对药物过敏。", "薬にアレルギーがあります。", "くすりにあれるぎーがあります。", "I have a medication allergy.", "phrase"],
       ["emergency_042", "哪里有药店？", "薬局はどこですか？", "やっきょくはどこですか？", "Where is a pharmacy?", "phrase"],
       ["emergency_043", "我需要看医生。", "医者に診てもらいたいです。", "いしゃにみてもらいたいです。", "I need to see a doctor.", "phrase"],
       ["emergency_044", "这很紧急。", "緊急です。", "きんきゅうです。", "This is an emergency.", "phrase"]

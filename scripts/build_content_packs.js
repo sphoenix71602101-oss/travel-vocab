@@ -14,6 +14,8 @@ const scenes = JSON.parse(JSON.stringify(sandbox.window.SCENE_PACKS));
 const legacy = JSON.parse(JSON.stringify(sandbox.window.WORD_BANK));
 const exampleCatalog = require("./content_examples.js");
 const targetedExamples = require("./targeted_examples.json");
+const englishPhrases = require("./english_phrases.js");
+const japanesePhrases = require("./japanese_phrases.js");
 
 const allocations = {
   airport: { "documents-flights": 4, "check-in": 5, baggage: 5, "security-waiting": 4, "boarding-onboard": 5, "arrival-immigration": 7 },
@@ -130,6 +132,19 @@ const packConfigs = [
   { id: "us-en", destinationId: "us", locale: "en-US", speechLocale: "en-US", languageCode: "en", languageLabel: "英语", nativeLabel: "English", pronunciationLabel: null, beginnerModule: "us-en-beginner", beginnerAudioBase: "audio/en/beginner", sourceField: "en", pronunciationField: null }
 ];
 
+const vocabularyOverrides = {
+  "us-en": {
+    hotel_002: { zh: "汽车旅馆", text: "motel" },
+    food_017: { zh: "煎饼", text: "pancakes" },
+    food_018: { zh: "华夫饼", text: "waffles" },
+    food_019: { zh: "烧烤", text: "barbecue" },
+    food_020: { zh: "牛排", text: "steak" },
+    food_021: { zh: "蛤蜊浓汤", text: "clam chowder" },
+    food_022: { zh: "玉米卷", text: "tacos" },
+    food_023: { zh: "通心粉奶酪", text: "mac and cheese" }
+  }
+};
+
 function interpolate(template, values) {
   return template.replace(/\{(zh|text|reading)\}/g, (_, key) => values[key] || values.text);
 }
@@ -140,8 +155,8 @@ function legacyEntries(config) {
     sceneId: entry.scene,
     situationId: entry.situation,
     kind: entry.type,
-    zh: entry.zh,
-    text: entry[config.sourceField],
+    zh: vocabularyOverrides[config.id]?.[entry.id]?.zh || entry.zh,
+    text: vocabularyOverrides[config.id]?.[entry.id]?.text || entry[config.sourceField],
     ...(config.pronunciationField ? { pronunciation: entry[config.pronunciationField] } : {}),
     audioPath: `audio/${config.languageCode}/${entry.id}.mp3`,
     direction: "traveler-says",
@@ -165,14 +180,21 @@ function phraseEntries(config, entries) {
         const pattern = patterns[config.languageCode][(sceneIndex - 1) % patterns[config.languageCode].length];
         const values = { zh: word.zh, text: word.text, reading: word.pronunciation };
         const heard = sceneIndex > 18 && sceneIndex <= 26;
+        const reviewed = config.id === "us-en"
+          ? englishPhrases[scene.id]?.[sceneIndex - 1]
+          : config.id === "jp-ja" ? japanesePhrases[scene.id]?.[sceneIndex - 1] : null;
+        const reviewedLength = config.id === "jp-ja" ? 3 : 2;
+        if (["us-en", "jp-ja"].includes(config.id) && (!reviewed || reviewed.length !== reviewedLength)) {
+          throw new Error(`${config.id}/${scene.id}/${sceneIndex} missing reviewed phrase`);
+        }
         const entry = {
           id: `${config.languageCode}_${scene.id}_phrase_${String(sceneIndex).padStart(3, "0")}`,
           sceneId: scene.id,
           situationId,
           kind: "phrase",
-          zh: local ? local[1] : heard ? `请确认“${word.zh}”的相关信息。` : interpolate(pattern[0], values),
-          text: local ? local[2] : heard ? (config.languageCode === "ja" ? `${word.text}についてご確認ください。` : `Please check the details for ${word.text}.`) : interpolate(pattern[1], values),
-          ...(config.languageCode === "ja" ? { pronunciation: local ? local[3] : heard ? `${word.pronunciation}についてごかくにんください。` : interpolate(pattern[2], values) } : {}),
+          zh: reviewed ? reviewed[0] : local ? local[1] : heard ? `请确认“${word.zh}”的相关信息。` : interpolate(pattern[0], values),
+          text: reviewed ? reviewed[1] : local ? local[2] : heard ? (config.languageCode === "ja" ? `${word.text}についてご確認ください。` : `Please check the details for ${word.text}.`) : interpolate(pattern[1], values),
+          ...(config.languageCode === "ja" ? { pronunciation: reviewed ? reviewed[2] : local ? local[3] : heard ? `${word.pronunciation}についてごかくにんください。` : interpolate(pattern[2], values) } : {}),
           direction: heard ? "traveler-hears" : "traveler-says",
           intent: local ? "local-use" : heard ? "confirm" : pattern[config.languageCode === "ja" ? 3 : 2]
         };

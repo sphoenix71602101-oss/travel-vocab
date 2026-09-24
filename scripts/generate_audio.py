@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""为语见世界三语词库和日英韩旅行认读课程批量生成 MP3。
+"""为语见世界五语词库及旅行认读课程批量生成 MP3。
 
 词库模式读取 scripts/source-data/legacy-bilingual-data.js；各语言认读模式读取
 languages/<packId>/beginner/ 下的音频清单。生成时只写入 audio/ 目录，不修改网站代码。
@@ -17,10 +17,18 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+
 # ── 常用设置：更换声音或语速时只需修改这里 ──────────────────────────────
 JAPANESE_VOICE = "ja-JP-NanamiNeural"
 ENGLISH_VOICE = "en-US-JennyNeural"
 KOREAN_VOICE = "ko-KR-SunHiNeural"
+SPANISH_VOICE = "es-ES-ElviraNeural"
+RUSSIAN_VOICE = "ru-RU-SvetlanaNeural"
 
 RATE = "+0%"
 VOLUME = "+0%"
@@ -44,11 +52,17 @@ CONTENT_PACK_FILES = [
     PROJECT_ROOT / "languages" / "jp-ja" / "pack.js",
     PROJECT_ROOT / "languages" / "us-en" / "pack.js",
     PROJECT_ROOT / "languages" / "kr-ko" / "pack.js",
+    PROJECT_ROOT / "languages" / "es-es" / "pack.js",
+    PROJECT_ROOT / "languages" / "ru-ru" / "pack.js",
 ]
+SPANISH_PACK_FILE = PROJECT_ROOT / "languages" / "es-es" / "pack.js"
+RUSSIAN_PACK_FILE = PROJECT_ROOT / "languages" / "ru-ru" / "pack.js"
 AUDIO_ROOT = PROJECT_ROOT / "audio"
 BEGINNER_AUDIO_FILE = PROJECT_ROOT / "languages" / "jp-ja" / "beginner" / "audio.json"
 ENGLISH_BEGINNER_AUDIO_FILE = PROJECT_ROOT / "languages" / "us-en" / "beginner" / "audio.js"
 KOREAN_BEGINNER_AUDIO_FILE = PROJECT_ROOT / "languages" / "kr-ko" / "beginner" / "audio.js"
+SPANISH_BEGINNER_AUDIO_FILE = PROJECT_ROOT / "languages" / "es-es" / "beginner" / "audio.js"
+RUSSIAN_BEGINNER_AUDIO_FILE = PROJECT_ROOT / "languages" / "ru-ru" / "beginner" / "audio.js"
 ID_PATTERN = re.compile(r"^[a-z][a-z0-9]*_[0-9]{3}$")
 
 
@@ -176,7 +190,13 @@ def parse_content_pack(pack_file: Path) -> dict:
 
 def build_pack_jobs(packs: list[dict], test_mode: bool, targeted_only: bool = False) -> list[AudioJob]:
     jobs: list[AudioJob] = []
-    voices = {"ja-JP": JAPANESE_VOICE, "en-US": ENGLISH_VOICE, "ko-KR": KOREAN_VOICE}
+    voices = {
+        "ja-JP": JAPANESE_VOICE,
+        "en-US": ENGLISH_VOICE,
+        "ko-KR": KOREAN_VOICE,
+        "es-ES": SPANISH_VOICE,
+        "ru-RU": RUSSIAN_VOICE,
+    }
     for pack in packs:
         voice = voices.get(pack.get("speechLocale"))
         if not voice:
@@ -197,6 +217,127 @@ def build_pack_jobs(packs: list[dict], test_mode: bool, targeted_only: bool = Fa
             jobs.append(AudioJob(pack["id"], example["id"], example["text"], voice,
                                  AUDIO_ROOT / "packs" / pack["id"] / "examples" / f"{example['id']}.mp3"))
     return jobs
+
+
+def build_spanish_refresh_jobs(pack: dict) -> list[AudioJob]:
+    """Only the reviewed expansion phrases and all rewritten examples."""
+    jobs: list[AudioJob] = []
+    for entry in pack["entries"]:
+        if entry.get("kind") == "phrase" and (
+            entry.get("id", "").startswith("es_") or entry.get("id") == "numbers_075"
+        ):
+            jobs.append(AudioJob(
+                pack["id"], entry["id"], entry["text"], SPANISH_VOICE,
+                PROJECT_ROOT / entry["audioPath"],
+            ))
+        example = entry.get("example")
+        if example:
+            jobs.append(AudioJob(
+                pack["id"], example["id"], example["text"], SPANISH_VOICE,
+                AUDIO_ROOT / "packs" / pack["id"] / "examples" / f"{example['id']}.mp3",
+            ))
+    if len(jobs) != 471:
+        raise ValueError(f"西班牙语返工清单应包含 471 条，实际为 {len(jobs)} 条")
+    return jobs
+
+
+def build_pack_phrase_refresh_jobs(pack: dict) -> list[AudioJob]:
+    """Build exactly the 240 reviewed expansion-phrase jobs for one pack."""
+    voices = {
+        "ja-JP": JAPANESE_VOICE,
+        "en-US": ENGLISH_VOICE,
+        "ko-KR": KOREAN_VOICE,
+        "es-ES": SPANISH_VOICE,
+        "ru-RU": RUSSIAN_VOICE,
+    }
+    voice = voices.get(pack.get("speechLocale"))
+    if not voice:
+        raise ValueError(f"尚未配置 {pack.get('speechLocale')} 的生成声音")
+    jobs = []
+    for entry in pack["entries"]:
+        if "_phrase_" not in entry.get("id", ""):
+            continue
+        output_path = PROJECT_ROOT / entry.get(
+            "audioPath", f"audio/packs/{pack['id']}/entries/{entry['id']}.mp3"
+        )
+        jobs.append(AudioJob(pack["id"], entry["id"], entry["text"], voice, output_path))
+    if len(jobs) != 240:
+        raise ValueError(f"{pack['id']} 短句刷新清单应包含 240 条，实际为 {len(jobs)} 条")
+    return jobs
+
+
+def build_changed_audio_jobs(packs: list[dict]) -> list[AudioJob]:
+    """Build the exact audio set affected by the five-pack content review."""
+    voices = {
+        "jp-ja": JAPANESE_VOICE,
+        "us-en": ENGLISH_VOICE,
+        "kr-ko": KOREAN_VOICE,
+        "es-es": SPANISH_VOICE,
+        "ru-ru": RUSSIAN_VOICE,
+    }
+    all_phrase_packs = {"jp-ja", "us-en", "kr-ko", "ru-ru"}
+    changed_entries = {
+        "us-en": {"hotel_002", "food_017", "food_018", "food_019", "food_020", "food_021", "food_022", "food_023", "emergency_041"},
+        "jp-ja": {"food_090", "directions_040", "emergency_041"},
+        "kr-ko": {"food_017", "food_018", "food_019", "food_020", "food_021", "food_022", "food_023", "numbers_005", "expressions_008", "expressions_009", "emergency_041"},
+        "es-es": {"hotel_002", "food_017", "food_018", "food_019", "food_020", "food_021", "food_022", "food_023", "expressions_009", "numbers_015", "emergency_041"},
+        "ru-ru": {"hotel_002", "food_017", "food_018", "food_019", "food_020", "food_021", "food_022", "food_023", "shopping_014", "expressions_008", "expressions_012", "expressions_013", "numbers_015", "emergency_041"},
+    }
+    changed_examples = {
+        "us-en": {"hotel_002", "food_017", "food_018", "food_019", "food_020"},
+        "jp-ja": set(),
+        "kr-ko": {"food_017", "food_018", "food_019", "food_020", "expressions_008", "expressions_009"},
+        "es-es": {"hotel_002", "food_017", "food_018", "food_019", "food_020", "expressions_009", "numbers_015"},
+        "ru-ru": {"hotel_002", "food_017", "food_018", "food_019", "food_020", "shopping_014", "expressions_008", "expressions_012", "expressions_013", "numbers_015", "numbers_016"},
+    }
+    changed_phrases = {
+        "es-es": {"es_food_phrase_029", "es_emergency_phrase_023", "es_basics_phrase_021"},
+    }
+
+    jobs: list[AudioJob] = []
+    for pack in packs:
+        pack_id = pack["id"]
+        voice = voices[pack_id]
+        entries = {entry["id"]: entry for entry in pack["entries"]}
+        selected_ids = set(changed_entries[pack_id]) | set(changed_phrases.get(pack_id, set()))
+        if pack_id in all_phrase_packs:
+            selected_ids.update(entry_id for entry_id in entries if "_phrase_" in entry_id)
+        missing = selected_ids - entries.keys()
+        if missing:
+            raise ValueError(f"{pack_id} 音频返工清单包含未知词条：{', '.join(sorted(missing))}")
+        for entry_id in sorted(selected_ids):
+            entry = entries[entry_id]
+            jobs.append(AudioJob(
+                pack_id, entry_id, entry["text"], voice,
+                PROJECT_ROOT / entry.get("audioPath", f"audio/packs/{pack_id}/entries/{entry_id}.mp3"),
+            ))
+        for entry_id in sorted(changed_examples[pack_id]):
+            example = entries[entry_id].get("example")
+            if not example:
+                raise ValueError(f"{pack_id}/{entry_id} 缺少待返工例句")
+            jobs.append(AudioJob(
+                pack_id, example["id"], example["text"], voice,
+                AUDIO_ROOT / "packs" / pack_id / "examples" / f"{example['id']}.mp3",
+            ))
+
+    expected = 1040
+    if len(jobs) != expected or len({job.output_path.resolve() for job in jobs}) != expected:
+        raise ValueError(f"五语音频返工清单应包含 {expected} 个唯一目标，实际为 {len(jobs)} 个")
+    return jobs
+
+
+def delete_changed_audio(jobs: list[AudioJob]) -> int:
+    """Delete only validated files below audio/ so changed speech is never skipped."""
+    audio_root = AUDIO_ROOT.resolve()
+    deleted = 0
+    for job in jobs:
+        target = job.output_path.resolve()
+        if not target.is_relative_to(audio_root):
+            raise ValueError(f"拒绝删除 audio 目录之外的文件：{target}")
+        if target.is_file():
+            target.unlink()
+            deleted += 1
+    return deleted
 
 
 def parse_beginner_data() -> list[dict]:
@@ -292,6 +433,75 @@ def build_korean_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJ
         jobs.append(AudioJob("ko", entry_id, text, KOREAN_VOICE,
                              AUDIO_ROOT / "ko" / "beginner" / f"{entry_id}.mp3", "-10%"))
     return jobs[:6] if test_mode else jobs
+
+
+def parse_russian_beginner_data() -> list[dict]:
+    """读取俄语教学音清单中的二维数组。"""
+    if not RUSSIAN_BEGINNER_AUDIO_FILE.is_file():
+        raise FileNotFoundError(f"找不到俄语教学音清单：{RUSSIAN_BEGINNER_AUDIO_FILE}")
+    source = RUSSIAN_BEGINNER_AUDIO_FILE.read_text(encoding="utf-8-sig")
+    pairs = re.findall(r'\["(ru-[0-9]{3})","([^"]+)"\]', source)
+    return [{"id": entry_id, "text": text} for entry_id, text in pairs]
+
+
+def build_russian_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
+    if not isinstance(data, list) or len(data) != 45:
+        raise ValueError("俄语教学音清单应包含 45 段声音")
+    jobs: list[AudioJob] = []
+    seen: set[str] = set()
+    for item in data:
+        entry_id, text = item.get("id"), item.get("text")
+        if not isinstance(entry_id, str) or not re.fullmatch(r"ru-[0-9]{3}", entry_id):
+            raise ValueError(f"俄语教学音 ID 无效：{entry_id}")
+        if not isinstance(text, str) or not text.strip() or entry_id in seen:
+            raise ValueError(f"俄语教学音文字为空或 ID 重复：{entry_id}")
+        seen.add(entry_id)
+        jobs.append(AudioJob("ru", entry_id, text, RUSSIAN_VOICE,
+                             AUDIO_ROOT / "ru" / "beginner" / f"{entry_id}.mp3", "-10%"))
+    return jobs[:6] if test_mode else jobs
+
+
+def parse_spanish_beginner_data() -> list[dict]:
+    """读取网页与脚本共用的西班牙西语教学音清单。"""
+    if not SPANISH_BEGINNER_AUDIO_FILE.is_file():
+        raise FileNotFoundError(f"找不到西语教学音清单：{SPANISH_BEGINNER_AUDIO_FILE}")
+    source = SPANISH_BEGINNER_AUDIO_FILE.read_text(encoding="utf-8-sig")
+    match = re.search(
+        r"window\.ES_BEGINNER_AUDIO\s*=\s*Object\.freeze\((\[[\s\S]*\])\);\s*$",
+        source,
+    )
+    if not match:
+        raise ValueError("西语教学音清单格式无效")
+    return json.loads(match.group(1))
+
+
+def build_spanish_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
+    if not isinstance(data, list) or len(data) != 53:
+        raise ValueError("西语教学音清单应包含 53 段声音")
+    rate_values = {"clear": "-8%", "slow": "-28%", "natural": "+0%"}
+    jobs: list[AudioJob] = []
+    seen_ids: set[str] = set()
+    seen_content: set[tuple[str, str]] = set()
+    for item in data:
+        entry_id, text, rate_name = item.get("id"), item.get("text"), item.get("rate")
+        if not isinstance(entry_id, str) or not re.fullmatch(r"es-[0-9]{3}", entry_id):
+            raise ValueError(f"西语教学音 ID 无效：{entry_id}")
+        if not isinstance(text, str) or not text.strip() or rate_name not in rate_values:
+            raise ValueError(f"西语教学音文字或语速无效：{entry_id}")
+        content_key = (text, rate_name)
+        if entry_id in seen_ids or content_key in seen_content:
+            raise ValueError(f"西语教学音 ID 或文字语速重复：{entry_id}")
+        seen_ids.add(entry_id)
+        seen_content.add(content_key)
+        jobs.append(AudioJob(
+            "es", entry_id, text, SPANISH_VOICE,
+            AUDIO_ROOT / "es" / "beginner" / f"{entry_id}.mp3",
+            rate_values[rate_name],
+        ))
+    if not test_mode:
+        return jobs
+    sample_ids = {"es-001", "es-014", "es-036", "es-037", "es-046", "es-047"}
+    return [job for job in jobs if job.entry_id in sample_ids]
 
 
 def build_repair_jobs() -> list[AudioJob]:
@@ -393,14 +603,21 @@ def parse_args() -> argparse.Namespace:
     mode.add_argument(
         "--full",
         action="store_true",
-        help="处理三个完整语言包的正式内容和例句",
+        help="处理五个完整语言包的正式内容和例句",
     )
     mode.add_argument(
         "--validate-only",
         action="store_true",
-        help="只验证三个独立目的地语言包，不安装 edge-tts 也可运行",
+        help="只验证五个独立目的地语言包，不安装 edge-tts 也可运行",
     )
     mode.add_argument("--targeted-examples-only", action="store_true", help="仅生成本次补充的三语例句音频")
+    mode.add_argument(
+        "--refresh-pack",
+        choices=["jp-ja", "us-en", "kr-ko", "es-es", "ru-ru"],
+        help="仅重新生成指定语言包的 240 条扩展短句音频",
+    )
+    mode.add_argument("--rebuild-changed", action="store_true", help="删除并重建本次五语内容审校影响的 1040 段音频")
+    mode.add_argument("--resume-changed", action="store_true", help="保留已完成文件，仅续跑本次五语音频返工清单中的缺失项")
     mode.add_argument("--beginner-test", action="store_true", help="生成前 5 个日语教学音试听")
     mode.add_argument("--beginner-full", action="store_true", help="生成全部 57 段日语教学音")
     mode.add_argument("--beginner-validate-only", action="store_true", help="只验证日语教学音清单")
@@ -411,6 +628,19 @@ def parse_args() -> argparse.Namespace:
     mode.add_argument("--korean-beginner-test", action="store_true", help="生成前 6 个韩语教学音试听")
     mode.add_argument("--korean-beginner-full", action="store_true", help="生成全部 36 段韩语教学音")
     mode.add_argument("--korean-beginner-validate-only", action="store_true", help="只验证韩语教学音清单")
+    mode.add_argument("--spanish-test", action="store_true", help="生成西班牙语正式内容前 5 条及 2 条例句试听")
+    mode.add_argument("--spanish-full", action="store_true", help="只生成西班牙语正式内容和例句")
+    mode.add_argument("--spanish-refresh", action="store_true", help="仅重新生成返工后的 241 条短语和 230 条例句")
+    mode.add_argument("--spanish-validate-only", action="store_true", help="只验证西班牙语正式内容和例句")
+    mode.add_argument("--spanish-beginner-test", action="store_true", help="生成 6 段西班牙西语教学音试听")
+    mode.add_argument("--spanish-beginner-full", action="store_true", help="生成全部 53 段西班牙西语教学音")
+    mode.add_argument("--spanish-beginner-validate-only", action="store_true", help="只验证西班牙西语教学音清单")
+    mode.add_argument("--russian-test", action="store_true", help="生成俄罗斯俄语正式内容前 5 条及 2 条例句试听")
+    mode.add_argument("--russian-full", action="store_true", help="只生成俄罗斯俄语正式内容和例句")
+    mode.add_argument("--russian-validate-only", action="store_true", help="只验证俄罗斯俄语正式内容和例句")
+    mode.add_argument("--russian-beginner-test", action="store_true", help="生成前 6 个俄语教学音试听")
+    mode.add_argument("--russian-beginner-full", action="store_true", help="生成全部 45 段俄语教学音")
+    mode.add_argument("--russian-beginner-validate-only", action="store_true", help="只验证俄语教学音清单")
     return parser.parse_args()
 
 
@@ -420,9 +650,35 @@ def main() -> int:
     beginner_mode = args.beginner_test or args.beginner_full or args.beginner_validate_only
     english_beginner_mode = args.english_beginner_test or args.english_beginner_full or args.english_beginner_validate_only
     korean_beginner_mode = args.korean_beginner_test or args.korean_beginner_full or args.korean_beginner_validate_only
+    spanish_beginner_mode = args.spanish_beginner_test or args.spanish_beginner_full or args.spanish_beginner_validate_only
+    spanish_pack_mode = args.spanish_test or args.spanish_full or args.spanish_validate_only or args.spanish_refresh
+    russian_beginner_mode = args.russian_beginner_test or args.russian_beginner_full or args.russian_beginner_validate_only
+    russian_pack_mode = args.russian_test or args.russian_full or args.russian_validate_only
     if args.beginner_repair:
         jobs = build_repair_jobs()
         print(f"准备生成 {len(jobs)} 段修复候选音；正式教学音不会被覆盖。")
+    elif russian_beginner_mode:
+        try:
+            jobs = build_russian_beginner_jobs(
+                parse_russian_beginner_data(), test_mode=args.russian_beginner_test
+            )
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"俄语教学音清单检查失败：{exc}", file=sys.stderr)
+            return 2
+        print(f"已验证俄罗斯俄语教学音清单：{len(jobs)} 个目标。")
+        if args.russian_beginner_validate_only:
+            return 0
+    elif spanish_beginner_mode:
+        try:
+            jobs = build_spanish_beginner_jobs(
+                parse_spanish_beginner_data(), test_mode=args.spanish_beginner_test
+            )
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"西语教学音清单检查失败：{exc}", file=sys.stderr)
+            return 2
+        print(f"已验证西班牙西语教学音清单：{len(jobs)} 个目标。")
+        if args.spanish_beginner_validate_only:
+            return 0
     elif korean_beginner_mode:
         try:
             jobs = build_korean_beginner_jobs(
@@ -456,8 +712,15 @@ def main() -> int:
             return 0
     else:
         try:
-            packs = [parse_content_pack(pack_file) for pack_file in CONTENT_PACK_FILES]
-            jobs = build_pack_jobs(packs, test_mode=args.test, targeted_only=args.targeted_examples_only)
+            if args.refresh_pack:
+                pack_files = [PROJECT_ROOT / "languages" / args.refresh_pack / "pack.js"]
+            else:
+                pack_files = [SPANISH_PACK_FILE] if spanish_pack_mode else [RUSSIAN_PACK_FILE] if russian_pack_mode else CONTENT_PACK_FILES
+            packs = [parse_content_pack(pack_file) for pack_file in pack_files]
+            jobs = build_changed_audio_jobs(packs) if args.rebuild_changed or args.resume_changed else build_pack_phrase_refresh_jobs(packs[0]) if args.refresh_pack else build_spanish_refresh_jobs(packs[0]) if args.spanish_refresh else build_pack_jobs(
+                packs, test_mode=args.test or args.spanish_test or args.russian_test,
+                targeted_only=args.targeted_examples_only,
+            )
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             print(f"语言包检查失败：{exc}", file=sys.stderr)
             return 2
@@ -465,7 +728,7 @@ def main() -> int:
             f"{pack['id']} {len(pack['entries'])} 条正式内容、{sum(bool(item.get('example')) for item in pack['entries'])} 条例句"
             for pack in packs
         ))
-        if args.validate_only:
+        if args.validate_only or args.spanish_validate_only or args.russian_validate_only:
             return 0
 
     try:
@@ -477,11 +740,28 @@ def main() -> int:
         )
         return 2
 
+    if args.rebuild_changed:
+        try:
+            deleted = delete_changed_audio(jobs)
+        except (OSError, ValueError) as exc:
+            print(f"删除旧音频失败：{exc}", file=sys.stderr)
+            return 2
+        print(f"已从受影响清单中删除 {deleted} 个旧音频；将生成 {len(jobs)} 个新音频。")
+
     existing = sum(
         job.output_path.is_file() and job.output_path.stat().st_size > 0 for job in jobs
     )
-    mode_name = "试听模式" if args.test or args.beginner_test or args.beginner_repair or args.english_beginner_test or args.korean_beginner_test else "完整模式"
-    voice_summary = KOREAN_VOICE if korean_beginner_mode else ENGLISH_VOICE if english_beginner_mode else JAPANESE_VOICE if beginner_mode or args.beginner_repair else f"{JAPANESE_VOICE} / {ENGLISH_VOICE} / {KOREAN_VOICE}"
+    mode_name = "试听模式" if args.test or args.beginner_test or args.beginner_repair or args.english_beginner_test or args.korean_beginner_test or args.spanish_test or args.spanish_beginner_test or args.russian_test or args.russian_beginner_test else "完整模式"
+    refresh_voice = {"jp-ja": JAPANESE_VOICE, "us-en": ENGLISH_VOICE, "kr-ko": KOREAN_VOICE, "es-es": SPANISH_VOICE, "ru-ru": RUSSIAN_VOICE}.get(args.refresh_pack)
+    voice_summary = (
+        refresh_voice
+        or (RUSSIAN_VOICE if russian_beginner_mode or russian_pack_mode
+            else SPANISH_VOICE if spanish_beginner_mode or spanish_pack_mode
+            else KOREAN_VOICE if korean_beginner_mode
+            else ENGLISH_VOICE if english_beginner_mode
+            else JAPANESE_VOICE if beginner_mode or args.beginner_repair
+            else f"{JAPANESE_VOICE} / {ENGLISH_VOICE} / {KOREAN_VOICE} / {SPANISH_VOICE} / {RUSSIAN_VOICE}")
+    )
     print(
         f"{mode_name}：共 {len(jobs)} 个目标，已有 {existing} 个；"
         f"声音 {voice_summary}，并发 {CONCURRENCY}。"

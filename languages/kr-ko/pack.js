@@ -3166,101 +3166,101 @@
       "sceneId": "food",
       "situationId": "menu",
       "kind": "word",
-      "zh": "拉面",
-      "text": "라면",
+      "zh": "泡菜汤",
+      "text": "김치찌개",
       "direction": "traveler-says",
       "intent": "recognize",
       "example": {
         "id": "kr-ko_food_017_example",
-        "zh": "这碗拉面是用猪骨汤做的吗？",
-        "text": "이 라면은 돼지고기 육수로 만든 라면인가요?",
-        "pronunciation": "i ramyeoneun dwaejigogi yuksuro mandeun ramyeoningayo?"
+        "zh": "这份泡菜汤辣吗？",
+        "text": "이 김치찌개는 매워요?",
+        "pronunciation": "i gimchijjigaeneun maewoyo?"
       },
-      "pronunciation": "ramyeon"
+      "pronunciation": "gimchijjigae"
     },
     {
       "id": "food_018",
       "sceneId": "food",
       "situationId": "menu",
       "kind": "word",
-      "zh": "乌冬面",
-      "text": "우동",
+      "zh": "拌饭",
+      "text": "비빔밥",
       "direction": "traveler-says",
       "intent": "recognize",
       "example": {
         "id": "kr-ko_food_018_example",
-        "zh": "我想要一份蔬菜乌冬面。",
-        "text": "야채 우동을 주세요.",
-        "pronunciation": "yachae udongeul juseyo."
+        "zh": "拌饭可以少放辣酱吗？",
+        "text": "비빔밥에 고추장을 조금만 넣어 주세요.",
+        "pronunciation": "bibimbabe gochujangeul jogeumman neoeo juseyo."
       },
-      "pronunciation": "udong"
+      "pronunciation": "bibimbap"
     },
     {
       "id": "food_019",
       "sceneId": "food",
       "situationId": "menu",
       "kind": "word",
-      "zh": "荞麦面",
-      "text": "소바",
+      "zh": "韩式烤牛肉",
+      "text": "불고기",
       "direction": "traveler-says",
       "intent": "recognize",
       "example": {
         "id": "kr-ko_food_019_example",
-        "zh": "荞麦面里含麸质吗？",
-        "text": "메밀국수에는 글루텐이 포함되어 있나요?",
-        "pronunciation": "memilguksueneun geulluteni pohamdoeeo innayo?"
+        "zh": "这份韩式烤牛肉是甜口的吗？",
+        "text": "이 불고기는 단맛이 나요?",
+        "pronunciation": "i bulgogineun danmasi nayo?"
       },
-      "pronunciation": "soba"
+      "pronunciation": "bulgogi"
     },
     {
       "id": "food_020",
       "sceneId": "food",
       "situationId": "menu",
       "kind": "word",
-      "zh": "寿司",
-      "text": "초밥",
+      "zh": "炒年糕",
+      "text": "떡볶이",
       "direction": "traveler-says",
       "intent": "recognize",
       "example": {
         "id": "kr-ko_food_020_example",
-        "zh": "请来一份三文鱼寿司外带。",
-        "text": "연어 초밥을 주문하고 싶습니다.",
-        "pronunciation": "yeoneo chobabeul jumunhago sipseumnida."
+        "zh": "炒年糕可以做得不辣吗？",
+        "text": "떡볶이를 덜 맵게 해 주실 수 있나요?",
+        "pronunciation": "tteokbokkireul deol maepge hae jusil su innayo?"
       },
-      "pronunciation": "chobap"
+      "pronunciation": "tteokbokki"
     },
     {
       "id": "food_021",
       "sceneId": "food",
       "situationId": "menu",
       "kind": "word",
-      "zh": "生鱼片",
-      "text": "생선회",
+      "zh": "五花肉",
+      "text": "삼겹살",
       "direction": "traveler-says",
       "intent": "recognize",
-      "pronunciation": "saengseonhoe"
+      "pronunciation": "samgyeopsal"
     },
     {
       "id": "food_022",
       "sceneId": "food",
       "situationId": "menu",
       "kind": "word",
-      "zh": "天妇罗",
-      "text": "튀김",
+      "zh": "冷面",
+      "text": "냉면",
       "direction": "traveler-says",
       "intent": "recognize",
-      "pronunciation": "twigim"
+      "pronunciation": "naengmyeon"
     },
     {
       "id": "food_023",
       "sceneId": "food",
       "situationId": "menu",
       "kind": "word",
-      "zh": "味噌汤",
-      "text": "된장국",
+      "zh": "泡菜",
+      "text": "김치",
       "direction": "traveler-says",
       "intent": "recognize",
-      "pronunciation": "doenjangguk"
+      "pronunciation": "gimchi"
     },
     {
       "id": "food_024",
@@ -5751,7 +5751,7 @@
       "situationId": "numbers-quantity",
       "kind": "word",
       "zh": "四",
-      "text": "네",
+      "text": "넷",
       "direction": "traveler-says",
       "intent": "recognize",
       "example": {
@@ -5760,7 +5760,7 @@
         "text": "우리 그룹에는 4명이 있습니다.",
         "pronunciation": "uri geurubeneun 4myeongi itseumnida."
       },
-      "pronunciation": "ne"
+      "pronunciation": "net"
     },
     {
       "id": "numbers_006",
@@ -7323,11 +7323,11 @@
       "sceneId": "emergency",
       "situationId": "feeling-unwell",
       "kind": "phrase",
-      "zh": "我对……过敏。",
-      "text": "저는 …… 알레르기가 있어요.",
+      "zh": "我对药物过敏。",
+      "text": "약물 알레르기가 있어요.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "pronunciation": "jeoneun …… allereugiga isseoyo."
+      "pronunciation": "yangmul allereugiga isseoyo."
     },
     {
       "id": "emergency_042",
@@ -7487,16 +7487,16 @@
       "situationId": "greetings",
       "kind": "word",
       "zh": "早上好",
-      "text": "안녕하세요",
+      "text": "좋은 아침이에요",
       "direction": "traveler-says",
       "intent": "recognize",
       "example": {
         "id": "kr-ko_expressions_008_example",
         "zh": "早上好，早餐几点开始？",
-        "text": "안녕하세요. 아침 식사는 몇 시부터인가요?",
-        "pronunciation": "annyeonghaseyo. achim siksaneun myeot sibuteoingayo?"
+        "text": "좋은 아침이에요. 아침 식사는 몇 시부터예요?",
+        "pronunciation": "joeun achimieyo. achim siksaneun myeot sibuteoyeyo?"
       },
-      "pronunciation": "annyeonghaseyo"
+      "pronunciation": "joeun achimieyo"
     },
     {
       "id": "expressions_009",
@@ -7504,16 +7504,16 @@
       "situationId": "greetings",
       "kind": "word",
       "zh": "晚上好",
-      "text": "안녕하세요",
+      "text": "좋은 저녁이에요",
       "direction": "traveler-says",
       "intent": "recognize",
       "example": {
         "id": "kr-ko_expressions_009_example",
         "zh": "晚上好，我现在可以办理入住吗？",
-        "text": "안녕하세요. 지금 체크인할 수 있나요?",
-        "pronunciation": "annyeonghaseyo. jigeum chekeuinhal su innayo?"
+        "text": "좋은 저녁이에요. 지금 체크인할 수 있나요?",
+        "pronunciation": "joeun jeonyeogieyo. jigeum chekeuinhal su innayo?"
       },
-      "pronunciation": "annyeonghaseyo"
+      "pronunciation": "joeun jeonyeogieyo"
     },
     {
       "id": "expressions_010",
@@ -8027,143 +8027,143 @@
       "sceneId": "airport",
       "situationId": "documents-flights",
       "kind": "phrase",
-      "zh": "我需要关于“签证”的帮助。",
-      "text": "비자 관련해서 도움이 필요해요.",
+      "zh": "我的签证有问题，可以帮我吗？",
+      "text": "비자 문제가 있습니다. 도와주실 수 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "bija gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "bija munjega itseumnida. dowajusil su innayo?"
     },
     {
       "id": "ko_airport_phrase_003",
       "sceneId": "airport",
       "situationId": "documents-flights",
       "kind": "phrase",
-      "zh": "可以帮我确认“机票”的相关信息吗？",
-      "text": "항공권을 확인해 주시겠어요?",
+      "zh": "可以确认一下机票上的日期吗？",
+      "text": "내 티켓에 있는 날짜를 확인할 수 있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "hanggonggwoneul hwaginhae jusigesseoyo?"
+      "pronunciation": "nae tikese inneun naljjareul hwaginhal su innayo?"
     },
     {
       "id": "ko_airport_phrase_004",
       "sceneId": "airport",
       "situationId": "documents-flights",
       "kind": "phrase",
-      "zh": "我想咨询“机场”。",
-      "text": "공항에 대해 문의하고 싶어요.",
+      "zh": "我的航班从哪个航站楼出发？",
+      "text": "내 항공편은 어느 터미널에서 출발하나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "gonghange daehae munuihago sipeoyo."
+      "pronunciation": "nae hanggongpyeoneun eoneu teomineoreseo chulbalhanayo?"
     },
     {
       "id": "ko_airport_phrase_005",
       "sceneId": "airport",
       "situationId": "check-in",
       "kind": "phrase",
-      "zh": "可以告诉我“登机牌”的相关信息吗？",
-      "text": "탑승권에 대해 알려 주세요.",
+      "zh": "这张登机牌可以用吗？",
+      "text": "이 탑승권이 유효한가요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "tapseunggwone daehae allyeo juseyo."
+      "pronunciation": "i tapseunggwoni yuhyohangayo?"
     },
     {
       "id": "ko_airport_phrase_006",
       "sceneId": "airport",
       "situationId": "check-in",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“入住”？",
-      "text": "체크인은 어디에 있어요?",
+      "zh": "值机柜台在哪里？",
+      "text": "체크인 데스크는 어디에 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "chekeuineun eodie isseoyo?"
+      "pronunciation": "chekeuin deseukeuneun eodie innayo?"
     },
     {
       "id": "ko_airport_phrase_007",
       "sceneId": "airport",
       "situationId": "check-in",
       "kind": "phrase",
-      "zh": "我需要关于“座位”的帮助。",
-      "text": "좌석 관련해서 도움이 필요해요.",
+      "zh": "我想换一个座位。",
+      "text": "좌석을 바꾸고 싶습니다.",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "jwaseok gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "jwaseogeul bakkugo sipseumnida."
     },
     {
       "id": "ko_airport_phrase_008",
       "sceneId": "airport",
       "situationId": "check-in",
       "kind": "phrase",
-      "zh": "可以帮我确认“靠窗座位”的相关信息吗？",
-      "text": "창가 좌석을 확인해 주시겠어요?",
+      "zh": "还有靠窗的座位吗？",
+      "text": "창가자리 남아있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "changga jwaseogeul hwaginhae jusigesseoyo?"
+      "pronunciation": "changgajari namainnayo?"
     },
     {
       "id": "ko_airport_phrase_009",
       "sceneId": "airport",
       "situationId": "check-in",
       "kind": "phrase",
-      "zh": "我想咨询“过道座位”。",
-      "text": "통로 좌석에 대해 문의하고 싶어요.",
+      "zh": "可以给我一个靠过道的座位吗？",
+      "text": "통로 옆 자리에 앉으시겠어요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "tongno jwaseoge daehae munuihago sipeoyo."
+      "pronunciation": "tongno yeop jarie anjeusigesseoyo?"
     },
     {
       "id": "ko_airport_phrase_010",
       "sceneId": "airport",
       "situationId": "baggage",
       "kind": "phrase",
-      "zh": "可以告诉我“行李”的相关信息吗？",
-      "text": "수하물에 대해 알려 주세요.",
+      "zh": "我可以免费托运几件行李？",
+      "text": "수하물은 몇 개까지 무료로 체크인할 수 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "suhamure daehae allyeo juseyo."
+      "pronunciation": "suhamureun myeot gaekkaji muryoro chekeuinhal su innayo?"
     },
     {
       "id": "ko_airport_phrase_011",
       "sceneId": "airport",
       "situationId": "baggage",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“行李箱”？",
-      "text": "여행 가방은 어디에 있어요?",
+      "zh": "我的行李箱在运输中损坏了。",
+      "text": "여행 중에 가방이 손상되었습니다.",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "yeohaeng gabangeun eodie isseoyo?"
+      "pronunciation": "yeohaeng junge gabangi sonsangdoeeotseumnida."
     },
     {
       "id": "ko_airport_phrase_012",
       "sceneId": "airport",
       "situationId": "baggage",
       "kind": "phrase",
-      "zh": "我需要关于“手提行李”的帮助。",
-      "text": "휴대 수하물 관련해서 도움이 필요해요.",
+      "zh": "这件行李可以带进客舱吗？",
+      "text": "이 짐을 기내에 반입할 수 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "hyudae suhamul gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "i jimeul ginaee banipal su innayo?"
     },
     {
       "id": "ko_airport_phrase_013",
       "sceneId": "airport",
       "situationId": "baggage",
       "kind": "phrase",
-      "zh": "可以帮我确认“行李领取处”的相关信息吗？",
-      "text": "수하물 찾는 곳을 확인해 주시겠어요?",
+      "zh": "这个航班的行李在几号转盘？",
+      "text": "이 항공편의 수하물은 어느 컨베이어 벨트에 도착합니까?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "suhamul channeun goseul hwaginhae jusigesseoyo?"
+      "pronunciation": "i hanggongpyeonui suhamureun eoneu keonbeieo belteue dochakamnikka?"
     },
     {
       "id": "ko_airport_phrase_014",
       "sceneId": "airport",
       "situationId": "baggage",
       "kind": "phrase",
-      "zh": "我想咨询“行李推车”。",
-      "text": "수하물 카트에 대해 문의하고 싶어요.",
+      "zh": "哪里可以找到行李推车？",
+      "text": "수하물 카트는 어디에서 찾을 수 있나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "suhamul kateue daehae munuihago sipeoyo."
+      "pronunciation": "suhamul kateuneun eodieseo chajeul su innayo?"
     },
     {
       "id": "ko_airport_phrase_015",
@@ -8181,121 +8181,121 @@
       "sceneId": "airport",
       "situationId": "security-waiting",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“免税店”？",
-      "text": "면세점은 어디에 있어요?",
+      "zh": "免税店在安检后面吗？",
+      "text": "면세점은 보안검사 통과됐나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "myeonsejeomeun eodie isseoyo?"
+      "pronunciation": "myeonsejeomeun boangeomsa tonggwadwaennayo?"
     },
     {
       "id": "ko_airport_phrase_017",
       "sceneId": "airport",
       "situationId": "security-waiting",
       "kind": "phrase",
-      "zh": "我需要关于“候机室”的帮助。",
-      "text": "대기실 관련해서 도움이 필요해요.",
+      "zh": "候机区有充电插座吗？",
+      "text": "게이트 구역에 충전 콘센트가 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "daegisil gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "geiteu guyeoge chungjeon konsenteuga innayo?"
     },
     {
       "id": "ko_airport_phrase_018",
       "sceneId": "airport",
       "situationId": "security-waiting",
       "kind": "phrase",
-      "zh": "可以帮我确认“安检”的相关信息吗？",
-      "text": "보안 검색을 확인해 주시겠어요?",
+      "zh": "过安检时要取出电脑吗？",
+      "text": "보안 검색대에 노트북을 가지고 나가야 합니까?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "boan geomsaegeul hwaginhae jusigesseoyo?"
+      "pronunciation": "boan geomsaekdaee noteubugeul gajigo nagaya hamnikka?"
     },
     {
       "id": "ko_airport_phrase_019",
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "请帮我确认“登机口”的相关信息。",
-      "text": "탑승구를 확인해 주세요.",
+      "zh": "请帮我确认一下登机口。",
+      "text": "탑승구를 확인해 주실 수 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "tapseunggureul hwaginhae juseyo."
+      "pronunciation": "tapseunggureul hwaginhae jusil su innayo?"
     },
     {
       "id": "ko_airport_phrase_020",
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "请帮我确认“登机”的相关信息。",
-      "text": "탑승을 확인해 주세요.",
+      "zh": "什么时候开始登机？",
+      "text": "탑승은 언제 시작되나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "tapseungeul hwaginhae juseyo."
+      "pronunciation": "tapseungeun eonje sijakdoenayo?"
     },
     {
       "id": "ko_airport_phrase_021",
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "请帮我确认“起飞”的相关信息。",
-      "text": "이륙을 확인해 주세요.",
+      "zh": "起飞时间推迟了吗？",
+      "text": "출발시간이 늦어졌나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "iryugeul hwaginhae juseyo."
+      "pronunciation": "chulbalsigani neujeojyeonnayo?"
     },
     {
       "id": "ko_airport_phrase_022",
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "请帮我确认“登机时间”的相关信息。",
-      "text": "탑승 시간을 확인해 주세요.",
+      "zh": "登机时间是几点？",
+      "text": "탑승 시간은 몇시입니까?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "tapseung siganeul hwaginhae juseyo."
+      "pronunciation": "tapseung siganeun myeotsiimnikka?"
     },
     {
       "id": "ko_airport_phrase_023",
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "请帮我确认“安全带”的相关信息。",
-      "text": "안전벨트를 확인해 주세요.",
+      "zh": "我的安全带扣不上。",
+      "text": "안전벨트를 매지 못해요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "anjeonbelteureul hwaginhae juseyo."
+      "pronunciation": "anjeonbelteureul maeji mothaeyo."
     },
     {
       "id": "ko_airport_phrase_024",
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "我的海关申报已在线提交。",
-      "text": "온라인으로 세관신고서를 제출했습니다.",
+      "zh": "我已经在线提交了海关申报。",
+      "text": "이미 온라인으로 세관신고서를 제출했습니다.",
       "direction": "traveler-hears",
       "intent": "local-use",
-      "pronunciation": "ollaineuro segwansingoseoreul jechulhaetseumnida."
+      "pronunciation": "imi ollaineuro segwansingoseoreul jechulhaetseumnida."
     },
     {
       "id": "ko_airport_phrase_025",
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "请帮我确认“海关”的相关信息。",
-      "text": "세관을 확인해 주세요.",
+      "zh": "我需要申报这些物品吗？",
+      "text": "이러한 품목을 세관에 신고해야 합니까?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "segwaneul hwaginhae juseyo."
+      "pronunciation": "ireohan pummogeul segwane singohaeya hamnikka?"
     },
     {
       "id": "ko_airport_phrase_026",
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "请帮我确认“入境”的相关信息。",
-      "text": "입국을 확인해 주세요.",
+      "zh": "持中国护照应该走哪条入境通道？",
+      "text": "중국 여권은 어떤 입국 심사 라인을 이용해야 합니까?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "ipgugeul hwaginhae juseyo."
+      "pronunciation": "jungguk yeogwoneun eotteon ipguk simsa raineul iyonghaeya hamnikka?"
     },
     {
       "id": "ko_airport_phrase_027",
@@ -8313,33 +8313,33 @@
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "可以帮我确认“入境卡”的相关信息吗？",
-      "text": "입국신고서를 확인해 주시겠어요?",
+      "zh": "还需要填写入境卡吗？",
+      "text": "그래도 입국카드를 작성해야 하나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "ipguksingoseoreul hwaginhae jusigesseoyo?"
+      "pronunciation": "geuraedo ipguk-kadeureul jakseonghaeya hanayo?"
     },
     {
       "id": "ko_airport_phrase_029",
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "我想咨询“海关申报”。",
-      "text": "세관 신고서에 대해 문의하고 싶어요.",
+      "zh": "可以帮我填写海关申报单吗？",
+      "text": "세관신고서 작성을 도와주실 수 있나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "segwan singoseoe daehae munuihago sipeoyo."
+      "pronunciation": "segwansingoseo jakseongeul dowajusil su innayo?"
     },
     {
       "id": "ko_airport_phrase_030",
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "可以告诉我“入境检查”的相关信息吗？",
-      "text": "출입국심사에 대해 알려 주세요.",
+      "zh": "非美国护照应该排哪一队？",
+      "text": "미국 외 여권의 경우 어떤 줄이 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "churipguksimsae daehae allyeo juseyo."
+      "pronunciation": "miguk oe yeogwonui gyeongu eotteon juri innayo?"
     },
     {
       "id": "ko_transport_phrase_001",
@@ -8357,44 +8357,44 @@
       "sceneId": "transport",
       "situationId": "tickets-stations",
       "kind": "phrase",
-      "zh": "我需要关于“车站”的帮助。",
-      "text": "역 관련해서 도움이 필요해요.",
+      "zh": "去市中心应该在哪一站下车？",
+      "text": "시내로 가려면 어느 역에서 내려야 하나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "yeok gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "sinaero garyeomyeon eoneu yeogeseo naeryeoya hanayo?"
     },
     {
       "id": "ko_transport_phrase_003",
       "sceneId": "transport",
       "situationId": "tickets-stations",
       "kind": "phrase",
-      "zh": "可以帮我确认“站台”的相关信息吗？",
-      "text": "플랫폼을 확인해 주시겠어요?",
+      "zh": "去釜山的列车从哪个站台出发？",
+      "text": "부산행 기차는 어느 승강장에서 출발하나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "peullaetpomeul hwaginhae jusigesseoyo?"
+      "pronunciation": "busanhaeng gichaneun eoneu seunggangjangeseo chulbalhanayo?"
     },
     {
       "id": "ko_transport_phrase_004",
       "sceneId": "transport",
       "situationId": "tickets-stations",
       "kind": "phrase",
-      "zh": "我想咨询“时刻表”。",
-      "text": "시간표에 대해 문의하고 싶어요.",
+      "zh": "下一班车几点出发？",
+      "text": "다음 기차는 몇시에 출발하나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "siganpyoe daehae munuihago sipeoyo."
+      "pronunciation": "daeum gichaneun myeotsie chulbalhanayo?"
     },
     {
       "id": "ko_transport_phrase_005",
       "sceneId": "transport",
       "situationId": "tickets-stations",
       "kind": "phrase",
-      "zh": "可以告诉我“单程票”的相关信息吗？",
-      "text": "편도 승차권에 대해 알려 주세요.",
+      "zh": "请给我一张去庆州的单程票。",
+      "text": "경주행 편도 티켓 한 장 주세요.",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "pyeondo seungchagwone daehae allyeo juseyo."
+      "pronunciation": "gyeongjuhaeng pyeondo tiket han jang juseyo."
     },
     {
       "id": "ko_transport_phrase_006",
@@ -8412,44 +8412,44 @@
       "sceneId": "transport",
       "situationId": "bus-metro",
       "kind": "phrase",
-      "zh": "我需要关于“公交车”的帮助。",
-      "text": "버스 관련해서 도움이 필요해요.",
+      "zh": "这辆公交车去机场吗？",
+      "text": "이 버스가 공항으로 가나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "beoseu gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "i beoseuga gonghangeuro ganayo?"
     },
     {
       "id": "ko_transport_phrase_008",
       "sceneId": "transport",
       "situationId": "bus-metro",
       "kind": "phrase",
-      "zh": "可以帮我确认“地铁”的相关信息吗？",
-      "text": "지하철을 확인해 주시겠어요?",
+      "zh": "我需要换乘地铁吗？",
+      "text": "지하철로 환승해야 하나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "jihacheoreul hwaginhae jusigesseoyo?"
+      "pronunciation": "jihacheollo hwanseunghaeya hanayo?"
     },
     {
       "id": "ko_transport_phrase_009",
       "sceneId": "transport",
       "situationId": "bus-metro",
       "kind": "phrase",
-      "zh": "我想咨询“公交车”。",
-      "text": "버스에 대해 문의하고 싶어요.",
+      "zh": "公交车票可以上车后买吗？",
+      "text": "버스에 탑승한 후에 표를 구입할 수 있나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "beoseue daehae munuihago sipeoyo."
+      "pronunciation": "beoseue tapseunghan hue pyoreul guipal su innayo?"
     },
     {
       "id": "ko_transport_phrase_010",
       "sceneId": "transport",
       "situationId": "bus-metro",
       "kind": "phrase",
-      "zh": "可以告诉我“地铁”的相关信息吗？",
-      "text": "지하철에 대해 알려 주세요.",
+      "zh": "最后一班地铁是几点？",
+      "text": "마지막 지하철 열차는 몇 시입니까?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "jihacheore daehae allyeo juseyo."
+      "pronunciation": "majimak jihacheol yeolchaneun myeot siimnikka?"
     },
     {
       "id": "ko_transport_phrase_011",
@@ -8467,44 +8467,44 @@
       "sceneId": "transport",
       "situationId": "rail",
       "kind": "phrase",
-      "zh": "我需要关于“高铁”的帮助。",
-      "text": "KTX 관련해서 도움이 필요해요.",
+      "zh": "我错过了火车，可以改签吗？",
+      "text": "기차를 놓쳤어요. 티켓을 변경할 수 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "ktx gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "gichareul nochyeosseoyo. tikeseul byeongyeonghal su innayo?"
     },
     {
       "id": "ko_transport_phrase_013",
       "sceneId": "transport",
       "situationId": "rail",
       "kind": "phrase",
-      "zh": "可以帮我确认“火车”的相关信息吗？",
-      "text": "기차를 확인해 주시겠어요?",
+      "zh": "这趟火车需要预订座位吗？",
+      "text": "이 열차에 좌석을 예약해야 합니까?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "gichareul hwaginhae jusigesseoyo?"
+      "pronunciation": "i yeolchae jwaseogeul yeyakaeya hamnikka?"
     },
     {
       "id": "ko_transport_phrase_014",
       "sceneId": "transport",
       "situationId": "rail",
       "kind": "phrase",
-      "zh": "我想咨询“高铁”。",
-      "text": "KTX에 대해 문의하고 싶어요.",
+      "zh": "这是直达列车吗？",
+      "text": "KTX는 어떻게 이용하면 돼요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "ktxe daehae munuihago sipeoyo."
+      "pronunciation": "ktxneun eotteoke iyonghamyeon dwaeyo?"
     },
     {
       "id": "ko_transport_phrase_015",
       "sceneId": "transport",
       "situationId": "rail",
       "kind": "phrase",
-      "zh": "可以告诉我“火车”的相关信息吗？",
-      "text": "기차에 대해 알려 주세요.",
+      "zh": "火车会在哪些车站停靠？",
+      "text": "기차는 어느 역에 정차하나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "gichae daehae allyeo juseyo."
+      "pronunciation": "gichaneun eoneu yeoge jeongchahanayo?"
     },
     {
       "id": "ko_transport_phrase_016",
@@ -8522,55 +8522,55 @@
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "我需要关于“出租车”的帮助。",
-      "text": "택시 관련해서 도움이 필요해요.",
+      "zh": "可以帮我叫一辆出租车吗？",
+      "text": "나에게 택시를 불러줄 수 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "taeksi gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "naege taeksireul bulleojul su innayo?"
     },
     {
       "id": "ko_transport_phrase_018",
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "可以帮我确认“出租车”的相关信息吗？",
-      "text": "택시를 확인해 주시겠어요?",
+      "zh": "出租车可以刷卡吗？",
+      "text": "택시비를 카드로 결제할 수 있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "taeksireul hwaginhae jusigesseoyo?"
+      "pronunciation": "taeksibireul kadeuro gyeoljehal su innayo?"
     },
     {
       "id": "ko_transport_phrase_019",
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "请帮我确认“出租车”的相关信息。",
-      "text": "택시를 확인해 주세요.",
+      "zh": "请打表。",
+      "text": "미터기를 켜주세요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "taeksireul hwaginhae juseyo."
+      "pronunciation": "miteogireul kyeojuseyo."
     },
     {
       "id": "ko_transport_phrase_020",
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "请帮我确认“出租车”的相关信息。",
-      "text": "택시를 확인해 주세요.",
+      "zh": "请开到这个地址。",
+      "text": "이 주소로 데려다 주세요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "taeksireul hwaginhae juseyo."
+      "pronunciation": "i jusoro deryeoda juseyo."
     },
     {
       "id": "ko_transport_phrase_021",
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "请帮我确认“出租车”的相关信息。",
-      "text": "택시를 확인해 주세요.",
+      "zh": "到机场大约多少钱？",
+      "text": "공항까지 얼마예요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "taeksireul hwaginhae juseyo."
+      "pronunciation": "gonghangkkaji eolmayeyo?"
     },
     {
       "id": "ko_transport_phrase_022",
@@ -8588,99 +8588,99 @@
       "sceneId": "transport",
       "situationId": "transfer",
       "kind": "phrase",
-      "zh": "请帮我确认“加油站”的相关信息。",
-      "text": "주유소를 확인해 주세요.",
+      "zh": "最近的加油站在哪里？",
+      "text": "가장 가까운 주유소는 어디에 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "juyusoreul hwaginhae juseyo."
+      "pronunciation": "gajang gakkaun juyusoneun eodie innayo?"
     },
     {
       "id": "ko_transport_phrase_024",
       "sceneId": "transport",
       "situationId": "transfer",
       "kind": "phrase",
-      "zh": "请帮我确认“停车场”的相关信息。",
-      "text": "주차장을 확인해 주세요.",
+      "zh": "这里可以停车吗？",
+      "text": "여기에 주차해도 되나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "juchajangeul hwaginhae juseyo."
+      "pronunciation": "yeogie juchahaedo doenayo?"
     },
     {
       "id": "ko_transport_phrase_025",
       "sceneId": "transport",
       "situationId": "transfer",
       "kind": "phrase",
-      "zh": "请帮我确认“红绿灯”的相关信息。",
-      "text": "신호등을 확인해 주세요.",
+      "zh": "在红绿灯处右转。",
+      "text": "신호등에서 우회전하세요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "sinhodeungeul hwaginhae juseyo."
+      "pronunciation": "sinhodeungeseo uhoejeonhaseyo."
     },
     {
       "id": "ko_transport_phrase_026",
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "请帮我确认“汽车”的相关信息。",
-      "text": "자동차를 확인해 주세요.",
+      "zh": "这辆车用汽油还是柴油？",
+      "text": "이 차는 휘발유를 사용하나요, 아니면 디젤을 사용하나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "jadongchareul hwaginhae juseyo."
+      "pronunciation": "i chaneun hwiballyureul sayonghanayo, animyeon dijereul sayonghanayo?"
     },
     {
       "id": "ko_transport_phrase_027",
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "我需要关于“租车”的帮助。",
-      "text": "렌터카 관련해서 도움이 필요해요.",
+      "zh": "我预订了一辆租赁汽车。",
+      "text": "렌트카를 예약했어요.",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "renteoka gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "renteukareul yeyakaesseoyo."
     },
     {
       "id": "ko_transport_phrase_028",
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "可以帮我确认“加油站”的相关信息吗？",
-      "text": "주유소를 확인해 주시겠어요?",
+      "zh": "请加满普通无铅汽油。",
+      "text": "일반 무연으로 채워주세요.",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "juyusoreul hwaginhae jusigesseoyo?"
+      "pronunciation": "ilban muyeoneuro chaewojuseyo."
     },
     {
       "id": "ko_transport_phrase_029",
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "我想咨询“停车场”。",
-      "text": "주차장에 대해 문의하고 싶어요.",
+      "zh": "停车费在哪里支付？",
+      "text": "주차요금은 어디서 지불하나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "juchajange daehae munuihago sipeoyo."
+      "pronunciation": "juchayogeumeun eodiseo jibulhanayo?"
     },
     {
       "id": "ko_transport_phrase_030",
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "可以告诉我“红绿灯”的相关信息吗？",
-      "text": "신호등에 대해 알려 주세요.",
+      "zh": "过了红绿灯就是入口。",
+      "text": "입구는 신호등 바로 뒤에 있습니다.",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "sinhodeunge daehae allyeo juseyo."
+      "pronunciation": "ipguneun sinhodeung baro dwie itseumnida."
     },
     {
       "id": "ko_hotel_phrase_001",
       "sceneId": "hotel",
       "situationId": "reservation",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“酒店”？",
-      "text": "호텔은 어디에 있어요?",
+      "zh": "请问酒店前台在哪里？",
+      "text": "호텔 프런트 데스크는 어디에 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "hotereun eodie isseoyo?"
+      "pronunciation": "hotel peureonteu deseukeuneun eodie innayo?"
     },
     {
       "id": "ko_hotel_phrase_002",
@@ -8698,88 +8698,88 @@
       "sceneId": "hotel",
       "situationId": "reservation",
       "kind": "phrase",
-      "zh": "可以帮我确认“民宿”的相关信息吗？",
-      "text": "게스트하우스를 확인해 주시겠어요?",
+      "zh": "这家旅游住宿可以寄存行李吗？",
+      "text": "이 호텔에 짐을 보관할 수 있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "geseuteuhauseureul hwaginhae jusigesseoyo?"
+      "pronunciation": "i hotere jimeul bogwanhal su innayo?"
     },
     {
       "id": "ko_hotel_phrase_004",
       "sceneId": "hotel",
       "situationId": "reservation",
       "kind": "phrase",
-      "zh": "我想咨询“前台”。",
-      "text": "프런트 데스크에 대해 문의하고 싶어요.",
+      "zh": "我可以在前台办理入住吗？",
+      "text": "프런트에서 체크인할 수 있나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "peureonteu deseukeue daehae munuihago sipeoyo."
+      "pronunciation": "peureonteueseo chekeuinhal su innayo?"
     },
     {
       "id": "ko_hotel_phrase_005",
       "sceneId": "hotel",
       "situationId": "reservation",
       "kind": "phrase",
-      "zh": "可以告诉我“预订”的相关信息吗？",
-      "text": "예약에 대해 알려 주세요.",
+      "zh": "请帮我查一下这个姓名下的预订。",
+      "text": "이 이름으로 예약된 내용을 찾아보실 수 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "yeyage daehae allyeo juseyo."
+      "pronunciation": "i ireumeuro yeyakdoen naeyongeul chajabosil su innayo?"
     },
     {
       "id": "ko_hotel_phrase_006",
       "sceneId": "hotel",
       "situationId": "hotel-check-in",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“入住”？",
-      "text": "체크인은 어디에 있어요?",
+      "zh": "最早几点可以入住？",
+      "text": "체크인할 수 있는 가장 빠른 시간은 언제입니까?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "chekeuineun eodie isseoyo?"
+      "pronunciation": "chekeuinhal su inneun gajang ppareun siganeun eonjeimnikka?"
     },
     {
       "id": "ko_hotel_phrase_007",
       "sceneId": "hotel",
       "situationId": "hotel-check-in",
       "kind": "phrase",
-      "zh": "我需要关于“钥匙”的帮助。",
-      "text": "열쇠 관련해서 도움이 필요해요.",
+      "zh": "我把房间钥匙弄丢了。",
+      "text": "방 열쇠를 잃어버렸어요.",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "yeolsoe gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "bang yeolsoereul ireobeoryeosseoyo."
     },
     {
       "id": "ko_hotel_phrase_008",
       "sceneId": "hotel",
       "situationId": "hotel-check-in",
       "kind": "phrase",
-      "zh": "可以帮我确认“房卡”的相关信息吗？",
-      "text": "카드 키를 확인해 주시겠어요?",
+      "zh": "我的房卡失效了。",
+      "text": "내 키 카드가 작동하지 않아요.",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "kadeu kireul hwaginhae jusigesseoyo?"
+      "pronunciation": "nae ki kadeuga jakdonghaji anayo."
     },
     {
       "id": "ko_hotel_phrase_009",
       "sceneId": "hotel",
       "situationId": "hotel-check-in",
       "kind": "phrase",
-      "zh": "我想咨询“行李员”。",
-      "text": "벨 데스크 직원에 대해 문의하고 싶어요.",
+      "zh": "可以请人帮我拿行李吗？",
+      "text": "누군가 내 짐을 옮기는 것을 도와줄 수 있나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "bel deseukeu jigwone daehae munuihago sipeoyo."
+      "pronunciation": "nugunga nae jimeul omgineun geoseul dowajul su innayo?"
     },
     {
       "id": "ko_hotel_phrase_010",
       "sceneId": "hotel",
       "situationId": "hotel-check-in",
       "kind": "phrase",
-      "zh": "可以告诉我“工作人员”的相关信息吗？",
-      "text": "직원에 대해 알려 주세요.",
+      "zh": "我需要找一位工作人员。",
+      "text": "직원에게 얘기해야 해요.",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "jigwone daehae allyeo juseyo."
+      "pronunciation": "jigwonege yaegihaeya haeyo."
     },
     {
       "id": "ko_hotel_phrase_011",
@@ -8797,40 +8797,40 @@
       "sceneId": "hotel",
       "situationId": "room-facilities",
       "kind": "phrase",
-      "zh": "我需要关于“床单”的帮助。",
-      "text": "침대 시트 관련해서 도움이 필요해요.",
+      "zh": "请更换一下床单。",
+      "text": "시트 좀 바꿔주실 수 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "chimdae siteu gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "siteu jom bakkwojusil su innayo?"
     },
     {
       "id": "ko_hotel_phrase_013",
       "sceneId": "hotel",
       "situationId": "room-facilities",
       "kind": "phrase",
-      "zh": "可以帮我确认“枕头”的相关信息吗？",
-      "text": "베개를 확인해 주시겠어요?",
+      "zh": "可以再给我一个枕头吗？",
+      "text": "베개를 하나 더 가져다 줄 수 있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "begaereul hwaginhae jusigesseoyo?"
+      "pronunciation": "begaereul hana deo gajyeoda jul su innayo?"
     },
     {
       "id": "ko_hotel_phrase_014",
       "sceneId": "hotel",
       "situationId": "room-facilities",
       "kind": "phrase",
-      "zh": "我想咨询“被子”。",
-      "text": "이불에 대해 문의하고 싶어요.",
+      "zh": "被子不够暖和。",
+      "text": "이불이 충분히 따뜻하지 않습니다.",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "ibure daehae munuihago sipeoyo."
+      "pronunciation": "iburi chungbunhi ttatteuthaji anseumnida."
     },
     {
       "id": "ko_hotel_phrase_015",
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "可以延迟退房吗？",
+      "zh": "可以晚一点退房吗？",
       "text": "체크아웃 시간을 연장할 수 있나요?",
       "direction": "traveler-says",
       "intent": "local-use",
@@ -8841,55 +8841,55 @@
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“打扫”？",
-      "text": "청소는 어디에 있어요?",
+      "zh": "今天不用打扫房间。",
+      "text": "오늘은 가사가 필요하지 않습니다.",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "cheongsoneun eodie isseoyo?"
+      "pronunciation": "oneureun gasaga pillyohaji anseumnida."
     },
     {
       "id": "ko_hotel_phrase_017",
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "我需要关于“叫醒服务”的帮助。",
-      "text": "모닝콜 관련해서 도움이 필요해요.",
+      "zh": "请明早七点叫醒我。",
+      "text": "내일 아침 7시에 모닝콜을 받을 수 있을까요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "moningkol gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "naeil achim 7sie moningkoreul badeul su isseulkkayo?"
     },
     {
       "id": "ko_hotel_phrase_018",
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "可以帮我确认“洗衣服务”的相关信息吗？",
-      "text": "세탁 서비스를 확인해 주시겠어요?",
+      "zh": "洗衣服务什么时候送回来？",
+      "text": "세탁물은 언제 반환되나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "setak seobiseureul hwaginhae jusigesseoyo?"
+      "pronunciation": "setangmureun eonje banhwandoenayo?"
     },
     {
       "id": "ko_hotel_phrase_019",
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "请帮我确认“熨斗”的相关信息。",
-      "text": "다리미를 확인해 주세요.",
+      "zh": "房间里有熨斗吗？",
+      "text": "방에 다리미가 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "darimireul hwaginhae juseyo."
+      "pronunciation": "bange darimiga innayo?"
     },
     {
       "id": "ko_hotel_phrase_020",
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "请帮我确认“婴儿床”的相关信息。",
-      "text": "아기 침대를 확인해 주세요.",
+      "zh": "可以在房间里加一张婴儿床吗？",
+      "text": "방에 유아용 침대를 놓을 수 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "agi chimdaereul hwaginhae juseyo."
+      "pronunciation": "bange yuayong chimdaereul noeul su innayo?"
     },
     {
       "id": "ko_hotel_phrase_021",
@@ -8907,22 +8907,22 @@
       "sceneId": "hotel",
       "situationId": "hotel-problems",
       "kind": "phrase",
-      "zh": "请帮我确认“烟雾报警器”的相关信息。",
-      "text": "연기 경보기를 확인해 주세요.",
+      "zh": "烟雾报警器一直在响。",
+      "text": "연기 감지기의 벨소리가 멈추지 않습니다.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "yeongi gyeongbogireul hwaginhae juseyo."
+      "pronunciation": "yeongi gamjigiui belsoriga meomchuji anseumnida."
     },
     {
       "id": "ko_hotel_phrase_023",
       "sceneId": "hotel",
       "situationId": "hotel-problems",
       "kind": "phrase",
-      "zh": "请帮我确认“灭火器”的相关信息。",
-      "text": "소화기를 확인해 주세요.",
+      "zh": "这一层的灭火器在哪里？",
+      "text": "이 층에 소화기는 어디에 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "sohwagireul hwaginhae juseyo."
+      "pronunciation": "i cheunge sohwagineun eodie innayo?"
     },
     {
       "id": "ko_hotel_phrase_024",
@@ -8962,11 +8962,11 @@
       "sceneId": "hotel",
       "situationId": "checkout-storage",
       "kind": "phrase",
-      "zh": "我需要关于“退房”的帮助。",
-      "text": "체크아웃 관련해서 도움이 필요해요.",
+      "zh": "我现在想办理退房。",
+      "text": "지금 확인하고 싶습니다.",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "chekeuaut gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "jigeum hwaginhago sipseumnida."
     },
     {
       "id": "ko_hotel_phrase_028",
@@ -8984,66 +8984,66 @@
       "sceneId": "hotel",
       "situationId": "checkout-storage",
       "kind": "phrase",
-      "zh": "我想咨询“小票”。",
-      "text": "영수증에 대해 문의하고 싶어요.",
+      "zh": "可以给我一张正式收据吗？",
+      "text": "공식 영수증을 주실 수 있나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "yeongsujeunge daehae munuihago sipeoyo."
+      "pronunciation": "gongsik yeongsujeungeul jusil su innayo?"
     },
     {
       "id": "ko_hotel_phrase_030",
       "sceneId": "hotel",
       "situationId": "checkout-storage",
       "kind": "phrase",
-      "zh": "可以告诉我“结账”的相关信息吗？",
-      "text": "계산에 대해 알려 주세요.",
+      "zh": "请帮我核对一下账单。",
+      "text": "저와 함께 법안을 검토해 주실 수 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "gyesane daehae allyeo juseyo."
+      "pronunciation": "jeowa hamkke beobaneul geomtohae jusil su innayo?"
     },
     {
       "id": "ko_food_phrase_001",
       "sceneId": "food",
       "situationId": "enter-wait",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“早餐”？",
-      "text": "아침 식사는 어디에 있어요?",
+      "zh": "早餐几点开始供应？",
+      "text": "아침 식사는 몇 시에 시작되나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "achim siksaneun eodie isseoyo?"
+      "pronunciation": "achim siksaneun myeot sie sijakdoenayo?"
     },
     {
       "id": "ko_food_phrase_002",
       "sceneId": "food",
       "situationId": "enter-wait",
       "kind": "phrase",
-      "zh": "我需要关于“午餐”的帮助。",
-      "text": "점심 관련해서 도움이 필요해요.",
+      "zh": "午餐有套餐吗？",
+      "text": "점심특선 드시나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "jeomsim gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "jeomsimteukseon deusinayo?"
     },
     {
       "id": "ko_food_phrase_003",
       "sceneId": "food",
       "situationId": "enter-wait",
       "kind": "phrase",
-      "zh": "可以帮我确认“晚餐”的相关信息吗？",
-      "text": "저녁 식사를 확인해 주시겠어요?",
+      "zh": "我想预订今晚八点的晚餐。",
+      "text": "8시에 저녁 식사 자리를 예약하고 싶습니다.",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "jeonyeok siksareul hwaginhae jusigesseoyo?"
+      "pronunciation": "8sie jeonyeok siksa jarireul yeyakago sipseumnida."
     },
     {
       "id": "ko_food_phrase_004",
       "sceneId": "food",
       "situationId": "enter-wait",
       "kind": "phrase",
-      "zh": "我想咨询“服务员”。",
-      "text": "직원에 대해 문의하고 싶어요.",
+      "zh": "劳驾，我们可以点餐了吗？",
+      "text": "죄송한데 지금 주문해도 될까요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "jigwone daehae munuihago sipeoyo."
+      "pronunciation": "joesonghande jigeum jumunhaedo doelkkayo?"
     },
     {
       "id": "ko_food_phrase_005",
@@ -9061,22 +9061,22 @@
       "sceneId": "food",
       "situationId": "menu",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“米饭”？",
-      "text": "밥은 어디에 있어요?",
+      "zh": "米饭可以换成沙拉吗？",
+      "text": "밥을 샐러드로 바꿀 수 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "babeun eodie isseoyo?"
+      "pronunciation": "babeul saelleodeuro bakkul su innayo?"
     },
     {
       "id": "ko_food_phrase_007",
       "sceneId": "food",
       "situationId": "menu",
       "kind": "phrase",
-      "zh": "我需要关于“面包”的帮助。",
-      "text": "빵 관련해서 도움이 필요해요.",
+      "zh": "可以再给我们一些面包吗？",
+      "text": "빵 좀 더 가져다 주시겠어요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "ppang gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "ppang jom deo gajyeoda jusigesseoyo?"
     },
     {
       "id": "ko_food_phrase_008",
@@ -9094,55 +9094,55 @@
       "sceneId": "food",
       "situationId": "ordering",
       "kind": "phrase",
-      "zh": "我想咨询“水”。",
-      "text": "물에 대해 문의하고 싶어요.",
+      "zh": "请给我一瓶不带气的水。",
+      "text": "생수 한 병 주세요.",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "mure daehae munuihago sipeoyo."
+      "pronunciation": "saengsu han byeong juseyo."
     },
     {
       "id": "ko_food_phrase_010",
       "sceneId": "food",
       "situationId": "ordering",
       "kind": "phrase",
-      "zh": "可以告诉我“热水”的相关信息吗？",
-      "text": "뜨거운 물에 대해 알려 주세요.",
+      "zh": "可以给我一杯热水吗？",
+      "text": "뜨거운 물 한 잔 주시겠어요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "tteugeoun mure daehae allyeo juseyo."
+      "pronunciation": "tteugeoun mul han jan jusigesseoyo?"
     },
     {
       "id": "ko_food_phrase_011",
       "sceneId": "food",
       "situationId": "ordering",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“茶”？",
-      "text": "차는 어디에 있어요?",
+      "zh": "你们有什么茶？",
+      "text": "어떤 종류의 차가 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "chaneun eodie isseoyo?"
+      "pronunciation": "eotteon jongnyuui chaga innayo?"
     },
     {
       "id": "ko_food_phrase_012",
       "sceneId": "food",
       "situationId": "ordering",
       "kind": "phrase",
-      "zh": "我需要关于“咖啡”的帮助。",
-      "text": "커피 관련해서 도움이 필요해요.",
+      "zh": "请给我一杯少量牛奶的咖啡。",
+      "text": "우유를 조금 탄 커피로 주세요.",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "keopi gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "uyureul jogeum tan keopiro juseyo."
     },
     {
       "id": "ko_food_phrase_013",
       "sceneId": "food",
       "situationId": "ordering",
       "kind": "phrase",
-      "zh": "可以帮我确认“牛奶”的相关信息吗？",
-      "text": "우유를 확인해 주시겠어요?",
+      "zh": "有不含乳糖的牛奶吗？",
+      "text": "락토프리 우유 있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "uyureul hwaginhae jusigesseoyo?"
+      "pronunciation": "raktopeuri uyu innayo?"
     },
     {
       "id": "ko_food_phrase_014",
@@ -9160,44 +9160,44 @@
       "sceneId": "food",
       "situationId": "taste-diet",
       "kind": "phrase",
-      "zh": "可以告诉我“糖”的相关信息吗？",
-      "text": "설탕에 대해 알려 주세요.",
+      "zh": "咖啡请不要加糖。",
+      "text": "설탕 없는 커피로 주세요.",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "seoltange daehae allyeo juseyo."
+      "pronunciation": "seoltang eomneun keopiro juseyo."
     },
     {
       "id": "ko_food_phrase_016",
       "sceneId": "food",
       "situationId": "taste-diet",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“酱油”？",
-      "text": "간장은 어디에 있어요?",
+      "zh": "有不含酱油的菜吗？",
+      "text": "간장 없는 요리도 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "ganjangeun eodie isseoyo?"
+      "pronunciation": "ganjang eomneun yorido innayo?"
     },
     {
       "id": "ko_food_phrase_017",
       "sceneId": "food",
       "situationId": "taste-diet",
       "kind": "phrase",
-      "zh": "我需要关于“醋”的帮助。",
-      "text": "식초 관련해서 도움이 필요해요.",
+      "zh": "请另外给我一点醋。",
+      "text": "식초를 옆에 좀 주시겠어요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "sikcho gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "sikchoreul yeope jom jusigesseoyo?"
     },
     {
       "id": "ko_food_phrase_018",
       "sceneId": "food",
       "situationId": "taste-diet",
       "kind": "phrase",
-      "zh": "可以帮我确认“胡椒”的相关信息吗？",
-      "text": "후추를 확인해 주시겠어요?",
+      "zh": "请不要放胡椒。",
+      "text": "후추는 넣지 마세요.",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "huchureul hwaginhae jusigesseoyo?"
+      "pronunciation": "huchuneun neochi maseyo."
     },
     {
       "id": "ko_food_phrase_019",
@@ -9226,22 +9226,22 @@
       "sceneId": "food",
       "situationId": "dining-requests",
       "kind": "phrase",
-      "zh": "请帮我确认“叉子”的相关信息。",
-      "text": "포크를 확인해 주세요.",
+      "zh": "可以再给我一把叉子吗？",
+      "text": "포크 하나 더 가져다 주실 수 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "pokeureul hwaginhae juseyo."
+      "pronunciation": "pokeu hana deo gajyeoda jusil su innayo?"
     },
     {
       "id": "ko_food_phrase_022",
       "sceneId": "food",
       "situationId": "dining-requests",
       "kind": "phrase",
-      "zh": "请帮我确认“刀”的相关信息。",
-      "text": "칼을 확인해 주세요.",
+      "zh": "可以把配菜换成沙拉吗？",
+      "text": "사이드 메뉴를 샐러드로 대체할 수 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "kareul hwaginhae juseyo."
+      "pronunciation": "saideu menyureul saelleodeuro daechehal su innayo?"
     },
     {
       "id": "ko_food_phrase_023",
@@ -9259,33 +9259,33 @@
       "sceneId": "food",
       "situationId": "food-confirm",
       "kind": "phrase",
-      "zh": "请帮我确认“鸡蛋”的相关信息。",
-      "text": "계란을 확인해 주세요.",
+      "zh": "这个鸡蛋是全熟的吗？",
+      "text": "계란이 완전히 익었나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "gyeraneul hwaginhae juseyo."
+      "pronunciation": "gyerani wanjeonhi igeonnayo?"
     },
     {
       "id": "ko_food_phrase_025",
       "sceneId": "food",
       "situationId": "food-confirm",
       "kind": "phrase",
-      "zh": "请帮我确认“肉”的相关信息。",
-      "text": "고기를 확인해 주세요.",
+      "zh": "我不吃肉。",
+      "text": "나는 고기를 먹지 않는다.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "gogireul hwaginhae juseyo."
+      "pronunciation": "naneun gogireul meokji anneunda."
     },
     {
       "id": "ko_food_phrase_026",
       "sceneId": "food",
       "situationId": "food-confirm",
       "kind": "phrase",
-      "zh": "请帮我确认“牛肉”的相关信息。",
-      "text": "쇠고기를 확인해 주세요.",
+      "zh": "牛肉请做全熟。",
+      "text": "소고기 잘 구워주세요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "soegogireul hwaginhae juseyo."
+      "pronunciation": "sogogi jal guwojuseyo."
     },
     {
       "id": "ko_food_phrase_027",
@@ -9303,88 +9303,88 @@
       "sceneId": "food",
       "situationId": "food-checkout",
       "kind": "phrase",
-      "zh": "可以帮我确认“收银台”的相关信息吗？",
-      "text": "계산대를 확인해 주시겠어요?",
+      "zh": "我们在哪里付款？",
+      "text": "지불은 어디서 하나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "gyesandaereul hwaginhae jusigesseoyo?"
+      "pronunciation": "jibureun eodiseo hanayo?"
     },
     {
       "id": "ko_food_phrase_029",
       "sceneId": "food",
       "situationId": "food-checkout",
       "kind": "phrase",
-      "zh": "我想咨询“结账”。",
-      "text": "계산에 대해 문의하고 싶어요.",
+      "zh": "请给我们结账。",
+      "text": "청구서를 주세요.",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "gyesane daehae munuihago sipeoyo."
+      "pronunciation": "cheongguseoreul juseyo."
     },
     {
       "id": "ko_food_phrase_030",
       "sceneId": "food",
       "situationId": "food-checkout",
       "kind": "phrase",
-      "zh": "可以告诉我“收银台”的相关信息吗？",
-      "text": "계산대에 대해 알려 주세요.",
+      "zh": "可以在收银台分开付款吗？",
+      "text": "계산대에서 별도로 결제할 수 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "gyesandaee daehae allyeo juseyo."
+      "pronunciation": "gyesandaeeseo byeoldoro gyeoljehal su innayo?"
     },
     {
       "id": "ko_shopping_phrase_001",
       "sceneId": "shopping",
       "situationId": "find-products",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“商店”？",
-      "text": "가게는 어디에 있어요?",
+      "zh": "请问商店入口在哪里？",
+      "text": "가게 입구가 어디예요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "gageneun eodie isseoyo?"
+      "pronunciation": "gage ipguga eodiyeyo?"
     },
     {
       "id": "ko_shopping_phrase_002",
       "sceneId": "shopping",
       "situationId": "find-products",
       "kind": "phrase",
-      "zh": "我需要关于“商场”的帮助。",
-      "text": "백화점 관련해서 도움이 필요해요.",
+      "zh": "百货商店今天营业吗？",
+      "text": "오늘 백화점 문 열어요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "baekwajeom gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "oneul baekwajeom mun yeoreoyo?"
     },
     {
       "id": "ko_shopping_phrase_003",
       "sceneId": "shopping",
       "situationId": "find-products",
       "kind": "phrase",
-      "zh": "可以帮我确认“超市”的相关信息吗？",
-      "text": "슈퍼마켓을 확인해 주시겠어요?",
+      "zh": "这附近有大型超市吗？",
+      "text": "근처에 큰 슈퍼마켓이 있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "syupeomakeseul hwaginhae jusigesseoyo?"
+      "pronunciation": "geuncheoe keun syupeomakesi innayo?"
     },
     {
       "id": "ko_shopping_phrase_004",
       "sceneId": "shopping",
       "situationId": "find-products",
       "kind": "phrase",
-      "zh": "我想咨询“便利店”。",
-      "text": "편의점에 대해 문의하고 싶어요.",
+      "zh": "便利店是二十四小时营业吗？",
+      "text": "편의점은 24시간 영업하나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "pyeonuijeome daehae munuihago sipeoyo."
+      "pronunciation": "pyeonuijeomeun 24sigan yeongeopanayo?"
     },
     {
       "id": "ko_shopping_phrase_005",
       "sceneId": "shopping",
       "situationId": "find-products",
       "kind": "phrase",
-      "zh": "可以告诉我“市场”的相关信息吗？",
-      "text": "시장에 대해 알려 주세요.",
+      "zh": "周末市场几点开始？",
+      "text": "주말에 마켓은 몇시에 시작하나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "sijange daehae allyeo juseyo."
+      "pronunciation": "jumare makeseun myeotsie sijakanayo?"
     },
     {
       "id": "ko_shopping_phrase_006",
@@ -9457,11 +9457,11 @@
       "sceneId": "shopping",
       "situationId": "try-products",
       "kind": "phrase",
-      "zh": "可以试穿吗？",
-      "text": "입어봐도 돼요?",
+      "zh": "这件我可以试一下吗？",
+      "text": "이 옷을 입어봐도 돼요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "ibeobwado dwaeyo?"
+      "pronunciation": "i oseul ibeobwado dwaeyo?"
     },
     {
       "id": "ko_shopping_phrase_013",
@@ -9501,11 +9501,11 @@
       "sceneId": "shopping",
       "situationId": "price-discount",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“价格”？",
-      "text": "가격은 어디에 있어요?",
+      "zh": "请问这件商品多少钱？",
+      "text": "이 품목의 가격은 얼마입니까?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "gagyeogeun eodie isseoyo?"
+      "pronunciation": "i pummogui gagyeogeun eolmaimnikka?"
     },
     {
       "id": "ko_shopping_phrase_017",
@@ -9556,33 +9556,33 @@
       "sceneId": "shopping",
       "situationId": "payment",
       "kind": "phrase",
-      "zh": "请帮我确认“信用卡”的相关信息。",
-      "text": "신용카드를 확인해 주세요.",
+      "zh": "可以用信用卡付款吗？",
+      "text": "신용카드로 결제할 수 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "sinyongkadeureul hwaginhae juseyo."
+      "pronunciation": "sinyongkadeuro gyeoljehal su innayo?"
     },
     {
       "id": "ko_shopping_phrase_022",
       "sceneId": "shopping",
       "situationId": "payment",
       "kind": "phrase",
-      "zh": "请帮我确认“银行卡”的相关信息。",
-      "text": "체크카드를 확인해 주세요.",
+      "zh": "这张银行卡为什么不能用？",
+      "text": "이 직불카드는 왜 작동하지 않나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "chekeukadeureul hwaginhae juseyo."
+      "pronunciation": "i jikbulkadeuneun wae jakdonghaji annayo?"
     },
     {
       "id": "ko_shopping_phrase_023",
       "sceneId": "shopping",
       "situationId": "payment",
       "kind": "phrase",
-      "zh": "请帮我确认“零钱”的相关信息。",
-      "text": "잔돈을 확인해 주세요.",
+      "zh": "可以找开五万韩元吗？",
+      "text": "5만원을 잔돈으로 바꿔주실 수 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "jandoneul hwaginhae juseyo."
+      "pronunciation": "5manwoneul jandoneuro bakkwojusil su innayo?"
     },
     {
       "id": "ko_shopping_phrase_024",
@@ -9600,110 +9600,110 @@
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "请帮我确认“小票”的相关信息。",
-      "text": "영수증을 확인해 주세요.",
+      "zh": "退货时需要购物小票吗？",
+      "text": "이것을 반품하려면 영수증이 필요합니까?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "yeongsujeungeul hwaginhae juseyo."
+      "pronunciation": "igeoseul banpumharyeomyeon yeongsujeungi pillyohamnikka?"
     },
     {
       "id": "ko_shopping_phrase_026",
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "请帮我确认“小票”的相关信息。",
-      "text": "영수증을 확인해 주세요.",
+      "zh": "小票上的价格不对。",
+      "text": "영수증의 가격이 올바르지 않습니다.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "yeongsujeungeul hwaginhae juseyo."
+      "pronunciation": "yeongsujeungui gagyeogi olbareuji anseumnida."
     },
     {
       "id": "ko_shopping_phrase_027",
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "我需要关于“小票”的帮助。",
-      "text": "영수증 관련해서 도움이 필요해요.",
+      "zh": "我把购物小票弄丢了。",
+      "text": "영수증을 잃어버렸어요.",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "yeongsujeung gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "yeongsujeungeul ireobeoryeosseoyo."
     },
     {
       "id": "ko_shopping_phrase_028",
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "可以帮我确认“小票”的相关信息吗？",
-      "text": "영수증을 확인해 주시겠어요?",
+      "zh": "可以重新打印小票吗？",
+      "text": "영수증을 다시 인쇄해 주실 수 있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "yeongsujeungeul hwaginhae jusigesseoyo?"
+      "pronunciation": "yeongsujeungeul dasi inswaehae jusil su innayo?"
     },
     {
       "id": "ko_shopping_phrase_029",
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "我想咨询“小票”。",
-      "text": "영수증에 대해 문의하고 싶어요.",
+      "zh": "小票上没有显示折扣。",
+      "text": "할인 금액은 영수증에 표시되지 않습니다.",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "yeongsujeunge daehae munuihago sipeoyo."
+      "pronunciation": "harin geumaegeun yeongsujeunge pyosidoeji anseumnida."
     },
     {
       "id": "ko_shopping_phrase_030",
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "可以告诉我“小票”的相关信息吗？",
-      "text": "영수증에 대해 알려 주세요.",
+      "zh": "可以给我一张礼品小票吗？",
+      "text": "선물영수증을 받을 수 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "yeongsujeunge daehae allyeo juseyo."
+      "pronunciation": "seonmullyeongsujeungeul badeul su innayo?"
     },
     {
       "id": "ko_directions_phrase_001",
       "sceneId": "directions",
       "situationId": "location-direction",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“哪里”？",
-      "text": "어디는 어디에 있어요?",
+      "zh": "请问游客服务中心在哪里？",
+      "text": "방문객 안내 센터는 어디에 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "eodineun eodie isseoyo?"
+      "pronunciation": "bangmungaek annae senteoneun eodie innayo?"
     },
     {
       "id": "ko_directions_phrase_002",
       "sceneId": "directions",
       "situationId": "location-direction",
       "kind": "phrase",
-      "zh": "我需要关于“这里”的帮助。",
-      "text": "여기 관련해서 도움이 필요해요.",
+      "zh": "我们现在是在地图上的这里吗？",
+      "text": "지도상에 우리가 여기 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "yeogi gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "jidosange uriga yeogi innayo?"
     },
     {
       "id": "ko_directions_phrase_003",
       "sceneId": "directions",
       "situationId": "location-direction",
       "kind": "phrase",
-      "zh": "可以帮我确认“那里”的相关信息吗？",
-      "text": "저기를 확인해 주시겠어요?",
+      "zh": "您说的是那边那栋楼吗？",
+      "text": "저기 있는 건물을 말씀하시는 건가요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "jeogireul hwaginhae jusigesseoyo?"
+      "pronunciation": "jeogi inneun geonmureul malsseumhasineun geongayo?"
     },
     {
       "id": "ko_directions_phrase_004",
       "sceneId": "directions",
       "situationId": "location-direction",
       "kind": "phrase",
-      "zh": "我想咨询“左边”。",
-      "text": "왼쪽에 대해 문의하고 싶어요.",
+      "zh": "下一个路口要左转吗？",
+      "text": "다음 교차로에서 좌회전해야 하나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "oenjjoge daehae munuihago sipeoyo."
+      "pronunciation": "daeum gyocharoeseo jwahoejeonhaeya hanayo?"
     },
     {
       "id": "ko_directions_phrase_005",
@@ -9721,55 +9721,55 @@
       "sceneId": "directions",
       "situationId": "ask-route",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“前面”？",
-      "text": "앞은 어디에 있어요?",
+      "zh": "博物馆就在我们前面吗？",
+      "text": "박물관이 바로 앞에 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "apeun eodie isseoyo?"
+      "pronunciation": "bangmulgwani baro ape innayo?"
     },
     {
       "id": "ko_directions_phrase_007",
       "sceneId": "directions",
       "situationId": "ask-route",
       "kind": "phrase",
-      "zh": "我需要关于“后面”的帮助。",
-      "text": "뒤 관련해서 도움이 필요해요.",
+      "zh": "停车场在酒店后面。",
+      "text": "주차장은 호텔 뒤에 있습니다.",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "dwi gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "juchajangeun hotel dwie itseumnida."
     },
     {
       "id": "ko_directions_phrase_008",
       "sceneId": "directions",
       "situationId": "ask-route",
       "kind": "phrase",
-      "zh": "可以帮我确认“旁边”的相关信息吗？",
-      "text": "옆에를 확인해 주시겠어요?",
+      "zh": "药店就在银行旁边。",
+      "text": "약국은 은행 옆에 있어요.",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "yeopereul hwaginhae jusigesseoyo?"
+      "pronunciation": "yakgugeun eunhaeng yeope isseoyo."
     },
     {
       "id": "ko_directions_phrase_009",
       "sceneId": "directions",
       "situationId": "ask-route",
       "kind": "phrase",
-      "zh": "我想咨询“对面”。",
-      "text": "반대편에 대해 문의하고 싶어요.",
+      "zh": "邮局在公园对面。",
+      "text": "우체국은 공원 건너편에 있어요.",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "bandaepyeone daehae munuihago sipeoyo."
+      "pronunciation": "uchegugeun gongwon geonneopyeone isseoyo."
     },
     {
       "id": "ko_directions_phrase_010",
       "sceneId": "directions",
       "situationId": "ask-route",
       "kind": "phrase",
-      "zh": "可以告诉我“附近”的相关信息吗？",
-      "text": "근처에 대해 알려 주세요.",
+      "zh": "附近有地铁站吗？",
+      "text": "근처에 지하철역이 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "geuncheoe daehae allyeo juseyo."
+      "pronunciation": "geuncheoe jihacheollyeogi innayo?"
     },
     {
       "id": "ko_directions_phrase_011",
@@ -9864,44 +9864,44 @@
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "请帮我确认“桥”的相关信息。",
-      "text": "다리를 확인해 주세요.",
+      "zh": "过桥后向左转。",
+      "text": "다리를 건너신 후 좌회전하세요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "darireul hwaginhae juseyo."
+      "pronunciation": "darireul geonneosin hu jwahoejeonhaseyo."
     },
     {
       "id": "ko_directions_phrase_020",
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "请帮我确认“路”的相关信息。",
-      "text": "도로를 확인해 주세요.",
+      "zh": "这条路通往市中心吗？",
+      "text": "이 길이 시내로 통하나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "dororeul hwaginhae juseyo."
+      "pronunciation": "i giri sinaero tonghanayo?"
     },
     {
       "id": "ko_directions_phrase_021",
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "请帮我确认“街道”的相关信息。",
-      "text": "거리를 확인해 주세요.",
+      "zh": "这条街叫什么名字？",
+      "text": "이 거리를 뭐라고 부르나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "georireul hwaginhae juseyo."
+      "pronunciation": "i georireul mworago bureunayo?"
     },
     {
       "id": "ko_directions_phrase_022",
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "请帮我确认“建筑”的相关信息。",
-      "text": "건물을 확인해 주세요.",
+      "zh": "我要找的是一栋白色建筑。",
+      "text": "나는 흰색 건물을 찾고 있어요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "geonmureul hwaginhae juseyo."
+      "pronunciation": "naneun huinsaek geonmureul chatgo isseoyo."
     },
     {
       "id": "ko_directions_phrase_023",
@@ -9919,132 +9919,132 @@
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "请帮我确认“邮局”的相关信息。",
-      "text": "우체국을 확인해 주세요.",
+      "zh": "邮局离这里远吗？",
+      "text": "우체국이 여기서 멀어요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "uchegugeul hwaginhae juseyo."
+      "pronunciation": "uchegugi yeogiseo meoreoyo?"
     },
     {
       "id": "ko_directions_phrase_025",
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "请帮我确认“厕所”的相关信息。",
-      "text": "화장실을 확인해 주세요.",
+      "zh": "这附近有公共厕所吗？",
+      "text": "근처에 공중화장실이 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "hwajangsireul hwaginhae juseyo."
+      "pronunciation": "geuncheoe gongjunghwajangsiri innayo?"
     },
     {
       "id": "ko_directions_phrase_026",
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "请帮我确认“公交站”的相关信息。",
-      "text": "버스 정류장을 확인해 주세요.",
+      "zh": "哪一站是公交车站？",
+      "text": "버스를 타려면 어느 정류장을 이용해야 하나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "beoseu jeongnyujangeul hwaginhae juseyo."
+      "pronunciation": "beoseureul taryeomyeon eoneu jeongnyujangeul iyonghaeya hanayo?"
     },
     {
       "id": "ko_directions_phrase_027",
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "我需要关于“地铁站”的帮助。",
-      "text": "지하철역 관련해서 도움이 필요해요.",
+      "zh": "最近的地铁站有电梯吗？",
+      "text": "가장 가까운 지하철역에 엘리베이터가 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "jihacheollyeok gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "gajang gakkaun jihacheollyeoge ellibeiteoga innayo?"
     },
     {
       "id": "ko_directions_phrase_028",
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "可以帮我确认“景点”的相关信息吗？",
-      "text": "관광지를 확인해 주시겠어요?",
+      "zh": "可以推荐一个附近的景点吗？",
+      "text": "근처 관광지를 추천해주실 수 있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "gwangwangjireul hwaginhae jusigesseoyo?"
+      "pronunciation": "geuncheo gwangwangjireul chucheonhaejusil su innayo?"
     },
     {
       "id": "ko_directions_phrase_029",
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "我想咨询“博物馆”。",
-      "text": "박물관에 대해 문의하고 싶어요.",
+      "zh": "今天博物馆开门吗？",
+      "text": "오늘 박물관이 문을 열어요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "bangmulgwane daehae munuihago sipeoyo."
+      "pronunciation": "oneul bangmulgwani muneul yeoreoyo?"
     },
     {
       "id": "ko_directions_phrase_030",
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "可以告诉我“公园”的相关信息吗？",
-      "text": "공원에 대해 알려 주세요.",
+      "zh": "从这里怎么去公园？",
+      "text": "여기서 공원까지 어떻게 가나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "gongwone daehae allyeo juseyo."
+      "pronunciation": "yeogiseo gongwonkkaji eotteoke ganayo?"
     },
     {
       "id": "ko_emergency_phrase_001",
       "sceneId": "emergency",
       "situationId": "feeling-unwell",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“发烧”？",
-      "text": "발열은 어디에 있어요?",
+      "zh": "我发烧了，需要看医生。",
+      "text": "열이 나고 의사의 진찰을 받아야 합니다.",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "ballyeoreun eodie isseoyo?"
+      "pronunciation": "yeori nago uisaui jinchareul badaya hamnida."
     },
     {
       "id": "ko_emergency_phrase_002",
       "sceneId": "emergency",
       "situationId": "feeling-unwell",
       "kind": "phrase",
-      "zh": "我需要关于“感冒”的帮助。",
-      "text": "감기 관련해서 도움이 필요해요.",
+      "zh": "附近有二十四小时药店吗？",
+      "text": "근처에 24시간 약국이 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "gamgi gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "geuncheoe 24sigan yakgugi innayo?"
     },
     {
       "id": "ko_emergency_phrase_003",
       "sceneId": "emergency",
       "situationId": "feeling-unwell",
       "kind": "phrase",
-      "zh": "可以帮我确认“咳嗽”的相关信息吗？",
-      "text": "기침을 확인해 주시겠어요?",
+      "zh": "这种咳嗽药一天吃几次？",
+      "text": "이 기침약을 하루에 몇 번 복용하시나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "gichimeul hwaginhae jusigesseoyo?"
+      "pronunciation": "i gichimyageul harue myeot beon bongnyonghasinayo?"
     },
     {
       "id": "ko_emergency_phrase_004",
       "sceneId": "emergency",
       "situationId": "feeling-unwell",
       "kind": "phrase",
-      "zh": "我想咨询“头疼”。",
-      "text": "두통에 대해 문의하고 싶어요.",
+      "zh": "我头疼得很厉害。",
+      "text": "머리가 많이 아프다.",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "dutonge daehae munuihago sipeoyo."
+      "pronunciation": "meoriga mani apeuda."
     },
     {
       "id": "ko_emergency_phrase_005",
       "sceneId": "emergency",
       "situationId": "feeling-unwell",
       "kind": "phrase",
-      "zh": "可以告诉我“肚子疼”的相关信息吗？",
-      "text": "복통에 대해 알려 주세요.",
+      "zh": "我从昨晚开始胃痛。",
+      "text": "어젯밤부터 배가 아프네요.",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "boktonge daehae allyeo juseyo."
+      "pronunciation": "eojetbambuteo baega apeuneyo."
     },
     {
       "id": "ko_emergency_phrase_006",
@@ -10062,55 +10062,55 @@
       "sceneId": "emergency",
       "situationId": "doctor-pharmacy",
       "kind": "phrase",
-      "zh": "我需要关于“护士”的帮助。",
-      "text": "간호사 관련해서 도움이 필요해요.",
+      "zh": "可以请护士来看一下吗？",
+      "text": "간호사가 나를 만나러 올 수 있나요?",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "ganhosa gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "ganhosaga nareul mannareo ol su innayo?"
     },
     {
       "id": "ko_emergency_phrase_008",
       "sceneId": "emergency",
       "situationId": "doctor-pharmacy",
       "kind": "phrase",
-      "zh": "可以帮我确认“药”的相关信息吗？",
-      "text": "약을 확인해 주시겠어요?",
+      "zh": "这种药需要处方吗？",
+      "text": "이 약을 처방하려면 처방전이 필요합니까?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "yageul hwaginhae jusigesseoyo?"
+      "pronunciation": "i yageul cheobangharyeomyeon cheobangjeoni pillyohamnikka?"
     },
     {
       "id": "ko_emergency_phrase_009",
       "sceneId": "emergency",
       "situationId": "doctor-pharmacy",
       "kind": "phrase",
-      "zh": "我想咨询“处方”。",
-      "text": "처방에 대해 문의하고 싶어요.",
+      "zh": "在哪里可以配这张处方？",
+      "text": "이 처방전은 어디서 조제받을 수 있나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "cheobange daehae munuihago sipeoyo."
+      "pronunciation": "i cheobangjeoneun eodiseo jojebadeul su innayo?"
     },
     {
       "id": "ko_emergency_phrase_010",
       "sceneId": "emergency",
       "situationId": "doctor-pharmacy",
       "kind": "phrase",
-      "zh": "可以告诉我“药片”的相关信息吗？",
-      "text": "알약에 대해 알려 주세요.",
+      "zh": "这药片需要饭后吃吗？",
+      "text": "식사 후에 이 약을 먹어야 하나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "allyage daehae allyeo juseyo."
+      "pronunciation": "siksa hue i yageul meogeoya hanayo?"
     },
     {
       "id": "ko_emergency_phrase_011",
       "sceneId": "emergency",
       "situationId": "doctor-pharmacy",
       "kind": "phrase",
-      "zh": "请问在哪里咨询“药膏”？",
-      "text": "연고는 어디에 있어요?",
+      "zh": "这种药膏一天涂几次？",
+      "text": "이 연고를 하루에 몇 번 발라야 하나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "yeongoneun eodie isseoyo?"
+      "pronunciation": "i yeongoreul harue myeot beon ballaya hanayo?"
     },
     {
       "id": "ko_emergency_phrase_012",
@@ -10161,66 +10161,66 @@
       "sceneId": "emergency",
       "situationId": "police-help",
       "kind": "phrase",
-      "zh": "请叫警察。",
-      "text": "경찰을 불러 주세요.",
+      "zh": "请帮我联系警察。",
+      "text": "경찰에 연락해 주세요.",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "gyeongchareul bulleo juseyo."
+      "pronunciation": "gyeongchare yeollakae juseyo."
     },
     {
       "id": "ko_emergency_phrase_017",
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "我需要关于“腹泻”的帮助。",
-      "text": "설사 관련해서 도움이 필요해요.",
+      "zh": "我腹泻了两天。",
+      "text": "이틀 동안 설사를 했습니다.",
       "direction": "traveler-says",
       "intent": "request",
-      "pronunciation": "seolsa gwallyeonhaeseo doumi pillyohaeyo."
+      "pronunciation": "iteul dongan seolsareul haetseumnida."
     },
     {
       "id": "ko_emergency_phrase_018",
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "可以帮我确认“便秘”的相关信息吗？",
-      "text": "변비를 확인해 주시겠어요?",
+      "zh": "这种药会引起便秘吗？",
+      "text": "이 약이 변비를 일으킬 수 있나요?",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "byeonbireul hwaginhae jusigesseoyo?"
+      "pronunciation": "i yagi byeonbireul ireukil su innayo?"
     },
     {
       "id": "ko_emergency_phrase_019",
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "请帮我确认“受伤”的相关信息。",
-      "text": "부상을 확인해 주세요.",
+      "zh": "伤口需要缝针吗？",
+      "text": "이 상처는 꿰매야 하나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "busangeul hwaginhae juseyo."
+      "pronunciation": "i sangcheoneun kkwemaeya hanayo?"
     },
     {
       "id": "ko_emergency_phrase_020",
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "请帮我确认“流血”的相关信息。",
-      "text": "출혈을 확인해 주세요.",
+      "zh": "我受伤了，请叫救护车。",
+      "text": "나는 부상을 입었습니다. 구급차를 불러주세요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "chulhyeoreul hwaginhae juseyo."
+      "pronunciation": "naneun busangeul ibeotseumnida. gugeupchareul bulleojuseyo."
     },
     {
       "id": "ko_emergency_phrase_021",
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "请帮我确认“骨折”的相关信息。",
-      "text": "골절을 확인해 주세요.",
+      "zh": "我可能骨折了。",
+      "text": "골절이 있는 것 같아요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "goljeoreul hwaginhae juseyo."
+      "pronunciation": "goljeori inneun geot gatayo."
     },
     {
       "id": "ko_emergency_phrase_022",
@@ -10238,44 +10238,44 @@
       "sceneId": "emergency",
       "situationId": "danger-accident",
       "kind": "phrase",
-      "zh": "请帮我确认“紧急”的相关信息。",
-      "text": "응급 상황을 확인해 주세요.",
+      "zh": "这是紧急情况。",
+      "text": "긴급 상황입니다.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "eunggeup sanghwangeul hwaginhae juseyo."
+      "pronunciation": "gingeup sanghwangimnida."
     },
     {
       "id": "ko_emergency_phrase_024",
       "sceneId": "emergency",
       "situationId": "danger-accident",
       "kind": "phrase",
-      "zh": "请叫救护车。",
-      "text": "구급차를 불러 주세요.",
+      "zh": "请拨打119叫救护车。",
+      "text": "119에 전화해서 구급차를 불러 주세요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "gugeupchareul bulleo juseyo."
+      "pronunciation": "119e jeonhwahaeseo gugeupchareul bulleo juseyo."
     },
     {
       "id": "ko_emergency_phrase_025",
       "sceneId": "emergency",
       "situationId": "danger-accident",
       "kind": "phrase",
-      "zh": "请帮我确认“受伤”的相关信息。",
-      "text": "부상을 확인해 주세요.",
+      "zh": "我摔倒后受伤了。",
+      "text": "넘어져서 다쳤어요.",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "busangeul hwaginhae juseyo."
+      "pronunciation": "neomeojyeoseo dachyeosseoyo."
     },
     {
       "id": "ko_emergency_phrase_026",
       "sceneId": "emergency",
       "situationId": "danger-accident",
       "kind": "phrase",
-      "zh": "请帮我确认“流血”的相关信息。",
-      "text": "출혈을 확인해 주세요.",
+      "zh": "怎样才能止血？",
+      "text": "출혈을 어떻게 멈출 수 있나요?",
       "direction": "traveler-hears",
       "intent": "confirm",
-      "pronunciation": "chulhyeoreul hwaginhae juseyo."
+      "pronunciation": "chulhyeoreul eotteoke meomchul su innayo?"
     },
     {
       "id": "ko_emergency_phrase_027",
@@ -10293,33 +10293,33 @@
       "sceneId": "emergency",
       "situationId": "emergency-contact",
       "kind": "phrase",
-      "zh": "可以帮我确认“保险卡”的相关信息吗？",
-      "text": "보험 카드를 확인해 주시겠어요?",
+      "zh": "这是我的保险卡。",
+      "text": "이것은 내 보험 카드입니다.",
       "direction": "traveler-says",
       "intent": "confirm",
-      "pronunciation": "boheom kadeureul hwaginhae jusigesseoyo?"
+      "pronunciation": "igeoseun nae boheom kadeuimnida."
     },
     {
       "id": "ko_emergency_phrase_029",
       "sceneId": "emergency",
       "situationId": "emergency-contact",
       "kind": "phrase",
-      "zh": "我想咨询“保险”。",
-      "text": "보험에 대해 문의하고 싶어요.",
+      "zh": "保险公司需要一份医疗报告。",
+      "text": "보험사는 의료 보고서가 필요합니다.",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "boheome daehae munuihago sipeoyo."
+      "pronunciation": "boheomsaneun uiryo bogoseoga pillyohamnida."
     },
     {
       "id": "ko_emergency_phrase_030",
       "sceneId": "emergency",
       "situationId": "emergency-contact",
       "kind": "phrase",
-      "zh": "可以告诉我“保险卡”的相关信息吗？",
-      "text": "보험 카드에 대해 알려 주세요.",
+      "zh": "可以在报告中写上我的保险号码吗？",
+      "text": "보고서에 내 보험 번호를 포함시킬 수 있나요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "boheom kadeue daehae allyeo juseyo."
+      "pronunciation": "bogoseoe nae boheom beonhoreul pohamsikil su innayo?"
     },
     {
       "id": "ko_basics_phrase_001",
@@ -10612,7 +10612,7 @@
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "可以。",
+      "zh": "没问题。",
       "text": "괜찮아요.",
       "direction": "traveler-says",
       "intent": "request",
@@ -10634,22 +10634,22 @@
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "我需要帮助。",
-      "text": "도움이 필요해요.",
+      "zh": "能帮帮我吗？",
+      "text": "도와주실 수 있나요?",
       "direction": "traveler-says",
       "intent": "repair",
-      "pronunciation": "doumi pillyohaeyo."
+      "pronunciation": "dowajusil su innayo?"
     },
     {
       "id": "ko_basics_phrase_030",
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "有空房吗？",
-      "text": "빈방이 있어요?",
+      "zh": "附近有药店吗？",
+      "text": "근처에 약국이 있어요?",
       "direction": "traveler-says",
       "intent": "ask",
-      "pronunciation": "binbangi isseoyo?"
+      "pronunciation": "geuncheoe yakgugi isseoyo?"
     }
   ]
 });

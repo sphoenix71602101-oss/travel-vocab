@@ -33,10 +33,19 @@ OVERRIDES = {
     "numbers_015": ("韩元", "Korean won", "这家店只收韩元。", "This store only accepts Korean won."),
     "numbers_016": ("美元", "U.S. dollar", "可以把美元兑换成韩元吗？", "Can I exchange U.S. dollars for Korean won?"),
     "numbers_017": ("人民币", "Chinese yuan", "在哪里可以把人民币兑换成韩元？", "Where can I exchange Chinese yuan for Korean won?"),
+    "food_017": ("泡菜汤", "kimchi stew", "这份泡菜汤辣吗？", "Is this kimchi stew spicy?"),
+    "food_018": ("拌饭", "bibimbap", "拌饭可以少放辣酱吗？", "Can I have less chili paste in the bibimbap?"),
+    "food_019": ("韩式烤牛肉", "bulgogi", "这份韩式烤牛肉是甜口的吗？", "Is this bulgogi sweet?"),
+    "food_020": ("炒年糕", "tteokbokki", "炒年糕可以做得不辣吗？", "Can the tteokbokki be made less spicy?"),
+    "food_021": ("五花肉", "samgyeopsal", "五花肉需要自己烤吗？", "Do we grill the samgyeopsal ourselves?"),
+    "food_022": ("冷面", "naengmyeon", "请给我一份冷面。", "One order of naengmyeon, please."),
+    "food_023": ("泡菜", "kimchi", "可以再给一些泡菜吗？", "Could I have more kimchi?"),
     "en_airport_phrase_001": ("我已经填写了电子入境申报。", "I completed the electronic arrival declaration."),
     "en_airport_phrase_015": ("这是安检队伍吗？", "Is this the line for the security checkpoint?"),
     "en_airport_phrase_027": ("机场铁路在哪里乘坐？", "Where can I take the airport railroad?"),
     "en_transport_phrase_001": ("可以在这里购买 T-money 卡吗？", "Can I buy a T-money card here?"),
+    "en_transport_phrase_003": ("去釜山的列车从哪个站台出发？", "Which platform does the train to Busan leave from?"),
+    "en_transport_phrase_005": ("请给我一张去庆州的单程票。", "One one-way ticket to Gyeongju, please."),
     "en_transport_phrase_006": ("下车时也需要刷交通卡吗？", "Do I need to tap my transportation card when I get off?"),
     "en_transport_phrase_011": ("这是 KTX 的乘车站台吗？", "Is this the platform for the KTX?"),
     "en_transport_phrase_016": ("出租车上车点在哪里？", "Where is the taxi pickup area?"),
@@ -52,6 +61,7 @@ OVERRIDES = {
     "en_food_phrase_023": ("需要在点餐机上点餐吗？", "Do I need to order at the kiosk?"),
     "en_food_phrase_027": ("这里需要付小费吗？", "Do I need to leave a tip here?"),
     "en_shopping_phrase_020": ("标价包含增值税吗？", "Does the listed price include VAT?"),
+    "en_shopping_phrase_023": ("可以找开五万韩元吗？", "Can you make change for fifty thousand won?"),
     "en_shopping_phrase_024": ("可以凭护照立即退税吗？", "Can I get an immediate tax refund with my passport?"),
     "en_directions_phrase_005": ("最近的地铁站出口是几号？", "What is the number of the nearest subway exit?"),
     "en_directions_phrase_018": ("可以在 Naver 地图上标出来吗？", "Could you mark it on Naver Map?"),
@@ -83,10 +93,10 @@ KO_TEXT_OVERRIDES = {
     "directions_011": "멀다", "directions_012": "가깝다", "directions_013": "쭉 가다", "directions_014": "방향을 틀다",
     "emergency_001": "도와주세요", "emergency_002": "응급 상황", "emergency_003": "경찰에 신고하다",
     "emergency_007": "약", "emergency_024": "알약", "emergency_028": "체온계", "emergency_031": "구급함",
-    "numbers_001": "영", "numbers_011": "열", "numbers_021": "모레", "numbers_030": "일 분", "numbers_031": "초",
+    "numbers_001": "영", "numbers_005": "넷", "numbers_011": "열", "numbers_021": "모레", "numbers_030": "일 분", "numbers_031": "초",
     "numbers_032": "몇 시", "numbers_056": "1일", "numbers_057": "2일", "numbers_058": "3일", "numbers_059": "4일",
     "numbers_060": "5일", "numbers_061": "6일", "numbers_062": "7일", "expressions_004": "주세요",
-    "expressions_005": "죄송합니다", "expressions_006": "미안합니다", "expressions_008": "안녕하세요",
+    "expressions_005": "죄송합니다", "expressions_006": "미안합니다", "expressions_008": "좋은 아침이에요", "expressions_009": "좋은 저녁이에요",
     "expressions_010": "안녕히 가세요", "expressions_016": "네", "expressions_017": "아니요", "expressions_018": "괜찮아요",
     "expressions_019": "괜찮아요", "expressions_020": "문제없어요", "expressions_021": "알겠습니다",
     "expressions_024": "원해요", "expressions_025": "필요해요", "expressions_026": "있어요", "expressions_027": "없어요",
@@ -98,7 +108,7 @@ KO_TEXT_OVERRIDES = {
     "directions_034": "……에 가고 싶어요.", "directions_035": "걸어서 몇 분 걸려요?", "directions_037": "길을 잃었어요.",
     "directions_038": "지금 여기가 어디예요?", "directions_039": "지도에서 가리켜 주세요.",
     "emergency_035": "지갑을 도난당했어요.", "emergency_037": "경찰을 불러 주세요.",
-    "emergency_039": "몸이 안 좋아요.", "emergency_040": "아파요.", "emergency_041": "저는 …… 알레르기가 있어요.",
+    "emergency_039": "몸이 안 좋아요.", "emergency_040": "아파요.", "emergency_041": "약물 알레르기가 있어요.",
     "expressions_014": "알겠습니다", "expressions_015": "이해하지 못했어요", "expressions_022": "좋아해요",
     "expressions_023": "좋아하지 않아요", "expressions_029": "아니에요", "expressions_030": "제 이름은 ……이에요.",
     "expressions_031": "이름이 뭐예요?", "expressions_032": "저는 중국 사람이에요.",
@@ -106,6 +116,8 @@ KO_TEXT_OVERRIDES = {
     "expressions_041": "언제예요?", "expressions_042": "왜요?", "expressions_044": "돼요?", "expressions_045": "네, 돼요.",
     "expressions_046": "안 돼요.", "expressions_047": "중국어로 된 것이 있나요?",
     "en_transport_phrase_014": "KTX는 어떻게 이용하면 돼요?",
+    "food_017": "김치찌개", "food_018": "비빔밥", "food_019": "불고기", "food_020": "떡볶이",
+    "food_021": "삼겹살", "food_022": "냉면", "food_023": "김치",
 }
 
 KO_EXAMPLE_OVERRIDES = {
@@ -117,6 +129,12 @@ KO_EXAMPLE_OVERRIDES = {
     "shopping_006": ("这个价格包含增值税吗？", "이 가격에 부가세가 포함되어 있나요?"),
     "numbers_018": ("今天还有去釜山的航班吗？", "오늘 부산행 항공편이 있나요?"),
     "emergency_008": ("在韩国，这种药需要处方吗？", "한국에서 이 약을 사려면 처방전이 필요한가요?"),
+    "food_017": ("这份泡菜汤辣吗？", "이 김치찌개는 매워요?"),
+    "food_018": ("拌饭可以少放辣酱吗？", "비빔밥에 고추장을 조금만 넣어 주세요."),
+    "food_019": ("这份韩式烤牛肉是甜口的吗？", "이 불고기는 단맛이 나요?"),
+    "food_020": ("炒年糕可以做得不辣吗？", "떡볶이를 덜 맵게 해 주실 수 있나요?"),
+    "expressions_008": ("早上好，早餐几点开始？", "좋은 아침이에요. 아침 식사는 몇 시부터예요?"),
+    "expressions_009": ("晚上好，我现在可以办理入住吗？", "좋은 저녁이에요. 지금 체크인할 수 있나요?"),
 }
 
 # The English reference pack contains mechanically expanded “ask about X” rows.
@@ -159,10 +177,10 @@ BASIC_PHRASE_OVERRIDES = {
     "en_basics_phrase_024": ("是后天。", "모레예요."),
     "en_basics_phrase_025": ("对，没错。", "네, 맞아요."),
     "en_basics_phrase_026": ("不是。", "아니요."),
-    "en_basics_phrase_027": ("可以。", "괜찮아요."),
+    "en_basics_phrase_027": ("没问题。", "괜찮아요."),
     "en_basics_phrase_028": ("我想要这个。", "이걸 원해요."),
-    "en_basics_phrase_029": ("我需要帮助。", "도움이 필요해요."),
-    "en_basics_phrase_030": ("有空房吗？", "빈방이 있어요?"),
+    "en_basics_phrase_029": ("能帮帮我吗？", "도와주실 수 있나요?"),
+    "en_basics_phrase_030": ("附近有药店吗？", "근처에 약국이 있어요?"),
 }
 
 SPECIAL_PHRASE_OVERRIDES = {
@@ -179,7 +197,7 @@ SPECIAL_PHRASE_OVERRIDES = {
     "en_shopping_phrase_009": ("有小号吗？", "작은 사이즈가 있어요?"),
     "en_shopping_phrase_010": ("可以帮我确认尺寸吗？", "사이즈를 확인해 주시겠어요?"),
     "en_shopping_phrase_011": ("试衣间在哪里？", "피팅룸이 어디예요?"),
-    "en_shopping_phrase_012": ("可以试穿吗？", "입어봐도 돼요?"),
+    "en_shopping_phrase_012": ("这件我可以试一下吗？", "이 옷을 입어봐도 돼요?"),
     "en_shopping_phrase_013": ("这里是试衣间吗？", "여기가 피팅룸이에요?"),
     "en_shopping_phrase_014": ("可以试穿这个吗？", "이거 입어봐도 돼요?"),
     "en_shopping_phrase_015": ("请告诉我试衣间在哪里。", "피팅룸이 어디인지 알려 주세요."),
@@ -193,8 +211,8 @@ SPECIAL_PHRASE_OVERRIDES = {
     "en_emergency_phrase_013": ("请帮我报警。", "경찰에 신고해 주세요."),
     "en_emergency_phrase_014": ("警察局在哪里？", "경찰서가 어디예요?"),
     "en_emergency_phrase_015": ("我需要警察的帮助。", "경찰의 도움이 필요해요."),
-    "en_emergency_phrase_016": ("请叫警察。", "경찰을 불러 주세요."),
-    "en_emergency_phrase_024": ("请叫救护车。", "구급차를 불러 주세요."),
+    "en_emergency_phrase_016": ("请帮我联系警察。", "경찰에 연락해 주세요."),
+    "en_emergency_phrase_024": ("请拨打119叫救护车。", "119에 전화해서 구급차를 불러 주세요."),
 }
 
 

@@ -227,12 +227,15 @@ test("我的页面不再选择目的地且空状态不伪造学习数据", () =>
   assert.match(app, /destination \? loadLearning\(\) : emptyLanguageState\(\)/);
 });
 
-test("目的地配置开放日美韩并预留俄西两个国家", () => {
+test("目的地配置开放日美韩西俄", () => {
   assert.match(html, /src="core\/destinations\.js"/);
   for (const id of ["jp", "us", "kr", "ru", "es"]) assert.match(destinations, new RegExp(`id: "${id}"`));
   assert.match(destinations, /country: "美国", language: "英语"/);
   assert.match(destinations, /country: "韩国", language: "韩语"/);
-  assert.match(destinations, /status: "coming-soon"/);
+  assert.match(destinations, /country: "西班牙", language: "西班牙语"/);
+  assert.match(destinations, /id: "es"[\s\S]*?status: "available"/);
+  assert.match(destinations, /id: "ru"[\s\S]*?status: "available"/);
+  assert.match(destinations, /images\/heroes\/ru-mobile\.png/);
   assert.match(css, /\.destination-strip[^}]*overflow-x:\s*auto/s);
   assert.match(css, /\.destination-card:disabled/);
 });
@@ -283,9 +286,9 @@ test("沉浸式流程、触控尺寸和安全区完整", () => {
   assert.match(app, /updateShell\(quiz\.mode\.kind === "review" \? "review" : "home", true\)/);
 });
 
-test("日英韩旅行认读通过独立注册模块复用现有入口", () => {
+test("日英韩西俄旅行认读通过独立注册模块复用现有入口", () => {
   assert.match(html, /<script src="core\/beginner-module-registry\.js"><\/script>/);
-  for (const packId of ["jp-ja", "us-en", "kr-ko"]) assert.match(destinations, new RegExp(`languages/${packId}/beginner/module\\.js`));
+  for (const packId of ["jp-ja", "us-en", "kr-ko", "es-es", "ru-ru"]) assert.match(destinations, new RegExp(`languages/${packId}/beginner/module\\.js`));
   assert.match(app, /function loadLanguage\(packId\)/);
   assert.match(beginnerRegistry, /window\.registerBeginnerModule/);
   assert.match(beginnerRegistry, /requiredMethods = \["createProgress", "normalizeProgress", "getHomeSummary", "renderRoute"\]/);

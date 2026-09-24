@@ -753,7 +753,7 @@
     }).join("");
     const destinationTrigger = destination
       ? `<span class="destination-code destination-flag" aria-hidden="true"><img src="${destination.flagSrc}" width="384" height="256" alt=""></span><span class="destination-trigger-copy"><strong>${escapeHtml(destination.country)}</strong><small>${escapeHtml(destination.language)} · ${escapeHtml(destination.nativeLabel)}</small></span>`
-      : `<span class="destination-code empty" aria-hidden="true">--</span><span class="destination-trigger-copy"><strong>选择目的地和语言</strong><small>日本、美国及更多目的地</small></span>`;
+      : `<span class="destination-code empty" aria-hidden="true">--</span><span class="destination-trigger-copy"><strong>选择目的地和语言</strong><small>日本、美国、西班牙及更多目的地</small></span>`;
     const hasResume = Boolean(lastScene && lastSituation);
     const learningTitle = hasResume ? "继续学习" : "开始学习";
     const learningSubtitle = hasResume

@@ -1,0 +1,870 @@
+{
+  "Where is passport control?": [
+    "パスポートコントロールはどこにありますか?",
+    "ぱすぽーとこんとろーるわどこにありますか?"
+  ],
+  "I have a visa problem, can you help me?": [
+    "ビザの問題があるのですが、助けてもらえますか？",
+    "びざのもんだいがあるのですが,たすけてもらえますか?"
+  ],
+  "Can you check the date on my ticket?": [
+    "私のチケットの日付を確認してもらえますか？",
+    "わたしのちけっとのひdずけおかくにんしてもらえますか?"
+  ],
+  "Which terminal does my flight depart from?": [
+    "私のフライトはどのターミナルから出発しますか?",
+    "わたしのふらいとわどのたーみなるからしゅっぱつしますか?"
+  ],
+  "Is this boarding pass valid?": [
+    "この搭乗券は有効ですか?",
+    "このとーじょーけんわゆーこーですか?"
+  ],
+  "Where is the check-in desk?": [
+    "チェックインデスクはどこですか?",
+    "cへっくいんですくわどこですか?"
+  ],
+  "I would like to change seats.": [
+    "席を変更したいのですが。",
+    "せきおへんこーしたいのですが."
+  ],
+  "Is there a window seat left?": [
+    "窓側の席は残っていますか？",
+    "まどがわのせきわのこっていますか?"
+  ],
+  "Can you give me a seat next to the aisle?": [
+    "通路側の席を譲ってもらえますか？",
+    "つーろーがわのせきおゆずってもらえますか?"
+  ],
+  "How many pieces of luggage can I check in for free?": [
+    "無料で預けられる荷物は何個までですか?",
+    "むりょーであずけられるにもつわなんーこまでですか?"
+  ],
+  "My suitcase was damaged during the trip.": [
+    "旅行中に私のスーツケースが壊れてしまいました。",
+    "りょこーちゅーにわたしのすーつけーすがこわれてしまいました."
+  ],
+  "Can I carry this luggage in the cabin?": [
+    "この荷物は機内に持ち込めますか?",
+    "このにもつわきないにもちこめますか?"
+  ],
+  "Which carousel will the baggage from this flight arrive at?": [
+    "この便の荷物はどのカルーセルに到着しますか?",
+    "このーびんのにもつわどのかるーせるにとーちゃくしますか?"
+  ],
+  "Where can I find a luggage cart?": [
+    "荷物カートはどこで見つけられますか?",
+    "にもつかーとわどこでみつけられますか?"
+  ],
+  "Is the duty-free shop past security?": [
+    "免税店は保安検査場を過ぎたところですか？",
+    "めんぜいーてんわほあんけんさばおすぎたところですか?"
+  ],
+  "Are there charging outlets in the gate area?": [
+    "ゲートエリアに充電コンセントはありますか？",
+    "げーとえりあにじゅーでんこんせんとわありますか?"
+  ],
+  "Do I need to take my laptop out at security?": [
+    "ラップトップを保安検査場に持ち出す必要はありますか?",
+    "らっぷとっぷおほあんけんさばにもちだすひつよーわありますか?"
+  ],
+  "Can you confirm the boarding gate?": [
+    "搭乗ゲートを確認できますか？",
+    "とーじょーげーとおかくにんできますか?"
+  ],
+  "When does boarding start?": [
+    "搭乗はいつ始まりますか?",
+    "とーじょーわいつはじまりますか?"
+  ],
+  "Has the departure time been delayed?": [
+    "出発時間が遅れましたか？",
+    "しゅっぱつじかんがおくれましたか?"
+  ],
+  "What time is boarding?": [
+    "搭乗時間は何時ですか？",
+    "とーじょーじかんわいつですか?"
+  ],
+  "I can't fasten my seat belt.": [
+    "シートベルトを締めることができません。",
+    "しーとべるとおしめることができません."
+  ],
+  "Do I have to declare these items to customs?": [
+    "これらの商品は税関に申告する必要がありますか?",
+    "これらのしょーひんわぜいかんにしんこくするひつよーがありますか?"
+  ],
+  "Which immigration line should I use with a Chinese passport?": [
+    "中国のパスポートではどの入国審査ラインを利用すればよいですか?",
+    "ちゅーごくのぱすぽーとでわどのにゅーこくしんさらいんおりよーすればよいですか?"
+  ],
+  "What time are we expected to land?": [
+    "着陸予定時刻は何時ですか?",
+    "ちゃくりくよていじこくわいつですか?"
+  ],
+  "Do I still have to fill out an entry card?": [
+    "まだ入国カードに記入する必要がありますか?",
+    "まだにゅーこくかーどにきにゅーするひつよーがありますか?"
+  ],
+  "Can you help me fill out the customs declaration?": [
+    "税関申告書の記入を手伝ってもらえますか?",
+    "ぜいかんしんこくしょのきにゅーおてつだってもらえますか?"
+  ],
+  "What station do I have to get off at to go downtown?": [
+    "ダウンタウンに行くにはどの駅で降りなければなりませんか?",
+    "だうんたうんにいくにわどのえきでおりなければなりませんか?"
+  ],
+  "What time does the next train leave?": [
+    "次の電車は何時に出発しますか?",
+    "つぎのでんしゃわなんじにしゅっぱつしますか?"
+  ],
+  "Where is the nearest subway entrance?": [
+    "最寄りの地下鉄の入り口はどこですか?",
+    "もよりのちかてつのいりぐちわどこですか?"
+  ],
+  "Does this bus go to the airport?": [
+    "このバスは空港へ行きますか?",
+    "このばすわくーこーえいきますか?"
+  ],
+  "Do I have to transfer on the subway?": [
+    "地下鉄で乗り換えなければなりませんか？",
+    "ちかてつでのりかえなければなりませんか?"
+  ],
+  "Can I buy a ticket after I get on the bus?": [
+    "バスに乗った後に切符を買うことはできますか？",
+    "ばすにのったのちにきっぷおかうことわできますか?"
+  ],
+  "What time is the last subway train?": [
+    "地下鉄の最終電車は何時ですか?",
+    "ちかてつのさいしゅーでんしゃわいつですか?"
+  ],
+  "Do I have to reserve a seat on this train?": [
+    "この電車の座席を予約する必要がありますか?",
+    "このでんしゃのざせきおよやくするひつよーがありますか?"
+  ],
+  "What stations does the train stop at?": [
+    "電車は何駅に止まりますか?",
+    "でんしゃわなんーえきにとまりますか?"
+  ],
+  "Where is the rideshare pickup area?": [
+    "ライドシェアの乗車エリアはどこですか?",
+    "らいどsへあのじょーしゃえりあわどこですか?"
+  ],
+  "Can you call me a taxi?": [
+    "タクシーを呼んでもらえますか？",
+    "たくしーおよんでもらえますか?"
+  ],
+  "Can I pay for the taxi by card?": [
+    "タクシーの料金はカードで支払えますか?",
+    "たくしーのりょーきんわかーどでしはらえますか?"
+  ],
+  "Turn on the meter, please.": [
+    "メーターをつけてください。",
+    "めーたーおつけてください."
+  ],
+  "Take me to this address, please.": [
+    "この住所まで行ってください。",
+    "このじゅーしょまでいってください."
+  ],
+  "About how much is it to the airport?": [
+    "空港まではどのくらいかかりますか？",
+    "くーこーまでわどのくらいかかりますか?"
+  ],
+  "Where do I pick up my rental car?": [
+    "レンタカーはどこで受け取れますか?",
+    "れんたかーわどこでうけとれますか?"
+  ],
+  "Where is the nearest gas station?": [
+    "最寄のガソリンスタンドはどこですか？",
+    "もよりのがそりんすたんどわどこですか?"
+  ],
+  "Can I park here?": [
+    "ここは駐車できますか？",
+    "ここわちゅーしゃできますか?"
+  ],
+  "Turn right at the traffic light.": [
+    "信号を右折します。",
+    "しんごーおうせつします."
+  ],
+  "Does this car use gasoline or diesel?": [
+    "この車はガソリンを使用しますか、それともディーゼルを使用しますか?",
+    "このくるまわがそりんおしよーしますか,それともdいーぜるおしよーしますか?"
+  ],
+  "I have reserved a rental car.": [
+    "レンタカーを予約しました。",
+    "れんたかーおよやくしました."
+  ],
+  "Where do I pay for parking?": [
+    "駐車料金はどこで支払えばよいですか?",
+    "ちゅーしゃりょーきんわどこでしはらえばよいですか?"
+  ],
+  "The entrance is just after the traffic light.": [
+    "入口は信号を渡ってすぐです。",
+    "いりぐちわしんごーおわたってすぐです."
+  ],
+  "Where is the hotel front desk?": [
+    "ホテルのフロントデスクはどこですか?",
+    "ほてるのふろんとですくわどこですか?"
+  ],
+  "Can this hotel store my luggage?": [
+    "このホテルでは荷物を預かってもらえますか?",
+    "このほてるでわにもつおあずかってもらえますか?"
+  ],
+  "Can I check in at the front desk?": [
+    "フロントデスクでチェックインできますか?",
+    "ふろんとですくでcへっくいんできますか?"
+  ],
+  "Could you look up the reservation under this name?": [
+    "この名前で予約を調べていただけますか?",
+    "このなまえでよやくおしらべていただけますか?"
+  ],
+  "What is the earliest time I can check in?": [
+    "最も早い時間にチェックインできますか?",
+    "もっともはやいじかんにcへっくいんできますか?"
+  ],
+  "I have lost the room key.": [
+    "部屋の鍵を紛失してしまいました。",
+    "へやのかぎおふんしつしてしまいました."
+  ],
+  "My key card isn't working.": [
+    "カードキーが機能しません。",
+    "かーどきーがきのーしません."
+  ],
+  "Could someone help me with my luggage?": [
+    "誰か荷物を運ぶのを手伝ってくれませんか？",
+    "だれかにもつおはこぶのおてつだってくれませんか?"
+  ],
+  "I need to speak to someone on staff.": [
+    "スタッフの誰かと話す必要があります。",
+    "すたっふのだれかとはなすひつよーがあります."
+  ],
+  "Can you bring me two more towels?": [
+    "あとタオルを2枚持ってきてもらえますか？",
+    "あとたおるお2ーまいもってきてもらえますか?"
+  ],
+  "Can you change the sheets please?": [
+    "シーツを交換してもらえますか？",
+    "しーつおこーかんしてもらえますか?"
+  ],
+  "Can you bring me another pillow?": [
+    "別の枕を持ってきてもらえますか？",
+    "べつのまくらおもってきてもらえますか?"
+  ],
+  "The comforter isn't warm enough.": [
+    "掛け布団が十分に暖かくない。",
+    "かけぶとんがじゅーぶんにあたたかくない."
+  ],
+  "Could I get a late checkout?": [
+    "レイトチェックアウトはできますか?",
+    "れいとcへっくあうとわできますか?"
+  ],
+  "I don't need housekeeping today.": [
+    "今日は家事は必要ありません。",
+    "きょーわかじわひつよーありません."
+  ],
+  "Could I get a wake-up call at seven tomorrow morning?": [
+    "明日の朝7時にモーニングコールをかけてもらえますか？",
+    "あすのあさ7ーじにもーにんぐこーるおかけてもらえますか?"
+  ],
+  "When will my laundry be returned?": [
+    "洗濯物はいつ返却されますか?",
+    "せんたくぶつわいつへんきゃくされますか?"
+  ],
+  "Is there an iron in the room?": [
+    "部屋にアイロンはありますか？",
+    "へやにあいろんわありますか?"
+  ],
+  "Can you put a crib in the room?": [
+    "部屋にベビーベッドを置いてもらえますか？",
+    "へやにべびーべっどおおいてもらえますか?"
+  ],
+  "Are all room types fully booked tonight?": [
+    "今夜はすべての部屋タイプが満室ですか?",
+    "こん'やわすべてのへやたいぷがまんしつですか?"
+  ],
+  "The smoke detector does not stop ringing.": [
+    "煙感知器の音が鳴り止まない。",
+    "けむりかんちーきのおとがなりやまない."
+  ],
+  "Where is the fire extinguisher on this floor?": [
+    "この階の消火器はどこにありますか?",
+    "このかいのしょーかきわどこにありますか?"
+  ],
+  "I'd like a quiet room facing the courtyard.": [
+    "中庭に面した静かな部屋を希望します。",
+    "なかにわにめんしたしずかなへやおきぼーします."
+  ],
+  "The room next door is too noisy.": [
+    "隣の部屋がうるさすぎる。",
+    "となりのへやがうるさすぎる."
+  ],
+  "Are you fully booked this weekend too?": [
+    "今週末も満席でしょうか？",
+    "いましゅーまつもまんせきでしょうか?"
+  ],
+  "I'd like to check out now.": [
+    "今すぐチェックアウトしたいのですが。",
+    "いますぐcへっくあうとしたいのですが."
+  ],
+  "Could you confirm the checkout time?": [
+    "チェックアウト時間を確認してもらえますか？",
+    "cへっくあうとじかんおかくにんしてもらえますか?"
+  ],
+  "Can you give me an official receipt?": [
+    "正式な領収書を頂けますか？",
+    "せいしきなりょーしゅーしょおいただけますか?"
+  ],
+  "Could you go over the bill with me?": [
+    "一緒に請求書を調べてもらえますか？",
+    "いっしょにせいきゅーしょおしらべてもらえますか?"
+  ],
+  "What time does breakfast start?": [
+    "朝食は何時に始まりますか？",
+    "ちょーしょくわなんじにはじまりますか?"
+  ],
+  "I would like to reserve a table for dinner at eight.": [
+    "8時に夕食のテーブルを予約したいのですが。",
+    "8ーじにゆーしょくのてーぶるおよやくしたいのですが."
+  ],
+  "Excuse me, can we order now?": [
+    "すみません、今注文してもいいですか？",
+    "すみません,いまちゅーもんしてもいーですか?"
+  ],
+  "Could I see the menu, please?": [
+    "メニューを見てもらえますか？",
+    "めにゅーおみてもらえますか?"
+  ],
+  "Can I change the rice for a salad?": [
+    "ご飯をサラダに変更できますか？",
+    "ごはんおさらだにへんこーできますか?"
+  ],
+  "Can you bring us some more bread?": [
+    "もう少しパンを持ってきてくれませんか？",
+    "もーすこしぱんおもってきてくれませんか?"
+  ],
+  "Can you give me what's left to take away?": [
+    "持ち帰ったものを譲ってもらえますか？",
+    "もちかえったものおゆずってもらえますか?"
+  ],
+  "A bottle of still water, please.": [
+    "静水のボトルを1本ください。",
+    "せいすいのぼとるお1ーぽんください."
+  ],
+  "Could I have a cup of hot water?": [
+    "お湯を一杯いただけますか？",
+    "おゆおいっぱいいただけますか?"
+  ],
+  "What types of tea do you have?": [
+    "どのような種類のお茶がありますか?",
+    "どのよーなしゅるいのおちゃがありますか?"
+  ],
+  "A coffee with just a little milk, please.": [
+    "コーヒーに少しだけミルクを入れてください。",
+    "こーひーにすこしだけみるくおいれてください."
+  ],
+  "Do you have lactose-free milk?": [
+    "無乳糖ミルクはありますか？",
+    "むにゅーとーみるくわありますか?"
+  ],
+  "Can you prepare this dish with little salt?": [
+    "この料理を少しの塩で作ってもらえますか？",
+    "このりょーりおすこしのしおでつくってもらえますか?"
+  ],
+  "Coffee without sugar, please.": [
+    "砂糖なしのコーヒーをください。",
+    "さとーなしのこーひーおください."
+  ],
+  "Are there any dishes without soy sauce?": [
+    "醤油を使わない料理はありますか？",
+    "しょーゆおつかわないりょーりわありますか?"
+  ],
+  "Could I have some vinegar on the side?": [
+    "ついでにお酢をいただけますか？",
+    "ついでにおすおいただけますか?"
+  ],
+  "No pepper, please.": [
+    "コショウは無しでお願いします。",
+    "こしょーわなしでおねがいします."
+  ],
+  "Can you bring me some chopsticks?": [
+    "お箸を持ってきてもらえますか？",
+    "おはしおもってきてもらえますか?"
+  ],
+  "I dropped my spoon, can you bring me another one?": [
+    "スプーンを落としてしまったので、もう一つ持ってきてもらえますか？",
+    "すぷーんおおとしてしまったので,もーひとつもってきてもらえますか?"
+  ],
+  "Can you bring me another fork?": [
+    "もう一つフォークを持ってきてもらえますか？",
+    "もーひとつfおーくおもってきてもらえますか?"
+  ],
+  "Could I substitute a salad for the side?": [
+    "サイドをサラダに置き換えてもいいですか？",
+    "さいどおさらだにおきかえてもいーですか?"
+  ],
+  "Could I get the dressing on the side?": [
+    "ドレッシングを横に置いてもらえますか？",
+    "どれっしんぐおよこにおいてもらえますか?"
+  ],
+  "Is the egg fully cooked?": [
+    "卵は完全に調理されましたか？",
+    "たまごわかんぜんにちょーりされましたか?"
+  ],
+  "I don't eat meat.": [
+    "私は肉を食べません。",
+    "わたしわにくおたべません."
+  ],
+  "Beef well done, please.": [
+    "牛肉、上手にどうぞ。",
+    "ぎゅーにく,じょーずにどーぞ."
+  ],
+  "Is the service included in the bill?": [
+    "サービスは請求書に含まれていますか?",
+    "さーびすわせいきゅーしょにふくまれていますか?"
+  ],
+  "Where do we pay?": [
+    "どこで支払いますか?",
+    "どこでしはらいますか?"
+  ],
+  "The bill, please.": [
+    "請求書をお願いします。",
+    "せいきゅーしょおおねがいします."
+  ],
+  "Can we pay separately at the register?": [
+    "レジで別々に支払うことはできますか？",
+    "れじでべつべつにしはらうことわできますか?"
+  ],
+  "Where is the entrance to the store?": [
+    "お店の入り口はどこですか？",
+    "おーてんのいりぐちわどこですか?"
+  ],
+  "Is the department store open today?": [
+    "デパートは今日営業していますか?",
+    "でぱーとわきょーえいぎょーしていますか?"
+  ],
+  "Is there a large supermarket nearby?": [
+    "近くに大きなスーパーマーケットはありますか？",
+    "ちかくにおーきなすーぱーまーけっとわありますか?"
+  ],
+  "Is the convenience store open twenty-four hours?": [
+    "コンビニは24時間営業していますか？",
+    "こんびにわ24ーじかんえいぎょーしていますか?"
+  ],
+  "What time does the market start on the weekend?": [
+    "週末の市場は何時に始まりますか?",
+    "しゅーまつのいちばわなんじにはじまりますか?"
+  ],
+  "Do you have this garment in my size?": [
+    "この服の私のサイズはありますか？",
+    "このふくのわたしのさいずわありますか?"
+  ],
+  "Can you give me a bigger size?": [
+    "大きいサイズをもらえますか？",
+    "おーきーさいずおもらえますか?"
+  ],
+  "Is this the medium size?": [
+    "こちらは中くらいのサイズでしょうか？",
+    "こちらわーちゅーくらいのさいずでしょうか?"
+  ],
+  "Do you have a smaller size?": [
+    "小さいサイズはありますか？",
+    "ちーさいさいずわありますか?"
+  ],
+  "Can you help me choose the size?": [
+    "サイズ選びを手伝ってもらえますか？",
+    "さいずえらびおてつだってもらえますか?"
+  ],
+  "Where are the fitting rooms?": [
+    "試着室はどこにありますか？",
+    "しちゃくしつわどこにありますか?"
+  ],
+  "Can I try this coat?": [
+    "このコートを試してもいいですか？",
+    "このこーとおためしてもいーですか?"
+  ],
+  "Do I have to wait in line for the fitting room?": [
+    "試着室の列に並ばなければなりませんか?",
+    "しちゃくしつのれつにならばなければなりませんか?"
+  ],
+  "Where do I leave the clothes after trying them on?": [
+    "試着後の服はどこに置いたらいいですか？",
+    "しちゃくーごのふくわどこにおいたらいーですか?"
+  ],
+  "How many items can I bring to the fitting room?": [
+    "試着室には何点まで持ち込めますか？",
+    "しちゃくしつにわなんーてんまでもちこめますか?"
+  ],
+  "How much does this item cost?": [
+    "この商品の価格はいくらですか?",
+    "このしょーひんのかかくわいくらですか?"
+  ],
+  "Is the sticker price the final price?": [
+    "ステッカー価格が最終価格ですか？",
+    "すてっかーかかくがさいしゅーかかくですか?"
+  ],
+  "This is too expensive for me.": [
+    "これは私にとって高すぎます。",
+    "これわわたしにとってたかすぎます."
+  ],
+  "Do you have a cheaper model?": [
+    "もっと安いモデルはありますか？",
+    "もっとやすいもでるわありますか?"
+  ],
+  "Can I pay by credit card?": [
+    "クレジットカードで支払うことはできますか?",
+    "くれじっとかーどでしはらうことわできますか?"
+  ],
+  "Why isn't this debit card working?": [
+    "このデビットカードが機能しないのはなぜですか?",
+    "このでびっとかーどがきのーしないのわなぜですか?"
+  ],
+  "Could I have the receipt, please?": [
+    "領収書を頂けますか？",
+    "りょーしゅーしょおいただけますか?"
+  ],
+  "Do I need the receipt to return this?": [
+    "これを返すには領収書が必要ですか?",
+    "これおかえすにわりょーしゅーしょがひつよーですか?"
+  ],
+  "The price on the receipt is incorrect.": [
+    "レシートの価格が間違っています。",
+    "れしーとのかかくがまちがっています."
+  ],
+  "I lost the receipt.": [
+    "領収書を紛失してしまいました。",
+    "りょーしゅーしょおふんしつしてしまいました."
+  ],
+  "Could you reprint the receipt?": [
+    "領収書を再印刷していただけますか？",
+    "りょーしゅーしょおさいいんさつしていただけますか?"
+  ],
+  "The discount isn't shown on the receipt.": [
+    "割引額はレシートには記載されません。",
+    "わりびきーがくわれしーとにわきさいされません."
+  ],
+  "Where is the visitor information center?": [
+    "ビジターインフォメーションセンターはどこにありますか?",
+    "びじたーいんfおめーしょんせんたーわどこにありますか?"
+  ],
+  "Are we here on the map?": [
+    "私たちは地図上でここにいるでしょうか？",
+    "わたしたちはちずーじょーでここにいるでしょうか?"
+  ],
+  "Are you referring to that building over there?": [
+    "あそこの建物のことを言っているのですか？",
+    "あそこのたてもののことおいっているのですか?"
+  ],
+  "Do I have to turn left at the next intersection?": [
+    "次の交差点で左折しなければなりませんか?",
+    "つぎのこーさてんでさせつしなければなりませんか?"
+  ],
+  "Is the station on the right?": [
+    "駅は右側ですか？",
+    "えきわみぎがわですか?"
+  ],
+  "Is the museum right in front of us?": [
+    "博物館は私たちの目の前にありますか？",
+    "はくぶつかんわわたしたちのめのまえにありますか?"
+  ],
+  "The parking lot is behind the hotel.": [
+    "駐車場はホテルの裏にあります。",
+    "ちゅーしゃじょーわほてるのうらにあります."
+  ],
+  "The pharmacy is next to the bank.": [
+    "薬局は銀行の隣にあります。",
+    "やっきょくわぎんこーのとなりにあります."
+  ],
+  "The post office is across from the park.": [
+    "郵便局は公園の向かいにあります。",
+    "ゆーびんきょくわこーえんのむかいにあります."
+  ],
+  "Is there a subway station nearby?": [
+    "近くに地下鉄の駅はありますか？",
+    "ちかくにちかてつのえきわありますか?"
+  ],
+  "How far is the airport?": [
+    "空港まではどのくらいですか?",
+    "くーこーまでわどのくらいですか?"
+  ],
+  "Is it close to walk?": [
+    "歩いて行ける距離ですか？",
+    "あるいていけるきょりですか?"
+  ],
+  "Is it far to go by bus?": [
+    "バスで行くには遠いですか？",
+    "ばすでいくにわとーいですか?"
+  ],
+  "What is the nearest pharmacy?": [
+    "最寄りの薬局はどこですか?",
+    "もよりのやっきょくわどこですか?"
+  ],
+  "The station is far away; It is better to go by subway.": [
+    "駅は遠いです。地下鉄で行った方が良いです。",
+    "えきわとーいです.ちかてつでおこなったかたがよいです."
+  ],
+  "What places of interest are nearby?": [
+    "近くにはどんな観光スポットがありますか?",
+    "ちかくにわどん'なかんこーすぽっとがありますか?"
+  ],
+  "Is it too far to walk?": [
+    "歩くには遠いですか？",
+    "あるくにわとーいですか?"
+  ],
+  "Where is the nearest public restroom?": [
+    "最寄りの公共トイレはどこですか？",
+    "もよりのこーきょーといれわどこですか?"
+  ],
+  "After crossing the bridge, turn left.": [
+    "橋を渡ったら左折します。",
+    "はしおわたったらさせつします."
+  ],
+  "Does this road lead downtown?": [
+    "この道はダウンタウンに通じていますか?",
+    "このみちわだうんたうんにつーじていますか?"
+  ],
+  "What is this street called?": [
+    "この通りは何と呼ばれますか?",
+    "このとーりわなんとよばれますか?"
+  ],
+  "I'm looking for a white building.": [
+    "白い建物を探しています。",
+    "しろいたてものおさがしています."
+  ],
+  "What time does the nearest bank close?": [
+    "最寄りの銀行は何時に閉まりますか?",
+    "もよりのぎんこーわなんじにしまりますか?"
+  ],
+  "Is the post office far from here?": [
+    "郵便局はここから遠いですか？",
+    "ゆーびんきょくわここからとーいですか?"
+  ],
+  "Is there a public restroom nearby?": [
+    "近くに公共トイレはありますか？",
+    "ちかくにこーきょーといれわありますか?"
+  ],
+  "Which stop should I use for the bus?": [
+    "バスはどの停留所を利用すればよいですか?",
+    "ばすわどのていりゅーじょおりよーすればよいですか?"
+  ],
+  "Does the nearest subway station have an elevator?": [
+    "最寄りの地下鉄駅にはエレベーターがありますか?",
+    "もよりのちかてつーえきにわえれべーたーがありますか?"
+  ],
+  "Can you recommend a nearby attraction?": [
+    "近くのおすすめの観光スポットを教えてください。",
+    "ちかくのおすすめのかんこーすぽっとおおしえてください."
+  ],
+  "Is the museum open today?": [
+    "博物館は今日開いていますか?",
+    "はくぶつかんわきょーあいていますか?"
+  ],
+  "How do you get to the park from here?": [
+    "ここから公園へはどうやって行きますか？",
+    "ここからこーえんえわどーやっていきますか?"
+  ],
+  "I have a fever and need to see a doctor.": [
+    "熱があるので医者に診てもらう必要があります。",
+    "ねつがあるのでいしゃにみてもらうひつよーがあります."
+  ],
+  "How many times a day do you take this cough medicine?": [
+    "あなたはこの咳止め薬を1日に何回飲みますか?",
+    "あなたわこのせきとめくすりお1ーにちになんかいのみますか?"
+  ],
+  "My head hurts a lot.": [
+    "頭がとても痛いです。",
+    "あたまがとてもいたいです."
+  ],
+  "My stomach hurts since last night.": [
+    "昨日の夜からお腹が痛いです。",
+    "きのーのよるからおなかがいたいです."
+  ],
+  "Is there a pharmacy on duty nearby?": [
+    "近くに当番の薬局はありますか？",
+    "ちかくにとーばんのやっきょくわありますか?"
+  ],
+  "Can a nurse come see me?": [
+    "看護師さんが会いに来てくれますか？",
+    "かんこしーさんがあいにきてくれますか?"
+  ],
+  "Do I need a prescription for this medication?": [
+    "この薬には処方箋が必要ですか?",
+    "このくすりにわしょほーせんがひつよーですか?"
+  ],
+  "Where can I get this prescription filled?": [
+    "この処方箋はどこで入手できますか?",
+    "このしょほーせんわどこでにゅーしゅできますか?"
+  ],
+  "Do I have to take this pill after eating?": [
+    "この薬は食後に服用しなければなりませんか?",
+    "このくすりわしょくごにふくよーしなければなりませんか?"
+  ],
+  "How many times a day do I have to apply this ointment?": [
+    "この軟膏は1日に何回塗らなければなりませんか？",
+    "このなんこーわ1ーにちになんかいぬらなければなりませんか?"
+  ],
+  "I lost my phone and need to file a police report.": [
+    "携帯電話を紛失したので警察に被害届を提出する必要があります。",
+    "げいたいでんわおふんしつしたのでけいさつにひがいーとどけおていしゅつするひつよーがあります."
+  ],
+  "Which police station should I go to to file a report?": [
+    "届出をするにはどの警察署に行けばよいですか？",
+    "とどけでおするにわどのけいさつしょにいけばよいですか?"
+  ],
+  "I need a copy of the police report.": [
+    "警察の報告書のコピーが必要です。",
+    "けいさつのほーこくーしょのこぴーがひつよーです."
+  ],
+  "My backpack has been stolen.": [
+    "私のバックパックが盗まれました。",
+    "わたしのばっくぱっくがぬすまれました."
+  ],
+  "Help me contact the police please.": [
+    "警察に連絡するのを手伝ってください。",
+    "けいさつにれんらくするのおてつだってください."
+  ],
+  "I have had diarrhea for two days.": [
+    "2日間下痢が続いています。",
+    "2ーかかんげりがつdずいています."
+  ],
+  "Can this medicine cause constipation?": [
+    "この薬は便秘を引き起こす可能性がありますか?",
+    "このくすりわべんぴおひきおこすかのーせいがありますか?"
+  ],
+  "Does this wound need stitches?": [
+    "この傷は縫う必要がありますか?",
+    "このきずわぬうひつよーがありますか?"
+  ],
+  "I think I have a fracture.": [
+    "骨折していると思います。",
+    "こっせつしているとおもいます."
+  ],
+  "Help, someone has fainted!": [
+    "助けて、誰かが気を失ったんだ！",
+    "たすけて,だれかがきおうしなったんだ!"
+  ],
+  "It's an emergency.": [
+    "緊急です。",
+    "きんきゅーです."
+  ],
+  "I hurt myself when I fell.": [
+    "落ちたときに怪我をしました。",
+    "おちたときにけがおしました."
+  ],
+  "How can I stop the bleeding?": [
+    "どうすれば出血を止めることができますか?",
+    "どーすればしゅっけつおとめることができますか?"
+  ],
+  "Does my travel insurance cover this treatment?": [
+    "私の旅行保険はこの治療をカバーしますか?",
+    "わたしのりょこーほけんわこのちりょーおかばーしますか?"
+  ],
+  "This is my insurance card.": [
+    "これは私の保険証です。",
+    "これわわたしのほけんーしょーです."
+  ],
+  "The insurer needs a medical report.": [
+    "保険会社は診断書を必要とします。",
+    "ほけんかいしゃわしんだんーしょおひつよーとします."
+  ],
+  "Can you include my insurance number on the report?": [
+    "レポートに私の保険番号を記載していただけますか?",
+    "れぽーとにわたしのほけんばんごーおきさいしていただけますか?"
+  ],
+  "Hello, do you speak English?": [
+    "こんにちは、英語を話せますか？",
+    "こん'にちわ,えいごおはなせますか?"
+  ],
+  "Good morning, I have a reservation.": [
+    "おはようございます、予約してます。",
+    "おはよーございます,よやくしてます."
+  ],
+  "Good evening, do you have a table available?": [
+    "こんばんは、テーブルは空いていますか？",
+    "こんばんわ,てーぶるわすいていますか?"
+  ],
+  "Thanks for your help.": [
+    "ご協力いただきありがとうございます。",
+    "ごきょーりょくいただきありがとーございます."
+  ],
+  "Thanks a lot.": [
+    "どうもありがとう。",
+    "どーもありがとー."
+  ],
+  "You're welcome, have a good day.": [
+    "どういたしまして、良い一日を。",
+    "どーいたしまして,よいいちにちを."
+  ],
+  "A map, please.": [
+    "地図をください。",
+    "ちずおください."
+  ],
+  "Seven tickets, please.": [
+    "チケットを7枚お願いします。",
+    "ちけっとお7ーまいおねがいします."
+  ],
+  "See you at eight.": [
+    "8時に会いましょう。",
+    "8ーじにあいましょう."
+  ],
+  "The train leaves platform nine.": [
+    "電車は9番線ホームを出発します。",
+    "でんしゃわ9ーばんせんほーむおしゅっぱつします."
+  ],
+  "It takes ten minutes to walk.": [
+    "歩くと10分かかります。",
+    "あるくと10ーぶかかります."
+  ],
+  "Could you text the address to my phone?": [
+    "私の携帯電話にアドレスをテキストメッセージで送ってもらえますか？",
+    "わたしのげいたいでんわにあどれすおてきすとめっせーじでおくってもらえますか?"
+  ],
+  "This town has more than a thousand years of history.": [
+    "この町には千年以上の歴史があります。",
+    "このまちにわせんーねんいじょーのれきしがあります."
+  ],
+  "About ten thousand people live here.": [
+    "ここには約一万人が住んでいます。",
+    "ここにわやくいちばん'にんがすんでいます."
+  ],
+  "One ticket, please.": [
+    "チケットを1枚ください。",
+    "ちけっとお1ーまいください."
+  ],
+  "We want two rooms.": [
+    "私たちは部屋が 2 つ欲しいです。",
+    "わたしたちはへやが2ーつほしーです."
+  ],
+  "What day is it today?": [
+    "今日は何の日ですか?",
+    "きょーはなん'のひですか?"
+  ],
+  "I arrived yesterday.": [
+    "昨日到着しました。",
+    "きのーとーちゃくしました."
+  ],
+  "We'll be back the day after tomorrow.": [
+    "明後日また来ます。",
+    "あさってまたきます."
+  ],
+  "Yes, I have a reservation.": [
+    "はい、予約があります。",
+    "はい,よやくがあります."
+  ],
+  "No, thanks.": [
+    "結構です。",
+    "けっこーです."
+  ],
+  "Okay, let's go.": [
+    "さて、行きましょう。",
+    "さて,いきましょう."
+  ],
+  "I want a window seat.": [
+    "窓側の席が欲しいです。",
+    "まどがわのせきがほしーです."
+  ],
+  "I need a doctor.": [
+    "医者が必要です。",
+    "いしゃがひつよーです."
+  ],
+  "Is there a pharmacy nearby?": [
+    "近くに薬局はありますか？",
+    "ちかくにやっきょくわありますか?"
+  ]
+}

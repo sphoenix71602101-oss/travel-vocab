@@ -29,8 +29,24 @@
       },
       hero: { mobile: "images/heroes/kr-mobile.png", wide: "images/heroes/kr-wide.png" }
     },
-    { id: "ru", contentPackId: "ru-ru", country: "俄罗斯", language: "俄语", nativeLabel: "Русский", lang: "ru", status: "coming-soon", countryCode: "RU", flagSrc: "icons/flags/ru.png" },
-    { id: "es", contentPackId: "es-es", country: "西班牙", language: "西班牙语", nativeLabel: "Español", lang: "es", status: "coming-soon", countryCode: "ES", flagSrc: "icons/flags/es.png" }
+    {
+      id: "ru", contentPackId: "ru-ru", country: "俄罗斯", language: "俄语", nativeLabel: "Русский",
+      lang: "ru", status: "available", countryCode: "RU", flagSrc: "icons/flags/ru.png",
+      resources: {
+        pack: "languages/ru-ru/pack.js",
+        beginner: ["languages/ru-ru/beginner/data.js", "languages/ru-ru/beginner/audio.js", "languages/ru-ru/beginner/module.js"]
+      },
+      hero: { mobile: "images/heroes/ru-mobile.png", wide: "images/heroes/ru-wide.png" }
+    },
+    {
+      id: "es", contentPackId: "es-es", country: "西班牙", language: "西班牙语", nativeLabel: "Español",
+      lang: "es", status: "available", countryCode: "ES", flagSrc: "icons/flags/es.png",
+      resources: {
+        pack: "languages/es-es/pack.js",
+        beginner: ["languages/es-es/beginner/data.js", "languages/es-es/beginner/audio.js", "languages/es-es/beginner/module.js"]
+      },
+      hero: { mobile: "images/heroes/es-mobile.jpg", wide: "images/heroes/es-wide.jpg" }
+    }
   ];
 
   window.TRAVEL_DESTINATIONS = Object.freeze({

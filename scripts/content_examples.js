@@ -215,7 +215,7 @@ module.exports = {
     airport_051: ["请输入您的目的地。", "Enter your destination, please."],
 
     hotel_001: ["这家酒店含早餐吗？", "Does this hotel include breakfast?"],
-    hotel_002: ["我们在日本住过一家传统日式旅馆。", "We stayed at a traditional Japanese inn in Japan."],
+    hotel_002: ["我们在公路旅行途中住了一家汽车旅馆。", "We stayed at a motel during our road trip."],
     hotel_003: ["这家民宿有共用厨房。", "This guesthouse has a shared kitchen."],
     hotel_004: ["您可以在前台领取额外的钥匙。", "You can pick up an extra key at the front desk."],
     hotel_005: ["我有一个史密斯名下的预订。", "I have a reservation under Smith."],
@@ -251,10 +251,10 @@ module.exports = {
     food_014: ["这个可以把薯条换成米饭吗？", "Can I substitute rice for the fries?"],
     food_015: ["面包可以免费续吗？", "Are bread refills complimentary?"],
     food_016: ["这些面条可以做得不辣吗？", "Can you make these noodles mild?"],
-    food_017: ["这碗拉面是用猪骨汤做的吗？", "Is this ramen made with pork broth?"],
-    food_018: ["我想要一份蔬菜乌冬面。", "I'd like the vegetable udon."],
-    food_019: ["荞麦面里含麸质吗？", "Do the soba noodles contain gluten?"],
-    food_020: ["请来一份三文鱼寿司外带。", "I'd like an order of salmon sushi to go."],
+    food_017: ["煎饼可以配枫糖浆吗？", "Can I get maple syrup with the pancakes?"],
+    food_018: ["请给我一份水果华夫饼。", "I'd like waffles with fruit, please."],
+    food_019: ["这份烧烤配什么酱？", "What sauce comes with the barbecue?"],
+    food_020: ["牛排请做五分熟。", "I'd like the steak cooked medium."],
 
     shopping_001: ["这家商店星期天营业吗？", "Is this shop open on Sundays?"],
     shopping_002: ["百货商场的鞋区在几楼？", "What floor is the shoe department on?"],
