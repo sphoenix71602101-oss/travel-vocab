@@ -251,18 +251,18 @@ window.EN_BEGINNER_DATA = Object.freeze({
           title: "缩略与自然语速",
           subtitle: "书面形式和真人听感可能不完全一样",
           cards: [
-            { type: "concept", title: "先认识常见短形式", body: "旅行表达里经常出现 I'd、What's、Where's。先把它们当成常见整体来听，不需要展开完整语法。" },
-            { type: "phrases", title: "旅行中常听到的表达", items: [
-              { text: "I'd like this one.", meaning: "我想要这个。" },
-              { text: "What's this?", meaning: "这是什么？" },
-              { text: "Where's the station?", meaning: "车站在哪里？" },
-              { text: "Can you help me?", meaning: "你能帮帮我吗？" }
+            { type: "concept", title: "把缩略形式当成一个声音整体", body: "It's、What's、Where's、They're 等写法在连续朗读中不会逐字母念出。这里只练文字与听感，不展开句型用途。" },
+            { type: "phrases", title: "短句中的缩略与弱读", items: [
+              { text: "It's a map.", meaning: "只作缩略读音练习" },
+              { text: "What's on the table?", meaning: "只作连读练习" },
+              { text: "Where's Anna?", meaning: "只作缩略读音练习" },
+              { text: "They're at home.", meaning: "只作弱读练习" }
             ] },
-            { type: "try-first", text: "Where's the station?", ipa: "/wɛrz ðə ˈsteɪʃən/", meaning: "车站在哪里？", note: "先尝试完整说出，再比较慢速和自然语速。", dualSpeed: true }
+            { type: "try-first", text: "What's on the table?", ipa: "/wʌts ɑn ðə ˈteɪbəl/", meaning: "只作短句节奏练习", note: "先尝试完整读出，再比较慢速和自然语速。", dualSpeed: true }
           ],
           practice: [
-            { type: "choice", prompt: "Where's 在这个句子里最接近哪两个词的缩略？", options: ["Where is", "Where has", "Where does"], answer: "Where is", explanation: "Where's the station? 在这里表示 Where is the station?" },
-            { type: "listen-choice", prompt: "听自然语速，选出对应句子", audio: { text: "I'd like this one.", rate: "natural" }, options: ["I'd like this one.", "I like that one.", "What's this?"], answer: "I'd like this one.", explanation: "I'd like... 是旅行中表达“我想要……”的常见说法。" }
+            { type: "choice", prompt: "Where's 在这里最接近哪两个词的缩略？", options: ["Where is", "Where does", "Where did"], answer: "Where is", explanation: "先把 Where's 作为一个连续的声音整体来读。" },
+            { type: "listen-choice", prompt: "听自然语速，选出对应句子", audio: { text: "It's a map.", rate: "natural" }, options: ["It's a map.", "Is it a map?", "It's a bag."], answer: "It's a map.", explanation: "注意 It's 与后面的弱读 a 连续衔接。" }
           ]
         }
       ]
@@ -279,15 +279,15 @@ window.EN_BEGINNER_DATA = Object.freeze({
     { category: "音节与重音", type: "listen-choice", prompt: "听 reservation，哪一部分重读？", audio: { text: "reservation" }, options: ["re", "ser", "va"], answer: "va" },
     { category: "音节与重音", type: "choice", prompt: "hotel 的主要重音在哪一部分？", options: ["ho", "tel", "两部分完全一样"], answer: "tel" },
     { category: "真实听感", type: "listen-choice", prompt: "听自然语速，选出对应内容", audio: { text: "check in", rate: "natural" }, options: ["check in", "check out", "chicken"], answer: "check in" },
-    { category: "真实听感", type: "choice", prompt: "Where's the station? 中 Where's 表示什么？", options: ["Where is", "Where does", "Where did"], answer: "Where is" },
-    { category: "真实听感", type: "listen-choice", prompt: "听自然语速，选出对应句子", audio: { text: "Can you help me?", rate: "natural" }, options: ["Can you help me?", "Can I have it?", "Where can I go?"], answer: "Can you help me?" }
+    { category: "真实听感", type: "choice", prompt: "Where's Anna? 中 Where's 怎样展开？", options: ["Where is", "Where does", "Where did"], answer: "Where is" },
+    { category: "真实听感", type: "listen-choice", prompt: "听自然语速，选出对应句子", audio: { text: "It's a map.", rate: "natural" }, options: ["It's a map.", "Is it a map?", "It's a bag."], answer: "It's a map." }
   ],
   challenge: [
     { text: "map", ipa: "/mæp/", meaning: "地图" },
     { text: "gate", ipa: "/ɡeɪt/", meaning: "登机口" },
     { text: "shuttle", ipa: "/ˈʃʌtəl/", meaning: "接驳车" },
     { text: "station", ipa: "/ˈsteɪʃən/", meaning: "车站" },
-    { text: "reservation", ipa: "/ˌrɛzərˈveɪʃən/", meaning: "预订" },
-    { text: "Where's the station?", ipa: "/wɛrz ðə ˈsteɪʃən/", meaning: "车站在哪里？" }
+    { text: "It's a map.", ipa: "/ɪts ə mæp/", meaning: "只作缩略与弱读练习" },
+    { text: "What's on the table?", ipa: "/wʌts ɑn ðə ˈteɪbəl/", meaning: "只作短句节奏练习" }
   ]
 });

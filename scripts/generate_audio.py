@@ -349,14 +349,14 @@ def parse_beginner_data() -> list[dict]:
 
 
 def build_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
-    if not isinstance(data, list) or len(data) != 57:
-        raise ValueError("教学音频清单应包含 57 段声音")
+    if not isinstance(data, list) or len(data) != 92:
+        raise ValueError("日语教学音频清单应包含 92 段声音")
     jobs: list[AudioJob] = []
     seen: set[str] = set()
     for item in data:
         entry_id, display_text = item.get("id"), item.get("text")
         sound = item.get("synthesisText", display_text)
-        if not isinstance(entry_id, str) or not re.fullmatch(r"(?:kana-[0-9a-f]{4}|example-[a-z-]+|rule-[a-z-]+-[0-9])", entry_id):
+        if not isinstance(entry_id, str) or not re.fullmatch(r"(?:kana-[0-9a-f]{4}|example-[a-z0-9-]+|(?:rule|reading)-[a-z-]+-[0-9]+)", entry_id):
             raise ValueError(f"教学音 ID 无效：{entry_id}")
         if not isinstance(display_text, str) or not display_text.strip() or not isinstance(sound, str) or not sound.strip() or entry_id in seen:
             raise ValueError(f"教学音文字为空或 ID 重复：{entry_id}")
@@ -381,8 +381,8 @@ def parse_english_beginner_data() -> list[dict]:
 
 
 def build_english_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
-    if not isinstance(data, list) or len(data) != 53:
-        raise ValueError("英语教学音清单应包含 53 段声音")
+    if not isinstance(data, list) or len(data) != 54:
+        raise ValueError("英语教学音清单应包含 54 段声音")
     rate_values = {"clear": "-8%", "slow": "-28%", "natural": "+0%"}
     jobs: list[AudioJob] = []
     seen_ids: set[str] = set()
@@ -405,7 +405,7 @@ def build_english_beginner_jobs(data: list[dict], test_mode: bool) -> list[Audio
         ))
     if not test_mode:
         return jobs
-    sample_ids = {"en-001", "en-004", "en-039", "en-040", "en-049", "en-050"}
+    sample_ids = {"en-001", "en-004", "en-039", "en-040", "en-054", "en-055"}
     return [job for job in jobs if job.entry_id in sample_ids]
 
 
@@ -419,8 +419,8 @@ def parse_korean_beginner_data() -> list[dict]:
 
 
 def build_korean_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
-    if not isinstance(data, list) or len(data) != 36:
-        raise ValueError("韩语教学音清单应包含 36 段声音")
+    if not isinstance(data, list) or len(data) != 54:
+        raise ValueError("韩语教学音清单应包含 54 段声音")
     jobs: list[AudioJob] = []
     seen: set[str] = set()
     for item in data:
@@ -445,8 +445,8 @@ def parse_russian_beginner_data() -> list[dict]:
 
 
 def build_russian_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
-    if not isinstance(data, list) or len(data) != 45:
-        raise ValueError("俄语教学音清单应包含 45 段声音")
+    if not isinstance(data, list) or len(data) != 57:
+        raise ValueError("俄语教学音清单应包含 57 段声音")
     jobs: list[AudioJob] = []
     seen: set[str] = set()
     for item in data:
@@ -476,8 +476,8 @@ def parse_spanish_beginner_data() -> list[dict]:
 
 
 def build_spanish_beginner_jobs(data: list[dict], test_mode: bool) -> list[AudioJob]:
-    if not isinstance(data, list) or len(data) != 53:
-        raise ValueError("西语教学音清单应包含 53 段声音")
+    if not isinstance(data, list) or len(data) != 80:
+        raise ValueError("西语教学音清单应包含 80 段声音")
     rate_values = {"clear": "-8%", "slow": "-28%", "natural": "+0%"}
     jobs: list[AudioJob] = []
     seen_ids: set[str] = set()
@@ -619,27 +619,27 @@ def parse_args() -> argparse.Namespace:
     mode.add_argument("--rebuild-changed", action="store_true", help="删除并重建本次五语内容审校影响的 1040 段音频")
     mode.add_argument("--resume-changed", action="store_true", help="保留已完成文件，仅续跑本次五语音频返工清单中的缺失项")
     mode.add_argument("--beginner-test", action="store_true", help="生成前 5 个日语教学音试听")
-    mode.add_argument("--beginner-full", action="store_true", help="生成全部 57 段日语教学音")
+    mode.add_argument("--beginner-full", action="store_true", help="生成全部 92 段日语教学音")
     mode.add_argument("--beginner-validate-only", action="store_true", help="只验证日语教学音清单")
     mode.add_argument("--beginner-repair", action="store_true", help="为 い、ふ、ら、ん 生成 12 段候选音，不覆盖正式音频")
     mode.add_argument("--english-beginner-test", action="store_true", help="生成 6 段美国英语教学音试听（含 cat、map 和双语速短句）")
-    mode.add_argument("--english-beginner-full", action="store_true", help="生成全部 53 段美国英语教学音")
+    mode.add_argument("--english-beginner-full", action="store_true", help="生成全部 54 段美国英语教学音")
     mode.add_argument("--english-beginner-validate-only", action="store_true", help="只验证美国英语教学音清单")
     mode.add_argument("--korean-beginner-test", action="store_true", help="生成前 6 个韩语教学音试听")
-    mode.add_argument("--korean-beginner-full", action="store_true", help="生成全部 36 段韩语教学音")
+    mode.add_argument("--korean-beginner-full", action="store_true", help="生成全部 54 段韩语教学音")
     mode.add_argument("--korean-beginner-validate-only", action="store_true", help="只验证韩语教学音清单")
     mode.add_argument("--spanish-test", action="store_true", help="生成西班牙语正式内容前 5 条及 2 条例句试听")
     mode.add_argument("--spanish-full", action="store_true", help="只生成西班牙语正式内容和例句")
     mode.add_argument("--spanish-refresh", action="store_true", help="仅重新生成返工后的 241 条短语和 230 条例句")
     mode.add_argument("--spanish-validate-only", action="store_true", help="只验证西班牙语正式内容和例句")
     mode.add_argument("--spanish-beginner-test", action="store_true", help="生成 6 段西班牙西语教学音试听")
-    mode.add_argument("--spanish-beginner-full", action="store_true", help="生成全部 53 段西班牙西语教学音")
+    mode.add_argument("--spanish-beginner-full", action="store_true", help="生成全部 80 段西班牙西语教学音")
     mode.add_argument("--spanish-beginner-validate-only", action="store_true", help="只验证西班牙西语教学音清单")
     mode.add_argument("--russian-test", action="store_true", help="生成俄罗斯俄语正式内容前 5 条及 2 条例句试听")
     mode.add_argument("--russian-full", action="store_true", help="只生成俄罗斯俄语正式内容和例句")
     mode.add_argument("--russian-validate-only", action="store_true", help="只验证俄罗斯俄语正式内容和例句")
     mode.add_argument("--russian-beginner-test", action="store_true", help="生成前 6 个俄语教学音试听")
-    mode.add_argument("--russian-beginner-full", action="store_true", help="生成全部 45 段俄语教学音")
+    mode.add_argument("--russian-beginner-full", action="store_true", help="生成全部 57 段俄语教学音")
     mode.add_argument("--russian-beginner-validate-only", action="store_true", help="只验证俄语教学音清单")
     return parser.parse_args()
 

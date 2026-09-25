@@ -44,13 +44,14 @@ window.EN_BEGINNER_AUDIO = Object.freeze([
   { "id": "en-042", "text": "turn off", "rate": "natural" },
   { "id": "en-043", "text": "an apple", "rate": "slow" },
   { "id": "en-044", "text": "an apple", "rate": "natural" },
-  { "id": "en-045", "text": "I'd like this one.", "rate": "slow" },
-  { "id": "en-046", "text": "I'd like this one.", "rate": "natural" },
-  { "id": "en-047", "text": "What's this?", "rate": "slow" },
-  { "id": "en-048", "text": "What's this?", "rate": "natural" },
-  { "id": "en-049", "text": "Where's the station?", "rate": "slow" },
-  { "id": "en-050", "text": "Where's the station?", "rate": "natural" },
-  { "id": "en-051", "text": "Can you help me?", "rate": "slow" },
-  { "id": "en-052", "text": "Can you help me?", "rate": "natural" },
-  { "id": "en-053", "text": "Where's the station?", "rate": "clear" }
+  { "id": "en-054", "text": "It's a map.", "rate": "slow" },
+  { "id": "en-055", "text": "It's a map.", "rate": "natural" },
+  { "id": "en-056", "text": "What's on the table?", "rate": "slow" },
+  { "id": "en-057", "text": "What's on the table?", "rate": "natural" },
+  { "id": "en-058", "text": "Where's Anna?", "rate": "slow" },
+  { "id": "en-059", "text": "Where's Anna?", "rate": "natural" },
+  { "id": "en-060", "text": "They're at home.", "rate": "slow" },
+  { "id": "en-061", "text": "They're at home.", "rate": "natural" },
+  { "id": "en-062", "text": "It's a map.", "rate": "clear" },
+  { "id": "en-063", "text": "What's on the table?", "rate": "clear" }
 ]);

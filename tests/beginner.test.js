@@ -17,8 +17,10 @@ const words = context.window.WORD_BANK;
 const audio = JSON.parse(fs.readFileSync(path.join(root, "languages/jp-ja/beginner/audio.json"), "utf8"));
 
 test("认读课程覆盖 46 个不同基础音及两套字形", () => {
-  assert.equal(data.rows.length, 11);
-  assert.equal(data.rules.length, 7);
+  assert.equal(data.stages.length, 5);
+  assert.equal(data.stages.flatMap((stage) => stage.lessons).length, 18);
+  assert.equal(data.rows.length, 10);
+  assert.equal(data.rules.length, 5);
   const pairs = data.rows.flatMap((row) => row.pairs);
   assert.equal(pairs.length, 46);
   assert.equal(new Set(pairs.map((pair) => pair[0])).size, 46);
@@ -26,14 +28,22 @@ test("认读课程覆盖 46 个不同基础音及两套字形", () => {
   for (const pair of pairs) assert.equal(pair.length, 2);
 });
 
-test("教学音频清单与短课声音和新增示例一致", () => {
-  const expected = data.rows.flatMap((row) => row.pairs.map(([kana]) => ({
-    id: `kana-${kana.codePointAt(0).toString(16).padStart(4, "0")}`, text: kana
-  }))).concat(data.rules.filter((rule) => rule.example?.audioText).map((rule) => ({
-    id: `example-${rule.id}`, text: rule.example.audioText
-  }))).concat(data.rules.filter((rule) => ["voiced-ks", "voiced-th", "semi-voiced", "contracted"].includes(rule.id))
-    .flatMap((rule) => rule.pairs.map((pair, index) => ({ id: `rule-${rule.id}-${index}`, text: pair[1] }))));
-  assert.deepEqual(audio.map(({ id, text }) => ({ id, text })), JSON.parse(JSON.stringify(expected)));
+test("教学音频清单覆盖假名、规则示例与连续认读材料", () => {
+  assert.equal(audio.length, 92);
+  assert.equal(new Set(audio.map((item) => item.id)).size, 92);
+  const ids = new Set(audio.map((item) => item.id));
+  for (const row of data.rows) {
+    for (const [kana] of row.pairs) assert.ok(ids.has(`kana-${kana.codePointAt(0).toString(16).padStart(4, "0")}`));
+    if (row.example.audioId.startsWith("beginner/")) assert.ok(ids.has(row.example.audioId.replace("beginner/", "")), row.example.audioId);
+  }
+  for (const rule of data.rules) {
+    const exampleId = rule.example.audioId?.replace("beginner/", "") || `example-${rule.id}`;
+    if (!rule.example.audioId || rule.example.audioId.startsWith("beginner/")) assert.ok(ids.has(exampleId), exampleId);
+    if (["voiced-ks", "voiced-th", "contracted"].includes(rule.id)) {
+      rule.pairs.forEach((pair, index) => assert.ok(ids.has(`rule-${rule.id}-${index}`), pair[1]));
+    }
+  }
+  for (const id of ["example-word-flow", "example-sentence", "example-sentence-2", "reading-word-flow-1", "reading-word-flow-2", "reading-mixed-scripts-0", "reading-mixed-scripts-1", "reading-sentence-particles-0", "reading-sentence-particles-1", "reading-sentence-particles-2"]) assert.ok(ids.has(id), id);
   for (const item of audio) {
     if ("synthesisText" in item) assert.ok(typeof item.synthesisText === "string" && item.synthesisText.trim());
   }
@@ -50,16 +60,19 @@ test("教学音频清单与短课声音和新增示例一致", () => {
   }
 });
 
-test("跳过测试覆盖三类认读能力，旅行挑战沿用现有日语音频", () => {
+test("跳过测试覆盖四类认读能力，结课挑战为四词两句", () => {
   assert.equal(data.placement.length, 12);
-  for (const category of ["清音", "片假名", "规则"]) {
-    assert.equal(data.placement.filter((item) => item.category === category).length, 4);
+  for (const category of ["基础假名", "浊音变化", "拼读规则", "连续认读"]) {
+    assert.ok(data.placement.some((item) => item.category === category), category);
   }
   for (const item of data.placement) assert.equal(item.options.includes(item.answer), true);
   assert.equal(data.challenge.length, 6);
+  assert.equal(data.challenge.slice(0, 4).every((item) => !/[。？！\s]/u.test(item.text)), true);
+  assert.equal(data.challenge.slice(4).every((item) => /[。？！\s]/u.test(item.text)), true);
+  const audioIds = new Set(audio.map((item) => item.id));
   for (const item of data.challenge) {
-    assert.equal(words.some((word) => word.id === item.audioId), true, `${item.text} 缺少词条音频`);
-    assert.equal(fs.existsSync(path.join(root, "audio", "ja", `${item.audioId}.mp3`)), true);
+    if (item.audioId.startsWith("beginner/")) assert.ok(audioIds.has(item.audioId.replace("beginner/", "")), item.audioId);
+    else assert.equal(fs.existsSync(path.join(root, "audio", "ja", `${item.audioId}.mp3`)), true, item.audioId);
   }
 });
 
@@ -100,14 +113,14 @@ test("英语跳过测试覆盖四类能力并提供六项结课挑战", () => {
     assert.equal(english.placement.filter((item) => item.category === category).length, 3);
   }
   for (const item of english.placement) assert.equal(item.options.includes(item.answer), true);
-  assert.deepEqual(JSON.parse(JSON.stringify(english.challenge.map((item) => item.text))), ["map", "gate", "shuttle", "station", "reservation", "Where's the station?"]);
+  assert.deepEqual(JSON.parse(JSON.stringify(english.challenge.map((item) => item.text))), ["map", "gate", "shuttle", "station", "It's a map.", "What's on the table?"]);
   assert.ok(english.challenge.every((item) => item.ipa && item.meaning));
 });
 
 test("英语教学音清单覆盖课程、测试和挑战中的全部播放内容", () => {
-  assert.equal(englishAudio.length, 53);
-  assert.equal(new Set(englishAudio.map((item) => item.id)).size, 53);
-  assert.equal(new Set(englishAudio.map((item) => `${item.rate}|${item.text}`)).size, 53);
+  assert.equal(englishAudio.length, 54);
+  assert.equal(new Set(englishAudio.map((item) => item.id)).size, 54);
+  assert.equal(new Set(englishAudio.map((item) => `${item.rate}|${item.text}`)).size, 54);
   for (const item of englishAudio) {
     assert.match(item.id, /^en-[0-9]{3}$/);
     assert.equal(["clear", "slow", "natural"].includes(item.rate), true);

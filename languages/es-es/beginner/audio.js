@@ -52,5 +52,18 @@ window.ES_BEGINNER_AUDIO = Object.freeze([
   { "id": "es-050", "text": "No hablo español.", "rate": "slow" },
   { "id": "es-051", "text": "No hablo español.", "rate": "natural" },
   { "id": "es-052", "text": "Vale, gracias.", "rate": "clear" },
-  { "id": "es-053", "text": "¿Dónde está el metro?", "rate": "clear" }
+  { "id": "es-053", "text": "¿Dónde está el metro?", "rate": "clear" },
+  { "id": "es-054", "text": "moto", "rate": "clear" },
+  { "id": "es-055", "text": "viaje", "rate": "clear" }, { "id": "es-056", "text": "tiene", "rate": "clear" },
+  { "id": "es-057", "text": "casa", "rate": "clear" }, { "id": "es-058", "text": "queso", "rate": "clear" },
+  { "id": "es-059", "text": "guitarra", "rate": "clear" }, { "id": "es-060", "text": "pingüino", "rate": "clear" },
+  { "id": "es-061", "text": "pero", "rate": "clear" }, { "id": "es-062", "text": "perro", "rate": "clear" }, { "id": "es-063", "text": "radio", "rate": "clear" },
+  { "id": "es-064", "text": "aeropuerto", "rate": "clear" }, { "id": "es-065", "text": "información", "rate": "clear" }, { "id": "es-066", "text": "restaurante", "rate": "clear" },
+  { "id": "es-067", "text": "Veo una avenida.", "rate": "slow" }, { "id": "es-068", "text": "Veo una avenida.", "rate": "natural" },
+  { "id": "es-069", "text": "El hotel está abierto.", "rate": "slow" }, { "id": "es-070", "text": "El hotel está abierto.", "rate": "natural" },
+  { "id": "es-071", "text": "Ana usa el metro.", "rate": "slow" }, { "id": "es-072", "text": "Ana usa el metro.", "rate": "natural" },
+  { "id": "es-073", "text": "Mi maleta es pequeña.", "rate": "slow" }, { "id": "es-074", "text": "Mi maleta es pequeña.", "rate": "natural" },
+  { "id": "es-075", "text": "Carlos mira el teléfono.", "rate": "slow" }, { "id": "es-076", "text": "Carlos mira el teléfono.", "rate": "natural" },
+  { "id": "es-077", "text": "Marta, mira el mapa.", "rate": "slow" }, { "id": "es-078", "text": "Marta, mira el mapa.", "rate": "natural" },
+  { "id": "es-079", "text": "Ana usa el metro.", "rate": "clear" }, { "id": "es-080", "text": "Marta, mira el mapa.", "rate": "clear" }
 ]);

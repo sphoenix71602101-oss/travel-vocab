@@ -83,15 +83,18 @@ test("西语零基础课包含五阶段十二课、测试和挑战", () => {
 
 test("西语认读教学音清单覆盖课程所需的清晰、慢速和自然语速", () => {
   const audio = context.window.ES_BEGINNER_AUDIO;
-  assert.equal(audio.length, 53);
-  assert.equal(new Set(audio.map((item) => item.id)).size, 53);
-  assert.equal(new Set(audio.map((item) => `${item.text}\0${item.rate}`)).size, 53);
+  assert.equal(audio.length, 80);
+  assert.equal(new Set(audio.map((item) => item.id)).size, 80);
+  assert.equal(new Set(audio.map((item) => `${item.text}\0${item.rate}`)).size, 80);
   for (const item of audio) {
     assert.match(item.id, /^es-\d{3}$/);
     assert.ok(["clear", "slow", "natural"].includes(item.rate));
+    const file = path.join(root, "audio", "es", "beginner", `${item.id}.mp3`);
+    assert.equal(fs.existsSync(file), true, `${item.id} 缺少西语教学音频`);
+    assert.ok(fs.statSync(file).size > 0, `${item.id} 西语教学音频为空`);
   }
   for (const key of [
-    "mapa\0clear", "baño\0clear", "Vale, gracias.\0slow", "Vale, gracias.\0natural",
-    "¿Dónde está el metro?\0slow", "¿Dónde está el metro?\0natural"
+    "mapa\0clear", "baño\0clear", "pingüino\0clear", "perro\0clear",
+    "Ana usa el metro.\0slow", "Ana usa el metro.\0natural"
   ]) assert.ok(audio.some((item) => `${item.text}\0${item.rate}` === key), key);
 });

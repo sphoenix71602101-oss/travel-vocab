@@ -12,11 +12,11 @@ window.RU_BEGINNER_DATA = Object.freeze({
         { text: "С · У · Х", parts: "s · u · kh", pronunciation: "s · u · kh", meaning: "不要按 c、y、x 猜", audioId: "ru-005" },
         { text: "метро", parts: "м · е · т · р · о", pronunciation: "metró", meaning: "地铁", audioId: "ru-006" }
       ], practice: { prompt: "俄文字母 Р 通常对应哪个声音？", options: ["r", "p", "b"], answer: "r", explanation: "Р 看起来像 P，但表示颤音 r。" } },
-      { id: "ru-03", title: "把常见辅音补起来", subtitle: "Б Г Д Л П Ф З Й", note: "先认旅行词里最常出现的一组，不必一次背完整张字母表。", items: [
+      { id: "ru-03", title: "把常见辅音补起来", subtitle: "Б Г Д Л П Ф З Й", note: "先认常用单词里经常出现的一组，不必一次背完整张字母表。", items: [
         { text: "Б · Г · Д · З", parts: "b · g · d · z", pronunciation: "b · g · d · z", meaning: "四个浊辅音", audioId: "ru-007" },
         { text: "Л · П · Ф · Й", parts: "l · p · f · y", pronunciation: "l · p · f · y", meaning: "四个高频辅音", audioId: "ru-008" },
         { text: "билет", parts: "б · и · л · е · т", pronunciation: "bilét", meaning: "票", audioId: "ru-009" }
-      ], practice: { prompt: "「билет」是什么意思？", options: ["票", "护照", "出口"], answer: "票", explanation: "билет 是车票、门票等各种票的通用词。" } },
+      ], practice: { prompt: "「билет」开头的 Б 对应哪个声音？", options: ["b", "v", "p"], answer: "b", explanation: "Б 对应 b；把它与后面的 и 连起来读。" } },
       { id: "ru-04", title: "认识俄语特有的辅音", subtitle: "Ж Ц Ч Ш Щ", note: "这组字母在路牌和常用词里很常见，先记整体声音。", items: [
         { text: "Ж · Ш", parts: "zh · sh", pronunciation: "zh · sh", meaning: "两个摩擦音", audioId: "ru-010" },
         { text: "Ц · Ч · Щ", parts: "ts · ch · shch", pronunciation: "ts · ch · shch", meaning: "三个组合音", audioId: "ru-011" },
@@ -28,7 +28,7 @@ window.RU_BEGINNER_DATA = Object.freeze({
         { text: "А · Э · И", parts: "a · e · i", pronunciation: "a · e · i", meaning: "三个基本元音", audioId: "ru-013" },
         { text: "О · У", parts: "o · u", pronunciation: "o · u", meaning: "两个圆唇元音", audioId: "ru-014" },
         { text: "такси", parts: "так · си", pronunciation: "taksí", meaning: "出租车", audioId: "ru-015" }
-      ], practice: { prompt: "「такси」是什么意思？", options: ["出租车", "地铁", "车站"], answer: "出租车", explanation: "такси 与英语 taxi 很像，重音在最后。" } },
+      ], practice: { prompt: "「такси」的重音落在哪一部分？", options: ["си", "так", "两个音节同样重"], answer: "си", explanation: "такси 的重音在最后一个音节。" } },
       { id: "ru-06", title: "Я Е Ё Ю 会带出 y 音", subtitle: "先听 ya、ye、yo、yu", note: "在词首或元音后，它们常带出 y；在辅音后还会提示辅音变软。", items: [
         { text: "Я · Е", parts: "ya · ye", pronunciation: "ya · ye", meaning: "带 y 的元音", audioId: "ru-016" },
         { text: "Ё · Ю", parts: "yo · yu", pronunciation: "yo · yu", meaning: "带 y 的元音", audioId: "ru-017" },
@@ -38,7 +38,7 @@ window.RU_BEGINNER_DATA = Object.freeze({
         { text: "И", parts: "i", pronunciation: "i", meaning: "较靠前的元音", audioId: "ru-019" },
         { text: "Ы", parts: "y", pronunciation: "y", meaning: "较靠后的俄语元音", audioId: "ru-020" },
         { text: "выход", parts: "вы · ход", pronunciation: "výkhod", meaning: "出口", audioId: "ru-021" }
-      ], practice: { prompt: "看到「ВЫХОД」应该找什么？", options: ["出口", "入口", "售票处"], answer: "出口", explanation: "ВЫХОД 是路牌上最重要的词之一。" } },
+      ], practice: { prompt: "「выход」开头的 ы 更接近哪一个元音提示？", options: ["y", "i", "u"], answer: "y", explanation: "Ы 与 И 不同，转写中常用 y 提示这个俄语元音。" } },
       { id: "ru-08", title: "Ь 和 Ъ 本身不单独发音", subtitle: "软音符号与硬音符号", note: "它们主要影响相邻字母的读法；初学阶段先学会看见而不强读。", items: [
         { text: "Ь", parts: "мягкий знак", pronunciation: "myágkiy znak", meaning: "软音符号", audioId: "ru-022" },
         { text: "Ъ", parts: "твёрдый знак", pronunciation: "tvyórdyy znak", meaning: "硬音符号", audioId: "ru-023" },
@@ -47,7 +47,7 @@ window.RU_BEGINNER_DATA = Object.freeze({
     ] },
     { id: "real-speech", title: "从拼字走向真实读音", subtitle: "重音、弱化和辅音变化", lessons: [
       { id: "ru-09", title: "重音决定单词怎么听", subtitle: "教学转写用重音符号标出重点", note: "俄文日常书写通常不标重音，所以每个新词都要连同声音一起记。", items: [
-        { text: "вокза́л", parts: "вок · зал", pronunciation: "vokzál", meaning: "火车站", audioId: "ru-025" },
+        { text: "вокза́л", parts: "вок · зал", pronunciation: "vagzál", meaning: "火车站", audioId: "ru-025" },
         { text: "апте́ка", parts: "ап · те · ка", pronunciation: "aptéka", meaning: "药店", audioId: "ru-026" },
         { text: "рестора́н", parts: "рес · то · ран", pronunciation: "restorán", meaning: "餐厅", audioId: "ru-027" }
       ], practice: { prompt: "俄文路牌通常会标出重音吗？", options: ["通常不会", "每个词都会", "只有地名不会"], answer: "通常不会", explanation: "课程里的重音符号是学习辅助，真实路牌通常省略。" } },
@@ -62,29 +62,29 @@ window.RU_BEGINNER_DATA = Object.freeze({
         { text: "вход", parts: "вход", pronunciation: "fkhod", meaning: "入口", audioId: "ru-033" }
       ], practice: { prompt: "遇到辅音变化时最可靠的核对方式是？", options: ["听完整词音频", "只按字母逐个念", "改写成中文谐音"], answer: "听完整词音频", explanation: "转写只是扶手，整词音频更接近真实俄语。" } }
     ] },
-    { id: "travel-reading", title: "把俄文用在旅行现场", subtitle: "先认标识，再读服务场景", lessons: [
-      { id: "ru-12", title: "先认六个方向标识", subtitle: "不必组成句子也能找到路", note: "优先直接建立“俄文形状—含义”的联系。", items: [
-        { text: "ВХОД · ВЫХОД", parts: "入口 · 出口", pronunciation: "vkhod · výkhod", meaning: "入口 · 出口", audioId: "ru-034" },
-        { text: "МЕТРО · ВОКЗАЛ", parts: "地铁 · 火车站", pronunciation: "metró · vokzál", meaning: "地铁 · 火车站", audioId: "ru-035" },
-        { text: "ТУАЛЕТ · АПТЕКА", parts: "洗手间 · 药店", pronunciation: "tualét · aptéka", meaning: "洗手间 · 药店", audioId: "ru-036" }
-      ], practice: { prompt: "看到「АПТЕКА」应该找什么？", options: ["药店", "医院", "餐厅"], answer: "药店", explanation: "АПТЕКА 是药店。" } },
-      { id: "ru-13", title: "读懂票务、菜单和付款", subtitle: "识别柜台上最有用的词", note: "这些词常单独出现在按钮、票据和招牌上。", items: [
-        { text: "КАССА · БИЛЕТ", parts: "收银/售票处 · 票", pronunciation: "kássa · bilét", meaning: "收银/售票处 · 票", audioId: "ru-037" },
-        { text: "МЕНЮ · СЧЁТ", parts: "菜单 · 账单", pronunciation: "menyú · shchyot", meaning: "菜单 · 账单", audioId: "ru-038" },
-        { text: "НАЛИЧНЫЕ · КАРТА", parts: "现金 · 卡", pronunciation: "nalíchnyye · kárta", meaning: "现金 · 卡", audioId: "ru-039" }
-      ], practice: { prompt: "结账时看到「СЧЁТ」指什么？", options: ["账单", "菜单", "小费"], answer: "账单", explanation: "可以说 Счёт, пожалуйста. 请求结账。" } }
+    { id: "word-reading", title: "把字母连成更长的单词", subtitle: "辅音组合、软硬过渡和音节分块", lessons: [
+      { id: "ru-12", title: "辅音组合与软硬过渡", subtitle: "不要在每个辅音之间加入元音", note: "先看组合，再听完整词；转写只提示实际听感。", items: [
+        { text: "встреча", parts: "встре · ча", pronunciation: "fstrécha", meaning: "辅音组合练习", audioId: "ru-046" },
+        { text: "просьба", parts: "прось · ба", pronunciation: "próz'ba", meaning: "软音过渡练习", audioId: "ru-047" },
+        { text: "дверь", parts: "дверь", pronunciation: "dver'", meaning: "词尾软音练习", audioId: "ru-048" }
+      ], practice: { prompt: "读 встреча 时应该怎样处理 встр？", options: ["连续读出辅音组合", "每个辅音后加元音", "只读最后一个辅音"], answer: "连续读出辅音组合", explanation: "俄语辅音组合中不要自行插入元音。" } },
+      { id: "ru-13", title: "把长单词分成音节", subtitle: "先找元音，再重新连成完整词", note: "圆点只用于练习，正式书写仍保留完整单词。", items: [
+        { text: "информация", parts: "ин · фор · ма · ци · я", pronunciation: "informátsiya", meaning: "五音节词", audioId: "ru-049" },
+        { text: "регистрация", parts: "ре · ги · стра · ци · я", pronunciation: "registrátsiya", meaning: "五音节词", audioId: "ru-050" },
+        { text: "фотография", parts: "фо · то · гра · фи · я", pronunciation: "fatagráfiya", meaning: "五音节词", audioId: "ru-051" }
+      ], practice: { prompt: "哪一种是 информация 的合理分块？", options: ["ин · фор · ма · ци · я", "и · нфо · рмация", "инф · орм · ация"], answer: "ин · фор · ма · ци · я", explanation: "先围绕元音划分音节，再连回完整单词。" } }
     ] },
-    { id: "survival", title: "开口完成一次真实沟通", subtitle: "礼貌句型与自然语速", lessons: [
-      { id: "ru-14", title: "用礼貌框架提出需求", subtitle: "Извините 与 Пожалуйста", note: "对陌生人先说 Извините，再使用请求句和 Пожалуйста，安全而自然。", items: [
-        { text: "Извините.", parts: "引起注意 / 不好意思", pronunciation: "Izviníte.", meaning: "不好意思。", audioId: "ru-040" },
-        { text: "Скажите, пожалуйста…", parts: "请问……", pronunciation: "Skazhíte, pozháluysta…", meaning: "请告诉我……", audioId: "ru-041" },
-        { text: "Где находится метро?", parts: "Где + 地点", pronunciation: "Gde nakhóditsya metró?", meaning: "地铁在哪里？", audioId: "ru-042" }
-      ], practice: { prompt: "想礼貌地问地铁在哪里，应选哪句？", options: ["Где находится метро?", "Мне плохо.", "Счёт, пожалуйста."], answer: "Где находится метро?", explanation: "Где находится…? 是询问地点的通用框架。" } },
-      { id: "ru-15", title: "听懂并说出三句救场话", subtitle: "慢速先稳住，再听自然语速", note: "先读俄文，再展开转写并反复听完整句，不必追求一次读得像母语者。", items: [
-        { text: "Я не говорю по-русски.", parts: "语言求助", pronunciation: "Ya ne govoryú pa-rússki.", meaning: "我不会说俄语。", audioId: "ru-043" },
-        { text: "Повторите, пожалуйста.", parts: "沟通修复", pronunciation: "Pavtaríte, pozháluysta.", meaning: "请再说一遍。", audioId: "ru-044" },
-        { text: "Помогите, пожалуйста!", parts: "紧急求助", pronunciation: "Pamagíte, pozháluysta!", meaning: "请帮帮我！", audioId: "ru-045" }
-      ], practice: { prompt: "听不懂、想请对方再说一次，应选哪句？", options: ["Повторите, пожалуйста.", "Я не говорю по-русски.", "Помогите, пожалуйста!"], answer: "Повторите, пожалуйста.", explanation: "Повторите 是对陌生人的礼貌命令式。" } }
+    { id: "sentence-reading", title: "把单词连成短句", subtitle: "只练词组、标点和自然节奏", lessons: [
+      { id: "ru-14", title: "词组边界与标点停顿", subtitle: "词内连续，词组之间短停", note: "句子只作为认读材料，不讲交际用途。", items: [
+        { text: "Анна читает книгу.", parts: "Анна · читает · книгу", pronunciation: "Ánna chitáyet knígu.", meaning: "只作分组练习", audioId: "ru-052" },
+        { text: "Это новый телефон.", parts: "Это · новый телефон", pronunciation: "Éta nóvyy telefón.", meaning: "只作重音练习", audioId: "ru-053" },
+        { text: "Мама, это Москва.", parts: "Мама | это Москва", pronunciation: "Máma, éta Maskvá.", meaning: "只作停顿练习", audioId: "ru-054" }
+      ], practice: { prompt: "句中逗号通常提示什么？", options: ["短暂停顿", "改变前一个字母", "每个词都重读"], answer: "短暂停顿", explanation: "标点组织句子节奏，不改变单词拼写。" } },
+      { id: "ru-15", title: "从慢速拼读到自然连续朗读", subtitle: "保留重音，减少逐字停顿", note: "先读准每个词，再按词组连续读完整短句。", items: [
+        { text: "Анна работает в Москве.", parts: "Анна работает · в Москве", pronunciation: "Ánna rabótayet f Maskvé.", meaning: "只作连续认读", audioId: "ru-055" },
+        { text: "Мы читаем новые слова.", parts: "Мы читаем · новые слова", pronunciation: "My chitáyem nóvyye slavá.", meaning: "只作节奏练习", audioId: "ru-056" },
+        { text: "Это маленькая фотография.", parts: "Это · маленькая фотография", pronunciation: "Éta málen'kaya fatagráfiya.", meaning: "只作长句练习", audioId: "ru-057" }
+      ], practice: { prompt: "自然朗读短句时，哪种做法更合适？", options: ["按词组连续读", "逐字母停顿", "忽略单词重音"], answer: "按词组连续读", explanation: "先保留单词重音，再减少不必要的停顿。" } }
     ] }
   ],
   placement: [
@@ -93,20 +93,20 @@ window.RU_BEGINNER_DATA = Object.freeze({
     { category:"字母", prompt:"Ш 通常对应哪个声音？", options:["sh","zh","ch"], answer:"sh" },
     { category:"拼读", prompt:"Ь 应该怎样读？", options:["不单独发音","固定读 i","固定读 y"], answer:"不单独发音" },
     { category:"拼读", prompt:"词首 Я 通常更接近什么？", options:["ya","a","yo"], answer:"ya" },
-    { category:"拼读", prompt:"「такси」是什么意思？", options:["出租车","地铁","酒店"], answer:"出租车" },
+    { category:"拼读", prompt:"「такси」第一部分应怎样读？", options:["tak","tas","tik"], answer:"tak" },
     { category:"真实读音", prompt:"俄文日常书写通常标重音吗？", options:["通常不标","每个词都标","只给地名标"], answer:"通常不标" },
     { category:"真实读音", prompt:"非重读 о 可能听起来接近什么？", options:["a","u","i"], answer:"a" },
     { category:"真实读音", prompt:"核对辅音变化最可靠的方法是？", options:["听整词音频","逐个念字母","写中文谐音"], answer:"听整词音频" },
-    { category:"旅行标识", prompt:"「ВЫХОД」是什么意思？", options:["出口","入口","车站"], answer:"出口" },
-    { category:"旅行标识", prompt:"「АПТЕКА」是什么意思？", options:["药店","餐厅","酒店"], answer:"药店" },
-    { category:"旅行标识", prompt:"「СЧЁТ」在餐厅常指什么？", options:["账单","菜单","座位"], answer:"账单" }
+    { category:"连续认读", prompt:"哪一种是 информация 的合理分块？", options:["ин · фор · ма · ци · я","и · нфо · рмация","инф · орм · ация"], answer:"ин · фор · ма · ци · я" },
+    { category:"连续认读", prompt:"句中逗号通常提示什么？", options:["短暂停顿","改变元音","重读每个词"], answer:"短暂停顿" },
+    { category:"连续认读", prompt:"完整短句更适合怎样读？", options:["按词组连续读","逐字母停顿","忽略重音"], answer:"按词组连续读" }
   ],
   challenge: [
-    { text:"ВЫХОД", pronunciation:"výkhod", zh:"出口", audioId:"ru-021" },
-    { text:"АПТЕКА", pronunciation:"aptéka", zh:"药店", audioId:"ru-026" },
-    { text:"ВОКЗАЛ", pronunciation:"vokzál", zh:"火车站", audioId:"ru-025" },
-    { text:"Где находится метро?", pronunciation:"Gde nakhóditsya metró?", zh:"地铁在哪里？", audioId:"ru-042" },
-    { text:"Повторите, пожалуйста.", pronunciation:"Pavtaríte, pozháluysta.", zh:"请再说一遍。", audioId:"ru-044" },
-    { text:"Помогите, пожалуйста!", pronunciation:"Pamagíte, pozháluysta!", zh:"请帮帮我！", audioId:"ru-045" }
+    { text:"ВОКЗАЛ", pronunciation:"vagzál", zh:"重音与弱化", audioId:"ru-025" },
+    { text:"встреча", pronunciation:"fstrécha", zh:"辅音组合", audioId:"ru-046" },
+    { text:"информация", pronunciation:"informátsiya", zh:"长词分块", audioId:"ru-049" },
+    { text:"фотография", pronunciation:"fatagráfiya", zh:"长词分块", audioId:"ru-051" },
+    { text:"Мама, это Москва.", pronunciation:"Máma, éta Maskvá.", zh:"标点停顿", audioId:"ru-054" },
+    { text:"Мы читаем новые слова.", pronunciation:"My chitáyem nóvyye slavá.", zh:"短句节奏", audioId:"ru-056" }
   ]
 });

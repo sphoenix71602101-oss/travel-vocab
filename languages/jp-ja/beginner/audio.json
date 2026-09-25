@@ -191,44 +191,33 @@
     "id": "example-contracted",
     "text": "きゃく"
   },
-  {
-    "id": "rule-voiced-ks-0",
-    "text": "が"
-  },
-  {
-    "id": "rule-voiced-ks-1",
-    "text": "ざ"
-  },
-  {
-    "id": "rule-voiced-th-0",
-    "text": "だ"
-  },
-  {
-    "id": "rule-voiced-th-1",
-    "text": "ば"
-  },
-  {
-    "id": "rule-semi-voiced-0",
-    "text": "ぱ"
-  },
-  {
-    "id": "rule-semi-voiced-1",
-    "text": "ぴ"
-  },
-  {
-    "id": "rule-semi-voiced-2",
-    "text": "ぷ"
-  },
-  {
-    "id": "rule-contracted-0",
-    "text": "きゃ"
-  },
-  {
-    "id": "rule-contracted-1",
-    "text": "しゅ"
-  },
-  {
-    "id": "rule-contracted-2",
-    "text": "ちょ"
-  }
+  { "id": "example-a", "text": "あお" },
+  { "id": "example-ta", "text": "たてもの" },
+  { "id": "example-na", "text": "なに" },
+  { "id": "example-ma", "text": "まめ" },
+  { "id": "example-ya", "text": "やすい" },
+  { "id": "example-wa", "text": "ワイン" },
+  { "id": "example-voiced-ks", "text": "かぎ" },
+  { "id": "example-word-flow", "text": "たべもの" },
+  { "id": "example-sentence", "text": "わたしは みずを のみます。" },
+  { "id": "example-sentence-2", "text": "えきへ ゆっくり あるきます。" },
+  { "id": "rule-voiced-ks-0", "text": "が" }, { "id": "rule-voiced-ks-1", "text": "ぎ" },
+  { "id": "rule-voiced-ks-2", "text": "ぐ" }, { "id": "rule-voiced-ks-3", "text": "げ" },
+  { "id": "rule-voiced-ks-4", "text": "ご" }, { "id": "rule-voiced-ks-5", "text": "ざ" },
+  { "id": "rule-voiced-ks-6", "text": "じ" }, { "id": "rule-voiced-ks-7", "text": "ず" },
+  { "id": "rule-voiced-ks-8", "text": "ぜ" }, { "id": "rule-voiced-ks-9", "text": "ぞ" },
+  { "id": "rule-voiced-th-0", "text": "だ" }, { "id": "rule-voiced-th-1", "text": "ぢ" },
+  { "id": "rule-voiced-th-2", "text": "づ" }, { "id": "rule-voiced-th-3", "text": "で" },
+  { "id": "rule-voiced-th-4", "text": "ど" }, { "id": "rule-voiced-th-5", "text": "ば" },
+  { "id": "rule-voiced-th-6", "text": "び" }, { "id": "rule-voiced-th-7", "text": "ぶ" },
+  { "id": "rule-voiced-th-8", "text": "べ" }, { "id": "rule-voiced-th-9", "text": "ぼ" },
+  { "id": "rule-voiced-th-10", "text": "ぱ" }, { "id": "rule-voiced-th-11", "text": "ぴ" },
+  { "id": "rule-voiced-th-12", "text": "ぷ" }, { "id": "rule-voiced-th-13", "text": "ぺ" },
+  { "id": "rule-voiced-th-14", "text": "ぽ" },
+  { "id": "rule-contracted-0", "text": "きゃ" }, { "id": "rule-contracted-1", "text": "しゅ" },
+  { "id": "rule-contracted-2", "text": "ちょ" },
+  { "id": "reading-word-flow-1", "text": "のみもの" }, { "id": "reading-word-flow-2", "text": "やすみ" },
+  { "id": "reading-mixed-scripts-0", "text": "ホテル" }, { "id": "reading-mixed-scripts-1", "text": "タクシー" },
+  { "id": "reading-sentence-particles-0", "text": "わたしは" }, { "id": "reading-sentence-particles-1", "text": "えきへ" },
+  { "id": "reading-sentence-particles-2", "text": "みずを" }
 ]

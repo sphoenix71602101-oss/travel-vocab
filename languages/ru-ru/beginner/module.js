@@ -1,12 +1,15 @@
 (function () {
   "use strict";
   const ID = "ru-ru-beginner";
-  const fresh = () => ({ completedLessons: [], challengeDone: false, placementPassed: false, retryWords: [] });
+  const CURRICULUM_VERSION = 2;
+  const fresh = () => ({ curriculumVersion: CURRICULUM_VERSION, completedLessons: [], challengeDone: false, placementPassed: false, retryWords: [] });
   const lessons = () => (window.RU_BEGINNER_DATA?.stages || []).flatMap((stage) => stage.lessons || []);
   function normalizeProgress(raw) {
+    if (raw?.curriculumVersion !== CURRICULUM_VERSION) return fresh();
     const validLessons = new Set(lessons().map((item) => item.id));
     const validWords = new Set((window.RU_BEGINNER_DATA?.challenge || []).map((item) => item.text));
     return {
+      curriculumVersion: CURRICULUM_VERSION,
       completedLessons: Array.from(new Set((raw?.completedLessons || []).filter((id) => validLessons.has(id)))),
       challengeDone: raw?.challengeDone === true,
       placementPassed: raw?.placementPassed === true,
@@ -15,7 +18,7 @@
   }
   function getHomeSummary(progress) {
     if (progress.placementPassed) return "已通过俄文认读测试";
-    if (progress.challengeDone) return "俄文旅行认读挑战已完成";
+    if (progress.challengeDone) return "俄文认读挑战已完成";
     return progress.completedLessons.length ? `已完成 ${progress.completedLessons.length} / ${lessons().length} 节短课` : "从西里尔字母开始，读出旅行俄语";
   }
   function createProgress() { return fresh(); }
@@ -44,9 +47,9 @@
       const all = lessons();
       const next = all.find((item) => !current.completedLessons.includes(item.id));
       const stages = window.RU_BEGINNER_DATA.stages.map((stage) => `<section class="beginner-stage"><div class="section-heading"><div><span class="eyebrow">${escapeHtml(stage.subtitle)}</span><h2>${escapeHtml(stage.title)}</h2></div></div><div class="beginner-lesson-list">${stage.lessons.map((lesson) => `<button class="beginner-lesson-row" type="button" data-ru-lesson="${lesson.id}"><span class="lesson-mark">${current.completedLessons.includes(lesson.id) ? "✓" : "○"}</span><span><strong>${escapeHtml(lesson.title)}</strong><small>${escapeHtml(lesson.subtitle)}</small></span><span aria-hidden="true">›</span></button>`).join("")}</div></section>`).join("");
-      view.innerHTML = `<div class="page-enter beginner-page">${header("从西里尔字母开始", "15 节短课带你从字母、拼读走到旅行标识和救场短句。")}
-        <section class="beginner-intro-card"><span class="eyebrow">你的进度</span><h2>${current.placementPassed ? "已通过认读测试" : current.challengeDone ? "旅行认读挑战已完成" : `已完成 ${current.completedLessons.length} / ${all.length} 节短课`}</h2><p>罗马字只是过渡扶手。课程后半段会先看俄文、再展开读音。</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-ru-start>${next ? "继续短课" : "进入认读挑战"}</button><button class="secondary-btn compact" type="button" data-ru-placement>认读测试</button></div></section>
-        ${stages}<section class="beginner-stage"><div class="section-heading"><div><span class="eyebrow">完成短课后</span><h2>旅行认读挑战</h2></div></div><p class="beginner-stage-copy">先自己读俄文，再听音并展开罗马字核对。</p><button class="secondary-btn" type="button" data-ru-challenge ${next ? "disabled" : ""}>${next ? "完成短课后开始" : "进入挑战"}</button></section></div>`;
+      view.innerHTML = `<div class="page-enter beginner-page">${header("从西里尔字母开始", "15 节短课带你从字母、拼读走到单词和短句连续认读。")}
+        <section class="beginner-intro-card"><span class="eyebrow">你的进度</span><h2>${current.placementPassed ? "已通过认读测试" : current.challengeDone ? "认读挑战已完成" : `已完成 ${current.completedLessons.length} / ${all.length} 节短课`}</h2><p>罗马字只是过渡扶手。课程后半段会先看俄文、再展开读音。</p><div class="beginner-intro-actions"><button class="primary-btn" type="button" data-ru-start>${next ? "继续短课" : "进入认读挑战"}</button><button class="secondary-btn compact" type="button" data-ru-placement>认读测试</button></div></section>
+        ${stages}<section class="beginner-stage"><div class="section-heading"><div><span class="eyebrow">完成短课后</span><h2>结课认读挑战</h2></div></div><p class="beginner-stage-copy">先自己读俄文，再听音并展开罗马字核对。</p><button class="secondary-btn" type="button" data-ru-challenge ${next ? "disabled" : ""}>${next ? "完成短课后开始" : "进入挑战"}</button></section></div>`;
       bindBack();
       view.querySelector("[data-ru-start]").addEventListener("click", () => navigatePath(next ? `beginner/lesson/${next.id}` : "beginner/challenge"));
       view.querySelector("[data-ru-placement]").addEventListener("click", () => navigatePath("beginner/placement"));
@@ -79,7 +82,7 @@
     function renderPlacement() {
       const questions = window.RU_BEGINNER_DATA.placement;
       if (!placementSession) {
-        view.innerHTML = `<div class="page-enter beginner-page">${header("俄文认读测试", "12 道题检查字母、拼读、真实读音和旅行标识。")}
+        view.innerHTML = `<div class="page-enter beginner-page">${header("俄文认读测试", "12 道题检查字母、拼读、真实读音和连续认读。")} 
           <section class="beginner-intro-card"><h2>有一点基础？先试试看</h2><p>至少答对 10 题，并在四类能力中都有正确答案即可跳过短课。没有通过也不影响使用旅行场景。</p><button class="primary-btn" type="button" data-ru-placement-start>开始测试</button></section></div>`;
         bindBack();
         view.querySelector("[data-ru-placement-start]").addEventListener("click", () => { placementSession = { questions: shuffle(questions), index: 0, score: 0, categories: new Set() }; renderPlacement(); });
@@ -106,11 +109,11 @@
       const item = items[challengeIndex];
       if (!item) {
         const current = progress(); current.challengeDone = true; current.retryWords = []; save(current); challengeIndex = 0;
-        view.innerHTML = `<div class="page-enter beginner-page">${header("挑战完成", "你已经读完六个最实用的旅行标识和短句。")}
+        view.innerHTML = `<div class="page-enter beginner-page">${header("挑战完成", "你已经读完四个单词和两个短句。")} 
           <section class="beginner-intro-card"><h2>下一站：真实旅行场景</h2><p>罗马字可以继续辅助你，但请优先看俄文并多听整词发音。</p><button class="primary-btn" type="button" data-ru-finish>返回课程</button></section></div>`;
         bindBack(); view.querySelector("[data-ru-finish]").addEventListener("click", () => navigatePath("beginner")); scrollToTop(); return;
       }
-      view.innerHTML = `<div class="page-enter beginner-page">${header("旅行认读挑战", `${challengeIndex + 1} / ${items.length} · 先自己读，再核对`)}<section class="beginner-intro-card"><span class="eyebrow">先读俄文</span><h2 lang="ru">${escapeHtml(item.text)}</h2><div data-ru-reveal hidden><p class="recognition-reading">${escapeHtml(item.pronunciation)}</p><strong>${escapeHtml(item.zh)}</strong></div><div class="beginner-intro-actions"><button class="secondary-btn" type="button" data-ru-show>展开读音</button>${speakButton(item)}</div></section><button class="primary-btn" type="button" data-ru-challenge-next>我核对好了</button></div>`;
+      view.innerHTML = `<div class="page-enter beginner-page">${header("结课认读挑战", `${challengeIndex + 1} / ${items.length} · 先自己读，再核对`)}<section class="beginner-intro-card"><span class="eyebrow">先读俄文</span><h2 lang="ru">${escapeHtml(item.text)}</h2><div data-ru-reveal hidden><p class="recognition-reading">${escapeHtml(item.pronunciation)}</p><strong>${escapeHtml(item.zh)}</strong></div><div class="beginner-intro-actions"><button class="secondary-btn" type="button" data-ru-show>展开读音</button>${speakButton(item)}</div></section><button class="primary-btn" type="button" data-ru-challenge-next>我核对好了</button></div>`;
       bindBack(); bindAudio();
       view.querySelector("[data-ru-show]").addEventListener("click", (event) => { view.querySelector("[data-ru-reveal]").hidden = false; event.currentTarget.disabled = true; });
       view.querySelector("[data-ru-challenge-next]").addEventListener("click", () => { challengeIndex += 1; renderChallenge(); });

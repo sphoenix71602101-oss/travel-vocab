@@ -78,9 +78,14 @@ test("俄语认读课按能力点拆为十五课并覆盖音频", () => {
   assert.equal(data.placement.length, 12);
   assert.equal(data.challenge.length, 6);
   const audio = context.window.RU_BEGINNER_AUDIO;
-  assert.equal(audio.length, 45);
-  assert.equal(new Set(audio.map((item) => item.id)).size, 45);
+  assert.equal(audio.length, 57);
+  assert.equal(new Set(audio.map((item) => item.id)).size, 57);
   const ids = new Set(audio.map((item) => item.id));
+  for (const item of audio) {
+    const file = path.join(root, "audio", "ru", "beginner", `${item.id}.mp3`);
+    assert.equal(fs.existsSync(file), true, `${item.id} 缺少俄语教学音频`);
+    assert.ok(fs.statSync(file).size > 0, `${item.id} 俄语教学音频为空`);
+  }
   for (const item of lessons.flatMap((lesson) => lesson.items)) assert.ok(ids.has(item.audioId), item.audioId);
   for (const item of data.challenge) assert.ok(ids.has(item.audioId), item.audioId);
 });

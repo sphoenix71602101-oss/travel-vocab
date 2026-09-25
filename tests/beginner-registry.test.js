@@ -17,7 +17,7 @@ test("初学者模块注册表校验契约并拒绝重复注册", () => {
   assert.throws(() => context.window.registerBeginnerModule({ id: "incomplete" }), /Invalid or duplicate/);
 });
 
-test("日英模块注册统一接口并清理无效旧进度", () => {
+test("日英模块注册统一接口、重置旧版进度并清理新版无效项", () => {
   const context = { window: {} };
   vm.createContext(context);
   for (const file of ["languages/jp-ja/beginner/data.js", "languages/us-en/beginner/data.js", "languages/us-en/beginner/audio.js", "core/beginner-module-registry.js", "languages/jp-ja/beginner/module.js", "languages/us-en/beginner/module.js"]) {
@@ -26,10 +26,16 @@ test("日英模块注册统一接口并清理无效旧进度", () => {
   for (const id of ["jp-ja-beginner", "us-en-beginner"]) {
     const module = context.window.TRAVEL_BEGINNER.get(id);
     assert.ok(module);
-    const normalized = module.normalizeProgress({ completedLessons: ["missing"], retryWords: ["missing"], challengeDone: 1, placementPassed: true });
+    const legacy = module.normalizeProgress({ completedLessons: ["missing"], retryWords: ["missing"], challengeDone: 1, placementPassed: true });
+    assert.equal(legacy.curriculumVersion, 2);
+    assert.deepEqual(Array.from(legacy.completedLessons), []);
+    assert.deepEqual(Array.from(legacy.retryWords), []);
+    assert.equal(legacy.challengeDone, false);
+    assert.equal(legacy.placementPassed, false);
+    const normalized = module.normalizeProgress({ curriculumVersion: 2, completedLessons: ["missing"], retryWords: ["missing"], challengeDone: true, placementPassed: true });
     assert.deepEqual(Array.from(normalized.completedLessons), []);
     assert.deepEqual(Array.from(normalized.retryWords), []);
-    assert.equal(normalized.challengeDone, false);
+    assert.equal(normalized.challengeDone, true);
     assert.equal(normalized.placementPassed, true);
     assert.equal(typeof module.getHomeSummary(normalized), "string");
   }
