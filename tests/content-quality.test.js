@@ -6,6 +6,7 @@ const vm = require("node:vm");
 
 const root = path.resolve(__dirname, "..");
 const packIds = ["jp-ja", "us-en", "kr-ko", "es-es", "ru-ru"];
+const additions = require("../scripts/content_review_additions.json");
 
 function loadPack(id) {
   const sandbox = { window: {} };
@@ -62,6 +63,36 @@ test("韩国和俄罗斯扩展短句不残留美国城市或错误本币", () =>
   for (const pack of packs.filter((item) => item.id in checks)) {
     for (const entry of pack.entries.filter((item) => /_phrase_/.test(item.id))) {
       assert.doesNotMatch(entry.zh, checks[pack.id], `${pack.id}/${entry.id}`);
+    }
+  }
+});
+
+test("新增词条严格归入既有场景且音频目录不串语言", () => {
+  const audioRoots = { "jp-ja": "audio/ja/", "us-en": "audio/en/", "kr-ko": "audio/ko/", "es-es": "audio/es/", "ru-ru": "audio/ru/" };
+  const ids = new Set(additions.map((item) => item.id));
+  for (const pack of packs) {
+    const situations = new Map(pack.scenes.map((scene) => [scene.id, new Set(scene.situations.map((item) => item.id))]));
+    const added = pack.entries.filter((entry) => ids.has(entry.id));
+    assert.equal(added.length, additions.length, pack.id);
+    for (const entry of added) {
+      assert.ok(situations.get(entry.sceneId)?.has(entry.situationId), `${pack.id}/${entry.id}`);
+      assert.ok(entry.audioPath.startsWith(audioRoots[pack.id]), `${pack.id}/${entry.id}/${entry.audioPath}`);
+    }
+  }
+});
+
+test("各目的地特色词不会串入其他国家语言包", () => {
+  const clusters = {
+    "jp-ja": /乌冬|拉面|荞麦|寿司|生鱼片|天妇罗|味噌|新干线|日式旅馆|\budon\b|\bramen\b|\bsoba\b|\bsushi\b|\bsashimi\b|\btempura\b|\bmiso\b|shinkansen/i,
+    "us-en": /汽车旅馆|煎饼|华夫饼|蛤蜊浓汤|玉米卷|通心粉奶酪|TSA|\bmotel\b|\bpancakes\b|\bwaffles\b|clam chowder|\btacos\b|mac and cheese|\bTSA\b/i,
+    "kr-ko": /泡菜|拌饭|韩式|炒年糕|五花肉|冷面|韩屋|T-money|KTX|kimchi|bibimbap|bulgogi|tteokbokki|samgyeopsal|naengmyeon|hanok/i,
+    "es-es": /西班牙小吃|西班牙土豆饼|西班牙海鲜饭|西班牙冷汤|西班牙炸丸子|伊比利亚火腿|吉事果|国营古堡酒店|\btapas\b|tortilla española|\bpaella\b|\bgazpacho\b|\bcroquetas\b|jamón ibérico|\bchurros\b|\bparador\b/i,
+    "ru-ru": /俄式薄饼|俄式饺子|奶渣饼|烤肉串|冷杂拌汤|俄式馅饼|卷心菜汤|三套车|блины|пельмени|сырники|шашлык|окрошка|пирожки|щи|Аэроэкспресс|Тройк/i,
+  };
+  for (const pack of packs) {
+    const content = pack.entries.map((entry) => [entry.zh, entry.text, entry.example?.zh, entry.example?.text].filter(Boolean).join("\n")).join("\n");
+    for (const [owner, pattern] of Object.entries(clusters)) {
+      if (pack.id !== owner) assert.doesNotMatch(content, pattern, `${pack.id} 混入 ${owner} 目的地特色词`);
     }
   }
 });

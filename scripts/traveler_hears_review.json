@@ -1,0 +1,66 @@
+{
+  "airport": {
+    "zh": ["您的航班延误了四十五分钟。","登机口已改到B12。","请把笔记本电脑从包里取出。","现在开始登机。","您的行李超重了。","请出示护照和登机牌。","这是本次航班的最后登机通知。","您的行李会在五号转盘出来。"],
+    "en": ["Your flight has been delayed by forty-five minutes.","Your gate has changed to B12.","Please take your laptop out of your bag.","We are now boarding.","Your bag is overweight.","May I see your passport and boarding pass?","This is the final boarding call for your flight.","Your luggage will arrive at carousel five."],
+    "ja": ["お客様の便は四十五分遅れています。","搭乗口はB12に変更になりました。","ノートパソコンをかばんから出してください。","ただいま搭乗を開始します。","お荷物が重量制限を超えています。","パスポートと搭乗券を見せてください。","この便の最終搭乗案内です。","お荷物は五番のターンテーブルに出てきます。"],
+    "ko": ["고객님의 항공편이 45분 지연됐습니다.","탑승구가 B12로 변경됐습니다.","노트북을 가방에서 꺼내 주세요.","지금부터 탑승을 시작하겠습니다.","수하물이 허용 무게를 초과했습니다.","여권과 탑승권을 보여 주세요.","이 항공편의 마지막 탑승 안내입니다.","수하물은 5번 수하물 벨트에서 찾으시면 됩니다."],
+    "es": ["Su vuelo lleva cuarenta y cinco minutos de retraso.","La puerta de embarque ha cambiado a la B12.","Saque el portátil de la bolsa, por favor.","Ya ha comenzado el embarque.","Su equipaje supera el peso permitido.","¿Me muestra el pasaporte y la tarjeta de embarque?","Este es el último aviso de embarque para su vuelo.","Su equipaje saldrá por la cinta cinco."],
+    "ru": ["Ваш рейс задерживается на сорок пять минут.","Выход на посадку изменён на B12.","Пожалуйста, достаньте ноутбук из сумки.","Посадка уже начинается.","Вес вашего багажа превышает норму.","Покажите, пожалуйста, паспорт и посадочный талон.","Это последнее объявление о посадке на ваш рейс.","Ваш багаж будет на пятой ленте."]
+  },
+  "transport": {
+    "zh": ["这张票九十分钟内有效。","下一站是中央车站。","末班车已经开走了。","请在三号站台换乘。","下车时也请刷交通卡。","到机场的车费大约是四十美元。","请在下一站下车。","今天这条线路暂停运营。"],
+    "en": ["This ticket is valid for ninety minutes.","The next stop is Central Station.","The last train has already left.","Please transfer at platform three.","Please tap your transit card when you get off as well.","The fare to the airport is about forty dollars.","Please get off at the next stop.","This line is not running today."],
+    "ja": ["この切符は九十分間有効です。","次は中央駅です。","終電はもう出ました。","三番ホームで乗り換えてください。","降りるときもICカードをタッチしてください。","空港までは四千円くらいです。","次の駅で降りてください。","この路線は本日運休です。"],
+    "ko": ["이 승차권은 90분 동안 유효합니다.","다음 역은 중앙역입니다.","막차는 이미 출발했습니다.","3번 승강장에서 환승하세요.","내릴 때도 교통카드를 태그해 주세요.","공항까지 요금은 약 4만 원입니다.","다음 정류장에서 내리세요.","오늘은 이 노선을 운행하지 않습니다."],
+    "es": ["Este billete es válido durante noventa minutos.","La próxima parada es Estación Central.","El último tren ya ha salido.","Haga transbordo en el andén tres.","Pase también la tarjeta al bajar.","Hasta el aeropuerto son unos cuarenta euros.","Baje en la próxima parada.","Esta línea no presta servicio hoy."],
+    "ru": ["Этот билет действует девяносто минут.","Следующая остановка — Центральный вокзал.","Последний поезд уже ушёл.","Пересядьте на третьей платформе.","При выходе тоже приложите транспортную карту.","Поездка до аэропорта стоит около сорока долларов.","Выходите на следующей остановке.","Сегодня эта линия не работает."]
+  },
+  "hotel": {
+    "zh": ["您的房间在八楼。","早餐时间是六点半到十点。","Wi-Fi密码写在房卡套上。","房间还没准备好。","我们可以免费寄存行李。","延迟退房需要额外收费。","请在这里签名。","电梯在前台右边。"],
+    "en": ["Your room is on the eighth floor.","Breakfast is served from six thirty to ten.","The Wi-Fi password is on your key-card holder.","Your room is not ready yet.","We can store your luggage free of charge.","There is an extra charge for late checkout.","Please sign here.","The elevator is to the right of the front desk."],
+    "ja": ["お部屋は八階です。","朝食は六時半から十時までです。","Wi-Fiのパスワードはカードキーのケースに書いてあります。","お部屋の準備がまだできていません。","お荷物は無料でお預かりできます。","レイトチェックアウトは追加料金がかかります。","こちらにご署名ください。","エレベーターはフロントの右側です。"],
+    "ko": ["객실은 8층에 있습니다.","조식은 6시 30분부터 10시까지입니다.","와이파이 비밀번호는 카드 키 봉투에 적혀 있습니다.","아직 객실 준비가 안 됐습니다.","짐은 무료로 보관해 드릴 수 있습니다.","레이트 체크아웃은 추가 요금이 있습니다.","여기에 서명해 주세요.","엘리베이터는 프런트 오른쪽에 있습니다."],
+    "es": ["Su habitación está en la octava planta.","El desayuno se sirve de seis y media a diez.","La contraseña del wifi está en la funda de la tarjeta.","La habitación todavía no está preparada.","Podemos guardar su equipaje gratuitamente.","La salida tardía tiene un suplemento.","Firme aquí, por favor.","El ascensor está a la derecha de recepción."],
+    "ru": ["Ваш номер находится на восьмом этаже.","Завтрак подают с половины седьмого до десяти.","Пароль от Wi-Fi указан на конверте от ключ-карты.","Ваш номер ещё не готов.","Мы можем бесплатно оставить ваш багаж на хранение.","За поздний выезд взимается дополнительная плата.","Распишитесь, пожалуйста, здесь.","Лифт находится справа от стойки регистрации."]
+  },
+  "food": {
+    "zh": ["这道菜含有花生。","这份汤不是素食。","今天的特色菜是烤鱼。","饮用水需要另外付费。","您的菜大约十五分钟后上。","这份可以做成不辣的。","账单里已经包含服务费。","我们可以为您分开结账。"],
+    "en": ["This dish contains peanuts.","This soup is not vegetarian.","Today's special is grilled fish.","There is a charge for drinking water.","Your food will be ready in about fifteen minutes.","We can make this without spice.","The service charge is already included.","We can split the bill for you."],
+    "ja": ["この料理にはピーナッツが入っています。","このスープはベジタリアン対応ではありません。","本日のおすすめは焼き魚です。","お水は有料です。","お料理は十五分ほどでご用意できます。","こちらは辛くせずに作れます。","サービス料はすでに含まれています。","別会計にできます。"],
+    "ko": ["이 음식에는 땅콩이 들어 있습니다.","이 수프는 채식 메뉴가 아닙니다.","오늘의 추천 메뉴는 생선구이입니다.","물은 별도 요금이 있습니다.","음식은 약 15분 후에 나옵니다.","이 메뉴는 맵지 않게 만들 수 있습니다.","서비스 요금이 이미 포함되어 있습니다.","따로 계산해 드릴 수 있습니다."],
+    "es": ["Este plato contiene cacahuetes.","Esta sopa no es vegetariana.","El plato del día es pescado a la plancha.","El agua se cobra aparte.","La comida tardará unos quince minutos.","Podemos prepararlo sin picante.","El servicio ya está incluido.","Podemos cobrarles por separado."],
+    "ru": ["В этом блюде есть арахис.","Этот суп не вегетарианский.","Сегодняшнее фирменное блюдо — рыба на гриле.","Вода оплачивается отдельно.","Ваш заказ будет готов примерно через пятнадцать минут.","Это блюдо можно приготовить неострым.","Сервисный сбор уже включён.","Мы можем рассчитать вас отдельно."]
+  },
+  "shopping": {
+    "zh": ["这个尺码已经缺货了。","退货需要出示收据。","退款会原路退回。","这件商品不能退税。","请输入银行卡PIN码。","这里支持非接触支付。","折扣商品不能换货。","您可以在二楼办理退税。"],
+    "en": ["That size is out of stock.","You need the receipt to return this item.","The refund will go back to your original payment method.","This item is not eligible for a tax refund.","Please enter your card PIN.","We accept contactless payment here.","Sale items cannot be exchanged.","You can claim your tax refund on the second floor."],
+    "ja": ["そのサイズは在庫切れです。","返品にはレシートが必要です。","返金はお支払い時と同じ方法で行います。","こちらの商品は免税対象外です。","カードの暗証番号を入力してください。","こちらではタッチ決済が使えます。","セール品は交換できません。","二階で免税手続きができます。"],
+    "ko": ["그 사이즈는 품절입니다.","반품하려면 영수증이 필요합니다.","환불은 원래 결제 수단으로 처리됩니다.","이 상품은 면세 대상이 아닙니다.","카드 비밀번호를 입력해 주세요.","여기서는 비접촉 결제가 가능합니다.","할인 상품은 교환이 불가능합니다.","2층에서 택스 리펀드를 받으실 수 있습니다."],
+    "es": ["Esa talla está agotada.","Necesita el tique para devolverlo.","El reembolso se hará al método de pago original.","Este artículo no admite devolución de impuestos.","Introduzca el PIN de la tarjeta, por favor.","Aquí aceptamos pago sin contacto.","Los artículos rebajados no se pueden cambiar.","Puede tramitar la devolución del IVA en la segunda planta."],
+    "ru": ["Этого размера нет в наличии.","Для возврата нужен чек.","Деньги вернутся на тот же способ оплаты.","На этот товар возврат налога не оформляется.","Введите, пожалуйста, ПИН-код карты.","Здесь принимают бесконтактную оплату.","Товары со скидкой обмену не подлежат.","Возврат налога можно оформить на втором этаже."]
+  },
+  "directions": {
+    "zh": ["一直走到第二个路口。","在红绿灯处左转。","车站就在银行对面。","步行大约需要十分钟。","过桥后您会看到博物馆。","您走错方向了。","入口在大楼后面。","这条路现在封闭了。"],
+    "en": ["Go straight to the second intersection.","Turn left at the traffic light.","The station is across from the bank.","It is about a ten-minute walk.","You will see the museum after you cross the bridge.","You are going the wrong way.","The entrance is behind the building.","This road is closed right now."],
+    "ja": ["二つ目の交差点までまっすぐ進んでください。","信号を左に曲がってください。","駅は銀行の向かいです。","歩いて十分くらいです。","橋を渡ると博物館が見えます。","方向が反対です。","入口は建物の裏にあります。","この道は現在通行止めです。"],
+    "ko": ["두 번째 교차로까지 쭉 가세요.","신호등에서 왼쪽으로 도세요.","역은 은행 맞은편에 있습니다.","걸어서 약 10분 걸립니다.","다리를 건너면 박물관이 보입니다.","반대 방향으로 가고 계세요.","입구는 건물 뒤쪽에 있습니다.","이 길은 지금 통제 중입니다."],
+    "es": ["Siga recto hasta el segundo cruce.","Gire a la izquierda en el semáforo.","La estación está enfrente del banco.","Son unos diez minutos andando.","Al cruzar el puente verá el museo.","Va en la dirección equivocada.","La entrada está detrás del edificio.","Esta calle está cortada ahora mismo."],
+    "ru": ["Идите прямо до второго перекрёстка.","На светофоре поверните налево.","Станция находится напротив банка.","Пешком около десяти минут.","После моста вы увидите музей.","Вы идёте не в ту сторону.","Вход находится за зданием.","Сейчас эта дорога перекрыта."]
+  },
+  "emergency": {
+    "zh": ["救护车已经在路上了。","请不要移动伤者。","最近的急诊室在两公里外。","请告诉我您哪里疼。","您的护照已送到失物招领处。","请在这里填写报失单。","请保持清醒并慢慢呼吸。","警察大约十分钟后到。"],
+    "en": ["The ambulance is on its way.","Please do not move the injured person.","The nearest emergency room is two kilometers away.","Please tell me where it hurts.","Your passport has been taken to the lost and found.","Please fill out a loss report here.","Stay awake and breathe slowly.","The police will arrive in about ten minutes."],
+    "ja": ["救急車はこちらに向かっています。","けが人を動かさないでください。","最寄りの救急外来は二キロ先です。","どこが痛むか教えてください。","パスポートは遺失物取扱所に届いています。","こちらで遺失届に記入してください。","意識を保って、ゆっくり呼吸してください。","警察は十分ほどで到着します。"],
+    "ko": ["구급차가 오고 있습니다.","부상자를 움직이지 마세요.","가장 가까운 응급실은 2킬로미터 떨어져 있습니다.","어디가 아픈지 말씀해 주세요.","여권이 분실물 센터에 접수됐습니다.","여기에 분실 신고서를 작성해 주세요.","정신을 잃지 말고 천천히 숨을 쉬세요.","경찰이 약 10분 후에 도착합니다."],
+    "es": ["La ambulancia está de camino.","No mueva a la persona herida, por favor.","Urgencias está a dos kilómetros.","Dígame dónde le duele.","Su pasaporte está en objetos perdidos.","Rellene aquí la denuncia de pérdida.","Manténgase despierto y respire despacio.","La policía llegará en unos diez minutos."],
+    "ru": ["Скорая помощь уже едет.","Пожалуйста, не двигайте пострадавшего.","Ближайшее приёмное отделение находится в двух километрах.","Скажите, пожалуйста, где у вас болит.","Ваш паспорт передали в бюро находок.","Заполните здесь заявление об утере.","Не теряйте сознание и дышите медленно.","Полиция будет примерно через десять минут."]
+  },
+  "basics": {
+    "zh": ["我会说一点英语。","请稍等一下。","这个词的意思是入口。","您可以在这里购买SIM卡。","这张eSIM会立即开通。","您的余额不足。","充值后请重启手机。","没问题，我可以写下来。"],
+    "en": ["I speak a little English.","Please wait a moment.","This word means entrance.","You can buy a SIM card here.","This eSIM will activate immediately.","Your balance is too low.","Please restart your phone after topping up.","No problem, I can write it down for you."],
+    "ja": ["英語は少し話せます。","少々お待ちください。","この言葉は入口という意味です。","こちらでSIMカードを購入できます。","このeSIMはすぐに開通します。","残高が不足しています。","チャージした後、携帯電話を再起動してください。","大丈夫です。書いてお渡しします。"],
+    "ko": ["영어를 조금 할 수 있습니다.","잠시만 기다려 주세요.","이 단어는 입구라는 뜻입니다.","여기에서 유심 카드를 살 수 있습니다.","이 eSIM은 바로 개통됩니다.","잔액이 부족합니다.","충전한 뒤 휴대전화를 다시 시작해 주세요.","괜찮습니다. 적어 드릴게요."],
+    "es": ["Hablo un poco de inglés.","Espere un momento, por favor.","Esta palabra significa entrada.","Aquí puede comprar una tarjeta SIM.","Esta eSIM se activará inmediatamente.","No tiene saldo suficiente.","Reinicie el teléfono después de la recarga.","No hay problema, se lo puedo escribir."],
+    "ru": ["Я немного говорю по-английски.","Подождите, пожалуйста, минутку.","Это слово означает «вход».","Здесь можно купить SIM-карту.","Эта eSIM активируется сразу.","На вашем счёте недостаточно средств.","После пополнения перезагрузите телефон.","Без проблем, я могу это написать."]
+  }
+}

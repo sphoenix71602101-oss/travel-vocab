@@ -1,0 +1,18 @@
+[
+  {"id":"food_097","zh":"请问有纯素菜品吗？","ja":"ヴィーガン対応の料理はありますか？","en":"Do you have any vegan dishes?","ko":"비건 메뉴가 있나요?","es":"¿Tienen algún plato vegano?","ru":"Есть ли у вас веганские блюда?"},
+  {"id":"food_098","zh":"这道菜是清真的吗？","ja":"この料理はハラールですか？","en":"Is this dish halal?","ko":"이 음식은 할랄인가요?","es":"¿Este plato es halal?","ru":"Это блюдо халяльное?"},
+  {"id":"food_099","zh":"有无麸质的面包吗？","ja":"グルテンフリーのパンはありますか？","en":"Do you have gluten-free bread?","ko":"글루텐 프리 빵이 있나요?","es":"¿Tienen pan sin gluten?","ru":"Можно заказать хлеб без глютена?"},
+  {"id":"food_100","zh":"我乳糖不耐，不能喝普通牛奶。","ja":"乳糖不耐症なので、普通の牛乳は飲めません。","en":"I am lactose intolerant, so I cannot drink regular milk.","ko":"유당불내증이 있어서 일반 우유는 못 마셔요.","es":"Soy intolerante a la lactosa y no puedo tomar leche normal.","ru":"У меня непереносимость лактозы, поэтому обычное молоко мне нельзя."},
+  {"id":"food_101","zh":"我对花生严重过敏。","ja":"ピーナッツに重いアレルギーがあります。","en":"I have a severe peanut allergy.","ko":"저는 땅콩 알레르기가 심해요.","es":"Tengo una alergia grave a los cacahuetes.","ru":"У меня сильная аллергия на арахис."},
+  {"id":"food_102","zh":"这份甜点里有坚果吗？","ja":"このデザートにナッツ類は入っていますか？","en":"Does this dessert contain tree nuts?","ko":"이 디저트에 견과류가 들어 있나요?","es":"¿Este postre contiene frutos secos?","ru":"В этом десерте есть орехи?"},
+  {"id":"food_103","zh":"我对虾和其他甲壳类过敏。","ja":"エビなどの甲殻類にアレルギーがあります。","en":"I am allergic to shrimp and other shellfish.","ko":"새우 같은 갑각류 알레르기가 있어요.","es":"Soy alérgico a las gambas y otros crustáceos.","ru":"У меня аллергия на креветки и других ракообразных."},
+  {"id":"food_104","zh":"这里的自来水可以直接喝吗？","ja":"ここの水道水はそのまま飲めますか？","en":"Is the tap water safe to drink here?","ko":"여기 수돗물은 마셔도 되나요?","es":"¿Se puede beber el agua del grifo aquí?","ru":"Здесь можно пить воду из-под крана?"},
+  {"id":"food_105","zh":"请告诉我这道菜含有哪些过敏原。","ja":"この料理に含まれるアレルゲンを教えてください。","en":"Please tell me which allergens are in this dish.","ko":"이 음식에 어떤 알레르기 유발 성분이 있는지 알려 주세요.","es":"Dígame qué alérgenos contiene este plato, por favor.","ru":"Скажите, пожалуйста, какие аллергены есть в этом блюде."},
+  {"id":"food_106","zh":"请把账单分开结算。","ja":"会計を別々にしてください。","en":"Please split the bill for us.","ko":"따로 계산해 주세요.","es":"Cóbranos por separado, por favor.","ru":"Рассчитайте нас, пожалуйста, отдельно."},
+  {"id":"emergency_045","zh":"请带我去最近的急诊室。","ja":"最寄りの救急外来に連れて行ってください。","en":"Please take me to the nearest emergency room.","ko":"가장 가까운 응급실로 데려가 주세요.","es":"Lléveme a urgencias, por favor.","ru":"Отвезите меня, пожалуйста, в ближайшее приёмное отделение."},
+  {"id":"emergency_046","zh":"我的手机被盗了。","ja":"携帯電話を盗まれました。","en":"My phone was stolen.","ko":"휴대전화를 도난당했어요.","es":"Me han robado el móvil.","ru":"У меня украли телефон."},
+  {"id":"emergency_047","zh":"失物招领处在哪里？","ja":"遺失物取扱所はどこですか？","en":"Where is the lost and found?","ko":"분실물 센터가 어디예요?","es":"¿Dónde está la oficina de objetos perdidos?","ru":"Где находится бюро находок?"},
+  {"id":"emergency_048","zh":"我呼吸困难。","ja":"息が苦しいです。","en":"I am having difficulty breathing.","ko":"숨쉬기가 힘들어요.","es":"Me cuesta respirar.","ru":"Мне трудно дышать."},
+  {"id":"emergency_049","zh":"我胸口很痛。","ja":"胸がとても痛いです。","en":"I have severe chest pain.","ko":"가슴이 너무 아파요.","es":"Tengo un dolor fuerte en el pecho.","ru":"У меня сильная боль в груди."},
+  {"id":"emergency_050","zh":"他刚才昏倒了。","ja":"この人は先ほど意識を失いました。","en":"This person just fainted.","ko":"이분이 방금 기절했어요.","es":"Esta persona acaba de desmayarse.","ru":"Этот человек только что потерял сознание."}
+]

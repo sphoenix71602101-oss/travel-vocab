@@ -5737,8 +5737,8 @@
       "intent": "recognize",
       "example": {
         "id": "es-es_numbers_014_example",
-        "zh": "这里大约有一万人。",
-        "text": "Aquí viven unas diez mil personas."
+        "zh": "这个景点每年接待一万多名游客。",
+        "text": "Esta atracción recibe a más de diez mil visitantes al año."
       }
     },
     {
@@ -7984,10 +7984,10 @@
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "请帮我确认一下登机口。",
-      "text": "¿Puede confirmarme la puerta de embarque?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "您的航班延误了四十五分钟。",
+      "text": "Su vuelo lleva cuarenta y cinco minutos de retraso.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_airport_phrase_019.mp3"
     },
     {
@@ -7995,10 +7995,10 @@
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "什么时候开始登机？",
-      "text": "¿Cuándo empieza el embarque?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "登机口已改到B12。",
+      "text": "La puerta de embarque ha cambiado a la B12.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_airport_phrase_020.mp3"
     },
     {
@@ -8006,10 +8006,10 @@
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "起飞时间推迟了吗？",
-      "text": "¿Se ha retrasado la hora de despegue?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "请把笔记本电脑从包里取出。",
+      "text": "Saque el portátil de la bolsa, por favor.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_airport_phrase_021.mp3"
     },
     {
@@ -8028,10 +8028,10 @@
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "我的安全带扣不上。",
-      "text": "No consigo abrocharme el cinturón de seguridad.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "现在开始登机。",
+      "text": "Ya ha comenzado el embarque.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_airport_phrase_023.mp3"
     },
     {
@@ -8061,10 +8061,10 @@
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "持中国护照应该走哪条入境通道？",
-      "text": "¿Qué fila debo seguir para entrar con pasaporte chino?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "您的行李超重了。",
+      "text": "Su equipaje supera el peso permitido.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_airport_phrase_026.mp3"
     },
     {
@@ -8083,10 +8083,10 @@
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "还需要填写入境卡吗？",
-      "text": "¿Todavía hay que rellenar una tarjeta de entrada?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "请出示护照和登机牌。",
+      "text": "¿Me muestra el pasaporte y la tarjeta de embarque?",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_airport_phrase_028.mp3"
     },
     {
@@ -8094,10 +8094,10 @@
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "可以帮我填写海关申报单吗？",
-      "text": "¿Puede ayudarme a rellenar la declaración de aduanas?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "这是本次航班的最后登机通知。",
+      "text": "Este es el último aviso de embarque para su vuelo.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_airport_phrase_029.mp3"
     },
     {
@@ -8105,10 +8105,10 @@
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "非欧盟护照应该排哪一队？",
-      "text": "¿Qué cola es para pasaportes de fuera de la Unión Europea?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "您的行李会在五号转盘出来。",
+      "text": "Su equipaje saldrá por la cinta cinco.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_airport_phrase_030.mp3"
     },
     {
@@ -8314,10 +8314,10 @@
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "请打表。",
-      "text": "Ponga el taxímetro, por favor.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "这张票九十分钟内有效。",
+      "text": "Este billete es válido durante noventa minutos.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_transport_phrase_019.mp3"
     },
     {
@@ -8325,10 +8325,10 @@
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "请开到这个地址。",
-      "text": "Lléveme a esta dirección, por favor.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "下一站是中央车站。",
+      "text": "La próxima parada es Estación Central.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_transport_phrase_020.mp3"
     },
     {
@@ -8336,10 +8336,10 @@
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "到机场大约多少钱？",
-      "text": "¿Cuánto cuesta aproximadamente ir al aeropuerto?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "末班车已经开走了。",
+      "text": "El último tren ya ha salido.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_transport_phrase_021.mp3"
     },
     {
@@ -8358,10 +8358,10 @@
       "sceneId": "transport",
       "situationId": "transfer",
       "kind": "phrase",
-      "zh": "最近的加油站在哪里？",
-      "text": "¿Dónde está la gasolinera más cercana?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "请在三号站台换乘。",
+      "text": "Haga transbordo en el andén tres.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_transport_phrase_023.mp3"
     },
     {
@@ -8391,10 +8391,10 @@
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "这辆车用汽油还是柴油？",
-      "text": "¿Este coche usa gasolina o diésel?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "下车时也请刷交通卡。",
+      "text": "Pase también la tarjeta al bajar.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_transport_phrase_026.mp3"
     },
     {
@@ -8413,10 +8413,10 @@
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "请加满九五号汽油。",
-      "text": "Llene el depósito de gasolina sin plomo 95, por favor.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "到机场的车费大约是四十美元。",
+      "text": "Hasta el aeropuerto son unos cuarenta euros.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_transport_phrase_028.mp3"
     },
     {
@@ -8424,10 +8424,10 @@
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "停车费在哪里支付？",
-      "text": "¿Dónde se paga el aparcamiento?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "请在下一站下车。",
+      "text": "Baje en la próxima parada.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_transport_phrase_029.mp3"
     },
     {
@@ -8435,10 +8435,10 @@
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "过了红绿灯就是入口。",
-      "text": "La entrada está justo después del semáforo.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "今天这条线路暂停运营。",
+      "text": "Esta línea no presta servicio hoy.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_transport_phrase_030.mp3"
     },
     {
@@ -8644,10 +8644,10 @@
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "房间里有熨斗吗？",
-      "text": "¿Hay una plancha en la habitación?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "您的房间在八楼。",
+      "text": "Su habitación está en la octava planta.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_hotel_phrase_019.mp3"
     },
     {
@@ -8655,10 +8655,10 @@
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "可以在房间里加一张婴儿床吗？",
-      "text": "¿Pueden poner una cuna en la habitación?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "早餐时间是六点半到十点。",
+      "text": "El desayuno se sirve de seis y media a diez.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_hotel_phrase_020.mp3"
     },
     {
@@ -8666,10 +8666,10 @@
       "sceneId": "hotel",
       "situationId": "hotel-problems",
       "kind": "phrase",
-      "zh": "今晚所有房型都满了吗？",
-      "text": "¿Están ocupadas todas las habitaciones para esta noche?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "Wi-Fi密码写在房卡套上。",
+      "text": "La contraseña del wifi está en la funda de la tarjeta.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_hotel_phrase_021.mp3"
     },
     {
@@ -8688,10 +8688,10 @@
       "sceneId": "hotel",
       "situationId": "hotel-problems",
       "kind": "phrase",
-      "zh": "这一层的灭火器在哪里？",
-      "text": "¿Dónde está el extintor de esta planta?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "房间还没准备好。",
+      "text": "La habitación todavía no está preparada.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_hotel_phrase_023.mp3"
     },
     {
@@ -8721,10 +8721,10 @@
       "sceneId": "hotel",
       "situationId": "hotel-problems",
       "kind": "phrase",
-      "zh": "周末也已经满房了吗？",
-      "text": "¿También está completo el hotel este fin de semana?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "我们可以免费寄存行李。",
+      "text": "Podemos guardar su equipaje gratuitamente.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_hotel_phrase_026.mp3"
     },
     {
@@ -8743,10 +8743,10 @@
       "sceneId": "hotel",
       "situationId": "checkout-storage",
       "kind": "phrase",
-      "zh": "请帮我确认退房时间。",
-      "text": "¿Puede confirmarme la hora de salida?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "延迟退房需要额外收费。",
+      "text": "La salida tardía tiene un suplemento.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_hotel_phrase_028.mp3"
     },
     {
@@ -8754,10 +8754,10 @@
       "sceneId": "hotel",
       "situationId": "checkout-storage",
       "kind": "phrase",
-      "zh": "可以给我一张正式收据吗？",
-      "text": "¿Me puede dar un recibo oficial?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "请在这里签名。",
+      "text": "Firme aquí, por favor.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_hotel_phrase_029.mp3"
     },
     {
@@ -8765,10 +8765,10 @@
       "sceneId": "hotel",
       "situationId": "checkout-storage",
       "kind": "phrase",
-      "zh": "请帮我核对一下账单。",
-      "text": "¿Puede revisar la cuenta conmigo?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "电梯在前台右边。",
+      "text": "El ascensor está a la derecha de recepción.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_hotel_phrase_030.mp3"
     },
     {
@@ -8974,10 +8974,10 @@
       "sceneId": "food",
       "situationId": "dining-requests",
       "kind": "phrase",
-      "zh": "可以给我一双筷子吗？",
-      "text": "¿Me puede traer unos palillos?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "这道菜含有花生。",
+      "text": "Este plato contiene cacahuetes.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_food_phrase_019.mp3"
     },
     {
@@ -8985,10 +8985,10 @@
       "sceneId": "food",
       "situationId": "dining-requests",
       "kind": "phrase",
-      "zh": "汤匙掉到地上了，可以换一把吗？",
-      "text": "Se me ha caído la cuchara, ¿me trae otra?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "这份汤不是素食。",
+      "text": "Esta sopa no es vegetariana.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_food_phrase_020.mp3"
     },
     {
@@ -8996,10 +8996,10 @@
       "sceneId": "food",
       "situationId": "dining-requests",
       "kind": "phrase",
-      "zh": "可以再给我一把叉子吗？",
-      "text": "¿Me trae otro tenedor?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "今天的特色菜是烤鱼。",
+      "text": "El plato del día es pescado a la plancha.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_food_phrase_021.mp3"
     },
     {
@@ -9018,10 +9018,10 @@
       "sceneId": "food",
       "situationId": "food-confirm",
       "kind": "phrase",
-      "zh": "味噌汤里有鱼吗？",
-      "text": "¿La sopa de miso lleva pescado?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "饮用水需要另外付费。",
+      "text": "El agua se cobra aparte.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_food_phrase_023.mp3"
     },
     {
@@ -9051,10 +9051,10 @@
       "sceneId": "food",
       "situationId": "food-confirm",
       "kind": "phrase",
-      "zh": "牛肉请做全熟。",
-      "text": "La ternera bien hecha, por favor.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "您的菜大约十五分钟后上。",
+      "text": "La comida tardará unos quince minutos.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_food_phrase_026.mp3"
     },
     {
@@ -9073,10 +9073,10 @@
       "sceneId": "food",
       "situationId": "food-checkout",
       "kind": "phrase",
-      "zh": "我们在哪里付款？",
-      "text": "¿Dónde se paga?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "这份可以做成不辣的。",
+      "text": "Podemos prepararlo sin picante.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_food_phrase_028.mp3"
     },
     {
@@ -9084,10 +9084,10 @@
       "sceneId": "food",
       "situationId": "food-checkout",
       "kind": "phrase",
-      "zh": "麻烦把账单拿给我们。",
-      "text": "¿Nos trae la cuenta, por favor?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "账单里已经包含服务费。",
+      "text": "El servicio ya está incluido.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_food_phrase_029.mp3"
     },
     {
@@ -9095,10 +9095,10 @@
       "sceneId": "food",
       "situationId": "food-checkout",
       "kind": "phrase",
-      "zh": "可以在收银台分开付款吗？",
-      "text": "¿Podemos pagar por separado en la caja?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "我们可以为您分开结账。",
+      "text": "Podemos cobrarles por separado.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_food_phrase_030.mp3"
     },
     {
@@ -9304,10 +9304,10 @@
       "sceneId": "shopping",
       "situationId": "price-discount",
       "kind": "phrase",
-      "zh": "有没有更便宜的款式？",
-      "text": "¿Tiene algún modelo más barato?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "这个尺码已经缺货了。",
+      "text": "Esa talla está agotada.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_shopping_phrase_019.mp3"
     },
     {
@@ -9315,10 +9315,10 @@
       "sceneId": "shopping",
       "situationId": "payment",
       "kind": "phrase",
-      "zh": "标价包含增值税吗？",
-      "text": "¿El precio incluye el IVA?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "退货需要出示收据。",
+      "text": "Necesita el tique para devolverlo.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_shopping_phrase_020.mp3"
     },
     {
@@ -9326,10 +9326,10 @@
       "sceneId": "shopping",
       "situationId": "payment",
       "kind": "phrase",
-      "zh": "可以用信用卡付款吗？",
-      "text": "¿Puedo pagar con tarjeta de crédito?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "退款会原路退回。",
+      "text": "El reembolso se hará al método de pago original.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_shopping_phrase_021.mp3"
     },
     {
@@ -9348,10 +9348,10 @@
       "sceneId": "shopping",
       "situationId": "payment",
       "kind": "phrase",
-      "zh": "可以找开五十欧元吗？",
-      "text": "¿Tiene cambio de cincuenta euros?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "这件商品不能退税。",
+      "text": "Este artículo no admite devolución de impuestos.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_shopping_phrase_023.mp3"
     },
     {
@@ -9381,10 +9381,10 @@
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "小票上的价格不对。",
-      "text": "El precio del tique no es correcto.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "请输入银行卡PIN码。",
+      "text": "Introduzca el PIN de la tarjeta, por favor.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_shopping_phrase_026.mp3"
     },
     {
@@ -9403,10 +9403,10 @@
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "可以重新打印小票吗？",
-      "text": "¿Puede volver a imprimir el tique?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "这里支持非接触支付。",
+      "text": "Aquí aceptamos pago sin contacto.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_shopping_phrase_028.mp3"
     },
     {
@@ -9414,10 +9414,10 @@
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "小票上没有显示折扣。",
-      "text": "El descuento no aparece en el tique.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "折扣商品不能换货。",
+      "text": "Los artículos rebajados no se pueden cambiar.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_shopping_phrase_029.mp3"
     },
     {
@@ -9425,10 +9425,10 @@
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "可以给我一张用于退税的发票吗？",
-      "text": "¿Puede darme una factura para solicitar la devolución del IVA?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "您可以在二楼办理退税。",
+      "text": "Puede tramitar la devolución del IVA en la segunda planta.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_shopping_phrase_030.mp3"
     },
     {
@@ -9634,10 +9634,10 @@
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "过桥后向左转。",
-      "text": "Después de cruzar el puente, gire a la izquierda.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "一直走到第二个路口。",
+      "text": "Siga recto hasta el segundo cruce.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_directions_phrase_019.mp3"
     },
     {
@@ -9645,10 +9645,10 @@
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "这条路通往市中心吗？",
-      "text": "¿Esta carretera lleva al centro?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "在红绿灯处左转。",
+      "text": "Gire a la izquierda en el semáforo.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_directions_phrase_020.mp3"
     },
     {
@@ -9656,10 +9656,10 @@
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "这条街叫什么名字？",
-      "text": "¿Cómo se llama esta calle?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "车站就在银行对面。",
+      "text": "La estación está enfrente del banco.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_directions_phrase_021.mp3"
     },
     {
@@ -9678,10 +9678,10 @@
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "最近的银行几点关门？",
-      "text": "¿A qué hora cierra el banco más cercano?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "步行大约需要十分钟。",
+      "text": "Son unos diez minutos andando.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_directions_phrase_023.mp3"
     },
     {
@@ -9711,10 +9711,10 @@
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "哪一站是公交车站？",
-      "text": "¿Dónde está la parada de autobús?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "过桥后您会看到博物馆。",
+      "text": "Al cruzar el puente verá el museo.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_directions_phrase_026.mp3"
     },
     {
@@ -9733,10 +9733,10 @@
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "可以推荐一个附近的景点吗？",
-      "text": "¿Me recomienda algún lugar turístico cercano?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "您走错方向了。",
+      "text": "Va en la dirección equivocada.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_directions_phrase_028.mp3"
     },
     {
@@ -9744,10 +9744,10 @@
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "今天博物馆开门吗？",
-      "text": "¿Está abierto hoy el museo?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "入口在大楼后面。",
+      "text": "La entrada está detrás del edificio.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_directions_phrase_029.mp3"
     },
     {
@@ -9755,10 +9755,10 @@
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "从这里怎么去公园？",
-      "text": "¿Cómo se llega al parque desde aquí?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "这条路现在封闭了。",
+      "text": "Esta calle está cortada ahora mismo.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_directions_phrase_030.mp3"
     },
     {
@@ -9964,10 +9964,10 @@
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "伤口需要缝针吗？",
-      "text": "¿Hay que dar puntos en la herida?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "救护车已经在路上了。",
+      "text": "La ambulancia está de camino.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_emergency_phrase_019.mp3"
     },
     {
@@ -9975,10 +9975,10 @@
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "伤口还在流血。",
-      "text": "La herida sigue sangrando.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "请不要移动伤者。",
+      "text": "No mueva a la persona herida, por favor.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_emergency_phrase_020.mp3"
     },
     {
@@ -9986,10 +9986,10 @@
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "我可能骨折了。",
-      "text": "Creo que tengo una fractura.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "最近的急诊室在两公里外。",
+      "text": "Urgencias está a dos kilómetros.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_emergency_phrase_021.mp3"
     },
     {
@@ -10008,10 +10008,10 @@
       "sceneId": "emergency",
       "situationId": "danger-accident",
       "kind": "phrase",
-      "zh": "这里有人需要紧急帮助。",
-      "text": "Aquí hay alguien que necesita ayuda urgente.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "请告诉我您哪里疼。",
+      "text": "Dígame dónde le duele.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_emergency_phrase_023.mp3"
     },
     {
@@ -10041,10 +10041,10 @@
       "sceneId": "emergency",
       "situationId": "danger-accident",
       "kind": "phrase",
-      "zh": "怎样才能止血？",
-      "text": "¿Cómo puedo detener el sangrado?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "您的护照已送到失物招领处。",
+      "text": "Su pasaporte está en objetos perdidos.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_emergency_phrase_026.mp3"
     },
     {
@@ -10063,10 +10063,10 @@
       "sceneId": "emergency",
       "situationId": "emergency-contact",
       "kind": "phrase",
-      "zh": "这是我的保险卡。",
-      "text": "Esta es mi tarjeta del seguro.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "请在这里填写报失单。",
+      "text": "Rellene aquí la denuncia de pérdida.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_emergency_phrase_028.mp3"
     },
     {
@@ -10074,10 +10074,10 @@
       "sceneId": "emergency",
       "situationId": "emergency-contact",
       "kind": "phrase",
-      "zh": "保险公司需要一份医疗报告。",
-      "text": "La aseguradora necesita un informe médico.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "请保持清醒并慢慢呼吸。",
+      "text": "Manténgase despierto y respire despacio.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_emergency_phrase_029.mp3"
     },
     {
@@ -10085,10 +10085,10 @@
       "sceneId": "emergency",
       "situationId": "emergency-contact",
       "kind": "phrase",
-      "zh": "可以在报告中写上我的保险号码吗？",
-      "text": "¿Puede incluir mi número de seguro en el informe?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "警察大约十分钟后到。",
+      "text": "La policía llegará en unos diez minutos.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_emergency_phrase_030.mp3"
     },
     {
@@ -10294,10 +10294,10 @@
       "sceneId": "basics",
       "situationId": "numbers-quantity",
       "kind": "phrase",
-      "zh": "请给我一张票。",
-      "text": "Un billete, por favor.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "我会说一点英语。",
+      "text": "Hablo un poco de inglés.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_basics_phrase_019.mp3"
     },
     {
@@ -10305,10 +10305,10 @@
       "sceneId": "basics",
       "situationId": "numbers-quantity",
       "kind": "phrase",
-      "zh": "我们要两间房。",
-      "text": "Queremos dos habitaciones.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "请稍等一下。",
+      "text": "Espere un momento, por favor.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_basics_phrase_020.mp3"
     },
     {
@@ -10316,10 +10316,10 @@
       "sceneId": "basics",
       "situationId": "time-date",
       "kind": "phrase",
-      "zh": "今天是星期几？",
-      "text": "¿En qué día de la semana estamos?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "这个词的意思是入口。",
+      "text": "Esta palabra significa entrada.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_basics_phrase_021.mp3"
     },
     {
@@ -10338,10 +10338,10 @@
       "sceneId": "basics",
       "situationId": "time-date",
       "kind": "phrase",
-      "zh": "我昨天到的。",
-      "text": "Llegué ayer.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "您可以在这里购买SIM卡。",
+      "text": "Aquí puede comprar una tarjeta SIM.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_basics_phrase_023.mp3"
     },
     {
@@ -10371,10 +10371,10 @@
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "不，谢谢。",
-      "text": "No, gracias.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "这张eSIM会立即开通。",
+      "text": "Esta eSIM se activará inmediatamente.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_basics_phrase_026.mp3"
     },
     {
@@ -10393,10 +10393,10 @@
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "我想要靠窗的座位。",
-      "text": "Quiero un asiento junto a la ventanilla.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "您的余额不足。",
+      "text": "No tiene saldo suficiente.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_basics_phrase_028.mp3"
     },
     {
@@ -10404,10 +10404,10 @@
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "我需要一名医生。",
-      "text": "Necesito un médico.",
-      "direction": "traveler-says",
-      "intent": "communicate",
+      "zh": "充值后请重启手机。",
+      "text": "Reinicie el teléfono después de la recarga.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_basics_phrase_029.mp3"
     },
     {
@@ -10415,11 +10415,476 @@
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "附近有药店吗？",
-      "text": "¿Hay una farmacia cerca?",
-      "direction": "traveler-says",
-      "intent": "ask",
+      "zh": "没问题，我可以写下来。",
+      "text": "No hay problema, se lo puedo escribir.",
+      "direction": "traveler-hears",
+      "intent": "understand",
       "audioPath": "audio/es/es_basics_phrase_030.mp3"
+    },
+    {
+      "id": "transport_001",
+      "sceneId": "transport",
+      "situationId": "tickets-stations",
+      "kind": "word",
+      "zh": "交通卡",
+      "text": "tarjeta de transporte",
+      "audioPath": "audio/es/transport_001.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "transport_002",
+      "sceneId": "transport",
+      "situationId": "rail",
+      "kind": "word",
+      "zh": "末班车",
+      "text": "último tren",
+      "audioPath": "audio/es/transport_002.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "transport_003",
+      "sceneId": "transport",
+      "situationId": "bus-metro",
+      "kind": "word",
+      "zh": "下一站",
+      "text": "próxima parada",
+      "audioPath": "audio/es/transport_003.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "transport_004",
+      "sceneId": "transport",
+      "situationId": "bus-metro",
+      "kind": "word",
+      "zh": "终点站",
+      "text": "final de línea",
+      "audioPath": "audio/es/transport_004.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "transport_005",
+      "sceneId": "transport",
+      "situationId": "transfer",
+      "kind": "word",
+      "zh": "换乘",
+      "text": "transbordo",
+      "audioPath": "audio/es/transport_005.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "hotel_083",
+      "sceneId": "hotel",
+      "situationId": "room-facilities",
+      "kind": "word",
+      "zh": "Wi-Fi密码",
+      "text": "contraseña del wifi",
+      "audioPath": "audio/es/hotel_083.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "hotel_084",
+      "sceneId": "hotel",
+      "situationId": "hotel-check-in",
+      "kind": "word",
+      "zh": "提前入住",
+      "text": "entrada anticipada",
+      "audioPath": "audio/es/hotel_084.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "hotel_085",
+      "sceneId": "hotel",
+      "situationId": "checkout-storage",
+      "kind": "word",
+      "zh": "延迟退房",
+      "text": "salida tardía",
+      "audioPath": "audio/es/hotel_085.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "hotel_086",
+      "sceneId": "hotel",
+      "situationId": "hotel-check-in",
+      "kind": "word",
+      "zh": "自助入住",
+      "text": "registro de entrada automático",
+      "audioPath": "audio/es/hotel_086.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "food_097",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "纯素",
+      "text": "vegano",
+      "audioPath": "audio/es/food_097.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_097_example",
+        "zh": "请问有纯素菜品吗？",
+        "text": "¿Tienen algún plato vegano?"
+      }
+    },
+    {
+      "id": "food_098",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "清真",
+      "text": "halal",
+      "audioPath": "audio/es/food_098.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_098_example",
+        "zh": "这道菜是清真的吗？",
+        "text": "¿Este plato es halal?"
+      }
+    },
+    {
+      "id": "food_099",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "无麸质",
+      "text": "sin gluten",
+      "audioPath": "audio/es/food_099.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_099_example",
+        "zh": "有无麸质的面包吗？",
+        "text": "¿Tienen pan sin gluten?"
+      }
+    },
+    {
+      "id": "food_100",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "乳糖不耐",
+      "text": "intolerancia a la lactosa",
+      "audioPath": "audio/es/food_100.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_100_example",
+        "zh": "我乳糖不耐，不能喝普通牛奶。",
+        "text": "Soy intolerante a la lactosa y no puedo tomar leche normal."
+      }
+    },
+    {
+      "id": "food_101",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "花生",
+      "text": "cacahuetes",
+      "audioPath": "audio/es/food_101.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_101_example",
+        "zh": "我对花生严重过敏。",
+        "text": "Tengo una alergia grave a los cacahuetes."
+      }
+    },
+    {
+      "id": "food_102",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "坚果",
+      "text": "frutos secos",
+      "audioPath": "audio/es/food_102.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_102_example",
+        "zh": "这份甜点里有坚果吗？",
+        "text": "¿Este postre contiene frutos secos?"
+      }
+    },
+    {
+      "id": "food_103",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "甲壳类",
+      "text": "crustáceos",
+      "audioPath": "audio/es/food_103.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_103_example",
+        "zh": "我对虾和其他甲壳类过敏。",
+        "text": "Soy alérgico a las gambas y otros crustáceos."
+      }
+    },
+    {
+      "id": "food_104",
+      "sceneId": "food",
+      "situationId": "dining-requests",
+      "kind": "word",
+      "zh": "自来水",
+      "text": "agua del grifo",
+      "audioPath": "audio/es/food_104.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_104_example",
+        "zh": "这里的自来水可以直接喝吗？",
+        "text": "¿Se puede beber el agua del grifo aquí?"
+      }
+    },
+    {
+      "id": "food_105",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "过敏原",
+      "text": "alérgeno",
+      "audioPath": "audio/es/food_105.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_105_example",
+        "zh": "请告诉我这道菜含有哪些过敏原。",
+        "text": "Dígame qué alérgenos contiene este plato, por favor."
+      }
+    },
+    {
+      "id": "food_106",
+      "sceneId": "food",
+      "situationId": "food-checkout",
+      "kind": "word",
+      "zh": "分开结账",
+      "text": "pagar por separado",
+      "audioPath": "audio/es/food_106.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_food_106_example",
+        "zh": "请把账单分开结算。",
+        "text": "Cóbranos por separado, por favor."
+      }
+    },
+    {
+      "id": "shopping_074",
+      "sceneId": "shopping",
+      "situationId": "return-tax",
+      "kind": "word",
+      "zh": "退款",
+      "text": "reembolso",
+      "audioPath": "audio/es/shopping_074.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "shopping_075",
+      "sceneId": "shopping",
+      "situationId": "return-tax",
+      "kind": "word",
+      "zh": "换货",
+      "text": "cambio",
+      "audioPath": "audio/es/shopping_075.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "shopping_076",
+      "sceneId": "shopping",
+      "situationId": "find-products",
+      "kind": "word",
+      "zh": "缺货",
+      "text": "agotado",
+      "audioPath": "audio/es/shopping_076.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "shopping_077",
+      "sceneId": "shopping",
+      "situationId": "return-tax",
+      "kind": "word",
+      "zh": "免税",
+      "text": "libre de impuestos",
+      "audioPath": "audio/es/shopping_077.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "shopping_078",
+      "sceneId": "shopping",
+      "situationId": "payment",
+      "kind": "word",
+      "zh": "PIN码",
+      "text": "código PIN",
+      "audioPath": "audio/es/shopping_078.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "shopping_079",
+      "sceneId": "shopping",
+      "situationId": "payment",
+      "kind": "word",
+      "zh": "非接触支付",
+      "text": "pago sin contacto",
+      "audioPath": "audio/es/shopping_079.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "emergency_045",
+      "sceneId": "emergency",
+      "situationId": "doctor-pharmacy",
+      "kind": "word",
+      "zh": "急诊室",
+      "text": "urgencias",
+      "audioPath": "audio/es/emergency_045.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_emergency_045_example",
+        "zh": "请带我去最近的急诊室。",
+        "text": "Lléveme a urgencias, por favor."
+      }
+    },
+    {
+      "id": "emergency_046",
+      "sceneId": "emergency",
+      "situationId": "lost-stolen",
+      "kind": "word",
+      "zh": "被盗",
+      "text": "robado",
+      "audioPath": "audio/es/emergency_046.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_emergency_046_example",
+        "zh": "我的手机被盗了。",
+        "text": "Me han robado el móvil."
+      }
+    },
+    {
+      "id": "emergency_047",
+      "sceneId": "emergency",
+      "situationId": "lost-stolen",
+      "kind": "word",
+      "zh": "失物招领处",
+      "text": "objetos perdidos",
+      "audioPath": "audio/es/emergency_047.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_emergency_047_example",
+        "zh": "失物招领处在哪里？",
+        "text": "¿Dónde está la oficina de objetos perdidos?"
+      }
+    },
+    {
+      "id": "emergency_048",
+      "sceneId": "emergency",
+      "situationId": "feeling-unwell",
+      "kind": "word",
+      "zh": "呼吸困难",
+      "text": "dificultad para respirar",
+      "audioPath": "audio/es/emergency_048.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_emergency_048_example",
+        "zh": "我呼吸困难。",
+        "text": "Me cuesta respirar."
+      }
+    },
+    {
+      "id": "emergency_049",
+      "sceneId": "emergency",
+      "situationId": "feeling-unwell",
+      "kind": "word",
+      "zh": "胸痛",
+      "text": "dolor en el pecho",
+      "audioPath": "audio/es/emergency_049.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_emergency_049_example",
+        "zh": "我胸口很痛。",
+        "text": "Tengo un dolor fuerte en el pecho."
+      }
+    },
+    {
+      "id": "emergency_050",
+      "sceneId": "emergency",
+      "situationId": "feeling-unwell",
+      "kind": "word",
+      "zh": "昏倒",
+      "text": "desmayarse",
+      "audioPath": "audio/es/emergency_050.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "example": {
+        "id": "es-es_emergency_050_example",
+        "zh": "他刚才昏倒了。",
+        "text": "Esta persona acaba de desmayarse."
+      }
+    },
+    {
+      "id": "expressions_048",
+      "sceneId": "basics",
+      "situationId": "language-help",
+      "kind": "word",
+      "zh": "eSIM",
+      "text": "eSIM",
+      "audioPath": "audio/es/expressions_048.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "expressions_049",
+      "sceneId": "basics",
+      "situationId": "language-help",
+      "kind": "word",
+      "zh": "SIM卡",
+      "text": "tarjeta SIM",
+      "audioPath": "audio/es/expressions_049.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "expressions_050",
+      "sceneId": "basics",
+      "situationId": "language-help",
+      "kind": "word",
+      "zh": "充值",
+      "text": "recarga",
+      "audioPath": "audio/es/expressions_050.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
+    },
+    {
+      "id": "expressions_051",
+      "sceneId": "basics",
+      "situationId": "language-help",
+      "kind": "word",
+      "zh": "余额",
+      "text": "saldo",
+      "audioPath": "audio/es/expressions_051.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize"
     }
   ]
 });

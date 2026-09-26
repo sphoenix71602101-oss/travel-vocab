@@ -11,6 +11,7 @@ vm.runInContext(fs.readFileSync(path.join(root, "core/content-registry.js"), "ut
 for (const id of ["jp-ja", "us-en", "kr-ko"]) vm.runInContext(fs.readFileSync(path.join(root, "languages", id, "pack.js"), "utf8"), sandbox);
 const packs = sandbox.window.TRAVEL_CONTENT.all();
 const targetedExamples = require("../scripts/targeted_examples.json");
+const reviewExamples = require("../scripts/content_review_examples.json");
 
 test("日英韩是三个独立完整语言包", () => {
   assert.deepEqual(Array.from(packs, (pack) => pack.id), ["jp-ja", "us-en", "kr-ko"]);
@@ -22,9 +23,9 @@ test("日英韩是三个独立完整语言包", () => {
     for (const field of ["title", "notice", "foreignNameLabel", "unknownBloodType"]) assert.ok(emergency[field], `${pack.id}/emergencyCard/${field}`);
     for (const key of ["name", "nationality", "birthDate", "bloodType", "documentNumber", "emergencyContact", "emergencyPhone", "allergies", "conditions"]) assert.ok(emergency.labels[key], `${pack.id}/emergencyCard/labels/${key}`);
     assert.equal(pack.scenes.length, 8);
-    assert.equal(pack.entries.length, 795);
+    assert.equal(pack.entries.length, 830);
     assert.equal(pack.entries.filter((entry) => entry.kind === "phrase").length, 320);
-    assert.equal(pack.entries.filter((entry) => entry.example).length, 160 + Object.keys(targetedExamples).length);
+    assert.equal(pack.entries.filter((entry) => entry.example).length, 160 + Object.keys(targetedExamples).length + reviewExamples.length);
   }
 });
 
@@ -35,7 +36,7 @@ test("人工例句按场景均匀配置且不含旧模板话术", () => {
   for (const pack of packs) {
     for (const scene of pack.scenes) {
       const examples = pack.entries.filter((entry) => entry.sceneId === scene.id && entry.example);
-      const added = pack.entries.filter((entry) => entry.sceneId === scene.id && entry.id in targetedExamples).length;
+      const added = pack.entries.filter((entry) => entry.sceneId === scene.id && (entry.id in targetedExamples || reviewExamples.some((item) => item.id === entry.id))).length;
       assert.equal(examples.length, 20 + added, `${pack.id}/${scene.id}`);
     }
     for (const entry of pack.entries.filter((item) => item.example)) {
@@ -117,7 +118,7 @@ test("韩语包提供韩文、修订罗马字和韩国本地高频表达", () =>
   const korean = packs.find((pack) => pack.id === "kr-ko");
   assert.equal(korean.pronunciationLabel, "罗马字");
   for (const entry of korean.entries) {
-    assert.match(entry.text, /[가-힣]|^(?:Wi-Fi|KTX)$/, `${entry.id} 缺少韩文`);
+    assert.match(entry.text, /[가-힣]|^(?:Wi-Fi|KTX|eSIM)$/, `${entry.id} 缺少韩文`);
     assert.match(entry.pronunciation, /[a-z]/i, `${entry.id} 缺少罗马字`);
     assert.doesNotMatch(entry.text, /신칸센|TSA|일본식 여관/, `${entry.id} 残留其他国家表达`);
   }

@@ -1,0 +1,42 @@
+[
+  {"id":"transport_001","sceneId":"transport","situationId":"tickets-stations","zh":"交通卡","ja":"交通系ICカード","en":"transit card","ko":"교통카드","es":"tarjeta de transporte","ru":"транспортная карта"},
+  {"id":"transport_002","sceneId":"transport","situationId":"rail","zh":"末班车","ja":"終電","en":"last train","ko":"막차","es":"último tren","ru":"последний поезд"},
+  {"id":"transport_003","sceneId":"transport","situationId":"bus-metro","zh":"下一站","ja":"次の駅","en":"next stop","ko":"다음 역","es":"próxima parada","ru":"следующая остановка"},
+  {"id":"transport_004","sceneId":"transport","situationId":"bus-metro","zh":"终点站","ja":"終点","en":"last stop","ko":"종점","es":"final de línea","ru":"конечная остановка"},
+  {"id":"transport_005","sceneId":"transport","situationId":"transfer","zh":"换乘","ja":"乗り換え","en":"transfer","ko":"환승","es":"transbordo","ru":"пересадка"},
+
+  {"id":"hotel_083","sceneId":"hotel","situationId":"room-facilities","zh":"Wi-Fi密码","ja":"Wi-Fiのパスワード","en":"Wi-Fi password","ko":"와이파이 비밀번호","es":"contraseña del wifi","ru":"пароль от Wi-Fi"},
+  {"id":"hotel_084","sceneId":"hotel","situationId":"hotel-check-in","zh":"提前入住","ja":"アーリーチェックイン","en":"early check-in","ko":"얼리 체크인","es":"entrada anticipada","ru":"ранний заезд"},
+  {"id":"hotel_085","sceneId":"hotel","situationId":"checkout-storage","zh":"延迟退房","ja":"レイトチェックアウト","en":"late checkout","ko":"레이트 체크아웃","es":"salida tardía","ru":"поздний выезд"},
+  {"id":"hotel_086","sceneId":"hotel","situationId":"hotel-check-in","zh":"自助入住","ja":"セルフチェックイン","en":"self check-in","ko":"셀프 체크인","es":"registro de entrada automático","ru":"самостоятельное заселение"},
+
+  {"id":"food_097","sceneId":"food","situationId":"taste-diet","zh":"纯素","ja":"ヴィーガン","en":"vegan","ko":"비건","es":"vegano","ru":"веганское блюдо"},
+  {"id":"food_098","sceneId":"food","situationId":"taste-diet","zh":"清真","ja":"ハラール","en":"halal","ko":"할랄","es":"halal","ru":"халяль"},
+  {"id":"food_099","sceneId":"food","situationId":"taste-diet","zh":"无麸质","ja":"グルテンフリー","en":"gluten-free","ko":"글루텐 프리","es":"sin gluten","ru":"без глютена"},
+  {"id":"food_100","sceneId":"food","situationId":"taste-diet","zh":"乳糖不耐","ja":"乳糖不耐症","en":"lactose intolerance","ko":"유당불내증","es":"intolerancia a la lactosa","ru":"непереносимость лактозы"},
+  {"id":"food_101","sceneId":"food","situationId":"taste-diet","zh":"花生","ja":"ピーナッツ","en":"peanuts","ko":"땅콩","es":"cacahuetes","ru":"арахис"},
+  {"id":"food_102","sceneId":"food","situationId":"taste-diet","zh":"坚果","ja":"ナッツ類","en":"tree nuts","ko":"견과류","es":"frutos secos","ru":"орехи"},
+  {"id":"food_103","sceneId":"food","situationId":"taste-diet","zh":"甲壳类","ja":"甲殻類","en":"shellfish","ko":"갑각류","es":"crustáceos","ru":"ракообразные"},
+  {"id":"food_104","sceneId":"food","situationId":"dining-requests","zh":"自来水","ja":"水道水","en":"tap water","ko":"수돗물","es":"agua del grifo","ru":"вода из-под крана"},
+  {"id":"food_105","sceneId":"food","situationId":"taste-diet","zh":"过敏原","ja":"アレルゲン","en":"allergen","ko":"알레르기 유발 성분","es":"alérgeno","ru":"аллерген"},
+  {"id":"food_106","sceneId":"food","situationId":"food-checkout","zh":"分开结账","ja":"別会計","en":"split the bill","ko":"따로 계산","es":"pagar por separado","ru":"раздельный счёт"},
+
+  {"id":"shopping_074","sceneId":"shopping","situationId":"return-tax","zh":"退款","ja":"返金","en":"refund","ko":"환불","es":"reembolso","ru":"возврат денег"},
+  {"id":"shopping_075","sceneId":"shopping","situationId":"return-tax","zh":"换货","ja":"交換","en":"exchange","ko":"교환","es":"cambio","ru":"обмен товара"},
+  {"id":"shopping_076","sceneId":"shopping","situationId":"find-products","zh":"缺货","ja":"在庫切れ","en":"out of stock","ko":"품절","es":"agotado","ru":"нет в наличии"},
+  {"id":"shopping_077","sceneId":"shopping","situationId":"return-tax","zh":"免税","ja":"免税","en":"tax-free","ko":"면세","es":"libre de impuestos","ru":"без налога"},
+  {"id":"shopping_078","sceneId":"shopping","situationId":"payment","zh":"PIN码","ja":"暗証番号","en":"PIN","ko":"비밀번호","es":"código PIN","ru":"ПИН-код"},
+  {"id":"shopping_079","sceneId":"shopping","situationId":"payment","zh":"非接触支付","ja":"タッチ決済","en":"contactless payment","ko":"비접촉 결제","es":"pago sin contacto","ru":"бесконтактная оплата"},
+
+  {"id":"emergency_045","sceneId":"emergency","situationId":"doctor-pharmacy","zh":"急诊室","ja":"救急外来","en":"emergency room","ko":"응급실","es":"urgencias","ru":"приёмное отделение"},
+  {"id":"emergency_046","sceneId":"emergency","situationId":"lost-stolen","zh":"被盗","ja":"盗難","en":"stolen","ko":"도난","es":"robado","ru":"украдено"},
+  {"id":"emergency_047","sceneId":"emergency","situationId":"lost-stolen","zh":"失物招领处","ja":"遺失物取扱所","en":"lost and found","ko":"분실물 센터","es":"objetos perdidos","ru":"бюро находок"},
+  {"id":"emergency_048","sceneId":"emergency","situationId":"feeling-unwell","zh":"呼吸困难","ja":"息苦しい","en":"difficulty breathing","ko":"호흡 곤란","es":"dificultad para respirar","ru":"затруднённое дыхание"},
+  {"id":"emergency_049","sceneId":"emergency","situationId":"feeling-unwell","zh":"胸痛","ja":"胸の痛み","en":"chest pain","ko":"가슴 통증","es":"dolor en el pecho","ru":"боль в груди"},
+  {"id":"emergency_050","sceneId":"emergency","situationId":"feeling-unwell","zh":"昏倒","ja":"意識を失う","en":"faint","ko":"기절하다","es":"desmayarse","ru":"потерять сознание"},
+
+  {"id":"expressions_048","sceneId":"basics","situationId":"language-help","zh":"eSIM","ja":"eSIM","en":"eSIM","ko":"eSIM","es":"eSIM","ru":"eSIM"},
+  {"id":"expressions_049","sceneId":"basics","situationId":"language-help","zh":"SIM卡","ja":"SIMカード","en":"SIM card","ko":"유심 카드","es":"tarjeta SIM","ru":"SIM-карта"},
+  {"id":"expressions_050","sceneId":"basics","situationId":"language-help","zh":"充值","ja":"チャージ","en":"top up","ko":"충전","es":"recarga","ru":"пополнение"},
+  {"id":"expressions_051","sceneId":"basics","situationId":"language-help","zh":"余额","ja":"残高","en":"balance","ko":"잔액","es":"saldo","ru":"баланс"}
+]

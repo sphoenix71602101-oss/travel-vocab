@@ -22,13 +22,13 @@ test("俄罗斯俄语包规模、结构和读音字段完整", () => {
   assert.equal(pack.locale, "ru-RU");
   assert.equal(pack.speechLocale, "ru-RU");
   assert.equal(pack.scenes.length, 8);
-  assert.equal(pack.entries.length, 795);
-  assert.equal(pack.entries.filter((entry) => entry.kind === "word").length, 475);
+  assert.equal(pack.entries.length, 830);
+  assert.equal(pack.entries.filter((entry) => entry.kind === "word").length, 510);
   assert.equal(pack.entries.filter((entry) => entry.kind === "phrase").length, 320);
-  assert.equal(pack.entries.filter((entry) => entry.example).length, 230);
-  assert.equal(new Set(pack.entries.map((entry) => entry.id)).size, 795);
+  assert.equal(pack.entries.filter((entry) => entry.example).length, 246);
+  assert.equal(new Set(pack.entries.map((entry) => entry.id)).size, 830);
   for (const entry of pack.entries) {
-    assert.match(entry.text, /[А-ЯЁа-яё]|^Wi-Fi$/u, entry.id);
+    assert.match(entry.text, /[А-ЯЁа-яё]|^(?:Wi-Fi|eSIM)$/u, entry.id);
     assert.ok(entry.pronunciation?.trim(), entry.id);
     if (entry.example) assert.ok(entry.example.pronunciation?.trim(), entry.example.id);
   }
@@ -59,8 +59,8 @@ test("俄语本地化、紧急信息和例句审校标记完整", () => {
 
 test("俄语例句没有少量模板批量覆盖", () => {
   const examples = pack.entries.filter((entry) => entry.example).map((entry) => entry.example.text);
-  assert.equal(examples.length, 230);
-  assert.equal(new Set(examples).size, 230);
+  assert.equal(examples.length, 246);
+  assert.equal(new Set(examples).size, 246);
   const prefixes = new Map();
   for (const text of examples) {
     const prefix = text.toLocaleLowerCase("ru-RU").replace(/[«».,!?;:]/g, "").split(/\s+/).slice(0, 3).join(" ");

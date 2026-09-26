@@ -6305,9 +6305,9 @@
       "intent": "recognize",
       "example": {
         "id": "jp-ja_numbers_014_example",
-        "zh": "总计是一万日元。",
-        "text": "合計は一万円です。",
-        "pronunciation": "ごうけいはいちまんえんです。"
+        "zh": "这个景点每年接待一万多名游客。",
+        "text": "この観光地には毎年一万人以上の観光客が訪れます。",
+        "pronunciation": "このかんこうちにはまいとしいちまんひといじょうのかんこうきゃくがおとずれます。"
       }
     },
     {
@@ -8769,33 +8769,33 @@
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "请帮我确认一下登机口。",
-      "text": "搭乗ゲートを確認できますか？",
-      "pronunciation": "とうじょうげーとをかくにんできますか？",
+      "zh": "您的航班延误了四十五分钟。",
+      "text": "お客様の便は四十五分遅れています。",
+      "pronunciation": "おきゃくさまのびんはしじゅうごぶおくれています。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_airport_phrase_020",
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "什么时候开始登机？",
-      "text": "搭乗はいつ始まりますか?",
-      "pronunciation": "とうじょうはいつはじまりますか?",
+      "zh": "登机口已改到B12。",
+      "text": "搭乗口はB12に変更になりました。",
+      "pronunciation": "とうじょうぐちはB12にへんこうになりました。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_airport_phrase_021",
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "起飞时间推迟了吗？",
-      "text": "出発時間が遅れましたか？",
-      "pronunciation": "しゅっぱつじかんがおくれましたか？",
+      "zh": "请把笔记本电脑从包里取出。",
+      "text": "ノートパソコンをかばんから出してください。",
+      "pronunciation": "のーとぱそこんをかばんからだしてください。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_airport_phrase_022",
@@ -8805,7 +8805,7 @@
       "zh": "登机时间是几点？",
       "text": "搭乗時間は何時ですか？",
       "pronunciation": "とうじょうじかんはなんじですか？",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -8813,11 +8813,11 @@
       "sceneId": "airport",
       "situationId": "boarding-onboard",
       "kind": "phrase",
-      "zh": "我的安全带扣不上。",
-      "text": "シートベルトを締めることができません。",
-      "pronunciation": "しーとべるとをしめることができません。",
+      "zh": "现在开始登机。",
+      "text": "ただいま搭乗を開始します。",
+      "pronunciation": "ただいまとうじょうをかいしします。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_airport_phrase_024",
@@ -8827,7 +8827,7 @@
       "zh": "我已经在 Visit Japan Web 提交了申报。",
       "text": "Visit Japan Webで申告を提出しました。",
       "pronunciation": "びじっとじゃぱんうぇぶでしんこくをていしゅつしました。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "local-use"
     },
     {
@@ -8838,7 +8838,7 @@
       "zh": "我需要申报这些物品吗？",
       "text": "これらの商品は税関に申告する必要がありますか?",
       "pronunciation": "これらのしょうひんはぜいかんにしんこくするひつようがありますか?",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -8846,11 +8846,11 @@
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "持中国护照应该走哪条入境通道？",
-      "text": "中国のパスポートではどの入国審査ラインを利用すればよいですか?",
-      "pronunciation": "ちゅうごくのぱすぽーとではどのにゅうこくしんさらいんをりようすればよいですか?",
+      "zh": "您的行李超重了。",
+      "text": "お荷物が重量制限を超えています。",
+      "pronunciation": "おにもつがじゅうりょうせいげんをこえています。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_airport_phrase_027",
@@ -8868,33 +8868,33 @@
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "还需要填写入境卡吗？",
-      "text": "まだ入国カードに記入する必要がありますか?",
-      "pronunciation": "まだにゅうこくかーどにきにゅうするひつようがありますか?",
-      "direction": "traveler-says",
-      "intent": "request"
+      "zh": "请出示护照和登机牌。",
+      "text": "パスポートと搭乗券を見せてください。",
+      "pronunciation": "ぱすぽーとととうじょうけんをみせてください。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_airport_phrase_029",
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "可以帮我填写海关申报单吗？",
-      "text": "税関申告書の記入を手伝ってもらえますか?",
-      "pronunciation": "ぜいかんしんこくしょのきにゅうをてつだってもらえますか?",
-      "direction": "traveler-says",
-      "intent": "repair"
+      "zh": "这是本次航班的最后登机通知。",
+      "text": "この便の最終搭乗案内です。",
+      "pronunciation": "このびんのさいしゅうとうじょうあんないです。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_airport_phrase_030",
       "sceneId": "airport",
       "situationId": "arrival-immigration",
       "kind": "phrase",
-      "zh": "外国护照应该排哪一队？",
-      "text": "外国のパスポートはどの列ですか？",
-      "pronunciation": "がいこくのぱすぽーとはどのれつですか？",
-      "direction": "traveler-says",
-      "intent": "ask"
+      "zh": "您的行李会在五号转盘出来。",
+      "text": "お荷物は五番のターンテーブルに出てきます。",
+      "pronunciation": "おにもつはごばんのたーんてーぶるにでてきます。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_transport_phrase_001",
@@ -9099,33 +9099,33 @@
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "请打表。",
-      "text": "メーターをつけてください。",
-      "pronunciation": "めーたーをつけてください。",
+      "zh": "这张票九十分钟内有效。",
+      "text": "この切符は九十分間有効です。",
+      "pronunciation": "このきっぷはきゅうじゅうふんかんゆうこうです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_transport_phrase_020",
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "请开到这个地址。",
-      "text": "この住所まで行ってください。",
-      "pronunciation": "このじゅうしょまでいってください。",
+      "zh": "下一站是中央车站。",
+      "text": "次は中央駅です。",
+      "pronunciation": "つぎはちゅうおうえきです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_transport_phrase_021",
       "sceneId": "transport",
       "situationId": "taxi",
       "kind": "phrase",
-      "zh": "到机场大约多少钱？",
-      "text": "空港まではどのくらいかかりますか？",
-      "pronunciation": "くうこうまではどのくらいかかりますか？",
+      "zh": "末班车已经开走了。",
+      "text": "終電はもう出ました。",
+      "pronunciation": "しゅうでんはもうでました。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_transport_phrase_022",
@@ -9135,7 +9135,7 @@
       "zh": "在哪里办理租车手续？",
       "text": "レンタカーはどこで受け取れますか?",
       "pronunciation": "れんたかーはどこでうけとれますか?",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -9143,11 +9143,11 @@
       "sceneId": "transport",
       "situationId": "transfer",
       "kind": "phrase",
-      "zh": "最近的加油站在哪里？",
-      "text": "最寄のガソリンスタンドはどこですか？",
-      "pronunciation": "もよりのがそりんすたんどはどこですか？",
+      "zh": "请在三号站台换乘。",
+      "text": "三番ホームで乗り換えてください。",
+      "pronunciation": "さんばんほーむでのりかえてください。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_transport_phrase_024",
@@ -9157,7 +9157,7 @@
       "zh": "这里可以停车吗？",
       "text": "ここは駐車できますか？",
       "pronunciation": "ここはちゅうしゃできますか？",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -9168,7 +9168,7 @@
       "zh": "在红绿灯处右转。",
       "text": "信号を右折します。",
       "pronunciation": "しんごうをうせつします。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -9176,11 +9176,11 @@
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "这辆车用汽油还是柴油？",
-      "text": "この車はガソリンを使用しますか、それともディーゼルを使用しますか?",
-      "pronunciation": "このくるまはがそりんをしようしますか、それともでぃーぜるをしようしますか?",
+      "zh": "下车时也请刷交通卡。",
+      "text": "降りるときもICカードをタッチしてください。",
+      "pronunciation": "おりるときもICかーどをたっちしてください。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_transport_phrase_027",
@@ -9198,33 +9198,33 @@
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "请加满普通汽油。",
-      "text": "レギュラー満タンでお願いします。",
-      "pronunciation": "れぎゅらーまんたんでおねがいします。",
-      "direction": "traveler-says",
-      "intent": "request"
+      "zh": "到机场的车费大约是四十美元。",
+      "text": "空港までは四千円くらいです。",
+      "pronunciation": "くうこうまではよんせんえんくらいです。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_transport_phrase_029",
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "停车费在哪里支付？",
-      "text": "駐車料金はどこで支払えばよいですか?",
-      "pronunciation": "ちゅうしゃりょうきんはどこでしはらいえばよいですか?",
-      "direction": "traveler-says",
-      "intent": "repair"
+      "zh": "请在下一站下车。",
+      "text": "次の駅で降りてください。",
+      "pronunciation": "つぎのえきでおりてください。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_transport_phrase_030",
       "sceneId": "transport",
       "situationId": "rental-driving",
       "kind": "phrase",
-      "zh": "过了红绿灯就是入口。",
-      "text": "入口は信号を渡ってすぐです。",
-      "pronunciation": "いりぐちはしんごうをわたってすぐです。",
-      "direction": "traveler-says",
-      "intent": "ask"
+      "zh": "今天这条线路暂停运营。",
+      "text": "この路線は本日運休です。",
+      "pronunciation": "このろせんはほんじつうんきゅうです。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_hotel_phrase_001",
@@ -9429,33 +9429,33 @@
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "房间里有熨斗吗？",
-      "text": "部屋にアイロンはありますか？",
-      "pronunciation": "へやにあいろんはありますか？",
+      "zh": "您的房间在八楼。",
+      "text": "お部屋は八階です。",
+      "pronunciation": "おへやははちかいです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_hotel_phrase_020",
       "sceneId": "hotel",
       "situationId": "hotel-requests",
       "kind": "phrase",
-      "zh": "可以在房间里加一张婴儿床吗？",
-      "text": "部屋にベビーベッドを置いてもらえますか？",
-      "pronunciation": "へやにべびーべっどをおいてもらえますか？",
+      "zh": "早餐时间是六点半到十点。",
+      "text": "朝食は六時半から十時までです。",
+      "pronunciation": "ちょうしょくはろくじはんからとときまでです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_hotel_phrase_021",
       "sceneId": "hotel",
       "situationId": "hotel-problems",
       "kind": "phrase",
-      "zh": "今晚所有房型都满了吗？",
-      "text": "今夜はすべての部屋タイプが満室ですか?",
-      "pronunciation": "こんやはすべてのへやたいぷがまんしつですか?",
+      "zh": "Wi-Fi密码写在房卡套上。",
+      "text": "Wi-Fiのパスワードはカードキーのケースに書いてあります。",
+      "pronunciation": "Wi-Fiのぱすわーどはかーどきーのけーすにかいてあります。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_hotel_phrase_022",
@@ -9465,7 +9465,7 @@
       "zh": "烟雾报警器一直在响。",
       "text": "煙感知器の音が鳴り止まない。",
       "pronunciation": "けむりかんちきのおとがなりとまない。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -9473,11 +9473,11 @@
       "sceneId": "hotel",
       "situationId": "hotel-problems",
       "kind": "phrase",
-      "zh": "这一层的灭火器在哪里？",
-      "text": "この階の消火器はどこにありますか?",
-      "pronunciation": "このかいのしょうかきはどこにありますか?",
+      "zh": "房间还没准备好。",
+      "text": "お部屋の準備がまだできていません。",
+      "pronunciation": "おへやのじゅんびがまだできていません。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_hotel_phrase_024",
@@ -9487,7 +9487,7 @@
       "zh": "我想要一间朝内院的安静房间。",
       "text": "中庭に面した静かな部屋を希望します。",
       "pronunciation": "なかにわにめんしたしずかなへやをきぼうします。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -9498,7 +9498,7 @@
       "zh": "隔壁房间太吵了。",
       "text": "隣の部屋がうるさすぎる。",
       "pronunciation": "となりのへやがうるさすぎる。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -9506,11 +9506,11 @@
       "sceneId": "hotel",
       "situationId": "hotel-problems",
       "kind": "phrase",
-      "zh": "周末也已经满房了吗？",
-      "text": "今週末も満席でしょうか？",
-      "pronunciation": "こんしゅうまつもまんせきでしょうか？",
+      "zh": "我们可以免费寄存行李。",
+      "text": "お荷物は無料でお預かりできます。",
+      "pronunciation": "おにもつはむりょうでおあずかりできます。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_hotel_phrase_027",
@@ -9528,33 +9528,33 @@
       "sceneId": "hotel",
       "situationId": "checkout-storage",
       "kind": "phrase",
-      "zh": "请帮我确认退房时间。",
-      "text": "チェックアウト時間を確認してもらえますか？",
-      "pronunciation": "ちぇっくあうとじかんをかくにんしてもらえますか？",
-      "direction": "traveler-says",
-      "intent": "request"
+      "zh": "延迟退房需要额外收费。",
+      "text": "レイトチェックアウトは追加料金がかかります。",
+      "pronunciation": "れいとちぇっくあうとはついかりょうきんがかかります。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_hotel_phrase_029",
       "sceneId": "hotel",
       "situationId": "checkout-storage",
       "kind": "phrase",
-      "zh": "可以给我一张正式收据吗？",
-      "text": "正式な領収書を頂けますか？",
-      "pronunciation": "せいしきなりょうしゅうしょをいただけますか？",
-      "direction": "traveler-says",
-      "intent": "repair"
+      "zh": "请在这里签名。",
+      "text": "こちらにご署名ください。",
+      "pronunciation": "こちらにごしょめいください。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_hotel_phrase_030",
       "sceneId": "hotel",
       "situationId": "checkout-storage",
       "kind": "phrase",
-      "zh": "请帮我核对一下账单。",
-      "text": "一緒に請求書を調べてもらえますか？",
-      "pronunciation": "いっしょにせいきゅうしょをしらべてもらえますか？",
-      "direction": "traveler-says",
-      "intent": "ask"
+      "zh": "电梯在前台右边。",
+      "text": "エレベーターはフロントの右側です。",
+      "pronunciation": "えれべーたーはふろんとのみぎがわです。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_food_phrase_001",
@@ -9759,33 +9759,33 @@
       "sceneId": "food",
       "situationId": "dining-requests",
       "kind": "phrase",
-      "zh": "可以给我一双筷子吗？",
-      "text": "お箸を持ってきてもらえますか？",
-      "pronunciation": "おはしをもってきてもらえますか？",
+      "zh": "这道菜含有花生。",
+      "text": "この料理にはピーナッツが入っています。",
+      "pronunciation": "このりょうりにはぴーなっつがいっっています。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_food_phrase_020",
       "sceneId": "food",
       "situationId": "dining-requests",
       "kind": "phrase",
-      "zh": "汤匙掉到地上了，可以换一把吗？",
-      "text": "スプーンを落としてしまったので、もう一つ持ってきてもらえますか？",
-      "pronunciation": "すぷーんをおとしてしまったので、もうひとつもってきてもらえますか？",
+      "zh": "这份汤不是素食。",
+      "text": "このスープはベジタリアン対応ではありません。",
+      "pronunciation": "このすーぷはべじたりあんたいおうではありません。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_food_phrase_021",
       "sceneId": "food",
       "situationId": "dining-requests",
       "kind": "phrase",
-      "zh": "可以再给我一把叉子吗？",
-      "text": "もう一つフォークを持ってきてもらえますか？",
-      "pronunciation": "もうひとつふぉーくをもってきてもらえますか？",
+      "zh": "今天的特色菜是烤鱼。",
+      "text": "本日のおすすめは焼き魚です。",
+      "pronunciation": "ほんじつのおすすめはやきざかなです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_food_phrase_022",
@@ -9795,7 +9795,7 @@
       "zh": "可以把配菜换成沙拉吗？",
       "text": "サイドをサラダに置き換えてもいいですか？",
       "pronunciation": "さいどをさらだにおきかえてもいいですか？",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -9803,11 +9803,11 @@
       "sceneId": "food",
       "situationId": "food-confirm",
       "kind": "phrase",
-      "zh": "请把酱汁放在旁边。",
-      "text": "ドレッシングを横に置いてもらえますか？",
-      "pronunciation": "どれっしんぐをよこにおいてもらえますか？",
+      "zh": "饮用水需要另外付费。",
+      "text": "お水は有料です。",
+      "pronunciation": "おみずはゆうりょうです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_food_phrase_024",
@@ -9817,7 +9817,7 @@
       "zh": "这个鸡蛋是全熟的吗？",
       "text": "卵は完全に調理されましたか？",
       "pronunciation": "たまごはかんぜんにちょうりされましたか？",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -9828,7 +9828,7 @@
       "zh": "我不吃肉。",
       "text": "私は肉を食べません。",
       "pronunciation": "わたしはにくをたべません。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -9836,11 +9836,11 @@
       "sceneId": "food",
       "situationId": "food-confirm",
       "kind": "phrase",
-      "zh": "牛肉请做全熟。",
-      "text": "牛肉、上手にどうぞ。",
-      "pronunciation": "ぎゅうにく、じょうずにどうぞ。",
+      "zh": "您的菜大约十五分钟后上。",
+      "text": "お料理は十五分ほどでご用意できます。",
+      "pronunciation": "おりょうりはじゅうごふんほどでごよういできます。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_food_phrase_027",
@@ -9858,33 +9858,33 @@
       "sceneId": "food",
       "situationId": "food-checkout",
       "kind": "phrase",
-      "zh": "我们在哪里付款？",
-      "text": "どこで支払いますか?",
-      "pronunciation": "どこでしはらいますか?",
-      "direction": "traveler-says",
-      "intent": "request"
+      "zh": "这份可以做成不辣的。",
+      "text": "こちらは辛くせずに作れます。",
+      "pronunciation": "こちらはつらくせずにつくれます。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_food_phrase_029",
       "sceneId": "food",
       "situationId": "food-checkout",
       "kind": "phrase",
-      "zh": "请给我们结账。",
-      "text": "請求書をお願いします。",
-      "pronunciation": "せいきゅうしょをおねがいします。",
-      "direction": "traveler-says",
-      "intent": "repair"
+      "zh": "账单里已经包含服务费。",
+      "text": "サービス料はすでに含まれています。",
+      "pronunciation": "さーびすりょうはすでにふくまれています。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_food_phrase_030",
       "sceneId": "food",
       "situationId": "food-checkout",
       "kind": "phrase",
-      "zh": "可以在收银台分开付款吗？",
-      "text": "レジで別々に支払うことはできますか？",
-      "pronunciation": "れじでべつべつにしはらうことはできますか？",
-      "direction": "traveler-says",
-      "intent": "ask"
+      "zh": "我们可以为您分开结账。",
+      "text": "別会計にできます。",
+      "pronunciation": "べつかいけいにできます。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_shopping_phrase_001",
@@ -10089,33 +10089,33 @@
       "sceneId": "shopping",
       "situationId": "price-discount",
       "kind": "phrase",
-      "zh": "有没有更便宜的款式？",
-      "text": "もっと安いモデルはありますか？",
-      "pronunciation": "もっとやすいもでるはありますか？",
+      "zh": "这个尺码已经缺货了。",
+      "text": "そのサイズは在庫切れです。",
+      "pronunciation": "そのさいずはざいこきれです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_shopping_phrase_020",
       "sceneId": "shopping",
       "situationId": "payment",
       "kind": "phrase",
-      "zh": "标价含税吗？",
-      "text": "表示価格は税込みですか？",
-      "pronunciation": "ひょうじかかくはぜいこみですか？",
+      "zh": "退货需要出示收据。",
+      "text": "返品にはレシートが必要です。",
+      "pronunciation": "へんぴんにはれしーとがひつようです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_shopping_phrase_021",
       "sceneId": "shopping",
       "situationId": "payment",
       "kind": "phrase",
-      "zh": "可以用信用卡付款吗？",
-      "text": "クレジットカードで支払うことはできますか?",
-      "pronunciation": "くれじっとかーどでしはらうことはできますか?",
+      "zh": "退款会原路退回。",
+      "text": "返金はお支払い時と同じ方法で行います。",
+      "pronunciation": "へんきんはおしはらいときとおなじほうほうでおこないます。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_shopping_phrase_022",
@@ -10125,7 +10125,7 @@
       "zh": "这张银行卡为什么不能用？",
       "text": "このデビットカードが機能しないのはなぜですか?",
       "pronunciation": "このでびっとかーどがきのうしないのはなぜですか?",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -10133,11 +10133,11 @@
       "sceneId": "shopping",
       "situationId": "payment",
       "kind": "phrase",
-      "zh": "可以找开五千日元吗？",
-      "text": "五千円札を崩せますか？",
-      "pronunciation": "ごせんえんさつをくずせますか？",
+      "zh": "这件商品不能退税。",
+      "text": "こちらの商品は免税対象外です。",
+      "pronunciation": "こちらのしょうひんはめんぜいたいしょうがいです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_shopping_phrase_024",
@@ -10147,7 +10147,7 @@
       "zh": "请把购物小票给我。",
       "text": "領収書を頂けますか？",
       "pronunciation": "りょうしゅうしょをいただけますか？",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "local-use"
     },
     {
@@ -10158,7 +10158,7 @@
       "zh": "退货时需要购物小票吗？",
       "text": "これを返すには領収書が必要ですか?",
       "pronunciation": "これをかえすにはりょうしゅうしょがひつようですか?",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -10166,11 +10166,11 @@
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "小票上的价格不对。",
-      "text": "レシートの価格が間違っています。",
-      "pronunciation": "れしーとのかかくがまちがっています。",
+      "zh": "请输入银行卡PIN码。",
+      "text": "カードの暗証番号を入力してください。",
+      "pronunciation": "かーどのあんしょうばんごうをにゅうりょくしてください。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_shopping_phrase_027",
@@ -10188,33 +10188,33 @@
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "可以重新打印小票吗？",
-      "text": "領収書を再印刷していただけますか？",
-      "pronunciation": "りょうしゅうしょをさいいんさつしていただけますか？",
-      "direction": "traveler-says",
-      "intent": "request"
+      "zh": "这里支持非接触支付。",
+      "text": "こちらではタッチ決済が使えます。",
+      "pronunciation": "こちらではたっちけっさいがつかえます。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_shopping_phrase_029",
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "小票上没有显示折扣。",
-      "text": "割引額はレシートには記載されません。",
-      "pronunciation": "わりびきひたいはれしーとにはきさいされません。",
-      "direction": "traveler-says",
-      "intent": "repair"
+      "zh": "折扣商品不能换货。",
+      "text": "セール品は交換できません。",
+      "pronunciation": "せーるひんはこうかんできません。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_shopping_phrase_030",
       "sceneId": "shopping",
       "situationId": "return-tax",
       "kind": "phrase",
-      "zh": "可以办理免税吗？",
-      "text": "免税手続きはできますか？",
-      "pronunciation": "めんぜいてつづきはできますか？",
-      "direction": "traveler-says",
-      "intent": "ask"
+      "zh": "您可以在二楼办理退税。",
+      "text": "二階で免税手続きができます。",
+      "pronunciation": "にかいでめんぜいてつづきができます。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_directions_phrase_001",
@@ -10419,33 +10419,33 @@
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "过桥后向左转。",
-      "text": "橋を渡ったら左折します。",
-      "pronunciation": "はしをわたったらさせつします。",
+      "zh": "一直走到第二个路口。",
+      "text": "二つ目の交差点までまっすぐ進んでください。",
+      "pronunciation": "ふたつめのこうさてんまでまっすぐすすんでください。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_directions_phrase_020",
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "这条路通往市中心吗？",
-      "text": "この道はダウンタウンに通じていますか?",
-      "pronunciation": "このみちはだうんたうんにつうじていますか?",
+      "zh": "在红绿灯处左转。",
+      "text": "信号を左に曲がってください。",
+      "pronunciation": "しんごうをひだりにまがってください。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_directions_phrase_021",
       "sceneId": "directions",
       "situationId": "map-landmarks",
       "kind": "phrase",
-      "zh": "这条街叫什么名字？",
-      "text": "この通りは何と呼ばれますか?",
-      "pronunciation": "このとうりはなんとよばれますか?",
+      "zh": "车站就在银行对面。",
+      "text": "駅は銀行の向かいです。",
+      "pronunciation": "えきはぎんこうのむかいです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_directions_phrase_022",
@@ -10455,7 +10455,7 @@
       "zh": "我要找的是一栋白色建筑。",
       "text": "白い建物を探しています。",
       "pronunciation": "しろいたてものをさがしています。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -10463,11 +10463,11 @@
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "最近的银行几点关门？",
-      "text": "最寄りの銀行は何時に閉まりますか?",
-      "pronunciation": "もよりのぎんこうはなんじにしまりますか?",
+      "zh": "步行大约需要十分钟。",
+      "text": "歩いて十分くらいです。",
+      "pronunciation": "あるいてじゅうぶんくらいです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_directions_phrase_024",
@@ -10477,7 +10477,7 @@
       "zh": "邮局离这里远吗？",
       "text": "郵便局はここから遠いですか？",
       "pronunciation": "ゆうびんきょくはここからとおいですか？",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -10488,7 +10488,7 @@
       "zh": "这附近有公共厕所吗？",
       "text": "近くに公共トイレはありますか？",
       "pronunciation": "ちかくにこうきょうといれはありますか？",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -10496,11 +10496,11 @@
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "哪一站是公交车站？",
-      "text": "バスはどの停留所を利用すればよいですか?",
-      "pronunciation": "ばすはどのていりゅうしょをりようすればよいですか?",
+      "zh": "过桥后您会看到博物馆。",
+      "text": "橋を渡ると博物館が見えます。",
+      "pronunciation": "はしをわたるとはくぶつかんがみえます。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_directions_phrase_027",
@@ -10518,33 +10518,33 @@
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "可以推荐一个附近的景点吗？",
-      "text": "近くのおすすめの観光スポットを教えてください。",
-      "pronunciation": "ちかくのおすすめのかんこうすぽっとをおしえてください。",
-      "direction": "traveler-says",
-      "intent": "request"
+      "zh": "您走错方向了。",
+      "text": "方向が反対です。",
+      "pronunciation": "ほうこうがはんたいです。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_directions_phrase_029",
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "今天博物馆开门吗？",
-      "text": "博物館は今日開いていますか?",
-      "pronunciation": "はくぶつかんはきょうひらいていますか?",
-      "direction": "traveler-says",
-      "intent": "repair"
+      "zh": "入口在大楼后面。",
+      "text": "入口は建物の裏にあります。",
+      "pronunciation": "いりぐちはたてもののうらにあります。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_directions_phrase_030",
       "sceneId": "directions",
       "situationId": "understand-route",
       "kind": "phrase",
-      "zh": "从这里怎么去公园？",
-      "text": "ここから公園へはどうやって行きますか？",
-      "pronunciation": "ここからこうえんへはどうやっていきますか？",
-      "direction": "traveler-says",
-      "intent": "ask"
+      "zh": "这条路现在封闭了。",
+      "text": "この道は現在通行止めです。",
+      "pronunciation": "このみちはげんざいつうこうどめめです。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_emergency_phrase_001",
@@ -10749,33 +10749,33 @@
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "伤口需要缝针吗？",
-      "text": "この傷は縫う必要がありますか?",
-      "pronunciation": "このきずはぬうひつようがありますか?",
+      "zh": "救护车已经在路上了。",
+      "text": "救急車はこちらに向かっています。",
+      "pronunciation": "きゅうきゅうしゃはこちらにむかっています。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_emergency_phrase_020",
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "我受伤了，请叫救护车。",
-      "text": "けがをしました。救急車を呼んでください。",
-      "pronunciation": "けがをしました。きゅうきゅうしゃをよんでください。",
+      "zh": "请不要移动伤者。",
+      "text": "けが人を動かさないでください。",
+      "pronunciation": "けがにんをうごかさないでください。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_emergency_phrase_021",
       "sceneId": "emergency",
       "situationId": "lost-stolen",
       "kind": "phrase",
-      "zh": "我可能骨折了。",
-      "text": "骨折していると思います。",
-      "pronunciation": "こっせつしているとおもいます。",
+      "zh": "最近的急诊室在两公里外。",
+      "text": "最寄りの救急外来は二キロ先です。",
+      "pronunciation": "もよりのきゅうきゅうがいらいはにきろさきです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_emergency_phrase_022",
@@ -10785,7 +10785,7 @@
       "zh": "救命，有人昏倒了！",
       "text": "助けて、誰かが気を失ったんだ！",
       "pronunciation": "たすけて、だれかがきをうったんだ！",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -10793,11 +10793,11 @@
       "sceneId": "emergency",
       "situationId": "danger-accident",
       "kind": "phrase",
-      "zh": "我现在急需帮助。",
-      "text": "今すぐ助けが必要です。",
-      "pronunciation": "いますぐたすけがひつようです。",
+      "zh": "请告诉我您哪里疼。",
+      "text": "どこが痛むか教えてください。",
+      "pronunciation": "どこがいたむかおしえてください。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_emergency_phrase_024",
@@ -10807,7 +10807,7 @@
       "zh": "请拨打119叫救护车。",
       "text": "119番で救急車を呼んでください。",
       "pronunciation": "119ばんできゅうきゅうしゃをよんでください。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -10818,7 +10818,7 @@
       "zh": "我摔倒后受伤了。",
       "text": "落ちたときに怪我をしました。",
       "pronunciation": "おちたときにけがをしました。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -10826,11 +10826,11 @@
       "sceneId": "emergency",
       "situationId": "danger-accident",
       "kind": "phrase",
-      "zh": "怎样才能止血？",
-      "text": "どうすれば出血を止めることができますか?",
-      "pronunciation": "どうすればしゅっけつをやめることができますか?",
+      "zh": "您的护照已送到失物招领处。",
+      "text": "パスポートは遺失物取扱所に届いています。",
+      "pronunciation": "ぱすぽーとはいしつぶつとりあつかいところにとどいています。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_emergency_phrase_027",
@@ -10848,33 +10848,33 @@
       "sceneId": "emergency",
       "situationId": "emergency-contact",
       "kind": "phrase",
-      "zh": "这是我的保险卡。",
-      "text": "これは私の保険証です。",
-      "pronunciation": "これはわたしのほけんしょうです。",
-      "direction": "traveler-says",
-      "intent": "request"
+      "zh": "请在这里填写报失单。",
+      "text": "こちらで遺失届に記入してください。",
+      "pronunciation": "こちらでいしつとどけにきにゅうしてください。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_emergency_phrase_029",
       "sceneId": "emergency",
       "situationId": "emergency-contact",
       "kind": "phrase",
-      "zh": "保险公司需要一份医疗报告。",
-      "text": "保険会社は診断書を必要とします。",
-      "pronunciation": "ほけんがいしゃはしんだんしょをひつようとします。",
-      "direction": "traveler-says",
-      "intent": "repair"
+      "zh": "请保持清醒并慢慢呼吸。",
+      "text": "意識を保って、ゆっくり呼吸してください。",
+      "pronunciation": "いしきをたもって、ゆっくりこきゅうしてください。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_emergency_phrase_030",
       "sceneId": "emergency",
       "situationId": "emergency-contact",
       "kind": "phrase",
-      "zh": "可以在报告中写上我的保险号码吗？",
-      "text": "レポートに私の保険番号を記載していただけますか?",
-      "pronunciation": "れぽーとにわたしのほけんばんごうをきさいしていただけますか?",
-      "direction": "traveler-says",
-      "intent": "ask"
+      "zh": "警察大约十分钟后到。",
+      "text": "警察は十分ほどで到着します。",
+      "pronunciation": "けいさつはじゅうぶんほどでとうちゃくします。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_basics_phrase_001",
@@ -11079,33 +11079,33 @@
       "sceneId": "basics",
       "situationId": "numbers-quantity",
       "kind": "phrase",
-      "zh": "请给我一张票。",
-      "text": "チケットを1枚ください。",
-      "pronunciation": "ちけっとを1まいください。",
+      "zh": "我会说一点英语。",
+      "text": "英語は少し話せます。",
+      "pronunciation": "えいごはすこしはなせます。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_basics_phrase_020",
       "sceneId": "basics",
       "situationId": "numbers-quantity",
       "kind": "phrase",
-      "zh": "我们要两间房。",
-      "text": "私たちは部屋が 2 つ欲しいです。",
-      "pronunciation": "わたしたちはへやが 2 つほしいです。",
+      "zh": "请稍等一下。",
+      "text": "少々お待ちください。",
+      "pronunciation": "しょうしょうおまちください。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_basics_phrase_021",
       "sceneId": "basics",
       "situationId": "time-date",
       "kind": "phrase",
-      "zh": "今天是星期几？",
-      "text": "今日は何曜日でしょうか？",
-      "pronunciation": "きょうはなんようびでしょうか？",
+      "zh": "这个词的意思是入口。",
+      "text": "この言葉は入口という意味です。",
+      "pronunciation": "このことばはいりぐちといういみです。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_basics_phrase_022",
@@ -11115,7 +11115,7 @@
       "zh": "我们明天去京都。",
       "text": "明日は京都へ行きます。",
       "pronunciation": "あしたはきょうとへいきます。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -11123,11 +11123,11 @@
       "sceneId": "basics",
       "situationId": "time-date",
       "kind": "phrase",
-      "zh": "我昨天到的。",
-      "text": "昨日到着しました。",
-      "pronunciation": "きのうとうちゃくしました。",
+      "zh": "您可以在这里购买SIM卡。",
+      "text": "こちらでSIMカードを購入できます。",
+      "pronunciation": "こちらでSIMかーどをこうにゅうできます。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_basics_phrase_024",
@@ -11137,7 +11137,7 @@
       "zh": "我们后天回来。",
       "text": "明後日また来ます。",
       "pronunciation": "みょうごにちまたきます。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -11148,7 +11148,7 @@
       "zh": "是的，我有预订。",
       "text": "はい、予約があります。",
       "pronunciation": "はい、よやくがあります。",
-      "direction": "traveler-hears",
+      "direction": "traveler-says",
       "intent": "confirm"
     },
     {
@@ -11156,11 +11156,11 @@
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "不，谢谢。",
-      "text": "結構です。",
-      "pronunciation": "けっこうです。",
+      "zh": "这张eSIM会立即开通。",
+      "text": "このeSIMはすぐに開通します。",
+      "pronunciation": "このeSIMはすぐにかいつうします。",
       "direction": "traveler-hears",
-      "intent": "confirm"
+      "intent": "understand"
     },
     {
       "id": "ja_basics_phrase_027",
@@ -11178,33 +11178,549 @@
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "我想要靠窗的座位。",
-      "text": "窓側の席が欲しいです。",
-      "pronunciation": "まどがわのせきがほしいです。",
-      "direction": "traveler-says",
-      "intent": "request"
+      "zh": "您的余额不足。",
+      "text": "残高が不足しています。",
+      "pronunciation": "ざんだかがふそくしています。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_basics_phrase_029",
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "我需要一名医生。",
-      "text": "医者が必要です。",
-      "pronunciation": "いしゃがひつようです。",
-      "direction": "traveler-says",
-      "intent": "repair"
+      "zh": "充值后请重启手机。",
+      "text": "チャージした後、携帯電話を再起動してください。",
+      "pronunciation": "ちゃーじしたのち、けいたいでんわをさいきどうしてください。",
+      "direction": "traveler-hears",
+      "intent": "understand"
     },
     {
       "id": "ja_basics_phrase_030",
       "sceneId": "basics",
       "situationId": "basic-confirm",
       "kind": "phrase",
-      "zh": "附近有药店吗？",
-      "text": "近くに薬局はありますか？",
-      "pronunciation": "ちかくにやっきょくはありますか？",
+      "zh": "没问题，我可以写下来。",
+      "text": "大丈夫です。書いてお渡しします。",
+      "pronunciation": "だいじょうぶです。かいておわたしします。",
+      "direction": "traveler-hears",
+      "intent": "understand"
+    },
+    {
+      "id": "transport_001",
+      "sceneId": "transport",
+      "situationId": "tickets-stations",
+      "kind": "word",
+      "zh": "交通卡",
+      "text": "交通系ICカード",
+      "audioPath": "audio/ja/transport_001.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "recognize",
+      "pronunciation": "こうつうけいICかーど"
+    },
+    {
+      "id": "transport_002",
+      "sceneId": "transport",
+      "situationId": "rail",
+      "kind": "word",
+      "zh": "末班车",
+      "text": "終電",
+      "audioPath": "audio/ja/transport_002.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "しゅうでん"
+    },
+    {
+      "id": "transport_003",
+      "sceneId": "transport",
+      "situationId": "bus-metro",
+      "kind": "word",
+      "zh": "下一站",
+      "text": "次の駅",
+      "audioPath": "audio/ja/transport_003.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "つぎのえき"
+    },
+    {
+      "id": "transport_004",
+      "sceneId": "transport",
+      "situationId": "bus-metro",
+      "kind": "word",
+      "zh": "终点站",
+      "text": "終点",
+      "audioPath": "audio/ja/transport_004.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "しゅうてん"
+    },
+    {
+      "id": "transport_005",
+      "sceneId": "transport",
+      "situationId": "transfer",
+      "kind": "word",
+      "zh": "换乘",
+      "text": "乗り換え",
+      "audioPath": "audio/ja/transport_005.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "のりかえ"
+    },
+    {
+      "id": "hotel_083",
+      "sceneId": "hotel",
+      "situationId": "room-facilities",
+      "kind": "word",
+      "zh": "Wi-Fi密码",
+      "text": "Wi-Fiのパスワード",
+      "audioPath": "audio/ja/hotel_083.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "Wi-Fiのぱすわーど"
+    },
+    {
+      "id": "hotel_084",
+      "sceneId": "hotel",
+      "situationId": "hotel-check-in",
+      "kind": "word",
+      "zh": "提前入住",
+      "text": "アーリーチェックイン",
+      "audioPath": "audio/ja/hotel_084.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "あーりーちぇっくいん"
+    },
+    {
+      "id": "hotel_085",
+      "sceneId": "hotel",
+      "situationId": "checkout-storage",
+      "kind": "word",
+      "zh": "延迟退房",
+      "text": "レイトチェックアウト",
+      "audioPath": "audio/ja/hotel_085.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "れいとちぇっくあうと"
+    },
+    {
+      "id": "hotel_086",
+      "sceneId": "hotel",
+      "situationId": "hotel-check-in",
+      "kind": "word",
+      "zh": "自助入住",
+      "text": "セルフチェックイン",
+      "audioPath": "audio/ja/hotel_086.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "せるふちぇっくいん"
+    },
+    {
+      "id": "food_097",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "纯素",
+      "text": "ヴィーガン",
+      "audioPath": "audio/ja/food_097.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "ゔぃーがん",
+      "example": {
+        "id": "jp-ja_food_097_example",
+        "zh": "请问有纯素菜品吗？",
+        "text": "ヴィーガン対応の料理はありますか？",
+        "pronunciation": "ゔぃーがんたいおうのりょうりはありますか？"
+      }
+    },
+    {
+      "id": "food_098",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "清真",
+      "text": "ハラール",
+      "audioPath": "audio/ja/food_098.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "はらーる",
+      "example": {
+        "id": "jp-ja_food_098_example",
+        "zh": "这道菜是清真的吗？",
+        "text": "この料理はハラールですか？",
+        "pronunciation": "このりょうりははらーるですか？"
+      }
+    },
+    {
+      "id": "food_099",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "无麸质",
+      "text": "グルテンフリー",
+      "audioPath": "audio/ja/food_099.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "ぐるてんふりー",
+      "example": {
+        "id": "jp-ja_food_099_example",
+        "zh": "有无麸质的面包吗？",
+        "text": "グルテンフリーのパンはありますか？",
+        "pronunciation": "ぐるてんふりーのぱんはありますか？"
+      }
+    },
+    {
+      "id": "food_100",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "乳糖不耐",
+      "text": "乳糖不耐症",
+      "audioPath": "audio/ja/food_100.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "にゅうとうふたいしょう",
+      "example": {
+        "id": "jp-ja_food_100_example",
+        "zh": "我乳糖不耐，不能喝普通牛奶。",
+        "text": "乳糖不耐症なので、普通の牛乳は飲めません。",
+        "pronunciation": "にゅうとうふたいしょうなので、ふつうのぎゅうにゅうはのめません。"
+      }
+    },
+    {
+      "id": "food_101",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "花生",
+      "text": "ピーナッツ",
+      "audioPath": "audio/ja/food_101.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "ぴーなっつ",
+      "example": {
+        "id": "jp-ja_food_101_example",
+        "zh": "我对花生严重过敏。",
+        "text": "ピーナッツに重いアレルギーがあります。",
+        "pronunciation": "ぴーなっつにおもいあれるぎーがあります。"
+      }
+    },
+    {
+      "id": "food_102",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "坚果",
+      "text": "ナッツ類",
+      "audioPath": "audio/ja/food_102.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "なっつるい",
+      "example": {
+        "id": "jp-ja_food_102_example",
+        "zh": "这份甜点里有坚果吗？",
+        "text": "このデザートにナッツ類は入っていますか？",
+        "pronunciation": "このでざーとになっつたぐはいっっていますか？"
+      }
+    },
+    {
+      "id": "food_103",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "甲壳类",
+      "text": "甲殻類",
+      "audioPath": "audio/ja/food_103.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "こうかくるい",
+      "example": {
+        "id": "jp-ja_food_103_example",
+        "zh": "我对虾和其他甲壳类过敏。",
+        "text": "エビなどの甲殻類にアレルギーがあります。",
+        "pronunciation": "えびなどのこうかくるいにあれるぎーがあります。"
+      }
+    },
+    {
+      "id": "food_104",
+      "sceneId": "food",
+      "situationId": "dining-requests",
+      "kind": "word",
+      "zh": "自来水",
+      "text": "水道水",
+      "audioPath": "audio/ja/food_104.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "すいどうすい",
+      "example": {
+        "id": "jp-ja_food_104_example",
+        "zh": "这里的自来水可以直接喝吗？",
+        "text": "ここの水道水はそのまま飲めますか？",
+        "pronunciation": "ここのすいどうすいはそのままのめますか？"
+      }
+    },
+    {
+      "id": "food_105",
+      "sceneId": "food",
+      "situationId": "taste-diet",
+      "kind": "word",
+      "zh": "过敏原",
+      "text": "アレルゲン",
+      "audioPath": "audio/ja/food_105.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "あれるげん",
+      "example": {
+        "id": "jp-ja_food_105_example",
+        "zh": "请告诉我这道菜含有哪些过敏原。",
+        "text": "この料理に含まれるアレルゲンを教えてください。",
+        "pronunciation": "このりょうりにふくまれるあれるげんをおしえてください。"
+      }
+    },
+    {
+      "id": "food_106",
+      "sceneId": "food",
+      "situationId": "food-checkout",
+      "kind": "word",
+      "zh": "分开结账",
+      "text": "別会計",
+      "audioPath": "audio/ja/food_106.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "べつかいけい",
+      "example": {
+        "id": "jp-ja_food_106_example",
+        "zh": "请把账单分开结算。",
+        "text": "会計を別々にしてください。",
+        "pronunciation": "かいけいをべつべつにしてください。"
+      }
+    },
+    {
+      "id": "shopping_074",
+      "sceneId": "shopping",
+      "situationId": "return-tax",
+      "kind": "word",
+      "zh": "退款",
+      "text": "返金",
+      "audioPath": "audio/ja/shopping_074.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "へんきん"
+    },
+    {
+      "id": "shopping_075",
+      "sceneId": "shopping",
+      "situationId": "return-tax",
+      "kind": "word",
+      "zh": "换货",
+      "text": "交換",
+      "audioPath": "audio/ja/shopping_075.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "こうかん"
+    },
+    {
+      "id": "shopping_076",
+      "sceneId": "shopping",
+      "situationId": "find-products",
+      "kind": "word",
+      "zh": "缺货",
+      "text": "在庫切れ",
+      "audioPath": "audio/ja/shopping_076.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "ざいこきれ"
+    },
+    {
+      "id": "shopping_077",
+      "sceneId": "shopping",
+      "situationId": "return-tax",
+      "kind": "word",
+      "zh": "免税",
+      "text": "免税",
+      "audioPath": "audio/ja/shopping_077.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "めんぜい"
+    },
+    {
+      "id": "shopping_078",
+      "sceneId": "shopping",
+      "situationId": "payment",
+      "kind": "word",
+      "zh": "PIN码",
+      "text": "暗証番号",
+      "audioPath": "audio/ja/shopping_078.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "あんしょうばんごう"
+    },
+    {
+      "id": "shopping_079",
+      "sceneId": "shopping",
+      "situationId": "payment",
+      "kind": "word",
+      "zh": "非接触支付",
+      "text": "タッチ決済",
+      "audioPath": "audio/ja/shopping_079.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "たっちけっさい"
+    },
+    {
+      "id": "emergency_045",
+      "sceneId": "emergency",
+      "situationId": "doctor-pharmacy",
+      "kind": "word",
+      "zh": "急诊室",
+      "text": "救急外来",
+      "audioPath": "audio/ja/emergency_045.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "きゅうきゅうがいらい",
+      "example": {
+        "id": "jp-ja_emergency_045_example",
+        "zh": "请带我去最近的急诊室。",
+        "text": "最寄りの救急外来に連れて行ってください。",
+        "pronunciation": "もよりのきゅうきゅうがいらいにつれていってください。"
+      }
+    },
+    {
+      "id": "emergency_046",
+      "sceneId": "emergency",
+      "situationId": "lost-stolen",
+      "kind": "word",
+      "zh": "被盗",
+      "text": "盗難",
+      "audioPath": "audio/ja/emergency_046.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "とうなん",
+      "example": {
+        "id": "jp-ja_emergency_046_example",
+        "zh": "我的手机被盗了。",
+        "text": "携帯電話を盗まれました。",
+        "pronunciation": "けいたいでんわをぬすまれました。"
+      }
+    },
+    {
+      "id": "emergency_047",
+      "sceneId": "emergency",
+      "situationId": "lost-stolen",
+      "kind": "word",
+      "zh": "失物招领处",
+      "text": "遺失物取扱所",
+      "audioPath": "audio/ja/emergency_047.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "いしつぶつとりあつかいところ",
+      "example": {
+        "id": "jp-ja_emergency_047_example",
+        "zh": "失物招领处在哪里？",
+        "text": "遺失物取扱所はどこですか？",
+        "pronunciation": "いしつぶつとりあつかいところはどこですか？"
+      }
+    },
+    {
+      "id": "emergency_048",
+      "sceneId": "emergency",
+      "situationId": "feeling-unwell",
+      "kind": "word",
+      "zh": "呼吸困难",
+      "text": "息苦しい",
+      "audioPath": "audio/ja/emergency_048.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "いきぐるしい",
+      "example": {
+        "id": "jp-ja_emergency_048_example",
+        "zh": "我呼吸困难。",
+        "text": "息が苦しいです。",
+        "pronunciation": "いきがくるしいです。"
+      }
+    },
+    {
+      "id": "emergency_049",
+      "sceneId": "emergency",
+      "situationId": "feeling-unwell",
+      "kind": "word",
+      "zh": "胸痛",
+      "text": "胸の痛み",
+      "audioPath": "audio/ja/emergency_049.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "むねのいたみ",
+      "example": {
+        "id": "jp-ja_emergency_049_example",
+        "zh": "我胸口很痛。",
+        "text": "胸がとても痛いです。",
+        "pronunciation": "むねがとてもいたいです。"
+      }
+    },
+    {
+      "id": "emergency_050",
+      "sceneId": "emergency",
+      "situationId": "feeling-unwell",
+      "kind": "word",
+      "zh": "昏倒",
+      "text": "意識を失う",
+      "audioPath": "audio/ja/emergency_050.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "いしきをうしなう",
+      "example": {
+        "id": "jp-ja_emergency_050_example",
+        "zh": "他刚才昏倒了。",
+        "text": "この人は先ほど意識を失いました。",
+        "pronunciation": "このにんはさきほどいしきをうしないました。"
+      }
+    },
+    {
+      "id": "expressions_048",
+      "sceneId": "basics",
+      "situationId": "language-help",
+      "kind": "word",
+      "zh": "eSIM",
+      "text": "eSIM",
+      "audioPath": "audio/ja/expressions_048.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "eSIM"
+    },
+    {
+      "id": "expressions_049",
+      "sceneId": "basics",
+      "situationId": "language-help",
+      "kind": "word",
+      "zh": "SIM卡",
+      "text": "SIMカード",
+      "audioPath": "audio/ja/expressions_049.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "SIMかーど"
+    },
+    {
+      "id": "expressions_050",
+      "sceneId": "basics",
+      "situationId": "language-help",
+      "kind": "word",
+      "zh": "充值",
+      "text": "チャージ",
+      "audioPath": "audio/ja/expressions_050.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "ちゃーじ"
+    },
+    {
+      "id": "expressions_051",
+      "sceneId": "basics",
+      "situationId": "language-help",
+      "kind": "word",
+      "zh": "余额",
+      "text": "残高",
+      "audioPath": "audio/ja/expressions_051.mp3",
+      "direction": "traveler-says",
+      "intent": "recognize",
+      "pronunciation": "ざんだか"
     }
   ]
 });

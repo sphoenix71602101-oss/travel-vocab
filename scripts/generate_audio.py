@@ -40,9 +40,10 @@ MAX_RETRIES = 2
 TEST_ITEMS_PER_LANGUAGE = 5
 
 # 用于避免旧双语源数据格式意外变化时静默漏读。词库增删后请同步更新此数字。
-EXPECTED_ENTRY_COUNT = 795
+EXPECTED_ENTRY_COUNT = 830
 TARGETED_EXAMPLES_FILE = Path(__file__).resolve().parent / "targeted_examples.json"
-EXPECTED_EXAMPLE_COUNT = 160 + len(json.loads(TARGETED_EXAMPLES_FILE.read_text(encoding="utf-8-sig")))
+CONTENT_REVIEW_EXAMPLES_FILE = Path(__file__).resolve().parent / "content_review_examples.json"
+EXPECTED_EXAMPLE_COUNT = 160 + len(json.loads(TARGETED_EXAMPLES_FILE.read_text(encoding="utf-8-sig"))) + len(json.loads(CONTENT_REVIEW_EXAMPLES_FILE.read_text(encoding="utf-8-sig")))
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -236,8 +237,8 @@ def build_spanish_refresh_jobs(pack: dict) -> list[AudioJob]:
                 pack["id"], example["id"], example["text"], SPANISH_VOICE,
                 AUDIO_ROOT / "packs" / pack["id"] / "examples" / f"{example['id']}.mp3",
             ))
-    if len(jobs) != 471:
-        raise ValueError(f"西班牙语返工清单应包含 471 条，实际为 {len(jobs)} 条")
+    if len(jobs) != 487:
+        raise ValueError(f"西班牙语返工清单应包含 487 条，实际为 {len(jobs)} 条")
     return jobs
 
 
@@ -323,6 +324,56 @@ def build_changed_audio_jobs(packs: list[dict]) -> list[AudioJob]:
     expected = 1040
     if len(jobs) != expected or len({job.output_path.resolve() for job in jobs}) != expected:
         raise ValueError(f"五语音频返工清单应包含 {expected} 个唯一目标，实际为 {len(jobs)} 个")
+    return jobs
+
+
+def build_content_review_audio_jobs(packs: list[dict]) -> list[AudioJob]:
+    """Build only audio changed by the 830-entry travel-content review."""
+    additions = json.loads((SCRIPT_DIR / "content_review_additions.json").read_text(encoding="utf-8"))
+    addition_ids = {item["id"] for item in additions}
+    addition_example_ids = {item["id"] for item in json.loads((SCRIPT_DIR / "content_review_examples.json").read_text(encoding="utf-8"))}
+    heard_slots = {19, 20, 21, 23, 26, 28, 29, 30}
+    voices = {
+        "jp-ja": JAPANESE_VOICE, "us-en": ENGLISH_VOICE, "kr-ko": KOREAN_VOICE,
+        "es-es": SPANISH_VOICE, "ru-ru": RUSSIAN_VOICE,
+    }
+    changed_entries = {
+        "jp-ja": set(),
+        "us-en": {"numbers_015", "numbers_016"},
+        "kr-ko": {"ko_hotel_phrase_016", "ko_hotel_phrase_027", "ko_food_phrase_018", "ko_food_phrase_025", "ko_emergency_phrase_004"},
+        "es-es": set(),
+        "ru-ru": {"ru_emergency_phrase_024"},
+    }
+    changed_examples = {
+        "jp-ja": {"numbers_014"},
+        "us-en": {"numbers_014", "numbers_015", "numbers_016"},
+        "kr-ko": {"numbers_014", "airport_003", "directions_019", "hotel_018"},
+        "es-es": {"numbers_014"},
+        "ru-ru": {"numbers_014"},
+    }
+    jobs: list[AudioJob] = []
+    for pack in packs:
+        entries = {entry["id"]: entry for entry in pack["entries"]}
+        selected = set(addition_ids) | set(changed_entries[pack["id"]])
+        selected.update(
+            entry["id"] for entry in pack["entries"]
+            if (match := re.search(r"_phrase_(\d{3})$", entry["id"])) and int(match.group(1)) in heard_slots
+        )
+        for entry_id in sorted(selected):
+            entry = entries[entry_id]
+            output = PROJECT_ROOT / entry.get("audioPath", f"audio/packs/{pack['id']}/entries/{entry_id}.mp3")
+            jobs.append(AudioJob(pack["id"], entry_id, entry["text"], voices[pack["id"]], output))
+        for entry_id in sorted(changed_examples[pack["id"]]):
+            example = entries[entry_id]["example"]
+            output = AUDIO_ROOT / "packs" / pack["id"] / "examples" / f"{example['id']}.mp3"
+            jobs.append(AudioJob(pack["id"], example["id"], example["text"], voices[pack["id"]], output))
+        for entry_id in sorted(addition_example_ids):
+            example = entries[entry_id]["example"]
+            output = AUDIO_ROOT / "packs" / pack["id"] / "examples" / f"{example['id']}.mp3"
+            jobs.append(AudioJob(pack["id"], example["id"], example["text"], voices[pack["id"]], output))
+    resolved = [job.output_path.resolve() for job in jobs]
+    if len(resolved) != len(set(resolved)):
+        raise ValueError("内容审校音频清单包含重复输出路径")
     return jobs
 
 
@@ -618,6 +669,8 @@ def parse_args() -> argparse.Namespace:
     )
     mode.add_argument("--rebuild-changed", action="store_true", help="删除并重建本次五语内容审校影响的 1040 段音频")
     mode.add_argument("--resume-changed", action="store_true", help="保留已完成文件，仅续跑本次五语音频返工清单中的缺失项")
+    mode.add_argument("--rebuild-content-review", action="store_true", help="删除并重建本次830条内容审校涉及的音频")
+    mode.add_argument("--resume-content-review", action="store_true", help="保留已完成文件并补齐本次内容审校音频")
     mode.add_argument("--beginner-test", action="store_true", help="生成前 5 个日语教学音试听")
     mode.add_argument("--beginner-full", action="store_true", help="生成全部 92 段日语教学音")
     mode.add_argument("--beginner-validate-only", action="store_true", help="只验证日语教学音清单")
@@ -630,7 +683,7 @@ def parse_args() -> argparse.Namespace:
     mode.add_argument("--korean-beginner-validate-only", action="store_true", help="只验证韩语教学音清单")
     mode.add_argument("--spanish-test", action="store_true", help="生成西班牙语正式内容前 5 条及 2 条例句试听")
     mode.add_argument("--spanish-full", action="store_true", help="只生成西班牙语正式内容和例句")
-    mode.add_argument("--spanish-refresh", action="store_true", help="仅重新生成返工后的 241 条短语和 230 条例句")
+    mode.add_argument("--spanish-refresh", action="store_true", help="仅重新生成返工后的 241 条短语和 246 条例句")
     mode.add_argument("--spanish-validate-only", action="store_true", help="只验证西班牙语正式内容和例句")
     mode.add_argument("--spanish-beginner-test", action="store_true", help="生成 6 段西班牙西语教学音试听")
     mode.add_argument("--spanish-beginner-full", action="store_true", help="生成全部 80 段西班牙西语教学音")
@@ -717,7 +770,7 @@ def main() -> int:
             else:
                 pack_files = [SPANISH_PACK_FILE] if spanish_pack_mode else [RUSSIAN_PACK_FILE] if russian_pack_mode else CONTENT_PACK_FILES
             packs = [parse_content_pack(pack_file) for pack_file in pack_files]
-            jobs = build_changed_audio_jobs(packs) if args.rebuild_changed or args.resume_changed else build_pack_phrase_refresh_jobs(packs[0]) if args.refresh_pack else build_spanish_refresh_jobs(packs[0]) if args.spanish_refresh else build_pack_jobs(
+            jobs = build_content_review_audio_jobs(packs) if args.rebuild_content_review or args.resume_content_review else build_changed_audio_jobs(packs) if args.rebuild_changed or args.resume_changed else build_pack_phrase_refresh_jobs(packs[0]) if args.refresh_pack else build_spanish_refresh_jobs(packs[0]) if args.spanish_refresh else build_pack_jobs(
                 packs, test_mode=args.test or args.spanish_test or args.russian_test,
                 targeted_only=args.targeted_examples_only,
             )
@@ -740,7 +793,7 @@ def main() -> int:
         )
         return 2
 
-    if args.rebuild_changed:
+    if args.rebuild_changed or args.rebuild_content_review:
         try:
             deleted = delete_changed_audio(jobs)
         except (OSError, ValueError) as exc:

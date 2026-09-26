@@ -420,7 +420,7 @@ def main() -> None:
         raise RuntimeError("Unexpected Korean pack size")
     output = '(function () {\n  "use strict";\n  window.registerContentPack(' + json.dumps(pack, ensure_ascii=False, indent=2) + ');\n})();\n'
     OUTPUT.write_text(output, encoding="utf-8")
-    print(f"Wrote {OUTPUT}: 795 entries, {expected_examples} examples")
+    print(f"Wrote {OUTPUT}: 795 base entries, {expected_examples} examples; run apply_content_review.py for reviewed additions")
 
 
 if __name__ == "__main__":

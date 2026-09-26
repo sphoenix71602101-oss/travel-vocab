@@ -25,10 +25,10 @@ test("西班牙西语包与现有语言包规模和结构一致", () => {
   assert.equal(pack.locale, "es-ES");
   assert.equal(pack.speechLocale, "es-ES");
   assert.equal(pack.scenes.length, 8);
-  assert.equal(pack.entries.length, 795);
-  assert.equal(pack.entries.filter((entry) => entry.kind === "word").length, 475);
+  assert.equal(pack.entries.length, 830);
+  assert.equal(pack.entries.filter((entry) => entry.kind === "word").length, 510);
   assert.equal(pack.entries.filter((entry) => entry.kind === "phrase").length, 320);
-  assert.equal(new Set(pack.entries.map((entry) => entry.id)).size, 795);
+  assert.equal(new Set(pack.entries.map((entry) => entry.id)).size, 830);
 });
 
 test("每条西语内容都有完整情境、文本和四选一干扰项", () => {
@@ -61,8 +61,8 @@ test("西语正式短语和例句不再由少量插槽模板批量生成", () =>
     "Quisiera información sobre", "Necesito ayuda con", "¿Puede confirmar lo de",
     "¿Qué tengo que hacer con", "¿Me puede explicar lo de", "Quisiera pedir pedir"
   ]) assert.doesNotMatch(allText, new RegExp(rejected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), rejected);
-  assert.equal(examples.length, 230);
-  assert.equal(new Set(examples.map((item) => item.text)).size, 230);
+  assert.equal(examples.length, 246);
+  assert.equal(new Set(examples.map((item) => item.text)).size, 246);
   const prefixes = new Map();
   for (const item of examples) {
     const prefix = item.text.toLocaleLowerCase("es-ES").replace(/[¿¡.,!?;:]/g, "").split(/\s+/).slice(0, 3).join(" ");
