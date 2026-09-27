@@ -42,6 +42,7 @@
   const SPEAKER_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   const FAVORITE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.78 5.63 6.22.9-4.5 4.39 1.06 6.2L12 17.2l-5.56 2.92 1.06-6.2L3 9.53l6.22-.9L12 3Z"/></svg>';
   const ACTION_ARROW_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const CLOUD_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 18.5h9.2a4.3 4.3 0 0 0 .6-8.56A5.8 5.8 0 0 0 6.2 8.7a4.9 4.9 0 0 0 1.3 9.8Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11.5v5m-2-2 2 2 2-2" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   const view = document.getElementById("view");
   const bottomNav = document.getElementById("bottomNav");
@@ -255,11 +256,10 @@
       ? { sceneId: scene.id, situationId: location.situationId }
       : null;
   }
-  function normalizeLanguageState(input, pack = currentPack()) {
+  function normalizeStoredLanguageState(input) {
     const output = emptyLanguageState();
-    const validIds = new Set((pack?.entries || []).map((entry) => entry.id));
     Object.entries(input?.byId || {}).forEach(([id, record]) => {
-      if (!validIds.has(id) || !["introduced", "mastered"].includes(record?.status)) return;
+      if (!id || !["introduced", "mastered"].includes(record?.status)) return;
       output.byId[id] = {
         status: record.status,
         reviewAttempts: clampInt(record.reviewAttempts),
@@ -268,9 +268,24 @@
       };
     });
     output.weakIds = Array.isArray(input?.weakIds)
-      ? Array.from(new Set(input.weakIds.filter((id) => validIds.has(id) && output.byId[id]?.status === "mastered")))
+      ? Array.from(new Set(input.weakIds.filter((id) => typeof id === "string" && output.byId[id]?.status === "mastered")))
       : [];
-    output.lastLocation = validLocation(input?.lastLocation, pack);
+    const location = input?.lastLocation;
+    output.lastLocation = typeof location?.sceneId === "string" && typeof location?.situationId === "string"
+      ? { sceneId: location.sceneId, situationId: location.situationId }
+      : null;
+    return output;
+  }
+  function normalizeLanguageState(input, pack = currentPack()) {
+    const stored = normalizeStoredLanguageState(input);
+    if (!pack) return stored;
+    const output = emptyLanguageState();
+    const validIds = new Set((pack?.entries || []).map((entry) => entry.id));
+    Object.entries(stored.byId).forEach(([id, record]) => {
+      if (validIds.has(id)) output.byId[id] = record;
+    });
+    output.weakIds = stored.weakIds.filter((id) => validIds.has(id) && output.byId[id]?.status === "mastered");
+    output.lastLocation = validLocation(stored.lastLocation, pack);
     return output;
   }
   function loadLearningEnvelope() {
@@ -288,6 +303,15 @@
   }
   function loadLearning(packId = currentPack()?.id) {
     return loadLearningEnvelope().packs[packId] || emptyLanguageState();
+  }
+  function summarizeLearningEnvelope(envelope) {
+    return Object.values(envelope?.packs || {}).reduce((summary, learning) => {
+      const records = Object.values(learning?.byId || {});
+      summary.learned += records.length;
+      summary.mastered += records.filter((record) => record.status === "mastered").length;
+      summary.weak += Array.isArray(learning?.weakIds) ? learning.weakIds.length : 0;
+      return summary;
+    }, { learned: 0, mastered: 0, weak: 0 });
   }
   function saveLearning(languageState, packId = currentPack()?.id) {
     try {
@@ -559,6 +583,8 @@
     if (!parts.length) return { name: "home" };
     if (parts[0] === "beginner") return { name: "beginner", page: parts[1] || "overview", lessonId: parts[2] || null };
     if (parts[0] === "review" && parts[1] === "favorites") return { name: "favorites" };
+    if (parts[0] === "tools" && parts[1] === "trips") return { name: "trips" };
+    if (parts[0] === "tools" && parts[1] === "checklist") return { name: "checklist" };
     if (parts[0] === "tools" && parts[1] === "emergency-card") {
       return { name: parts[2] === "preview" ? "emergency-card-preview" : "emergency-card-form" };
     }
@@ -573,7 +599,7 @@
     if (route.name === "beginner") return "home";
     if (route.name === "scene" || route.name === "learn") return "home";
     if (route.name === "favorites") return "review";
-    if (route.name.startsWith("emergency-card")) return "tools";
+    if (route.name.startsWith("emergency-card") || route.name === "trips" || route.name === "checklist") return "tools";
     return MAIN_TABS.has(route.name) ? route.name : "home";
   }
   function navigatePath(path, replace = false) {
@@ -604,15 +630,18 @@
     picker.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     picker.focus({ preventScroll: true });
   }
-  function requireDestination() {
+  function openDestinationPicker(message) {
     state.destinationOpen = true;
     pendingDestinationFocus = true;
-    showToast("请先选择目的地和语言");
+    if (message) showToast(message);
     if (parseRoute().name === "home") {
       renderHome();
     } else {
       navigatePath("home", true);
     }
+  }
+  function requireDestination() {
+    openDestinationPicker("请先选择目的地和语言");
   }
   function maybeAskLevel() {
     const destination = selectedDestination();
@@ -681,12 +710,14 @@
     state.tab = routeTab(route);
     if (route.name !== "learn") state.learning = null;
     state.quiz = null;
-    updateShell(state.tab, route.name === "learn" || route.name === "beginner" || route.name.startsWith("emergency-card"));
+    updateShell(state.tab, route.name === "learn" || route.name === "beginner" || route.name.startsWith("emergency-card") || route.name === "trips" || route.name === "checklist");
     if (route.name === "beginner") renderBeginnerRoute(route);
     else if (route.name === "review") renderReview();
     else if (route.name === "favorites") renderFavorites();
     else if (route.name === "tools") renderTools();
     else if (route.name === "me") renderMe();
+    else if (route.name === "trips") renderTrips();
+    else if (route.name === "checklist") renderChecklist();
     else if (route.name === "emergency-card-form") renderEmergencyCardForm();
     else if (route.name === "emergency-card-preview") void renderEmergencyCardPreview();
     else if (route.name === "scene") renderScene(route.sceneId);
@@ -1427,6 +1458,10 @@
     stopSpeech();
     const destination = selectedDestination();
     const emergencyAvailable = Boolean(currentPack()?.features?.emergencyCard);
+    const destinationIds = DESTINATION_OPTIONS.map((item) => item.id);
+    const tripStatuses = window.TRAVEL_TRIPS.getAll(destinationIds);
+    const visitedCount = Object.values(tripStatuses).filter((status) => status === window.TRAVEL_TRIPS.STATUS_VISITED).length;
+    const checklistSummary = window.TRAVEL_CHECKLIST.summarize(window.TRAVEL_CHECKLIST.getModel());
     view.innerHTML = `<div class="page-enter tools-page">
       <header class="screen-heading"><span class="eyebrow">旅途工具箱</span><h1>工具</h1><p>随时找到旅途中用得上的实用工具。</p></header>
       <section class="translator-card" aria-labelledby="translatorTitle">
@@ -1440,8 +1475,9 @@
       <div class="section-heading tool-section-heading"><div><span class="eyebrow">随身备用</span><h2>更多旅行工具</h2></div></div>
       <div class="tool-placeholder-grid" aria-label="更多旅行工具">
         <button class="tool-placeholder tool-card" type="button" data-emergency-card${state.destinationId && !emergencyAvailable ? " disabled" : ""}><span class="feature-icon coral" aria-hidden="true">${uiIcon("emergencyCard")}</span><span class="coming-badge tool-available-badge">${emergencyAvailable ? "已可使用" : state.destinationId ? "暂不可用" : "选择后使用"}</span><h3>紧急联系卡</h3><p>制作并保存双语急救信息卡。</p></button>
+        <button class="tool-placeholder tool-card" type="button" data-open-trips><span class="feature-icon teal" aria-hidden="true">${uiIcon("trip")}</span><span class="coming-badge tool-available-badge">已可使用</span><h3>我的行程</h3><p>${visitedCount ? `已点亮 ${visitedCount} 个语言目的地。` : "记录旅程，点亮到访的目的地。"}</p></button>
+        <button class="tool-placeholder tool-card" type="button" data-open-checklist><span class="feature-icon blue" aria-hidden="true">${uiIcon("checklist")}</span><span class="coming-badge tool-available-badge">已可使用</span><h3>旅行清单</h3><p>${checklistSummary.total ? `已准备 ${checklistSummary.completed} / ${checklistSummary.total} 项。` : "添加出发前需要确认的事项。"}</p></button>
         <article class="tool-placeholder"><span class="feature-icon amber" aria-hidden="true">${uiIcon("exchange")}</span><span class="coming-badge">计划中</span><h3>汇率换算</h3><p>旅途中快速估算常用货币金额。</p></article>
-        <article class="tool-placeholder"><span class="feature-icon blue" aria-hidden="true">${uiIcon("checklist")}</span><span class="coming-badge">计划中</span><h3>旅行清单</h3><p>整理出发前和旅途中需要确认的事项。</p></article>
       </div>
     </div>`;
     const translateInput = view.querySelector("#translateInput");
@@ -1458,6 +1494,8 @@
     });
     syncTranslateDraft();
     view.querySelector("[data-translate-destination]")?.addEventListener("click", requireDestination);
+    view.querySelector("[data-open-trips]").addEventListener("click", () => navigatePath("tools/trips"));
+    view.querySelector("[data-open-checklist]").addEventListener("click", () => navigatePath("tools/checklist"));
     view.querySelector("[data-emergency-card]").addEventListener("click", () => {
       if (!state.destinationId) {
         requireDestination();
@@ -1469,6 +1507,195 @@
       navigatePath("tools/emergency-card");
     });
     scrollToTop();
+  }
+
+  function openToolDialog(content) {
+    const previousFocus = document.activeElement;
+    const shell = document.getElementById("appShell");
+    const overlay = document.createElement("div");
+    overlay.className = "level-overlay tool-dialog-overlay";
+    overlay.innerHTML = content;
+    shell.inert = true;
+    document.body.append(overlay);
+    const onKeydown = (event) => {
+      if (event.key === "Escape") { event.preventDefault(); close(); return; }
+      if (event.key !== "Tab") return;
+      const controls = Array.from(overlay.querySelectorAll("button,input,select")).filter((element) => !element.disabled && !element.hidden);
+      if (!controls.length) return;
+      const index = controls.indexOf(document.activeElement);
+      if (event.shiftKey && index <= 0) { event.preventDefault(); controls.at(-1).focus(); }
+      else if (!event.shiftKey && index === controls.length - 1) { event.preventDefault(); controls[0].focus(); }
+    };
+    const close = () => {
+      overlay.removeEventListener("keydown", onKeydown);
+      overlay.remove();
+      shell.inert = false;
+      previousFocus?.focus?.();
+    };
+    overlay.addEventListener("keydown", onKeydown);
+    overlay.querySelector("[data-dialog-cancel]")?.addEventListener("click", close);
+    requestAnimationFrame(() => overlay.querySelector("[autofocus],button,input,select")?.focus());
+    return { overlay, close };
+  }
+
+  function tripStatusMeta(status) {
+    if (status === window.TRAVEL_TRIPS.STATUS_VISITED) return { label: "已去过", description: "这处目的地已经点亮", className: "visited" };
+    if (status === window.TRAVEL_TRIPS.STATUS_NOT_YET) return { label: "暂未去", description: "旅程还未完成", className: "not-yet" };
+    return { label: "未设置", description: "还没有记录这趟旅程", className: "unknown" };
+  }
+
+  function showTripStatusDialog(destination) {
+    const destinationIds = DESTINATION_OPTIONS.map((item) => item.id);
+    const status = window.TRAVEL_TRIPS.getStatus(destination.id, destinationIds);
+    const dialog = openToolDialog(`<section class="level-dialog trip-status-dialog" role="dialog" aria-modal="true" aria-labelledby="tripStatusTitle" aria-describedby="tripStatusDescription">
+      <span class="eyebrow">${escapeHtml(destination.country)} · ${escapeHtml(destination.language)}</span>
+      <h2 id="tripStatusTitle">这趟旅程完成了吗？</h2>
+      <p id="tripStatusDescription">选择后会更新地图上的足迹，你可以随时回来修改。</p>
+      <button class="trip-status-choice visited" type="button" data-trip-status="visited" autofocus><strong>已经完成，点亮这里</strong><span>在世界地图上留下到访标记</span></button>
+      <button class="trip-status-choice not-yet" type="button" data-trip-status="not-yet"><strong>还未完成，暂不点亮</strong><span>保留为空心标记，之后再更新</span></button>
+      ${status !== window.TRAVEL_TRIPS.STATUS_UNKNOWN ? '<button class="text-btn trip-clear-status" type="button" data-trip-clear>清除这条记录</button>' : ""}
+      <button class="text-btn level-later" type="button" data-dialog-cancel>取消</button>
+    </section>`);
+    dialog.overlay.querySelectorAll("[data-trip-status]").forEach((button) => button.addEventListener("click", () => {
+      const saved = window.TRAVEL_TRIPS.setStatus(destination.id, button.dataset.tripStatus, destinationIds);
+      if (!saved) { showToast("无法保存行程状态，请检查浏览器存储设置"); return; }
+      dialog.close();
+      renderTrips();
+      showToast(button.dataset.tripStatus === "visited" ? `${destination.country}已点亮` : `已将${destination.country}标记为暂未去`);
+    }));
+    dialog.overlay.querySelector("[data-trip-clear]")?.addEventListener("click", () => {
+      const saved = window.TRAVEL_TRIPS.clearStatus(destination.id, destinationIds);
+      if (!saved) { showToast("无法清除行程状态，请检查浏览器存储设置"); return; }
+      dialog.close();
+      renderTrips();
+      showToast("行程状态已清除");
+    });
+  }
+
+  function renderTrips() {
+    stopSpeech();
+    const destination = selectedDestination();
+    const destinationIds = DESTINATION_OPTIONS.map((item) => item.id);
+    const statuses = window.TRAVEL_TRIPS.getAll(destinationIds);
+    const visitedCount = Object.values(statuses).filter((status) => status === window.TRAVEL_TRIPS.STATUS_VISITED).length;
+    const markers = DESTINATION_OPTIONS.map((item) => {
+      const meta = tripStatusMeta(statuses[item.id] || window.TRAVEL_TRIPS.STATUS_UNKNOWN);
+      const current = item.id === destination?.id;
+      return `<span class="trip-map-marker ${meta.className}${current ? " current" : ""}" style="--map-x:${item.mapPosition.x}%;--map-y:${item.mapPosition.y}%" aria-hidden="true"><i></i>${current ? `<b>${escapeHtml(item.country)}</b>` : ""}</span>`;
+    }).join("");
+    const destinationRows = DESTINATION_OPTIONS.map((item) => {
+      const meta = tripStatusMeta(statuses[item.id] || window.TRAVEL_TRIPS.STATUS_UNKNOWN);
+      return `<li class="trip-destination-row${item.id === destination?.id ? " current" : ""}"><img src="${item.flagSrc}" alt="" width="48" height="32"><span><strong>${escapeHtml(item.country)}</strong><small>${escapeHtml(item.language)}</small></span><em class="trip-status-badge ${meta.className}">${meta.label}</em></li>`;
+    }).join("");
+    const currentMeta = tripStatusMeta(destination ? (statuses[destination.id] || window.TRAVEL_TRIPS.STATUS_UNKNOWN) : window.TRAVEL_TRIPS.STATUS_UNKNOWN);
+    const currentCard = destination ? `<section class="current-trip-card" aria-labelledby="currentTripTitle">
+      <img src="${destination.flagSrc}" alt="" width="72" height="48">
+      <div><span class="eyebrow">当前学习目的地</span><h2 id="currentTripTitle">${escapeHtml(destination.country)}</h2><p><span class="trip-status-dot ${currentMeta.className}" aria-hidden="true"></span>${currentMeta.label} · ${currentMeta.description}</p></div>
+      <button class="primary-btn compact" type="button" data-set-trip-status>${currentMeta.className === "unknown" ? "设置状态" : "更新状态"}</button>
+    </section>` : `<section class="current-trip-card trip-empty-card"><span class="feature-icon teal" aria-hidden="true">${uiIcon("trip")}</span><div><h2>先选择一个目的地</h2><p>选择正在学习的国家后，就能记录这趟旅程。</p></div><button class="primary-btn compact" type="button" data-choose-trip-destination>去选择目的地</button></section>`;
+    view.innerHTML = `<div class="trip-page page-enter">
+      <div class="flow-header"><button class="text-btn" type="button" data-trip-back>‹ 返回工具</button><span>我的行程</span><small>${visitedCount} / ${DESTINATION_OPTIONS.length}</small></div>
+      <header class="trip-page-lead"><span class="eyebrow">语言目的地足迹</span><h1>把走过的世界，一处处点亮</h1><p>这里展示语见世界已经开放的语言目的地。</p></header>
+      <figure class="trip-map-card" aria-labelledby="tripMapTitle">
+        <div class="trip-map-heading"><div><span>已点亮</span><strong id="tripMapTitle">${visitedCount}<small> / ${DESTINATION_OPTIONS.length}</small></strong></div><p>每一次到访，都是语言真正派上用场的一刻。</p></div>
+        <div class="trip-map-visual"><img src="images/tools/world-map.svg" alt="" width="1000" height="520">${markers}</div>
+        <figcaption><span><i class="visited"></i>已去过</span><span><i class="not-yet"></i>暂未去</span><span><i class="unknown"></i>未设置</span></figcaption>
+      </figure>
+      ${currentCard}
+      <section class="trip-destination-section" aria-labelledby="tripDestinationTitle"><div class="section-heading"><div><span class="eyebrow">足迹记录</span><h2 id="tripDestinationTitle">已开放的语言目的地</h2></div></div><ul class="trip-destination-list">${destinationRows}</ul></section>
+    </div>`;
+    view.querySelector("[data-trip-back]").addEventListener("click", () => navigatePath("tools"));
+    view.querySelector("[data-choose-trip-destination]")?.addEventListener("click", requireDestination);
+    view.querySelector("[data-set-trip-status]")?.addEventListener("click", () => showTripStatusDialog(destination));
+    scrollToTop();
+  }
+
+  function showChecklistItemDialog(item) {
+    const editing = Boolean(item);
+    const categoryOptions = window.TRAVEL_CHECKLIST.CATEGORIES.map((category) => `<option value="${category.id}"${category.id === (item?.categoryId || "documents") ? " selected" : ""}>${escapeHtml(category.name)}</option>`).join("");
+    const dialog = openToolDialog(`<section class="level-dialog checklist-item-dialog" role="dialog" aria-modal="true" aria-labelledby="checklistItemTitle">
+      <span class="eyebrow">旅行清单</span><h2 id="checklistItemTitle">${editing ? "编辑项目" : "添加项目"}</h2>
+      <form data-checklist-item-form novalidate>
+        <label class="dialog-field"><span>项目名称</span><input name="itemText" maxlength="80" value="${escapeHtml(item?.text || "")}" autocomplete="off" autofocus><small data-item-error></small></label>
+        <label class="dialog-field"><span>分类</span><select name="categoryId">${categoryOptions}</select></label>
+        <div class="dialog-actions"><button class="secondary-btn" type="button" data-dialog-cancel>取消</button><button class="primary-btn" type="submit">${editing ? "保存修改" : "添加项目"}</button></div>
+        ${editing ? '<button class="danger-text-btn" type="button" data-delete-checklist-item>删除这个项目</button>' : ""}
+      </form>
+    </section>`);
+    const form = dialog.overlay.querySelector("[data-checklist-item-form]");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const text = form.elements.itemText.value.trim();
+      const error = form.querySelector("[data-item-error]");
+      if (!text) { error.textContent = "请输入项目名称"; form.elements.itemText.setAttribute("aria-invalid", "true"); form.elements.itemText.focus(); return; }
+      const result = editing
+        ? window.TRAVEL_CHECKLIST.updateItem(item.id, { text, categoryId: form.elements.categoryId.value })
+        : window.TRAVEL_CHECKLIST.addItem(text, form.elements.categoryId.value);
+      if (!result.ok) { error.textContent = "无法保存，请检查浏览器存储设置"; return; }
+      dialog.close();
+      renderChecklist();
+      showToast(editing ? "清单项目已更新" : "已添加到旅行清单");
+    });
+    dialog.overlay.querySelector("[data-delete-checklist-item]")?.addEventListener("click", () => {
+      if (!window.confirm(`确定删除“${item.text}”吗？`)) return;
+      const result = window.TRAVEL_CHECKLIST.deleteItem(item.id);
+      if (!result.ok) { showToast("无法删除清单项目"); return; }
+      dialog.close();
+      renderChecklist();
+      showToast("清单项目已删除");
+    });
+  }
+
+  function renderChecklist(options = {}) {
+    stopSpeech();
+    const previousScroll = options.preserveScroll ? window.scrollY : 0;
+    const model = window.TRAVEL_CHECKLIST.getModel();
+    const summary = window.TRAVEL_CHECKLIST.summarize(model);
+    const complete = summary.total > 0 && summary.completed === summary.total;
+    const categories = window.TRAVEL_CHECKLIST.CATEGORIES.map((category) => {
+      const items = model.items.filter((item) => item.categoryId === category.id);
+      const completed = items.filter((item) => item.checked).length;
+      const itemRows = items.length ? items.map((item) => `<li class="checklist-item${item.checked ? " checked" : ""}">
+        <label><input type="checkbox" data-checklist-toggle="${escapeHtml(item.id)}"${item.checked ? " checked" : ""}><span>${escapeHtml(item.text)}</span></label>
+        <button class="checklist-edit" type="button" data-checklist-edit="${escapeHtml(item.id)}" aria-label="编辑：${escapeHtml(item.text)}">编辑</button>
+      </li>`).join("") : '<li class="checklist-category-empty">这个分类还没有项目</li>';
+      return `<section class="checklist-category" aria-labelledby="checklist-${category.id}"><header><h2 id="checklist-${category.id}">${escapeHtml(category.name)}</h2><span>${completed} / ${items.length}</span></header><ul>${itemRows}</ul></section>`;
+    }).join("");
+    view.innerHTML = `<div class="checklist-page page-enter">
+      <div class="flow-header"><button class="text-btn" type="button" data-checklist-back>‹ 返回工具</button><span>旅行清单</span><small>${summary.percentage}%</small></div>
+      <section class="checklist-overview${complete && options.celebrate ? " is-celebrating" : ""}" aria-labelledby="checklistTitle">
+        <div><span class="eyebrow">出发前备忘录</span><h1 id="checklistTitle">${complete ? "出发准备妥当" : "这次出发，别落下什么"}</h1><p>${complete ? "清单已经全部确认，可以安心出发了。" : `已完成 ${summary.completed} / ${summary.total} 项`}</p></div>
+        <strong>${summary.percentage}<small>%</small></strong>
+        <div class="checklist-progress" role="progressbar" aria-label="旅行清单完成进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${summary.percentage}"><span style="width:${summary.percentage}%"></span></div>
+      </section>
+      ${complete ? `<section class="checklist-complete-card" role="status"><span aria-hidden="true">${uiIcon("complete")}</span><div><strong>所有准备都确认好了</strong><p>下次出发前，可以一键重置勾选继续使用。</p></div><button class="secondary-btn compact" type="button" data-reset-checks>为下次重置</button></section>` : ""}
+      <div class="checklist-toolbar"><div><span class="eyebrow">常用清单</span><h2>逐项确认出行准备</h2></div><button class="primary-btn compact" type="button" data-add-checklist-item>＋ 添加项目</button></div>
+      <div class="checklist-categories">${categories}</div>
+      <section class="checklist-management" aria-labelledby="checklistManagementTitle"><div><h2 id="checklistManagementTitle">清单管理</h2><p>重置只清除勾选；恢复默认会移除所有自定义和修改。</p></div><div><button class="secondary-btn compact" type="button" data-reset-checks${summary.completed ? "" : " disabled"}>重置勾选</button><button class="danger-text-btn" type="button" data-restore-checklist>恢复默认清单</button></div></section>
+    </div>`;
+    view.querySelector("[data-checklist-back]").addEventListener("click", () => navigatePath("tools"));
+    view.querySelector("[data-add-checklist-item]").addEventListener("click", () => showChecklistItemDialog(null));
+    view.querySelectorAll("[data-checklist-edit]").forEach((button) => button.addEventListener("click", () => showChecklistItemDialog(model.items.find((item) => item.id === button.dataset.checklistEdit))));
+    view.querySelectorAll("[data-checklist-toggle]").forEach((input) => input.addEventListener("change", () => {
+      const wasComplete = summary.total > 0 && summary.completed === summary.total;
+      const result = window.TRAVEL_CHECKLIST.setChecked(input.dataset.checklistToggle, input.checked);
+      if (!result.ok) { input.checked = !input.checked; showToast("无法保存勾选状态"); return; }
+      const nextSummary = window.TRAVEL_CHECKLIST.summarize(result.model);
+      renderChecklist({ preserveScroll: true, celebrate: !wasComplete && nextSummary.total > 0 && nextSummary.completed === nextSummary.total });
+    }));
+    view.querySelectorAll("[data-reset-checks]").forEach((button) => button.addEventListener("click", () => {
+      if (!window.TRAVEL_CHECKLIST.resetChecks().ok) { showToast("无法重置清单"); return; }
+      renderChecklist();
+      showToast("已清除全部勾选，清单内容保持不变");
+    }));
+    view.querySelector("[data-restore-checklist]").addEventListener("click", () => {
+      if (!window.confirm("恢复默认清单会移除自定义项目和所有修改，确定继续吗？")) return;
+      if (!window.TRAVEL_CHECKLIST.restoreDefaults().ok) { showToast("无法恢复默认清单"); return; }
+      renderChecklist();
+      showToast("已恢复默认旅行清单");
+    });
+    if (options.preserveScroll) window.scrollTo({ top: previousScroll, left: 0, behavior: "auto" });
+    else scrollToTop();
   }
 
   function dictionaryOptions(items, selected) {
@@ -1610,26 +1837,27 @@
   function renderMe() {
     stopSpeech();
     const destination = selectedDestination();
-    const learning = destination ? loadLearning() : emptyLanguageState();
-    const introduced = Object.values(learning.byId).filter((record) => record.status === "introduced").length;
-    const mastered = Object.values(learning.byId).filter((record) => record.status === "mastered").length;
-    const weak = learning.weakIds.length;
-    const learningDataHtml = destination
-      ? `<section class="learning-data-card" aria-label="${langLabel()}学习数据"><div><strong>${introduced}</strong><span>已认识</span></div><div><strong>${mastered}</strong><span>已掌握</span></div><div><strong>${weak}</strong><span>需加强</span></div></section>`
-      : `<section class="language-required-card without-icon"><div><h3>尚未选择目的地</h3><p>请先回到首页选择目的地和语言，再查看对应的学习数据。</p></div><button class="secondary-btn compact" type="button" data-choose-destination>去首页选择</button></section>`;
+    const summary = summarizeLearningEnvelope(loadLearningEnvelope());
+    const currentLearningHtml = destination
+      ? `<section class="current-learning-card" aria-labelledby="currentLearningTitle"><span class="current-learning-flag" aria-hidden="true"><img src="${destination.flagSrc}" width="384" height="256" alt=""></span><div class="current-learning-copy"><span class="eyebrow">当前目的地</span><h3 id="currentLearningTitle">${escapeHtml(destination.country)} · ${escapeHtml(destination.language)}</h3><p>${escapeHtml(destination.nativeLabel)}，学习这趟旅程真正用得上的表达。</p></div><button class="secondary-btn compact current-learning-action" type="button" data-change-destination>切换</button></section>`
+      : `<section class="current-learning-card empty" aria-labelledby="currentLearningTitle"><span class="current-learning-empty" aria-hidden="true">--</span><div class="current-learning-copy"><h3 id="currentLearningTitle">尚未选择目的地</h3><p>选择后会在这里显示当前学习语言。</p></div><button class="secondary-btn compact current-learning-action" type="button" data-choose-destination>选择目的地</button></section>`;
     view.innerHTML = `<div class="page-enter settings-page">
-      <header class="screen-heading"><span class="eyebrow">你的学习旅程</span><h1>我的</h1><p>管理当前旅程与学习数据。</p></header>
-      <section class="profile-card"><img src="icons/icon-192.png" width="72" height="72" alt="语见世界应用图标"><div><span class="eyebrow">当前旅程</span><h2>${destination ? `${destination.country} · ${destination.language}` : "尚未选择目的地"}</h2><p>${destination ? `为${destination.country}之旅学习真正用得上的表达。` : "从首页选择这趟旅行的目的地和语言。"}</p></div></section>
-      ${learningDataHtml}
-      <div class="section-heading settings-heading"><div><span class="eyebrow">应用管理</span><h2>设置</h2></div></div>
+      <header class="screen-heading"><span class="eyebrow">本地学习档案</span><h1>我的</h1><p>查看你的学习足迹与当前设备设置。</p></header>
+      <section class="profile-card" aria-labelledby="profileName"><span class="profile-avatar"><img src="icons/icon-192.png" width="72" height="72" alt="语见世界应用图标，作为游客头像"></span><div class="profile-copy"><span class="local-status-badge">本地使用</span><h2 id="profileName">旅行学习者</h2><p>登录功能开放后，可跨设备同步学习进度、收藏和行程。</p></div><div class="account-preview" aria-label="账号与云同步，即将开放"><span class="account-preview-icon" aria-hidden="true">${CLOUD_SVG}</span><span><strong>账号与云同步</strong><small>为未来的云端个人档案预留</small></span><span class="planned-badge">即将开放</span></div></section>
+      <div class="section-heading profile-section-heading"><div><span class="eyebrow">全部语言</span><h2>学习概览</h2></div></div>
+      <section class="learning-data-card" aria-label="全部语言学习数据"><div><strong>${summary.learned}</strong><span>已学习</span></div><div><strong>${summary.mastered}</strong><span>已掌握</span></div><div><strong>${summary.weak}</strong><span>需加强</span></div></section>
+      <div class="section-heading profile-section-heading"><div><span class="eyebrow">当前选择</span><h2>当前学习</h2></div></div>
+      ${currentLearningHtml}
+      <div class="section-heading settings-heading"><div><span class="eyebrow">当前设备</span><h2>应用设置</h2></div></div>
       <section class="settings-list">
-        <div class="settings-row planned-row" aria-disabled="true"><div class="setting-heading"><span class="setting-icon teal" aria-hidden="true">${uiIcon("trip")}</span><div><h3>我的行程</h3><p>整理不同旅程的学习内容</p></div></div><span class="planned-badge">计划中</span></div>
         <div class="settings-row"><div class="setting-heading"><span class="setting-icon blue" aria-hidden="true">${uiIcon("install")}</span><div><h3>安装 App</h3><p>从主屏幕更快打开</p></div></div><div class="setting-action">${installPromptHtml()}</div></div>
-        <div class="settings-row danger-zone"><div class="setting-heading"><span class="setting-icon red" aria-hidden="true">${uiIcon("deleteData")}</span><div><h3>学习数据</h3><p>清除场景学习数据、认读进度和水平选择</p></div></div><button class="danger-btn" type="button" data-reset>清除全部学习数据</button></div>
+        <div class="settings-row"><div class="setting-heading"><span class="setting-icon teal" aria-hidden="true">${uiIcon("privacy")}</span><div><h3>数据与隐私</h3><p>学习数据和偏好目前仅保存在当前设备，不会自动上传。</p></div></div></div>
       </section>
+      <section class="data-management-card" aria-labelledby="dataManagementTitle"><div class="setting-heading"><span class="setting-icon red" aria-hidden="true">${uiIcon("deleteData")}</span><div><h3 id="dataManagementTitle">数据管理</h3><p>清除场景学习数据、认读进度和水平选择；目的地选择会保留。</p></div></div><button class="danger-btn" type="button" data-reset>清除全部学习数据</button></section>
       <aside class="journey-quote without-icon" aria-label="旅行寄语"><p>语言或许不同，<br>但对世界的好奇心相同</p></aside>
     </div>`;
     view.querySelector("[data-choose-destination]")?.addEventListener("click", requireDestination);
+    view.querySelector("[data-change-destination]")?.addEventListener("click", () => openDestinationPicker());
     view.querySelector("[data-reset]").addEventListener("click", resetData);
     bindInstallPrompt();
     scrollToTop();

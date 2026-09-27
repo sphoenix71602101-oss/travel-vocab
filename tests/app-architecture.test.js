@@ -146,7 +146,8 @@ test("页面语义插图使用彩色 PNG，小型播放和收藏控件使用 SVG
   assert.doesNotMatch(app, /function iconSvg|iconSvg\(/);
   assert.match(app, /const SPEAKER_SVG = '<svg/);
   assert.match(app, /const FAVORITE_SVG = '<svg/);
-  assert.match(app, /language-required-card without-icon/);
+  assert.match(app, /const CLOUD_SVG = '<svg/);
+  assert.match(app, /class="current-learning-empty"/);
   assert.match(app, /journey-quote without-icon/);
   assert.doesNotMatch(app, /icons\/ui\/language\.png/);
 });
@@ -173,7 +174,7 @@ test("首次看到星标时提供一次性收藏位置引导", () => {
   assert.match(css, /\.favorite-guide button\{[^}]*min-height:44px/s);
 });
 
-test("工具页使用紧凑翻译器，联系卡与计划工具同网格展示", () => {
+test("工具页使用紧凑翻译器，联系卡与旅行工具同网格展示", () => {
   const toolsView = app.slice(app.indexOf("function renderTools()"), app.indexOf("function dictionaryOptions("));
   assert.match(toolsView, /const destination = selectedDestination\(\)/);
   assert.match(toolsView, /destination\?\.language \|\| "选择目的地"/);
@@ -189,27 +190,87 @@ test("工具页使用紧凑翻译器，联系卡与计划工具同网格展示",
   assert.match(app, /state\.translateDraft = "";/);
   assert.match(app, /<button class="tool-placeholder tool-card"[^>]*data-emergency-card/);
   assert.match(toolsView, /aria-label="更多旅行工具"/);
-  assert.ok(toolsView.indexOf('data-emergency-card') < toolsView.indexOf('<h3>汇率换算</h3>'));
+  assert.ok(toolsView.indexOf('data-emergency-card') < toolsView.indexOf('<h3>我的行程</h3>'));
+  assert.ok(toolsView.indexOf('<h3>我的行程</h3>') < toolsView.indexOf('<h3>旅行清单</h3>'));
+  assert.ok(toolsView.indexOf('<h3>旅行清单</h3>') < toolsView.indexOf('<h3>汇率换算</h3>'));
   assert.match(toolsView, /<span class="coming-badge tool-available-badge">/);
   assert.match(toolsView, /<textarea id="translateInput" class="translator-input" rows="2"/);
   assert.match(css, /\.translator-result\{min-height:60px/);
-  for (const label of ["汇率换算", "旅行清单"]) assert.match(app, new RegExp(`<h3>${label}<\\/h3>`));
-  assert.equal((app.match(/<article class="tool-placeholder">/g) || []).length, 2);
+  for (const label of ["我的行程", "旅行清单", "汇率换算"]) assert.match(toolsView, new RegExp(`<h3>${label}<\\/h3>`));
+  assert.equal((toolsView.match(/<article class="tool-placeholder"/g) || []).length, 1);
+  assert.match(toolsView, /data-open-trips/);
+  assert.match(toolsView, /data-open-checklist/);
+  assert.match(toolsView, /navigatePath\("tools\/trips"\)/);
+  assert.match(toolsView, /navigatePath\("tools\/checklist"\)/);
+  assert.match(css, /\.tool-placeholder-grid\{[^}]*grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/s);
+  assert.doesNotMatch(css, /\.tool-placeholder-grid\{grid-template-columns:repeat\(3/);
   assert.doesNotMatch(app, /单位换算|地图导航|常用句速查/);
-  assert.doesNotMatch(app, /data-(?:currency|trip-list)/);
+  assert.doesNotMatch(app, /data-currency/);
 });
 
-test("我的页面不伪造账号并以设置列表承载现有能力", () => {
+test("我的行程和旅行清单具有独立路由、展示与无障碍编辑流程", () => {
+  assert.match(app, /parts\[1\] === "trips"/);
+  assert.match(app, /parts\[1\] === "checklist"/);
+  assert.match(app, /function renderTrips\(\)/);
+  assert.match(app, /function renderChecklist\(options = \{\}\)/);
+  assert.match(app, /images\/tools\/world-map\.svg/);
+  assert.match(app, /data-trip-status="visited"/);
+  assert.match(app, /data-trip-status="not-yet"/);
+  assert.match(app, /data-set-trip-status/);
+  assert.match(app, /data-checklist-toggle/);
+  assert.match(app, /data-add-checklist-item/);
+  assert.match(app, /data-restore-checklist/);
+  assert.match(app, /role="progressbar"/);
+  assert.match(app, /event\.key === "Escape"/);
+  assert.match(app, /shell\.inert = true/);
+  assert.match(html, /src="core\/trips\.js"/);
+  assert.match(html, /src="core\/checklist\.js"/);
+  assert.match(css, /\.trip-map-card/);
+  assert.match(css, /\.checklist-category/);
+  assert.match(css, /@media \(prefers-reduced-motion:reduce\)/);
+});
+
+test("我的页面呈现真实未登录状态、全局学习档案和分层设置", () => {
   const meView = app.slice(app.indexOf("function renderMe()"), app.indexOf("function resetData()"));
-  assert.match(app, /class="settings-list"/);
-  assert.match(app, /语见世界应用图标/);
-  assert.match(app, /安装 App/);
-  assert.match(app, /清除全部学习数据/);
-  assert.match(app, /我的行程/);
+  assert.match(meView, /本地学习档案/);
+  assert.match(meView, /旅行学习者/);
+  assert.match(meView, /本地使用/);
+  assert.match(meView, /账号与云同步/);
+  assert.match(meView, /即将开放/);
+  assert.doesNotMatch(meView, /data-login|<button[^>]*>登录/);
+  assert.match(meView, /语见世界应用图标，作为游客头像/);
+  assert.match(meView, /学习概览/);
+  assert.match(meView, /全部语言学习数据/);
+  assert.match(meView, /\$\{summary\.learned\}[\s\S]*已学习/);
+  assert.match(meView, /\$\{summary\.mastered\}[\s\S]*已掌握/);
+  assert.match(meView, /\$\{summary\.weak\}[\s\S]*需加强/);
+  assert.match(app, /function summarizeLearningEnvelope\(envelope\)/);
+  assert.match(app, /summary\.learned \+= records\.length/);
+  assert.match(app, /summary\.mastered \+= records\.filter/);
+  assert.match(app, /summary\.weak \+= Array\.isArray/);
+  assert.match(meView, /class="settings-list"/);
+  assert.match(meView, /安装 App/);
+  assert.match(meView, /数据与隐私/);
+  assert.match(meView, /仅保存在当前设备，不会自动上传/);
+  assert.match(meView, /class="data-management-card"/);
+  assert.match(meView, /清除全部学习数据/);
+  assert.doesNotMatch(meView, /我的行程/);
   assert.doesNotMatch(meView, /收藏夹/);
-  assert.match(app, /class="settings-row planned-row" aria-disabled="true"/);
-  assert.match(app, /class="journey-quote without-icon"/);
+  assert.match(meView, /class="journey-quote without-icon"/);
   assert.doesNotMatch(app, /生词本|意见反馈|关于我们/);
+});
+
+test("学习档案汇总全部语言包且空数据归零", () => {
+  const start = app.indexOf("  function summarizeLearningEnvelope");
+  const end = app.indexOf("  function saveLearning", start);
+  const summarizeLearningEnvelope = Function(`return (${app.slice(start, end).trim()})`)();
+  assert.deepEqual(summarizeLearningEnvelope({ packs: {} }), { learned: 0, mastered: 0, weak: 0 });
+  assert.deepEqual(summarizeLearningEnvelope({
+    packs: {
+      japanese: { byId: { a: { status: "introduced" }, b: { status: "mastered" } }, weakIds: ["b"] },
+      english: { byId: { c: { status: "mastered" }, d: { status: "introduced" }, e: { status: "mastered" } }, weakIds: ["c", "e"] }
+    }
+  }), { learned: 5, mastered: 3, weak: 3 });
 });
 
 test("未选择目的地时展开首页选择器而不进入语言相关流程", () => {
@@ -220,11 +281,14 @@ test("未选择目的地时展开首页选择器而不进入语言相关流程",
   assert.match(app, /requestAnimationFrame\(focusDestinationPicker\)/);
 });
 
-test("我的页面不再选择目的地且空状态不伪造学习数据", () => {
-  assert.match(app, /尚未选择目的地/);
-  assert.match(app, /data-choose-destination/);
-  assert.doesNotMatch(app, /data-lang=/);
-  assert.match(app, /destination \? loadLearning\(\) : emptyLanguageState\(\)/);
+test("我的页面以单一当前学习卡承载目的地状态和切换入口", () => {
+  const meView = app.slice(app.indexOf("function renderMe()"), app.indexOf("function resetData()"));
+  assert.equal((meView.match(/尚未选择目的地/g) || []).length, 1);
+  assert.match(meView, /class="current-learning-card"/);
+  assert.match(meView, /data-choose-destination/);
+  assert.match(meView, /data-change-destination/);
+  assert.match(meView, /openDestinationPicker\(\)/);
+  assert.doesNotMatch(meView, /data-lang=/);
 });
 
 test("目的地配置开放日美韩西俄", () => {
@@ -268,6 +332,8 @@ test("新存储按目的地语言包隔离并迁移旧进度", () => {
   assert.match(app, /function initializeDestination\(\)/);
   assert.match(app, /destinationForLang\(state\.lang\)/);
   assert.match(app, /envelope\.packs\[packId\] = normalizeLanguageState/);
+  assert.match(app, /function normalizeStoredLanguageState\(input\)/);
+  assert.match(app, /if \(!pack\) return stored/);
   assert.match(app, /\["ja", "jp-ja"\]/);
   assert.match(app, /\["en", "us-en"\]/);
   assert.match(app, /const oldLang = localStorage\.getItem\("travelVocab\.lang\.v1"\)/);

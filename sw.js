@@ -4,7 +4,7 @@
 // load on demand and use the browser's ordinary HTTP cache.
 const CACHE_PREFIX = "yujian-world-shell-";
 const LEGACY_CACHE_PREFIX = "travel-vocab-shell-";
-const CACHE_NAME = `${CACHE_PREFIX}v65`;
+const CACHE_NAME = `${CACHE_PREFIX}v66`;
 const APP_SHELL = [
   "./",
   "index.html",
@@ -14,6 +14,9 @@ const APP_SHELL = [
   "core/beginner-module-registry.js",
   "core/emergency-card.js",
   "core/favorites.js",
+  "core/trips.js",
+  "core/checklist.js",
+  "images/tools/world-map.svg",
   "app.js",
   "manifest.webmanifest"
 ];

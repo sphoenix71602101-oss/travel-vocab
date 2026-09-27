@@ -9,7 +9,8 @@
         pack: "languages/jp-ja/pack.js",
         beginner: ["languages/jp-ja/beginner/data.js", "languages/jp-ja/beginner/module.js"]
       },
-      hero: { mobile: "images/heroes/jp-mobile.webp", wide: "images/heroes/jp-wide.webp" }
+      hero: { mobile: "images/heroes/jp-mobile.webp", wide: "images/heroes/jp-wide.webp" },
+      mapPosition: { x: 86, y: 42 }
     },
     {
       id: "us", contentPackId: "us-en", country: "美国", language: "英语", nativeLabel: "English",
@@ -18,7 +19,8 @@
         pack: "languages/us-en/pack.js",
         beginner: ["languages/us-en/beginner/data.js", "languages/us-en/beginner/audio.js", "languages/us-en/beginner/module.js"]
       },
-      hero: { mobile: "images/heroes/us-mobile.webp", wide: "images/heroes/us-wide.webp" }
+      hero: { mobile: "images/heroes/us-mobile.webp", wide: "images/heroes/us-wide.webp" },
+      mapPosition: { x: 19, y: 40 }
     },
     {
       id: "kr", contentPackId: "kr-ko", country: "韩国", language: "韩语", nativeLabel: "한국어",
@@ -27,7 +29,8 @@
         pack: "languages/kr-ko/pack.js",
         beginner: ["languages/kr-ko/beginner/data.js", "languages/kr-ko/beginner/audio.js", "languages/kr-ko/beginner/module.js"]
       },
-      hero: { mobile: "images/heroes/kr-mobile.png", wide: "images/heroes/kr-wide.png" }
+      hero: { mobile: "images/heroes/kr-mobile.png", wide: "images/heroes/kr-wide.png" },
+      mapPosition: { x: 82, y: 44 }
     },
     {
       id: "ru", contentPackId: "ru-ru", country: "俄罗斯", language: "俄语", nativeLabel: "Русский",
@@ -36,7 +39,8 @@
         pack: "languages/ru-ru/pack.js",
         beginner: ["languages/ru-ru/beginner/data.js", "languages/ru-ru/beginner/audio.js", "languages/ru-ru/beginner/module.js"]
       },
-      hero: { mobile: "images/heroes/ru-mobile.png", wide: "images/heroes/ru-wide.png" }
+      hero: { mobile: "images/heroes/ru-mobile.png", wide: "images/heroes/ru-wide.png" },
+      mapPosition: { x: 68, y: 27 }
     },
     {
       id: "es", contentPackId: "es-es", country: "西班牙", language: "西班牙语", nativeLabel: "Español",
@@ -45,7 +49,8 @@
         pack: "languages/es-es/pack.js",
         beginner: ["languages/es-es/beginner/data.js", "languages/es-es/beginner/audio.js", "languages/es-es/beginner/module.js"]
       },
-      hero: { mobile: "images/heroes/es-mobile.jpg", wide: "images/heroes/es-wide.jpg" }
+      hero: { mobile: "images/heroes/es-mobile.jpg", wide: "images/heroes/es-wide.jpg" },
+      mapPosition: { x: 47, y: 42 }
     }
   ];
 

@@ -38,6 +38,8 @@ test("目的地配置独立管理语言资源和主题图", () => {
     for (const resource of destination.resources.beginner) assert.ok(fs.existsSync(path.join(root, resource)));
     for (const image of Object.values(destination.hero)) assert.ok(fs.existsSync(path.join(root, image)));
     assert.ok(fs.existsSync(path.join(root, destination.flagSrc)));
+    assert.equal(typeof destination.mapPosition.x, "number");
+    assert.equal(typeof destination.mapPosition.y, "number");
   }
   assert.match(html, /src="core\/destinations\.js"/);
   assert.doesNotMatch(html, /<script src="languages\//);
@@ -48,10 +50,10 @@ test("目的地配置独立管理语言资源和主题图", () => {
 
 test("Service Worker 仅预缓存共享外壳，语言和音频不预加载", () => {
   const shell = sw.match(/const APP_SHELL = \[([\s\S]*?)\];/)[1];
-  for (const file of ["index.html", "styles.css", "app.js", "core/content-registry.js", "core/destinations.js", "core/beginner-module-registry.js", "core/emergency-card.js", "core/favorites.js"]) {
+  for (const file of ["index.html", "styles.css", "app.js", "core/content-registry.js", "core/destinations.js", "core/beginner-module-registry.js", "core/emergency-card.js", "core/favorites.js", "core/trips.js", "core/checklist.js", "images/tools/world-map.svg"]) {
     assert.match(shell, new RegExp(`"${file.replace(/[.]/g, "\\.")}"`));
   }
-  assert.doesNotMatch(shell, /languages\/|audio\/|images\/|icons\//);
+  assert.doesNotMatch(shell, /languages\/|audio\/|images\/(?!tools\/world-map\.svg)|icons\//);
   assert.match(sw, /if \(!shellUrls\.has\(requestUrl\.href\) && request\.mode !== "navigate"\) return/);
   assert.match(sw, /fetch\(request, \{ cache: "no-cache" \}\)\.then/);
   assert.match(sw, /\.catch\(async \(\) =>/);
