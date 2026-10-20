@@ -1,0 +1,27 @@
+.lookup-search { display:grid; gap:10px; }
+.lookup-search input,.lookup-search select { min-height:48px; font-size:16px; }
+.lookup-search select { width:100%; padding:10px 12px; border:1px solid var(--line,#dce6ef); border-radius:12px; background:#fff; color:var(--ink); }
+.lookup-count { margin:18px 0 12px; color:var(--muted); font-size:.85rem; }
+.lookup-more { width:100%; margin:20px 0; }
+.show-entry-btn { display:flex; align-items:center; justify-content:center; gap:10px; min-height:44px; padding:10px 16px; margin-top:12px; border:1px solid #d6e7f6; border-radius:12px; color:#245d89; background:#f1f7fc; font:inherit; font-size:.85rem; font-weight:700; cursor:pointer; }
+.show-entry-btn:hover { background:#e5f0fa; }
+.show-entry-btn:focus-visible { outline:3px solid #2677bb; outline-offset:3px; }
+.show-page { display:flex; flex-direction:column; min-height:calc(100dvh - 56px); padding-bottom:env(safe-area-inset-bottom); color:#102236; }
+.show-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.show-header>span { color:#53677b; font-size:.8rem; }
+.show-message { display:flex; flex:1; flex-direction:column; align-items:center; justify-content:center; gap:28px; padding:36px 12px; text-align:center; }
+.show-message h1 { width:100%; margin:0; font-size:clamp(2.25rem,8vw,4.5rem); line-height:1.35; font-weight:750; overflow-wrap:anywhere; word-break:normal; }
+.show-message p { margin:0; max-width:36rem; font-size:1rem; line-height:1.7; color:#53677b; overflow-wrap:anywhere; }
+.show-audio { display:flex; align-items:center; justify-content:center; gap:12px; padding:18px 0; font-size:.9rem; }
+.show-audio .speak-btn { width:56px; height:56px; }
+.load-error-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; padding:20px; }
+@media (orientation:landscape) and (max-height:560px) { .show-message { padding:24px 8px; gap:16px; } .show-message h1 { font-size:clamp(2rem,6vw,3.5rem); } }
+@media (prefers-reduced-motion:reduce) { .show-page.page-enter,.lookup-page.page-enter { animation:none; } }
+
+.is-show .app { padding-bottom:max(12px,env(safe-area-inset-bottom)); }
+.is-show .show-page { min-height:calc(100dvh - max(12px,env(safe-area-inset-top)) - max(12px,env(safe-area-inset-bottom))); }
+.review-overview-stats { grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media (max-width:520px) {
+  .review-overview { grid-template-columns:1fr; }
+  .review-overview-stats { width:100%; }
+}

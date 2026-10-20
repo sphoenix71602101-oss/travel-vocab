@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="语见世界帮助语言基础有限的人，只学这趟旅行真正用得上的日语、英语、韩语或西班牙语。">
+  <meta name="description" content="语见世界帮助语言基础有限的人，只学这趟旅行真正用得上的日语、英语、韩语、西班牙语或俄语。">
   <meta name="application-name" content="语见世界">
   <meta name="theme-color" content="#f5f9ff">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,6 +17,8 @@
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/lookup.css">
+  <link rel="stylesheet" href="styles/interface.css">
 </head>
 <body>
   <a class="skip-link" href="#view">跳到主要内容</a>
@@ -27,19 +29,19 @@
 
     <nav class="bottom-nav" id="bottomNav" aria-label="主要导航">
       <a class="nav-item" href="#/home" data-tab="home">
-        <span class="nav-icon" aria-hidden="true"><img class="nav-icon-normal" src="icons/navigation/home.png" alt=""><img class="nav-icon-active" src="icons/navigation/home-active.png" alt=""></span>
+        <span class="nav-icon" data-nav-icon="home" aria-hidden="true"></span>
         <span class="nav-label">首页</span>
       </a>
       <a class="nav-item" href="#/review" data-tab="review">
-        <span class="nav-icon" aria-hidden="true"><img class="nav-icon-normal" src="icons/navigation/review.png" alt=""><img class="nav-icon-active" src="icons/navigation/review-active.png" alt=""></span>
+        <span class="nav-icon" data-nav-icon="review" aria-hidden="true"></span>
         <span class="nav-label">复习</span>
       </a>
       <a class="nav-item" href="#/tools" data-tab="tools">
-        <span class="nav-icon" aria-hidden="true"><img class="nav-icon-normal" src="icons/navigation/tools.png" alt=""><img class="nav-icon-active" src="icons/navigation/tools-active.png" alt=""></span>
+        <span class="nav-icon" data-nav-icon="tools" aria-hidden="true"></span>
         <span class="nav-label">工具</span>
       </a>
       <a class="nav-item" href="#/me" data-tab="me">
-        <span class="nav-icon" aria-hidden="true"><img class="nav-icon-normal" src="icons/navigation/me.png" alt=""><img class="nav-icon-active" src="icons/navigation/me-active.png" alt=""></span>
+        <span class="nav-icon" data-nav-icon="me" aria-hidden="true"></span>
         <span class="nav-label">我的</span>
       </a>
     </nav>
@@ -51,9 +53,29 @@
   <script src="core/destinations.js"></script>
   <script src="core/beginner-module-registry.js"></script>
   <script src="core/emergency-card.js"></script>
+  <script src="core/entry-search.js"></script>
+  <script src="core/review-scheduler.js"></script>
   <script src="core/favorites.js"></script>
-  <script src="core/trips.js"></script>
+  <script src="core/footprints.js"></script>
   <script src="core/checklist.js"></script>
+  <script src="core/interface-icons.js"></script>
+  <script src="core/app-context.js"></script>
+  <script src="core/app/resources.js"></script>
+  <script src="core/app/ui.js"></script>
+  <script src="core/app/storage.js"></script>
+  <script src="core/app/speech.js"></script>
+  <script src="core/app/validation.js"></script>
+  <script src="core/app/router.js"></script>
+  <script src="core/app/home.js"></script>
+  <script src="core/app/beginner.js"></script>
+  <script src="core/app/scenes.js"></script>
+  <script src="core/app/learning.js"></script>
+  <script src="core/app/review.js"></script>
+  <script src="core/app/favorites-view.js"></script>
+  <script src="core/app/tools.js"></script>
+  <script src="core/app/emergency-view.js"></script>
+  <script src="core/app/profile.js"></script>
+  <script src="core/app/lookup.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
   "languageCode": "es",
   "languageLabel": "西班牙语",
   "nativeLabel": "Español",
-  "pronunciationLabel": null,
+  "pronunciationLabel": "西班牙语音标",
   "features": {
     "beginnerModule": "es-es-beginner",
     "beginnerAudioBase": "audio/es/beginner",
@@ -539,8 +539,10 @@
       "example": {
         "id": "es-es_airport_001_example",
         "zh": "这是我的护照。",
-        "text": "Aquí tiene mi pasaporte."
-      }
+        "text": "Aquí tiene mi pasaporte.",
+        "pronunciation": "/aˈki ˈtjene mi pasaˈpoɾte/"
+      },
+      "pronunciation": "/pasaˈpoɾte/"
     },
     {
       "id": "airport_002",
@@ -555,8 +557,10 @@
       "example": {
         "id": "es-es_airport_002_example",
         "zh": "入境西班牙需要签证吗？",
-        "text": "¿Necesito visado para entrar en España?"
-      }
+        "text": "¿Necesito visado para entrar en España?",
+        "pronunciation": "/neθeˈsito biˈsado paɾa enˈtɾaɾ en esˈpaɲa/"
+      },
+      "pronunciation": "/biˈsado/"
     },
     {
       "id": "airport_003",
@@ -571,8 +575,10 @@
       "example": {
         "id": "es-es_airport_003_example",
         "zh": "我想更改机票。",
-        "text": "Quisiera cambiar mi billete de avión."
-      }
+        "text": "Quisiera cambiar mi billete de avión.",
+        "pronunciation": "/kiˈsjeɾa kamˈbjaɾ mi biˈʝete de aˈbjon/"
+      },
+      "pronunciation": "/biˈʝete de aˈbjon/"
     },
     {
       "id": "airport_004",
@@ -587,8 +593,10 @@
       "example": {
         "id": "es-es_airport_004_example",
         "zh": "需要打印登机牌吗？",
-        "text": "¿Tengo que imprimir la tarjeta de embarque?"
-      }
+        "text": "¿Tengo que imprimir la tarjeta de embarque?",
+        "pronunciation": "/ˈteŋɡo ke impɾiˈmiɾ la taɾˈxeta de emˈbaɾke/"
+      },
+      "pronunciation": "/taɾˈxeta de emˈbaɾke/"
     },
     {
       "id": "airport_005",
@@ -603,8 +611,10 @@
       "example": {
         "id": "es-es_airport_005_example",
         "zh": "这件行李可以托运吗？",
-        "text": "¿Puedo facturar este equipaje?"
-      }
+        "text": "¿Puedo facturar este equipaje?",
+        "pronunciation": "/ˈpwedo faktuˈɾaɾ ˈeste ekiˈpaxe/"
+      },
+      "pronunciation": "/ekiˈpaxe/"
     },
     {
       "id": "airport_006",
@@ -619,8 +629,10 @@
       "example": {
         "id": "es-es_airport_006_example",
         "zh": "我的行李箱没有出来。",
-        "text": "Mi maleta no ha salido por la cinta."
-      }
+        "text": "Mi maleta no ha salido por la cinta.",
+        "pronunciation": "/mi maˈleta ˈno ˈa saˈlido poɾ la ˈθinta/"
+      },
+      "pronunciation": "/maˈleta/"
     },
     {
       "id": "airport_007",
@@ -635,8 +647,10 @@
       "example": {
         "id": "es-es_airport_007_example",
         "zh": "这件手提行李符合尺寸要求吗？",
-        "text": "¿Este equipaje de mano cumple las medidas?"
-      }
+        "text": "¿Este equipaje de mano cumple las medidas?",
+        "pronunciation": "/ˈeste ekiˈpaxe de ˈmano ˈkumple las meˈdidas/"
+      },
+      "pronunciation": "/ekiˈpaxe de ˈmano/"
     },
     {
       "id": "airport_008",
@@ -651,8 +665,10 @@
       "example": {
         "id": "es-es_airport_008_example",
         "zh": "去机场怎么走？",
-        "text": "¿Cómo se llega al aeropuerto?"
-      }
+        "text": "¿Cómo se llega al aeropuerto?",
+        "pronunciation": "/ˈkomo se ˈʝeɡa al aeɾoˈpweɾto/"
+      },
+      "pronunciation": "/aeɾoˈpweɾto/"
     },
     {
       "id": "airport_009",
@@ -667,8 +683,10 @@
       "example": {
         "id": "es-es_airport_009_example",
         "zh": "这个航班从哪个航站楼出发？",
-        "text": "¿De qué terminal sale este vuelo?"
-      }
+        "text": "¿De qué terminal sale este vuelo?",
+        "pronunciation": "/de ˈke teɾmiˈnal ˈsale ˈeste ˈbwelo/"
+      },
+      "pronunciation": "/teɾmiˈnal/"
     },
     {
       "id": "airport_010",
@@ -683,8 +701,10 @@
       "example": {
         "id": "es-es_airport_010_example",
         "zh": "出发区在楼上。",
-        "text": "La zona de salidas está arriba."
-      }
+        "text": "La zona de salidas está arriba.",
+        "pronunciation": "/la ˈθona de saˈlidas esˈta aˈriba/"
+      },
+      "pronunciation": "/saˈlida/"
     },
     {
       "id": "airport_011",
@@ -699,8 +719,10 @@
       "example": {
         "id": "es-es_airport_011_example",
         "zh": "请看屏幕上的到达信息。",
-        "text": "Mire las llegadas en la pantalla."
-      }
+        "text": "Mire las llegadas en la pantalla.",
+        "pronunciation": "/ˈmiɾe las ʝeˈɡadas en la panˈtaʝa/"
+      },
+      "pronunciation": "/ʝeˈɡada/"
     },
     {
       "id": "airport_012",
@@ -715,8 +737,10 @@
       "example": {
         "id": "es-es_airport_012_example",
         "zh": "登机口换了吗？",
-        "text": "¿Ha cambiado la puerta de embarque?"
-      }
+        "text": "¿Ha cambiado la puerta de embarque?",
+        "pronunciation": "/ˈa kamˈbjado la ˈpweɾta de emˈbaɾke/"
+      },
+      "pronunciation": "/ˈpweɾta de emˈbaɾke/"
     },
     {
       "id": "airport_013",
@@ -731,8 +755,10 @@
       "example": {
         "id": "es-es_airport_013_example",
         "zh": "安检大约需要多长时间？",
-        "text": "¿Cuánto se tarda en pasar el control de seguridad?"
-      }
+        "text": "¿Cuánto se tarda en pasar el control de seguridad?",
+        "pronunciation": "/ˈkwanto se ˈtaɾda em paˈsaɾ el konˈtɾol de seɡuɾiˈdad/"
+      },
+      "pronunciation": "/konˈtɾol de seɡuɾiˈdad/"
     },
     {
       "id": "airport_014",
@@ -747,8 +773,10 @@
       "example": {
         "id": "es-es_airport_014_example",
         "zh": "我没有需要向海关申报的物品。",
-        "text": "No tengo nada que declarar en la aduana."
-      }
+        "text": "No tengo nada que declarar en la aduana.",
+        "pronunciation": "/ˈno ˈteŋɡo ˈnada ke deklaˈɾaɾ en la aˈdwana/"
+      },
+      "pronunciation": "/aˈdwana/"
     },
     {
       "id": "airport_015",
@@ -763,8 +791,10 @@
       "example": {
         "id": "es-es_airport_015_example",
         "zh": "入境时要填写这张表吗？",
-        "text": "¿Tengo que rellenar este formulario para entrar en el país?"
-      }
+        "text": "¿Tengo que rellenar este formulario para entrar en el país?",
+        "pronunciation": "/ˈteŋɡo ke reʝeˈnaɾ ˈeste foɾmuˈlaɾjo paɾa enˈtɾaɾ en el paˈis/"
+      },
+      "pronunciation": "/enˈtɾada al paˈis/"
     },
     {
       "id": "airport_016",
@@ -779,8 +809,10 @@
       "example": {
         "id": "es-es_airport_016_example",
         "zh": "离境检查在哪里？",
-        "text": "¿Dónde está el control de salida del país?"
-      }
+        "text": "¿Dónde está el control de salida del país?",
+        "pronunciation": "/ˈdonde esˈta el konˈtɾol de saˈlida del paˈis/"
+      },
+      "pronunciation": "/saˈlida del paˈis/"
     },
     {
       "id": "airport_017",
@@ -795,8 +827,10 @@
       "example": {
         "id": "es-es_airport_017_example",
         "zh": "我在马德里转机。",
-        "text": "Tengo una escala en Madrid."
-      }
+        "text": "Tengo una escala en Madrid.",
+        "pronunciation": "/ˈteŋɡo ˈuna esˈkala en maˈdɾid/"
+      },
+      "pronunciation": "/esˈkala/"
     },
     {
       "id": "airport_018",
@@ -811,8 +845,10 @@
       "example": {
         "id": "es-es_airport_018_example",
         "zh": "我的航班几点起飞？",
-        "text": "¿A qué hora sale mi vuelo?"
-      }
+        "text": "¿A qué hora sale mi vuelo?",
+        "pronunciation": "/a ˈke ˈoɾa ˈsale mi ˈbwelo/"
+      },
+      "pronunciation": "/ˈbwelo/"
     },
     {
       "id": "airport_019",
@@ -827,8 +863,10 @@
       "example": {
         "id": "es-es_airport_019_example",
         "zh": "航班延误了两个小时。",
-        "text": "El vuelo lleva dos horas de retraso."
-      }
+        "text": "El vuelo lleva dos horas de retraso.",
+        "pronunciation": "/el ˈbwelo ˈʝeba ˈdos ˈoɾas de reˈtɾaso/"
+      },
+      "pronunciation": "/reˈtɾaso/"
     },
     {
       "id": "airport_020",
@@ -843,8 +881,10 @@
       "example": {
         "id": "es-es_airport_020_example",
         "zh": "航班取消后我该怎么办？",
-        "text": "¿Qué hago si han cancelado el vuelo?"
-      }
+        "text": "¿Qué hago si han cancelado el vuelo?",
+        "pronunciation": "/ˈke ˈaɡo si ˈan kanθeˈlado el ˈbwelo/"
+      },
+      "pronunciation": "/kanθelaˈθjon/"
     },
     {
       "id": "airport_021",
@@ -859,8 +899,10 @@
       "example": {
         "id": "es-es_airport_021_example",
         "zh": "值机柜台已经开了吗？",
-        "text": "¿Ya está abierto el mostrador de facturación?"
-      }
+        "text": "¿Ya está abierto el mostrador de facturación?",
+        "pronunciation": "/ˈʝa esˈta aˈbjeɾto el mostɾaˈdoɾ de faktuɾaˈθjon/"
+      },
+      "pronunciation": "/faktuɾaˈθjon/"
     },
     {
       "id": "airport_022",
@@ -875,8 +917,10 @@
       "example": {
         "id": "es-es_airport_022_example",
         "zh": "登机已经开始了。",
-        "text": "Ya ha empezado el embarque."
-      }
+        "text": "Ya ha empezado el embarque.",
+        "pronunciation": "/ˈʝa ˈa empeˈθado el emˈbaɾke/"
+      },
+      "pronunciation": "/emˈbaɾke/"
     },
     {
       "id": "airport_023",
@@ -891,8 +935,10 @@
       "example": {
         "id": "es-es_airport_023_example",
         "zh": "起飞前请关闭手机。",
-        "text": "Apague el móvil antes del despegue, por favor."
-      }
+        "text": "Apague el móvil antes del despegue, por favor.",
+        "pronunciation": "/aˈpaɡe el ˈmobil ˈantes del desˈpeɡe poɾ faˈboɾ/"
+      },
+      "pronunciation": "/desˈpeɡe/"
     },
     {
       "id": "airport_024",
@@ -907,8 +953,10 @@
       "example": {
         "id": "es-es_airport_024_example",
         "zh": "着陆时请系好安全带。",
-        "text": "Abróchese el cinturón durante el aterrizaje."
-      }
+        "text": "Abróchese el cinturón durante el aterrizaje.",
+        "pronunciation": "/aˈbɾotʃese el θintuˈɾon duˈɾante el ateriˈθaxe/"
+      },
+      "pronunciation": "/ateriˈθaxe/"
     },
     {
       "id": "airport_025",
@@ -919,7 +967,8 @@
       "text": "asiento",
       "audioPath": "audio/es/airport_025.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈsjento/"
     },
     {
       "id": "airport_026",
@@ -930,7 +979,8 @@
       "text": "asiento de ventanilla",
       "audioPath": "audio/es/airport_026.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈsjento de bentaˈniʝa/"
     },
     {
       "id": "airport_027",
@@ -941,7 +991,8 @@
       "text": "asiento de pasillo",
       "audioPath": "audio/es/airport_027.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈsjento de paˈsiʝo/"
     },
     {
       "id": "airport_028",
@@ -952,7 +1003,8 @@
       "text": "recogida de equipajes",
       "audioPath": "audio/es/airport_028.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/rekoˈxida de ekiˈpaxes/"
     },
     {
       "id": "airport_029",
@@ -963,7 +1015,8 @@
       "text": "carrito portaequipajes",
       "audioPath": "audio/es/airport_029.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kaˈrito poɾtaekiˈpaxes/"
     },
     {
       "id": "airport_030",
@@ -974,7 +1027,8 @@
       "text": "control de pasaportes",
       "audioPath": "audio/es/airport_030.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/konˈtɾol de pasaˈpoɾtes/"
     },
     {
       "id": "airport_031",
@@ -985,7 +1039,8 @@
       "text": "tienda libre de impuestos",
       "audioPath": "audio/es/airport_031.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtjenda ˈlibɾe de imˈpwestos/"
     },
     {
       "id": "airport_032",
@@ -1000,8 +1055,10 @@
       "example": {
         "id": "es-es_airport_032_example",
         "zh": "机场大巴在哪里乘坐？",
-        "text": "¿Dónde se coge el autobús del aeropuerto?"
-      }
+        "text": "¿Dónde se coge el autobús del aeropuerto?",
+        "pronunciation": "/ˈdonde se ˈkoxe el autoˈbus del aeɾoˈpweɾto/"
+      },
+      "pronunciation": "/autoˈbus del aeɾoˈpweɾto/"
     },
     {
       "id": "airport_033",
@@ -1016,8 +1073,10 @@
       "example": {
         "id": "es-es_airport_033_example",
         "zh": "请帮我叫一辆出租车。",
-        "text": "¿Puede llamarme un taxi, por favor?"
-      }
+        "text": "¿Puede llamarme un taxi, por favor?",
+        "pronunciation": "/ˈpwede ʝaˈmaɾme ˈun ˈtaksi poɾ faˈboɾ/"
+      },
+      "pronunciation": "/ˈtaksi/"
     },
     {
       "id": "airport_034",
@@ -1032,8 +1091,10 @@
       "example": {
         "id": "es-es_airport_034_example",
         "zh": "去市中心可以坐地铁。",
-        "text": "Puede ir al centro en metro."
-      }
+        "text": "Puede ir al centro en metro.",
+        "pronunciation": "/ˈpwede ˈiɾ al ˈθentɾo en ˈmetɾo/"
+      },
+      "pronunciation": "/ˈmetɾo/"
     },
     {
       "id": "airport_035",
@@ -1048,8 +1109,10 @@
       "example": {
         "id": "es-es_airport_035_example",
         "zh": "这趟火车去塞维利亚吗？",
-        "text": "¿Este tren va a Sevilla?"
-      }
+        "text": "¿Este tren va a Sevilla?",
+        "pronunciation": "/ˈeste ˈtɾem ˈba a seˈbiʝa/"
+      },
+      "pronunciation": "/ˈtɾen/"
     },
     {
       "id": "airport_036",
@@ -1064,8 +1127,10 @@
       "example": {
         "id": "es-es_airport_036_example",
         "zh": "去马德里的高铁从哪个站台开？",
-        "text": "¿De qué andén sale el tren de alta velocidad a Madrid?"
-      }
+        "text": "¿De qué andén sale el tren de alta velocidad a Madrid?",
+        "pronunciation": "/de ˈke anˈden ˈsale el ˈtɾen de ˈalta beloθiˈdad a maˈdɾid/"
+      },
+      "pronunciation": "/ˈtɾen de ˈalta beloθiˈdad/"
     },
     {
       "id": "airport_037",
@@ -1080,8 +1145,10 @@
       "example": {
         "id": "es-es_airport_037_example",
         "zh": "下一班公交车几点到？",
-        "text": "¿A qué hora llega el próximo autobús?"
-      }
+        "text": "¿A qué hora llega el próximo autobús?",
+        "pronunciation": "/a ˈke ˈoɾa ˈʝeɡa el ˈpɾoksimo autoˈbus/"
+      },
+      "pronunciation": "/autoˈbus/"
     },
     {
       "id": "airport_038",
@@ -1096,8 +1163,10 @@
       "example": {
         "id": "es-es_airport_038_example",
         "zh": "车站离这里远吗？",
-        "text": "¿Está lejos la estación?"
-      }
+        "text": "¿Está lejos la estación?",
+        "pronunciation": "/esˈta ˈlexos la estaˈθjon/"
+      },
+      "pronunciation": "/estaˈθjon/"
     },
     {
       "id": "airport_039",
@@ -1112,8 +1181,10 @@
       "example": {
         "id": "es-es_airport_039_example",
         "zh": "我们的火车在三号站台。",
-        "text": "Nuestro tren sale del andén tres."
-      }
+        "text": "Nuestro tren sale del andén tres.",
+        "pronunciation": "/nwestɾo ˈtɾen ˈsale del anˈden ˈtɾes/"
+      },
+      "pronunciation": "/anˈden/"
     },
     {
       "id": "airport_040",
@@ -1128,8 +1199,10 @@
       "example": {
         "id": "es-es_airport_040_example",
         "zh": "我在哪里能看时刻表？",
-        "text": "¿Dónde puedo consultar el horario?"
-      }
+        "text": "¿Dónde puedo consultar el horario?",
+        "pronunciation": "/ˈdonde ˈpwedo konsulˈtaɾ el oˈɾaɾjo/"
+      },
+      "pronunciation": "/oˈɾaɾjo/"
     },
     {
       "id": "airport_041",
@@ -1144,8 +1217,10 @@
       "example": {
         "id": "es-es_airport_041_example",
         "zh": "请给我一张去托莱多的单程票。",
-        "text": "Un billete de ida a Toledo, por favor."
-      }
+        "text": "Un billete de ida a Toledo, por favor.",
+        "pronunciation": "/ˈum biˈʝete de ˈida a toˈledo poɾ faˈboɾ/"
+      },
+      "pronunciation": "/biˈʝete de ˈida/"
     },
     {
       "id": "airport_042",
@@ -1160,8 +1235,10 @@
       "example": {
         "id": "es-es_airport_042_example",
         "zh": "我想买一张往返票。",
-        "text": "Quisiera un billete de ida y vuelta."
-      }
+        "text": "Quisiera un billete de ida y vuelta.",
+        "pronunciation": "/kiˈsjeɾa ˈum biˈʝete de ˈida i ˈbwelta/"
+      },
+      "pronunciation": "/biˈʝete de ˈida i ˈbwelta/"
     },
     {
       "id": "airport_043",
@@ -1176,8 +1253,10 @@
       "example": {
         "id": "es-es_airport_043_example",
         "zh": "这张票需要检票吗？",
-        "text": "¿Hay que validar este billete?"
-      }
+        "text": "¿Hay que validar este billete?",
+        "pronunciation": "/ˈai ke baliˈdaɾ ˈeste biˈʝete/"
+      },
+      "pronunciation": "/biˈʝete/"
     },
     {
       "id": "airport_044",
@@ -1192,8 +1271,10 @@
       "example": {
         "id": "es-es_airport_044_example",
         "zh": "售票窗口几点关门？",
-        "text": "¿A qué hora cierra la taquilla?"
-      }
+        "text": "¿A qué hora cierra la taquilla?",
+        "pronunciation": "/a ˈke ˈoɾa ˈθjera la taˈkiʝa/"
+      },
+      "pronunciation": "/taˈkiʝa/"
     },
     {
       "id": "airport_045",
@@ -1208,8 +1289,10 @@
       "example": {
         "id": "es-es_airport_045_example",
         "zh": "可以在自动售票机上用银行卡吗？",
-        "text": "¿Se puede pagar con tarjeta en la máquina expendedora?"
-      }
+        "text": "¿Se puede pagar con tarjeta en la máquina expendedora?",
+        "pronunciation": "/se ˈpwede paˈɡaɾ kon taɾˈxeta en la ˈmakina ekspendeˈdoɾa/"
+      },
+      "pronunciation": "/ˈmakina ekspendeˈdoɾa/"
     },
     {
       "id": "airport_046",
@@ -1224,8 +1307,10 @@
       "example": {
         "id": "es-es_airport_046_example",
         "zh": "请把车票放在闸机上。",
-        "text": "Acerque el billete al torno de acceso."
-      }
+        "text": "Acerque el billete al torno de acceso.",
+        "pronunciation": "/aˈθeɾke el biˈʝete al ˈtoɾno de akˈθeso/"
+      },
+      "pronunciation": "/ˈtoɾno de akˈθeso/"
     },
     {
       "id": "airport_047",
@@ -1240,8 +1325,10 @@
       "example": {
         "id": "es-es_airport_047_example",
         "zh": "地铁入口在广场旁边。",
-        "text": "La entrada del metro está junto a la plaza."
-      }
+        "text": "La entrada del metro está junto a la plaza.",
+        "pronunciation": "/la enˈtɾada del ˈmetɾo esˈta ˈxunto a la ˈplaθa/"
+      },
+      "pronunciation": "/enˈtɾada/"
     },
     {
       "id": "airport_048",
@@ -1256,8 +1343,10 @@
       "example": {
         "id": "es-es_airport_048_example",
         "zh": "出口在左边。",
-        "text": "La salida está a la izquierda."
-      }
+        "text": "La salida está a la izquierda.",
+        "pronunciation": "/la saˈlida esˈta a la iθˈkjeɾda/"
+      },
+      "pronunciation": "/saˈlida/"
     },
     {
       "id": "airport_049",
@@ -1272,8 +1361,10 @@
       "example": {
         "id": "es-es_airport_049_example",
         "zh": "我去问一下服务台。",
-        "text": "Voy a preguntar en la oficina de información."
-      }
+        "text": "Voy a preguntar en la oficina de información.",
+        "pronunciation": "/ˈboi a pɾeɡunˈtaɾ en la ofiˈθina de infoɾmaˈθjon/"
+      },
+      "pronunciation": "/ofiˈθina de infoɾmaˈθjon/"
     },
     {
       "id": "airport_050",
@@ -1288,8 +1379,10 @@
       "example": {
         "id": "es-es_airport_050_example",
         "zh": "可以在地图上标出来吗？",
-        "text": "¿Puede señalarlo en el mapa?"
-      }
+        "text": "¿Puede señalarlo en el mapa?",
+        "pronunciation": "/ˈpwede seɲaˈlaɾlo en el ˈmapa/"
+      },
+      "pronunciation": "/ˈmapa/"
     },
     {
       "id": "airport_051",
@@ -1304,8 +1397,10 @@
       "example": {
         "id": "es-es_airport_051_example",
         "zh": "我的目的地是格拉纳达。",
-        "text": "Mi destino es Granada."
-      }
+        "text": "Mi destino es Granada.",
+        "pronunciation": "/mi desˈtino ˈes ɡɾaˈnada/"
+      },
+      "pronunciation": "/desˈtino/"
     },
     {
       "id": "airport_052",
@@ -1316,7 +1411,8 @@
       "text": "coche",
       "audioPath": "audio/es/airport_052.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkotʃe/"
     },
     {
       "id": "airport_053",
@@ -1331,8 +1427,10 @@
       "example": {
         "id": "es-es_airport_053_example",
         "zh": "我想租一辆自动挡汽车。",
-        "text": "Quisiera alquilar un coche automático."
-      }
+        "text": "Quisiera alquilar un coche automático.",
+        "pronunciation": "/kiˈsjeɾa alkiˈlaɾ ˈun ˈkotʃe autoˈmatiko/"
+      },
+      "pronunciation": "/ˈkotʃe de alkiˈleɾ/"
     },
     {
       "id": "airport_054",
@@ -1343,7 +1441,8 @@
       "text": "gasolinera",
       "audioPath": "audio/es/airport_054.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ɡasoliˈneɾa/"
     },
     {
       "id": "airport_055",
@@ -1354,7 +1453,8 @@
       "text": "aparcamiento",
       "audioPath": "audio/es/airport_055.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/apaɾkaˈmjento/"
     },
     {
       "id": "airport_056",
@@ -1365,7 +1465,8 @@
       "text": "semáforo",
       "audioPath": "audio/es/airport_056.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/seˈmafoɾo/"
     },
     {
       "id": "airport_057",
@@ -1376,7 +1477,8 @@
       "text": "paso de peatones",
       "audioPath": "audio/es/airport_057.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpaso de peaˈtones/"
     },
     {
       "id": "airport_058",
@@ -1387,7 +1489,8 @@
       "text": "bicicleta",
       "audioPath": "audio/es/airport_058.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/biθiˈkleta/"
     },
     {
       "id": "airport_059",
@@ -1398,7 +1501,8 @@
       "text": "moto",
       "audioPath": "audio/es/airport_059.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈmoto/"
     },
     {
       "id": "airport_060",
@@ -1413,8 +1517,10 @@
       "example": {
         "id": "es-es_airport_060_example",
         "zh": "从这里可以步行过去吗？",
-        "text": "¿Se puede ir a pie desde aquí?"
-      }
+        "text": "¿Se puede ir a pie desde aquí?",
+        "pronunciation": "/se ˈpwede ˈiɾ a ˈpje desde aˈki/"
+      },
+      "pronunciation": "/a ˈpje/"
     },
     {
       "id": "airport_061",
@@ -1429,8 +1535,10 @@
       "example": {
         "id": "es-es_airport_061_example",
         "zh": "有飞往巴塞罗那的直飞航班吗？",
-        "text": "¿Hay algún vuelo directo a Barcelona?"
-      }
+        "text": "¿Hay algún vuelo directo a Barcelona?",
+        "pronunciation": "/ˈai alˈɡum ˈbwelo diˈɾekto a baɾθeˈlona/"
+      },
+      "pronunciation": "/ˈbwelo diˈɾekto/"
     },
     {
       "id": "airport_062",
@@ -1445,8 +1553,10 @@
       "example": {
         "id": "es-es_airport_062_example",
         "zh": "哪里可以寄存行李？",
-        "text": "¿Dónde está la consigna de equipaje?"
-      }
+        "text": "¿Dónde está la consigna de equipaje?",
+        "pronunciation": "/ˈdonde esˈta la konˈsiɡna de ekiˈpaxe/"
+      },
+      "pronunciation": "/konˈsiɡna de ekiˈpaxe/"
     },
     {
       "id": "airport_063",
@@ -1461,8 +1571,10 @@
       "example": {
         "id": "es-es_airport_063_example",
         "zh": "我需要申报行李丢失。",
-        "text": "Necesito comunicar que se ha perdido mi equipaje."
-      }
+        "text": "Necesito comunicar que se ha perdido mi equipaje.",
+        "pronunciation": "/neθeˈsito komuniˈkaɾ ke se ˈa peɾˈdido mi ekiˈpaxe/"
+      },
+      "pronunciation": "/ekiˈpaxe peɾˈdido/"
     },
     {
       "id": "airport_064",
@@ -1473,7 +1585,8 @@
       "text": "número de pasaporte",
       "audioPath": "audio/es/airport_064.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈnumeɾo de pasaˈpoɾte/"
     },
     {
       "id": "airport_065",
@@ -1484,7 +1597,8 @@
       "text": "número de vuelo",
       "audioPath": "audio/es/airport_065.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈnumeɾo de ˈbwelo/"
     },
     {
       "id": "airport_066",
@@ -1495,7 +1609,8 @@
       "text": "sala de espera",
       "audioPath": "audio/es/airport_066.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈsala de esˈpeɾa/"
     },
     {
       "id": "airport_067",
@@ -1506,7 +1621,8 @@
       "text": "hora de embarque",
       "audioPath": "audio/es/airport_067.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈoɾa de emˈbaɾke/"
     },
     {
       "id": "airport_068",
@@ -1521,8 +1637,10 @@
       "example": {
         "id": "es-es_airport_068_example",
         "zh": "这个可以作为手提行李带上飞机吗？",
-        "text": "¿Puedo llevar esto como equipaje de mano?"
-      }
+        "text": "¿Puedo llevar esto como equipaje de mano?",
+        "pronunciation": "/ˈpwedo ʝeˈbaɾ ˈesto komo ekiˈpaxe de ˈmano/"
+      },
+      "pronunciation": "/ʝeˈbaɾ komo ekiˈpaxe de ˈmano/"
     },
     {
       "id": "airport_069",
@@ -1537,8 +1655,10 @@
       "example": {
         "id": "es-es_airport_069_example",
         "zh": "我想托运这个行李箱。",
-        "text": "Quiero facturar esta maleta."
-      }
+        "text": "Quiero facturar esta maleta.",
+        "pronunciation": "/ˈkjeɾo faktuˈɾaɾ ˈesta maˈleta/"
+      },
+      "pronunciation": "/faktuˈɾaɾ el ekiˈpaxe/"
     },
     {
       "id": "airport_070",
@@ -1549,7 +1669,8 @@
       "text": "inspección de equipaje",
       "audioPath": "audio/es/airport_070.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/inspekˈθjon de ekiˈpaxe/"
     },
     {
       "id": "airport_071",
@@ -1560,7 +1681,8 @@
       "text": "tarjeta de entrada",
       "audioPath": "audio/es/airport_071.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/taɾˈxeta de enˈtɾada/"
     },
     {
       "id": "airport_072",
@@ -1575,8 +1697,10 @@
       "example": {
         "id": "es-es_airport_072_example",
         "zh": "我需要填写海关申报单吗？",
-        "text": "¿Tengo que rellenar una declaración de aduanas?"
-      }
+        "text": "¿Tengo que rellenar una declaración de aduanas?",
+        "pronunciation": "/ˈteŋɡo ke reʝeˈnaɾ ˈuna deklaɾaˈθjon de aˈdwanas/"
+      },
+      "pronunciation": "/deklaɾaˈθjon de aˈdwanas/"
     },
     {
       "id": "airport_073",
@@ -1587,7 +1711,8 @@
       "text": "mostrador de conexiones",
       "audioPath": "audio/es/airport_073.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/mostɾaˈdoɾ de konekˈsjones/"
     },
     {
       "id": "airport_074",
@@ -1598,7 +1723,8 @@
       "text": "cinturón de seguridad",
       "audioPath": "audio/es/airport_074.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/θintuˈɾon de seɡuɾiˈdad/"
     },
     {
       "id": "airport_075",
@@ -1609,7 +1735,8 @@
       "text": "auxiliar de vuelo",
       "audioPath": "audio/es/airport_075.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/auksiˈljaɾ de ˈbwelo/"
     },
     {
       "id": "airport_076",
@@ -1620,7 +1747,8 @@
       "text": "comandante",
       "audioPath": "audio/es/airport_076.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/komanˈdante/"
     },
     {
       "id": "airport_077",
@@ -1631,7 +1759,8 @@
       "text": "pasarela de embarque",
       "audioPath": "audio/es/airport_077.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/pasaˈɾela de emˈbaɾke/"
     },
     {
       "id": "airport_078",
@@ -1642,7 +1771,8 @@
       "text": "pista",
       "audioPath": "audio/es/airport_078.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpista/"
     },
     {
       "id": "airport_079",
@@ -1657,8 +1787,10 @@
       "example": {
         "id": "es-es_airport_079_example",
         "zh": "我想申请延长签证。",
-        "text": "Quisiera solicitar una prórroga del visado."
-      }
+        "text": "Quisiera solicitar una prórroga del visado.",
+        "pronunciation": "/kiˈsjeɾa soliθiˈtaɾ ˈuna ˈpɾoroɡa del biˈsado/"
+      },
+      "pronunciation": "/ˈpɾoroɡa del biˈsado/"
     },
     {
       "id": "airport_080",
@@ -1669,7 +1801,8 @@
       "text": "control de inmigración",
       "audioPath": "audio/es/airport_080.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/konˈtɾol de inmiɡɾaˈθjon/"
     },
     {
       "id": "airport_081",
@@ -1684,8 +1817,10 @@
       "example": {
         "id": "es-es_airport_081_example",
         "zh": "超重行李要付多少钱？",
-        "text": "¿Cuánto tengo que pagar por el exceso de equipaje?"
-      }
+        "text": "¿Cuánto tengo que pagar por el exceso de equipaje?",
+        "pronunciation": "/ˈkwanto ˈteŋɡo ke paˈɡaɾ poɾ el eksˈθeso de ekiˈpaxe/"
+      },
+      "pronunciation": "/eksˈθeso de ekiˈpaxe/"
     },
     {
       "id": "airport_082",
@@ -1696,7 +1831,8 @@
       "text": "junto a la ventanilla",
       "audioPath": "audio/es/airport_082.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈxunto a la bentaˈniʝa/"
     },
     {
       "id": "airport_083",
@@ -1707,7 +1843,8 @@
       "text": "junto al pasillo",
       "audioPath": "audio/es/airport_083.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈxunto al paˈsiʝo/"
     },
     {
       "id": "airport_084",
@@ -1718,7 +1855,8 @@
       "text": "chaleco salvavidas",
       "audioPath": "audio/es/airport_084.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/tʃaˈleko salbaˈbidas/"
     },
     {
       "id": "airport_085",
@@ -1729,7 +1867,8 @@
       "text": "¿Dónde está la puerta de embarque?",
       "audioPath": "audio/es/airport_085.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈdonde esˈta la ˈpweɾta de emˈbaɾke/"
     },
     {
       "id": "airport_086",
@@ -1740,7 +1879,8 @@
       "text": "¿Dónde puedo recoger mi equipaje?",
       "audioPath": "audio/es/airport_086.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈdonde ˈpwedo rekoˈxeɾ mi ekiˈpaxe/"
     },
     {
       "id": "airport_087",
@@ -1751,7 +1891,8 @@
       "text": "Quiero hacer transbordo.",
       "audioPath": "audio/es/airport_087.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈkjeɾo aˈθeɾ tɾansˈboɾdo/"
     },
     {
       "id": "hotel_001",
@@ -1766,8 +1907,10 @@
       "example": {
         "id": "es-es_hotel_001_example",
         "zh": "这家酒店有二十四小时前台吗？",
-        "text": "¿Este hotel tiene recepción las veinticuatro horas?"
-      }
+        "text": "¿Este hotel tiene recepción las veinticuatro horas?",
+        "pronunciation": "/ˈeste oˈtel ˈtjene reθepˈθjon las beintiˈkwatɾo ˈoɾas/"
+      },
+      "pronunciation": "/oˈtel/"
     },
     {
       "id": "hotel_002",
@@ -1782,8 +1925,10 @@
       "example": {
         "id": "es-es_hotel_002_example",
         "zh": "我们想住一家有特色的国营古堡酒店。",
-        "text": "Nos gustaría alojarnos en un parador."
-      }
+        "text": "Nos gustaría alojarnos en un parador.",
+        "pronunciation": "/nos ɡustaˈɾia aloˈxaɾnos en ˈum paɾaˈdoɾ/"
+      },
+      "pronunciation": "/paɾaˈdoɾ/"
     },
     {
       "id": "hotel_003",
@@ -1798,8 +1943,10 @@
       "example": {
         "id": "es-es_hotel_003_example",
         "zh": "这个旅游住宿登记过吗？",
-        "text": "¿Está registrado este alojamiento turístico?"
-      }
+        "text": "¿Está registrado este alojamiento turístico?",
+        "pronunciation": "/esˈta rexisˈtɾado ˈeste aloxaˈmjento tuˈɾistiko/"
+      },
+      "pronunciation": "/aloxaˈmjento tuˈɾistiko/"
     },
     {
       "id": "hotel_004",
@@ -1814,8 +1961,10 @@
       "example": {
         "id": "es-es_hotel_004_example",
         "zh": "请到前台领取房卡。",
-        "text": "Recoja la tarjeta en recepción, por favor."
-      }
+        "text": "Recoja la tarjeta en recepción, por favor.",
+        "pronunciation": "/reˈkoxa la taɾˈxeta en reθepˈθjon poɾ faˈboɾ/"
+      },
+      "pronunciation": "/reθepˈθjon/"
     },
     {
       "id": "hotel_005",
@@ -1830,8 +1979,10 @@
       "example": {
         "id": "es-es_hotel_005_example",
         "zh": "我用这个名字订了房。",
-        "text": "Tengo una reserva a este nombre."
-      }
+        "text": "Tengo una reserva a este nombre.",
+        "pronunciation": "/ˈteŋɡo ˈuna reˈseɾba a ˈeste ˈnombɾe/"
+      },
+      "pronunciation": "/reˈseɾba/"
     },
     {
       "id": "hotel_006",
@@ -1846,8 +1997,10 @@
       "example": {
         "id": "es-es_hotel_006_example",
         "zh": "入住时间是下午三点。",
-        "text": "La entrada es a partir de las tres de la tarde."
-      }
+        "text": "La entrada es a partir de las tres de la tarde.",
+        "pronunciation": "/la enˈtɾada ˈes a paɾˈtiɾ de las ˈtɾes de la ˈtaɾde/"
+      },
+      "pronunciation": "/enˈtɾada/"
     },
     {
       "id": "hotel_007",
@@ -1862,8 +2015,10 @@
       "example": {
         "id": "es-es_hotel_007_example",
         "zh": "退房时间是中午十二点。",
-        "text": "La salida es antes de las doce."
-      }
+        "text": "La salida es antes de las doce.",
+        "pronunciation": "/la saˈlida ˈes ˈantes de las ˈdoθe/"
+      },
+      "pronunciation": "/saˈlida/"
     },
     {
       "id": "hotel_008",
@@ -1878,8 +2033,10 @@
       "example": {
         "id": "es-es_hotel_008_example",
         "zh": "房间还没准备好吗？",
-        "text": "¿Todavía no está lista la habitación?"
-      }
+        "text": "¿Todavía no está lista la habitación?",
+        "pronunciation": "/todaˈbia ˈno esˈta ˈlista la abitaˈθjon/"
+      },
+      "pronunciation": "/abitaˈθjon/"
     },
     {
       "id": "hotel_009",
@@ -1894,8 +2051,10 @@
       "example": {
         "id": "es-es_hotel_009_example",
         "zh": "我预订的是单人间。",
-        "text": "He reservado una habitación individual."
-      }
+        "text": "He reservado una habitación individual.",
+        "pronunciation": "/ˈe reseɾˈbado ˈuna abitaˈθjon indibiˈdwal/"
+      },
+      "pronunciation": "/abitaˈθjon indibiˈdwal/"
     },
     {
       "id": "hotel_010",
@@ -1910,8 +2069,10 @@
       "example": {
         "id": "es-es_hotel_010_example",
         "zh": "我们想要一间双床房。",
-        "text": "Queremos una habitación con dos camas."
-      }
+        "text": "Queremos una habitación con dos camas.",
+        "pronunciation": "/keˈɾemos ˈuna abitaˈθjon kon ˈdos ˈkamas/"
+      },
+      "pronunciation": "/abitaˈθjon kon ˈdos ˈkamas/"
     },
     {
       "id": "hotel_011",
@@ -1926,8 +2087,10 @@
       "example": {
         "id": "es-es_hotel_011_example",
         "zh": "双人间包含早餐吗？",
-        "text": "¿La habitación doble incluye el desayuno?"
-      }
+        "text": "¿La habitación doble incluye el desayuno?",
+        "pronunciation": "/la abitaˈθjon ˈdoble inˈkluʝe el desaˈʝuno/"
+      },
+      "pronunciation": "/abitaˈθjon ˈdoble/"
     },
     {
       "id": "hotel_012",
@@ -1942,8 +2105,10 @@
       "example": {
         "id": "es-es_hotel_012_example",
         "zh": "这间套房可以住三个人吗？",
-        "text": "¿Pueden alojarse tres personas en la suite?"
-      }
+        "text": "¿Pueden alojarse tres personas en la suite?",
+        "pronunciation": "/ˈpweden aloˈxaɾse ˈtɾes peɾˈsonas en la ˈswite/"
+      },
+      "pronunciation": "/ˈswite/"
     },
     {
       "id": "hotel_013",
@@ -1958,8 +2123,10 @@
       "example": {
         "id": "es-es_hotel_013_example",
         "zh": "我把房间钥匙落在里面了。",
-        "text": "Me he dejado la llave dentro de la habitación."
-      }
+        "text": "Me he dejado la llave dentro de la habitación.",
+        "pronunciation": "/me ˈe deˈxado la ˈʝabe ˈdentɾo de la abitaˈθjon/"
+      },
+      "pronunciation": "/ˈʝabe/"
     },
     {
       "id": "hotel_014",
@@ -1974,8 +2141,10 @@
       "example": {
         "id": "es-es_hotel_014_example",
         "zh": "我的房卡打不开门。",
-        "text": "La tarjeta de la habitación no abre la puerta."
-      }
+        "text": "La tarjeta de la habitación no abre la puerta.",
+        "pronunciation": "/la taɾˈxeta de la abitaˈθjon ˈno ˈabɾe la ˈpweɾta/"
+      },
+      "pronunciation": "/taɾˈxeta de la abitaˈθjon/"
     },
     {
       "id": "hotel_015",
@@ -1990,8 +2159,10 @@
       "example": {
         "id": "es-es_hotel_015_example",
         "zh": "行李员可以帮您拿行李。",
-        "text": "El botones puede ayudarle con el equipaje."
-      }
+        "text": "El botones puede ayudarle con el equipaje.",
+        "pronunciation": "/el boˈtones ˈpwede aʝuˈdaɾle kon el ekiˈpaxe/"
+      },
+      "pronunciation": "/boˈtones/"
     },
     {
       "id": "hotel_016",
@@ -2006,8 +2177,10 @@
       "example": {
         "id": "es-es_hotel_016_example",
         "zh": "工作人员非常友好。",
-        "text": "El personal es muy amable."
-      }
+        "text": "El personal es muy amable.",
+        "pronunciation": "/el peɾsoˈnal ˈes ˈmuj aˈmable/"
+      },
+      "pronunciation": "/peɾsoˈnal/"
     },
     {
       "id": "hotel_017",
@@ -2022,8 +2195,10 @@
       "example": {
         "id": "es-es_hotel_017_example",
         "zh": "客房服务到几点？",
-        "text": "¿Hasta qué hora funciona el servicio de habitaciones?"
-      }
+        "text": "¿Hasta qué hora funciona el servicio de habitaciones?",
+        "pronunciation": "/asta ˈke ˈoɾa funˈθjona el seɾˈbiθjo de abitaˈθjones/"
+      },
+      "pronunciation": "/seɾˈbiθjo de abitaˈθjones/"
     },
     {
       "id": "hotel_018",
@@ -2038,8 +2213,10 @@
       "example": {
         "id": "es-es_hotel_018_example",
         "zh": "今天不用打扫房间。",
-        "text": "Hoy no hace falta limpiar la habitación."
-      }
+        "text": "Hoy no hace falta limpiar la habitación.",
+        "pronunciation": "/ˈoi ˈno ˈaθe ˈfalta limˈpjaɾ la abitaˈθjon/"
+      },
+      "pronunciation": "/limˈpjeθa/"
     },
     {
       "id": "hotel_019",
@@ -2054,8 +2231,10 @@
       "example": {
         "id": "es-es_hotel_019_example",
         "zh": "可以再给我一条毛巾吗？",
-        "text": "¿Me puede traer otra toalla?"
-      }
+        "text": "¿Me puede traer otra toalla?",
+        "pronunciation": "/me ˈpwede tɾaˈeɾ ˈotɾa toˈaʝa/"
+      },
+      "pronunciation": "/toˈaʝa/"
     },
     {
       "id": "hotel_020",
@@ -2070,8 +2249,10 @@
       "example": {
         "id": "es-es_hotel_020_example",
         "zh": "床单上有一处污渍。",
-        "text": "Hay una mancha en la sábana."
-      }
+        "text": "Hay una mancha en la sábana.",
+        "pronunciation": "/ˈai ˈuna ˈmantʃa en la ˈsabana/"
+      },
+      "pronunciation": "/ˈsabana/"
     },
     {
       "id": "hotel_021",
@@ -2082,7 +2263,8 @@
       "text": "almohada",
       "audioPath": "audio/es/hotel_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/almoˈada/"
     },
     {
       "id": "hotel_022",
@@ -2093,7 +2275,8 @@
       "text": "edredón",
       "audioPath": "audio/es/hotel_022.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/edɾeˈdon/"
     },
     {
       "id": "hotel_023",
@@ -2104,7 +2287,8 @@
       "text": "manta",
       "audioPath": "audio/es/hotel_023.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈmanta/"
     },
     {
       "id": "hotel_024",
@@ -2115,7 +2299,8 @@
       "text": "aire acondicionado",
       "audioPath": "audio/es/hotel_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈaiɾe akondiθjoˈnado/"
     },
     {
       "id": "hotel_025",
@@ -2126,7 +2311,8 @@
       "text": "calefacción",
       "audioPath": "audio/es/hotel_025.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kalefakˈθjon/"
     },
     {
       "id": "hotel_026",
@@ -2137,7 +2323,8 @@
       "text": "baño",
       "audioPath": "audio/es/hotel_026.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈbaɲo/"
     },
     {
       "id": "hotel_027",
@@ -2148,7 +2335,8 @@
       "text": "ducha",
       "audioPath": "audio/es/hotel_027.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdutʃa/"
     },
     {
       "id": "hotel_028",
@@ -2159,7 +2347,8 @@
       "text": "bañera",
       "audioPath": "audio/es/hotel_028.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/baˈɲeɾa/"
     },
     {
       "id": "hotel_029",
@@ -2170,7 +2359,8 @@
       "text": "agua caliente",
       "audioPath": "audio/es/hotel_029.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈaɡwa kaˈljente/"
     },
     {
       "id": "hotel_030",
@@ -2181,7 +2371,8 @@
       "text": "agua fría",
       "audioPath": "audio/es/hotel_030.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈaɡwa ˈfɾia/"
     },
     {
       "id": "hotel_031",
@@ -2192,7 +2383,8 @@
       "text": "aseo",
       "audioPath": "audio/es/hotel_031.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈseo/"
     },
     {
       "id": "hotel_032",
@@ -2203,7 +2395,8 @@
       "text": "papel higiénico",
       "audioPath": "audio/es/hotel_032.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/paˈpel ixˈjeniko/"
     },
     {
       "id": "hotel_033",
@@ -2214,7 +2407,8 @@
       "text": "champú",
       "audioPath": "audio/es/hotel_033.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/tʃamˈpu/"
     },
     {
       "id": "hotel_034",
@@ -2225,7 +2419,8 @@
       "text": "gel de ducha",
       "audioPath": "audio/es/hotel_034.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈxel de ˈdutʃa/"
     },
     {
       "id": "hotel_035",
@@ -2236,7 +2431,8 @@
       "text": "cepillo de dientes",
       "audioPath": "audio/es/hotel_035.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/θeˈpiʝo de ˈdjentes/"
     },
     {
       "id": "hotel_036",
@@ -2247,7 +2443,8 @@
       "text": "pasta de dientes",
       "audioPath": "audio/es/hotel_036.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpasta de ˈdjentes/"
     },
     {
       "id": "hotel_037",
@@ -2258,7 +2455,8 @@
       "text": "secador de pelo",
       "audioPath": "audio/es/hotel_037.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/sekaˈdoɾ de ˈpelo/"
     },
     {
       "id": "hotel_038",
@@ -2269,7 +2467,8 @@
       "text": "enchufe",
       "audioPath": "audio/es/hotel_038.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/enˈtʃufe/"
     },
     {
       "id": "hotel_039",
@@ -2280,7 +2479,8 @@
       "text": "adaptador de enchufe",
       "audioPath": "audio/es/hotel_039.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/adapːtaˈdoɾ de enˈtʃufe/"
     },
     {
       "id": "hotel_040",
@@ -2291,7 +2491,8 @@
       "text": "wifi",
       "audioPath": "audio/es/hotel_040.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈwifi/"
     },
     {
       "id": "hotel_041",
@@ -2302,7 +2503,8 @@
       "text": "internet",
       "audioPath": "audio/es/hotel_041.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/inteɾˈnet/"
     },
     {
       "id": "hotel_042",
@@ -2313,7 +2515,8 @@
       "text": "ascensor",
       "audioPath": "audio/es/hotel_042.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/asθenˈsoɾ/"
     },
     {
       "id": "hotel_043",
@@ -2324,7 +2527,8 @@
       "text": "escaleras",
       "audioPath": "audio/es/hotel_043.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/eskaˈleɾas/"
     },
     {
       "id": "hotel_044",
@@ -2335,7 +2539,8 @@
       "text": "vestíbulo",
       "audioPath": "audio/es/hotel_044.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/besˈtibulo/"
     },
     {
       "id": "hotel_045",
@@ -2346,7 +2551,8 @@
       "text": "restaurante",
       "audioPath": "audio/es/hotel_045.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/restauˈɾante/"
     },
     {
       "id": "hotel_046",
@@ -2357,7 +2563,8 @@
       "text": "desayuno",
       "audioPath": "audio/es/hotel_046.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/desaˈʝuno/"
     },
     {
       "id": "hotel_047",
@@ -2372,8 +2579,10 @@
       "example": {
         "id": "es-es_hotel_047_example",
         "zh": "请明早七点叫醒我。",
-        "text": "Quisiera el servicio de despertador a las siete."
-      }
+        "text": "Quisiera el servicio de despertador a las siete.",
+        "pronunciation": "/kiˈsjeɾa el seɾˈbiθjo de despeɾtaˈdoɾ a las ˈsjete/"
+      },
+      "pronunciation": "/seɾˈbiθjo de despeɾtaˈdoɾ/"
     },
     {
       "id": "hotel_048",
@@ -2388,8 +2597,10 @@
       "example": {
         "id": "es-es_hotel_048_example",
         "zh": "酒店有洗衣服务吗？",
-        "text": "¿El hotel tiene servicio de lavandería?"
-      }
+        "text": "¿El hotel tiene servicio de lavandería?",
+        "pronunciation": "/el oˈtel ˈtjene seɾˈbiθjo de labandeˈɾia/"
+      },
+      "pronunciation": "/seɾˈbiθjo de labandeˈɾia/"
     },
     {
       "id": "hotel_049",
@@ -2400,7 +2611,8 @@
       "text": "plancha",
       "audioPath": "audio/es/hotel_049.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈplantʃa/"
     },
     {
       "id": "hotel_050",
@@ -2411,7 +2623,8 @@
       "text": "caja fuerte",
       "audioPath": "audio/es/hotel_050.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkaxa ˈfweɾte/"
     },
     {
       "id": "hotel_051",
@@ -2422,7 +2635,8 @@
       "text": "hora de salida",
       "audioPath": "audio/es/hotel_051.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈoɾa de saˈlida/"
     },
     {
       "id": "hotel_052",
@@ -2433,7 +2647,8 @@
       "text": "hora de entrada",
       "audioPath": "audio/es/hotel_052.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈoɾa de enˈtɾada/"
     },
     {
       "id": "hotel_053",
@@ -2448,8 +2663,10 @@
       "example": {
         "id": "es-es_hotel_053_example",
         "zh": "今晚还有空房吗？",
-        "text": "¿Hay alguna habitación disponible para esta noche?"
-      }
+        "text": "¿Hay alguna habitación disponible para esta noche?",
+        "pronunciation": "/ˈai alˈɡuna abitaˈθjon dispoˈnible paɾa ˈesta ˈnotʃe/"
+      },
+      "pronunciation": "/abitaˈθjon dispoˈnible/"
     },
     {
       "id": "hotel_054",
@@ -2464,8 +2681,10 @@
       "example": {
         "id": "es-es_hotel_054_example",
         "zh": "很抱歉，酒店已经满房了。",
-        "text": "Lo siento, el hotel está completo."
-      }
+        "text": "Lo siento, el hotel está completo.",
+        "pronunciation": "/lo ˈsjento el oˈtel esˈta komˈpleto/"
+      },
+      "pronunciation": "/komˈpleto/"
     },
     {
       "id": "hotel_055",
@@ -2480,8 +2699,10 @@
       "example": {
         "id": "es-es_hotel_055_example",
         "zh": "入住时需要交押金吗？",
-        "text": "¿Hay que dejar una fianza al entrar?"
-      }
+        "text": "¿Hay que dejar una fianza al entrar?",
+        "pronunciation": "/ˈai ke deˈxaɾ ˈuna ˈfjanθa al enˈtɾaɾ/"
+      },
+      "pronunciation": "/ˈfjanθa/"
     },
     {
       "id": "hotel_056",
@@ -2492,7 +2713,8 @@
       "text": "recibo",
       "audioPath": "audio/es/hotel_056.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/reˈθibo/"
     },
     {
       "id": "hotel_057",
@@ -2507,8 +2729,10 @@
       "example": {
         "id": "es-es_hotel_057_example",
         "zh": "可以把账单发到我的邮箱吗？",
-        "text": "¿Puede enviarme la cuenta por correo electrónico?"
-      }
+        "text": "¿Puede enviarme la cuenta por correo electrónico?",
+        "pronunciation": "/ˈpwede emˈbjaɾme la ˈkwenta poɾ koˈreo elekˈtɾoniko/"
+      },
+      "pronunciation": "/ˈkwenta/"
     },
     {
       "id": "hotel_058",
@@ -2519,7 +2743,8 @@
       "text": "teléfono de recepción",
       "audioPath": "audio/es/hotel_058.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/teˈlefono de reθepˈθjon/"
     },
     {
       "id": "hotel_059",
@@ -2530,7 +2755,8 @@
       "text": "detector de humo",
       "audioPath": "audio/es/hotel_059.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/detekˈtoɾ de ˈumo/"
     },
     {
       "id": "hotel_060",
@@ -2541,7 +2767,8 @@
       "text": "extintor",
       "audioPath": "audio/es/hotel_060.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ekstinˈtoɾ/"
     },
     {
       "id": "hotel_061",
@@ -2552,7 +2779,8 @@
       "text": "cuna",
       "audioPath": "audio/es/hotel_061.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkuna/"
     },
     {
       "id": "hotel_062",
@@ -2563,7 +2791,8 @@
       "text": "cama supletoria",
       "audioPath": "audio/es/hotel_062.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkama supleˈtoɾja/"
     },
     {
       "id": "hotel_063",
@@ -2574,7 +2803,8 @@
       "text": "colchón",
       "audioPath": "audio/es/hotel_063.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kolˈtʃon/"
     },
     {
       "id": "hotel_064",
@@ -2585,7 +2815,8 @@
       "text": "nevera",
       "audioPath": "audio/es/hotel_064.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/neˈbeɾa/"
     },
     {
       "id": "hotel_065",
@@ -2596,7 +2827,8 @@
       "text": "microondas",
       "audioPath": "audio/es/hotel_065.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/mikɾoˈondas/"
     },
     {
       "id": "hotel_066",
@@ -2607,7 +2839,8 @@
       "text": "hervidor",
       "audioPath": "audio/es/hotel_066.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/eɾbiˈdoɾ/"
     },
     {
       "id": "hotel_067",
@@ -2618,7 +2851,8 @@
       "text": "taza",
       "audioPath": "audio/es/hotel_067.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtaθa/"
     },
     {
       "id": "hotel_068",
@@ -2629,7 +2863,8 @@
       "text": "zapatillas",
       "audioPath": "audio/es/hotel_068.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/θapaˈtiʝas/"
     },
     {
       "id": "hotel_069",
@@ -2640,7 +2875,8 @@
       "text": "percha",
       "audioPath": "audio/es/hotel_069.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpeɾtʃa/"
     },
     {
       "id": "hotel_070",
@@ -2651,7 +2887,8 @@
       "text": "armario",
       "audioPath": "audio/es/hotel_070.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aɾˈmaɾjo/"
     },
     {
       "id": "hotel_071",
@@ -2662,7 +2899,8 @@
       "text": "cortina",
       "audioPath": "audio/es/hotel_071.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/koɾˈtina/"
     },
     {
       "id": "hotel_072",
@@ -2673,7 +2911,8 @@
       "text": "balcón",
       "audioPath": "audio/es/hotel_072.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/balˈkon/"
     },
     {
       "id": "hotel_073",
@@ -2684,7 +2923,8 @@
       "text": "vistas",
       "audioPath": "audio/es/hotel_073.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈbistas/"
     },
     {
       "id": "hotel_074",
@@ -2699,8 +2939,10 @@
       "example": {
         "id": "es-es_hotel_074_example",
         "zh": "我想要一间安静的房间。",
-        "text": "Quisiera una habitación tranquila."
-      }
+        "text": "Quisiera una habitación tranquila.",
+        "pronunciation": "/kiˈsjeɾa ˈuna abitaˈθjon tɾanˈkila/"
+      },
+      "pronunciation": "/tɾanˈkilo/"
     },
     {
       "id": "hotel_075",
@@ -2715,8 +2957,10 @@
       "example": {
         "id": "es-es_hotel_075_example",
         "zh": "我的房间晚上很吵。",
-        "text": "Mi habitación es muy ruidosa por la noche."
-      }
+        "text": "Mi habitación es muy ruidosa por la noche.",
+        "pronunciation": "/mi abitaˈθjon ˈes ˈmuj ruiˈdosa poɾ la ˈnotʃe/"
+      },
+      "pronunciation": "/ruiˈdoso/"
     },
     {
       "id": "hotel_076",
@@ -2731,8 +2975,10 @@
       "example": {
         "id": "es-es_hotel_076_example",
         "zh": "这张床很舒服。",
-        "text": "Esta cama es muy cómoda."
-      }
+        "text": "Esta cama es muy cómoda.",
+        "pronunciation": "/ˈesta ˈkama ˈes ˈmuj ˈkomoda/"
+      },
+      "pronunciation": "/ˈkomodo/"
     },
     {
       "id": "hotel_077",
@@ -2743,7 +2989,8 @@
       "text": "número de habitación",
       "audioPath": "audio/es/hotel_077.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈnumeɾo de abitaˈθjon/"
     },
     {
       "id": "hotel_078",
@@ -2758,8 +3005,10 @@
       "example": {
         "id": "es-es_hotel_078_example",
         "zh": "我可以延住一晚吗？",
-        "text": "¿Puedo prolongar la estancia una noche más?"
-      }
+        "text": "¿Puedo prolongar la estancia una noche más?",
+        "pronunciation": "/ˈpwedo pɾoloŋˈɡaɾ la esˈtanθja ˈuna ˈnotʃe ˈmas/"
+      },
+      "pronunciation": "/pɾoloŋˈɡaɾ la esˈtanθja/"
     },
     {
       "id": "hotel_079",
@@ -2770,7 +3019,8 @@
       "text": "He perdido la llave.",
       "audioPath": "audio/es/hotel_079.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈe peɾˈdido la ˈʝabe/"
     },
     {
       "id": "hotel_080",
@@ -2781,7 +3031,8 @@
       "text": "¿Puedo dejar aquí el equipaje?",
       "audioPath": "audio/es/hotel_080.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈpwedo deˈxaɾ aˈki el ekiˈpaxe/"
     },
     {
       "id": "hotel_081",
@@ -2792,7 +3043,8 @@
       "text": "¿A qué hora hay que dejar la habitación?",
       "audioPath": "audio/es/hotel_081.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/a ˈke ˈoɾa ˈai ke deˈxaɾ la abitaˈθjon/"
     },
     {
       "id": "hotel_082",
@@ -2803,7 +3055,8 @@
       "text": "¿Me pueden cambiar de habitación?",
       "audioPath": "audio/es/hotel_082.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/me ˈpweden kamˈbjaɾ de abitaˈθjon/"
     },
     {
       "id": "food_001",
@@ -2818,8 +3071,10 @@
       "example": {
         "id": "es-es_food_001_example",
         "zh": "早餐供应到几点？",
-        "text": "¿Hasta qué hora sirven el desayuno?"
-      }
+        "text": "¿Hasta qué hora sirven el desayuno?",
+        "pronunciation": "/asta ˈke ˈoɾa ˈsiɾben el desaˈʝuno/"
+      },
+      "pronunciation": "/desaˈʝuno/"
     },
     {
       "id": "food_002",
@@ -2834,8 +3089,10 @@
       "example": {
         "id": "es-es_food_002_example",
         "zh": "我们想在这里吃午饭。",
-        "text": "Queremos comer aquí."
-      }
+        "text": "Queremos comer aquí.",
+        "pronunciation": "/keˈɾemos koˈmeɾ aˈki/"
+      },
+      "pronunciation": "/koˈmida/"
     },
     {
       "id": "food_003",
@@ -2850,8 +3107,10 @@
       "example": {
         "id": "es-es_food_003_example",
         "zh": "今晚可以订一张桌子吗？",
-        "text": "¿Podemos reservar una mesa para cenar esta noche?"
-      }
+        "text": "¿Podemos reservar una mesa para cenar esta noche?",
+        "pronunciation": "/poˈdemos reseɾˈbaɾ ˈuna ˈmesa paɾa θeˈnaɾ ˈesta ˈnotʃe/"
+      },
+      "pronunciation": "/ˈθena/"
     },
     {
       "id": "food_004",
@@ -2866,8 +3125,10 @@
       "example": {
         "id": "es-es_food_004_example",
         "zh": "可以给我看一下菜单吗？",
-        "text": "¿Me trae la carta, por favor?"
-      }
+        "text": "¿Me trae la carta, por favor?",
+        "pronunciation": "/me ˈtɾae la ˈkaɾta poɾ faˈboɾ/"
+      },
+      "pronunciation": "/ˈkaɾta/"
     },
     {
       "id": "food_005",
@@ -2882,8 +3143,10 @@
       "example": {
         "id": "es-es_food_005_example",
         "zh": "我们可以点餐了吗？",
-        "text": "¿Podemos pedir ya?"
-      }
+        "text": "¿Podemos pedir ya?",
+        "pronunciation": "/poˈdemos peˈdiɾ ˈʝa/"
+      },
+      "pronunciation": "/peˈdiɾ/"
     },
     {
       "id": "food_006",
@@ -2898,8 +3161,10 @@
       "example": {
         "id": "es-es_food_006_example",
         "zh": "请给我一瓶不带气的水。",
-        "text": "Una botella de agua sin gas, por favor."
-      }
+        "text": "Una botella de agua sin gas, por favor.",
+        "pronunciation": "/ˈuna boˈteʝa de ˈaɡwa siŋ ˈɡas poɾ faˈboɾ/"
+      },
+      "pronunciation": "/ˈaɡwa/"
     },
     {
       "id": "food_007",
@@ -2914,8 +3179,10 @@
       "example": {
         "id": "es-es_food_007_example",
         "zh": "可以给我一杯热水吗？",
-        "text": "¿Me puede traer un vaso de agua caliente?"
-      }
+        "text": "¿Me puede traer un vaso de agua caliente?",
+        "pronunciation": "/me ˈpwede tɾaˈeɾ ˈum ˈbaso de ˈaɡwa kaˈljente/"
+      },
+      "pronunciation": "/ˈaɡwa kaˈljente/"
     },
     {
       "id": "food_008",
@@ -2930,8 +3197,10 @@
       "example": {
         "id": "es-es_food_008_example",
         "zh": "我想喝一杯红茶。",
-        "text": "Quisiera un té negro."
-      }
+        "text": "Quisiera un té negro.",
+        "pronunciation": "/kiˈsjeɾa ˈun ˈte ˈneɡɾo/"
+      },
+      "pronunciation": "/ˈte/"
     },
     {
       "id": "food_009",
@@ -2946,8 +3215,10 @@
       "example": {
         "id": "es-es_food_009_example",
         "zh": "请给我一杯加牛奶的咖啡。",
-        "text": "Un café con leche, por favor."
-      }
+        "text": "Un café con leche, por favor.",
+        "pronunciation": "/ˈun kaˈfe kon ˈletʃe poɾ faˈboɾ/"
+      },
+      "pronunciation": "/kaˈfe/"
     },
     {
       "id": "food_010",
@@ -2962,8 +3233,10 @@
       "example": {
         "id": "es-es_food_010_example",
         "zh": "这道菜里有牛奶吗？",
-        "text": "¿Este plato lleva leche?"
-      }
+        "text": "¿Este plato lleva leche?",
+        "pronunciation": "/ˈeste ˈplato ˈʝeba ˈletʃe/"
+      },
+      "pronunciation": "/ˈletʃe/"
     },
     {
       "id": "food_011",
@@ -2978,8 +3251,10 @@
       "example": {
         "id": "es-es_food_011_example",
         "zh": "请给我一杯鲜榨橙汁。",
-        "text": "Un zumo de naranja natural, por favor."
-      }
+        "text": "Un zumo de naranja natural, por favor.",
+        "pronunciation": "/ˈun ˈθumo de naˈɾaŋxa natuˈɾal poɾ faˈboɾ/"
+      },
+      "pronunciation": "/ˈθumo/"
     },
     {
       "id": "food_012",
@@ -2994,8 +3269,10 @@
       "example": {
         "id": "es-es_food_012_example",
         "zh": "请给我一杯生啤。",
-        "text": "Una cerveza de barril, por favor."
-      }
+        "text": "Una cerveza de barril, por favor.",
+        "pronunciation": "/ˈuna θeɾˈbeθa de baˈril poɾ faˈboɾ/"
+      },
+      "pronunciation": "/θeɾˈbeθa/"
     },
     {
       "id": "food_013",
@@ -3010,8 +3287,10 @@
       "example": {
         "id": "es-es_food_013_example",
         "zh": "可以推荐一款西班牙红酒吗？",
-        "text": "¿Me recomienda un vino tinto español?"
-      }
+        "text": "¿Me recomienda un vino tinto español?",
+        "pronunciation": "/me rekoˈmjenda ˈum ˈbino ˈtinto espaˈɲol/"
+      },
+      "pronunciation": "/ˈbino ˈtinto/"
     },
     {
       "id": "food_014",
@@ -3026,8 +3305,10 @@
       "example": {
         "id": "es-es_food_014_example",
         "zh": "米饭可以单点吗？",
-        "text": "¿Se puede pedir arroz como acompañamiento?"
-      }
+        "text": "¿Se puede pedir arroz como acompañamiento?",
+        "pronunciation": "/se ˈpwede peˈdiɾ aˈroθ komo akompaɲaˈmjento/"
+      },
+      "pronunciation": "/aˈroθ/"
     },
     {
       "id": "food_015",
@@ -3042,8 +3323,10 @@
       "example": {
         "id": "es-es_food_015_example",
         "zh": "可以再给我们一些面包吗？",
-        "text": "¿Nos trae un poco más de pan?"
-      }
+        "text": "¿Nos trae un poco más de pan?",
+        "pronunciation": "/nos ˈtɾae ˈum ˈpoko ˈmas de ˈpan/"
+      },
+      "pronunciation": "/ˈpan/"
     },
     {
       "id": "food_016",
@@ -3058,8 +3341,10 @@
       "example": {
         "id": "es-es_food_016_example",
         "zh": "这道菜配的是面条吗？",
-        "text": "¿Este plato viene con fideos?"
-      }
+        "text": "¿Este plato viene con fideos?",
+        "pronunciation": "/ˈeste ˈplato ˈbjene kon fiˈdeos/"
+      },
+      "pronunciation": "/fiˈdeos/"
     },
     {
       "id": "food_017",
@@ -3074,8 +3359,10 @@
       "example": {
         "id": "es-es_food_017_example",
         "zh": "我们想点几份西班牙小吃。",
-        "text": "Queremos pedir unas tapas."
-      }
+        "text": "Queremos pedir unas tapas.",
+        "pronunciation": "/keˈɾemos peˈdiɾ ˈunas ˈtapas/"
+      },
+      "pronunciation": "/ˈtapas/"
     },
     {
       "id": "food_018",
@@ -3090,8 +3377,10 @@
       "example": {
         "id": "es-es_food_018_example",
         "zh": "西班牙土豆饼里有洋葱吗？",
-        "text": "¿La tortilla española lleva cebolla?"
-      }
+        "text": "¿La tortilla española lleva cebolla?",
+        "pronunciation": "/la toɾˈtiʝa espaˈɲola ˈʝeba θeˈboʝa/"
+      },
+      "pronunciation": "/toɾˈtiʝa espaˈɲola/"
     },
     {
       "id": "food_019",
@@ -3106,8 +3395,10 @@
       "example": {
         "id": "es-es_food_019_example",
         "zh": "请给我们一份海鲜饭。",
-        "text": "Una paella, por favor."
-      }
+        "text": "Una paella, por favor.",
+        "pronunciation": "/ˈuna paˈeʝa poɾ faˈboɾ/"
+      },
+      "pronunciation": "/paˈeʝa/"
     },
     {
       "id": "food_020",
@@ -3122,8 +3413,10 @@
       "example": {
         "id": "es-es_food_020_example",
         "zh": "这份西班牙冷汤是凉的吗？",
-        "text": "¿El gazpacho se sirve frío?"
-      }
+        "text": "¿El gazpacho se sirve frío?",
+        "pronunciation": "/el ɡaθˈpatʃo se ˈsiɾbe ˈfɾio/"
+      },
+      "pronunciation": "/ɡaθˈpatʃo/"
     },
     {
       "id": "food_021",
@@ -3134,7 +3427,8 @@
       "text": "croquetas",
       "audioPath": "audio/es/food_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kɾoˈketas/"
     },
     {
       "id": "food_022",
@@ -3145,7 +3439,8 @@
       "text": "jamón ibérico",
       "audioPath": "audio/es/food_022.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/xaˈmon iˈbeɾiko/"
     },
     {
       "id": "food_023",
@@ -3156,7 +3451,8 @@
       "text": "churros",
       "audioPath": "audio/es/food_023.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtʃuros/"
     },
     {
       "id": "food_024",
@@ -3167,7 +3463,8 @@
       "text": "huevo",
       "audioPath": "audio/es/food_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈwebo/"
     },
     {
       "id": "food_025",
@@ -3178,7 +3475,8 @@
       "text": "carne",
       "audioPath": "audio/es/food_025.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkaɾne/"
     },
     {
       "id": "food_026",
@@ -3189,7 +3487,8 @@
       "text": "ternera",
       "audioPath": "audio/es/food_026.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/teɾˈneɾa/"
     },
     {
       "id": "food_027",
@@ -3200,7 +3499,8 @@
       "text": "cerdo",
       "audioPath": "audio/es/food_027.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈθeɾdo/"
     },
     {
       "id": "food_028",
@@ -3211,7 +3511,8 @@
       "text": "pollo",
       "audioPath": "audio/es/food_028.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpoʝo/"
     },
     {
       "id": "food_029",
@@ -3222,7 +3523,8 @@
       "text": "pescado",
       "audioPath": "audio/es/food_029.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/pesˈkado/"
     },
     {
       "id": "food_030",
@@ -3233,7 +3535,8 @@
       "text": "gambas",
       "audioPath": "audio/es/food_030.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈɡambas/"
     },
     {
       "id": "food_031",
@@ -3244,7 +3547,8 @@
       "text": "cangrejo",
       "audioPath": "audio/es/food_031.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kaŋˈɡɾexo/"
     },
     {
       "id": "food_032",
@@ -3255,7 +3559,8 @@
       "text": "verduras",
       "audioPath": "audio/es/food_032.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/beɾˈduɾas/"
     },
     {
       "id": "food_033",
@@ -3266,7 +3571,8 @@
       "text": "fruta",
       "audioPath": "audio/es/food_033.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈfɾuta/"
     },
     {
       "id": "food_034",
@@ -3277,7 +3583,8 @@
       "text": "manzana",
       "audioPath": "audio/es/food_034.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/manˈθana/"
     },
     {
       "id": "food_035",
@@ -3288,7 +3595,8 @@
       "text": "plátano",
       "audioPath": "audio/es/food_035.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈplatano/"
     },
     {
       "id": "food_036",
@@ -3299,7 +3607,8 @@
       "text": "naranja",
       "audioPath": "audio/es/food_036.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/naˈɾaŋxa/"
     },
     {
       "id": "food_037",
@@ -3310,7 +3619,8 @@
       "text": "fresa",
       "audioPath": "audio/es/food_037.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈfɾesa/"
     },
     {
       "id": "food_038",
@@ -3321,7 +3631,8 @@
       "text": "sandía",
       "audioPath": "audio/es/food_038.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/sanˈdia/"
     },
     {
       "id": "food_039",
@@ -3332,7 +3643,8 @@
       "text": "ensalada",
       "audioPath": "audio/es/food_039.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ensaˈlada/"
     },
     {
       "id": "food_040",
@@ -3343,7 +3655,8 @@
       "text": "sopa",
       "audioPath": "audio/es/food_040.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈsopa/"
     },
     {
       "id": "food_041",
@@ -3354,7 +3667,8 @@
       "text": "hamburguesa",
       "audioPath": "audio/es/food_041.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ambuɾˈɡesa/"
     },
     {
       "id": "food_042",
@@ -3365,7 +3679,8 @@
       "text": "pollo frito",
       "audioPath": "audio/es/food_042.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpoʝo ˈfɾito/"
     },
     {
       "id": "food_043",
@@ -3376,7 +3691,8 @@
       "text": "patatas fritas",
       "audioPath": "audio/es/food_043.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/paˈtatas ˈfɾitas/"
     },
     {
       "id": "food_044",
@@ -3387,7 +3703,8 @@
       "text": "pizza",
       "audioPath": "audio/es/food_044.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpitsa/"
     },
     {
       "id": "food_045",
@@ -3398,7 +3715,8 @@
       "text": "bocadillo",
       "audioPath": "audio/es/food_045.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/bokaˈdiʝo/"
     },
     {
       "id": "food_046",
@@ -3409,7 +3727,8 @@
       "text": "helado",
       "audioPath": "audio/es/food_046.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/eˈlado/"
     },
     {
       "id": "food_047",
@@ -3420,7 +3739,8 @@
       "text": "tarta",
       "audioPath": "audio/es/food_047.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtaɾta/"
     },
     {
       "id": "food_048",
@@ -3431,7 +3751,8 @@
       "text": "postre",
       "audioPath": "audio/es/food_048.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpostɾe/"
     },
     {
       "id": "food_049",
@@ -3442,7 +3763,8 @@
       "text": "chocolate",
       "audioPath": "audio/es/food_049.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/tʃokoˈlate/"
     },
     {
       "id": "food_050",
@@ -3453,7 +3775,8 @@
       "text": "caramelo",
       "audioPath": "audio/es/food_050.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kaɾaˈmelo/"
     },
     {
       "id": "food_051",
@@ -3464,7 +3787,8 @@
       "text": "sal",
       "audioPath": "audio/es/food_051.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈsal/"
     },
     {
       "id": "food_052",
@@ -3475,7 +3799,8 @@
       "text": "azúcar",
       "audioPath": "audio/es/food_052.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈθukaɾ/"
     },
     {
       "id": "food_053",
@@ -3486,7 +3811,8 @@
       "text": "salsa de soja",
       "audioPath": "audio/es/food_053.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈsalsa de ˈsoxa/"
     },
     {
       "id": "food_054",
@@ -3497,7 +3823,8 @@
       "text": "vinagre",
       "audioPath": "audio/es/food_054.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/biˈnaɡɾe/"
     },
     {
       "id": "food_055",
@@ -3508,7 +3835,8 @@
       "text": "pimienta",
       "audioPath": "audio/es/food_055.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/piˈmjenta/"
     },
     {
       "id": "food_056",
@@ -3519,7 +3847,8 @@
       "text": "guindilla",
       "audioPath": "audio/es/food_056.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ɡinˈdiʝa/"
     },
     {
       "id": "food_057",
@@ -3530,7 +3859,8 @@
       "text": "wasabi",
       "audioPath": "audio/es/food_057.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/waˈsabi/"
     },
     {
       "id": "food_058",
@@ -3541,7 +3871,8 @@
       "text": "palillos",
       "audioPath": "audio/es/food_058.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/paˈliʝos/"
     },
     {
       "id": "food_059",
@@ -3552,7 +3883,8 @@
       "text": "cuchara",
       "audioPath": "audio/es/food_059.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kuˈtʃaɾa/"
     },
     {
       "id": "food_060",
@@ -3563,7 +3895,8 @@
       "text": "tenedor",
       "audioPath": "audio/es/food_060.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/teneˈdoɾ/"
     },
     {
       "id": "food_061",
@@ -3574,7 +3907,8 @@
       "text": "cuchillo",
       "audioPath": "audio/es/food_061.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kuˈtʃiʝo/"
     },
     {
       "id": "food_062",
@@ -3585,7 +3919,8 @@
       "text": "plato",
       "audioPath": "audio/es/food_062.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈplato/"
     },
     {
       "id": "food_063",
@@ -3596,7 +3931,8 @@
       "text": "cuenco",
       "audioPath": "audio/es/food_063.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkwenko/"
     },
     {
       "id": "food_064",
@@ -3607,7 +3943,8 @@
       "text": "vaso",
       "audioPath": "audio/es/food_064.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈbaso/"
     },
     {
       "id": "food_065",
@@ -3618,7 +3955,8 @@
       "text": "servilleta",
       "audioPath": "audio/es/food_065.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/seɾbiˈʝeta/"
     },
     {
       "id": "food_066",
@@ -3633,8 +3971,10 @@
       "example": {
         "id": "es-es_food_066_example",
         "zh": "请结账。",
-        "text": "La cuenta, por favor."
-      }
+        "text": "La cuenta, por favor.",
+        "pronunciation": "/la ˈkwenta poɾ faˈboɾ/"
+      },
+      "pronunciation": "/la ˈkwenta/"
     },
     {
       "id": "food_067",
@@ -3645,7 +3985,8 @@
       "text": "caja",
       "audioPath": "audio/es/food_067.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkaxa/"
     },
     {
       "id": "food_068",
@@ -3656,7 +3997,8 @@
       "text": "camarero",
       "audioPath": "audio/es/food_068.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kamaˈɾeɾo/"
     },
     {
       "id": "food_069",
@@ -3667,7 +4009,8 @@
       "text": "mesa libre",
       "audioPath": "audio/es/food_069.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈmesa ˈlibɾe/"
     },
     {
       "id": "food_070",
@@ -3678,7 +4021,8 @@
       "text": "zona de fumadores",
       "audioPath": "audio/es/food_070.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈθona de fumaˈdoɾes/"
     },
     {
       "id": "food_071",
@@ -3689,7 +4033,8 @@
       "text": "zona de no fumadores",
       "audioPath": "audio/es/food_071.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈθona de ˈno fumaˈdoɾes/"
     },
     {
       "id": "food_072",
@@ -3704,8 +4049,10 @@
       "example": {
         "id": "es-es_food_072_example",
         "zh": "这份请打包带走。",
-        "text": "Esto es para llevar, por favor."
-      }
+        "text": "Esto es para llevar, por favor.",
+        "pronunciation": "/ˈesto ˈes paɾa ʝeˈbaɾ poɾ faˈboɾ/"
+      },
+      "pronunciation": "/paɾa ʝeˈbaɾ/"
     },
     {
       "id": "food_073",
@@ -3716,7 +4063,8 @@
       "text": "Para tomar aquí.",
       "audioPath": "audio/es/food_073.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/paɾa toˈmaɾ aˈki/"
     },
     {
       "id": "food_074",
@@ -3731,8 +4079,10 @@
       "example": {
         "id": "es-es_food_074_example",
         "zh": "这道海鲜饭很好吃。",
-        "text": "Esta paella está muy rica."
-      }
+        "text": "Esta paella está muy rica.",
+        "pronunciation": "/ˈesta paˈeʝa esˈta ˈmuj ˈrika/"
+      },
+      "pronunciation": "/ˈriko/"
     },
     {
       "id": "food_075",
@@ -3747,8 +4097,10 @@
       "example": {
         "id": "es-es_food_075_example",
         "zh": "这道菜味道不太好。",
-        "text": "Este plato no sabe muy bien."
-      }
+        "text": "Este plato no sabe muy bien.",
+        "pronunciation": "/ˈeste ˈplato ˈno ˈsabe ˈmuj ˈbjen/"
+      },
+      "pronunciation": "/ˈmalo/"
     },
     {
       "id": "food_076",
@@ -3763,8 +4115,10 @@
       "example": {
         "id": "es-es_food_076_example",
         "zh": "这个甜点太甜了。",
-        "text": "Este postre está demasiado dulce."
-      }
+        "text": "Este postre está demasiado dulce.",
+        "pronunciation": "/ˈeste ˈpostɾe esˈta demaˈsjado ˈdulθe/"
+      },
+      "pronunciation": "/ˈdulθe/"
     },
     {
       "id": "food_077",
@@ -3779,8 +4133,10 @@
       "example": {
         "id": "es-es_food_077_example",
         "zh": "汤有点咸。",
-        "text": "La sopa está un poco salada."
-      }
+        "text": "La sopa está un poco salada.",
+        "pronunciation": "/la ˈsopa esˈta ˈum ˈpoko saˈlada/"
+      },
+      "pronunciation": "/saˈlado/"
     },
     {
       "id": "food_078",
@@ -3795,8 +4151,10 @@
       "example": {
         "id": "es-es_food_078_example",
         "zh": "这个酱辣吗？",
-        "text": "¿Esta salsa es picante?"
-      }
+        "text": "¿Esta salsa es picante?",
+        "pronunciation": "/ˈesta ˈsalsa ˈes piˈkante/"
+      },
+      "pronunciation": "/piˈkante/"
     },
     {
       "id": "food_079",
@@ -3811,8 +4169,10 @@
       "example": {
         "id": "es-es_food_079_example",
         "zh": "咖啡有点苦。",
-        "text": "El café está un poco amargo."
-      }
+        "text": "El café está un poco amargo.",
+        "pronunciation": "/el kaˈfe esˈta ˈum ˈpoko aˈmaɾɡo/"
+      },
+      "pronunciation": "/aˈmaɾɡo/"
     },
     {
       "id": "food_080",
@@ -3827,8 +4187,10 @@
       "example": {
         "id": "es-es_food_080_example",
         "zh": "这个柠檬很酸。",
-        "text": "Este limón está muy ácido."
-      }
+        "text": "Este limón está muy ácido.",
+        "pronunciation": "/ˈeste liˈmon esˈta ˈmuj ˈaθido/"
+      },
+      "pronunciation": "/ˈaθido/"
     },
     {
       "id": "food_081",
@@ -3843,8 +4205,10 @@
       "example": {
         "id": "es-es_food_081_example",
         "zh": "小心，盘子很烫。",
-        "text": "Cuidado, el plato está caliente."
-      }
+        "text": "Cuidado, el plato está caliente.",
+        "pronunciation": "/kwiˈdado el ˈplato esˈta kaˈljente/"
+      },
+      "pronunciation": "/kaˈljente/"
     },
     {
       "id": "food_082",
@@ -3859,8 +4223,10 @@
       "example": {
         "id": "es-es_food_082_example",
         "zh": "我想喝点冰水。",
-        "text": "Quisiera agua fría."
-      }
+        "text": "Quisiera agua fría.",
+        "pronunciation": "/kiˈsjeɾa ˈaɡwa ˈfɾia/"
+      },
+      "pronunciation": "/ˈfɾio/"
     },
     {
       "id": "food_083",
@@ -3875,8 +4241,10 @@
       "example": {
         "id": "es-es_food_083_example",
         "zh": "今天的鱼新鲜吗？",
-        "text": "¿El pescado es fresco de hoy?"
-      }
+        "text": "¿El pescado es fresco de hoy?",
+        "pronunciation": "/el pesˈkado ˈes ˈfɾesko de ˈoi/"
+      },
+      "pronunciation": "/ˈfɾesko/"
     },
     {
       "id": "food_084",
@@ -3887,7 +4255,8 @@
       "text": "Ya no quiero más, gracias.",
       "audioPath": "audio/es/food_084.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈʝa ˈno ˈkjeɾo ˈmas ˈɡɾaθjas/"
     },
     {
       "id": "food_085",
@@ -3898,7 +4267,8 @@
       "text": "Tengo hambre.",
       "audioPath": "audio/es/food_085.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈteŋɡo ˈambɾe/"
     },
     {
       "id": "food_086",
@@ -3909,7 +4279,8 @@
       "text": "Tengo sed.",
       "audioPath": "audio/es/food_086.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈteŋɡo ˈsed/"
     },
     {
       "id": "food_087",
@@ -3924,8 +4295,10 @@
       "example": {
         "id": "es-es_food_087_example",
         "zh": "我对贝类过敏。",
-        "text": "Tengo alergia al marisco."
-      }
+        "text": "Tengo alergia al marisco.",
+        "pronunciation": "/ˈteŋɡo aˈleɾxja al maˈɾisko/"
+      },
+      "pronunciation": "/aˈleɾxja/"
     },
     {
       "id": "food_088",
@@ -3940,8 +4313,10 @@
       "example": {
         "id": "es-es_food_088_example",
         "zh": "你们有素食菜品吗？",
-        "text": "¿Tienen algún plato vegetariano?"
-      }
+        "text": "¿Tienen algún plato vegetariano?",
+        "pronunciation": "/ˈtjenen alˈɡum ˈplato bexetaˈɾjano/"
+      },
+      "pronunciation": "/bexetaˈɾjano/"
     },
     {
       "id": "food_089",
@@ -3952,7 +4327,8 @@
       "text": "¿Tienen la carta en chino?",
       "audioPath": "audio/es/food_089.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈtjenen la ˈkaɾta en ˈtʃino/"
     },
     {
       "id": "food_090",
@@ -3963,7 +4339,8 @@
       "text": "Póngame este, por favor.",
       "audioPath": "audio/es/food_090.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈpoŋɡame ˈeste poɾ faˈboɾ/"
     },
     {
       "id": "food_091",
@@ -3974,7 +4351,8 @@
       "text": "Sin picante, por favor.",
       "audioPath": "audio/es/food_091.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/sim piˈkante poɾ faˈboɾ/"
     },
     {
       "id": "food_092",
@@ -3985,7 +4363,8 @@
       "text": "La cuenta, por favor.",
       "audioPath": "audio/es/food_092.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/la ˈkwenta poɾ faˈboɾ/"
     },
     {
       "id": "food_093",
@@ -3996,7 +4375,8 @@
       "text": "¿Podemos pedir ya?",
       "audioPath": "audio/es/food_093.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/poˈdemos peˈdiɾ ˈʝa/"
     },
     {
       "id": "food_094",
@@ -4007,7 +4387,8 @@
       "text": "Tengo alergia a…",
       "audioPath": "audio/es/food_094.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈteŋɡo aˈleɾxja ˈa/"
     },
     {
       "id": "food_095",
@@ -4018,7 +4399,8 @@
       "text": "Otro vaso de agua, por favor.",
       "audioPath": "audio/es/food_095.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈotɾo ˈbaso de ˈaɡwa poɾ faˈboɾ/"
     },
     {
       "id": "food_096",
@@ -4029,7 +4411,8 @@
       "text": "¿Está bueno?",
       "audioPath": "audio/es/food_096.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/esˈta ˈbweno/"
     },
     {
       "id": "shopping_001",
@@ -4044,8 +4427,10 @@
       "example": {
         "id": "es-es_shopping_001_example",
         "zh": "这家店几点关门？",
-        "text": "¿A qué hora cierra esta tienda?"
-      }
+        "text": "¿A qué hora cierra esta tienda?",
+        "pronunciation": "/a ˈke ˈoɾa ˈθjera ˈesta ˈtjenda/"
+      },
+      "pronunciation": "/ˈtjenda/"
     },
     {
       "id": "shopping_002",
@@ -4060,8 +4445,10 @@
       "example": {
         "id": "es-es_shopping_002_example",
         "zh": "附近有百货商店吗？",
-        "text": "¿Hay unos grandes almacenes cerca?"
-      }
+        "text": "¿Hay unos grandes almacenes cerca?",
+        "pronunciation": "/ˈai ˈunos ˈɡɾandes almaˈθenes ˈθeɾka/"
+      },
+      "pronunciation": "/ˈɡɾandes almaˈθenes/"
     },
     {
       "id": "shopping_003",
@@ -4076,8 +4463,10 @@
       "example": {
         "id": "es-es_shopping_003_example",
         "zh": "超市在地下层。",
-        "text": "El supermercado está en la planta baja."
-      }
+        "text": "El supermercado está en la planta baja.",
+        "pronunciation": "/el supeɾmeɾˈkado esˈta en la ˈplanta ˈbaxa/"
+      },
+      "pronunciation": "/supeɾmeɾˈkado/"
     },
     {
       "id": "shopping_004",
@@ -4092,8 +4481,10 @@
       "example": {
         "id": "es-es_shopping_004_example",
         "zh": "这附近有便利店吗？",
-        "text": "¿Hay alguna tienda de conveniencia por aquí?"
-      }
+        "text": "¿Hay alguna tienda de conveniencia por aquí?",
+        "pronunciation": "/ˈai alˈɡuna ˈtjenda de kombeˈnjenθja poɾ aˈki/"
+      },
+      "pronunciation": "/ˈtjenda de kombeˈnjenθja/"
     },
     {
       "id": "shopping_005",
@@ -4108,8 +4499,10 @@
       "example": {
         "id": "es-es_shopping_005_example",
         "zh": "周日市场开门吗？",
-        "text": "¿Abre el mercado los domingos?"
-      }
+        "text": "¿Abre el mercado los domingos?",
+        "pronunciation": "/ˈabɾe el meɾˈkado los doˈmiŋɡos/"
+      },
+      "pronunciation": "/meɾˈkado/"
     },
     {
       "id": "shopping_006",
@@ -4124,8 +4517,10 @@
       "example": {
         "id": "es-es_shopping_006_example",
         "zh": "这个价格含税吗？",
-        "text": "¿Este precio incluye el IVA?"
-      }
+        "text": "¿Este precio incluye el IVA?",
+        "pronunciation": "/ˈeste ˈpɾeθjo inˈkluʝe el iubeˈa/"
+      },
+      "pronunciation": "/ˈpɾeθjo/"
     },
     {
       "id": "shopping_007",
@@ -4140,8 +4535,10 @@
       "example": {
         "id": "es-es_shopping_007_example",
         "zh": "请问这个多少钱？",
-        "text": "¿Cuánto cuesta esto?"
-      }
+        "text": "¿Cuánto cuesta esto?",
+        "pronunciation": "/ˈkwanto ˈkwesta ˈesto/"
+      },
+      "pronunciation": "/ˈkwanto ˈkwesta/"
     },
     {
       "id": "shopping_008",
@@ -4156,8 +4553,10 @@
       "example": {
         "id": "es-es_shopping_008_example",
         "zh": "对我来说有点贵。",
-        "text": "Me parece un poco caro."
-      }
+        "text": "Me parece un poco caro.",
+        "pronunciation": "/me paˈɾeθe ˈum ˈpoko ˈkaɾo/"
+      },
+      "pronunciation": "/ˈkaɾo/"
     },
     {
       "id": "shopping_009",
@@ -4172,8 +4571,10 @@
       "example": {
         "id": "es-es_shopping_009_example",
         "zh": "有没有更便宜的？",
-        "text": "¿Tiene alguno más barato?"
-      }
+        "text": "¿Tiene alguno más barato?",
+        "pronunciation": "/ˈtjene alˈɡuno ˈmas baˈɾato/"
+      },
+      "pronunciation": "/baˈɾato/"
     },
     {
       "id": "shopping_010",
@@ -4188,8 +4589,10 @@
       "example": {
         "id": "es-es_shopping_010_example",
         "zh": "学生可以享受折扣吗？",
-        "text": "¿Hay descuento para estudiantes?"
-      }
+        "text": "¿Hay descuento para estudiantes?",
+        "pronunciation": "/ˈai desˈkwento paɾa estuˈdjantes/"
+      },
+      "pronunciation": "/desˈkwento/"
     },
     {
       "id": "shopping_011",
@@ -4204,8 +4607,10 @@
       "example": {
         "id": "es-es_shopping_011_example",
         "zh": "这件商品在促销吗？",
-        "text": "¿Este artículo está de oferta?"
-      }
+        "text": "¿Este artículo está de oferta?",
+        "pronunciation": "/ˈeste aɾˈtikulo esˈta de oˈfeɾta/"
+      },
+      "pronunciation": "/oˈfeɾta/"
     },
     {
       "id": "shopping_012",
@@ -4220,8 +4625,10 @@
       "example": {
         "id": "es-es_shopping_012_example",
         "zh": "可以给我购物小票吗？",
-        "text": "¿Me da el tique, por favor?"
-      }
+        "text": "¿Me da el tique, por favor?",
+        "pronunciation": "/me ˈda el ˈtike poɾ faˈboɾ/"
+      },
+      "pronunciation": "/ˈtike/"
     },
     {
       "id": "shopping_013",
@@ -4236,8 +4643,10 @@
       "example": {
         "id": "es-es_shopping_013_example",
         "zh": "我可以用现金付款。",
-        "text": "Puedo pagar en efectivo."
-      }
+        "text": "Puedo pagar en efectivo.",
+        "pronunciation": "/ˈpwedo paˈɡaɾ en efekˈtibo/"
+      },
+      "pronunciation": "/efekˈtibo/"
     },
     {
       "id": "shopping_014",
@@ -4252,8 +4661,10 @@
       "example": {
         "id": "es-es_shopping_014_example",
         "zh": "你们接受信用卡吗？",
-        "text": "¿Aceptan tarjetas de crédito?"
-      }
+        "text": "¿Aceptan tarjetas de crédito?",
+        "pronunciation": "/aˈθepːtan taɾˈxetas de ˈkɾedito/"
+      },
+      "pronunciation": "/taɾˈxeta de ˈkɾedito/"
     },
     {
       "id": "shopping_015",
@@ -4268,8 +4679,10 @@
       "example": {
         "id": "es-es_shopping_015_example",
         "zh": "我的银行卡被拒绝了。",
-        "text": "Han rechazado mi tarjeta bancaria."
-      }
+        "text": "Han rechazado mi tarjeta bancaria.",
+        "pronunciation": "/ˈan retʃaˈθado mi taɾˈxeta banˈkaɾja/"
+      },
+      "pronunciation": "/taɾˈxeta banˈkaɾja/"
     },
     {
       "id": "shopping_016",
@@ -4284,8 +4697,10 @@
       "example": {
         "id": "es-es_shopping_016_example",
         "zh": "您有零钱吗？",
-        "text": "¿Tiene cambio?"
-      }
+        "text": "¿Tiene cambio?",
+        "pronunciation": "/ˈtjene ˈkambjo/"
+      },
+      "pronunciation": "/ˈkambjo/"
     },
     {
       "id": "shopping_017",
@@ -4300,8 +4715,10 @@
       "example": {
         "id": "es-es_shopping_017_example",
         "zh": "在哪里付款？",
-        "text": "¿Dónde se paga?"
-      }
+        "text": "¿Dónde se paga?",
+        "pronunciation": "/ˈdonde se ˈpaɡa/"
+      },
+      "pronunciation": "/ˈpaɡo/"
     },
     {
       "id": "shopping_018",
@@ -4316,8 +4733,10 @@
       "example": {
         "id": "es-es_shopping_018_example",
         "zh": "可以用手机支付吗？",
-        "text": "¿Puedo pagar con el móvil?"
-      }
+        "text": "¿Puedo pagar con el móvil?",
+        "pronunciation": "/ˈpwedo paˈɡaɾ kon el ˈmobil/"
+      },
+      "pronunciation": "/ˈpaɡo kon el ˈmobil/"
     },
     {
       "id": "shopping_019",
@@ -4332,8 +4751,10 @@
       "example": {
         "id": "es-es_shopping_019_example",
         "zh": "请扫描这个二维码。",
-        "text": "Escanee este código QR, por favor."
-      }
+        "text": "Escanee este código QR, por favor.",
+        "pronunciation": "/eskaˈnee ˈeste ˈkodiɡo kuˈere poɾ faˈboɾ/"
+      },
+      "pronunciation": "/ˈkodiɡo ku ˈere/"
     },
     {
       "id": "shopping_020",
@@ -4348,8 +4769,10 @@
       "example": {
         "id": "es-es_shopping_020_example",
         "zh": "试衣间在哪里？",
-        "text": "¿Dónde está el probador?"
-      }
+        "text": "¿Dónde está el probador?",
+        "pronunciation": "/ˈdonde esˈta el pɾobaˈdoɾ/"
+      },
+      "pronunciation": "/pɾobaˈdoɾ/"
     },
     {
       "id": "shopping_021",
@@ -4364,8 +4787,10 @@
       "example": {
         "id": "es-es_shopping_021_example",
         "zh": "我可以试穿这件吗？",
-        "text": "¿Me puedo probar esto?"
-      }
+        "text": "¿Me puedo probar esto?",
+        "pronunciation": "/me ˈpwedo pɾoˈbaɾ ˈesto/"
+      },
+      "pronunciation": "/pɾoˈbaɾse/"
     },
     {
       "id": "shopping_022",
@@ -4376,7 +4801,8 @@
       "text": "talla",
       "audioPath": "audio/es/shopping_022.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtaʝa/"
     },
     {
       "id": "shopping_023",
@@ -4387,7 +4813,8 @@
       "text": "talla grande",
       "audioPath": "audio/es/shopping_023.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtaʝa ˈɡɾande/"
     },
     {
       "id": "shopping_024",
@@ -4398,7 +4825,8 @@
       "text": "talla mediana",
       "audioPath": "audio/es/shopping_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtaʝa meˈdjana/"
     },
     {
       "id": "shopping_025",
@@ -4409,7 +4837,8 @@
       "text": "talla pequeña",
       "audioPath": "audio/es/shopping_025.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtaʝa peˈkeɲa/"
     },
     {
       "id": "shopping_026",
@@ -4420,7 +4849,8 @@
       "text": "ropa",
       "audioPath": "audio/es/shopping_026.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈropa/"
     },
     {
       "id": "shopping_027",
@@ -4431,7 +4861,8 @@
       "text": "camisa",
       "audioPath": "audio/es/shopping_027.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kaˈmisa/"
     },
     {
       "id": "shopping_028",
@@ -4442,7 +4873,8 @@
       "text": "camiseta",
       "audioPath": "audio/es/shopping_028.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kamiˈseta/"
     },
     {
       "id": "shopping_029",
@@ -4453,7 +4885,8 @@
       "text": "pantalones",
       "audioPath": "audio/es/shopping_029.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/pantaˈlones/"
     },
     {
       "id": "shopping_030",
@@ -4464,7 +4897,8 @@
       "text": "vaqueros",
       "audioPath": "audio/es/shopping_030.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/baˈkeɾos/"
     },
     {
       "id": "shopping_031",
@@ -4475,7 +4909,8 @@
       "text": "falda",
       "audioPath": "audio/es/shopping_031.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈfalda/"
     },
     {
       "id": "shopping_032",
@@ -4486,7 +4921,8 @@
       "text": "vestido",
       "audioPath": "audio/es/shopping_032.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/besˈtido/"
     },
     {
       "id": "shopping_033",
@@ -4497,7 +4933,8 @@
       "text": "abrigo",
       "audioPath": "audio/es/shopping_033.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈbɾiɡo/"
     },
     {
       "id": "shopping_034",
@@ -4508,7 +4945,8 @@
       "text": "jersey",
       "audioPath": "audio/es/shopping_034.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/xeɾˈsei/"
     },
     {
       "id": "shopping_035",
@@ -4519,7 +4957,8 @@
       "text": "ropa interior",
       "audioPath": "audio/es/shopping_035.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈropa inteˈɾjoɾ/"
     },
     {
       "id": "shopping_036",
@@ -4530,7 +4969,8 @@
       "text": "calcetines",
       "audioPath": "audio/es/shopping_036.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kalθeˈtines/"
     },
     {
       "id": "shopping_037",
@@ -4541,7 +4981,8 @@
       "text": "zapatos",
       "audioPath": "audio/es/shopping_037.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/θaˈpatos/"
     },
     {
       "id": "shopping_038",
@@ -4552,7 +4993,8 @@
       "text": "zapatillas deportivas",
       "audioPath": "audio/es/shopping_038.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/θapaˈtiʝas depoɾˈtibas/"
     },
     {
       "id": "shopping_039",
@@ -4563,7 +5005,8 @@
       "text": "sombrero",
       "audioPath": "audio/es/shopping_039.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/somˈbɾeɾo/"
     },
     {
       "id": "shopping_040",
@@ -4574,7 +5017,8 @@
       "text": "bufanda",
       "audioPath": "audio/es/shopping_040.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/buˈfanda/"
     },
     {
       "id": "shopping_041",
@@ -4585,7 +5029,8 @@
       "text": "guantes",
       "audioPath": "audio/es/shopping_041.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈɡwantes/"
     },
     {
       "id": "shopping_042",
@@ -4596,7 +5041,8 @@
       "text": "bolso",
       "audioPath": "audio/es/shopping_042.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈbolso/"
     },
     {
       "id": "shopping_043",
@@ -4607,7 +5053,8 @@
       "text": "cartera",
       "audioPath": "audio/es/shopping_043.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kaɾˈteɾa/"
     },
     {
       "id": "shopping_044",
@@ -4618,7 +5065,8 @@
       "text": "gafas",
       "audioPath": "audio/es/shopping_044.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈɡafas/"
     },
     {
       "id": "shopping_045",
@@ -4629,7 +5077,8 @@
       "text": "gafas de sol",
       "audioPath": "audio/es/shopping_045.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈɡafas de ˈsol/"
     },
     {
       "id": "shopping_046",
@@ -4640,7 +5089,8 @@
       "text": "reloj",
       "audioPath": "audio/es/shopping_046.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/reˈlox/"
     },
     {
       "id": "shopping_047",
@@ -4651,7 +5101,8 @@
       "text": "joyas",
       "audioPath": "audio/es/shopping_047.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈxoʝas/"
     },
     {
       "id": "shopping_048",
@@ -4662,7 +5113,8 @@
       "text": "cosméticos",
       "audioPath": "audio/es/shopping_048.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kosˈmetikos/"
     },
     {
       "id": "shopping_049",
@@ -4673,7 +5125,8 @@
       "text": "productos para la piel",
       "audioPath": "audio/es/shopping_049.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/pɾoˈduktos paɾa la ˈpjel/"
     },
     {
       "id": "shopping_050",
@@ -4684,7 +5137,8 @@
       "text": "perfume",
       "audioPath": "audio/es/shopping_050.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/peɾˈfume/"
     },
     {
       "id": "shopping_051",
@@ -4695,7 +5149,8 @@
       "text": "pintalabios",
       "audioPath": "audio/es/shopping_051.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/pintaˈlabjos/"
     },
     {
       "id": "shopping_052",
@@ -4706,7 +5161,8 @@
       "text": "limpiador facial",
       "audioPath": "audio/es/shopping_052.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/limpjaˈdoɾ faˈθjal/"
     },
     {
       "id": "shopping_053",
@@ -4717,7 +5173,8 @@
       "text": "alimentos",
       "audioPath": "audio/es/shopping_053.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aliˈmentos/"
     },
     {
       "id": "shopping_054",
@@ -4728,7 +5185,8 @@
       "text": "bebidas",
       "audioPath": "audio/es/shopping_054.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/beˈbidas/"
     },
     {
       "id": "shopping_055",
@@ -4739,7 +5197,8 @@
       "text": "aperitivos",
       "audioPath": "audio/es/shopping_055.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/apeɾiˈtibos/"
     },
     {
       "id": "shopping_056",
@@ -4750,7 +5209,8 @@
       "text": "recuerdo",
       "audioPath": "audio/es/shopping_056.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/reˈkweɾdo/"
     },
     {
       "id": "shopping_057",
@@ -4765,8 +5225,10 @@
       "example": {
         "id": "es-es_shopping_057_example",
         "zh": "我想买一些当地特产。",
-        "text": "Quisiera comprar algún producto local."
-      }
+        "text": "Quisiera comprar algún producto local.",
+        "pronunciation": "/kiˈsjeɾa komˈpɾaɾ alˈɡum pɾoˈdukto loˈkal/"
+      },
+      "pronunciation": "/pɾoˈdukto loˈkal/"
     },
     {
       "id": "shopping_058",
@@ -4777,7 +5239,8 @@
       "text": "juguete",
       "audioPath": "audio/es/shopping_058.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/xuˈɡete/"
     },
     {
       "id": "shopping_059",
@@ -4788,7 +5251,8 @@
       "text": "productos electrónicos",
       "audioPath": "audio/es/shopping_059.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/pɾoˈduktos elekˈtɾonikos/"
     },
     {
       "id": "shopping_060",
@@ -4799,7 +5263,8 @@
       "text": "móvil",
       "audioPath": "audio/es/shopping_060.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈmobil/"
     },
     {
       "id": "shopping_061",
@@ -4810,7 +5275,8 @@
       "text": "cargador",
       "audioPath": "audio/es/shopping_061.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kaɾɡaˈdoɾ/"
     },
     {
       "id": "shopping_062",
@@ -4821,7 +5287,8 @@
       "text": "auriculares",
       "audioPath": "audio/es/shopping_062.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/auɾikuˈlaɾes/"
     },
     {
       "id": "shopping_063",
@@ -4832,7 +5299,8 @@
       "text": "cámara",
       "audioPath": "audio/es/shopping_063.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkamaɾa/"
     },
     {
       "id": "shopping_064",
@@ -4843,7 +5311,8 @@
       "text": "pila",
       "audioPath": "audio/es/shopping_064.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpila/"
     },
     {
       "id": "shopping_065",
@@ -4854,7 +5323,8 @@
       "text": "bolsa de la compra",
       "audioPath": "audio/es/shopping_065.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈbolsa de la ˈkompɾa/"
     },
     {
       "id": "shopping_066",
@@ -4865,7 +5335,8 @@
       "text": "bolsa reutilizable",
       "audioPath": "audio/es/shopping_066.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈbolsa reutiliˈθable/"
     },
     {
       "id": "shopping_067",
@@ -4876,7 +5347,8 @@
       "text": "¿Puedo solicitar la devolución del IVA?",
       "audioPath": "audio/es/shopping_067.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈpwedo soliθiˈtaɾ la deboluˈθjon del iubeˈa/"
     },
     {
       "id": "shopping_068",
@@ -4887,7 +5359,8 @@
       "text": "¿Me puede hacer algún descuento?",
       "audioPath": "audio/es/shopping_068.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/me ˈpwede aˈθeɾ alˈɡun desˈkwento/"
     },
     {
       "id": "shopping_069",
@@ -4898,7 +5371,8 @@
       "text": "Solo estoy mirando, gracias.",
       "audioPath": "audio/es/shopping_069.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈsolo esˈtoi miˈɾando ˈɡɾaθjas/"
     },
     {
       "id": "shopping_070",
@@ -4909,7 +5383,8 @@
       "text": "Me llevo este.",
       "audioPath": "audio/es/shopping_070.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/me ˈʝebo ˈeste/"
     },
     {
       "id": "shopping_071",
@@ -4920,7 +5395,8 @@
       "text": "¿Puedo pagar con tarjeta?",
       "audioPath": "audio/es/shopping_071.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈpwedo paˈɡaɾ kon taɾˈxeta/"
     },
     {
       "id": "shopping_072",
@@ -4931,7 +5407,8 @@
       "text": "¿Lo tiene en una talla más grande?",
       "audioPath": "audio/es/shopping_072.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/lo ˈtjene en ˈuna ˈtaʝa ˈmas ˈɡɾande/"
     },
     {
       "id": "shopping_073",
@@ -4942,7 +5419,8 @@
       "text": "¿Me lo puedo probar?",
       "audioPath": "audio/es/shopping_073.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/me lo ˈpwedo pɾoˈbaɾ/"
     },
     {
       "id": "directions_001",
@@ -4957,8 +5435,10 @@
       "example": {
         "id": "es-es_directions_001_example",
         "zh": "请问地铁站在哪里？",
-        "text": "¿Dónde está la estación de metro?"
-      }
+        "text": "¿Dónde está la estación de metro?",
+        "pronunciation": "/ˈdonde esˈta la estaˈθjon de ˈmetɾo/"
+      },
+      "pronunciation": "/ˈdonde/"
     },
     {
       "id": "directions_002",
@@ -4973,8 +5453,10 @@
       "example": {
         "id": "es-es_directions_002_example",
         "zh": "我们现在在这里。",
-        "text": "Ahora estamos aquí."
-      }
+        "text": "Ahora estamos aquí.",
+        "pronunciation": "/aˈoɾa esˈtamos aˈki/"
+      },
+      "pronunciation": "/aˈki/"
     },
     {
       "id": "directions_003",
@@ -4989,8 +5471,10 @@
       "example": {
         "id": "es-es_directions_003_example",
         "zh": "售票处在那边。",
-        "text": "La taquilla está allí."
-      }
+        "text": "La taquilla está allí.",
+        "pronunciation": "/la taˈkiʝa esˈta aˈʝi/"
+      },
+      "pronunciation": "/aˈʝi/"
     },
     {
       "id": "directions_004",
@@ -5005,8 +5489,10 @@
       "example": {
         "id": "es-es_directions_004_example",
         "zh": "在下一个路口左转。",
-        "text": "Gire a la izquierda en el próximo cruce."
-      }
+        "text": "Gire a la izquierda en el próximo cruce.",
+        "pronunciation": "/ˈxiɾe a la iθˈkjeɾda en el ˈpɾoksimo ˈkɾuθe/"
+      },
+      "pronunciation": "/iθˈkjeɾda/"
     },
     {
       "id": "directions_005",
@@ -5021,8 +5507,10 @@
       "example": {
         "id": "es-es_directions_005_example",
         "zh": "银行在右边。",
-        "text": "El banco está a la derecha."
-      }
+        "text": "El banco está a la derecha.",
+        "pronunciation": "/el ˈbanko esˈta a la deˈɾetʃa/"
+      },
+      "pronunciation": "/deˈɾetʃa/"
     },
     {
       "id": "directions_006",
@@ -5037,8 +5525,10 @@
       "example": {
         "id": "es-es_directions_006_example",
         "zh": "博物馆就在前面。",
-        "text": "El museo está delante."
-      }
+        "text": "El museo está delante.",
+        "pronunciation": "/el muˈseo esˈta deˈlante/"
+      },
+      "pronunciation": "/deˈlante/"
     },
     {
       "id": "directions_007",
@@ -5053,8 +5543,10 @@
       "example": {
         "id": "es-es_directions_007_example",
         "zh": "停车场在酒店后面。",
-        "text": "El aparcamiento está detrás del hotel."
-      }
+        "text": "El aparcamiento está detrás del hotel.",
+        "pronunciation": "/el apaɾkaˈmjento esˈta deˈtɾas del oˈtel/"
+      },
+      "pronunciation": "/deˈtɾas/"
     },
     {
       "id": "directions_008",
@@ -5069,8 +5561,10 @@
       "example": {
         "id": "es-es_directions_008_example",
         "zh": "药店就在邮局旁边。",
-        "text": "La farmacia está al lado de Correos."
-      }
+        "text": "La farmacia está al lado de Correos.",
+        "pronunciation": "/la faɾˈmaθja esˈta al ˈlado de koˈreos/"
+      },
+      "pronunciation": "/al ˈlado ˈde/"
     },
     {
       "id": "directions_009",
@@ -5085,8 +5579,10 @@
       "example": {
         "id": "es-es_directions_009_example",
         "zh": "餐厅在车站对面。",
-        "text": "El restaurante está enfrente de la estación."
-      }
+        "text": "El restaurante está enfrente de la estación.",
+        "pronunciation": "/el restauˈɾante esˈta emˈfɾente de la estaˈθjon/"
+      },
+      "pronunciation": "/emˈfɾente ˈde/"
     },
     {
       "id": "directions_010",
@@ -5101,8 +5597,10 @@
       "example": {
         "id": "es-es_directions_010_example",
         "zh": "附近有公共洗手间吗？",
-        "text": "¿Hay un aseo público cerca?"
-      }
+        "text": "¿Hay un aseo público cerca?",
+        "pronunciation": "/ˈai ˈun aˈseo ˈpubliko ˈθeɾka/"
+      },
+      "pronunciation": "/ˈθeɾka/"
     },
     {
       "id": "directions_011",
@@ -5117,8 +5615,10 @@
       "example": {
         "id": "es-es_directions_011_example",
         "zh": "机场离市中心很远。",
-        "text": "El aeropuerto está lejos del centro."
-      }
+        "text": "El aeropuerto está lejos del centro.",
+        "pronunciation": "/el aeɾoˈpweɾto esˈta ˈlexos del ˈθentɾo/"
+      },
+      "pronunciation": "/ˈlexos/"
     },
     {
       "id": "directions_012",
@@ -5133,8 +5633,10 @@
       "example": {
         "id": "es-es_directions_012_example",
         "zh": "最近的药店在哪里？",
-        "text": "¿Dónde está la farmacia más cercana?"
-      }
+        "text": "¿Dónde está la farmacia más cercana?",
+        "pronunciation": "/ˈdonde esˈta la faɾˈmaθja ˈmas θeɾˈkana/"
+      },
+      "pronunciation": "/ˈθeɾka/"
     },
     {
       "id": "directions_013",
@@ -5149,8 +5651,10 @@
       "example": {
         "id": "es-es_directions_013_example",
         "zh": "一直往前走两百米。",
-        "text": "Siga todo recto unos doscientos metros."
-      }
+        "text": "Siga todo recto unos doscientos metros.",
+        "pronunciation": "/ˈsiɡa ˈtodo ˈrekto ˈunos dosˈθjentos ˈmetɾos/"
+      },
+      "pronunciation": "/ˈtodo ˈrekto/"
     },
     {
       "id": "directions_014",
@@ -5165,8 +5669,10 @@
       "example": {
         "id": "es-es_directions_014_example",
         "zh": "到了广场后向右转。",
-        "text": "Al llegar a la plaza, gire a la derecha."
-      }
+        "text": "Al llegar a la plaza, gire a la derecha.",
+        "pronunciation": "/al ʝeˈɡaɾ a la ˈplaθa ˈxiɾe a la deˈɾetʃa/"
+      },
+      "pronunciation": "/xiˈɾaɾ/"
     },
     {
       "id": "directions_015",
@@ -5181,8 +5687,10 @@
       "example": {
         "id": "es-es_directions_015_example",
         "zh": "在第二个十字路口左转。",
-        "text": "Gire a la izquierda en el segundo cruce."
-      }
+        "text": "Gire a la izquierda en el segundo cruce.",
+        "pronunciation": "/ˈxiɾe a la iθˈkjeɾda en el seˈɡundo ˈkɾuθe/"
+      },
+      "pronunciation": "/ˈkɾuθe/"
     },
     {
       "id": "directions_016",
@@ -5197,8 +5705,10 @@
       "example": {
         "id": "es-es_directions_016_example",
         "zh": "过桥以后就是车站。",
-        "text": "La estación está justo después del puente."
-      }
+        "text": "La estación está justo después del puente.",
+        "pronunciation": "/la estaˈθjon esˈta ˈxusto desˈpwes del ˈpwente/"
+      },
+      "pronunciation": "/ˈpwente/"
     },
     {
       "id": "directions_017",
@@ -5213,8 +5723,10 @@
       "example": {
         "id": "es-es_directions_017_example",
         "zh": "这条公路通往机场。",
-        "text": "Esta carretera lleva al aeropuerto."
-      }
+        "text": "Esta carretera lleva al aeropuerto.",
+        "pronunciation": "/ˈesta kareˈteɾa ˈʝeba al aeɾoˈpweɾto/"
+      },
+      "pronunciation": "/kareˈteɾa/"
     },
     {
       "id": "directions_018",
@@ -5229,8 +5741,10 @@
       "example": {
         "id": "es-es_directions_018_example",
         "zh": "这条街叫什么名字？",
-        "text": "¿Cómo se llama esta calle?"
-      }
+        "text": "¿Cómo se llama esta calle?",
+        "pronunciation": "/ˈkomo se ˈʝama ˈesta ˈkaʝe/"
+      },
+      "pronunciation": "/ˈkaʝe/"
     },
     {
       "id": "directions_019",
@@ -5245,8 +5759,10 @@
       "example": {
         "id": "es-es_directions_019_example",
         "zh": "那栋白色建筑就是市政厅。",
-        "text": "Ese edificio blanco es el ayuntamiento."
-      }
+        "text": "Ese edificio blanco es el ayuntamiento.",
+        "pronunciation": "/ˈese ediˈfiθjo ˈblanko ˈes el aʝuntaˈmjento/"
+      },
+      "pronunciation": "/ediˈfiθjo/"
     },
     {
       "id": "directions_020",
@@ -5261,8 +5777,10 @@
       "example": {
         "id": "es-es_directions_020_example",
         "zh": "最近的警察局在哪里？",
-        "text": "¿Dónde está la comisaría más cercana?"
-      }
+        "text": "¿Dónde está la comisaría más cercana?",
+        "pronunciation": "/ˈdonde esˈta la komisaˈɾia ˈmas θeɾˈkana/"
+      },
+      "pronunciation": "/komisaˈɾia/"
     },
     {
       "id": "directions_021",
@@ -5273,7 +5791,8 @@
       "text": "hospital",
       "audioPath": "audio/es/directions_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ospiˈtal/"
     },
     {
       "id": "directions_022",
@@ -5284,7 +5803,8 @@
       "text": "farmacia",
       "audioPath": "audio/es/directions_022.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/faɾˈmaθja/"
     },
     {
       "id": "directions_023",
@@ -5295,7 +5815,8 @@
       "text": "banco",
       "audioPath": "audio/es/directions_023.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈbanko/"
     },
     {
       "id": "directions_024",
@@ -5306,7 +5827,8 @@
       "text": "oficina de correos",
       "audioPath": "audio/es/directions_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ofiˈθina de koˈreos/"
     },
     {
       "id": "directions_025",
@@ -5317,7 +5839,8 @@
       "text": "aseo",
       "audioPath": "audio/es/directions_025.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈseo/"
     },
     {
       "id": "directions_026",
@@ -5328,7 +5851,8 @@
       "text": "parada de autobús",
       "audioPath": "audio/es/directions_026.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/paˈɾada de autoˈbus/"
     },
     {
       "id": "directions_027",
@@ -5339,7 +5863,8 @@
       "text": "estación de metro",
       "audioPath": "audio/es/directions_027.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/estaˈθjon de ˈmetɾo/"
     },
     {
       "id": "directions_028",
@@ -5350,7 +5875,8 @@
       "text": "lugar turístico",
       "audioPath": "audio/es/directions_028.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/luˈɡaɾ tuˈɾistiko/"
     },
     {
       "id": "directions_029",
@@ -5361,7 +5887,8 @@
       "text": "museo",
       "audioPath": "audio/es/directions_029.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/muˈseo/"
     },
     {
       "id": "directions_030",
@@ -5372,7 +5899,8 @@
       "text": "parque",
       "audioPath": "audio/es/directions_030.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpaɾke/"
     },
     {
       "id": "directions_031",
@@ -5383,7 +5911,8 @@
       "text": "¿Cómo se llega?",
       "audioPath": "audio/es/directions_031.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈkomo se ˈʝeɡa/"
     },
     {
       "id": "directions_032",
@@ -5394,7 +5923,8 @@
       "text": "¿Dónde está…?",
       "audioPath": "audio/es/directions_032.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈdonde esˈta/"
     },
     {
       "id": "directions_033",
@@ -5405,7 +5935,8 @@
       "text": "Lléveme a…, por favor.",
       "audioPath": "audio/es/directions_033.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈʝebeme ˈa poɾ faˈboɾ/"
     },
     {
       "id": "directions_034",
@@ -5416,7 +5947,8 @@
       "text": "Quiero ir a…",
       "audioPath": "audio/es/directions_034.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈkjeɾo ˈiɾ ˈa/"
     },
     {
       "id": "directions_035",
@@ -5427,7 +5959,8 @@
       "text": "¿Cuántos minutos se tarda andando?",
       "audioPath": "audio/es/directions_035.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈkwantos miˈnutos se ˈtaɾda anˈdando/"
     },
     {
       "id": "directions_036",
@@ -5438,7 +5971,8 @@
       "text": "¿Se puede llegar en metro?",
       "audioPath": "audio/es/directions_036.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/se ˈpwede ʝeˈɡaɾ en ˈmetɾo/"
     },
     {
       "id": "directions_037",
@@ -5449,7 +5983,8 @@
       "text": "Me he perdido.",
       "audioPath": "audio/es/directions_037.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/me ˈe peɾˈdido/"
     },
     {
       "id": "directions_038",
@@ -5460,7 +5995,8 @@
       "text": "¿Dónde estoy ahora?",
       "audioPath": "audio/es/directions_038.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈdonde esˈtoi aˈoɾa/"
     },
     {
       "id": "directions_039",
@@ -5471,7 +6007,8 @@
       "text": "¿Me lo puede señalar en el mapa?",
       "audioPath": "audio/es/directions_039.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/me lo ˈpwede seɲaˈlaɾ en el ˈmapa/"
     },
     {
       "id": "directions_040",
@@ -5482,7 +6019,8 @@
       "text": "¿Puede repetirlo?",
       "audioPath": "audio/es/directions_040.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈpwede repeˈtiɾlo/"
     },
     {
       "id": "directions_041",
@@ -5493,7 +6031,8 @@
       "text": "¿Cómo se llega a la estación?",
       "audioPath": "audio/es/directions_041.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈkomo se ˈʝeɡa a la estaˈθjon/"
     },
     {
       "id": "directions_042",
@@ -5504,7 +6043,8 @@
       "text": "¿Qué calle es esta?",
       "audioPath": "audio/es/directions_042.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈke ˈkaʝe ˈes ˈesta/"
     },
     {
       "id": "directions_043",
@@ -5515,7 +6055,8 @@
       "text": "¿Dónde está el aseo?",
       "audioPath": "audio/es/directions_043.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈdonde esˈta el aˈseo/"
     },
     {
       "id": "numbers_001",
@@ -5530,8 +6071,10 @@
       "example": {
         "id": "es-es_numbers_001_example",
         "zh": "费用是零欧元。",
-        "text": "El coste es de cero euros."
-      }
+        "text": "El coste es de cero euros.",
+        "pronunciation": "/el ˈkoste ˈes de ˈθeɾo ˈeuɾos/"
+      },
+      "pronunciation": "/ˈθeɾo/"
     },
     {
       "id": "numbers_002",
@@ -5546,8 +6089,10 @@
       "example": {
         "id": "es-es_numbers_002_example",
         "zh": "我需要一张票。",
-        "text": "Necesito un billete."
-      }
+        "text": "Necesito un billete.",
+        "pronunciation": "/neθeˈsito ˈum biˈʝete/"
+      },
+      "pronunciation": "/ˈuno/"
     },
     {
       "id": "numbers_003",
@@ -5562,8 +6107,10 @@
       "example": {
         "id": "es-es_numbers_003_example",
         "zh": "我们有两件行李。",
-        "text": "Tenemos dos maletas."
-      }
+        "text": "Tenemos dos maletas.",
+        "pronunciation": "/teˈnemos ˈdos maˈletas/"
+      },
+      "pronunciation": "/ˈdos/"
     },
     {
       "id": "numbers_004",
@@ -5578,8 +6125,10 @@
       "example": {
         "id": "es-es_numbers_004_example",
         "zh": "请给我们一张三人桌。",
-        "text": "Una mesa para tres, por favor."
-      }
+        "text": "Una mesa para tres, por favor.",
+        "pronunciation": "/ˈuna ˈmesa paɾa ˈtɾes poɾ faˈboɾ/"
+      },
+      "pronunciation": "/ˈtɾes/"
     },
     {
       "id": "numbers_005",
@@ -5594,8 +6143,10 @@
       "example": {
         "id": "es-es_numbers_005_example",
         "zh": "我们住四晚。",
-        "text": "Nos quedamos cuatro noches."
-      }
+        "text": "Nos quedamos cuatro noches.",
+        "pronunciation": "/nos keˈdamos ˈkwatɾo ˈnotʃes/"
+      },
+      "pronunciation": "/ˈkwatɾo/"
     },
     {
       "id": "numbers_006",
@@ -5610,8 +6161,10 @@
       "example": {
         "id": "es-es_numbers_006_example",
         "zh": "五分钟后见。",
-        "text": "Nos vemos en cinco minutos."
-      }
+        "text": "Nos vemos en cinco minutos.",
+        "pronunciation": "/nos ˈbemos en ˈθinko miˈnutos/"
+      },
+      "pronunciation": "/ˈθinko/"
     },
     {
       "id": "numbers_007",
@@ -5626,8 +6179,10 @@
       "example": {
         "id": "es-es_numbers_007_example",
         "zh": "六点可以吗？",
-        "text": "¿A las seis le viene bien?"
-      }
+        "text": "¿A las seis le viene bien?",
+        "pronunciation": "/a las ˈseis le ˈbjene ˈbjen/"
+      },
+      "pronunciation": "/ˈseis/"
     },
     {
       "id": "numbers_008",
@@ -5642,8 +6197,10 @@
       "example": {
         "id": "es-es_numbers_008_example",
         "zh": "请早上七点叫醒我。",
-        "text": "Despiérteme a las siete, por favor."
-      }
+        "text": "Despiérteme a las siete, por favor.",
+        "pronunciation": "/desˈpjeɾteme a las ˈsjete poɾ faˈboɾ/"
+      },
+      "pronunciation": "/ˈsjete/"
     },
     {
       "id": "numbers_009",
@@ -5658,8 +6215,10 @@
       "example": {
         "id": "es-es_numbers_009_example",
         "zh": "商店八点开门。",
-        "text": "La tienda abre a las ocho."
-      }
+        "text": "La tienda abre a las ocho.",
+        "pronunciation": "/la ˈtjenda ˈabɾe a las ˈotʃo/"
+      },
+      "pronunciation": "/ˈotʃo/"
     },
     {
       "id": "numbers_010",
@@ -5674,8 +6233,10 @@
       "example": {
         "id": "es-es_numbers_010_example",
         "zh": "火车九点出发。",
-        "text": "El tren sale a las nueve."
-      }
+        "text": "El tren sale a las nueve.",
+        "pronunciation": "/el ˈtɾen ˈsale a las ˈnwebe/"
+      },
+      "pronunciation": "/ˈnwebe/"
     },
     {
       "id": "numbers_011",
@@ -5690,8 +6251,10 @@
       "example": {
         "id": "es-es_numbers_011_example",
         "zh": "步行需要十分钟。",
-        "text": "Se tarda diez minutos andando."
-      }
+        "text": "Se tarda diez minutos andando.",
+        "pronunciation": "/se ˈtaɾda ˈdjeθ miˈnutos anˈdando/"
+      },
+      "pronunciation": "/ˈdjeθ/"
     },
     {
       "id": "numbers_012",
@@ -5706,8 +6269,10 @@
       "example": {
         "id": "es-es_numbers_012_example",
         "zh": "这件东西一百欧元。",
-        "text": "Esto cuesta cien euros."
-      }
+        "text": "Esto cuesta cien euros.",
+        "pronunciation": "/ˈesto ˈkwesta ˈθjen ˈeuɾos/"
+      },
+      "pronunciation": "/ˈθjen/"
     },
     {
       "id": "numbers_013",
@@ -5722,8 +6287,10 @@
       "example": {
         "id": "es-es_numbers_013_example",
         "zh": "这个城市有一千多年的历史。",
-        "text": "Esta ciudad tiene más de mil años de historia."
-      }
+        "text": "Esta ciudad tiene más de mil años de historia.",
+        "pronunciation": "/ˈesta θjuˈdad ˈtjene ˈmas de ˈmil ˈaɲos de isˈtoɾja/"
+      },
+      "pronunciation": "/ˈmil/"
     },
     {
       "id": "numbers_014",
@@ -5738,8 +6305,10 @@
       "example": {
         "id": "es-es_numbers_014_example",
         "zh": "这个景点每年接待一万多名游客。",
-        "text": "Esta atracción recibe a más de diez mil visitantes al año."
-      }
+        "text": "Esta atracción recibe a más de diez mil visitantes al año.",
+        "pronunciation": "/ˈesta atɾakˈθjon reˈθibe a ˈmas de ˈdjeθ ˈmil bisiˈtantes al ˈaɲo/"
+      },
+      "pronunciation": "/ˈdjeθ ˈmil/"
     },
     {
       "id": "numbers_015",
@@ -5754,8 +6323,10 @@
       "example": {
         "id": "es-es_numbers_015_example",
         "zh": "这张纸币是十欧元。",
-        "text": "Este billete es de diez euros."
-      }
+        "text": "Este billete es de diez euros.",
+        "pronunciation": "/ˈeste biˈʝete ˈes de ˈdjeθ ˈeuɾos/"
+      },
+      "pronunciation": "/ˈeuɾo/"
     },
     {
       "id": "numbers_016",
@@ -5770,8 +6341,10 @@
       "example": {
         "id": "es-es_numbers_016_example",
         "zh": "我想把美元换成欧元。",
-        "text": "Quiero cambiar dólares por euros."
-      }
+        "text": "Quiero cambiar dólares por euros.",
+        "pronunciation": "/ˈkjeɾo kamˈbjaɾ ˈdolaɾes poɾ ˈeuɾos/"
+      },
+      "pronunciation": "/ˈdolaɾ/"
     },
     {
       "id": "numbers_017",
@@ -5786,8 +6359,10 @@
       "example": {
         "id": "es-es_numbers_017_example",
         "zh": "可以把人民币换成欧元吗？",
-        "text": "¿Puedo cambiar yuanes por euros?"
-      }
+        "text": "¿Puedo cambiar yuanes por euros?",
+        "pronunciation": "/ˈpwedo kamˈbjaɾ ˈʝwanes poɾ ˈeuɾos/"
+      },
+      "pronunciation": "/ˈʝwan/"
     },
     {
       "id": "numbers_018",
@@ -5802,8 +6377,10 @@
       "example": {
         "id": "es-es_numbers_018_example",
         "zh": "今天博物馆开门吗？",
-        "text": "¿Está abierto hoy el museo?"
-      }
+        "text": "¿Está abierto hoy el museo?",
+        "pronunciation": "/esˈta aˈbjeɾto ˈoi el muˈseo/"
+      },
+      "pronunciation": "/ˈoi/"
     },
     {
       "id": "numbers_019",
@@ -5818,8 +6395,10 @@
       "example": {
         "id": "es-es_numbers_019_example",
         "zh": "我们明天去塞维利亚。",
-        "text": "Mañana vamos a Sevilla."
-      }
+        "text": "Mañana vamos a Sevilla.",
+        "pronunciation": "/maˈɲana ˈbamos a seˈbiʝa/"
+      },
+      "pronunciation": "/maˈɲana/"
     },
     {
       "id": "numbers_020",
@@ -5834,8 +6413,10 @@
       "example": {
         "id": "es-es_numbers_020_example",
         "zh": "我昨天到的马德里。",
-        "text": "Llegué ayer a Madrid."
-      }
+        "text": "Llegué ayer a Madrid.",
+        "pronunciation": "/ʝeˈɡe aˈʝeɾ a maˈdɾid/"
+      },
+      "pronunciation": "/aˈʝeɾ/"
     },
     {
       "id": "numbers_021",
@@ -5846,7 +6427,8 @@
       "text": "pasado mañana",
       "audioPath": "audio/es/numbers_021.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/paˈsado maˈɲana/"
     },
     {
       "id": "numbers_022",
@@ -5857,7 +6439,8 @@
       "text": "anteayer",
       "audioPath": "audio/es/numbers_022.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/anteaˈʝeɾ/"
     },
     {
       "id": "numbers_023",
@@ -5868,7 +6451,8 @@
       "text": "mañana",
       "audioPath": "audio/es/numbers_023.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/maˈɲana/"
     },
     {
       "id": "numbers_024",
@@ -5879,7 +6463,8 @@
       "text": "mediodía",
       "audioPath": "audio/es/numbers_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/medjoˈdia/"
     },
     {
       "id": "numbers_025",
@@ -5890,7 +6475,8 @@
       "text": "tarde",
       "audioPath": "audio/es/numbers_025.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtaɾde/"
     },
     {
       "id": "numbers_026",
@@ -5901,7 +6487,8 @@
       "text": "noche",
       "audioPath": "audio/es/numbers_026.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈnotʃe/"
     },
     {
       "id": "numbers_027",
@@ -5912,7 +6499,8 @@
       "text": "ahora",
       "audioPath": "audio/es/numbers_027.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈoɾa/"
     },
     {
       "id": "numbers_028",
@@ -5923,7 +6511,8 @@
       "text": "hora",
       "audioPath": "audio/es/numbers_028.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈoɾa/"
     },
     {
       "id": "numbers_029",
@@ -5934,7 +6523,8 @@
       "text": "una hora",
       "audioPath": "audio/es/numbers_029.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈuna ˈoɾa/"
     },
     {
       "id": "numbers_030",
@@ -5945,7 +6535,8 @@
       "text": "un minuto",
       "audioPath": "audio/es/numbers_030.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈun miˈnuto/"
     },
     {
       "id": "numbers_031",
@@ -5956,7 +6547,8 @@
       "text": "segundo",
       "audioPath": "audio/es/numbers_031.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/seˈɡundo/"
     },
     {
       "id": "numbers_032",
@@ -5971,8 +6563,10 @@
       "example": {
         "id": "es-es_numbers_032_example",
         "zh": "请问现在几点？",
-        "text": "¿Qué hora es?"
-      }
+        "text": "¿Qué hora es?",
+        "pronunciation": "/ˈke ˈoɾa ˈes/"
+      },
+      "pronunciation": "/ˈke ˈoɾa/"
     },
     {
       "id": "numbers_033",
@@ -5983,7 +6577,8 @@
       "text": "día de la semana",
       "audioPath": "audio/es/numbers_033.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia de la seˈmana/"
     },
     {
       "id": "numbers_034",
@@ -5994,7 +6589,8 @@
       "text": "lunes",
       "audioPath": "audio/es/numbers_034.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈlunes/"
     },
     {
       "id": "numbers_035",
@@ -6005,7 +6601,8 @@
       "text": "martes",
       "audioPath": "audio/es/numbers_035.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈmaɾtes/"
     },
     {
       "id": "numbers_036",
@@ -6016,7 +6613,8 @@
       "text": "miércoles",
       "audioPath": "audio/es/numbers_036.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈmjeɾkoles/"
     },
     {
       "id": "numbers_037",
@@ -6027,7 +6625,8 @@
       "text": "jueves",
       "audioPath": "audio/es/numbers_037.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈxwebes/"
     },
     {
       "id": "numbers_038",
@@ -6038,7 +6637,8 @@
       "text": "viernes",
       "audioPath": "audio/es/numbers_038.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈbjeɾnes/"
     },
     {
       "id": "numbers_039",
@@ -6049,7 +6649,8 @@
       "text": "sábado",
       "audioPath": "audio/es/numbers_039.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈsabado/"
     },
     {
       "id": "numbers_040",
@@ -6060,7 +6661,8 @@
       "text": "domingo",
       "audioPath": "audio/es/numbers_040.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/doˈmiŋɡo/"
     },
     {
       "id": "numbers_041",
@@ -6071,7 +6673,8 @@
       "text": "fin de semana",
       "audioPath": "audio/es/numbers_041.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈfin de seˈmana/"
     },
     {
       "id": "numbers_042",
@@ -6082,7 +6685,8 @@
       "text": "día laborable",
       "audioPath": "audio/es/numbers_042.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia laboˈɾable/"
     },
     {
       "id": "numbers_043",
@@ -6093,7 +6697,8 @@
       "text": "fecha",
       "audioPath": "audio/es/numbers_043.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈfetʃa/"
     },
     {
       "id": "numbers_044",
@@ -6104,7 +6709,8 @@
       "text": "enero",
       "audioPath": "audio/es/numbers_044.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/eˈneɾo/"
     },
     {
       "id": "numbers_045",
@@ -6115,7 +6721,8 @@
       "text": "febrero",
       "audioPath": "audio/es/numbers_045.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/feˈbɾeɾo/"
     },
     {
       "id": "numbers_046",
@@ -6126,7 +6733,8 @@
       "text": "marzo",
       "audioPath": "audio/es/numbers_046.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈmaɾθo/"
     },
     {
       "id": "numbers_047",
@@ -6137,7 +6745,8 @@
       "text": "abril",
       "audioPath": "audio/es/numbers_047.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈbɾil/"
     },
     {
       "id": "numbers_048",
@@ -6148,7 +6757,8 @@
       "text": "mayo",
       "audioPath": "audio/es/numbers_048.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈmaʝo/"
     },
     {
       "id": "numbers_049",
@@ -6159,7 +6769,8 @@
       "text": "junio",
       "audioPath": "audio/es/numbers_049.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈxunjo/"
     },
     {
       "id": "numbers_050",
@@ -6170,7 +6781,8 @@
       "text": "julio",
       "audioPath": "audio/es/numbers_050.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈxuljo/"
     },
     {
       "id": "numbers_051",
@@ -6181,7 +6793,8 @@
       "text": "agosto",
       "audioPath": "audio/es/numbers_051.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aˈɡosto/"
     },
     {
       "id": "numbers_052",
@@ -6192,7 +6805,8 @@
       "text": "septiembre",
       "audioPath": "audio/es/numbers_052.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/sepːˈtjembɾe/"
     },
     {
       "id": "numbers_053",
@@ -6203,7 +6817,8 @@
       "text": "octubre",
       "audioPath": "audio/es/numbers_053.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/okˈtubɾe/"
     },
     {
       "id": "numbers_054",
@@ -6214,7 +6829,8 @@
       "text": "noviembre",
       "audioPath": "audio/es/numbers_054.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/noˈbjembɾe/"
     },
     {
       "id": "numbers_055",
@@ -6225,7 +6841,8 @@
       "text": "diciembre",
       "audioPath": "audio/es/numbers_055.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/diˈθjembɾe/"
     },
     {
       "id": "numbers_056",
@@ -6236,7 +6853,8 @@
       "text": "día uno",
       "audioPath": "audio/es/numbers_056.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈuno/"
     },
     {
       "id": "numbers_057",
@@ -6247,7 +6865,8 @@
       "text": "día dos",
       "audioPath": "audio/es/numbers_057.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈdos/"
     },
     {
       "id": "numbers_058",
@@ -6258,7 +6877,8 @@
       "text": "día tres",
       "audioPath": "audio/es/numbers_058.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈtɾes/"
     },
     {
       "id": "numbers_059",
@@ -6269,7 +6889,8 @@
       "text": "día cuatro",
       "audioPath": "audio/es/numbers_059.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈkwatɾo/"
     },
     {
       "id": "numbers_060",
@@ -6280,7 +6901,8 @@
       "text": "día cinco",
       "audioPath": "audio/es/numbers_060.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈθinko/"
     },
     {
       "id": "numbers_061",
@@ -6291,7 +6913,8 @@
       "text": "día seis",
       "audioPath": "audio/es/numbers_061.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈseis/"
     },
     {
       "id": "numbers_062",
@@ -6302,7 +6925,8 @@
       "text": "día siete",
       "audioPath": "audio/es/numbers_062.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈsjete/"
     },
     {
       "id": "numbers_063",
@@ -6313,7 +6937,8 @@
       "text": "día ocho",
       "audioPath": "audio/es/numbers_063.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈotʃo/"
     },
     {
       "id": "numbers_064",
@@ -6324,7 +6949,8 @@
       "text": "día nueve",
       "audioPath": "audio/es/numbers_064.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈnwebe/"
     },
     {
       "id": "numbers_065",
@@ -6335,7 +6961,8 @@
       "text": "día diez",
       "audioPath": "audio/es/numbers_065.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈdia ˈdjeθ/"
     },
     {
       "id": "numbers_066",
@@ -6346,7 +6973,8 @@
       "text": "este año",
       "audioPath": "audio/es/numbers_066.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈeste ˈaɲo/"
     },
     {
       "id": "numbers_067",
@@ -6357,7 +6985,8 @@
       "text": "el año pasado",
       "audioPath": "audio/es/numbers_067.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/el ˈaɲo paˈsado/"
     },
     {
       "id": "numbers_068",
@@ -6368,7 +6997,8 @@
       "text": "el año que viene",
       "audioPath": "audio/es/numbers_068.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/el ˈaɲo ke ˈbjene/"
     },
     {
       "id": "numbers_069",
@@ -6379,7 +7009,8 @@
       "text": "este mes",
       "audioPath": "audio/es/numbers_069.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈeste ˈmes/"
     },
     {
       "id": "numbers_070",
@@ -6390,7 +7021,8 @@
       "text": "el mes pasado",
       "audioPath": "audio/es/numbers_070.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/el ˈmes paˈsado/"
     },
     {
       "id": "numbers_071",
@@ -6401,7 +7033,8 @@
       "text": "el mes que viene",
       "audioPath": "audio/es/numbers_071.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/el ˈmes ke ˈbjene/"
     },
     {
       "id": "numbers_072",
@@ -6412,7 +7045,8 @@
       "text": "¿A qué hora abren?",
       "audioPath": "audio/es/numbers_072.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/a ˈke ˈoɾa ˈabɾen/"
     },
     {
       "id": "numbers_073",
@@ -6423,7 +7057,8 @@
       "text": "¿Qué hora es?",
       "audioPath": "audio/es/numbers_073.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈke ˈoɾa ˈes/"
     },
     {
       "id": "numbers_074",
@@ -6434,7 +7069,8 @@
       "text": "¿Qué día de la semana es hoy?",
       "audioPath": "audio/es/numbers_074.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈke ˈdia de la seˈmana ˈes ˈoi/"
     },
     {
       "id": "numbers_075",
@@ -6445,7 +7081,8 @@
       "text": "¿Qué fecha es hoy?",
       "audioPath": "audio/es/numbers_075.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈke ˈfetʃa ˈes ˈoi/"
     },
     {
       "id": "numbers_076",
@@ -6456,7 +7093,8 @@
       "text": "horario de apertura",
       "audioPath": "audio/es/numbers_076.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/oˈɾaɾjo de apeɾˈtuɾa/"
     },
     {
       "id": "numbers_077",
@@ -6471,8 +7109,10 @@
       "example": {
         "id": "es-es_numbers_077_example",
         "zh": "博物馆几点开门？",
-        "text": "¿A qué hora abre el museo?"
-      }
+        "text": "¿A qué hora abre el museo?",
+        "pronunciation": "/a ˈke ˈoɾa ˈabɾe el muˈseo/"
+      },
+      "pronunciation": "/aˈbɾiɾ/"
     },
     {
       "id": "numbers_078",
@@ -6487,8 +7127,10 @@
       "example": {
         "id": "es-es_numbers_078_example",
         "zh": "商店九点关门。",
-        "text": "La tienda cierra a las nueve."
-      }
+        "text": "La tienda cierra a las nueve.",
+        "pronunciation": "/la ˈtjenda ˈθjera a las ˈnwebe/"
+      },
+      "pronunciation": "/θeˈraɾ/"
     },
     {
       "id": "numbers_079",
@@ -6499,7 +7141,8 @@
       "text": "todos los días",
       "audioPath": "audio/es/numbers_079.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈtodos los ˈdias/"
     },
     {
       "id": "numbers_080",
@@ -6510,7 +7153,8 @@
       "text": "a veces",
       "audioPath": "audio/es/numbers_080.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/a ˈbeθes/"
     },
     {
       "id": "numbers_081",
@@ -6521,7 +7165,8 @@
       "text": "a menudo",
       "audioPath": "audio/es/numbers_081.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/a meˈnudo/"
     },
     {
       "id": "numbers_082",
@@ -6536,8 +7181,10 @@
       "example": {
         "id": "es-es_numbers_082_example",
         "zh": "救护车马上就到。",
-        "text": "La ambulancia llegará enseguida."
-      }
+        "text": "La ambulancia llegará enseguida.",
+        "pronunciation": "/la ambuˈlanθja ʝeɡaˈɾa enseˈɡida/"
+      },
+      "pronunciation": "/enseˈɡida/"
     },
     {
       "id": "numbers_083",
@@ -6548,7 +7195,8 @@
       "text": "Un momento, por favor.",
       "audioPath": "audio/es/numbers_083.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈun moˈmento poɾ faˈboɾ/"
     },
     {
       "id": "emergency_001",
@@ -6563,8 +7211,10 @@
       "example": {
         "id": "es-es_emergency_001_example",
         "zh": "救命！有人受伤了！",
-        "text": "¡Socorro! ¡Hay una persona herida!"
-      }
+        "text": "¡Socorro! ¡Hay una persona herida!",
+        "pronunciation": "/soˈkoro ˈai ˈuna peɾˈsona eˈɾida/"
+      },
+      "pronunciation": "/soˈkoro/"
     },
     {
       "id": "emergency_002",
@@ -6579,8 +7229,10 @@
       "example": {
         "id": "es-es_emergency_002_example",
         "zh": "这是紧急情况。",
-        "text": "Es una emergencia."
-      }
+        "text": "Es una emergencia.",
+        "pronunciation": "/ˈes ˈuna emeɾˈxenθja/"
+      },
+      "pronunciation": "/emeɾˈxenθja/"
     },
     {
       "id": "emergency_003",
@@ -6595,8 +7247,10 @@
       "example": {
         "id": "es-es_emergency_003_example",
         "zh": "请马上报警。",
-        "text": "Llame a la policía ahora mismo, por favor."
-      }
+        "text": "Llame a la policía ahora mismo, por favor.",
+        "pronunciation": "/ˈʝame a la poliˈθia aˈoɾa ˈmismo poɾ faˈboɾ/"
+      },
+      "pronunciation": "/ʝaˈmaɾ a la poliˈθia/"
     },
     {
       "id": "emergency_004",
@@ -6611,8 +7265,10 @@
       "example": {
         "id": "es-es_emergency_004_example",
         "zh": "我们需要叫救护车。",
-        "text": "Necesitamos llamar a una ambulancia."
-      }
+        "text": "Necesitamos llamar a una ambulancia.",
+        "pronunciation": "/neθesiˈtamos ʝaˈmaɾ a ˈuna ambuˈlanθja/"
+      },
+      "pronunciation": "/ʝaˈmaɾ a ˈuna ambuˈlanθja/"
     },
     {
       "id": "emergency_005",
@@ -6627,8 +7283,10 @@
       "example": {
         "id": "es-es_emergency_005_example",
         "zh": "我需要看医生。",
-        "text": "Necesito ver a un médico."
-      }
+        "text": "Necesito ver a un médico.",
+        "pronunciation": "/neθeˈsito ˈbeɾ a ˈun ˈmediko/"
+      },
+      "pronunciation": "/ˈmediko/"
     },
     {
       "id": "emergency_006",
@@ -6643,8 +7301,10 @@
       "example": {
         "id": "es-es_emergency_006_example",
         "zh": "可以请护士过来吗？",
-        "text": "¿Puede venir un enfermero, por favor?"
-      }
+        "text": "¿Puede venir un enfermero, por favor?",
+        "pronunciation": "/ˈpwede beˈniɾ ˈun enfeɾˈmeɾo poɾ faˈboɾ/"
+      },
+      "pronunciation": "/enfeɾˈmeɾo/"
     },
     {
       "id": "emergency_007",
@@ -6659,8 +7319,10 @@
       "example": {
         "id": "es-es_emergency_007_example",
         "zh": "这种药一天吃几次？",
-        "text": "¿Cuántas veces al día tengo que tomar este medicamento?"
-      }
+        "text": "¿Cuántas veces al día tengo que tomar este medicamento?",
+        "pronunciation": "/ˈkwantas ˈbeθes al ˈdia ˈteŋɡo ke toˈmaɾ ˈeste medikaˈmento/"
+      },
+      "pronunciation": "/medikaˈmento/"
     },
     {
       "id": "emergency_008",
@@ -6675,8 +7337,10 @@
       "example": {
         "id": "es-es_emergency_008_example",
         "zh": "买这个需要处方吗？",
-        "text": "¿Hace falta receta para comprarlo?"
-      }
+        "text": "¿Hace falta receta para comprarlo?",
+        "pronunciation": "/ˈaθe ˈfalta reˈθeta paɾa komˈpɾaɾlo/"
+      },
+      "pronunciation": "/reˈθeta/"
     },
     {
       "id": "emergency_009",
@@ -6691,8 +7355,10 @@
       "example": {
         "id": "es-es_emergency_009_example",
         "zh": "我发烧到三十九度。",
-        "text": "Tengo treinta y nueve grados de fiebre."
-      }
+        "text": "Tengo treinta y nueve grados de fiebre.",
+        "pronunciation": "/ˈteŋɡo ˈtɾeinta i ˈnwebe ˈɡɾados de ˈfjebɾe/"
+      },
+      "pronunciation": "/ˈfjebɾe/"
     },
     {
       "id": "emergency_010",
@@ -6707,8 +7373,10 @@
       "example": {
         "id": "es-es_emergency_010_example",
         "zh": "我好像感冒了。",
-        "text": "Creo que estoy resfriado."
-      }
+        "text": "Creo que estoy resfriado.",
+        "pronunciation": "/ˈkɾeo ke esˈtoi resfɾiˈado/"
+      },
+      "pronunciation": "/resfɾiˈado/"
     },
     {
       "id": "emergency_011",
@@ -6723,8 +7391,10 @@
       "example": {
         "id": "es-es_emergency_011_example",
         "zh": "我咳嗽了三天。",
-        "text": "Tengo tos desde hace tres días."
-      }
+        "text": "Tengo tos desde hace tres días.",
+        "pronunciation": "/ˈteŋɡo ˈtos desde ˈaθe ˈtɾes ˈdias/"
+      },
+      "pronunciation": "/ˈtos/"
     },
     {
       "id": "emergency_012",
@@ -6739,8 +7409,10 @@
       "example": {
         "id": "es-es_emergency_012_example",
         "zh": "我头疼得很厉害。",
-        "text": "Me duele mucho la cabeza."
-      }
+        "text": "Me duele mucho la cabeza.",
+        "pronunciation": "/me ˈdwele ˈmutʃo la kaˈbeθa/"
+      },
+      "pronunciation": "/doˈloɾ de kaˈbeθa/"
     },
     {
       "id": "emergency_013",
@@ -6755,8 +7427,10 @@
       "example": {
         "id": "es-es_emergency_013_example",
         "zh": "我从昨晚开始胃痛。",
-        "text": "Me duele el estómago desde anoche."
-      }
+        "text": "Me duele el estómago desde anoche.",
+        "pronunciation": "/me ˈdwele el esˈtomaɡo desde aˈnotʃe/"
+      },
+      "pronunciation": "/doˈloɾ de esˈtomaɡo/"
     },
     {
       "id": "emergency_014",
@@ -6771,8 +7445,10 @@
       "example": {
         "id": "es-es_emergency_014_example",
         "zh": "我需要找牙医，我牙疼。",
-        "text": "Necesito un dentista; me duelen las muelas."
-      }
+        "text": "Necesito un dentista; me duelen las muelas.",
+        "pronunciation": "/neθeˈsito ˈun denˈtista me ˈdwelen las ˈmwelas/"
+      },
+      "pronunciation": "/doˈloɾ de ˈmwelas/"
     },
     {
       "id": "emergency_015",
@@ -6787,8 +7463,10 @@
       "example": {
         "id": "es-es_emergency_015_example",
         "zh": "我感到恶心。",
-        "text": "Tengo náuseas."
-      }
+        "text": "Tengo náuseas.",
+        "pronunciation": "/ˈteŋɡo ˈnauseas/"
+      },
+      "pronunciation": "/ˈnauseas/"
     },
     {
       "id": "emergency_016",
@@ -6803,8 +7481,10 @@
       "example": {
         "id": "es-es_emergency_016_example",
         "zh": "我一直在呕吐。",
-        "text": "No paro de vomitar."
-      }
+        "text": "No paro de vomitar.",
+        "pronunciation": "/ˈno ˈpaɾo de bomiˈtaɾ/"
+      },
+      "pronunciation": "/ˈbomitos/"
     },
     {
       "id": "emergency_017",
@@ -6819,8 +7499,10 @@
       "example": {
         "id": "es-es_emergency_017_example",
         "zh": "我腹泻了。",
-        "text": "Tengo diarrea."
-      }
+        "text": "Tengo diarrea.",
+        "pronunciation": "/ˈteŋɡo djaˈrea/"
+      },
+      "pronunciation": "/djaˈrea/"
     },
     {
       "id": "emergency_018",
@@ -6835,8 +7517,10 @@
       "example": {
         "id": "es-es_emergency_018_example",
         "zh": "这种药会导致便秘吗？",
-        "text": "¿Este medicamento puede causar estreñimiento?"
-      }
+        "text": "¿Este medicamento puede causar estreñimiento?",
+        "pronunciation": "/ˈeste medikaˈmento ˈpwede kauˈsaɾ estɾeɲiˈmjento/"
+      },
+      "pronunciation": "/estɾeɲiˈmjento/"
     },
     {
       "id": "emergency_019",
@@ -6851,8 +7535,10 @@
       "example": {
         "id": "es-es_emergency_019_example",
         "zh": "伤口需要缝合吗？",
-        "text": "¿Hay que dar puntos en la herida?"
-      }
+        "text": "¿Hay que dar puntos en la herida?",
+        "pronunciation": "/ˈai ke ˈdaɾ ˈpuntos en la eˈɾida/"
+      },
+      "pronunciation": "/eˈɾida/"
     },
     {
       "id": "emergency_020",
@@ -6867,8 +7553,10 @@
       "example": {
         "id": "es-es_emergency_020_example",
         "zh": "怎样才能止血？",
-        "text": "¿Cómo puedo detener el sangrado?"
-      }
+        "text": "¿Cómo puedo detener el sangrado?",
+        "pronunciation": "/ˈkomo ˈpwedo deteˈneɾ el saŋˈɡɾado/"
+      },
+      "pronunciation": "/saŋˈɡɾado/"
     },
     {
       "id": "emergency_021",
@@ -6883,8 +7571,10 @@
       "example": {
         "id": "es-es_emergency_021_example",
         "zh": "我担心骨折了。",
-        "text": "Creo que puede ser una fractura."
-      }
+        "text": "Creo que puede ser una fractura.",
+        "pronunciation": "/ˈkɾeo ke ˈpwede ˈser ˈuna fɾakˈtuɾa/"
+      },
+      "pronunciation": "/fɾakˈtuɾa/"
     },
     {
       "id": "emergency_022",
@@ -6899,8 +7589,10 @@
       "example": {
         "id": "es-es_emergency_022_example",
         "zh": "这个烫伤需要去医院吗？",
-        "text": "¿Tengo que ir al hospital por esta quemadura?"
-      }
+        "text": "¿Tengo que ir al hospital por esta quemadura?",
+        "pronunciation": "/ˈteŋɡo ke ˈiɾ al ospiˈtal poɾ ˈesta kemaˈduɾa/"
+      },
+      "pronunciation": "/kemaˈduɾa/"
     },
     {
       "id": "emergency_023",
@@ -6915,8 +7607,10 @@
       "example": {
         "id": "es-es_emergency_023_example",
         "zh": "我有哮喘，需要吸入器。",
-        "text": "Tengo asma y necesito un inhalador."
-      }
+        "text": "Tengo asma y necesito un inhalador.",
+        "pronunciation": "/ˈteŋɡo ˈasma i neθeˈsito ˈun inalaˈdoɾ/"
+      },
+      "pronunciation": "/ˈasma/"
     },
     {
       "id": "emergency_024",
@@ -6927,7 +7621,8 @@
       "text": "pastilla",
       "audioPath": "audio/es/emergency_024.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/pasˈtiʝa/"
     },
     {
       "id": "emergency_025",
@@ -6938,7 +7633,8 @@
       "text": "pomada",
       "audioPath": "audio/es/emergency_025.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/poˈmada/"
     },
     {
       "id": "emergency_026",
@@ -6949,7 +7645,8 @@
       "text": "tirita",
       "audioPath": "audio/es/emergency_026.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/tiˈɾita/"
     },
     {
       "id": "emergency_027",
@@ -6960,7 +7657,8 @@
       "text": "venda",
       "audioPath": "audio/es/emergency_027.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈbenda/"
     },
     {
       "id": "emergency_028",
@@ -6971,7 +7669,8 @@
       "text": "termómetro",
       "audioPath": "audio/es/emergency_028.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/teɾˈmometɾo/"
     },
     {
       "id": "emergency_029",
@@ -6982,7 +7681,8 @@
       "text": "mascarilla",
       "audioPath": "audio/es/emergency_029.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/maskaˈɾiʝa/"
     },
     {
       "id": "emergency_030",
@@ -6993,7 +7693,8 @@
       "text": "desinfectante",
       "audioPath": "audio/es/emergency_030.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/desinfekˈtante/"
     },
     {
       "id": "emergency_031",
@@ -7004,7 +7705,8 @@
       "text": "botiquín",
       "audioPath": "audio/es/emergency_031.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/botiˈkin/"
     },
     {
       "id": "emergency_032",
@@ -7019,8 +7721,10 @@
       "example": {
         "id": "es-es_emergency_032_example",
         "zh": "我的旅行保险包含急诊吗？",
-        "text": "¿Mi seguro de viaje cubre las urgencias?"
-      }
+        "text": "¿Mi seguro de viaje cubre las urgencias?",
+        "pronunciation": "/mi seˈɡuɾo de ˈbjaxe ˈkubɾe las uɾˈxenθjas/"
+      },
+      "pronunciation": "/seˈɡuɾo/"
     },
     {
       "id": "emergency_033",
@@ -7031,7 +7735,8 @@
       "text": "tarjeta del seguro",
       "audioPath": "audio/es/emergency_033.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/taɾˈxeta del seˈɡuɾo/"
     },
     {
       "id": "emergency_034",
@@ -7042,7 +7747,8 @@
       "text": "He perdido el pasaporte.",
       "audioPath": "audio/es/emergency_034.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈe peɾˈdido el pasaˈpoɾte/"
     },
     {
       "id": "emergency_035",
@@ -7053,7 +7759,8 @@
       "text": "Me han robado la cartera.",
       "audioPath": "audio/es/emergency_035.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/me ˈan roˈbado la kaɾˈteɾa/"
     },
     {
       "id": "emergency_036",
@@ -7064,7 +7771,8 @@
       "text": "Necesito ayuda.",
       "audioPath": "audio/es/emergency_036.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/neθeˈsito aˈʝuda/"
     },
     {
       "id": "emergency_037",
@@ -7075,7 +7783,8 @@
       "text": "Llame a la policía, por favor.",
       "audioPath": "audio/es/emergency_037.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈʝame a la poliˈθia poɾ faˈboɾ/"
     },
     {
       "id": "emergency_038",
@@ -7086,7 +7795,8 @@
       "text": "Llame a una ambulancia, por favor.",
       "audioPath": "audio/es/emergency_038.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈʝame a ˈuna ambuˈlanθja poɾ faˈboɾ/"
     },
     {
       "id": "emergency_039",
@@ -7097,7 +7807,8 @@
       "text": "No me encuentro bien.",
       "audioPath": "audio/es/emergency_039.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈno me enˈkwentɾo ˈbjen/"
     },
     {
       "id": "emergency_040",
@@ -7108,7 +7819,8 @@
       "text": "Estoy enfermo.",
       "audioPath": "audio/es/emergency_040.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/esˈtoi enˈfeɾmo/"
     },
     {
       "id": "emergency_041",
@@ -7119,7 +7831,8 @@
       "text": "Tengo alergia a algún medicamento.",
       "audioPath": "audio/es/emergency_041.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈteŋɡo aˈleɾxja a alˈɡun medikaˈmento/"
     },
     {
       "id": "emergency_042",
@@ -7130,7 +7843,8 @@
       "text": "¿Dónde hay una farmacia?",
       "audioPath": "audio/es/emergency_042.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈdonde ˈai ˈuna faɾˈmaθja/"
     },
     {
       "id": "emergency_043",
@@ -7141,7 +7855,8 @@
       "text": "Necesito ver a un médico.",
       "audioPath": "audio/es/emergency_043.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/neθeˈsito ˈbeɾ a ˈun ˈmediko/"
     },
     {
       "id": "emergency_044",
@@ -7152,7 +7867,8 @@
       "text": "Es una emergencia.",
       "audioPath": "audio/es/emergency_044.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈes ˈuna emeɾˈxenθja/"
     },
     {
       "id": "expressions_001",
@@ -7167,8 +7883,10 @@
       "example": {
         "id": "es-es_expressions_001_example",
         "zh": "谢谢您的帮助。",
-        "text": "Gracias por su ayuda."
-      }
+        "text": "Gracias por su ayuda.",
+        "pronunciation": "/ˈɡɾaθjas poɾ su aˈʝuda/"
+      },
+      "pronunciation": "/ˈɡɾaθjas/"
     },
     {
       "id": "expressions_002",
@@ -7183,8 +7901,10 @@
       "example": {
         "id": "es-es_expressions_002_example",
         "zh": "真的非常感谢。",
-        "text": "Muchísimas gracias."
-      }
+        "text": "Muchísimas gracias.",
+        "pronunciation": "/muˈtʃisimas ˈɡɾaθjas/"
+      },
+      "pronunciation": "/ˈmutʃas ˈɡɾaθjas/"
     },
     {
       "id": "expressions_003",
@@ -7199,8 +7919,10 @@
       "example": {
         "id": "es-es_expressions_003_example",
         "zh": "不客气。",
-        "text": "De nada."
-      }
+        "text": "De nada.",
+        "pronunciation": "/de ˈnada/"
+      },
+      "pronunciation": "/de ˈnada/"
     },
     {
       "id": "expressions_004",
@@ -7215,8 +7937,10 @@
       "example": {
         "id": "es-es_expressions_004_example",
         "zh": "请给我一张地图。",
-        "text": "Un mapa, por favor."
-      }
+        "text": "Un mapa, por favor.",
+        "pronunciation": "/ˈun ˈmapa poɾ faˈboɾ/"
+      },
+      "pronunciation": "/poɾ faˈboɾ/"
     },
     {
       "id": "expressions_005",
@@ -7231,8 +7955,10 @@
       "example": {
         "id": "es-es_expressions_005_example",
         "zh": "劳驾，火车站在哪里？",
-        "text": "Perdone, ¿dónde está la estación?"
-      }
+        "text": "Perdone, ¿dónde está la estación?",
+        "pronunciation": "/peɾˈdone ˈdonde esˈta la estaˈθjon/"
+      },
+      "pronunciation": "/peɾˈdone/"
     },
     {
       "id": "expressions_006",
@@ -7247,8 +7973,10 @@
       "example": {
         "id": "es-es_expressions_006_example",
         "zh": "对不起，我听不懂。",
-        "text": "Lo siento, no entiendo."
-      }
+        "text": "Lo siento, no entiendo.",
+        "pronunciation": "/lo ˈsjento ˈno enˈtjendo/"
+      },
+      "pronunciation": "/lo ˈsjento/"
     },
     {
       "id": "expressions_007",
@@ -7263,8 +7991,10 @@
       "example": {
         "id": "es-es_expressions_007_example",
         "zh": "你好，我有一个预订。",
-        "text": "Hola, tengo una reserva."
-      }
+        "text": "Hola, tengo una reserva.",
+        "pronunciation": "/ˈola ˈteŋɡo ˈuna reˈseɾba/"
+      },
+      "pronunciation": "/ˈola/"
     },
     {
       "id": "expressions_008",
@@ -7279,8 +8009,10 @@
       "example": {
         "id": "es-es_expressions_008_example",
         "zh": "早上好，请问有空房吗？",
-        "text": "Buenos días, ¿tienen alguna habitación libre?"
-      }
+        "text": "Buenos días, ¿tienen alguna habitación libre?",
+        "pronunciation": "/ˈbwenos ˈdias ˈtjenen alˈɡuna abitaˈθjon ˈlibɾe/"
+      },
+      "pronunciation": "/ˈbwenos ˈdias/"
     },
     {
       "id": "expressions_009",
@@ -7295,8 +8027,10 @@
       "example": {
         "id": "es-es_expressions_009_example",
         "zh": "下午好，我想办理入住。",
-        "text": "Buenas tardes, quisiera registrarme."
-      }
+        "text": "Buenas tardes, quisiera registrarme.",
+        "pronunciation": "/ˈbwenas ˈtaɾdes kiˈsjeɾa rexisˈtɾaɾme/"
+      },
+      "pronunciation": "/ˈbwenas ˈtaɾdes/"
     },
     {
       "id": "expressions_010",
@@ -7311,8 +8045,10 @@
       "example": {
         "id": "es-es_expressions_010_example",
         "zh": "再见，祝您愉快。",
-        "text": "Adiós, que tenga un buen día."
-      }
+        "text": "Adiós, que tenga un buen día.",
+        "pronunciation": "/aˈdjos ke ˈteŋɡa ˈum ˈbwen ˈdia/"
+      },
+      "pronunciation": "/aˈdjos/"
     },
     {
       "id": "expressions_011",
@@ -7327,8 +8063,10 @@
       "example": {
         "id": "es-es_expressions_011_example",
         "zh": "回头见，谢谢！",
-        "text": "Hasta luego, ¡gracias!"
-      }
+        "text": "Hasta luego, ¡gracias!",
+        "pronunciation": "/asta luˈeɡo ˈɡɾaθjas/"
+      },
+      "pronunciation": "/asta luˈeɡo/"
     },
     {
       "id": "expressions_012",
@@ -7343,8 +8081,10 @@
       "example": {
         "id": "es-es_expressions_012_example",
         "zh": "晚安，明天见。",
-        "text": "Buenas noches, hasta mañana."
-      }
+        "text": "Buenas noches, hasta mañana.",
+        "pronunciation": "/ˈbwenas ˈnotʃes asta maˈɲana/"
+      },
+      "pronunciation": "/ˈbwenas ˈnotʃes/"
     },
     {
       "id": "expressions_013",
@@ -7359,8 +8099,10 @@
       "example": {
         "id": "es-es_expressions_013_example",
         "zh": "欢迎来到西班牙。",
-        "text": "Bienvenido a España."
-      }
+        "text": "Bienvenido a España.",
+        "pronunciation": "/bjembeˈnido a esˈpaɲa/"
+      },
+      "pronunciation": "/bjembeˈnido/"
     },
     {
       "id": "expressions_014",
@@ -7371,7 +8113,8 @@
       "text": "Entiendo.",
       "audioPath": "audio/es/expressions_014.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/enˈtjendo/"
     },
     {
       "id": "expressions_015",
@@ -7382,7 +8125,8 @@
       "text": "No entiendo.",
       "audioPath": "audio/es/expressions_015.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈno enˈtjendo/"
     },
     {
       "id": "expressions_016",
@@ -7397,8 +8141,10 @@
       "example": {
         "id": "es-es_expressions_016_example",
         "zh": "是的，我有预订。",
-        "text": "Sí, tengo una reserva."
-      }
+        "text": "Sí, tengo una reserva.",
+        "pronunciation": "/ˈsi ˈteŋɡo ˈuna reˈseɾba/"
+      },
+      "pronunciation": "/ˈsi/"
     },
     {
       "id": "expressions_017",
@@ -7413,8 +8159,10 @@
       "example": {
         "id": "es-es_expressions_017_example",
         "zh": "不，谢谢。",
-        "text": "No, gracias."
-      }
+        "text": "No, gracias.",
+        "pronunciation": "/ˈno ˈɡɾaθjas/"
+      },
+      "pronunciation": "/ˈno/"
     },
     {
       "id": "expressions_018",
@@ -7429,8 +8177,10 @@
       "example": {
         "id": "es-es_expressions_018_example",
         "zh": "好的，我们走吧。",
-        "text": "Vale, vamos."
-      }
+        "text": "Vale, vamos.",
+        "pronunciation": "/ˈbale ˈbamos/"
+      },
+      "pronunciation": "/ˈbale/"
     },
     {
       "id": "expressions_019",
@@ -7441,7 +8191,8 @@
       "text": "No pasa nada.",
       "audioPath": "audio/es/expressions_019.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈno ˈpasa ˈnada/"
     },
     {
       "id": "expressions_020",
@@ -7452,7 +8203,8 @@
       "text": "No hay problema.",
       "audioPath": "audio/es/expressions_020.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈno ˈai pɾoˈblema/"
     },
     {
       "id": "expressions_021",
@@ -7467,8 +8219,10 @@
       "example": {
         "id": "es-es_expressions_021_example",
         "zh": "好的，我同意。",
-        "text": "De acuerdo, estoy conforme."
-      }
+        "text": "De acuerdo, estoy conforme.",
+        "pronunciation": "/de aˈkweɾdo esˈtoi konˈfoɾme/"
+      },
+      "pronunciation": "/de aˈkweɾdo/"
     },
     {
       "id": "expressions_022",
@@ -7479,7 +8233,8 @@
       "text": "Me gusta.",
       "audioPath": "audio/es/expressions_022.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/me ˈɡusta/"
     },
     {
       "id": "expressions_023",
@@ -7490,7 +8245,8 @@
       "text": "No me gusta.",
       "audioPath": "audio/es/expressions_023.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈno me ˈɡusta/"
     },
     {
       "id": "expressions_024",
@@ -7505,8 +8261,10 @@
       "example": {
         "id": "es-es_expressions_024_example",
         "zh": "我想要靠窗的座位。",
-        "text": "Quiero un asiento junto a la ventanilla."
-      }
+        "text": "Quiero un asiento junto a la ventanilla.",
+        "pronunciation": "/ˈkjeɾo ˈun aˈsjento ˈxunto a la bentaˈniʝa/"
+      },
+      "pronunciation": "/keˈɾeɾ/"
     },
     {
       "id": "expressions_025",
@@ -7521,8 +8279,10 @@
       "example": {
         "id": "es-es_expressions_025_example",
         "zh": "我需要一名医生。",
-        "text": "Necesito un médico."
-      }
+        "text": "Necesito un médico.",
+        "pronunciation": "/neθeˈsito ˈun ˈmediko/"
+      },
+      "pronunciation": "/neθesiˈtaɾ/"
     },
     {
       "id": "expressions_026",
@@ -7537,8 +8297,10 @@
       "example": {
         "id": "es-es_expressions_026_example",
         "zh": "附近有药店吗？",
-        "text": "¿Hay una farmacia cerca?"
-      }
+        "text": "¿Hay una farmacia cerca?",
+        "pronunciation": "/ˈai ˈuna faɾˈmaθja ˈθeɾka/"
+      },
+      "pronunciation": "/ˈai/"
     },
     {
       "id": "expressions_027",
@@ -7553,8 +8315,10 @@
       "example": {
         "id": "es-es_expressions_027_example",
         "zh": "现在没有空桌。",
-        "text": "No hay ninguna mesa libre ahora."
-      }
+        "text": "No hay ninguna mesa libre ahora.",
+        "pronunciation": "/ˈno ˈai niŋˈɡuna ˈmesa ˈlibɾe aˈoɾa/"
+      },
+      "pronunciation": "/ˈno ˈai/"
     },
     {
       "id": "expressions_028",
@@ -7569,8 +8333,10 @@
       "example": {
         "id": "es-es_expressions_028_example",
         "zh": "这是去市中心的公交车。",
-        "text": "Este es el autobús que va al centro."
-      }
+        "text": "Este es el autobús que va al centro.",
+        "pronunciation": "/ˈeste ˈes el autoˈbus ke ˈba al ˈθentɾo/"
+      },
+      "pronunciation": "/ˈes/"
     },
     {
       "id": "expressions_029",
@@ -7581,7 +8347,8 @@
       "text": "No es.",
       "audioPath": "audio/es/expressions_029.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈno ˈes/"
     },
     {
       "id": "expressions_030",
@@ -7592,7 +8359,8 @@
       "text": "Me llamo…",
       "audioPath": "audio/es/expressions_030.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/me ˈʝamo/"
     },
     {
       "id": "expressions_031",
@@ -7603,7 +8371,8 @@
       "text": "¿Cómo se llama?",
       "audioPath": "audio/es/expressions_031.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈkomo se ˈʝama/"
     },
     {
       "id": "expressions_032",
@@ -7614,7 +8383,8 @@
       "text": "Soy de China.",
       "audioPath": "audio/es/expressions_032.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈsoi de ˈtʃina/"
     },
     {
       "id": "expressions_033",
@@ -7625,7 +8395,8 @@
       "text": "¿Habla inglés?",
       "audioPath": "audio/es/expressions_033.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈabla iŋˈɡles/"
     },
     {
       "id": "expressions_034",
@@ -7636,7 +8407,8 @@
       "text": "Hable más despacio, por favor.",
       "audioPath": "audio/es/expressions_034.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈable ˈmas desˈpaθjo poɾ faˈboɾ/"
     },
     {
       "id": "expressions_035",
@@ -7647,7 +8419,8 @@
       "text": "Repítalo, por favor.",
       "audioPath": "audio/es/expressions_035.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/reˈpitalo poɾ faˈboɾ/"
     },
     {
       "id": "expressions_036",
@@ -7658,7 +8431,8 @@
       "text": "¿Qué significa?",
       "audioPath": "audio/es/expressions_036.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈke siɡniˈfika/"
     },
     {
       "id": "expressions_037",
@@ -7669,7 +8443,8 @@
       "text": "¿Cómo se pronuncia?",
       "audioPath": "audio/es/expressions_037.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈkomo se pɾoˈnunθja/"
     },
     {
       "id": "expressions_038",
@@ -7680,7 +8455,8 @@
       "text": "¿Cómo se escribe?",
       "audioPath": "audio/es/expressions_038.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈkomo se esˈkɾibe/"
     },
     {
       "id": "expressions_039",
@@ -7691,7 +8467,8 @@
       "text": "¿Cuánto cuesta?",
       "audioPath": "audio/es/expressions_039.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈkwanto ˈkwesta/"
     },
     {
       "id": "expressions_040",
@@ -7702,7 +8479,8 @@
       "text": "¿Dónde está?",
       "audioPath": "audio/es/expressions_040.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈdonde esˈta/"
     },
     {
       "id": "expressions_041",
@@ -7713,7 +8491,8 @@
       "text": "¿Cuándo es?",
       "audioPath": "audio/es/expressions_041.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈkwando ˈes/"
     },
     {
       "id": "expressions_042",
@@ -7724,7 +8503,8 @@
       "text": "¿Por qué?",
       "audioPath": "audio/es/expressions_042.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/poɾ ˈke/"
     },
     {
       "id": "expressions_043",
@@ -7735,7 +8515,8 @@
       "text": "¿Qué hago?",
       "audioPath": "audio/es/expressions_043.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/ˈke ˈaɡo/"
     },
     {
       "id": "expressions_044",
@@ -7746,7 +8527,8 @@
       "text": "¿Se puede?",
       "audioPath": "audio/es/expressions_044.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/se ˈpwede/"
     },
     {
       "id": "expressions_045",
@@ -7757,7 +8539,8 @@
       "text": "Sí, se puede.",
       "audioPath": "audio/es/expressions_045.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈsi se ˈpwede/"
     },
     {
       "id": "expressions_046",
@@ -7768,7 +8551,8 @@
       "text": "No se puede.",
       "audioPath": "audio/es/expressions_046.mp3",
       "direction": "traveler-says",
-      "intent": "communicate"
+      "intent": "communicate",
+      "pronunciation": "/ˈno se ˈpwede/"
     },
     {
       "id": "expressions_047",
@@ -7779,7 +8563,8 @@
       "text": "¿Lo tienen en chino?",
       "audioPath": "audio/es/expressions_047.mp3",
       "direction": "traveler-says",
-      "intent": "ask"
+      "intent": "ask",
+      "pronunciation": "/lo ˈtjenen en ˈtʃino/"
     },
     {
       "id": "es_airport_phrase_001",
@@ -7790,7 +8575,8 @@
       "text": "¿Dónde está el control de pasaportes?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_001.mp3"
+      "audioPath": "audio/es/es_airport_phrase_001.mp3",
+      "pronunciation": "/ˈdonde esˈta el konˈtɾol de pasaˈpoɾtes/"
     },
     {
       "id": "es_airport_phrase_002",
@@ -7801,7 +8587,8 @@
       "text": "Tengo un problema con el visado, ¿puede ayudarme?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_002.mp3"
+      "audioPath": "audio/es/es_airport_phrase_002.mp3",
+      "pronunciation": "/ˈteŋɡo ˈum pɾoˈblema kon el biˈsado ˈpwede aʝuˈdaɾme/"
     },
     {
       "id": "es_airport_phrase_003",
@@ -7812,7 +8599,8 @@
       "text": "¿Puede comprobar la fecha de mi billete?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_003.mp3"
+      "audioPath": "audio/es/es_airport_phrase_003.mp3",
+      "pronunciation": "/ˈpwede kompɾoˈbaɾ la ˈfetʃa de mi biˈʝete/"
     },
     {
       "id": "es_airport_phrase_004",
@@ -7823,7 +8611,8 @@
       "text": "¿De qué terminal sale mi vuelo?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_004.mp3"
+      "audioPath": "audio/es/es_airport_phrase_004.mp3",
+      "pronunciation": "/de ˈke teɾmiˈnal ˈsale mi ˈbwelo/"
     },
     {
       "id": "es_airport_phrase_005",
@@ -7834,7 +8623,8 @@
       "text": "¿Es válida esta tarjeta de embarque?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_005.mp3"
+      "audioPath": "audio/es/es_airport_phrase_005.mp3",
+      "pronunciation": "/ˈes ˈbalida ˈesta taɾˈxeta de emˈbaɾke/"
     },
     {
       "id": "es_airport_phrase_006",
@@ -7845,7 +8635,8 @@
       "text": "¿Dónde está el mostrador de facturación?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_006.mp3"
+      "audioPath": "audio/es/es_airport_phrase_006.mp3",
+      "pronunciation": "/ˈdonde esˈta el mostɾaˈdoɾ de faktuɾaˈθjon/"
     },
     {
       "id": "es_airport_phrase_007",
@@ -7856,7 +8647,8 @@
       "text": "Quisiera cambiar de asiento.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_airport_phrase_007.mp3"
+      "audioPath": "audio/es/es_airport_phrase_007.mp3",
+      "pronunciation": "/kiˈsjeɾa kamˈbjaɾ de aˈsjento/"
     },
     {
       "id": "es_airport_phrase_008",
@@ -7867,7 +8659,8 @@
       "text": "¿Queda algún asiento junto a la ventanilla?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_008.mp3"
+      "audioPath": "audio/es/es_airport_phrase_008.mp3",
+      "pronunciation": "/ˈkeda alˈɡun aˈsjento ˈxunto a la bentaˈniʝa/"
     },
     {
       "id": "es_airport_phrase_009",
@@ -7878,7 +8671,8 @@
       "text": "¿Me puede dar un asiento junto al pasillo?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_009.mp3"
+      "audioPath": "audio/es/es_airport_phrase_009.mp3",
+      "pronunciation": "/me ˈpwede ˈdaɾ ˈun aˈsjento ˈxunto al paˈsiʝo/"
     },
     {
       "id": "es_airport_phrase_010",
@@ -7889,7 +8683,8 @@
       "text": "¿Cuántas piezas de equipaje puedo facturar gratis?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_010.mp3"
+      "audioPath": "audio/es/es_airport_phrase_010.mp3",
+      "pronunciation": "/ˈkwantas ˈpjeθas de ekiˈpaxe ˈpwedo faktuˈɾaɾ ˈɡɾatis/"
     },
     {
       "id": "es_airport_phrase_011",
@@ -7900,7 +8695,8 @@
       "text": "Mi maleta ha sufrido daños durante el viaje.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_airport_phrase_011.mp3"
+      "audioPath": "audio/es/es_airport_phrase_011.mp3",
+      "pronunciation": "/mi maˈleta ˈa suˈfɾido ˈdaɲos duˈɾante el ˈbjaxe/"
     },
     {
       "id": "es_airport_phrase_012",
@@ -7911,7 +8707,8 @@
       "text": "¿Puedo llevar este equipaje en la cabina?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_012.mp3"
+      "audioPath": "audio/es/es_airport_phrase_012.mp3",
+      "pronunciation": "/ˈpwedo ʝeˈbaɾ ˈeste ekiˈpaxe en la kaˈbina/"
     },
     {
       "id": "es_airport_phrase_013",
@@ -7922,7 +8719,8 @@
       "text": "¿En qué cinta sale el equipaje de este vuelo?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_013.mp3"
+      "audioPath": "audio/es/es_airport_phrase_013.mp3",
+      "pronunciation": "/en ˈke ˈθinta ˈsale el ekiˈpaxe de ˈeste ˈbwelo/"
     },
     {
       "id": "es_airport_phrase_014",
@@ -7933,7 +8731,8 @@
       "text": "¿Dónde puedo encontrar un carrito para el equipaje?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_014.mp3"
+      "audioPath": "audio/es/es_airport_phrase_014.mp3",
+      "pronunciation": "/ˈdonde ˈpwedo enkonˈtɾaɾ ˈun kaˈrito paɾa el ekiˈpaxe/"
     },
     {
       "id": "es_airport_phrase_015",
@@ -7944,7 +8743,8 @@
       "text": "¿Es esta la cola para el control de seguridad?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_015.mp3"
+      "audioPath": "audio/es/es_airport_phrase_015.mp3",
+      "pronunciation": "/ˈes ˈesta la ˈkola paɾa el konˈtɾol de seɡuɾiˈdad/"
     },
     {
       "id": "es_airport_phrase_016",
@@ -7955,7 +8755,8 @@
       "text": "¿La tienda libre de impuestos está después del control?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_016.mp3"
+      "audioPath": "audio/es/es_airport_phrase_016.mp3",
+      "pronunciation": "/la ˈtjenda ˈlibɾe de imˈpwestos esˈta desˈpwes del konˈtɾol/"
     },
     {
       "id": "es_airport_phrase_017",
@@ -7966,7 +8767,8 @@
       "text": "¿Hay enchufes en la sala de espera?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_017.mp3"
+      "audioPath": "audio/es/es_airport_phrase_017.mp3",
+      "pronunciation": "/ˈai enˈtʃufes en la ˈsala de esˈpeɾa/"
     },
     {
       "id": "es_airport_phrase_018",
@@ -7977,7 +8779,8 @@
       "text": "¿Tengo que sacar el ordenador en el control de seguridad?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_018.mp3"
+      "audioPath": "audio/es/es_airport_phrase_018.mp3",
+      "pronunciation": "/ˈteŋɡo ke saˈkaɾ el oɾdenaˈdoɾ en el konˈtɾol de seɡuɾiˈdad/"
     },
     {
       "id": "es_airport_phrase_019",
@@ -7988,7 +8791,8 @@
       "text": "Su vuelo lleva cuarenta y cinco minutos de retraso.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_airport_phrase_019.mp3"
+      "audioPath": "audio/es/es_airport_phrase_019.mp3",
+      "pronunciation": "/su ˈbwelo ˈʝeba kwaˈɾenta i ˈθinko miˈnutos de reˈtɾaso/"
     },
     {
       "id": "es_airport_phrase_020",
@@ -7999,7 +8803,8 @@
       "text": "La puerta de embarque ha cambiado a la B12.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_airport_phrase_020.mp3"
+      "audioPath": "audio/es/es_airport_phrase_020.mp3",
+      "pronunciation": "/la ˈpweɾta de emˈbaɾke ˈa kamˈbjado a la ˈbe ˈdoθe/"
     },
     {
       "id": "es_airport_phrase_021",
@@ -8010,7 +8815,8 @@
       "text": "Saque el portátil de la bolsa, por favor.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_airport_phrase_021.mp3"
+      "audioPath": "audio/es/es_airport_phrase_021.mp3",
+      "pronunciation": "/ˈsake el poɾˈtatil de la ˈbolsa poɾ faˈboɾ/"
     },
     {
       "id": "es_airport_phrase_022",
@@ -8021,7 +8827,8 @@
       "text": "¿A qué hora es el embarque?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_022.mp3"
+      "audioPath": "audio/es/es_airport_phrase_022.mp3",
+      "pronunciation": "/a ˈke ˈoɾa ˈes el emˈbaɾke/"
     },
     {
       "id": "es_airport_phrase_023",
@@ -8032,7 +8839,8 @@
       "text": "Ya ha comenzado el embarque.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_airport_phrase_023.mp3"
+      "audioPath": "audio/es/es_airport_phrase_023.mp3",
+      "pronunciation": "/ˈʝa ˈa komenˈθado el emˈbaɾke/"
     },
     {
       "id": "es_airport_phrase_024",
@@ -8043,7 +8851,8 @@
       "text": "Ya he presentado la declaración de aduanas por internet.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_airport_phrase_024.mp3"
+      "audioPath": "audio/es/es_airport_phrase_024.mp3",
+      "pronunciation": "/ˈʝa ˈe pɾesenˈtado la deklaɾaˈθjon de aˈdwanas poɾ inteɾˈnet/"
     },
     {
       "id": "es_airport_phrase_025",
@@ -8054,7 +8863,8 @@
       "text": "¿Tengo que declarar estos artículos en la aduana?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_025.mp3"
+      "audioPath": "audio/es/es_airport_phrase_025.mp3",
+      "pronunciation": "/ˈteŋɡo ke deklaˈɾaɾ ˈestos aɾˈtikulos en la aˈdwana/"
     },
     {
       "id": "es_airport_phrase_026",
@@ -8065,7 +8875,8 @@
       "text": "Su equipaje supera el peso permitido.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_airport_phrase_026.mp3"
+      "audioPath": "audio/es/es_airport_phrase_026.mp3",
+      "pronunciation": "/su ekiˈpaxe suˈpeɾa el ˈpeso peɾmiˈtido/"
     },
     {
       "id": "es_airport_phrase_027",
@@ -8076,7 +8887,8 @@
       "text": "¿A qué hora está previsto el aterrizaje?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_airport_phrase_027.mp3"
+      "audioPath": "audio/es/es_airport_phrase_027.mp3",
+      "pronunciation": "/a ˈke ˈoɾa esˈta pɾeˈbisto el ateriˈθaxe/"
     },
     {
       "id": "es_airport_phrase_028",
@@ -8087,7 +8899,8 @@
       "text": "¿Me muestra el pasaporte y la tarjeta de embarque?",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_airport_phrase_028.mp3"
+      "audioPath": "audio/es/es_airport_phrase_028.mp3",
+      "pronunciation": "/me ˈmwestɾa el pasaˈpoɾte i la taɾˈxeta de emˈbaɾke/"
     },
     {
       "id": "es_airport_phrase_029",
@@ -8098,7 +8911,8 @@
       "text": "Este es el último aviso de embarque para su vuelo.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_airport_phrase_029.mp3"
+      "audioPath": "audio/es/es_airport_phrase_029.mp3",
+      "pronunciation": "/ˈeste ˈes el ˈultimo aˈbiso de emˈbaɾke paɾa su ˈbwelo/"
     },
     {
       "id": "es_airport_phrase_030",
@@ -8109,7 +8923,8 @@
       "text": "Su equipaje saldrá por la cinta cinco.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_airport_phrase_030.mp3"
+      "audioPath": "audio/es/es_airport_phrase_030.mp3",
+      "pronunciation": "/su ekiˈpaxe salˈdɾa poɾ la ˈθinta ˈθinko/"
     },
     {
       "id": "es_transport_phrase_001",
@@ -8120,7 +8935,8 @@
       "text": "¿Puedo pagar el viaje directamente con una tarjeta sin contacto?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_001.mp3"
+      "audioPath": "audio/es/es_transport_phrase_001.mp3",
+      "pronunciation": "/ˈpwedo paˈɡaɾ el ˈbjaxe diˈɾektaˈmente kon ˈuna taɾˈxeta sin konˈtakto/"
     },
     {
       "id": "es_transport_phrase_002",
@@ -8131,7 +8947,8 @@
       "text": "¿En qué estación tengo que bajarme para ir al centro?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_002.mp3"
+      "audioPath": "audio/es/es_transport_phrase_002.mp3",
+      "pronunciation": "/en ˈke estaˈθjon ˈteŋɡo ke baˈxaɾme paɾa ˈiɾ al ˈθentɾo/"
     },
     {
       "id": "es_transport_phrase_003",
@@ -8142,7 +8959,8 @@
       "text": "¿De qué andén sale el tren a Madrid?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_003.mp3"
+      "audioPath": "audio/es/es_transport_phrase_003.mp3",
+      "pronunciation": "/de ˈke anˈden ˈsale el ˈtɾen a maˈdɾid/"
     },
     {
       "id": "es_transport_phrase_004",
@@ -8153,7 +8971,8 @@
       "text": "¿A qué hora sale el próximo servicio?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_004.mp3"
+      "audioPath": "audio/es/es_transport_phrase_004.mp3",
+      "pronunciation": "/a ˈke ˈoɾa ˈsale el ˈpɾoksimo seɾˈbiθjo/"
     },
     {
       "id": "es_transport_phrase_005",
@@ -8164,7 +8983,8 @@
       "text": "Un billete de ida a Toledo, por favor.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_transport_phrase_005.mp3"
+      "audioPath": "audio/es/es_transport_phrase_005.mp3",
+      "pronunciation": "/ˈum biˈʝete de ˈida a toˈledo poɾ faˈboɾ/"
     },
     {
       "id": "es_transport_phrase_006",
@@ -8175,7 +8995,8 @@
       "text": "¿Dónde está la entrada de metro más cercana?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_006.mp3"
+      "audioPath": "audio/es/es_transport_phrase_006.mp3",
+      "pronunciation": "/ˈdonde esˈta la enˈtɾada de ˈmetɾo ˈmas θeɾˈkana/"
     },
     {
       "id": "es_transport_phrase_007",
@@ -8186,7 +9007,8 @@
       "text": "¿Este autobús va al aeropuerto?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_007.mp3"
+      "audioPath": "audio/es/es_transport_phrase_007.mp3",
+      "pronunciation": "/ˈeste autoˈbus ˈba al aeɾoˈpweɾto/"
     },
     {
       "id": "es_transport_phrase_008",
@@ -8197,7 +9019,8 @@
       "text": "¿Tengo que hacer transbordo en el metro?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_008.mp3"
+      "audioPath": "audio/es/es_transport_phrase_008.mp3",
+      "pronunciation": "/ˈteŋɡo ke aˈθeɾ tɾansˈboɾdo en el ˈmetɾo/"
     },
     {
       "id": "es_transport_phrase_009",
@@ -8208,7 +9031,8 @@
       "text": "¿Se puede comprar el billete dentro del autobús?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_009.mp3"
+      "audioPath": "audio/es/es_transport_phrase_009.mp3",
+      "pronunciation": "/se ˈpwede komˈpɾaɾ el biˈʝete ˈdentɾo del autoˈbus/"
     },
     {
       "id": "es_transport_phrase_010",
@@ -8219,7 +9043,8 @@
       "text": "¿A qué hora pasa el último metro?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_010.mp3"
+      "audioPath": "audio/es/es_transport_phrase_010.mp3",
+      "pronunciation": "/a ˈke ˈoɾa ˈpasa el ˈultimo ˈmetɾo/"
     },
     {
       "id": "es_transport_phrase_011",
@@ -8230,7 +9055,8 @@
       "text": "¿Dónde se coge el tren a Sevilla?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_011.mp3"
+      "audioPath": "audio/es/es_transport_phrase_011.mp3",
+      "pronunciation": "/ˈdonde se ˈkoxe el ˈtɾen a seˈbiʝa/"
     },
     {
       "id": "es_transport_phrase_012",
@@ -8241,7 +9067,8 @@
       "text": "He perdido el tren de alta velocidad, ¿puedo cambiar el billete?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_012.mp3"
+      "audioPath": "audio/es/es_transport_phrase_012.mp3",
+      "pronunciation": "/ˈe peɾˈdido el ˈtɾen de ˈalta beloθiˈdad ˈpwedo kamˈbjaɾ el biˈʝete/"
     },
     {
       "id": "es_transport_phrase_013",
@@ -8252,7 +9079,8 @@
       "text": "¿Hay que reservar asiento en este tren?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_013.mp3"
+      "audioPath": "audio/es/es_transport_phrase_013.mp3",
+      "pronunciation": "/ˈai ke reseɾˈbaɾ aˈsjento en ˈeste ˈtɾen/"
     },
     {
       "id": "es_transport_phrase_014",
@@ -8263,7 +9091,8 @@
       "text": "¿Es un tren de alta velocidad directo?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_014.mp3"
+      "audioPath": "audio/es/es_transport_phrase_014.mp3",
+      "pronunciation": "/ˈes ˈun ˈtɾen de ˈalta beloθiˈdad diˈɾekto/"
     },
     {
       "id": "es_transport_phrase_015",
@@ -8274,7 +9103,8 @@
       "text": "¿En qué estaciones para el tren?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_015.mp3"
+      "audioPath": "audio/es/es_transport_phrase_015.mp3",
+      "pronunciation": "/en ˈke estaˈθjones paɾa el ˈtɾen/"
     },
     {
       "id": "es_transport_phrase_016",
@@ -8285,7 +9115,8 @@
       "text": "¿Dónde está la zona de recogida de vehículos con conductor?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_016.mp3"
+      "audioPath": "audio/es/es_transport_phrase_016.mp3",
+      "pronunciation": "/ˈdonde esˈta la ˈθona de rekoˈxida de beˈikulos kon kondukˈtoɾ/"
     },
     {
       "id": "es_transport_phrase_017",
@@ -8296,7 +9127,8 @@
       "text": "¿Puede llamarme un taxi?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_017.mp3"
+      "audioPath": "audio/es/es_transport_phrase_017.mp3",
+      "pronunciation": "/ˈpwede ʝaˈmaɾme ˈun ˈtaksi/"
     },
     {
       "id": "es_transport_phrase_018",
@@ -8307,7 +9139,8 @@
       "text": "¿Se puede pagar el taxi con tarjeta?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_018.mp3"
+      "audioPath": "audio/es/es_transport_phrase_018.mp3",
+      "pronunciation": "/se ˈpwede paˈɡaɾ el ˈtaksi kon taɾˈxeta/"
     },
     {
       "id": "es_transport_phrase_019",
@@ -8318,7 +9151,8 @@
       "text": "Este billete es válido durante noventa minutos.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_transport_phrase_019.mp3"
+      "audioPath": "audio/es/es_transport_phrase_019.mp3",
+      "pronunciation": "/ˈeste biˈʝete ˈes ˈbalido duˈɾante noˈbenta miˈnutos/"
     },
     {
       "id": "es_transport_phrase_020",
@@ -8329,7 +9163,8 @@
       "text": "La próxima parada es Estación Central.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_transport_phrase_020.mp3"
+      "audioPath": "audio/es/es_transport_phrase_020.mp3",
+      "pronunciation": "/la ˈpɾoksima paˈɾada ˈes estaˈθjon θenˈtɾal/"
     },
     {
       "id": "es_transport_phrase_021",
@@ -8340,7 +9175,8 @@
       "text": "El último tren ya ha salido.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_transport_phrase_021.mp3"
+      "audioPath": "audio/es/es_transport_phrase_021.mp3",
+      "pronunciation": "/el ˈultimo ˈtɾen ˈdʒa ˈa saˈlido/"
     },
     {
       "id": "es_transport_phrase_022",
@@ -8351,7 +9187,8 @@
       "text": "¿Dónde se recoge el coche de alquiler?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_022.mp3"
+      "audioPath": "audio/es/es_transport_phrase_022.mp3",
+      "pronunciation": "/ˈdonde se reˈkoxe el ˈkotʃe de alkiˈleɾ/"
     },
     {
       "id": "es_transport_phrase_023",
@@ -8362,7 +9199,8 @@
       "text": "Haga transbordo en el andén tres.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_transport_phrase_023.mp3"
+      "audioPath": "audio/es/es_transport_phrase_023.mp3",
+      "pronunciation": "/ˈaɡa tɾansˈboɾdo en el anˈden ˈtɾes/"
     },
     {
       "id": "es_transport_phrase_024",
@@ -8373,7 +9211,8 @@
       "text": "¿Se puede aparcar aquí?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_transport_phrase_024.mp3"
+      "audioPath": "audio/es/es_transport_phrase_024.mp3",
+      "pronunciation": "/se ˈpwede apaɾˈkaɾ aˈki/"
     },
     {
       "id": "es_transport_phrase_025",
@@ -8384,7 +9223,8 @@
       "text": "Gire a la derecha en el semáforo.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_transport_phrase_025.mp3"
+      "audioPath": "audio/es/es_transport_phrase_025.mp3",
+      "pronunciation": "/ˈxiɾe a la deˈɾetʃa en el seˈmafoɾo/"
     },
     {
       "id": "es_transport_phrase_026",
@@ -8395,7 +9235,8 @@
       "text": "Pase también la tarjeta al bajar.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_transport_phrase_026.mp3"
+      "audioPath": "audio/es/es_transport_phrase_026.mp3",
+      "pronunciation": "/ˈpase tamˈbjen la taɾˈxeta al baˈxaɾ/"
     },
     {
       "id": "es_transport_phrase_027",
@@ -8406,7 +9247,8 @@
       "text": "Tengo reservado un coche de alquiler.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_transport_phrase_027.mp3"
+      "audioPath": "audio/es/es_transport_phrase_027.mp3",
+      "pronunciation": "/ˈteŋɡo reseɾˈbado ˈun ˈkotʃe de alkiˈleɾ/"
     },
     {
       "id": "es_transport_phrase_028",
@@ -8417,7 +9259,8 @@
       "text": "Hasta el aeropuerto son unos cuarenta euros.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_transport_phrase_028.mp3"
+      "audioPath": "audio/es/es_transport_phrase_028.mp3",
+      "pronunciation": "/asta el aeɾoˈpweɾto ˈson ˈunos kwaˈɾenta ˈeuɾos/"
     },
     {
       "id": "es_transport_phrase_029",
@@ -8428,7 +9271,8 @@
       "text": "Baje en la próxima parada.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_transport_phrase_029.mp3"
+      "audioPath": "audio/es/es_transport_phrase_029.mp3",
+      "pronunciation": "/ˈbaxe en la ˈpɾoksima paˈɾada/"
     },
     {
       "id": "es_transport_phrase_030",
@@ -8439,7 +9283,8 @@
       "text": "Esta línea no presta servicio hoy.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_transport_phrase_030.mp3"
+      "audioPath": "audio/es/es_transport_phrase_030.mp3",
+      "pronunciation": "/ˈesta ˈlinea ˈno ˈpɾesta seɾˈbiθjo ˈoi/"
     },
     {
       "id": "es_hotel_phrase_001",
@@ -8450,7 +9295,8 @@
       "text": "¿Dónde está la recepción del hotel?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_001.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_001.mp3",
+      "pronunciation": "/ˈdonde esˈta la reθepˈθjon del oˈtel/"
     },
     {
       "id": "es_hotel_phrase_002",
@@ -8461,7 +9307,8 @@
       "text": "Quisiera reservar una habitación en un parador.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_002.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_002.mp3",
+      "pronunciation": "/kiˈsjeɾa reseɾˈbaɾ ˈuna abitaˈθjon en ˈum paɾaˈdoɾ/"
     },
     {
       "id": "es_hotel_phrase_003",
@@ -8472,7 +9319,8 @@
       "text": "¿Puedo dejar el equipaje en este alojamiento turístico?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_003.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_003.mp3",
+      "pronunciation": "/ˈpwedo deˈxaɾ el ekiˈpaxe en ˈeste aloxaˈmjento tuˈɾistiko/"
     },
     {
       "id": "es_hotel_phrase_004",
@@ -8483,7 +9331,8 @@
       "text": "¿Puedo registrarme en recepción?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_004.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_004.mp3",
+      "pronunciation": "/ˈpwedo rexisˈtɾaɾme en reθepˈθjon/"
     },
     {
       "id": "es_hotel_phrase_005",
@@ -8494,7 +9343,8 @@
       "text": "¿Puede buscar la reserva a este nombre?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_005.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_005.mp3",
+      "pronunciation": "/ˈpwede busˈkaɾ la reˈseɾba a ˈeste ˈnombɾe/"
     },
     {
       "id": "es_hotel_phrase_006",
@@ -8505,7 +9355,8 @@
       "text": "¿A partir de qué hora se puede entrar en la habitación?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_006.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_006.mp3",
+      "pronunciation": "/a paɾˈtiɾ de ˈke ˈoɾa se ˈpwede enˈtɾaɾ en la abitaˈθjon/"
     },
     {
       "id": "es_hotel_phrase_007",
@@ -8516,7 +9367,8 @@
       "text": "He perdido la llave de la habitación.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_007.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_007.mp3",
+      "pronunciation": "/ˈe peɾˈdido la ˈʝabe de la abitaˈθjon/"
     },
     {
       "id": "es_hotel_phrase_008",
@@ -8527,7 +9379,8 @@
       "text": "La tarjeta de mi habitación no funciona.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_008.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_008.mp3",
+      "pronunciation": "/la taɾˈxeta de mi abitaˈθjon ˈno funˈθjona/"
     },
     {
       "id": "es_hotel_phrase_009",
@@ -8538,7 +9391,8 @@
       "text": "¿Puede el botones ayudarme con el equipaje?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_009.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_009.mp3",
+      "pronunciation": "/ˈpwede el boˈtones aʝuˈdaɾme kon el ekiˈpaxe/"
     },
     {
       "id": "es_hotel_phrase_010",
@@ -8549,7 +9403,8 @@
       "text": "Necesito hablar con alguien del personal.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_010.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_010.mp3",
+      "pronunciation": "/neθeˈsito aˈblaɾ kon ˈalɡjen del peɾsoˈnal/"
     },
     {
       "id": "es_hotel_phrase_011",
@@ -8560,7 +9415,8 @@
       "text": "¿Me pueden traer dos toallas más?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_011.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_011.mp3",
+      "pronunciation": "/me ˈpweden tɾaˈeɾ ˈdos toˈaʝas ˈmas/"
     },
     {
       "id": "es_hotel_phrase_012",
@@ -8571,7 +9427,8 @@
       "text": "¿Pueden cambiar las sábanas, por favor?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_012.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_012.mp3",
+      "pronunciation": "/ˈpweden kamˈbjaɾ las ˈsabanas poɾ faˈboɾ/"
     },
     {
       "id": "es_hotel_phrase_013",
@@ -8582,7 +9439,8 @@
       "text": "¿Me puede traer otra almohada?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_013.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_013.mp3",
+      "pronunciation": "/me ˈpwede tɾaˈeɾ ˈotɾa almoˈada/"
     },
     {
       "id": "es_hotel_phrase_014",
@@ -8593,7 +9451,8 @@
       "text": "El edredón no abriga lo suficiente.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_014.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_014.mp3",
+      "pronunciation": "/el edɾeˈdon ˈno aˈbɾiɡa lo sufiˈθjente/"
     },
     {
       "id": "es_hotel_phrase_015",
@@ -8604,7 +9463,8 @@
       "text": "¿Podría dejar la habitación un poco más tarde?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_015.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_015.mp3",
+      "pronunciation": "/poˈdɾia deˈxaɾ la abitaˈθjon ˈum ˈpoko ˈmas ˈtaɾde/"
     },
     {
       "id": "es_hotel_phrase_016",
@@ -8615,7 +9475,8 @@
       "text": "Hoy no hace falta limpiar la habitación.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_016.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_016.mp3",
+      "pronunciation": "/ˈoi ˈno ˈaθe ˈfalta limˈpjaɾ la abitaˈθjon/"
     },
     {
       "id": "es_hotel_phrase_017",
@@ -8626,7 +9487,8 @@
       "text": "Quisiera el servicio de despertador a las siete.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_017.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_017.mp3",
+      "pronunciation": "/kiˈsjeɾa el seɾˈbiθjo de despeɾtaˈdoɾ a las ˈsjete/"
     },
     {
       "id": "es_hotel_phrase_018",
@@ -8637,7 +9499,8 @@
       "text": "¿Cuándo devuelven la ropa del servicio de lavandería?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_hotel_phrase_018.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_018.mp3",
+      "pronunciation": "/ˈkwando deˈbwelben la ˈropa del seɾˈbiθjo de labandeˈɾia/"
     },
     {
       "id": "es_hotel_phrase_019",
@@ -8648,7 +9511,8 @@
       "text": "Su habitación está en la octava planta.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_hotel_phrase_019.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_019.mp3",
+      "pronunciation": "/su abitaˈθjon esˈta en la okˈtaba ˈplanta/"
     },
     {
       "id": "es_hotel_phrase_020",
@@ -8659,7 +9523,8 @@
       "text": "El desayuno se sirve de seis y media a diez.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_hotel_phrase_020.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_020.mp3",
+      "pronunciation": "/el desaˈʝuno se ˈsiɾbe de ˈseis i ˈmedja a ˈdjeθ/"
     },
     {
       "id": "es_hotel_phrase_021",
@@ -8670,7 +9535,8 @@
       "text": "La contraseña del wifi está en la funda de la tarjeta.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_hotel_phrase_021.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_021.mp3",
+      "pronunciation": "/la kontɾaˈseɲa del ˈwifi esˈta en la ˈfunda de la taɾˈxeta/"
     },
     {
       "id": "es_hotel_phrase_022",
@@ -8681,7 +9547,8 @@
       "text": "El detector de humo no deja de sonar.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_022.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_022.mp3",
+      "pronunciation": "/el detekˈtoɾ de ˈumo ˈno ˈdexa de soˈnaɾ/"
     },
     {
       "id": "es_hotel_phrase_023",
@@ -8692,7 +9559,8 @@
       "text": "La habitación todavía no está preparada.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_hotel_phrase_023.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_023.mp3",
+      "pronunciation": "/la abitaˈθjon todaˈbia ˈno esˈta pɾepaˈɾada/"
     },
     {
       "id": "es_hotel_phrase_024",
@@ -8703,7 +9571,8 @@
       "text": "Quisiera una habitación tranquila que dé al patio.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_024.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_024.mp3",
+      "pronunciation": "/kiˈsjeɾa ˈuna abitaˈθjon tɾanˈkila ke ˈde al ˈpatjo/"
     },
     {
       "id": "es_hotel_phrase_025",
@@ -8714,7 +9583,8 @@
       "text": "La habitación de al lado hace demasiado ruido.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_025.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_025.mp3",
+      "pronunciation": "/la abitaˈθjon de al ˈlado ˈaθe demaˈsjado ruˈido/"
     },
     {
       "id": "es_hotel_phrase_026",
@@ -8725,7 +9595,8 @@
       "text": "Podemos guardar su equipaje gratuitamente.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_hotel_phrase_026.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_026.mp3",
+      "pronunciation": "/poˈdemos ɡwaɾˈdaɾ su ekiˈpaxe ɡɾaˈtwitaˈmente/"
     },
     {
       "id": "es_hotel_phrase_027",
@@ -8736,7 +9607,8 @@
       "text": "Quisiera dejar la habitación ahora.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_hotel_phrase_027.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_027.mp3",
+      "pronunciation": "/kiˈsjeɾa deˈxaɾ la abitaˈθjon aˈoɾa/"
     },
     {
       "id": "es_hotel_phrase_028",
@@ -8747,7 +9619,8 @@
       "text": "La salida tardía tiene un suplemento.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_hotel_phrase_028.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_028.mp3",
+      "pronunciation": "/la saˈlida taɾˈdia ˈtjene ˈun supleˈmento/"
     },
     {
       "id": "es_hotel_phrase_029",
@@ -8758,7 +9631,8 @@
       "text": "Firme aquí, por favor.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_hotel_phrase_029.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_029.mp3",
+      "pronunciation": "/ˈfiɾme aˈki poɾ faˈboɾ/"
     },
     {
       "id": "es_hotel_phrase_030",
@@ -8769,7 +9643,8 @@
       "text": "El ascensor está a la derecha de recepción.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_hotel_phrase_030.mp3"
+      "audioPath": "audio/es/es_hotel_phrase_030.mp3",
+      "pronunciation": "/el asθenˈsoɾ esˈta a la deˈɾetʃa de reθepˈθjon/"
     },
     {
       "id": "es_food_phrase_001",
@@ -8780,7 +9655,8 @@
       "text": "¿A qué hora empieza el desayuno?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_001.mp3"
+      "audioPath": "audio/es/es_food_phrase_001.mp3",
+      "pronunciation": "/a ˈke ˈoɾa emˈpjeθa el desaˈʝuno/"
     },
     {
       "id": "es_food_phrase_002",
@@ -8791,7 +9667,8 @@
       "text": "¿Hay menú del día para la comida?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_002.mp3"
+      "audioPath": "audio/es/es_food_phrase_002.mp3",
+      "pronunciation": "/ˈai meˈnu del ˈdia paɾa la koˈmida/"
     },
     {
       "id": "es_food_phrase_003",
@@ -8802,7 +9679,8 @@
       "text": "Quisiera reservar una mesa para cenar a las ocho.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_food_phrase_003.mp3"
+      "audioPath": "audio/es/es_food_phrase_003.mp3",
+      "pronunciation": "/kiˈsjeɾa reseɾˈbaɾ ˈuna ˈmesa paɾa θeˈnaɾ a las ˈotʃo/"
     },
     {
       "id": "es_food_phrase_004",
@@ -8813,7 +9691,8 @@
       "text": "Perdone, ¿podemos pedir ya?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_004.mp3"
+      "audioPath": "audio/es/es_food_phrase_004.mp3",
+      "pronunciation": "/peɾˈdone poˈdemos peˈdiɾ ˈʝa/"
     },
     {
       "id": "es_food_phrase_005",
@@ -8824,7 +9703,8 @@
       "text": "¿Me trae la carta, por favor?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_005.mp3"
+      "audioPath": "audio/es/es_food_phrase_005.mp3",
+      "pronunciation": "/me ˈtɾae la ˈkaɾta poɾ faˈboɾ/"
     },
     {
       "id": "es_food_phrase_006",
@@ -8835,7 +9715,8 @@
       "text": "¿Puedo cambiar el arroz por una ensalada?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_006.mp3"
+      "audioPath": "audio/es/es_food_phrase_006.mp3",
+      "pronunciation": "/ˈpwedo kamˈbjaɾ el aˈroθ poɾ ˈuna ensaˈlada/"
     },
     {
       "id": "es_food_phrase_007",
@@ -8846,7 +9727,8 @@
       "text": "¿Nos trae un poco más de pan?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_007.mp3"
+      "audioPath": "audio/es/es_food_phrase_007.mp3",
+      "pronunciation": "/nos ˈtɾae ˈum ˈpoko ˈmas de ˈpan/"
     },
     {
       "id": "es_food_phrase_008",
@@ -8857,7 +9739,8 @@
       "text": "¿Me puede poner lo que queda para llevar?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_008.mp3"
+      "audioPath": "audio/es/es_food_phrase_008.mp3",
+      "pronunciation": "/me ˈpwede poˈneɾ lo ke ˈkeda paɾa ʝeˈbaɾ/"
     },
     {
       "id": "es_food_phrase_009",
@@ -8868,7 +9751,8 @@
       "text": "Una botella de agua sin gas, por favor.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_food_phrase_009.mp3"
+      "audioPath": "audio/es/es_food_phrase_009.mp3",
+      "pronunciation": "/ˈuna boˈteʝa de ˈaɡwa siŋ ˈɡas poɾ faˈboɾ/"
     },
     {
       "id": "es_food_phrase_010",
@@ -8879,7 +9763,8 @@
       "text": "¿Me puede traer un vaso de agua caliente?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_010.mp3"
+      "audioPath": "audio/es/es_food_phrase_010.mp3",
+      "pronunciation": "/me ˈpwede tɾaˈeɾ ˈum ˈbaso de ˈaɡwa kaˈljente/"
     },
     {
       "id": "es_food_phrase_011",
@@ -8890,7 +9775,8 @@
       "text": "¿Qué tipos de té tienen?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_011.mp3"
+      "audioPath": "audio/es/es_food_phrase_011.mp3",
+      "pronunciation": "/ˈke ˈtipos de ˈte ˈtjenen/"
     },
     {
       "id": "es_food_phrase_012",
@@ -8901,7 +9787,8 @@
       "text": "Un café cortado, por favor.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_food_phrase_012.mp3"
+      "audioPath": "audio/es/es_food_phrase_012.mp3",
+      "pronunciation": "/ˈun kaˈfe koɾˈtado poɾ faˈboɾ/"
     },
     {
       "id": "es_food_phrase_013",
@@ -8912,7 +9799,8 @@
       "text": "¿Tienen leche sin lactosa?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_013.mp3"
+      "audioPath": "audio/es/es_food_phrase_013.mp3",
+      "pronunciation": "/ˈtjenen ˈletʃe sin lakˈtosa/"
     },
     {
       "id": "es_food_phrase_014",
@@ -8923,7 +9811,8 @@
       "text": "¿Pueden preparar este plato con poca sal?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_014.mp3"
+      "audioPath": "audio/es/es_food_phrase_014.mp3",
+      "pronunciation": "/ˈpwedem pɾepaˈɾaɾ ˈeste ˈplato kom ˈpoka ˈsal/"
     },
     {
       "id": "es_food_phrase_015",
@@ -8934,7 +9823,8 @@
       "text": "El café sin azúcar, por favor.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_food_phrase_015.mp3"
+      "audioPath": "audio/es/es_food_phrase_015.mp3",
+      "pronunciation": "/el kaˈfe sin aˈθukaɾ poɾ faˈboɾ/"
     },
     {
       "id": "es_food_phrase_016",
@@ -8945,7 +9835,8 @@
       "text": "¿Hay algún plato sin salsa de soja?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_016.mp3"
+      "audioPath": "audio/es/es_food_phrase_016.mp3",
+      "pronunciation": "/ˈai alˈɡum ˈplato sin ˈsalsa de ˈsoxa/"
     },
     {
       "id": "es_food_phrase_017",
@@ -8956,7 +9847,8 @@
       "text": "¿Me trae un poco de vinagre aparte?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_017.mp3"
+      "audioPath": "audio/es/es_food_phrase_017.mp3",
+      "pronunciation": "/me ˈtɾae ˈum ˈpoko de biˈnaɡɾe aˈpaɾte/"
     },
     {
       "id": "es_food_phrase_018",
@@ -8967,7 +9859,8 @@
       "text": "Sin pimienta, por favor.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_food_phrase_018.mp3"
+      "audioPath": "audio/es/es_food_phrase_018.mp3",
+      "pronunciation": "/sim piˈmjenta poɾ faˈboɾ/"
     },
     {
       "id": "es_food_phrase_019",
@@ -8978,7 +9871,8 @@
       "text": "Este plato contiene cacahuetes.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_food_phrase_019.mp3"
+      "audioPath": "audio/es/es_food_phrase_019.mp3",
+      "pronunciation": "/ˈeste ˈplato konˈtjene kakaˈwetes/"
     },
     {
       "id": "es_food_phrase_020",
@@ -8989,7 +9883,8 @@
       "text": "Esta sopa no es vegetariana.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_food_phrase_020.mp3"
+      "audioPath": "audio/es/es_food_phrase_020.mp3",
+      "pronunciation": "/ˈesta ˈsopa ˈno ˈes bexetaˈɾjana/"
     },
     {
       "id": "es_food_phrase_021",
@@ -9000,7 +9895,8 @@
       "text": "El plato del día es pescado a la plancha.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_food_phrase_021.mp3"
+      "audioPath": "audio/es/es_food_phrase_021.mp3",
+      "pronunciation": "/el ˈplato del ˈdia ˈes pesˈkado a la ˈplantʃa/"
     },
     {
       "id": "es_food_phrase_022",
@@ -9011,7 +9907,8 @@
       "text": "Este cuchillo no corta bien la carne.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_food_phrase_022.mp3"
+      "audioPath": "audio/es/es_food_phrase_022.mp3",
+      "pronunciation": "/ˈeste kuˈtʃiʝo ˈno ˈkoɾta ˈbjen la ˈkaɾne/"
     },
     {
       "id": "es_food_phrase_023",
@@ -9022,7 +9919,8 @@
       "text": "El agua se cobra aparte.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_food_phrase_023.mp3"
+      "audioPath": "audio/es/es_food_phrase_023.mp3",
+      "pronunciation": "/el ˈaɡwa se ˈkobɾa aˈpaɾte/"
     },
     {
       "id": "es_food_phrase_024",
@@ -9033,7 +9931,8 @@
       "text": "¿El huevo está bien hecho?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_024.mp3"
+      "audioPath": "audio/es/es_food_phrase_024.mp3",
+      "pronunciation": "/el ˈwebo esˈta ˈbjen ˈetʃo/"
     },
     {
       "id": "es_food_phrase_025",
@@ -9044,7 +9943,8 @@
       "text": "No como carne.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_food_phrase_025.mp3"
+      "audioPath": "audio/es/es_food_phrase_025.mp3",
+      "pronunciation": "/ˈno komo ˈkaɾne/"
     },
     {
       "id": "es_food_phrase_026",
@@ -9055,7 +9955,8 @@
       "text": "La comida tardará unos quince minutos.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_food_phrase_026.mp3"
+      "audioPath": "audio/es/es_food_phrase_026.mp3",
+      "pronunciation": "/la koˈmida taɾdaˈɾa ˈunos ˈkinθe miˈnutos/"
     },
     {
       "id": "es_food_phrase_027",
@@ -9066,7 +9967,8 @@
       "text": "¿Está incluido el servicio en la cuenta?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_food_phrase_027.mp3"
+      "audioPath": "audio/es/es_food_phrase_027.mp3",
+      "pronunciation": "/esˈta inkluˈido el seɾˈbiθjo en la ˈkwenta/"
     },
     {
       "id": "es_food_phrase_028",
@@ -9077,7 +9979,8 @@
       "text": "Podemos prepararlo sin picante.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_food_phrase_028.mp3"
+      "audioPath": "audio/es/es_food_phrase_028.mp3",
+      "pronunciation": "/poˈdemos pɾepaˈɾaɾlo sim piˈkante/"
     },
     {
       "id": "es_food_phrase_029",
@@ -9088,7 +9991,8 @@
       "text": "El servicio ya está incluido.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_food_phrase_029.mp3"
+      "audioPath": "audio/es/es_food_phrase_029.mp3",
+      "pronunciation": "/el seɾˈbiθjo ˈʝa esˈta inkluˈido/"
     },
     {
       "id": "es_food_phrase_030",
@@ -9099,7 +10003,8 @@
       "text": "Podemos cobrarles por separado.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_food_phrase_030.mp3"
+      "audioPath": "audio/es/es_food_phrase_030.mp3",
+      "pronunciation": "/poˈdemos koˈbɾaɾles poɾ sepaˈɾado/"
     },
     {
       "id": "es_shopping_phrase_001",
@@ -9110,7 +10015,8 @@
       "text": "¿Dónde está la entrada de la tienda?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_001.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_001.mp3",
+      "pronunciation": "/ˈdonde esˈta la enˈtɾada de la ˈtjenda/"
     },
     {
       "id": "es_shopping_phrase_002",
@@ -9121,7 +10027,8 @@
       "text": "¿Abren hoy los grandes almacenes?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_002.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_002.mp3",
+      "pronunciation": "/ˈabɾen ˈoi los ˈɡɾandes almaˈθenes/"
     },
     {
       "id": "es_shopping_phrase_003",
@@ -9132,7 +10039,8 @@
       "text": "¿Hay algún supermercado grande cerca?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_003.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_003.mp3",
+      "pronunciation": "/ˈai alˈɡun supeɾmeɾˈkado ˈɡɾande ˈθeɾka/"
     },
     {
       "id": "es_shopping_phrase_004",
@@ -9143,7 +10051,8 @@
       "text": "¿La tienda de conveniencia abre las veinticuatro horas?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_004.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_004.mp3",
+      "pronunciation": "/la ˈtjenda de kombeˈnjenθja ˈabɾe las beintiˈkwatɾo ˈoɾas/"
     },
     {
       "id": "es_shopping_phrase_005",
@@ -9154,7 +10063,8 @@
       "text": "¿A qué hora empieza el mercado el fin de semana?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_005.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_005.mp3",
+      "pronunciation": "/a ˈke ˈoɾa emˈpjeθa el meɾˈkado el ˈfin de seˈmana/"
     },
     {
       "id": "es_shopping_phrase_006",
@@ -9165,7 +10075,8 @@
       "text": "¿Tiene esta prenda en mi talla?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_006.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_006.mp3",
+      "pronunciation": "/ˈtjene ˈesta ˈpɾenda en mi ˈtaʝa/"
     },
     {
       "id": "es_shopping_phrase_007",
@@ -9176,7 +10087,8 @@
       "text": "¿Me puede dar una talla más grande?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_007.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_007.mp3",
+      "pronunciation": "/me ˈpwede ˈdaɾ ˈuna ˈtaʝa ˈmas ˈɡɾande/"
     },
     {
       "id": "es_shopping_phrase_008",
@@ -9187,7 +10099,8 @@
       "text": "¿Esta es la talla mediana?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_008.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_008.mp3",
+      "pronunciation": "/ˈesta ˈes la ˈtaʝa meˈdjana/"
     },
     {
       "id": "es_shopping_phrase_009",
@@ -9198,7 +10111,8 @@
       "text": "¿Tiene una talla más pequeña?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_009.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_009.mp3",
+      "pronunciation": "/ˈtjene ˈuna ˈtaʝa ˈmas peˈkeɲa/"
     },
     {
       "id": "es_shopping_phrase_010",
@@ -9209,7 +10123,8 @@
       "text": "¿Puede ayudarme a elegir la talla?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_010.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_010.mp3",
+      "pronunciation": "/ˈpwede aʝuˈdaɾme a eleˈxiɾ la ˈtaʝa/"
     },
     {
       "id": "es_shopping_phrase_011",
@@ -9220,7 +10135,8 @@
       "text": "¿Dónde están los probadores?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_011.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_011.mp3",
+      "pronunciation": "/ˈdonde esˈtan los pɾobaˈdoɾes/"
     },
     {
       "id": "es_shopping_phrase_012",
@@ -9231,7 +10147,8 @@
       "text": "¿Me puedo probar este abrigo?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_012.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_012.mp3",
+      "pronunciation": "/me ˈpwedo pɾoˈbaɾ ˈeste aˈbɾiɡo/"
     },
     {
       "id": "es_shopping_phrase_013",
@@ -9242,7 +10159,8 @@
       "text": "¿Hay que hacer cola para el probador?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_013.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_013.mp3",
+      "pronunciation": "/ˈai ke aˈθeɾ ˈkola paɾa el pɾobaˈdoɾ/"
     },
     {
       "id": "es_shopping_phrase_014",
@@ -9253,7 +10171,8 @@
       "text": "¿Dónde dejo la ropa después de probármela?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_014.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_014.mp3",
+      "pronunciation": "/ˈdonde ˈdexo la ˈropa desˈpwes de pɾoˈbaɾmela/"
     },
     {
       "id": "es_shopping_phrase_015",
@@ -9264,7 +10183,8 @@
       "text": "¿Cuántas prendas puedo llevar al probador?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_015.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_015.mp3",
+      "pronunciation": "/ˈkwantas ˈpɾendas ˈpwedo ʝeˈbaɾ al pɾobaˈdoɾ/"
     },
     {
       "id": "es_shopping_phrase_016",
@@ -9275,7 +10195,8 @@
       "text": "¿Cuánto cuesta este artículo?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_016.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_016.mp3",
+      "pronunciation": "/ˈkwanto ˈkwesta ˈeste aɾˈtikulo/"
     },
     {
       "id": "es_shopping_phrase_017",
@@ -9286,7 +10207,8 @@
       "text": "¿El precio de la etiqueta es el precio final?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_017.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_017.mp3",
+      "pronunciation": "/el ˈpɾeθjo de la etiˈketa ˈes el ˈpɾeθjo fiˈnal/"
     },
     {
       "id": "es_shopping_phrase_018",
@@ -9297,7 +10219,8 @@
       "text": "Esto es demasiado caro para mí.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_shopping_phrase_018.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_018.mp3",
+      "pronunciation": "/ˈesto ˈes demaˈsjado ˈkaɾo paɾa ˈmi/"
     },
     {
       "id": "es_shopping_phrase_019",
@@ -9308,7 +10231,8 @@
       "text": "Esa talla está agotada.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_shopping_phrase_019.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_019.mp3",
+      "pronunciation": "/ˈesa ˈtaʝa esˈta aɡoˈtada/"
     },
     {
       "id": "es_shopping_phrase_020",
@@ -9319,7 +10243,8 @@
       "text": "Necesita el tique para devolverlo.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_shopping_phrase_020.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_020.mp3",
+      "pronunciation": "/neθeˈsita el ˈtike paɾa debolˈbeɾlo/"
     },
     {
       "id": "es_shopping_phrase_021",
@@ -9330,7 +10255,8 @@
       "text": "El reembolso se hará al método de pago original.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_shopping_phrase_021.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_021.mp3",
+      "pronunciation": "/el reemˈbolso se aˈɾa al ˈmetodo de ˈpaɡo oɾixiˈnal/"
     },
     {
       "id": "es_shopping_phrase_022",
@@ -9341,7 +10267,8 @@
       "text": "¿Por qué no funciona esta tarjeta bancaria?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_022.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_022.mp3",
+      "pronunciation": "/poɾ ˈke ˈno funˈθjona ˈesta taɾˈxeta banˈkaɾja/"
     },
     {
       "id": "es_shopping_phrase_023",
@@ -9352,7 +10279,8 @@
       "text": "Este artículo no admite devolución de impuestos.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_shopping_phrase_023.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_023.mp3",
+      "pronunciation": "/ˈeste aɾˈtikulo ˈno adˈmite deboluˈθjon de imˈpwestos/"
     },
     {
       "id": "es_shopping_phrase_024",
@@ -9363,7 +10291,8 @@
       "text": "¿Me da el tique, por favor?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_024.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_024.mp3",
+      "pronunciation": "/me ˈda el ˈtike poɾ faˈboɾ/"
     },
     {
       "id": "es_shopping_phrase_025",
@@ -9374,7 +10303,8 @@
       "text": "¿Hace falta el tique para devolverlo?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_shopping_phrase_025.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_025.mp3",
+      "pronunciation": "/ˈaθe ˈfalta el ˈtike paɾa debolˈbeɾlo/"
     },
     {
       "id": "es_shopping_phrase_026",
@@ -9385,7 +10315,8 @@
       "text": "Introduzca el PIN de la tarjeta, por favor.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_shopping_phrase_026.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_026.mp3",
+      "pronunciation": "/intɾoˈduθka el peiˈene de la taɾˈxeta poɾ faˈboɾ/"
     },
     {
       "id": "es_shopping_phrase_027",
@@ -9396,7 +10327,8 @@
       "text": "He perdido el tique de compra.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_shopping_phrase_027.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_027.mp3",
+      "pronunciation": "/ˈe peɾˈdido el ˈtike de ˈkompɾa/"
     },
     {
       "id": "es_shopping_phrase_028",
@@ -9407,7 +10339,8 @@
       "text": "Aquí aceptamos pago sin contacto.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_shopping_phrase_028.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_028.mp3",
+      "pronunciation": "/aˈki aθepːˈtamos ˈpaɡo sin konˈtakto/"
     },
     {
       "id": "es_shopping_phrase_029",
@@ -9418,7 +10351,8 @@
       "text": "Los artículos rebajados no se pueden cambiar.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_shopping_phrase_029.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_029.mp3",
+      "pronunciation": "/los aɾˈtikulos rebaˈxados ˈno se ˈpweden kamˈbjaɾ/"
     },
     {
       "id": "es_shopping_phrase_030",
@@ -9429,7 +10363,8 @@
       "text": "Puede tramitar la devolución del IVA en la segunda planta.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_shopping_phrase_030.mp3"
+      "audioPath": "audio/es/es_shopping_phrase_030.mp3",
+      "pronunciation": "/ˈpwede tɾamiˈtaɾ la deboluˈθjon del iubeˈa en la seˈɡunda ˈplanta/"
     },
     {
       "id": "es_directions_phrase_001",
@@ -9440,7 +10375,8 @@
       "text": "¿Dónde está la oficina de turismo?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_001.mp3"
+      "audioPath": "audio/es/es_directions_phrase_001.mp3",
+      "pronunciation": "/ˈdonde esˈta la ofiˈθina de tuˈɾismo/"
     },
     {
       "id": "es_directions_phrase_002",
@@ -9451,7 +10387,8 @@
       "text": "¿Estamos aquí en el mapa?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_002.mp3"
+      "audioPath": "audio/es/es_directions_phrase_002.mp3",
+      "pronunciation": "/esˈtamos aˈki en el ˈmapa/"
     },
     {
       "id": "es_directions_phrase_003",
@@ -9462,7 +10399,8 @@
       "text": "¿Se refiere a aquel edificio de allí?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_003.mp3"
+      "audioPath": "audio/es/es_directions_phrase_003.mp3",
+      "pronunciation": "/se reˈfjeɾe a aˈkel ediˈfiθjo de aˈʝi/"
     },
     {
       "id": "es_directions_phrase_004",
@@ -9473,7 +10411,8 @@
       "text": "¿Tengo que girar a la izquierda en el próximo cruce?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_004.mp3"
+      "audioPath": "audio/es/es_directions_phrase_004.mp3",
+      "pronunciation": "/ˈteŋɡo ke xiˈɾaɾ a la iθˈkjeɾda en el ˈpɾoksimo ˈkɾuθe/"
     },
     {
       "id": "es_directions_phrase_005",
@@ -9484,7 +10423,8 @@
       "text": "¿La estación está a la derecha?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_005.mp3"
+      "audioPath": "audio/es/es_directions_phrase_005.mp3",
+      "pronunciation": "/la estaˈθjon esˈta a la deˈɾetʃa/"
     },
     {
       "id": "es_directions_phrase_006",
@@ -9495,7 +10435,8 @@
       "text": "¿Está el museo justo delante de nosotros?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_006.mp3"
+      "audioPath": "audio/es/es_directions_phrase_006.mp3",
+      "pronunciation": "/esˈta el muˈseo ˈxusto deˈlante de noˈsotɾos/"
     },
     {
       "id": "es_directions_phrase_007",
@@ -9506,7 +10447,8 @@
       "text": "El aparcamiento está detrás del hotel.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_directions_phrase_007.mp3"
+      "audioPath": "audio/es/es_directions_phrase_007.mp3",
+      "pronunciation": "/el apaɾkaˈmjento esˈta deˈtɾas del oˈtel/"
     },
     {
       "id": "es_directions_phrase_008",
@@ -9517,7 +10459,8 @@
       "text": "La farmacia está al lado del banco.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_directions_phrase_008.mp3"
+      "audioPath": "audio/es/es_directions_phrase_008.mp3",
+      "pronunciation": "/la faɾˈmaθja esˈta al ˈlado del ˈbanko/"
     },
     {
       "id": "es_directions_phrase_009",
@@ -9528,7 +10471,8 @@
       "text": "Correos está enfrente del parque.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_directions_phrase_009.mp3"
+      "audioPath": "audio/es/es_directions_phrase_009.mp3",
+      "pronunciation": "/koˈreos esˈta emˈfɾente del ˈpaɾke/"
     },
     {
       "id": "es_directions_phrase_010",
@@ -9539,7 +10483,8 @@
       "text": "¿Hay alguna estación de metro cerca?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_010.mp3"
+      "audioPath": "audio/es/es_directions_phrase_010.mp3",
+      "pronunciation": "/ˈai alˈɡuna estaˈθjon de ˈmetɾo ˈθeɾka/"
     },
     {
       "id": "es_directions_phrase_011",
@@ -9550,7 +10495,8 @@
       "text": "¿A qué distancia está el aeropuerto?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_011.mp3"
+      "audioPath": "audio/es/es_directions_phrase_011.mp3",
+      "pronunciation": "/a ˈke disˈtanθja esˈta el aeɾoˈpweɾto/"
     },
     {
       "id": "es_directions_phrase_012",
@@ -9561,7 +10507,8 @@
       "text": "¿Está cerca para ir andando?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_012.mp3"
+      "audioPath": "audio/es/es_directions_phrase_012.mp3",
+      "pronunciation": "/esˈta ˈθeɾka paɾa ˈiɾ anˈdando/"
     },
     {
       "id": "es_directions_phrase_013",
@@ -9572,7 +10519,8 @@
       "text": "¿Está lejos para ir en autobús?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_013.mp3"
+      "audioPath": "audio/es/es_directions_phrase_013.mp3",
+      "pronunciation": "/esˈta ˈlexos paɾa ˈiɾ en autoˈbus/"
     },
     {
       "id": "es_directions_phrase_014",
@@ -9583,7 +10531,8 @@
       "text": "¿Cuál es la farmacia más cercana?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_014.mp3"
+      "audioPath": "audio/es/es_directions_phrase_014.mp3",
+      "pronunciation": "/ˈkwal ˈes la faɾˈmaθja ˈmas θeɾˈkana/"
     },
     {
       "id": "es_directions_phrase_015",
@@ -9594,7 +10543,8 @@
       "text": "La estación está lejos; es mejor ir en metro.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_directions_phrase_015.mp3"
+      "audioPath": "audio/es/es_directions_phrase_015.mp3",
+      "pronunciation": "/la estaˈθjon esˈta ˈlexos ˈes meˈxoɾ ˈiɾ en ˈmetɾo/"
     },
     {
       "id": "es_directions_phrase_016",
@@ -9605,7 +10555,8 @@
       "text": "¿Qué lugares de interés hay cerca?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_016.mp3"
+      "audioPath": "audio/es/es_directions_phrase_016.mp3",
+      "pronunciation": "/ˈke luˈɡaɾes de inteˈɾes ˈai ˈθeɾka/"
     },
     {
       "id": "es_directions_phrase_017",
@@ -9616,7 +10567,8 @@
       "text": "¿Está demasiado lejos para ir a pie?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_017.mp3"
+      "audioPath": "audio/es/es_directions_phrase_017.mp3",
+      "pronunciation": "/esˈta demaˈsjado ˈlexos paɾa ˈiɾ a ˈpje/"
     },
     {
       "id": "es_directions_phrase_018",
@@ -9627,7 +10579,8 @@
       "text": "¿Dónde está el aseo público más cercano?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_018.mp3"
+      "audioPath": "audio/es/es_directions_phrase_018.mp3",
+      "pronunciation": "/ˈdonde esˈta el aˈseo ˈpubliko ˈmas θeɾˈkano/"
     },
     {
       "id": "es_directions_phrase_019",
@@ -9638,7 +10591,8 @@
       "text": "Siga recto hasta el segundo cruce.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_directions_phrase_019.mp3"
+      "audioPath": "audio/es/es_directions_phrase_019.mp3",
+      "pronunciation": "/ˈsiɡa ˈrekto asta el seˈɡundo ˈkɾuθe/"
     },
     {
       "id": "es_directions_phrase_020",
@@ -9649,7 +10603,8 @@
       "text": "Gire a la izquierda en el semáforo.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_directions_phrase_020.mp3"
+      "audioPath": "audio/es/es_directions_phrase_020.mp3",
+      "pronunciation": "/ˈxiɾe a la iθˈkjeɾda en el seˈmafoɾo/"
     },
     {
       "id": "es_directions_phrase_021",
@@ -9660,7 +10615,8 @@
       "text": "La estación está enfrente del banco.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_directions_phrase_021.mp3"
+      "audioPath": "audio/es/es_directions_phrase_021.mp3",
+      "pronunciation": "/la estaˈθjon esˈta emˈfɾente del ˈbanko/"
     },
     {
       "id": "es_directions_phrase_022",
@@ -9671,7 +10627,8 @@
       "text": "Busco un edificio blanco.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_directions_phrase_022.mp3"
+      "audioPath": "audio/es/es_directions_phrase_022.mp3",
+      "pronunciation": "/ˈbusko ˈun ediˈfiθjo ˈblanko/"
     },
     {
       "id": "es_directions_phrase_023",
@@ -9682,7 +10639,8 @@
       "text": "Son unos diez minutos andando.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_directions_phrase_023.mp3"
+      "audioPath": "audio/es/es_directions_phrase_023.mp3",
+      "pronunciation": "/ˈson ˈunos ˈdjeθ miˈnutos anˈdando/"
     },
     {
       "id": "es_directions_phrase_024",
@@ -9693,7 +10651,8 @@
       "text": "¿Está lejos la oficina de Correos?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_024.mp3"
+      "audioPath": "audio/es/es_directions_phrase_024.mp3",
+      "pronunciation": "/esˈta ˈlexos la ofiˈθina de koˈreos/"
     },
     {
       "id": "es_directions_phrase_025",
@@ -9704,7 +10663,8 @@
       "text": "¿Hay algún aseo público por aquí?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_025.mp3"
+      "audioPath": "audio/es/es_directions_phrase_025.mp3",
+      "pronunciation": "/ˈai alˈɡun aˈseo ˈpubliko poɾ aˈki/"
     },
     {
       "id": "es_directions_phrase_026",
@@ -9715,7 +10675,8 @@
       "text": "Al cruzar el puente verá el museo.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_directions_phrase_026.mp3"
+      "audioPath": "audio/es/es_directions_phrase_026.mp3",
+      "pronunciation": "/al kɾuˈθaɾ el ˈpwente beˈɾa el muˈseo/"
     },
     {
       "id": "es_directions_phrase_027",
@@ -9726,7 +10687,8 @@
       "text": "¿La estación de metro más cercana tiene ascensor?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_directions_phrase_027.mp3"
+      "audioPath": "audio/es/es_directions_phrase_027.mp3",
+      "pronunciation": "/la estaˈθjon de ˈmetɾo ˈmas θeɾˈkana ˈtjene asθenˈsoɾ/"
     },
     {
       "id": "es_directions_phrase_028",
@@ -9737,7 +10699,8 @@
       "text": "Va en la dirección equivocada.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_directions_phrase_028.mp3"
+      "audioPath": "audio/es/es_directions_phrase_028.mp3",
+      "pronunciation": "/ˈba en la diɾekˈθjon ekiboˈkada/"
     },
     {
       "id": "es_directions_phrase_029",
@@ -9748,7 +10711,8 @@
       "text": "La entrada está detrás del edificio.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_directions_phrase_029.mp3"
+      "audioPath": "audio/es/es_directions_phrase_029.mp3",
+      "pronunciation": "/la enˈtɾada esˈta deˈtɾas del ediˈfiθjo/"
     },
     {
       "id": "es_directions_phrase_030",
@@ -9759,7 +10723,8 @@
       "text": "Esta calle está cortada ahora mismo.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_directions_phrase_030.mp3"
+      "audioPath": "audio/es/es_directions_phrase_030.mp3",
+      "pronunciation": "/ˈesta ˈkaʝe esˈta koɾˈtada aˈoɾa ˈmismo/"
     },
     {
       "id": "es_emergency_phrase_001",
@@ -9770,7 +10735,8 @@
       "text": "Tengo fiebre y necesito ver a un médico.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_001.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_001.mp3",
+      "pronunciation": "/ˈteŋɡo ˈfjebɾe i neθeˈsito ˈbeɾ a ˈun ˈmediko/"
     },
     {
       "id": "es_emergency_phrase_002",
@@ -9781,7 +10747,8 @@
       "text": "Estoy resfriado, ¿dónde hay una farmacia?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_002.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_002.mp3",
+      "pronunciation": "/esˈtoi resfɾiˈado ˈdonde ˈai ˈuna faɾˈmaθja/"
     },
     {
       "id": "es_emergency_phrase_003",
@@ -9792,7 +10759,8 @@
       "text": "¿Cuántas veces al día se toma este medicamento para la tos?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_003.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_003.mp3",
+      "pronunciation": "/ˈkwantas ˈbeθes al ˈdia se ˈtoma ˈeste medikaˈmento paɾa la ˈtos/"
     },
     {
       "id": "es_emergency_phrase_004",
@@ -9803,7 +10771,8 @@
       "text": "Me duele mucho la cabeza.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_004.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_004.mp3",
+      "pronunciation": "/me ˈdwele ˈmutʃo la kaˈbeθa/"
     },
     {
       "id": "es_emergency_phrase_005",
@@ -9814,7 +10783,8 @@
       "text": "Me duele el estómago desde anoche.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_005.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_005.mp3",
+      "pronunciation": "/me ˈdwele el esˈtomaɡo desde aˈnotʃe/"
     },
     {
       "id": "es_emergency_phrase_006",
@@ -9825,7 +10795,8 @@
       "text": "¿Hay alguna farmacia de guardia cerca?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_006.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_006.mp3",
+      "pronunciation": "/ˈai alˈɡuna faɾˈmaθja de ˈɡwaɾdja ˈθeɾka/"
     },
     {
       "id": "es_emergency_phrase_007",
@@ -9836,7 +10807,8 @@
       "text": "¿Puede venir un enfermero a verme?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_007.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_007.mp3",
+      "pronunciation": "/ˈpwede beˈniɾ ˈun enfeɾˈmeɾo a ˈbeɾme/"
     },
     {
       "id": "es_emergency_phrase_008",
@@ -9847,7 +10819,8 @@
       "text": "¿Hace falta receta para este medicamento?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_008.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_008.mp3",
+      "pronunciation": "/ˈaθe ˈfalta reˈθeta paɾa ˈeste medikaˈmento/"
     },
     {
       "id": "es_emergency_phrase_009",
@@ -9858,7 +10831,8 @@
       "text": "¿Dónde puedo comprar lo que indica esta receta?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_009.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_009.mp3",
+      "pronunciation": "/ˈdonde ˈpwedo komˈpɾaɾ lo ke inˈdika ˈesta reˈθeta/"
     },
     {
       "id": "es_emergency_phrase_010",
@@ -9869,7 +10843,8 @@
       "text": "¿Tengo que tomar esta pastilla después de comer?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_010.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_010.mp3",
+      "pronunciation": "/ˈteŋɡo ke toˈmaɾ ˈesta pasˈtiʝa desˈpwes de koˈmeɾ/"
     },
     {
       "id": "es_emergency_phrase_011",
@@ -9880,7 +10855,8 @@
       "text": "¿Cuántas veces al día tengo que aplicar esta pomada?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_011.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_011.mp3",
+      "pronunciation": "/ˈkwantas ˈbeθes al ˈdia ˈteŋɡo ke apliˈkaɾ ˈesta poˈmada/"
     },
     {
       "id": "es_emergency_phrase_012",
@@ -9891,7 +10867,8 @@
       "text": "He perdido el móvil y necesito denunciarlo.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_012.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_012.mp3",
+      "pronunciation": "/ˈe peɾˈdido el ˈmobil i neθeˈsito denunˈθjaɾlo/"
     },
     {
       "id": "es_emergency_phrase_013",
@@ -9902,7 +10879,8 @@
       "text": "¿En qué comisaría puedo presentar la denuncia?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_013.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_013.mp3",
+      "pronunciation": "/en ˈke komisaˈɾia ˈpwedo pɾesenˈtaɾ la deˈnunθja/"
     },
     {
       "id": "es_emergency_phrase_014",
@@ -9913,7 +10891,8 @@
       "text": "Necesito una copia de la denuncia.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_014.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_014.mp3",
+      "pronunciation": "/neθeˈsito ˈuna ˈkopja de la deˈnunθja/"
     },
     {
       "id": "es_emergency_phrase_015",
@@ -9924,7 +10903,8 @@
       "text": "Me han robado la mochila.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_015.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_015.mp3",
+      "pronunciation": "/me ˈan roˈbado la moˈtʃila/"
     },
     {
       "id": "es_emergency_phrase_016",
@@ -9935,7 +10915,8 @@
       "text": "Ayúdeme a contactar con la policía, por favor.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_016.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_016.mp3",
+      "pronunciation": "/aˈʝudeme a kontakˈtaɾ kon la poliˈθia poɾ faˈboɾ/"
     },
     {
       "id": "es_emergency_phrase_017",
@@ -9946,7 +10927,8 @@
       "text": "Tengo diarrea desde hace dos días.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_017.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_017.mp3",
+      "pronunciation": "/ˈteŋɡo djaˈrea desde ˈaθe ˈdos ˈdias/"
     },
     {
       "id": "es_emergency_phrase_018",
@@ -9957,7 +10939,8 @@
       "text": "¿Este medicamento puede causar estreñimiento?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_018.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_018.mp3",
+      "pronunciation": "/ˈeste medikaˈmento ˈpwede kauˈsaɾ estɾeɲiˈmjento/"
     },
     {
       "id": "es_emergency_phrase_019",
@@ -9968,7 +10951,8 @@
       "text": "La ambulancia está de camino.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_emergency_phrase_019.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_019.mp3",
+      "pronunciation": "/la ambuˈlanθja esˈta de kaˈmino/"
     },
     {
       "id": "es_emergency_phrase_020",
@@ -9979,7 +10963,8 @@
       "text": "No mueva a la persona herida, por favor.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_emergency_phrase_020.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_020.mp3",
+      "pronunciation": "/ˈno ˈmweba a la peɾˈsona eˈɾida poɾ faˈboɾ/"
     },
     {
       "id": "es_emergency_phrase_021",
@@ -9990,7 +10975,8 @@
       "text": "Urgencias está a dos kilómetros.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_emergency_phrase_021.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_021.mp3",
+      "pronunciation": "/uɾˈxenθjas esˈta a ˈdos kiˈlometɾos/"
     },
     {
       "id": "es_emergency_phrase_022",
@@ -10001,7 +10987,8 @@
       "text": "¡Socorro, alguien se ha desmayado!",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_022.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_022.mp3",
+      "pronunciation": "/soˈkoro ˈalɡjen se ˈa desmaˈʝado/"
     },
     {
       "id": "es_emergency_phrase_023",
@@ -10012,7 +10999,8 @@
       "text": "Dígame dónde le duele.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_emergency_phrase_023.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_023.mp3",
+      "pronunciation": "/ˈdiɡame ˈdonde le ˈdwele/"
     },
     {
       "id": "es_emergency_phrase_024",
@@ -10023,7 +11011,8 @@
       "text": "Llame al 112 y pida una ambulancia, por favor.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_024.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_024.mp3",
+      "pronunciation": "/ˈʝame al ˈθjento ˈdoθe i ˈpida ˈuna ambuˈlanθja poɾ faˈboɾ/"
     },
     {
       "id": "es_emergency_phrase_025",
@@ -10034,7 +11023,8 @@
       "text": "Me he hecho daño al caerme.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_emergency_phrase_025.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_025.mp3",
+      "pronunciation": "/me ˈe ˈetʃo ˈdaɲo al kaˈeɾme/"
     },
     {
       "id": "es_emergency_phrase_026",
@@ -10045,7 +11035,8 @@
       "text": "Su pasaporte está en objetos perdidos.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_emergency_phrase_026.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_026.mp3",
+      "pronunciation": "/su pasaˈpoɾte esˈta en obˈxetos peɾˈdidos/"
     },
     {
       "id": "es_emergency_phrase_027",
@@ -10056,7 +11047,8 @@
       "text": "¿Mi seguro de viaje cubre este tratamiento?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_emergency_phrase_027.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_027.mp3",
+      "pronunciation": "/mi seˈɡuɾo de ˈbjaxe ˈkubɾe ˈeste tɾataˈmjento/"
     },
     {
       "id": "es_emergency_phrase_028",
@@ -10067,7 +11059,8 @@
       "text": "Rellene aquí la denuncia de pérdida.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_emergency_phrase_028.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_028.mp3",
+      "pronunciation": "/reˈʝene aˈki la deˈnunθja de ˈpeɾdida/"
     },
     {
       "id": "es_emergency_phrase_029",
@@ -10078,7 +11071,8 @@
       "text": "Manténgase despierto y respire despacio.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_emergency_phrase_029.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_029.mp3",
+      "pronunciation": "/manˈteŋɡase desˈpjeɾto i resˈpiɾe desˈpaθjo/"
     },
     {
       "id": "es_emergency_phrase_030",
@@ -10089,7 +11083,8 @@
       "text": "La policía llegará en unos diez minutos.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_emergency_phrase_030.mp3"
+      "audioPath": "audio/es/es_emergency_phrase_030.mp3",
+      "pronunciation": "/la poliˈθia ʝeɡaˈɾa en ˈunos ˈdjeθ miˈnutos/"
     },
     {
       "id": "es_basics_phrase_001",
@@ -10100,7 +11095,8 @@
       "text": "Hola, ¿habla inglés?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_basics_phrase_001.mp3"
+      "audioPath": "audio/es/es_basics_phrase_001.mp3",
+      "pronunciation": "/ˈola ˈabla iŋˈɡles/"
     },
     {
       "id": "es_basics_phrase_002",
@@ -10111,7 +11107,8 @@
       "text": "Buenos días, tengo una reserva.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_002.mp3"
+      "audioPath": "audio/es/es_basics_phrase_002.mp3",
+      "pronunciation": "/ˈbwenos ˈdias ˈteŋɡo ˈuna reˈseɾba/"
     },
     {
       "id": "es_basics_phrase_003",
@@ -10122,7 +11119,8 @@
       "text": "Buenas tardes, ¿queda alguna mesa libre?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_basics_phrase_003.mp3"
+      "audioPath": "audio/es/es_basics_phrase_003.mp3",
+      "pronunciation": "/ˈbwenas ˈtaɾdes ˈkeda alˈɡuna ˈmesa ˈlibɾe/"
     },
     {
       "id": "es_basics_phrase_004",
@@ -10133,7 +11131,8 @@
       "text": "Gracias por su ayuda.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_004.mp3"
+      "audioPath": "audio/es/es_basics_phrase_004.mp3",
+      "pronunciation": "/ˈɡɾaθjas poɾ su aˈʝuda/"
     },
     {
       "id": "es_basics_phrase_005",
@@ -10144,7 +11143,8 @@
       "text": "Muchísimas gracias.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_005.mp3"
+      "audioPath": "audio/es/es_basics_phrase_005.mp3",
+      "pronunciation": "/muˈtʃisimas ˈɡɾaθjas/"
     },
     {
       "id": "es_basics_phrase_006",
@@ -10155,7 +11155,8 @@
       "text": "De nada, que tenga un buen día.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_006.mp3"
+      "audioPath": "audio/es/es_basics_phrase_006.mp3",
+      "pronunciation": "/de ˈnada ke ˈteŋɡa ˈum ˈbwen ˈdia/"
     },
     {
       "id": "es_basics_phrase_007",
@@ -10166,7 +11167,8 @@
       "text": "Un mapa, por favor.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_007.mp3"
+      "audioPath": "audio/es/es_basics_phrase_007.mp3",
+      "pronunciation": "/ˈun ˈmapa poɾ faˈboɾ/"
     },
     {
       "id": "es_basics_phrase_008",
@@ -10177,7 +11179,8 @@
       "text": "Siete billetes, por favor.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_008.mp3"
+      "audioPath": "audio/es/es_basics_phrase_008.mp3",
+      "pronunciation": "/ˈsjete biˈʝetes poɾ faˈboɾ/"
     },
     {
       "id": "es_basics_phrase_009",
@@ -10188,7 +11191,8 @@
       "text": "Nos vemos a las ocho.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_009.mp3"
+      "audioPath": "audio/es/es_basics_phrase_009.mp3",
+      "pronunciation": "/nos ˈbemos a las ˈotʃo/"
     },
     {
       "id": "es_basics_phrase_010",
@@ -10199,7 +11203,8 @@
       "text": "El tren sale del andén nueve.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_010.mp3"
+      "audioPath": "audio/es/es_basics_phrase_010.mp3",
+      "pronunciation": "/el ˈtɾen ˈsale del anˈden ˈnwebe/"
     },
     {
       "id": "es_basics_phrase_011",
@@ -10210,7 +11215,8 @@
       "text": "Se tarda diez minutos andando.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_011.mp3"
+      "audioPath": "audio/es/es_basics_phrase_011.mp3",
+      "pronunciation": "/se ˈtaɾda ˈdjeθ miˈnutos anˈdando/"
     },
     {
       "id": "es_basics_phrase_012",
@@ -10221,7 +11227,8 @@
       "text": "¿Puede enviarme la dirección al móvil?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_basics_phrase_012.mp3"
+      "audioPath": "audio/es/es_basics_phrase_012.mp3",
+      "pronunciation": "/ˈpwede emˈbjaɾme la diɾekˈθjon al ˈmobil/"
     },
     {
       "id": "es_basics_phrase_013",
@@ -10232,7 +11239,8 @@
       "text": "Este pueblo tiene más de mil años de historia.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_013.mp3"
+      "audioPath": "audio/es/es_basics_phrase_013.mp3",
+      "pronunciation": "/ˈeste ˈpweblo ˈtjene ˈmas de ˈmil ˈaɲos de isˈtoɾja/"
     },
     {
       "id": "es_basics_phrase_014",
@@ -10243,7 +11251,8 @@
       "text": "Aquí viven unas diez mil personas.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_014.mp3"
+      "audioPath": "audio/es/es_basics_phrase_014.mp3",
+      "pronunciation": "/aˈki ˈbiben ˈunas ˈdjeθ ˈmil peɾˈsonas/"
     },
     {
       "id": "es_basics_phrase_015",
@@ -10254,7 +11263,8 @@
       "text": "¿Puedo cambiar yenes por euros aquí?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_basics_phrase_015.mp3"
+      "audioPath": "audio/es/es_basics_phrase_015.mp3",
+      "pronunciation": "/ˈpwedo kamˈbjaɾ ˈʝenes poɾ ˈeuɾos aˈki/"
     },
     {
       "id": "es_basics_phrase_016",
@@ -10265,7 +11275,8 @@
       "text": "Quiero cambiar dólares por euros.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_016.mp3"
+      "audioPath": "audio/es/es_basics_phrase_016.mp3",
+      "pronunciation": "/ˈkjeɾo kamˈbjaɾ ˈdolaɾes poɾ ˈeuɾos/"
     },
     {
       "id": "es_basics_phrase_017",
@@ -10276,7 +11287,8 @@
       "text": "¿Se pueden cambiar yuanes por euros?",
       "direction": "traveler-says",
       "intent": "ask",
-      "audioPath": "audio/es/es_basics_phrase_017.mp3"
+      "audioPath": "audio/es/es_basics_phrase_017.mp3",
+      "pronunciation": "/se ˈpweden kamˈbjaɾ ˈʝwanes poɾ ˈeuɾos/"
     },
     {
       "id": "es_basics_phrase_018",
@@ -10287,7 +11299,8 @@
       "text": "El coste es de cero euros.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_018.mp3"
+      "audioPath": "audio/es/es_basics_phrase_018.mp3",
+      "pronunciation": "/el ˈkoste ˈes de ˈθeɾo ˈeuɾos/"
     },
     {
       "id": "es_basics_phrase_019",
@@ -10298,7 +11311,8 @@
       "text": "Hablo un poco de inglés.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_basics_phrase_019.mp3"
+      "audioPath": "audio/es/es_basics_phrase_019.mp3",
+      "pronunciation": "/ˈablo ˈum ˈpoko de iŋˈɡles/"
     },
     {
       "id": "es_basics_phrase_020",
@@ -10309,7 +11323,8 @@
       "text": "Espere un momento, por favor.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_basics_phrase_020.mp3"
+      "audioPath": "audio/es/es_basics_phrase_020.mp3",
+      "pronunciation": "/esˈpeɾe ˈun moˈmento poɾ faˈboɾ/"
     },
     {
       "id": "es_basics_phrase_021",
@@ -10320,7 +11335,8 @@
       "text": "Esta palabra significa entrada.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_basics_phrase_021.mp3"
+      "audioPath": "audio/es/es_basics_phrase_021.mp3",
+      "pronunciation": "/ˈesta paˈlabɾa siɡniˈfika enˈtɾada/"
     },
     {
       "id": "es_basics_phrase_022",
@@ -10331,7 +11347,8 @@
       "text": "Mañana vamos a Granada.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_022.mp3"
+      "audioPath": "audio/es/es_basics_phrase_022.mp3",
+      "pronunciation": "/maˈɲana ˈbamos a ɡɾaˈnada/"
     },
     {
       "id": "es_basics_phrase_023",
@@ -10342,7 +11359,8 @@
       "text": "Aquí puede comprar una tarjeta SIM.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_basics_phrase_023.mp3"
+      "audioPath": "audio/es/es_basics_phrase_023.mp3",
+      "pronunciation": "/aˈki ˈpwede komˈpɾaɾ ˈuna taɾˈxeta eseiˈeme/"
     },
     {
       "id": "es_basics_phrase_024",
@@ -10353,7 +11371,8 @@
       "text": "Volvemos pasado mañana.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_024.mp3"
+      "audioPath": "audio/es/es_basics_phrase_024.mp3",
+      "pronunciation": "/bolˈbemos paˈsado maˈɲana/"
     },
     {
       "id": "es_basics_phrase_025",
@@ -10364,7 +11383,8 @@
       "text": "Sí, tengo una reserva.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_025.mp3"
+      "audioPath": "audio/es/es_basics_phrase_025.mp3",
+      "pronunciation": "/ˈsi ˈteŋɡo ˈuna reˈseɾba/"
     },
     {
       "id": "es_basics_phrase_026",
@@ -10375,7 +11395,8 @@
       "text": "Esta eSIM se activará inmediatamente.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_basics_phrase_026.mp3"
+      "audioPath": "audio/es/es_basics_phrase_026.mp3",
+      "pronunciation": "/ˈesta e eseiˈeme se aktibaˈɾa inmeˈdjataˈmente/"
     },
     {
       "id": "es_basics_phrase_027",
@@ -10386,7 +11407,8 @@
       "text": "Vale, vamos.",
       "direction": "traveler-says",
       "intent": "communicate",
-      "audioPath": "audio/es/es_basics_phrase_027.mp3"
+      "audioPath": "audio/es/es_basics_phrase_027.mp3",
+      "pronunciation": "/ˈbale ˈbamos/"
     },
     {
       "id": "es_basics_phrase_028",
@@ -10397,7 +11419,8 @@
       "text": "No tiene saldo suficiente.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_basics_phrase_028.mp3"
+      "audioPath": "audio/es/es_basics_phrase_028.mp3",
+      "pronunciation": "/ˈno ˈtjene ˈsaldo sufiˈθjente/"
     },
     {
       "id": "es_basics_phrase_029",
@@ -10408,7 +11431,8 @@
       "text": "Reinicie el teléfono después de la recarga.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_basics_phrase_029.mp3"
+      "audioPath": "audio/es/es_basics_phrase_029.mp3",
+      "pronunciation": "/reiˈniθje el teˈlefono desˈpwes de la reˈkaɾɡa/"
     },
     {
       "id": "es_basics_phrase_030",
@@ -10419,7 +11443,8 @@
       "text": "No hay problema, se lo puedo escribir.",
       "direction": "traveler-hears",
       "intent": "understand",
-      "audioPath": "audio/es/es_basics_phrase_030.mp3"
+      "audioPath": "audio/es/es_basics_phrase_030.mp3",
+      "pronunciation": "/ˈno ˈai pɾoˈblema se lo ˈpwedo eskɾiˈbiɾ/"
     },
     {
       "id": "transport_001",
@@ -10430,7 +11455,8 @@
       "text": "tarjeta de transporte",
       "audioPath": "audio/es/transport_001.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/taɾˈxeta de tɾansˈpoɾte/"
     },
     {
       "id": "transport_002",
@@ -10441,7 +11467,8 @@
       "text": "último tren",
       "audioPath": "audio/es/transport_002.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈultimo ˈtɾen/"
     },
     {
       "id": "transport_003",
@@ -10452,7 +11479,8 @@
       "text": "próxima parada",
       "audioPath": "audio/es/transport_003.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpɾoksima paˈɾada/"
     },
     {
       "id": "transport_004",
@@ -10463,7 +11491,8 @@
       "text": "final de línea",
       "audioPath": "audio/es/transport_004.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/fiˈnal de ˈlinea/"
     },
     {
       "id": "transport_005",
@@ -10474,7 +11503,8 @@
       "text": "transbordo",
       "audioPath": "audio/es/transport_005.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/tɾansˈboɾdo/"
     },
     {
       "id": "hotel_083",
@@ -10485,7 +11515,8 @@
       "text": "contraseña del wifi",
       "audioPath": "audio/es/hotel_083.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/kontɾaˈseɲa del ˈwifi/"
     },
     {
       "id": "hotel_084",
@@ -10496,7 +11527,8 @@
       "text": "entrada anticipada",
       "audioPath": "audio/es/hotel_084.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/enˈtɾada antiθiˈpada/"
     },
     {
       "id": "hotel_085",
@@ -10507,7 +11539,8 @@
       "text": "salida tardía",
       "audioPath": "audio/es/hotel_085.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/saˈlida taɾˈdia/"
     },
     {
       "id": "hotel_086",
@@ -10518,7 +11551,8 @@
       "text": "registro de entrada automático",
       "audioPath": "audio/es/hotel_086.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/reˈxistɾo de enˈtɾada autoˈmatiko/"
     },
     {
       "id": "food_097",
@@ -10533,8 +11567,10 @@
       "example": {
         "id": "es-es_food_097_example",
         "zh": "请问有纯素菜品吗？",
-        "text": "¿Tienen algún plato vegano?"
-      }
+        "text": "¿Tienen algún plato vegano?",
+        "pronunciation": "/ˈtjenen alˈɡum ˈplato beˈɡano/"
+      },
+      "pronunciation": "/beˈɡano/"
     },
     {
       "id": "food_098",
@@ -10549,8 +11585,10 @@
       "example": {
         "id": "es-es_food_098_example",
         "zh": "这道菜是清真的吗？",
-        "text": "¿Este plato es halal?"
-      }
+        "text": "¿Este plato es halal?",
+        "pronunciation": "/ˈeste ˈplato ˈes aˈlal/"
+      },
+      "pronunciation": "/aˈlal/"
     },
     {
       "id": "food_099",
@@ -10565,8 +11603,10 @@
       "example": {
         "id": "es-es_food_099_example",
         "zh": "有无麸质的面包吗？",
-        "text": "¿Tienen pan sin gluten?"
-      }
+        "text": "¿Tienen pan sin gluten?",
+        "pronunciation": "/ˈtjenem ˈpan siŋ ˈɡluten/"
+      },
+      "pronunciation": "/siŋ ˈɡluten/"
     },
     {
       "id": "food_100",
@@ -10581,8 +11621,10 @@
       "example": {
         "id": "es-es_food_100_example",
         "zh": "我乳糖不耐，不能喝普通牛奶。",
-        "text": "Soy intolerante a la lactosa y no puedo tomar leche normal."
-      }
+        "text": "Soy intolerante a la lactosa y no puedo tomar leche normal.",
+        "pronunciation": "/ˈsoi intoleˈɾante a la lakˈtosa i ˈno ˈpwedo toˈmaɾ ˈletʃe noɾˈmal/"
+      },
+      "pronunciation": "/intoleˈɾanθja a la lakˈtosa/"
     },
     {
       "id": "food_101",
@@ -10597,8 +11639,10 @@
       "example": {
         "id": "es-es_food_101_example",
         "zh": "我对花生严重过敏。",
-        "text": "Tengo una alergia grave a los cacahuetes."
-      }
+        "text": "Tengo una alergia grave a los cacahuetes.",
+        "pronunciation": "/ˈteŋɡo ˈuna aˈleɾxja ˈɡɾabe a los kakaˈwetes/"
+      },
+      "pronunciation": "/kakaˈwetes/"
     },
     {
       "id": "food_102",
@@ -10613,8 +11657,10 @@
       "example": {
         "id": "es-es_food_102_example",
         "zh": "这份甜点里有坚果吗？",
-        "text": "¿Este postre contiene frutos secos?"
-      }
+        "text": "¿Este postre contiene frutos secos?",
+        "pronunciation": "/ˈeste ˈpostɾe konˈtjene ˈfɾutos ˈsekos/"
+      },
+      "pronunciation": "/ˈfɾutos ˈsekos/"
     },
     {
       "id": "food_103",
@@ -10629,8 +11675,10 @@
       "example": {
         "id": "es-es_food_103_example",
         "zh": "我对虾和其他甲壳类过敏。",
-        "text": "Soy alérgico a las gambas y otros crustáceos."
-      }
+        "text": "Soy alérgico a las gambas y otros crustáceos.",
+        "pronunciation": "/ˈsoi aˈleɾxiko a las ˈɡambas i ˈotɾos kɾusˈtaθeos/"
+      },
+      "pronunciation": "/kɾusˈtaθeos/"
     },
     {
       "id": "food_104",
@@ -10645,8 +11693,10 @@
       "example": {
         "id": "es-es_food_104_example",
         "zh": "这里的自来水可以直接喝吗？",
-        "text": "¿Se puede beber el agua del grifo aquí?"
-      }
+        "text": "¿Se puede beber el agua del grifo aquí?",
+        "pronunciation": "/se ˈpwede beˈbeɾ el ˈaɡwa del ˈɡɾifo aˈki/"
+      },
+      "pronunciation": "/ˈaɡwa del ˈɡɾifo/"
     },
     {
       "id": "food_105",
@@ -10661,8 +11711,10 @@
       "example": {
         "id": "es-es_food_105_example",
         "zh": "请告诉我这道菜含有哪些过敏原。",
-        "text": "Dígame qué alérgenos contiene este plato, por favor."
-      }
+        "text": "Dígame qué alérgenos contiene este plato, por favor.",
+        "pronunciation": "/ˈdiɡame ˈke aˈleɾxenos konˈtjene ˈeste ˈplato poɾ faˈboɾ/"
+      },
+      "pronunciation": "/aˈleɾxeno/"
     },
     {
       "id": "food_106",
@@ -10677,8 +11729,10 @@
       "example": {
         "id": "es-es_food_106_example",
         "zh": "请把账单分开结算。",
-        "text": "Cóbranos por separado, por favor."
-      }
+        "text": "Cóbranos por separado, por favor.",
+        "pronunciation": "/ˈkobɾanos poɾ sepaˈɾado poɾ faˈboɾ/"
+      },
+      "pronunciation": "/paˈɡaɾ poɾ sepaˈɾado/"
     },
     {
       "id": "shopping_074",
@@ -10689,7 +11743,8 @@
       "text": "reembolso",
       "audioPath": "audio/es/shopping_074.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/reemˈbolso/"
     },
     {
       "id": "shopping_075",
@@ -10700,7 +11755,8 @@
       "text": "cambio",
       "audioPath": "audio/es/shopping_075.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkambjo/"
     },
     {
       "id": "shopping_076",
@@ -10711,7 +11767,8 @@
       "text": "agotado",
       "audioPath": "audio/es/shopping_076.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/aɡoˈtado/"
     },
     {
       "id": "shopping_077",
@@ -10722,7 +11779,8 @@
       "text": "libre de impuestos",
       "audioPath": "audio/es/shopping_077.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈlibɾe de imˈpwestos/"
     },
     {
       "id": "shopping_078",
@@ -10733,7 +11791,8 @@
       "text": "código PIN",
       "audioPath": "audio/es/shopping_078.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈkodiɡo peiˈene/"
     },
     {
       "id": "shopping_079",
@@ -10744,7 +11803,8 @@
       "text": "pago sin contacto",
       "audioPath": "audio/es/shopping_079.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈpaɡo sin konˈtakto/"
     },
     {
       "id": "emergency_045",
@@ -10759,8 +11819,10 @@
       "example": {
         "id": "es-es_emergency_045_example",
         "zh": "请带我去最近的急诊室。",
-        "text": "Lléveme a urgencias, por favor."
-      }
+        "text": "Lléveme a urgencias, por favor.",
+        "pronunciation": "/ˈʝebeme a uɾˈxenθjas poɾ faˈboɾ/"
+      },
+      "pronunciation": "/uɾˈxenθjas/"
     },
     {
       "id": "emergency_046",
@@ -10775,8 +11837,10 @@
       "example": {
         "id": "es-es_emergency_046_example",
         "zh": "我的手机被盗了。",
-        "text": "Me han robado el móvil."
-      }
+        "text": "Me han robado el móvil.",
+        "pronunciation": "/me ˈan roˈbado el ˈmobil/"
+      },
+      "pronunciation": "/roˈbado/"
     },
     {
       "id": "emergency_047",
@@ -10791,8 +11855,10 @@
       "example": {
         "id": "es-es_emergency_047_example",
         "zh": "失物招领处在哪里？",
-        "text": "¿Dónde está la oficina de objetos perdidos?"
-      }
+        "text": "¿Dónde está la oficina de objetos perdidos?",
+        "pronunciation": "/ˈdonde esˈta la ofiˈθina de obˈxetos peɾˈdidos/"
+      },
+      "pronunciation": "/obˈxetos peɾˈdidos/"
     },
     {
       "id": "emergency_048",
@@ -10807,8 +11873,10 @@
       "example": {
         "id": "es-es_emergency_048_example",
         "zh": "我呼吸困难。",
-        "text": "Me cuesta respirar."
-      }
+        "text": "Me cuesta respirar.",
+        "pronunciation": "/me ˈkwesta respiˈɾaɾ/"
+      },
+      "pronunciation": "/difikulˈtad paɾa respiˈɾaɾ/"
     },
     {
       "id": "emergency_049",
@@ -10823,8 +11891,10 @@
       "example": {
         "id": "es-es_emergency_049_example",
         "zh": "我胸口很痛。",
-        "text": "Tengo un dolor fuerte en el pecho."
-      }
+        "text": "Tengo un dolor fuerte en el pecho.",
+        "pronunciation": "/ˈteŋɡo ˈun doˈloɾ ˈfweɾte en el ˈpetʃo/"
+      },
+      "pronunciation": "/doˈloɾ en el ˈpetʃo/"
     },
     {
       "id": "emergency_050",
@@ -10839,8 +11909,10 @@
       "example": {
         "id": "es-es_emergency_050_example",
         "zh": "他刚才昏倒了。",
-        "text": "Esta persona acaba de desmayarse."
-      }
+        "text": "Esta persona acaba de desmayarse.",
+        "pronunciation": "/ˈesta peɾˈsona aˈkaba de desmaˈʝaɾse/"
+      },
+      "pronunciation": "/desmaˈʝaɾse/"
     },
     {
       "id": "expressions_048",
@@ -10851,7 +11923,8 @@
       "text": "eSIM",
       "audioPath": "audio/es/expressions_048.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/e ˈsim/"
     },
     {
       "id": "expressions_049",
@@ -10862,7 +11935,8 @@
       "text": "tarjeta SIM",
       "audioPath": "audio/es/expressions_049.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/taɾˈxeta eseiˈeme/"
     },
     {
       "id": "expressions_050",
@@ -10873,7 +11947,8 @@
       "text": "recarga",
       "audioPath": "audio/es/expressions_050.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/reˈkaɾɡa/"
     },
     {
       "id": "expressions_051",
@@ -10884,7 +11959,8 @@
       "text": "saldo",
       "audioPath": "audio/es/expressions_051.mp3",
       "direction": "traveler-says",
-      "intent": "recognize"
+      "intent": "recognize",
+      "pronunciation": "/ˈsaldo/"
     }
   ]
 });
