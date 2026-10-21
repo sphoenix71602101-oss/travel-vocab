@@ -10,7 +10,6 @@
         beginner: ["languages/jp-ja/beginner/data.js", "languages/jp-ja/beginner/module.js"]
       },
       hero: { mobile: "images/heroes/jp-mobile.webp", wide: "images/heroes/jp-wide.webp" },
-      beginnerMeta: {"curriculumVersion":2,"lessonIds":["a","ka","sa","ta","na","ha","ma","ya","ra","wa","voiced-ks","voiced-th","contracted","small-tsu","long-vowel","word-flow","mixed-scripts","sentence-particles"],"summary":"从声音开始，尝试读出日语"},
       mapPosition: { x: 86, y: 42 },
       preparation: {
         included: [
@@ -29,10 +28,9 @@
       lang: "en", status: "available", countryCode: "US", flagSrc: "icons/flags/us.png",
       resources: {
         pack: "languages/us-en/pack.js",
-        beginner: ["core/reading-course.js", "languages/us-en/beginner/data.js", "languages/us-en/beginner/audio.js", "languages/us-en/beginner/module.js"]
+        beginner: ["languages/us-en/beginner/data.js", "languages/us-en/beginner/audio.js", "languages/us-en/beginner/module.js"]
       },
       hero: { mobile: "images/heroes/us-mobile.webp", wide: "images/heroes/us-wide.webp" },
-      beginnerMeta: {"curriculumVersion":2,"lessonIds":["en-01","en-02","en-03","en-04","en-05","en-06","en-07","en-08","en-09","en-10","en-11","en-12"],"summary":"从声音开始，尝试读出英语"},
       mapPosition: { x: 19, y: 40 },
       preparation: {
         included: [
@@ -53,8 +51,7 @@
         pack: "languages/kr-ko/pack.js",
         beginner: ["languages/kr-ko/beginner/data.js", "languages/kr-ko/beginner/audio.js", "languages/kr-ko/beginner/module.js"]
       },
-      hero: { mobile: "images/heroes/kr-mobile.webp", wide: "images/heroes/kr-wide.webp" },
-      beginnerMeta: {"curriculumVersion":2,"lessonIds":["ko-01","ko-02","ko-03","ko-04","ko-05","ko-06","ko-07","ko-08","ko-09","ko-10","ko-11","ko-12","ko-13","ko-14","ko-15"],"summary":"从声音开始，尝试读出韩语"},
+      hero: { mobile: "images/heroes/kr-mobile.png", wide: "images/heroes/kr-wide.png" },
       mapPosition: { x: 82, y: 44 },
       preparation: {
         included: [
@@ -75,8 +72,7 @@
         pack: "languages/ru-ru/pack.js",
         beginner: ["languages/ru-ru/beginner/data.js", "languages/ru-ru/beginner/audio.js", "languages/ru-ru/beginner/module.js"]
       },
-      hero: { mobile: "images/heroes/ru-mobile.webp", wide: "images/heroes/ru-wide.webp" },
-      beginnerMeta: {"curriculumVersion":2,"lessonIds":["ru-01","ru-02","ru-03","ru-04","ru-05","ru-06","ru-07","ru-08","ru-09","ru-10","ru-11","ru-12","ru-13","ru-14","ru-15"],"summary":"从声音开始，尝试读出俄语"},
+      hero: { mobile: "images/heroes/ru-mobile.png", wide: "images/heroes/ru-wide.png" },
       mapPosition: { x: 68, y: 27 },
       preparation: {
         included: [
@@ -95,10 +91,9 @@
       lang: "es", status: "available", countryCode: "ES", flagSrc: "icons/flags/es.png",
       resources: {
         pack: "languages/es-es/pack.js",
-        beginner: ["core/reading-course.js", "languages/es-es/beginner/data.js", "languages/es-es/beginner/audio.js", "languages/es-es/beginner/module.js"]
+        beginner: ["languages/es-es/beginner/data.js", "languages/es-es/beginner/audio.js", "languages/es-es/beginner/module.js"]
       },
       hero: { mobile: "images/heroes/es-mobile.jpg", wide: "images/heroes/es-wide.jpg" },
-      beginnerMeta: {"curriculumVersion":2,"lessonIds":["es-01","es-02","es-03","es-04","es-05","es-06","es-07","es-08","es-09","es-10","es-11","es-12"],"summary":"从声音开始，尝试读出西班牙语"},
       mapPosition: { x: 47, y: 42 },
       preparation: {
         included: [

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="语见世界帮助语言基础有限的人，只学这趟旅行真正用得上的日语、英语、韩语或西班牙语。">
+  <meta name="application-name" content="语见世界">
+  <meta name="theme-color" content="#f5f9ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="语见世界">
+  <meta property="og:title" content="语见世界 · 旅行语言学习">
+  <meta property="og:description" content="不学完整一门语言，只学这趟旅行真正用得上的。">
+  <meta property="og:type" content="website">
+  <title>语见世界 · 旅行语言学习</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#view">跳到主要内容</a>
+  <div class="app" id="appShell">
+    <main id="view" class="view" tabindex="-1">
+      <noscript>请启用 JavaScript 后使用语见世界。</noscript>
+    </main>
+
+    <footer class="site-footer" aria-label="网站备案信息">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备2026159974号-1</a>
+    </footer>
+
+    <nav class="bottom-nav" id="bottomNav" aria-label="主要导航">
+      <a class="nav-item" href="#/home" data-tab="home">
+        <span class="nav-icon" aria-hidden="true"><img class="nav-icon-normal" src="icons/navigation/home.png" alt=""><img class="nav-icon-active" src="icons/navigation/home-active.png" alt=""></span>
+        <span class="nav-label">首页</span>
+      </a>
+      <a class="nav-item" href="#/review" data-tab="review">
+        <span class="nav-icon" aria-hidden="true"><img class="nav-icon-normal" src="icons/navigation/review.png" alt=""><img class="nav-icon-active" src="icons/navigation/review-active.png" alt=""></span>
+        <span class="nav-label">复习</span>
+      </a>
+      <a class="nav-item" href="#/tools" data-tab="tools">
+        <span class="nav-icon" aria-hidden="true"><img class="nav-icon-normal" src="icons/navigation/tools.png" alt=""><img class="nav-icon-active" src="icons/navigation/tools-active.png" alt=""></span>
+        <span class="nav-label">工具</span>
+      </a>
+      <a class="nav-item" href="#/me" data-tab="me">
+        <span class="nav-icon" aria-hidden="true"><img class="nav-icon-normal" src="icons/navigation/me.png" alt=""><img class="nav-icon-active" src="icons/navigation/me-active.png" alt=""></span>
+        <span class="nav-label">我的</span>
+      </a>
+    </nav>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="core/content-registry.js"></script>
+  <script src="core/destinations.js"></script>
+  <script src="core/beginner-module-registry.js"></script>
+  <script src="core/emergency-card.js"></script>
+  <script src="core/favorites.js"></script>
+  <script src="core/footprints.js"></script>
+  <script src="core/checklist.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
