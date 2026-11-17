@@ -6,7 +6,9 @@
   --shadow:0 6px 20px rgba(37,76,116,.08);--shadow-up:0 15px 38px rgba(37,76,116,.12);
   --radius-sm:12px;--radius-md:17px;--radius-lg:24px;--nav-height:66px;--nav-bottom-gap:calc(10px + env(safe-area-inset-bottom));
 }
-*{box-sizing:border-box}html{min-width:320px;background:var(--bg)}
+*{box-sizing:border-box}html{min-width:320px;background:var(--bg);scrollbar-gutter:stable}
+/* Keep fixed navigation width stable when switching between short and long pages. */
+@supports not (scrollbar-gutter:stable){html{overflow-y:scroll}}
 body{min-width:320px;min-height:100vh;min-height:100dvh;margin:0;color:var(--ink);background:radial-gradient(circle at 50% -8rem,#dceeff 0,transparent 31rem),var(--bg);font-family:"Avenir Next","SF Pro Text","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 button,a,input,select{font:inherit;touch-action:manipulation}button{color:inherit}button,[role="button"],a{-webkit-tap-highlight-color:transparent}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,[tabindex="-1"]:focus-visible{outline:3px solid rgba(39,136,245,.34);outline-offset:2px}
@@ -17,9 +19,18 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,[t
 .bottom-nav{position:fixed;z-index:40;right:0;bottom:var(--nav-bottom-gap);left:0;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;width:min(calc(100% - 24px),820px);min-height:var(--nav-height);margin:auto;padding:6px 10px 5px;border:1px solid rgba(207,222,234,.92);border-radius:20px;background:rgba(255,255,255,.95);box-shadow:0 -8px 26px rgba(31,72,112,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .nav-item{position:relative;display:flex;min-width:0;min-height:54px;align-items:center;justify-content:center;flex-direction:column;gap:2px;border-radius:14px;color:#747474;text-decoration:none;transition:color 160ms ease,background 160ms ease,transform 100ms ease}.nav-item>svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.nav-icon{position:relative;display:block;width:21px;height:21px;flex:0 0 21px}.nav-icon img{position:absolute;inset:0;display:block;width:21px;height:21px;object-fit:contain;transition:opacity 160ms ease}.nav-icon-normal{opacity:.62}.nav-icon-active{opacity:0}.nav-label{font-size:.66rem;font-weight:700}.nav-item:active{transform:scale(.96)}.nav-item[aria-current="page"]{color:#2b2b2b;background:#f0f0f0}.nav-item[aria-current="page"]>svg{stroke-width:2.15}.nav-item[aria-current="page"] .nav-icon-normal{opacity:0}.nav-item[aria-current="page"] .nav-icon-active{opacity:1}
 
+/* Short browsing pages keep registration below the first viewport. */
+body:not(.is-immersive) #view>.tools-page,
+body:not(.is-immersive) #view>.review-page,
+body:not(.is-immersive) #view>.favorites-page,
+body:not(.is-immersive) #view>.inner-scene{min-height:100vh;min-height:100dvh}
+
 /* Registration footer: flows above the reserved navigation area. */
-.site-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 16px;margin-top:24px;padding:8px 0;color:var(--muted);text-align:center;font-size:14px;line-height:1.6}
+.site-footer{display:flex;flex-direction:column;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 16px;margin-top:24px;padding:8px 0;color:var(--muted);text-align:center;font-size:14px;line-height:1.6}
 .site-footer a{display:inline-flex;min-height:44px;max-width:100%;align-items:center;justify-content:center;padding:8px 4px;color:inherit;text-decoration:none;overflow-wrap:anywhere}
+.site-footer .public-security-link{gap:6px}
+.site-footer .public-security-link img{display:block;flex:none;width:auto;height:20px;object-fit:contain}
+.site-footer .public-security-link span{min-width:0}
 .site-footer a:hover{text-decoration:underline;text-underline-offset:3px}
 .site-footer a:focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px;border-radius:4px}
 .is-immersive .site-footer{display:none}

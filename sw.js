@@ -4,11 +4,16 @@
 // load on demand and use the browser's ordinary HTTP cache.
 const CACHE_PREFIX = "yujian-world-shell-";
 const LEGACY_CACHE_PREFIX = "travel-vocab-shell-";
-const CACHE_NAME = `${CACHE_PREFIX}v77`;
+const CACHE_NAME = `${CACHE_PREFIX}v114`;
 const APP_SHELL = [
   "./",
   "index.html",
   "styles.css",
+  "home.css",
+  "review.css",
+  "tools.css",
+  "me.css",
+  "inner.css",
   "core/content-registry.js",
   "core/destinations.js",
   "core/beginner-module-registry.js",
@@ -65,3 +70,4 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
+

@@ -15,6 +15,10 @@
   const MAIN_TABS = new Set(["home", "review", "tools", "me"]);
   const DESTINATION_OPTIONS = window.TRAVEL_DESTINATIONS.all;
   const DEFAULT_HERO_IMAGE = window.TRAVEL_DESTINATIONS.defaultHero;
+  // Home and review display priority only; preserve content-pack order and course progress.
+  const HOME_SCENE_PRIORITY = Object.freeze({
+    basics: 0, airport: 1, transport: 2, hotel: 3, food: 4, directions: 5, shopping: 6, emergency: 7
+  });
   const SCENE_ICON_PATHS = Object.freeze({
     airport: "icons/scenes/airport.png",
     transport: "icons/scenes/transport.png",
@@ -39,6 +43,7 @@
     deleteData: "icons/ui/delete-data.png",
     warning: "icons/ui/warning.png"
   });
+  const HOME_READING_ICON_SVG = '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M12 7h16a8 8 0 0 1 8 8v9a8 8 0 0 1-8 8H16l-7 4v-5a8 8 0 0 1-5-7v-9a8 8 0 0 1 8-8Z" fill="var(--home-reading-symbol-fill, #CADFC0)"/><path d="M11 19v4m6-10v16m6-13v10m6-7v4" stroke="var(--home-reading-symbol-stroke, #3C6D50)" stroke-width="2.4" stroke-linecap="round"/></svg>';
   const SPEAKER_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   const FAVORITE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.78 5.63 6.22.9-4.5 4.39 1.06 6.2L12 17.2l-5.56 2.92 1.06-6.2L3 9.53l6.22-.9L12 3Z"/></svg>';
   const ACTION_ARROW_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -74,6 +79,8 @@
   const loadedScripts = new Set();
   let routeRequest = 0;
   let disposeTranslator = null;
+  let innerDockObserver = null;
+  const innerSceneScroll = new Map();
 
   function loadScript(path) {
     if (loadedScripts.has(path)) return Promise.resolve();
@@ -620,7 +627,12 @@
     }
   }
   function updateShell(tab, immersive = false) {
+    innerDockObserver?.disconnect();
+    innerDockObserver = null;
+    document.body.style.removeProperty("--inner-dock-height");
+    document.body.classList.remove("is-review-page", "is-tools-page", "is-me-page", "is-inner-page", "is-inner-focus");
     document.body.classList.toggle("is-immersive", immersive);
+    document.body.classList.toggle("is-home-page", !immersive && parseRoute().name === "home");
     bottomNav.hidden = immersive;
     if (immersive) return;
     bottomNav.querySelectorAll(".nav-item").forEach((item) => {
@@ -629,10 +641,10 @@
     });
   }
   function focusDestinationPicker() {
-    const picker = view.querySelector("#destinationPicker");
-    if (!picker) return;
-    picker.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-    picker.focus({ preventScroll: true });
+    const dialog = view.querySelector("#destinationOptions");
+    if (!dialog) return;
+    if (!dialog.open) dialog.showModal();
+    view.querySelector('[data-destination][aria-pressed="true"]')?.focus();
   }
   function openDestinationPicker(message) {
     state.destinationOpen = true;
@@ -708,7 +720,8 @@
     const problems = validateData();
     if (problems.length) { renderError(problems); return; }
     const route = parseRoute();
-    if (route.legacy) { navigatePath("me/footprints", true); return; }
+    // Footprints are temporarily closed; keep their data and implementation for restoration.
+    if (route.name === "footprints") { navigatePath("me", true); return; }
     if (!state.destinationId && ["review", "favorites", "scene", "learn", "beginner", "emergency-card-form", "emergency-card-preview"].includes(route.name)) {
       requireDestination();
       return;
@@ -737,6 +750,10 @@
     const mastered = words.filter((entry) => learning.byId[entry.id]?.status === "mastered").length;
     return { total: words.length, introduced, mastered };
   }
+  function sceneMasteryMeter(mastered, total, className) {
+    const percentage = total ? Math.max(0, Math.min(100, mastered / total * 100)) : 0;
+    return `<span class="${className}-group" aria-hidden="true"><span class="scene-meter-value">${mastered}/${total}</span><span class="${className}"><i style="width:${percentage}%"></i></span></span>`;
+  }
   function situationProgress(sceneId, situationId, learning = loadLearning()) {
     const words = situationWords(sceneId, situationId);
     const introduced = words.filter((entry) => learning.byId[entry.id]?.status === "introduced").length;
@@ -762,94 +779,85 @@
       if (progress.mastered === progress.total) lastSituation = firstIncompleteSituation(lastScene, learning);
       if (!lastSituation) lastScene = null;
     }
-    const resumeProgress = lastScene && lastSituation
-      ? situationProgress(lastScene.id, lastSituation.id, learning)
-      : null;
-    const resumePercentage = resumeProgress?.total
-      ? Math.round(resumeProgress.mastered / resumeProgress.total * 100)
-      : 0;
-    const cards = scenePacks().map((scene) => {
+    const hasResume = Boolean(lastScene && lastSituation);
+    const resumeProgress = hasResume ? situationProgress(lastScene.id, lastSituation.id, learning) : null;
+    const resumePercentage = resumeProgress?.total ? Math.round(resumeProgress.mastered / resumeProgress.total * 100) : 0;
+    const homeIcons = { ...SCENE_ICON_PATHS, hotel: "icons/scenes/home-hotel.png", food: "icons/scenes/home-food.png", shopping: "icons/scenes/home-shopping.png" };
+    const homeScenes = [...scenePacks()].sort((a, b) =>
+      (HOME_SCENE_PRIORITY[a.id] ?? 99) - (HOME_SCENE_PRIORITY[b.id] ?? 99));
+    const cards = homeScenes.map((scene) => {
       const progress = sceneProgress(scene.id, learning);
-      const percentage = progress.total ? Math.round(progress.mastered / progress.total * 100) : 0;
-      return `<button class="category-card scene-card scene-${escapeHtml(scene.id)}" type="button" data-scene="${escapeHtml(scene.id)}">
-        <span class="category-icon" aria-hidden="true">${sceneIcon(scene.id)}</span>
-        <span class="category-copy"><strong>${escapeHtml(scene.name)}</strong><small>${escapeHtml(scene.homeTopics.join("、"))}</small>
-          <span class="scene-progress-copy">${destination ? `已掌握 ${percentage}%` : "选择旅程后记录"}</span>
-          <span class="mini-progress" role="progressbar" aria-label="${escapeHtml(scene.name)}掌握进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${destination ? percentage : 0}"><i style="width:${destination ? percentage : 0}%"></i></span>
-        </span>
+      const status = progress.mastered ? `已掌握 ${progress.mastered} / ${progress.total} 条` : progress.introduced ? "学习中" : "";
+      return `<button class="home-c__scene" type="button" data-scene="${escapeHtml(scene.id)}" aria-label="${escapeHtml(`${scene.name}，${scene.homeTopics.join('、')}${status ? `，${status}` : ''}`)}">
+        <span class="home-c__scene-main"><span class="home-c__scene-icon"><img src="${homeIcons[scene.id] || homeIcons.basics}" width="38" height="38" alt="" loading="lazy"></span><span class="home-c__scene-copy"><strong>${escapeHtml(scene.name)}</strong><span class="home-c__topics">${scene.homeTopics.slice(0, 3).map(topic => `<span>${escapeHtml(topic)}</span>`).join("")}</span></span></span>
+        <span class="home-c__scene-end">${status ? sceneMasteryMeter(progress.mastered, progress.total, "home-c__scene-meter") : ""}<img src="icons/ui/home-forward.png" width="16" height="16" alt=""></span>
       </button>`;
     }).join("");
     const destinationCards = DESTINATION_OPTIONS.map((item) => {
       const available = item.status === "available";
       const selected = item.id === state.destinationId;
-      return `<button class="destination-card${selected ? " selected" : ""}" type="button" data-destination="${item.id}" aria-label="${escapeHtml(`${item.country}，${item.language}${available ? selected ? "，当前目的地" : "，可学习" : "，即将开放"}`)}" ${available ? `aria-pressed="${selected}"` : "disabled"}>
-        <span class="destination-code destination-flag" aria-hidden="true"><img src="${item.flagSrc}" width="384" height="256" alt=""></span>
-        <span class="destination-card-copy"><strong>${escapeHtml(item.country)}</strong><small>${escapeHtml(item.language)} · ${escapeHtml(item.nativeLabel)}</small><em>${available ? selected ? "当前目的地" : "可学习" : "即将开放"}</em></span>
-        ${selected ? '<span class="destination-check" aria-hidden="true">✓</span>' : ""}
+      return `<button class="home-c__destination-option" type="button" data-destination="${item.id}" ${available ? `aria-pressed="${selected}"` : "disabled"}>
+        <img src="${item.flagSrc}" width="32" height="24" alt=""><span><strong>${escapeHtml(item.country)}</strong><small>${escapeHtml(item.language)} · ${escapeHtml(item.nativeLabel)}</small></span>${selected ? '<span class="home-c__selected">已选择</span>' : ''}
       </button>`;
     }).join("");
-    const destinationTrigger = destination
-      ? `<span class="destination-code destination-flag" aria-hidden="true"><img src="${destination.flagSrc}" width="384" height="256" alt=""></span><span class="destination-trigger-copy"><strong>${escapeHtml(destination.country)}</strong><small>${escapeHtml(destination.language)} · ${escapeHtml(destination.nativeLabel)}</small></span>`
-      : `<span class="destination-code empty" aria-hidden="true">--</span><span class="destination-trigger-copy"><strong>选择目的地和语言</strong><small>日本、美国、西班牙及更多目的地</small></span>`;
-    const hasResume = Boolean(lastScene && lastSituation);
     const learningTitle = hasResume ? "继续学习" : "开始学习";
-    const learningSubtitle = hasResume
-      ? `${lastScene.name} · ${lastSituation.name} · 已掌握 ${resumePercentage}%`
-      : "从实用场景出发，轻松掌握旅行外语";
-    const learningSubtitleMarkup = hasResume
-      ? `${escapeHtml(lastScene.name)} · ${escapeHtml(lastSituation.name)}<span class="quick-entry-progress">已掌握 ${resumePercentage}%</span>`
-      : escapeHtml(learningSubtitle);
-    const learningLabel = !destination
-      ? "开始学习，请先选择目的地和语言"
-      : hasResume
-        ? `继续学习，${learningSubtitle}`
-        : "开始学习，从旅行场景中选择学习内容";
-    const continueContent = `<button class="quick-entry ${hasResume ? "continue-entry" : "start-entry"}" type="button" data-continue aria-label="${escapeHtml(learningLabel)}">
-      <span class="quick-entry-copy"><strong>${learningTitle}</strong><span class="quick-entry-subtitle">${learningSubtitleMarkup}</span></span>
-      <span class="quick-entry-arrow" aria-hidden="true">${ACTION_ARROW_SVG}</span>
-    </button>`;
+    const courseTitle = hasResume ? `${lastScene.name} · ${lastSituation.name}` : destination ? "为旅途，学会第一句" : "你的旅程，从这里开始";
+    const learningLabel = !destination ? "选择目的地和语言" : hasResume ? `继续学习，${courseTitle}` : "开始学习，从旅行场景中选择学习内容";
     const beginner = loadBeginnerState();
     const beginnerModule = window.TRAVEL_BEGINNER?.get(currentPack()?.features?.beginnerModule);
-    const beginnerSubtitle = beginnerModule
-      ? beginnerModule.getHomeSummary(beginner.packs[currentPack().id])
-      : destination ? "课程筹备中" : "选择目的地后开始";
-    view.innerHTML = `<div class="home page-enter">
-      <div class="brand-hero" aria-hidden="true">
-        <picture>
-          <source media="(min-width:560px)" srcset="${heroImage.wide}">
-          <img class="brand-hero-image${destination?.id === "us" ? " hero-image-us" : ""}" src="${heroImage.mobile}" alt="" width="900" height="480" loading="eager" decoding="async" fetchpriority="high">
-        </picture>
+    const beginnerSubtitle = beginnerModule ? beginnerModule.getHomeSummary(beginner.packs[currentPack().id]) : destination ? "课程筹备中" : "选择目的地后开始";
+    const dimensions = { default: [[900,480],[1600,456]], jp: [[900,480],[1600,456]], us: [[900,480],[1600,456]], kr: [[900,480],[1600,456]], es: [[1200,640],[1640,547]], ru: [[1717,916],[2348,670]] }[destination?.id || "default"];
+    view.innerHTML = `<div class="home home-c">
+      <h1 class="sr-only">${destination ? `下一站，${escapeHtml(destination.country)}。` : "下一站，想去哪里？"}</h1>
+      <div class="home-c__hero" aria-hidden="true"><picture><source media="(min-width:768px)" srcset="${heroImage.wide}" width="${dimensions[1][0]}" height="${dimensions[1][1]}"><img src="${heroImage.mobile}" alt="" width="${dimensions[0][0]}" height="${dimensions[0][1]}" decoding="async" fetchpriority="high"></picture></div>
+      <div class="home-c__hero-inner" id="destinationPicker">
+        <button class="destination-trigger home-c__destination-toggle" type="button" data-toggle-destinations aria-haspopup="dialog" aria-expanded="${state.destinationOpen}" aria-controls="destinationOptions">${destination ? `<img src="${destination.flagSrc}" width="24" height="18" alt=""><span>${escapeHtml(destination.country)} · ${escapeHtml(destination.language)}</span>` : '<span>选择目的地</span>'}<span class="home-c__chevron" aria-hidden="true"></span></button>
       </div>
-      <section class="destination-picker${state.destinationOpen ? " open" : ""}" id="destinationPicker" tabindex="-1" aria-labelledby="destinationPickerTitle">
-        <div class="destination-picker-copy"><span class="eyebrow">当前旅程</span><h2 id="destinationPickerTitle">${destination ? `${escapeHtml(destination.country)} · ${escapeHtml(destination.language)}` : "打算去哪？"}</h2><p>${destination ? "切换目的地会同步切换学习语言和进度。" : "选择目的地，学习当地真正用得上的表达。"}</p></div>
-        <button class="destination-trigger" type="button" data-toggle-destinations aria-expanded="${state.destinationOpen}" aria-controls="destinationOptions">${destinationTrigger}<span class="destination-chevron" aria-hidden="true">⌄</span></button>
-        <div class="destination-options" id="destinationOptions" aria-label="选择目的地和语言" ${state.destinationOpen ? "" : "hidden"}>
-          <div class="destination-strip">${destinationCards}</div>
-          <p>左右滑动查看更多目的地</p>
-        </div>
-      </section>
-      <section class="home-quick-actions" aria-label="学习入口">${continueContent}<button class="quick-entry beginner-entry" type="button" data-beginner aria-label="旅行认读，${escapeHtml(beginnerSubtitle)}"><span class="quick-entry-copy"><strong>旅行认读</strong><span class="quick-entry-subtitle">看见当地文字，也能听懂、读懂、用上</span></span><span class="quick-entry-arrow" aria-hidden="true">${ACTION_ARROW_SVG}</span></button></section>
-      <div class="section-heading" id="sceneHeading" tabindex="-1"><div><h2>旅行场景</h2></div><span>${scenePacks().length} 个场景</span></div>
-      <div class="category-grid" id="sceneList">${cards}</div>
+      <div class="home-c__content">
+        <section class="home-c__learning" aria-labelledby="homeCourseTitle"><div class="home-c__learning-copy"><p class="home-c__eyebrow">${hasResume ? '<span>上次学到</span>' : ''}<span>${destination ? `${escapeHtml(destination.country)} · ${escapeHtml(destination.language)}` : '选择目的地'}</span></p><h2 id="homeCourseTitle">${escapeHtml(courseTitle)}</h2></div>
+          <div class="home-c__learning-actions">${hasResume ? `<div class="home-c__progress"><span class="home-c__progress-track" role="progressbar" aria-label="当前情境已掌握条数" aria-valuemin="0" aria-valuemax="${resumeProgress.total}" aria-valuenow="${resumeProgress.mastered}"><i style="width:${resumePercentage}%"></i></span><span>已掌握 <b>${resumeProgress.mastered} / ${resumeProgress.total}</b></span></div>` : ''}<button class="home-c__primary${destination ? ' home-c__primary--art' : ''}" type="button" data-continue aria-label="${escapeHtml(learningLabel)}">${destination ? `<img class="home-c__learning-lettering" src="icons/ui/home-learning-${hasResume ? 'continue' : 'start'}.png" width="120" height="24" alt="${learningTitle} →">` : ''}<span>${destination ? learningTitle : '选择目的地'}</span><span aria-hidden="true">→</span></button></div>
+        </section>
+        <button class="home-c__reading" type="button" data-beginner aria-label="零基础认读，${destination ? `${escapeHtml(destination.language)}入门，` : ''}${escapeHtml(beginnerSubtitle)}"><span class="home-c__reading-main"><span class="home-c__reading-symbol" aria-hidden="true">${HOME_READING_ICON_SVG}</span><span class="home-c__reading-copy"><strong>零基础认读</strong><span>${destination ? `${escapeHtml(destination.language)}入门 · 看字学发音` : '选择目的地后开始'}</span></span></span><span class="home-c__reading-action${destination ? ' home-c__reading-action--art' : ''}">${destination ? '<img class="home-c__reading-lettering" src="icons/ui/home-reading-start.png" width="60" height="24" alt="开始 →"><span class="home-c__reading-action-text" aria-hidden="true">开始 →</span>' : '选择 <span aria-hidden="true">→</span>'}</span></button>
+        <section class="home-c__scenes" aria-labelledby="sceneTitle"><div class="home-c__section-heading" id="sceneHeading" tabindex="-1"><h2 id="sceneTitle">旅行场景</h2><span>自由选择，随时开始</span></div><div class="home-c__scene-list" id="sceneList">${cards || '<p class="home-c__empty">选好目的地，查看旅途会用到的旅行场景。</p>'}</div></section>
+      </div>
+      <dialog class="home-c__destination-dialog" id="destinationOptions" aria-labelledby="destinationPickerTitle"><div class="home-c__dialog-heading"><h2 id="destinationPickerTitle">下一站，想去哪里？</h2><button type="button" data-close-destinations aria-label="关闭目的地选择">×</button></div><p>选择目的地，同步切换学习语言。</p><div class="home-c__destination-list">${destinationCards}</div></dialog>
     </div>`;
-    view.querySelector("[data-toggle-destinations]").addEventListener("click", (event) => {
-      state.destinationOpen = !state.destinationOpen;
-      event.currentTarget.setAttribute("aria-expanded", String(state.destinationOpen));
-      view.querySelector("#destinationOptions").hidden = !state.destinationOpen;
-      view.querySelector("#destinationPicker").classList.toggle("open", state.destinationOpen);
-    });
+    const dialog = view.querySelector("#destinationOptions");
+    const trigger = view.querySelector("[data-toggle-destinations]");
+    const closeDestinations = () => { state.destinationOpen = false; dialog.close(); };
+    dialog.addEventListener("close", () => { state.destinationOpen = false; trigger.setAttribute("aria-expanded", "false"); if (trigger.isConnected && !levelSurveyOpen) trigger.focus({ preventScroll: true }); });
+    trigger.addEventListener("click", () => { state.destinationOpen = true; trigger.setAttribute("aria-expanded", "true"); focusDestinationPicker(); });
+    view.querySelector("[data-close-destinations]").addEventListener("click", closeDestinations);
+    dialog.addEventListener("click", (event) => { if (event.target !== dialog) return; const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) closeDestinations(); });
     view.querySelectorAll("[data-destination]:not(:disabled)").forEach((button) => button.addEventListener("click", async () => {
-      const destination = destinationById(button.dataset.destination);
-      if (!destination || destination.id === state.destinationId) return;
+      const next = destinationById(button.dataset.destination);
+      if (!next) return;
+      if (next.id === state.destinationId) { closeDestinations(); return; }
+      const request = routeRequest;
       button.disabled = true;
-      try { await loadLanguage(destination.contentPackId); }
-      catch (error) { button.disabled = false; showToast("语言内容加载失败，请检查网络后重试"); return; }
-      if (!saveDestination(destination.id)) return;
-      const nextDestination = selectedDestination();
+      try { await loadLanguage(next.contentPackId); }
+      catch (error) { if (button.isConnected) { button.disabled = false; showToast("语言内容加载失败，请检查网络后重试"); } return; }
+      if (request !== routeRequest || !button.isConnected) return;
+      if (!saveDestination(next.id)) { button.disabled = false; return; }
+      state.destinationOpen = false;
+      dialog.close();
       renderHome();
-      showToast(`已切换到${nextDestination.country} · ${nextDestination.language}`);
+      view.querySelector("[data-toggle-destinations]").focus({ preventScroll: true });
+      showToast(`已切换到${next.country} · ${next.language}`);
       maybeAskLevel();
     }));
+    const learningLettering = view.querySelector(".home-c__learning-lettering");
+    if (learningLettering) {
+      const showLearningText = () => learningLettering.parentElement.classList.add("home-c__primary--fallback");
+      learningLettering.addEventListener("error", showLearningText, { once: true });
+      if (learningLettering.complete && !learningLettering.naturalWidth) showLearningText();
+    }
+    const readingLettering = view.querySelector(".home-c__reading-lettering");
+    if (readingLettering) {
+      const showReadingText = () => readingLettering.parentElement.classList.add("home-c__reading-action--fallback");
+      readingLettering.addEventListener("error", showReadingText, { once: true });
+      if (readingLettering.complete && !readingLettering.naturalWidth) showReadingText();
+    }
     view.querySelector("[data-beginner]").addEventListener("click", () => {
       if (!destination) requireDestination();
       else if (loadBeginnerState().levels[destination.id] === "later") showLevelSurvey(true);
@@ -857,23 +865,12 @@
     });
     view.querySelector("[data-continue]").addEventListener("click", () => {
       if (!destination) requireDestination();
-      else if (lastScene && lastSituation) navigatePath(`learn/${lastScene.id}/${lastSituation.id}`);
-      else {
-        const heading = view.querySelector("#sceneHeading");
-        heading.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-        heading.focus({ preventScroll: true });
-      }
+      else if (hasResume) navigatePath(`learn/${lastScene.id}/${lastSituation.id}`);
+      else { const heading = view.querySelector("#sceneHeading"); heading.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); heading.focus({ preventScroll: true }); }
     });
-    view.querySelectorAll("[data-scene]").forEach((button) => button.addEventListener("click", () => {
-      if (!destination) requireDestination();
-      else navigatePath(`scene/${button.dataset.scene}`);
-    }));
-    if (pendingDestinationFocus) {
-      pendingDestinationFocus = false;
-      requestAnimationFrame(focusDestinationPicker);
-    } else {
-      scrollToTop();
-    }
+    view.querySelectorAll("[data-scene]").forEach((button) => button.addEventListener("click", () => { if (!destination) requireDestination(); else navigatePath(`scene/${button.dataset.scene}`); }));
+    if (pendingDestinationFocus || state.destinationOpen) { pendingDestinationFocus = false; requestAnimationFrame(focusDestinationPicker); }
+    else scrollToTop();
     if (destination && !beginner.levels[destination.id]) requestAnimationFrame(maybeAskLevel);
   }
 
@@ -912,47 +909,91 @@
       return progress.mastered < progress.total;
     }) || null;
   }
+  function innerSoundMark() {
+    return `<span class="inner-sound" aria-hidden="true">${innerPngIcon("audio-wave", "听")}</span>`;
+  }
+  function innerPngIcon(name, fallback) {
+    return `<span class="inner-png-icon" aria-hidden="true"><img src="icons/ui/${name}.png" alt="" width="20" height="20"><span class="inner-icon-fallback">${fallback}</span></span>`;
+  }
+  function bindInnerIcons(root = view) {
+    root.querySelectorAll(".inner-png-icon img").forEach((img) => {
+      const fallback = () => img.parentElement.classList.add("image-failed");
+      img.addEventListener("error", fallback, { once: true });
+      if (img.complete && !img.naturalWidth) fallback();
+    });
+  }
+  function innerAudioButton(entry, text = "") {
+    return audioButtonHtml(entry).replace('class="speak-btn"', `class="speak-btn inner-audio${text ? " inner-audio-label" : ""}"`)
+      .replace(SPEAKER_SVG, innerSoundMark() + (text ? `<span>${escapeHtml(text)}</span>` : ""));
+  }
+  function innerFavoriteButton(entry) {
+    return favoriteButtonHtml(entry, "inner-favorite").replace(FAVORITE_SVG,
+      '<img src="icons/ui/favorite.png" alt=""><span class="inner-unsaved">收藏</span><span class="inner-saved">已收藏</span>');
+  }
+  function innerExample(entry, open = false) {
+    if (!entry.example) return "";
+    return `<details class="inner-example"${open ? " open" : ""}><summary>在旅途中这样说</summary>${exampleHtml(entry, true).replaceAll(SPEAKER_SVG, innerSoundMark())}</details>`;
+  }
+  function innerProgress(current, total, label) {
+    return `<div class="inner-track" role="progressbar" aria-label="${escapeHtml(label)}" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${current}">${Array.from({ length: total }, (_, index) => `<i class="${index < current ? "done" : ""}"></i>`).join("")}</div>`;
+  }
+  function activateInnerPage() {
+    document.body.classList.add("is-inner-page");
+    bindInnerIcons();
+    const dock = view.querySelector(".inner-dock");
+    document.body.classList.toggle("is-inner-focus", Boolean(dock));
+    if (!dock) return;
+    const measure = () => {
+      if (dock.isConnected && document.body.classList.contains("is-inner-page")) {
+        document.body.style.setProperty("--inner-dock-height", `${dock.getBoundingClientRect().height}px`);
+      }
+    };
+    measure();
+    innerDockObserver = new ResizeObserver(measure);
+    innerDockObserver.observe(dock);
+  }
+  function innerLearningCard(entry, hint) {
+    return `<div class="inner-phase"><strong>${escapeHtml(hint)}</strong><span>听一听，跟着读</span></div>
+      <section class="recognition-card inner-word" tabindex="-1" aria-labelledby="recognitionWord">
+        <div class="inner-word-top"><span>${escapeHtml(langLabel())} · ${entry.kind === "phrase" ? "旅行短句" : "旅行词汇"}</span>${innerFavoriteButton(entry)}</div>
+        <h1 id="recognitionWord" lang="${escapeHtml(currentPack().locale)}">${escapeHtml(foreignText(entry))}</h1>
+        ${entry.pronunciation ? `<p class="inner-reading">${escapeHtml(entry.pronunciation)}</p>` : ""}
+        <p class="inner-meaning">${escapeHtml(entry.zh)}</p>${innerAudioButton(entry, "听发音")}
+      </section>${innerExample(entry, true)}`;
+  }
   function renderScene(sceneId) {
     stopSpeech();
     const scene = sceneById(sceneId);
-    if (!scene) {
-      showToast("找不到这个旅行场景");
-      navigatePath("home", true);
-      return;
-    }
+    if (!scene) { showToast("找不到这个旅行场景"); navigatePath("home", true); return; }
     const learning = loadLearning();
     const progress = sceneProgress(scene.id, learning);
-    const percentage = progress.total ? Math.round(progress.mastered / progress.total * 100) : 0;
     const next = firstIncompleteSituation(scene, learning);
+    const started = sceneWords(scene.id).some(entry => learning.byId[entry.id]);
     const situations = scene.situations.map((situation) => {
-      const situationState = situationProgress(scene.id, situation.id, learning);
-      const status = statusFor(situationState);
-      return `<button class="situation-row" type="button" data-situation="${escapeHtml(situation.id)}">
-        <span class="situation-status ${status.className}" aria-hidden="true">${status.mark}</span>
-        <span><strong>${escapeHtml(situation.name)}</strong><small>${status.label} · ${situationState.mastered}/${situationState.total}</small></span>
-        <span class="chevron" aria-hidden="true">›</span>
+      const value = situationProgress(scene.id, situation.id, learning);
+      const status = statusFor(value);
+      const active = next?.id === situation.id;
+      return `<button class="situation-row inner-course${active ? " current" : ""}" type="button" data-situation="${escapeHtml(situation.id)}" aria-label="${escapeHtml(situation.name)}，${status.label}，已掌握 ${value.mastered}/${value.total}">
+        <span><strong>${escapeHtml(situation.name)}</strong>${active ? `<small>${started ? "接着学" : "从这里开始"}</small>` : ""}</span>
+        <span class="inner-row-progress" aria-hidden="true"><span>${value.mastered}/${value.total}</span><i><b style="width:${value.total ? value.mastered / value.total * 100 : 0}%"></b></i></span><span class="inner-arrow" aria-hidden="true">›</span>
       </button>`;
     }).join("");
-    view.innerHTML = `<div class="scene-detail page-enter scene-${escapeHtml(scene.id)}">
-      <button class="back-link" type="button" data-back>‹ 返回首页</button>
-      <section class="scene-hero">
-        <span class="category-icon scene-hero-icon" aria-hidden="true">${sceneIcon(scene.id)}</span>
-        <div><span class="eyebrow">旅行语言学习包</span><h2>${escapeHtml(scene.name)}</h2><p>${escapeHtml(scene.description)}</p></div>
-        <div class="scene-total"><strong>已掌握 ${progress.mastered} / ${progress.total}</strong><span>${percentage}%</span></div>
-        <div class="progress-track" role="progressbar" aria-label="${escapeHtml(scene.name)}掌握进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percentage}"><span style="width:${percentage}%"></span></div>
-        <button class="primary-btn" type="button" data-scene-continue ${next ? "" : "disabled"}>${next ? "继续学习" : "这个场景已全部掌握"}</button>
-      </section>
-      <div class="section-heading"><div><span class="eyebrow">自由选择</span><h2>学习内容</h2></div><span>${scene.situations.length} 个小情境</span></div>
-      <div class="situation-list">${situations}</div>
+    view.innerHTML = `<div class="scene-detail page-enter scene-${escapeHtml(scene.id)} inner-page inner-scene">
+      <header class="inner-bar inner-scene-bar"><button class="inner-back" type="button" data-back>首页</button><span class="inner-bar-title">${escapeHtml(langLabel())}</span></header>
+      <div class="inner-scene-heading"><span aria-hidden="true">${sceneIcon(scene.id)}</span><div><h1>${escapeHtml(scene.name)}</h1><p>${escapeHtml(scene.description)}</p></div></div>
+      <div class="inner-overview"><span>已掌握 <strong>${progress.mastered} / ${progress.total}</strong></span><div class="inner-meter" role="progressbar" aria-label="${escapeHtml(scene.name)}掌握进度" aria-valuemin="0" aria-valuemax="${progress.total}" aria-valuenow="${progress.mastered}"><i style="width:${progress.total ? progress.mastered / progress.total * 100 : 0}%"></i></div></div>
+      <section class="inner-resume"><div><small>${next ? started ? "接着学" : "从这一组开始" : "场景学习完成"}</small><strong>${next ? escapeHtml(next.name) : "这些表达都已掌握"}</strong></div><button class="primary-btn" type="button" data-scene-continue${next ? "" : " disabled"}>${next ? started ? "继续学习" : "开始学习" : "已全部掌握"}</button></section>
+      <div class="inner-section-heading"><h2>情境目录</h2><span>${scene.situations.length} 个情境</span></div><div class="situation-list inner-course-list">${situations}</div>
     </div>`;
     view.querySelector("[data-back]").addEventListener("click", () => navigatePath("home"));
-    view.querySelector("[data-scene-continue]")?.addEventListener("click", () => {
-      if (next) navigatePath(`learn/${scene.id}/${next.id}`);
-    });
-    view.querySelectorAll("[data-situation]").forEach((button) => button.addEventListener("click", () => {
-      navigatePath(`learn/${scene.id}/${button.dataset.situation}`);
-    }));
-    scrollToTop();
+    const openSituation = id => {
+      innerSceneScroll.set(`${state.destinationId}:${scene.id}`, window.scrollY);
+      navigatePath(`learn/${scene.id}/${id}`);
+    };
+    view.querySelector("[data-scene-continue]").addEventListener("click", () => { if (next) openSituation(next.id); });
+    view.querySelectorAll("[data-situation]").forEach(button => button.addEventListener("click", () => openSituation(button.dataset.situation)));
+    activateInnerPage();
+    window.scrollTo({ top: innerSceneScroll.get(`${state.destinationId}:${scene.id}`) || 0, left: 0, behavior: "auto" });
   }
 
   function selectLearningBatch(sceneId, situationId) {
@@ -995,38 +1036,22 @@
     const entry = learning.batch[learning.index];
     const current = learning.index + 1;
     const total = learning.batch.length;
-    const progress = Math.round(current / total * 100);
-    view.innerHTML = `<div class="lesson page-enter">
-      <div class="quiz-top"><button class="text-btn" type="button" data-quit>退出</button><strong>${escapeHtml(situation.name)}</strong><span>${current} / ${total}</span></div>
-      <div class="progress-track" role="progressbar" aria-label="认识进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><span style="width:${progress}%"></span></div>
-      <section class="recognition-card" tabindex="-1" aria-labelledby="recognitionWord">
-        <div class="recognition-meta"><span class="question-meta">认识这句话</span>${favoriteButtonHtml(entry)}</div>
-        <div class="recognition-foreign"><h2 id="recognitionWord">${escapeHtml(foreignText(entry))}</h2>${audioButtonHtml(entry)}</div>
-        ${entry.pronunciation ? `<p class="recognition-reading">${escapeHtml(entry.pronunciation)}</p>` : ""}
-        <div class="recognition-divider"></div>
-        <strong class="recognition-zh">${escapeHtml(entry.zh)}</strong>
-        <small>${entry.kind === "phrase" ? "旅行短句" : "旅行词汇"} · ${escapeHtml(scene.name)}</small>
-        ${exampleHtml(entry)}
-      </section>
-      <p class="lesson-hint">先听一遍并读出声，不需要死记。小测会帮你确认是否真正认得。</p>
-    </div>
-    <div class="quiz-actions lesson-actions">
-      <button class="secondary-btn lesson-listen" type="button" data-listen>再听一遍</button>
-      <button class="primary-btn" type="button" data-next>${current === total ? "开始小测" : "下一个"}</button>
-    </div>`;
+    view.innerHTML = `<div class="lesson page-enter inner-page">
+      <header class="inner-bar"><button class="inner-back" type="button" data-quit>返回</button><strong class="inner-bar-title">${escapeHtml(situation.name)}</strong><span class="inner-count">${current} / ${total}</span></header>
+      ${innerProgress(current, total, "认识进度")}${innerLearningCard(entry, "认识表达")}
+    </div><div class="quiz-actions inner-dock"><div class="inner-action-row"><button class="secondary-btn" type="button" data-prev${learning.index === 0 ? " disabled" : ""}>上一条</button><button class="primary-btn" type="button" data-next>${current === total ? "开始小测" : "下一条"}</button></div></div>`;
     view.querySelector("[data-quit]").addEventListener("click", exitLearning);
-    view.querySelector("[data-listen]").addEventListener("click", () => void playSpeech(entry));
+    view.querySelector("[data-prev]").addEventListener("click", () => {
+      if (learning.index > 0) { learning.index -= 1; renderIntroduction(); }
+    });
     view.querySelector("[data-next]").addEventListener("click", () => {
       markIntroduced(entry);
       if (learning.index >= learning.batch.length - 1) startLearningQuiz(learning.batch);
-      else {
-        learning.index += 1;
-        renderIntroduction();
-      }
+      else { learning.index += 1; renderIntroduction(); }
     });
     bindSpeechButtons();
     bindFavoriteButtons();
-    bindExampleDisclosure(entry);
+    activateInnerPage();
     scrollToTop();
     requestAnimationFrame(() => view.querySelector(".recognition-card")?.focus({ preventScroll: true }));
   }
@@ -1127,40 +1152,31 @@
     state.selectedId = null;
     const current = quiz.index + 1;
     const total = quiz.questions.length;
-    const progress = Math.round(current / total * 100);
-    const scene = sceneById(entry.sceneId);
-    const situation = situationById(scene, entry.situationId);
     const prompt = direction === "reverse"
-      ? `<div class="foreign-prompt"><h2 id="questionText">${escapeHtml(foreignText(entry))}</h2>${audioButtonHtml(entry)}</div><p>请选择对应的中文含义</p>`
-      : `<h2 id="questionText">${escapeHtml(entry.zh)}</h2><p>请选择对应的${langLabel()}表达</p>`;
+      ? `<div class="inner-foreign-prompt"><h1 id="questionText" lang="${escapeHtml(currentPack().locale)}">${escapeHtml(foreignText(entry))}</h1>${innerAudioButton(entry)}</div><p>请选择对应的中文含义</p>`
+      : `<h1 id="questionText">${escapeHtml(entry.zh)}</h1><p>选出对应的${escapeHtml(langLabel())}表达</p>`;
     const optionsHtml = options.map((option, index) => `<div class="option-row">
       <button class="option-choice" type="button" data-id="${escapeHtml(option.id)}" aria-pressed="false">
         <span class="option-letter" aria-hidden="true">${String.fromCharCode(65 + index)}</span>
         <span class="option-text">${direction === "reverse" ? `<span class="answer-zh">${escapeHtml(option.zh)}</span>` : foreignContentHtml(option, false)}</span>
-        <span class="choice-state" aria-hidden="true"></span>
-      </button>
-    </div>`).join("");
-    view.innerHTML = `<div class="quiz page-enter">
-      <div class="quiz-top"><button class="text-btn" type="button" data-quit>退出</button><strong>${escapeHtml(questionTitle(quiz))}</strong><span>${current} / ${total}</span></div>
-      <div class="progress-track" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}"><span style="width:${progress}%"></span></div>
-      <section class="prompt-card" id="questionPrompt" tabindex="-1" aria-labelledby="questionText">
-        <span class="question-meta">${escapeHtml(scene.name)} · ${escapeHtml(situation.name)}</span>${prompt}
-      </section>
+        <span class="choice-state" aria-hidden="true"></span><span class="sr-only" data-answer-status></span>
+      </button></div>`).join("");
+    view.innerHTML = `<div class="quiz page-enter inner-page">
+      <header class="inner-bar"><button class="inner-back" type="button" data-quit>返回</button><strong class="inner-bar-title">${escapeHtml(questionTitle(quiz))}</strong><span class="inner-count">${current} / ${total}</span></header>
+      ${innerProgress(current, total, "答题进度")}
+      <section class="inner-prompt" id="questionPrompt" tabindex="-1" aria-labelledby="questionText"><div class="inner-phase"><strong>${quiz.mode.kind === "review" ? "复习表达" : "巩固小测"}</strong><span>${escapeHtml(langLabel())}</span></div>${prompt}</section>
       <div class="options" role="group" aria-label="答案选项">${optionsHtml}</div>
-      <div id="feedback" class="feedback" tabindex="-1" aria-live="polite" hidden></div>
-    </div>
-    <div class="quiz-actions"><button class="primary-btn" id="confirmBtn" type="button" disabled>确认答案</button></div>`;
+    </div><div class="quiz-actions inner-dock"><div id="feedback" class="inner-feedback" tabindex="-1" aria-live="polite" hidden></div><button class="primary-btn" id="confirmBtn" type="button" disabled>确认答案</button></div>`;
     const confirm = view.querySelector("#confirmBtn");
-    view.querySelectorAll(".option-choice").forEach((button) => button.addEventListener("click", () => selectOption(button, confirm)));
+    view.querySelectorAll(".option-choice").forEach(button => button.addEventListener("click", () => selectOption(button, confirm)));
     view.querySelector("[data-quit]").addEventListener("click", quiz.mode.kind === "review" ? exitReview : exitLearning);
-    confirm.addEventListener("click", () => {
-      if (state.answered) advanceQuestion();
-      else confirmAnswer(entry, token);
-    });
+    confirm.addEventListener("click", () => { if (state.answered) advanceQuestion(); else confirmAnswer(entry, token); });
     bindSpeechButtons();
+    activateInnerPage();
     scrollToTop();
     requestAnimationFrame(() => view.querySelector("#questionPrompt")?.focus({ preventScroll: true }));
   }
+
   function selectOption(button, confirm) {
     if (state.answered) return;
     view.querySelectorAll(".option-choice").forEach((item) => {
@@ -1188,24 +1204,25 @@
       const row = button.closest(".option-row");
       if (button.dataset.id === entry.id) {
         row.classList.add("correct");
-        row.querySelector(".choice-state").textContent = "✓";
+        row.querySelector(".choice-state").innerHTML = innerPngIcon("answer-correct", "✓");
+        row.querySelector("[data-answer-status]").textContent = "正确答案";
       } else if (!correct && button.dataset.id === state.selectedId) {
         row.classList.add("wrong");
-        row.querySelector(".choice-state").textContent = "×";
+        row.querySelector(".choice-state").innerHTML = innerPngIcon("answer-wrong", "×");
+        row.querySelector("[data-answer-status]").textContent = "你选择的答案，回答错误";
       }
     });
     const feedback = view.querySelector("#feedback");
     feedback.hidden = false;
-    feedback.className = `feedback ${correct ? "good" : "bad"}`;
-    feedback.innerHTML = `<span class="feedback-icon" aria-hidden="true">${correct ? "✓" : "!"}</span><div>
-      <strong>${correct ? "回答正确" : "再看一次正确答案"}</strong>
-      <div class="feedback-entry"><div class="feedback-answer"><span class="answer-zh">${escapeHtml(entry.zh)}</span>${foreignContentHtml(entry, true)}</div>${favoriteButtonHtml(entry, "feedback-favorite")}</div>
-      ${exampleHtml(entry, true)}
-    </div>`;
+    feedback.className = `inner-feedback ${correct ? "good" : "bad"}`;
+    feedback.closest(".inner-dock").classList.add("inner-feedback-dock");
+    feedback.innerHTML = `<strong class="inner-feedback-title"><span aria-hidden="true">${correct ? innerPngIcon("answer-correct", "✓") : "i"}</span>${correct ? "回答正确" : "记住这个正确答案"}</strong>
+      <div class="inner-correct-answer"><div><strong lang="${escapeHtml(currentPack().locale)}">${escapeHtml(foreignText(entry))}</strong><span>${escapeHtml(entry.zh)}</span></div><div class="inner-feedback-controls">${innerAudioButton(entry)}${innerFavoriteButton(entry)}</div></div>${innerExample(entry)}`;
     const confirm = view.querySelector("#confirmBtn");
     confirm.disabled = false;
     confirm.textContent = state.quiz.index >= state.quiz.questions.length - 1 ? "查看结果" : "下一题";
     feedback.focus({ preventScroll: true });
+    bindInnerIcons();
     bindSpeechButtons(feedback);
     bindFavoriteButtons(feedback);
     void playSpeech(entry, true);
@@ -1244,31 +1261,20 @@
     const entry = learning.batch[learning.index];
     const current = learning.index + 1;
     const total = learning.batch.length;
-    view.innerHTML = `<div class="lesson page-enter">
-      <div class="quiz-top"><button class="text-btn" type="button" data-later>稍后继续</button><strong>再认识一次</strong><span>${current} / ${total}</span></div>
-      <section class="recognition-card retry-card" tabindex="-1">
-        <div class="recognition-meta"><span class="question-meta">刚才这条还不熟</span>${favoriteButtonHtml(entry)}</div>
-        <div class="recognition-foreign"><h2>${escapeHtml(foreignText(entry))}</h2>${audioButtonHtml(entry)}</div>
-        ${entry.pronunciation ? `<p class="recognition-reading">${escapeHtml(entry.pronunciation)}</p>` : ""}
-        <div class="recognition-divider"></div><strong class="recognition-zh">${escapeHtml(entry.zh)}</strong>
-        ${exampleHtml(entry)}
-      </section>
-      <p class="lesson-hint">看清表达，再测一次。答对后就会进入已掌握。</p>
-    </div>
-    <div class="quiz-actions"><button class="primary-btn" type="button" data-next>${current === total ? "重新小测" : "下一个"}</button></div>`;
+    view.innerHTML = `<div class="lesson page-enter inner-page"><header class="inner-bar"><button class="inner-back" type="button" data-later>稍后继续</button><strong class="inner-bar-title">再认识一次</strong><span class="inner-count">${current} / ${total}</span></header>${innerProgress(current, total, "再认识进度")}${innerLearningCard(entry, "刚才这条还不熟")}</div>
+      <div class="quiz-actions inner-dock"><button class="primary-btn" type="button" data-next>${current === total ? "重新小测" : "下一条"}</button></div>`;
     view.querySelector("[data-later]").addEventListener("click", exitLearning);
     view.querySelector("[data-next]").addEventListener("click", () => {
       if (learning.index >= learning.batch.length - 1) startLearningQuiz(learning.batch);
-      else {
-        learning.index += 1;
-        renderRetryReview();
-      }
+      else { learning.index += 1; renderRetryReview(); }
     });
     bindSpeechButtons();
     bindFavoriteButtons();
-    bindExampleDisclosure(entry);
+    activateInnerPage();
     scrollToTop();
+    requestAnimationFrame(() => view.querySelector(".recognition-card")?.focus({ preventScroll: true }));
   }
+
   function renderLearningComplete() {
     stopSpeech();
     updateShell("home", true);
@@ -1307,37 +1313,59 @@
     navigatePath(sceneId ? `scene/${sceneId}` : "home", true);
   }
 
+  function reviewPngArrow() {
+    return '<span class="review-png-arrow"><img src="icons/ui/home-learning-start.png" alt=""></span>';
+  }
+  function reviewActionLettering(label, asset) {
+    return `<span class="review-lettering-visual" aria-hidden="true"><span class="review-wordmark review-wordmark--${asset}"><img src="icons/ui/review-${asset}.png" alt=""></span>${reviewPngArrow()}</span><span class="review-action-fallback" aria-hidden="true">${escapeHtml(label)}<span class="arrow">→</span></span>`;
+  }
   function renderReview() {
     stopSpeech();
+    document.body.classList.add("is-review-page");
+    const destination = selectedDestination();
     const learning = loadLearning();
     const mastered = Object.values(learning.byId).filter((record) => record.status === "mastered").length;
     const weakCount = learning.weakIds.length;
     const favoriteCount = favoriteIds().length;
-    const sceneRows = scenePacks().map((scene) => {
-      const count = masteredWords({ sceneId: scene.id }).length;
-      return `<button class="review-scene-row scene-${escapeHtml(scene.id)}" type="button" data-review-scene="${scene.id}" ${count ? "" : "disabled"}>
-        <span class="category-icon" aria-hidden="true">${sceneIcon(scene.id)}</span>
-        <span><strong>${escapeHtml(scene.name)}</strong><small>${count ? `已掌握 ${count} 条` : "还没有已掌握内容"}</small></span>
-        <span class="chevron" aria-hidden="true">›</span>
-      </button>`;
-    }).join("");
-    view.innerHTML = `<div class="page-enter review-page">
-      <header class="screen-heading"><span class="eyebrow">温故而知新</span><h1>复习</h1><p>把旅途中真正会用到的表达，练到随时都能想起来。</p></header>
-      <section class="review-overview" aria-labelledby="reviewOverviewTitle">
-        <div><span class="eyebrow">复习概览</span><h2 id="reviewOverviewTitle">${mastered ? weakCount ? `${weakCount} 条需要再巩固` : "已学内容保持得很好" : "完成学习后，从这里开始复习"}</h2><p>${mastered ? "双向混合测试，不设日期限制，想练就练。" : "先完成一组认识和小测，掌握的内容会自动出现在这里。"}</p></div>
-        <div class="review-overview-stats" aria-label="复习数据"><div><strong>${mastered}</strong><span>已掌握</span></div><div><strong>${weakCount}</strong><span>需要加强</span></div></div>
-        ${mastered ? `<button class="primary-btn" type="button" data-review-primary>${weakCount ? "开始加强" : "开始复习"}</button>` : ""}
-      </section>
-      <div class="feature-stack">
-        <section class="feature-card featured"><span class="feature-icon violet" aria-hidden="true">${uiIcon("review")}</span><div><h3>薄弱加强</h3><p>${weakCount ? `集中复习 ${weakCount} 条答错过的内容。` : "目前没有需要加强的内容。"}</p></div><button class="secondary-btn compact" type="button" data-review-weak ${weakCount ? "" : "disabled"}>${weakCount ? "去加强" : "状态良好"}</button></section>
-        <section class="feature-card"><span class="feature-icon favorite" aria-hidden="true">${uiIcon("favorite")}</span><div><h3>收藏夹</h3><p>${favoriteCount ? `已收藏 ${favoriteCount} 条常用表达。` : "把旅途中常用的表达收在这里。"}</p></div><button class="secondary-btn compact" type="button" data-open-favorites>${favoriteCount ? "查看收藏" : "去收藏"}</button></section>
+    const scenes = scenePacks().slice()
+      .sort((a, b) => (HOME_SCENE_PRIORITY[a.id] ?? 99) - (HOME_SCENE_PRIORITY[b.id] ?? 99))
+      .map((scene) => ({ scene, count: masteredWords({ sceneId: scene.id }).length, total: sceneWords(scene.id).length }));
+    const availableScenes = scenes.filter(({ count }) => count > 0);
+    const unlearnedScenes = scenes.filter(({ count }) => count === 0);
+    const sceneRows = availableScenes.map(({ scene, count, total }) => `<button class="scene-choice" type="button" data-review-scene="${escapeHtml(scene.id)}" aria-label="复习${escapeHtml(scene.name)}，已掌握${count}/${total}条，可复习${count}条">
+      <span class="scene-choice-icon" aria-hidden="true">${sceneIcon(scene.id)}</span>
+      <span class="scene-choice-copy"><strong>${escapeHtml(scene.name)}</strong>${sceneMasteryMeter(count, total, "scene-choice-meter")}</span>
+    </button>`).join("");
+    const unlearnedHtml = unlearnedScenes.length
+      ? `<details class="unlearned-scenes"><summary>尚未学习的场景</summary><ul>${unlearnedScenes.map(({ scene }) => `<li><span aria-hidden="true">${sceneIcon(scene.id)}</span>${escapeHtml(scene.name)}</li>`).join("")}</ul><p>在首页学过后，会出现在上方的复习选项中。</p></details>`
+      : "";
+    const lead = mastered
+      ? `<section class="review-lead" aria-labelledby="reviewOverviewTitle">
+          <span class="lead-label">${weakCount ? "薄弱加强" : "随时复习"}</span>
+          <h2 id="reviewOverviewTitle">${weakCount ? "再练一次，记得更牢" : "让学过的表达更熟练"}</h2>
+          <dl class="review-stats"><div><dt>已掌握</dt><dd>${mastered}<small>条</small></dd></div><div class="weak-stat"><dt>需要加强</dt><dd>${weakCount}<small>条</small></dd></div></dl>
+          <button class="review-action" type="button" data-review-primary data-review-art aria-label="${weakCount ? "开始加强" : "开始复习"}">${reviewActionLettering(weakCount ? "开始加强" : "开始复习", weakCount ? "start-weak" : "start-review")}</button>
+          <p class="action-note">本轮 ${Math.min(weakCount || mastered, REVIEW_BATCH_SIZE)} 条 · ${weakCount ? "巩固之前答错的表达" : "中外文双向练习"}</p>
+        </section>`
+      : `<section class="review-lead empty-lead" aria-labelledby="reviewOverviewTitle">
+          <header class="empty-heading"><h2 id="reviewOverviewTitle">先学几句，再回来练</h2><img src="icons/ui/review-empty-book.png" width="36" height="36" alt=""></header>
+          <p>掌握的表达会自动出现在这里。</p>
+          <button class="review-action" type="button" data-go-home data-review-art aria-label="去首页学习">${reviewActionLettering("去首页学习", "go-home")}</button>
+        </section>`;
+    view.innerHTML = `<div class="page-enter review-page${mastered ? "" : " review-page--empty"}">
+      <header class="review-top"><h1>复习</h1><span class="language-label"><img src="${escapeHtml(destination.flagSrc)}" alt="">${escapeHtml(destination.country)} · ${escapeHtml(destination.language)}</span></header>
+      <div class="review-layout ${mastered ? "" : "is-empty"}"><div>${lead}
+        <button class="favorite-link" type="button" data-open-favorites><span class="favorite-symbol" aria-hidden="true">${uiIcon("favorite")}</span><span class="favorite-copy"><strong>收藏夹</strong><small>${favoriteCount ? `${favoriteCount} 条常用表达，随时查看` : "收好旅行中常用的表达"}</small></span><span class="end-arrow review-favorite-arrow" data-review-art aria-hidden="true">${reviewPngArrow()}<span class="review-arrow-fallback">→</span></span></button>
       </div>
-      ${mastered ? `<div class="section-heading review-heading"><div><span class="eyebrow">按需选择</span><h2>按场景复习</h2></div></div>
-      <div class="review-scene-list">${sceneRows}</div>`
-      : `<div class="empty-state review-empty"><span aria-hidden="true">${uiIcon("review")}</span><strong>还没有可复习的内容</strong><p>先到首页选择一个旅行场景，完成认识和小测。</p><button class="primary-btn" type="button" data-go-home>去首页学习</button></div>`}
+      ${mastered ? `<section aria-labelledby="reviewScenesTitle"><div class="scene-heading"><h2 id="reviewScenesTitle">按场景复习</h2></div><div class="scene-choices${availableScenes.length === 1 ? " is-single" : ""}">${sceneRows}</div>${unlearnedHtml}</section>` : ""}
+      </div>
     </div>`;
+    view.querySelectorAll("[data-review-art] img").forEach((img) => {
+      const showText = () => img.closest("[data-review-art]").classList.add("review-art-fallback");
+      img.addEventListener("error", showText, { once: true });
+      if (img.complete && !img.naturalWidth) showText();
+    });
     view.querySelector("[data-review-primary]")?.addEventListener("click", () => startReview(weakCount ? { weak: true } : undefined));
-    view.querySelector("[data-review-weak]")?.addEventListener("click", () => startReview({ weak: true }));
     view.querySelector("[data-open-favorites]")?.addEventListener("click", () => navigatePath("review/favorites"));
     view.querySelectorAll("[data-review-scene]").forEach((button) => button.addEventListener("click", () => startReview({ sceneId: button.dataset.reviewScene })));
     view.querySelector("[data-go-home]")?.addEventListener("click", () => navigatePath("home"));
@@ -1692,27 +1720,36 @@
   function renderTools() {
     disposeTranslator?.();
     stopSpeech();
+    document.body.classList.add("is-tools-page");
     const destination = selectedDestination();
     const emergencyAvailable = Boolean(currentPack()?.features?.emergencyCard);
     const checklistSummary = window.TRAVEL_CHECKLIST.summarize(window.TRAVEL_CHECKLIST.getModel(), destination?.id, destination?.preparation);
+    const entryArrow = '<span class="entry-arrow png-arrow" aria-hidden="true"><span class="png-arrow-crop"><img src="icons/ui/tools-arrow-thin.png" alt=""></span><span class="png-arrow-fallback">→</span></span>';
     view.innerHTML = `<div class="page-enter tools-page">
-      <header class="screen-heading"><span class="eyebrow">旅途工具箱</span><h1>工具</h1><p>随时找到旅途中用得上的实用工具。</p></header>
-      <section class="translator-card" aria-labelledby="translatorTitle">
-        <div class="translator-heading"><span class="feature-icon teal" aria-hidden="true">${uiIcon("translate")}</span><div><span class="eyebrow">随身表达</span><h2 id="translatorTitle">快捷翻译</h2></div><span class="translator-status">需联网</span></div>
-        <div class="translator-direction" aria-label="翻译方向"><span>中文</span><span class="translator-direction-arrow" aria-hidden="true">→</span><span>${escapeHtml(destination?.language || "选择目的地")}</span></div>
-        <div class="translator-field-heading"><label for="translateInput">输入中文</label><button class="translator-clear" type="button" data-clear-translate hidden>清除</button></div>
-        <textarea id="translateInput" class="translator-input" rows="2" aria-describedby="translateCount translateFeedback" placeholder="输入想在旅途中表达的内容"${destination ? "" : " disabled"}>${escapeHtml(state.translateDraft)}</textarea>
-        <div class="translator-input-meta"><span id="translateFeedback" class="translator-feedback" role="status" aria-live="polite" aria-atomic="true"></span><span id="translateCount" class="translator-count" aria-label="字符数，上限 300">0 / 300</span></div>
-        <div class="translator-actions">${destination ? "" : '<button class="translator-destination" type="button" data-translate-destination>选择目的地</button>'}<button class="translator-submit" type="button" disabled>翻译</button></div>
-        <div class="translator-result" role="region" aria-label="译文"><span>译文 · ${escapeHtml(destination?.language || "目的地语言")}</span><p data-translate-result dir="auto">译文会显示在这里</p><div class="translator-result-actions" hidden><button type="button" data-copy-translate>复制译文</button><button type="button" data-speak-translate aria-pressed="false">朗读</button></div></div>
-      </section>
-      <div class="section-heading tool-section-heading"><div><span class="eyebrow">随身备用</span><h2>更多旅行工具</h2></div></div>
-      <div class="tool-placeholder-grid" aria-label="更多旅行工具">
-        <button class="tool-placeholder tool-card" type="button" data-emergency-card${state.destinationId && !emergencyAvailable ? " disabled" : ""}><span class="feature-icon coral" aria-hidden="true">${uiIcon("emergencyCard")}</span><span class="coming-badge tool-available-badge">${emergencyAvailable ? "已可使用" : state.destinationId ? "暂不可用" : "选择后使用"}</span><h3>紧急联系卡</h3><p>制作并保存双语急救信息卡。</p></button>
-        <button class="tool-placeholder tool-card" type="button" data-open-checklist><span class="feature-icon blue" aria-hidden="true">${uiIcon("checklist")}</span><span class="coming-badge tool-available-badge">已可使用</span><h3>旅行清单</h3><p>${destination ? `${escapeHtml(destination.country)} · 还有 ${checklistSummary.remaining} 项未确认。` : "15 项通用准备，选择目的地解锁专属建议。"}</p></button>
-        <article class="tool-placeholder"><span class="feature-icon amber" aria-hidden="true">${uiIcon("exchange")}</span><span class="coming-badge">计划中</span><h3>汇率换算</h3><p>旅途中快速估算常用货币金额。</p></article>
+      <header class="tools-top"><h1>工具</h1><span class="language-label">${destination ? `<img src="${escapeHtml(destination.flagSrc)}" alt="">${escapeHtml(destination.country)} · ${escapeHtml(destination.language)}` : "未选目的地"}</span></header>
+      <div class="tools-layout">
+        <section class="translator-card translation-panel" aria-labelledby="translatorTitle">
+          <header class="panel-heading"><div class="panel-title">${uiIcon("translate")}<h2 id="translatorTitle">快捷翻译</h2></div><p class="language-direction" aria-label="翻译方向">中文 <span aria-hidden="true">→</span> <strong>${escapeHtml(destination?.language || "目的地语言")}</strong></p></header>
+          <div class="conversation-composer">
+          <div class="input-heading"><label for="translateInput">想说的话</label><button class="translator-clear quiet-button" type="button" data-clear-translate hidden>清除</button></div>
+          <textarea id="translateInput" class="translator-input" rows="3" aria-describedby="translateCount translateFeedback" placeholder="在这里写下想说的话…"${destination ? "" : " disabled"}>${escapeHtml(state.translateDraft)}</textarea>
+          <div class="compose-actions"><span id="translateCount" class="translator-count" aria-label="字符数，上限 300">0 / 300</span>${destination ? "" : '<button class="translator-destination primary-action" type="button" data-translate-destination>选择目的地</button>'}<button class="translator-submit primary-action" type="button" disabled${destination ? "" : " hidden"}>翻译</button></div>
+          </div>
+          <div class="input-meta"><span id="translateFeedback" class="translator-feedback" role="status" aria-live="polite" aria-atomic="true"></span></div>
+          <div class="translator-result translation-output" role="region" aria-label="译文"><span>译文 · ${escapeHtml(destination?.language || "目的地语言")}</span><p data-translate-result dir="auto">译文会显示在这里</p><div class="translator-result-actions output-actions" hidden><button type="button" data-copy-translate>复制译文</button><button type="button" data-speak-translate aria-pressed="false">朗读</button></div></div>
+        </section>
+        <section class="travel-tools" aria-labelledby="travelToolsTitle">
+          <h2 id="travelToolsTitle">随身工具</h2>
+          <button class="tool-entry" type="button" data-emergency-card${state.destinationId && !emergencyAvailable ? " disabled" : ""}>${uiIcon("emergencyCard")}<span class="tool-copy"><strong>紧急联系卡</strong><small>${emergencyAvailable ? "制作双语急救信息卡" : state.destinationId ? "当前语言暂不可用" : "选择目的地后制作"}</small></span>${entryArrow}</button>
+          <button class="tool-entry" type="button" data-open-checklist>${uiIcon("checklist")}<span class="tool-copy"><strong>旅行清单</strong><small>还有 ${checklistSummary.remaining} 项未确认</small></span>${entryArrow}</button>
+        </section>
       </div>
     </div>`;
+    view.querySelectorAll(".png-arrow-crop img").forEach((img) => {
+      const fallback = () => img.closest(".png-arrow").classList.add("is-unavailable");
+      img.addEventListener("error", fallback, { once: true });
+      if (img.complete && !img.naturalWidth) fallback();
+    });
     bindTranslator(destination);
     view.querySelector("[data-translate-destination]")?.addEventListener("click", requireDestination);
     view.querySelector("[data-open-checklist]").addEventListener("click", () => navigatePath("tools/checklist"));
@@ -2108,37 +2145,60 @@
   }
   function renderMe() {
     stopSpeech();
-    const destination = selectedDestination();
-    const summary = summarizeLearningEnvelope(loadLearningEnvelope());
-    const destinationIds = DESTINATION_OPTIONS.map((item) => item.id);
-    const footprintStatuses = window.TRAVEL_FOOTPRINTS.getAll(destinationIds);
-    const visitedCount = Object.values(footprintStatuses).filter((status) => status === window.TRAVEL_FOOTPRINTS.STATUS_VISITED).length;
-    const wishlistCount = Object.values(footprintStatuses).filter((status) => status === window.TRAVEL_FOOTPRINTS.STATUS_WISHLIST).length;
-    const currentLearningHtml = destination
-      ? `<section class="current-learning-card" aria-labelledby="currentLearningTitle"><span class="current-learning-flag" aria-hidden="true"><img src="${destination.flagSrc}" width="384" height="256" alt=""></span><div class="current-learning-copy"><span class="eyebrow">当前目的地</span><h3 id="currentLearningTitle">${escapeHtml(destination.country)} · ${escapeHtml(destination.language)}</h3><p>${escapeHtml(destination.nativeLabel)}，学习这趟旅程真正用得上的表达。</p></div><button class="secondary-btn compact current-learning-action" type="button" data-change-destination>切换</button></section>`
-      : `<section class="current-learning-card empty" aria-labelledby="currentLearningTitle"><span class="current-learning-empty" aria-hidden="true">--</span><div class="current-learning-copy"><h3 id="currentLearningTitle">尚未选择目的地</h3><p>选择后会在这里显示当前学习语言。</p></div><button class="secondary-btn compact current-learning-action" type="button" data-choose-destination>选择目的地</button></section>`;
-    view.innerHTML = `<div class="page-enter settings-page">
-      <header class="screen-heading"><span class="eyebrow">本地个人档案</span><h1>我的</h1><p>查看学习进度、旅行足迹与当前设备设置。</p></header>
-      <section class="profile-card" aria-labelledby="profileName"><span class="profile-avatar"><img src="icons/icon-192.png" width="72" height="72" alt="语见世界应用图标，作为游客头像"></span><div class="profile-copy"><span class="local-status-badge">本地使用</span><h2 id="profileName">旅行学习者</h2><p>登录功能开放后，可跨设备同步学习进度、收藏和足迹。</p></div><div class="account-preview" aria-label="账号与云同步，即将开放"><span class="account-preview-icon" aria-hidden="true">${CLOUD_SVG}</span><span><strong>账号与云同步</strong><small>为未来的云端个人档案预留</small></span><span class="planned-badge">即将开放</span></div></section>
-      <div class="section-heading profile-section-heading"><div><span class="eyebrow">全部语言</span><h2>学习概览</h2></div></div>
-      <section class="learning-data-card" aria-label="全部语言学习数据"><div><strong>${summary.learned}</strong><span>已学习</span></div><div><strong>${summary.mastered}</strong><span>已掌握</span></div><div><strong>${summary.weak}</strong><span>需加强</span></div></section>
-      <div class="section-heading profile-section-heading"><div><span class="eyebrow">当前选择</span><h2>当前学习</h2></div></div>
-      ${currentLearningHtml}
-      <div class="section-heading profile-section-heading"><div><span class="eyebrow">个人记录</span><h2>我的旅行</h2></div></div>
-      <button class="travel-profile-card" type="button" data-open-footprints><span class="feature-icon teal" aria-hidden="true">${uiIcon("trip")}</span><span><strong>旅行足迹</strong><small>${visitedCount ? `去过 ${visitedCount} 个目的地` : "还没有记录去过的目的地"} · ${wishlistCount ? `想去 ${wishlistCount} 个` : "暂无想去记录"}</small></span><b>查看旅行足迹 <i aria-hidden="true">›</i></b></button>
-      <div class="section-heading settings-heading"><div><span class="eyebrow">当前设备</span><h2>应用设置</h2></div></div>
-      <section class="settings-list">
-        <div class="settings-row"><div class="setting-heading"><span class="setting-icon blue" aria-hidden="true">${uiIcon("install")}</span><div><h3>安装 App</h3><p>从主屏幕更快打开</p></div></div><div class="setting-action">${installPromptHtml()}</div></div>
-        <div class="settings-row"><div class="setting-heading"><span class="setting-icon teal" aria-hidden="true">${uiIcon("privacy")}</span><div><h3>数据与隐私</h3><p>学习数据和偏好目前仅保存在当前设备，不会自动上传。</p></div></div></div>
-      </section>
-      <section class="data-management-card" aria-labelledby="dataManagementTitle"><div class="setting-heading"><span class="setting-icon red" aria-hidden="true">${uiIcon("deleteData")}</span><div><h3 id="dataManagementTitle">数据管理</h3><p>清除场景学习数据、认读进度和水平选择；目的地选择会保留。</p></div></div><button class="danger-btn" type="button" data-reset>清除全部学习数据</button></section>
-      <aside class="journey-quote without-icon" aria-label="旅行寄语"><p>语言或许不同，<br>但对世界的好奇心相同</p></aside>
+    document.body.classList.add("is-me-page");
+    const entryArrow = '<span class="png-arrow" aria-hidden="true"><span class="png-arrow-crop"><img src="icons/ui/tools-arrow-thin.png" alt=""></span><span class="png-arrow-fallback">→</span></span>';
+    view.innerHTML = `<div class="page-enter settings-page me-page">
+    <header class="me-top"><h1>我的</h1></header>
+    <button type="button" class="member-card" data-me-detail="login" aria-haspopup="dialog" aria-label="登录或注册，开启你的旅行名片">
+      <span class="member-identity"><span class="member-avatar" aria-hidden="true"><img class="me-decor-icon" src="icons/icon-192.png" width="60" height="60" alt=""></span><span class="member-copy"><span class="member-name">开启你的旅行名片</span><span class="member-description">无需登录也能学习，记录保存在当前设备。</span></span></span>
+      <span class="member-cta">登录 / 注册 ${entryArrow}</span>
+    </button>
+    <section class="preferences" aria-labelledby="settings-title"><h2 id="settings-title">应用设置</h2><div class="preference-list">
+      <button type="button" class="preference" data-me-detail="install" aria-haspopup="dialog"><span class="preference-icon" aria-hidden="true">${uiIcon("install")}</span><span class="preference-copy"><strong>安装到主屏幕</strong><small>${isStandalone() ? "已添加到当前设备" : "下次打开，更方便"}</small></span><span class="arrow-slot">${entryArrow}</span></button>
+      <button type="button" class="preference" data-me-detail="privacy" aria-haspopup="dialog"><span class="preference-icon" aria-hidden="true">${uiIcon("privacy")}</span><span class="preference-copy"><strong>数据与隐私</strong><small>学习记录保存在当前设备</small></span><span class="arrow-slot">${entryArrow}</span></button>
+      <button type="button" class="preference" data-me-detail="data" aria-haspopup="dialog"><span class="preference-icon" aria-hidden="true">${uiIcon("deleteData")}</span><span class="preference-copy"><strong>数据管理</strong><small>管理这台设备上的学习记录</small></span><span class="arrow-slot">${entryArrow}</span></button>
+    </div></section>
+  
+      <dialog id="meDetailDialog" aria-labelledby="meDetailTitle"><div data-me-detail-content></div></dialog>
     </div>`;
-    view.querySelector("[data-choose-destination]")?.addEventListener("click", requireDestination);
-    view.querySelector("[data-change-destination]")?.addEventListener("click", () => openDestinationPicker());
-    view.querySelector("[data-open-footprints]").addEventListener("click", () => navigatePath("me/footprints"));
-    view.querySelector("[data-reset]").addEventListener("click", resetData);
-    bindInstallPrompt();
+    view.querySelectorAll(".png-arrow-crop img").forEach((img) => {
+      const fallback = () => img.closest(".png-arrow").classList.add("is-unavailable");
+      img.addEventListener("error", fallback, { once: true });
+      if (img.complete && !img.naturalWidth) fallback();
+    });
+    view.querySelectorAll(".me-decor-icon, .preference-icon img").forEach((img) => {
+      const fallback = () => { img.style.visibility = "hidden"; };
+      img.addEventListener("error", fallback, { once: true });
+      if (img.complete && !img.naturalWidth) fallback();
+    });
+    const dialog = view.querySelector("#meDetailDialog");
+    view.querySelectorAll("[data-me-detail]").forEach((button) => button.addEventListener("click", () => {
+      const type = button.dataset.meDetail;
+      const closeButton = '<button type="button" data-me-close>返回</button>';
+      let title, content;
+      if (type === "login") {
+        title = "登录功能暂未开放";
+        content = '<p>你可以继续学习、复习和使用工具，学习记录会保存在当前设备。</p><div class="dialog-actions"><button type="button" class="primary" data-me-close>知道了</button></div>';
+      } else if (type === "install") {
+        title = isStandalone() ? "已添加到主屏幕" : "安装到主屏幕";
+        content = installPromptHtml() + `<div class="dialog-actions">${closeButton}</div>`;
+      } else if (type === "privacy") {
+        title = "数据与隐私";
+        content = '<p>学习进度和偏好保存在当前设备，暂不支持账号登录或跨设备同步。</p><p>清除浏览器的网站数据后，这些记录可能无法恢复。</p><div class="dialog-actions"><button type="button" class="primary" data-me-close>知道了</button></div>';
+      } else {
+        title = "数据管理";
+        content = `<p>可清除全部语言的场景学习记录、认读进度和水平选择。当前目的地会保留。</p><p>清除后的学习记录无法恢复。</p><div class="dialog-actions">${closeButton}<button class="danger" type="button" data-reset>清除学习数据</button></div>`;
+      }
+      dialog.querySelector("[data-me-detail-content]").innerHTML = `<h2 id="meDetailTitle" tabindex="-1">${title}</h2>${content}`;
+      dialog.querySelector("[data-me-close]").addEventListener("click", () => dialog.close());
+      dialog.querySelector("[data-reset]")?.addEventListener("click", () => {
+        resetData();
+        if (!dialog.isConnected) view.querySelector('[data-me-detail="data"]')?.focus();
+      });
+      bindInstallPrompt();
+      dialog.showModal();
+      dialog.querySelector("h2").focus();
+    }));
     scrollToTop();
   }
   function resetData() {
@@ -2186,3 +2246,4 @@
 
   init();
 })();
+
